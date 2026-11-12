@@ -10,7 +10,7 @@ $tones: neutral, ok, warn, danger, info, active;
 .yi-history-strip {
   // Component tokens
   --yi-history-strip-height: 0.625rem;
-  --yi-history-strip-gap: 0px;
+  --yi-history-strip-gap: 1px;
   --yi-history-strip-radius: var(--yi-radius-sm);
   --yi-history-strip-cell-radius: 0px;
   --yi-history-strip-cell-min: 4px;
