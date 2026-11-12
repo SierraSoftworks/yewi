@@ -1,0 +1,22 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Host</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox">
+<input value="" id="yi-0-control" type="text" role="combobox" placeholder="Search 5,000 hosts" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>
+<span role="status">No host chosen</span>
+</div>
