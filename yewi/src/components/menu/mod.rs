@@ -331,21 +331,42 @@ mod dom {
         active().is_some_and(|active| active == **item)
     }
 
+    /// How many frames to keep trying to focus an item of a menu that cannot
+    /// take focus yet.
+    const FOCUS_FRAMES: u32 = 30;
+
     /// Focuses an item as the menu appears. Inside a popover that has not
-    /// been placed yet the menu is still hidden and cannot take focus, so try
-    /// again once this round of effects is over.
+    /// been placed yet the menu is still hidden and cannot take focus. When
+    /// the popover is placed is its own business, and can be a later task
+    /// than this effect, so try again once this round of effects is over and
+    /// then once a frame until it works.
     pub fn enter(node: &NodeRef, focus: MenuFocus) {
         let Some(menu) = node.cast::<Element>() else { return };
-        if !focus_edge(&menu, focus) {
-            let retry = Closure::once_into_js(move |_: JsValue| {
-                focus_edge(&menu, focus);
-            });
-            let settled = js_sys::Promise::resolve(&JsValue::NULL);
-            let then = js_sys::Reflect::get(&settled, &"then".into()).ok().and_then(|f| f.dyn_into::<js_sys::Function>().ok());
-            if let Some(then) = then {
-                let _ = then.call1(&settled, &retry);
-            }
+        if focus_edge(&menu, focus) {
+            return;
         }
+        let retry = Closure::once_into_js(move |_: JsValue| {
+            if !focus_edge(&menu, focus) {
+                focus_on_frame(menu, focus, FOCUS_FRAMES);
+            }
+        });
+        let settled = js_sys::Promise::resolve(&JsValue::NULL);
+        let then = js_sys::Reflect::get(&settled, &"then".into()).ok().and_then(|f| f.dyn_into::<js_sys::Function>().ok());
+        if let Some(then) = then {
+            let _ = then.call1(&settled, &retry);
+        }
+    }
+
+    /// Tries again on the next frame, for as long as the menu is on the page
+    /// and `frames` remain.
+    fn focus_on_frame(menu: Element, focus: MenuFocus, frames: u32) {
+        let Some(window) = web_sys::window().filter(|_| frames > 0 && menu.is_connected()) else { return };
+        let retry = Closure::once_into_js(move |_: JsValue| {
+            if !focus_edge(&menu, focus) {
+                focus_on_frame(menu, focus, frames - 1);
+            }
+        });
+        let _ = window.request_animation_frame(retry.unchecked_ref());
     }
 
     pub fn focus_within(root: &NodeRef, focus: MenuFocus) {
