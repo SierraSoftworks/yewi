@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 34rem" class="demo-card">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<b class="demo-title">Services</b>
+<div style="--yi-gap:var(--yi-space-2xl)" class="yi-cluster yi-cluster--align-start">
+<div class="yi-stat-tile yi-stat-tile--plain yi-stat-tile--md">
+<span class="yi-stat-tile__label">Registered</span>
+<span class="yi-stat-tile__value">14</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--plain yi-stat-tile--md yi-stat-tile--ok">
+<span class="yi-stat-tile__label">Reporting</span>
+<span class="yi-stat-tile__value">11</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--plain yi-stat-tile--md yi-stat-tile--danger">
+<span class="yi-stat-tile__label">Need attention</span>
+<span class="yi-stat-tile__value">3</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__detail">Degraded, stopped, or not reporting.</span>
+</span>
+</div>
+</div>
+</div>
+</div>
