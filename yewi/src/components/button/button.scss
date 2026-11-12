@@ -75,6 +75,15 @@
     --yi-button-border: color-mix(in srgb, var(--yi-danger) 45%, transparent);
   }
 
+  // A toggle button that is on. Opaque border, so it stays clean where
+  // grouped buttons share an edge.
+  &[aria-pressed="true"]:not(.yi-button--primary) {
+    --yi-button-bg: var(--yi-accent-soft);
+    --yi-button-bg-hover: color-mix(in srgb, var(--yi-accent) 18%, transparent);
+    --yi-button-fg: var(--yi-accent-text);
+    --yi-button-border: color-mix(in srgb, var(--yi-accent) 45%, var(--yi-surface));
+  }
+
   &--sm {
     --yi-button-height: var(--yi-control-height-sm);
 
