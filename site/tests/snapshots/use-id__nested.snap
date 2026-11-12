@@ -1,0 +1,21 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-stack">
+<div class="yi-stack">
+<div class="yi-cluster">
+<label for="yi-0">Street</label>
+<input id="yi-0" type="text" class="yi-input">
+</div>
+</div>
+<div class="yi-cluster">
+<label for="yi-1">City</label>
+<input id="yi-1" type="text" class="yi-input">
+</div>
+</div>
+<div class="yi-cluster">
+<label for="yi-2">Country</label>
+<input id="yi-2" type="text" class="yi-input">
+</div>
+</div>
