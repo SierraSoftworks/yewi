@@ -69,27 +69,29 @@ test.describe("UserMenu", () => {
     await expect(stage.getByRole("button", { name: "Sign in" })).toBeVisible();
   });
 
-  test("a narrow screen keeps the avatar and moves the name into the menu", async ({ page, example }) => {
-    await page.setViewportSize({ width: 390, height: 700 });
+  test("the button is the avatar alone, and still named after the person", async ({ page, example }) => {
     const stage = await example("user-menu/app-bar");
     const button = stage.getByRole("button", { name: "Grace Hopper" });
 
-    const [bar, trigger] = [(await stage.boundingBox())!, (await button.boundingBox())!];
-    expect(trigger.width).toBeLessThan(48);
-    expect(trigger.x + trigger.width).toBeLessThanOrEqual(bar.x + bar.width);
+    expect((await button.boundingBox())!.width).toBeLessThan(48);
     await button.click();
     await expect(page.getByRole("menu")).toBeVisible();
     await expect(page.getByText("read only").last()).toBeVisible();
   });
 
-  test("compact keeps the person as the button's name", async ({ page, example }) => {
-    const stage = await example("user-menu/compact");
+  test("show_name puts the name beside the avatar, except on a narrow screen", async ({ page, example }) => {
+    const stage = await example("user-menu/named");
     const button = stage.getByRole("button", { name: "Alan Turing" });
+    const width = async () => (await button.boundingBox())!.width;
 
-    expect((await button.boundingBox())!.width).toBeLessThan(48);
+    await expect(button.getByText("Alan Turing")).toBeInViewport();
+    expect(await width()).toBeGreaterThan(100);
+
+    await page.setViewportSize({ width: 390, height: 700 });
+    await expect.poll(width).toBeLessThan(48);
     await button.click();
     await expect(page.getByRole("menu")).toBeVisible();
-    await expect(page.getByText("alan@example.com").last()).toBeVisible();
+    await expect(page.getByText("admin").last()).toBeVisible();
   });
 
   test("sign out can be a link, and options stay in step", async ({ page, example }) => {

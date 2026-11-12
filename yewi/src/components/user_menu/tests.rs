@@ -4,10 +4,10 @@ use yewi_test::render;
 use super::*;
 use crate::attrs;
 
-fn user_menu(compact: bool) -> String {
+fn user_menu(show_name: bool) -> String {
     render(move || {
         html! {
-            <UserMenu name="Ada Lovelace" detail="admin" {compact} on_sign_out={Callback::noop()}>
+            <UserMenu name="Ada Lovelace" detail="admin" {show_name} on_sign_out={Callback::noop()}>
                 <MenuItem>{ "Settings" }</MenuItem>
             </UserMenu>
         }
@@ -22,8 +22,8 @@ fn trigger(html: &str) -> &str {
 
 #[test]
 fn the_trigger_is_a_closed_menu_button() {
-    for compact in [false, true] {
-        let html = user_menu(compact);
+    for show_name in [false, true] {
+        let html = user_menu(show_name);
         let trigger = trigger(&html);
         assert!(trigger.contains(r#"aria-haspopup="menu""#), "{trigger}");
         assert!(trigger.contains(r#"aria-expanded="false""#), "{trigger}");
@@ -40,8 +40,8 @@ fn the_menu_is_not_rendered_until_opened() {
 
 #[test]
 fn the_trigger_is_named_by_the_person_in_every_form() {
-    for compact in [false, true] {
-        let html = user_menu(compact);
+    for show_name in [false, true] {
+        let html = user_menu(show_name);
         let button = &html[html.find("<button").unwrap()..html.find("</button>").unwrap()];
         assert!(button.contains("Ada Lovelace") && button.contains("admin"), "{button}");
     }

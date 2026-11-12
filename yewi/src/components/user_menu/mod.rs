@@ -29,11 +29,12 @@ pub struct UserMenuProps {
     /// What the avatar's colour is derived from. See [`Avatar`].
     #[prop_or_default]
     pub seed: Option<AttrValue>,
-    /// Shows only the avatar on the button. The name and detail stay at the
-    /// top of the menu and remain the button's accessible name. Narrow
-    /// screens get this without asking.
+    /// Shows the name, the detail and a chevron beside the avatar, where the
+    /// bar has room for them. Without it, and on narrow screens, the button
+    /// is the avatar alone: the name and detail stay at the top of the menu
+    /// and remain the button's accessible name.
     #[prop_or_default]
-    pub compact: bool,
+    pub show_name: bool,
     /// Adds a sign out item at the end of the menu and fires when it is
     /// chosen.
     #[prop_or_default]
@@ -65,8 +66,8 @@ pub struct UserMenuProps {
 /// The signed-in person as an avatar button that opens their menu. It
 /// belongs in the `actions` of an [`AppBar`](crate::AppBar).
 ///
-/// - The button shows the avatar, the name and an optional `detail`;
-///   `compact`, or a narrow screen, leaves only the avatar.
+/// - The button is the person's avatar. `show_name` adds their name, the
+///   optional `detail` and a chevron, except on a narrow screen.
 /// - The menu opens with who is signed in, then the children, then sign out
 ///   when `on_sign_out` or `sign_out_href` is set.
 /// - It behaves as a [`MenuButton`](crate::MenuButton): a press,
@@ -148,7 +149,7 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
         <span
             ref={root}
             id={props.id.clone()}
-            class={classes!("yi-user-menu", props.compact.then_some("yi-user-menu--compact"), props.class.clone())}
+            class={classes!("yi-user-menu", props.show_name.then_some("yi-user-menu--named"), props.class.clone())}
             {onkeydown}
         >
             <Popover
@@ -168,7 +169,7 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
                     type="button"
                     aria-haspopup="menu"
                     aria-expanded={if shown { "true" } else { "false" }}
-                    title={props.compact.then(|| props.name.clone())}
+                    title={(!props.show_name).then(|| props.name.clone())}
                 >
                     <Avatar
                         name={props.name.clone()}
@@ -179,7 +180,7 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
                         decorative=true
                     />
                     { identity }
-                    if !props.compact {
+                    if props.show_name {
                         <Icon icon={icons::CHEVRON_DOWN} class="yi-user-menu__caret" />
                     }
                 </button>

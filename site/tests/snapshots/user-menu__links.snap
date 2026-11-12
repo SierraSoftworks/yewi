@@ -4,7 +4,7 @@ source: site/tests/snapshots.rs
 <div class="yi-stack yi-stack--align-start">
 <span class="yi-user-menu">
 <span class="yi-popover">
-<button type="button" aria-haspopup="menu" aria-expanded="false" class="yi-user-menu__trigger">
+<button type="button" aria-haspopup="menu" aria-expanded="false" title="Edsger Dijkstra" class="yi-user-menu__trigger">
 <span style="--yi-avatar-hue:317" aria-hidden="true" class="yi-avatar yi-avatar--sm">
 <span aria-hidden="true" class="yi-avatar__initials">ED</span>
 </span>
@@ -12,10 +12,6 @@ source: site/tests/snapshots.rs
 <span class="yi-user-menu__name">Edsger Dijkstra</span>
 <span class="yi-user-menu__detail">edsger@example.com</span>
 </span>
-<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-user-menu__caret">
-<path d="M6 9l6 6 6-6">
-</path>
-</svg>
 </button>
 </span>
 </span>

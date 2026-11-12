@@ -2,7 +2,8 @@
 //
 // An avatar button at the end of an app bar that opens a Popover holding who
 // is signed in and a Menu. The trigger is as tall as a control, so it lines
-// up with the icon buttons beside it.
+// up with the icon buttons beside it. It is the avatar alone unless the name
+// is asked for and the screen has room for it.
 @use "api" as *;
 
 .yi-user-menu {
@@ -28,9 +29,9 @@
   box-sizing: border-box;
   min-inline-size: 0;
   min-block-size: var(--yi-user-menu-height);
-  padding: var(--yi-space-2xs) var(--yi-space-sm) var(--yi-space-2xs) var(--yi-space-xs);
+  padding: var(--yi-space-xs);
   border: 0;
-  border-radius: var(--yi-user-menu-radius);
+  border-radius: var(--yi-radius-full);
   background: var(--yi-user-menu-bg);
   color: var(--yi-fg);
   font-family: var(--yi-font-body);
@@ -73,10 +74,6 @@
   font-weight: 400;
 }
 
-.yi-user-menu__trigger > .yi-user-menu__identity {
-  max-inline-size: var(--yi-user-menu-name-max-width);
-}
-
 .yi-user-menu__caret {
   flex: none;
   opacity: 0.7;
@@ -98,29 +95,36 @@
   user-select: none;
 }
 
-// Avatar only. The name stays in the button for assistive technology, and
-// the menu still says who is signed in.
-@mixin avatar-only {
-  padding: var(--yi-space-xs);
-  border-radius: var(--yi-radius-full);
-
-  > .yi-user-menu__identity {
-    @include visually-hidden;
-  }
-
-  > .yi-user-menu__caret {
-    display: none;
-  }
+// The name stays in the button for assistive technology even when only the
+// avatar shows, and the menu still says who is signed in.
+.yi-user-menu__trigger > .yi-user-menu__identity {
+  @include visually-hidden;
 }
 
-.yi-user-menu--compact .yi-user-menu__trigger {
-  @include avatar-only;
+.yi-user-menu__trigger > .yi-user-menu__caret {
+  display: none;
 }
 
-// On a narrow screen the bar has no room for the name.
-@media (width < 36rem) {
-  .yi-user-menu__trigger {
-    @include avatar-only;
+// With the name, where the bar has room for it.
+@media (width >= 36rem) {
+  .yi-user-menu--named > .yi-popover > .yi-user-menu__trigger {
+    padding: var(--yi-space-2xs) var(--yi-space-sm) var(--yi-space-2xs) var(--yi-space-xs);
+    border-radius: var(--yi-user-menu-radius);
+
+    > .yi-user-menu__identity {
+      position: static;
+      inline-size: auto;
+      block-size: auto;
+      max-inline-size: var(--yi-user-menu-name-max-width);
+      margin: 0;
+      overflow: visible;
+      clip-path: none;
+      white-space: normal;
+    }
+
+    > .yi-user-menu__caret {
+      display: inline-block;
+    }
   }
 }
 
