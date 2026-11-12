@@ -1,0 +1,79 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Default</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
+<input value="example.com" id="yi-0-control" type="text" class="yi-input yi-input--md">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" class="yi-button yi-button--default yi-button--md">Check</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--disabled">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Disabled</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
+<input value="example.com" id="yi-1-control" type="text" disabled="disabled" class="yi-input yi-input--md">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" disabled="disabled" class="yi-button yi-button--default yi-button--md">Check</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Read-only</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
+<input value="example.com" id="yi-2-control" type="text" readonly="readonly" class="yi-input yi-input--md">
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-3-label" for="yi-3-control" class="yi-field__label">Invalid</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
+<input value="example.com" id="yi-3-control" type="text" aria-invalid="true" aria-describedby="yi-3-message" class="yi-input yi-input--md yi-input--invalid">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" class="yi-button yi-button--default yi-button--md">Check</button>
+</span>
+</div>
+<p id="yi-3-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>This domain is already taken.</span>
+</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--disabled">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Disabled search</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md yi-search-input">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+</span>
+<input value="checkout" id="yi-4-control" type="search" placeholder="Search" autocomplete="off" disabled="disabled" class="yi-input yi-input--md">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+</div>

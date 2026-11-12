@@ -1,0 +1,103 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-app-shell yi-app-shell--fill yi-app-shell--embedded" style="--yi-app-shell-height: 20rem">
+<header class="yi-app-bar">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-app-bar__menu" aria-label="Navigation" title="Navigation" aria-expanded="true" aria-controls="yi-0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>
+</button>
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__name">Buckle</span>
+</span>
+<div class="yi-app-bar__start">
+</div>
+</header>
+<div class="yi-app-shell__body">
+<div id="yi-0" class="yi-app-shell__sidebar">
+<nav aria-label="Sections" class="yi-sidebar">
+<div class="yi-sidebar__items">
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 3h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM15 3h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM15 12h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM4 16h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1z">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Overview</span>
+</button>
+<button type="button" aria-current="true" class="yi-sidebar__item yi-sidebar__item--current">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 2h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM4 14h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM6 6L6.01 6M6 18L6.01 18">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Hosts</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Rollouts</span>
+</button>
+</div>
+</nav>
+</div>
+<div id="yi-1" tabindex="0" class="yi-app-shell__main">
+<div class="yi-stack">
+<header class="yi-page-header">
+<div class="yi-page-header__row">
+<div class="yi-page-header__heading">
+<h1 class="yi-page-header__title">Hosts</h1>
+</div>
+</div>
+<div class="yi-page-header__subtitle">12 hosts across 3 clusters.</div>
+</header>
+<section class="yi-card">
+<div class="yi-card__body">pi-1</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">pi-2</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">pi-3</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">pi-4</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">nuc-1</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">nuc-2</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">nas-1</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">edge-1</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">edge-2</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">edge-3</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">build-1</div>
+</section>
+<section class="yi-card">
+<div class="yi-card__body">build-2</div>
+</section>
+</div>
+</div>
+</div>
+<dialog aria-label="Navigation" class="yi-drawer yi-drawer--start yi-drawer--sm yi-app-shell__drawer">
+</dialog>
+</div>

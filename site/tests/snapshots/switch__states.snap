@@ -1,0 +1,67 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:11rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Off</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">On</span>
+</span>
+</label>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-switch">
+<span class="yi-choice__control">
+<input type="checkbox" role="switch" disabled="disabled" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled, off</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" disabled="disabled" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled, on</span>
+</span>
+</label>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--sm yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Small</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Medium</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--lg yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Large</span>
+</span>
+</label>
+</div>
+</div>

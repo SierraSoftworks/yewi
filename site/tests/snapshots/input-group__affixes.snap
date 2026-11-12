@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Address</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
+<input value="checkout" id="yi-0-control" type="text" spellcheck="false" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-input--mono">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">.example.com</span>
+</div>
+<p id="yi-0-message" class="yi-field__message">A subdomain of example.com.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Timeout</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="250" id="yi-1-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="250" aria-valuemin="0" aria-describedby="yi-1-message" class="yi-number-input__input">
+</div>
+<span class="yi-input-group__affix yi-input-group__affix--suffix">ms</span>
+</div>
+<p id="yi-1-message" class="yi-field__message">In milliseconds.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Monthly budget</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">$</span>
+<div class="yi-input yi-number-input yi-input--md">
+<input value="1200" id="yi-2-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="1200" aria-valuemin="0" aria-describedby="yi-2-message" class="yi-number-input__input">
+</div>
+<span class="yi-input-group__affix yi-input-group__affix--suffix">USD</span>
+</div>
+<p id="yi-2-message" class="yi-field__message">In US dollars.</p>
+</div>
+</div>
+<span role="status">https://checkout.example.com, timeout 250 ms</span>
+</div>
