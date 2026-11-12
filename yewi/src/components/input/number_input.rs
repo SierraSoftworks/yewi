@@ -86,9 +86,10 @@ pub struct NumberInputProps {
     /// and Page Down move ten steps.
     #[prop_or(1.0)]
     pub step: f64,
-    /// Shows decrease and increase buttons inside the field. The arrow keys
-    /// step the value either way.
-    #[prop_or_default]
+    /// Shows decrease and increase buttons inside the field. Turn it off for
+    /// numbers that are typed rather than nudged (a port, an id); the arrow
+    /// keys step the value either way.
+    #[prop_or(true)]
     pub stepper: bool,
     #[prop_or_default]
     pub size: Size,

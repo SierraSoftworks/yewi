@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<label class="yi-file-drop yi-file-drop--md">
+<input type="file" accept="image/*" aria-labelledby="yi-0-label" aria-describedby="yi-0-hint" multiple="multiple" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21M14 19.5l3-3 3 3M17 22v-5.5M7 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-0-label" class="yi-file-drop__label">Drop map tiles here, or choose them</span>
+<span id="yi-0-hint" class="yi-file-drop__hint">Images up to 1 MB each.</span>
+</span>
+</label>
+<span role="status">0 added</span>
+<ul aria-label="Added images">
+</ul>
+</div>
