@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-markdown">
+<p>Press <kbd class="yi-kbd">Ctrl</kbd> + <kbd class="yi-kbd">K</kbd> to open the command palette, or
+<kbd class="yi-kbd">?</kbd> for the full list of shortcuts.</p>
+<p>Sierra Softworks<br>
+Dublin, Ireland</p>
+</div>

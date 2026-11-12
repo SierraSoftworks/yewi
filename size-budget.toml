@@ -25,7 +25,9 @@ diff = 52000
 highlight = 35000
 highlight-syntect = 1600000
 map = 80000
-markdown = 20000
+# Includes `code` (which it enables) and the pulldown-cmark parser, about
+# 210 KB on its own.
+markdown = 265000
 qr = 30000
 # Mostly yew-router itself; an app that already routes pays almost none of it.
 router = 150000
