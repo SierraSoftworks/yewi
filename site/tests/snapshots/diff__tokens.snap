@@ -1,0 +1,76 @@
+---
+source: site/tests/snapshots.rs
+---
+<figure style="--yi-diff-digits:1" class="yi-diff yi-diff--unified yi-diff--numbered">
+<figcaption class="yi-diff__header">
+<span class="yi-diff__title">current → planned</span>
+<span class="yi-diff__stats">
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--added">+1</span>
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--removed">−1</span>
+<span class="yi-visually-hidden">1 line added, 1 line removed</span>
+</span>
+</figcaption>
+<div role="group" aria-label="current → planned" tabindex="0" class="yi-diff__scroll">
+<div class="yi-diff__body">
+<div class="yi-diff__band yi-diff__band--hunk">@@ -1,4 +1,4 @@</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="1" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="1" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">datacenter = "home"</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="2" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">servers    = ["<strong title="Secret nomad_server, value fingerprint 3f9a">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4zM16 7.5a0.5 0.5 0 1 0 1 0a0.5 0.5 0 1 0 -1 0">
+</path>
+</svg> nomad_server<small>@3f9a</small>
+</strong>"]</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="2" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">servers    = ["<strong title="Secret nomad_server, value fingerprint b21c">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4zM16 7.5a0.5 0.5 0 1 0 1 0a0.5 0.5 0 1 0 -1 0">
+</path>
+</svg> nomad_server<small>@b21c</small>
+</strong>"]</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="3" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="3" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">encrypt    = "<strong title="Secret gossip_key, value fingerprint 77d0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4zM16 7.5a0.5 0.5 0 1 0 1 0a0.5 0.5 0 1 0 -1 0">
+</path>
+</svg> gossip_key<small>@77d0</small>
+</strong>"</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">log_level  = "info"</span>
+</div>
+</div>
+</div>
+</figure>
