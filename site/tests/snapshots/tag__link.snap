@@ -1,0 +1,31 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster">
+<span class="yi-tag yi-tag--neutral">
+<a id="yi-0-text" href="#os-linux" class="yi-tag__text">
+<span class="yi-tag__value">linux</span>
+</a>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<a id="yi-1-text" href="#env-production" class="yi-tag__text">
+<span class="yi-tag__name">env</span>
+<span class="yi-tag__value">production</span>
+</a>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 6a9 9 0 0 0-9 9V3M15 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M3 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+<a id="yi-2-text" href="#branch-main" class="yi-tag__text">
+<span class="yi-tag__value">main</span>
+</a>
+<button id="yi-2-remove" type="button" aria-label="Remove" aria-labelledby="yi-2-remove yi-2-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>

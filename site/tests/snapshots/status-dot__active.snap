@@ -1,0 +1,14 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--active yi-status-dot--pulse">
+</span>rolling out</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger yi-status-dot--pulse">
+</span>incident open</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>resolved</div>
+</div>

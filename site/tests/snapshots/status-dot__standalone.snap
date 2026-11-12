@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Healthy" class="yi-status-dot yi-status-dot--ok">
+</span>
+<code>pi-1</code>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Healthy" class="yi-status-dot yi-status-dot--ok">
+</span>
+<code>pi-2</code>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Failing" class="yi-status-dot yi-status-dot--danger">
+</span>
+<code>pi-5</code>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-md)" class="yi-cluster yi-cluster--align-center">
+<span style="--yi-status-dot-size:6px" role="img" aria-label="Healthy, small" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span role="img" aria-label="Healthy, default" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span style="--yi-status-dot-size:12px" role="img" aria-label="Healthy, large" class="yi-status-dot yi-status-dot--ok">
+</span>
+</div>
+</div>

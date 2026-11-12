@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-label="deploy" class="yi-terminal">
+<div class="yi-terminal__bar">
+<span aria-hidden="true" class="yi-terminal__controls">
+<span class="yi-terminal__control yi-terminal__control--close">
+</span>
+<span class="yi-terminal__control yi-terminal__control--minimise">
+</span>
+<span class="yi-terminal__control yi-terminal__control--zoom">
+</span>
+</span>
+<span class="yi-terminal__title">deploy</span>
+</div>
+<div style="--yi-terminal-rows:6" tabindex="0" role="log" aria-label="deploy output" class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">nomad job run -detach=false site.hcl</span>
+</div>
+<div class="yi-terminal__output">[  1] <span class="yi-terminal__sgr--fg-6">fetch   </span> step finished <span class="yi-terminal__sgr--fg-2">ok</span>
+[  2] <span class="yi-terminal__sgr--fg-6">build   </span> step finished <span class="yi-terminal__sgr--fg-2">ok</span>
+[  3] <span class="yi-terminal__sgr--fg-6">test    </span> step finished <span class="yi-terminal__sgr--fg-2">ok</span>
+[  4] <span class="yi-terminal__sgr--fg-6">package </span> step finished <span class="yi-terminal__sgr--fg-2">ok</span>
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Print more output</button>
+<span role="status">4 lines printed</span>
+</div>
+</div>

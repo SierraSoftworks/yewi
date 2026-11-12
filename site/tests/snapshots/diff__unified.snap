@@ -1,0 +1,151 @@
+---
+source: site/tests/snapshots.rs
+---
+<figure style="--yi-diff-digits:2" class="yi-diff yi-diff--unified yi-diff--numbered">
+<figcaption class="yi-diff__header">
+<span class="yi-diff__title">src/retry.rs</span>
+<span class="yi-diff__stats">
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--added">+3</span>
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--removed">−2</span>
+<span class="yi-visually-hidden">3 lines added, 2 lines removed</span>
+</span>
+</figcaption>
+<div role="group" aria-label="src/retry.rs" tabindex="0" class="yi-diff__scroll">
+<div class="yi-diff__body">
+<div class="yi-diff__band yi-diff__band--hunk">@@ -12,7 +12,8 @@ impl Retry {</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    pub fn delay(&amp;self, attempt: u32) -&gt; Duration {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">        self.base * 2_u32.pow(attempt)</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        let backoff = self.base * 2_u32.pow(attempt.min(8));</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="14" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        backoff.min(self.max)</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="14" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="15" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    }</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="15" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="16" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="16" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="17" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    pub fn exhausted(&amp;self, attempt: u32) -&gt; bool {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="17" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="18" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">        attempt &gt;= self.limit</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="18" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="19" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    }</span>
+</div>
+<div class="yi-diff__band yi-diff__band--hunk">@@ -41,5 +42,5 @@ mod tests {</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="41" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="42" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    fn delay_doubles() {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="42" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="43" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">        let retry = Retry::new(Duration::from_millis(100));</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="43" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">        assert_eq!(retry.delay(3)<mark class="yi-diff__changed">, Duration::from_millis(800)</mark>);</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="44" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        assert_eq!(retry.delay(3)<mark class="yi-diff__changed">.as_millis(), 800</mark>);</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="44" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="45" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    }</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="45" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="46" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">}</span>
+</div>
+<div class="yi-diff__band yi-diff__band--meta">\ No newline at end of file</div>
+</div>
+</div>
+</figure>
