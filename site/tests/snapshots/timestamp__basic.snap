@@ -1,0 +1,45 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Release history">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Deployed</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T11:25:00Z">15 Jan 2026</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Built</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T08:40:00Z">15 Jan 2026</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Approved</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-13T14:05:00Z">13 Jan 2026</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Opened</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2025-11-28T09:30:00Z">28 Nov 2025</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Next rollout</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T12:20:00Z">15 Jan 2026</time>
+</span>
+</dd>
+</div>
+</dl>

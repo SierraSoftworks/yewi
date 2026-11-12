@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Maintenance">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Next window</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-20T02:00:00Z">20 Jan 2026, 02:00 UTC</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Starts at</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-20T02:00:00Z">02:00 UTC</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Last run</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T11:25:00Z">15 Jan 2026 UTC</time>
+</span>
+</dd>
+</div>
+</dl>
