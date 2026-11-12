@@ -1,0 +1,44 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-grid-min:10rem" class="yi-grid">
+<button type="button" aria-pressed="true" class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md yi-stat-tile--interactive yi-stat-tile--selected">
+<span class="yi-stat-tile__label">Visitors</span>
+<span class="yi-stat-tile__value">12,480</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--ok">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+<span class="yi-visually-hidden">Up </span>8%</span>
+</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md yi-stat-tile--interactive">
+<span class="yi-stat-tile__label">Pageviews</span>
+<span class="yi-stat-tile__value">31,902</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--danger">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 5v14M19 12l-7 7-7-7">
+</path>
+</svg>
+<span class="yi-visually-hidden">Down </span>3%</span>
+</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md yi-stat-tile--interactive">
+<span class="yi-stat-tile__label">Events</span>
+<span class="yi-stat-tile__value">1,204</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--ok">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+<span class="yi-visually-hidden">Up </span>21%</span>
+</span>
+</button>
+</div>
+<span role="status">Charting visitors</span>
+</div>

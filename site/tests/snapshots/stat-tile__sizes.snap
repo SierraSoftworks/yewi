@@ -1,0 +1,43 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:11rem" class="yi-grid">
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--sm">
+<span class="yi-stat-tile__label">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 2L14 2M12 14L15 11M4 14a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>p50 latency</span>
+<span class="yi-stat-tile__value">38<span class="yi-stat-tile__unit">ms</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 2L14 2M12 14L15 11M4 14a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>p95 latency</span>
+<span class="yi-stat-tile__value">184<span class="yi-stat-tile__unit">ms</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--lg yi-stat-tile--warn">
+<span class="yi-stat-tile__label">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 2L14 2M12 14L15 11M4 14a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>p99 latency</span>
+<span class="yi-stat-tile__value">1.2<span class="yi-stat-tile__unit">s</span>
+</span>
+</div>
+<a href="#sizes-units-and-links" class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md yi-stat-tile--interactive">
+<span class="yi-stat-tile__label">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+</path>
+</svg>Probes</span>
+<span class="yi-stat-tile__value">27</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__detail">View all probes</span>
+</span>
+</a>
+</div>
