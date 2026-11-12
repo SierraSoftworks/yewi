@@ -1,0 +1,48 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 34rem" class="yi-stack">
+<div class="yi-json-view yi-json-view--tree">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-json-view__copy" aria-label="Copy JSON" title="Copy JSON">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+<div class="yi-json-view__body">
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__count">{3}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">status</span>: <span class="yi-json-view__string">"ok"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">took_ms</span>: <span class="yi-json-view__number">42</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">items</span>: [<span class="yi-json-view__number">1</span>, <span class="yi-json-view__number">2</span>, <span class="yi-json-view__number">3</span>]</div>
+</div>
+</details>
+</div>
+</div>
+<div role="alert" class="yi-alert yi-alert--danger yi-alert--soft">
+<span class="yi-alert__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+</span>
+<div class="yi-alert__body">
+<div class="yi-alert__title">The response is not valid JSON</div>
+<div class="yi-alert__message">unexpected end of the document at byte 47</div>
+</div>
+</div>
+</div>

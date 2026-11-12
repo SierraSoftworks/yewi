@@ -1,0 +1,92 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 30rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Audit entry 20417</h2>
+<p class="yi-card__subtitle">Recorded 2 minutes ago</p>
+</div>
+</header>
+<div class="yi-card__body">
+<div class="yi-json-view yi-json-view--tree yi-json-view--plain">
+<div class="yi-json-view__body">
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__count">{4}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">action</span>: <span class="yi-json-view__string">"host.approve"</span>
+</div>
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">target</span>
+<span class="yi-json-view__count">{2}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">host</span>: <span class="yi-json-view__string">"edge-fra-02"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">rollout</span>: <span class="yi-json-view__number">1842</span>
+</div>
+</div>
+</details>
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">changes</span>
+<span class="yi-json-view__count">{2}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">state</span>: [<span class="yi-json-view__string">"pending"</span>, <span class="yi-json-view__string">"approved"</span>]</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">approved_at</span>: <span class="yi-json-view__string">"2026-01-15T11:58:31Z"</span>
+</div>
+</div>
+</details>
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">client</span>
+<span class="yi-json-view__count">{2}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">ip</span>: <span class="yi-json-view__string">"185.12.64.20"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">agent</span>: <span class="yi-json-view__string">"buckle-cli/0.9.3"</span>
+</div>
+</div>
+</details>
+</div>
+</details>
+</div>
+</div>
+</div>
+</section>
