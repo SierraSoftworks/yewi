@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p class="yi-text">The probe timed out. <button type="button" class="yi-link yi-link--default yi-link--underline-auto">Retry now</button> or <button type="button" disabled="disabled" class="yi-link yi-link--default yi-link--underline-auto">edit the probe</button> (read-only access).</p>
+<p class="yi-text">
+<a role="link" aria-disabled="true" class="yi-link yi-link--default yi-link--underline-auto">Audit log</a> is unavailable while offline.</p>
+<span role="status">Retried 0 times</span>
+</div>

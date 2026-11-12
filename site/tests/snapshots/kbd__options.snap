@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p class="yi-text">
+<span class="yi-text yi-text--medium">A. Key cap (default): </span>open the palette with <kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">K</kbd>
+</kbd>.</p>
+<p class="yi-text">
+<span class="yi-text yi-text--medium">B. Flat outline: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-depth: 1px">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">K</kbd>
+</kbd>.</p>
+<p class="yi-text">
+<span class="yi-text yi-text--medium">C. Tinted, no border: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-depth: 1px; --yi-kbd-bg: var(--yi-neutral-soft); --yi-kbd-border: transparent">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">K</kbd>
+</kbd>.</p>
+</div>
