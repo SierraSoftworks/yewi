@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-2xs)" class="yi-cluster">
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:00: Passing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-ok)">
+</span>
+</span>
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:10: Passing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-ok)">
+</span>
+</span>
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:20: Failing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-danger)">
+</span>
+</span>
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:30: Failing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-danger)">
+</span>
+</span>
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:40: Passing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-ok)">
+</span>
+</span>
+<span tabindex="0" class="yi-popover" role="img" aria-label="11:50: Passing">
+<span style="inline-size: 1.25rem; block-size: 2rem; border-radius: var(--yi-radius-sm); background: var(--yi-ok)">
+</span>
+</span>
+</div>
