@@ -1,0 +1,51 @@
+// StatusDot
+//
+// The colour is a component token, so a tone modifier, a parent such as Pill
+// or an app can each set it. Unset, the dot follows the text colour.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-status-dot {
+  // Component tokens
+  --yi-status-dot-size: 0.5rem;
+  --yi-status-dot-color: currentColor;
+  --yi-status-dot-pulse: 1.6s;
+
+  display: inline-block;
+  flex: none;
+  inline-size: var(--yi-status-dot-size);
+  block-size: var(--yi-status-dot-size);
+  border-radius: 50%;
+  background: var(--yi-status-dot-color);
+  vertical-align: 0.05em;
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-status-dot-color: var(--yi-#{$tone});
+    }
+  }
+
+  &--pulse {
+    @include motion {
+      animation: yi-status-dot-pulse var(--yi-status-dot-pulse) ease-out infinite;
+    }
+  }
+}
+
+@keyframes yi-status-dot-pulse {
+  from {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--yi-status-dot-color) 55%, transparent);
+  }
+
+  to {
+    box-shadow: 0 0 0 calc(var(--yi-status-dot-size) * 0.75) transparent;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-status-dot {
+    background: CanvasText;
+    forced-color-adjust: none;
+  }
+}
