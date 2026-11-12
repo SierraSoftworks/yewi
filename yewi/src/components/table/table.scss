@@ -1,0 +1,307 @@
+// Table
+//
+// `.yi-table` is the frame: a scrolling area holding the `<table>`, and an
+// optional footer. Variants and density set the component tokens below; the
+// rules themselves are shared. Borders are drawn per cell on a table with
+// separate borders, so a sticky header keeps its rule while rows pass under.
+@use "api" as *;
+
+.yi-table {
+  // Component tokens
+  --yi-table-cell-padding-block: calc(var(--yi-space-sm) + var(--yi-space-2xs));
+  --yi-table-cell-padding-inline: var(--yi-space-md);
+  --yi-table-header-fg: var(--yi-fg-muted);
+  --yi-table-header-bg: transparent;
+  --yi-table-header-line: var(--yi-line);
+  --yi-table-row-line: transparent;
+  --yi-table-row-stripe: transparent;
+  --yi-table-row-hover: var(--yi-tone-1);
+  --yi-table-row-selected: var(--yi-accent-soft);
+  --yi-table-detail-bg: var(--yi-tone-2);
+  --yi-table-sticky-bg: var(--yi-surface); // match the surface the table sits on
+  --yi-table-sticky-top: 0px; // the height of anything fixed above a page-sticky header
+  --yi-table-max-height: none;
+  --yi-table-cell-wrap: nowrap; // cells stay on one line and the table scrolls sideways
+
+  min-inline-size: 0;
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+
+  &--ruled {
+    --yi-table-header-line: var(--yi-line-strong);
+    --yi-table-row-line: var(--yi-line);
+  }
+
+  &--zebra {
+    --yi-table-header-bg: var(--yi-tone-1);
+    --yi-table-header-line: transparent;
+    --yi-table-row-stripe: color-mix(in srgb, var(--yi-tone-1) 55%, transparent);
+    --yi-table-row-hover: color-mix(in oklch, var(--yi-tone-1), var(--yi-fg) 4%);
+    --yi-table-sticky-bg: var(--yi-tone-1);
+  }
+
+  &--wrap {
+    --yi-table-cell-wrap: normal;
+  }
+
+  &--compact {
+    --yi-table-cell-padding-block: calc(var(--yi-space-xs) + var(--yi-space-2xs));
+    --yi-table-cell-padding-inline: calc(var(--yi-space-sm) + var(--yi-space-2xs));
+
+    font-size: var(--yi-text-sm);
+  }
+}
+
+.yi-table__scroll {
+  max-block-size: var(--yi-table-max-height);
+  overflow: auto;
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+
+  // Sticking to the page needs every ancestor up to it to not scroll.
+  .yi-table--sticky:not(.yi-table--scroll) > & {
+    overflow: visible;
+  }
+}
+
+.yi-table__grid {
+  inline-size: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+
+  .yi-table--fixed & {
+    table-layout: fixed;
+  }
+}
+
+.yi-table__header,
+.yi-table__grid > thead > tr > th {
+  padding: var(--yi-table-cell-padding-block) var(--yi-table-cell-padding-inline);
+  border-block-end: 1px solid var(--yi-table-header-line);
+  background: var(--yi-table-header-bg);
+  color: var(--yi-table-header-fg);
+  font-size: var(--yi-text-sm);
+  font-weight: 500;
+  text-align: start;
+  vertical-align: bottom;
+  white-space: nowrap;
+
+  .yi-table--sticky & {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background: var(--yi-table-sticky-bg);
+  }
+
+  .yi-table--sticky:not(.yi-table--scroll) & {
+    inset-block-start: var(--yi-table-sticky-top);
+  }
+}
+
+.yi-table__header--sorted {
+  color: var(--yi-fg);
+}
+
+.yi-table__cell,
+.yi-table__grid > tbody > tr > :is(td, th) {
+  padding: var(--yi-table-cell-padding-block) var(--yi-table-cell-padding-inline);
+  border-block-end: 1px solid var(--yi-table-row-line);
+  color: inherit;
+  font-weight: inherit;
+  text-align: start;
+  vertical-align: top;
+  white-space: var(--yi-table-cell-wrap);
+
+  // With fixed columns a cell cannot widen its column: it truncates, or
+  // breaks anywhere when it may wrap.
+  .yi-table--fixed & {
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+  }
+}
+
+.yi-table__grid > tbody > tr > .yi-table__cell--wrap {
+  white-space: normal;
+}
+
+.yi-table__grid > tbody > tr:last-child > :is(td, th) {
+  border-block-end-color: transparent;
+}
+
+// The specificity of the element rules above, so alignment wins by order.
+.yi-table__grid > :is(thead, tbody) > tr > .yi-table__cell--center {
+  text-align: center;
+}
+
+.yi-table__grid > :is(thead, tbody) > tr > .yi-table__cell--end {
+  text-align: end;
+}
+
+.yi-table__row {
+  @include motion {
+    transition: background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  // Detail and group rows do not count towards the stripes.
+  &:nth-child(even of .yi-table__row) {
+    background: var(--yi-table-row-stripe);
+  }
+
+  &:hover {
+    background: var(--yi-table-row-hover);
+  }
+
+  &--selected,
+  &--selected:hover {
+    background: var(--yi-table-row-selected);
+  }
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  // An open row and its details read as one block.
+  &--expanded > :is(td, th) {
+    border-block-end-color: transparent;
+  }
+}
+
+// The narrow leading columns holding a row's checkbox or disclosure button.
+// Each control is centred on the first line of text of its row.
+.yi-table__grid > :is(thead, tbody) > tr > .yi-table__control {
+  inline-size: 1px; // shrink to the control
+  padding-inline-end: 0;
+  overflow: visible;
+  white-space: nowrap;
+
+  > * {
+    vertical-align: top;
+  }
+}
+
+.yi-table__control-col {
+  inline-size: calc(var(--yi-control-height-sm) + var(--yi-table-cell-padding-inline));
+}
+
+// One line tall, so the button centres on the first line of its row and,
+// being taller than the line, leaves the row height alone.
+.yi-table__toggle-box {
+  display: inline-flex;
+  align-items: center;
+  block-size: 1lh;
+}
+
+.yi-table__toggle {
+  > svg {
+    @include motion {
+      transition: rotate var(--yi-duration-fast) var(--yi-ease);
+    }
+  }
+
+  &[aria-expanded="true"] > svg {
+    rotate: 90deg;
+  }
+}
+
+.yi-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--yi-fg);
+  }
+
+  &:focus-visible {
+    @include focus-ring(3px);
+  }
+
+  // Right-aligned columns keep their text against the edge.
+  .yi-table__cell--end > & {
+    flex-direction: row-reverse;
+  }
+}
+
+.yi-table__sort-icon {
+  flex: none;
+  inline-size: 0.875em;
+  block-size: 0.875em;
+  opacity: 0.45;
+
+  .yi-table__sort:is(:hover, :focus-visible) > & {
+    opacity: 0.8;
+  }
+
+  .yi-table__header--sorted & {
+    color: var(--yi-accent-text);
+    opacity: 1;
+  }
+}
+
+.yi-table__sort-priority {
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+}
+
+.yi-table__detail > td {
+  white-space: normal;
+  padding: var(--yi-space-md) var(--yi-space-lg) var(--yi-space-lg);
+  border-block-end: 1px solid var(--yi-table-row-line);
+  background: var(--yi-table-detail-bg);
+}
+
+// A heading row between groups of rows, in a hand-written table.
+.yi-table__grid > tbody > .yi-table__group > th {
+  padding-block-start: var(--yi-space-lg);
+  border-block-end: 1px solid var(--yi-table-header-line);
+  color: var(--yi-fg);
+  font-weight: 600;
+}
+
+.yi-table__empty > td {
+  padding-block: var(--yi-space-xl);
+  white-space: normal;
+}
+
+// A refresh in flight: the stale rows stay readable but step back.
+.yi-table--loading .yi-table__row:not(.yi-table__row--placeholder) {
+  opacity: 0.55;
+}
+
+.yi-table__row--placeholder:hover {
+  background: none;
+}
+
+.yi-table__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--yi-space-sm) var(--yi-space-lg);
+  padding: var(--yi-space-sm) var(--yi-table-cell-padding-inline);
+  border-block-start: 1px solid var(--yi-line);
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-sm);
+}
+
+@media print {
+  .yi-table__scroll {
+    max-block-size: none;
+    overflow: visible;
+  }
+}
