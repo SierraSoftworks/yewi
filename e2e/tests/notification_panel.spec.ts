@@ -11,7 +11,7 @@ async function around(page: Page, stage: Locator, panel: Locator) {
 
 test.describe("NotificationPanel", () => {
   test("the bell opens the list, and a press outside closes it", async ({ page, example }) => {
-    const stage = await example("notification_panel/basic");
+    const stage = await example("notification-panel/basic");
     const bell = stage.getByRole("button", { name: "3 hosts need attention" });
     const panel = page.getByRole("group", { name: "Needs attention" });
 
@@ -33,7 +33,7 @@ test.describe("NotificationPanel", () => {
   });
 
   test("the panel stays on screen under the bell", async ({ page, example }) => {
-    const stage = await example("notification_panel/basic");
+    const stage = await example("notification-panel/basic");
     const bell = stage.getByRole("button", { name: "3 hosts need attention" });
     await bell.click();
     const panel = page.getByRole("group", { name: "Needs attention" });
@@ -46,7 +46,7 @@ test.describe("NotificationPanel", () => {
   });
 
   test("works from the keyboard, and Escape returns focus to the bell", async ({ page, example }) => {
-    const stage = await example("notification_panel/basic");
+    const stage = await example("notification-panel/basic");
     const bell = stage.getByRole("button", { name: "3 hosts need attention" });
     const panel = page.getByRole("group", { name: "Needs attention" });
 
@@ -66,7 +66,7 @@ test.describe("NotificationPanel", () => {
   });
 
   test("following a link in the list closes the panel", async ({ page, example }) => {
-    const stage = await example("notification_panel/basic");
+    const stage = await example("notification-panel/basic");
     await stage.getByRole("button", { name: "3 hosts need attention" }).click();
     const panel = page.getByRole("group", { name: "Needs attention" });
 
@@ -76,7 +76,7 @@ test.describe("NotificationPanel", () => {
   });
 
   test("an empty panel has no count and says why", async ({ page, example }) => {
-    const stage = await example("notification_panel/empty");
+    const stage = await example("notification-panel/empty");
     const bell = stage.getByRole("button", { name: "Nothing needs attention" });
     await expect(stage).toHaveText("");
 
@@ -87,7 +87,7 @@ test.describe("NotificationPanel", () => {
   });
 
   test("an action in the foot clears the list and closes the panel", async ({ page, example }) => {
-    const stage = await example("notification_panel/actions");
+    const stage = await example("notification-panel/actions");
     const status = stage.getByRole("status");
     await expect(status).toHaveText("3 unread notifications");
 
@@ -110,11 +110,11 @@ test.describe("NotificationPanel", () => {
         ["empty", "Needs attention"],
         ["actions", "Notifications"],
       ]) {
-        const stage = await example(`notification_panel/${id}`, { theme });
+        const stage = await example(`notification-panel/${id}`, { theme });
         await stage.getByRole("button").first().click();
         const panel = page.getByRole("group", { name });
         await expect(panel).toBeVisible();
-        await expect(page).toHaveScreenshot(["notification_panel", `open-${id}-${theme}.png`], {
+        await expect(page).toHaveScreenshot(["notification-panel", `open-${id}-${theme}.png`], {
           clip: await around(page, stage, panel),
         });
       }
