@@ -1,0 +1,102 @@
+// Checkbox: the native input restyled as the box, with the tick or dash drawn
+// over it by an icon.
+@use "api" as *;
+
+.yi-checkbox {
+  // Component tokens
+  --yi-checkbox-size: 1rem;
+  --yi-checkbox-radius: var(--yi-radius-sm);
+  --yi-checkbox-bg: var(--yi-surface);
+  --yi-checkbox-border: var(--yi-line-strong);
+  --yi-checkbox-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-checkbox-accent: var(--yi-accent-solid); // fill when ticked or mixed
+  --yi-checkbox-accent-hover: var(--yi-accent-solid-hover);
+  --yi-checkbox-mark: var(--yi-on-solid);
+
+  &__input {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: var(--yi-checkbox-size);
+    block-size: var(--yi-checkbox-size);
+    margin: 0;
+    border: 1px solid var(--yi-checkbox-border);
+    border-radius: var(--yi-checkbox-radius);
+    background: var(--yi-checkbox-bg);
+    cursor: inherit;
+
+    @include motion {
+      transition:
+        border-color var(--yi-duration-fast) var(--yi-ease),
+        background-color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &:hover &__input:not(:disabled) {
+    border-color: var(--yi-checkbox-border-hover);
+  }
+
+  // Doubled class: outranks `.yi-icon`, whichever file comes first.
+  & &__mark {
+    inline-size: calc(var(--yi-checkbox-size) - 0.25rem);
+    block-size: calc(var(--yi-checkbox-size) - 0.25rem);
+    color: var(--yi-checkbox-mark);
+    stroke-width: 3;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__input:checked,
+  &--indeterminate &__input {
+    border-color: var(--yi-checkbox-accent);
+    background: var(--yi-checkbox-accent);
+
+    + .yi-checkbox__mark {
+      opacity: 1;
+    }
+  }
+
+  &:hover &__input:checked:not(:disabled),
+  &--indeterminate:hover &__input:not(:disabled) {
+    border-color: var(--yi-checkbox-accent-hover);
+    background: var(--yi-checkbox-accent-hover);
+  }
+
+  &--invalid {
+    --yi-checkbox-border: var(--yi-danger);
+    --yi-checkbox-border-hover: var(--yi-danger);
+  }
+
+  &.yi-choice--disabled {
+    --yi-checkbox-bg: var(--yi-tone-1);
+    --yi-checkbox-accent: var(--yi-line-strong);
+    --yi-checkbox-mark: var(--yi-surface);
+  }
+
+  &.yi-choice--sm {
+    --yi-checkbox-size: 0.875rem;
+  }
+
+  &.yi-choice--lg {
+    --yi-checkbox-size: 1.125rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-checkbox__input {
+    border-color: FieldText;
+
+    &:checked,
+    .yi-checkbox--indeterminate & {
+      background: Highlight;
+      border-color: Highlight;
+    }
+  }
+
+  .yi-checkbox__mark {
+    color: HighlightText;
+  }
+}

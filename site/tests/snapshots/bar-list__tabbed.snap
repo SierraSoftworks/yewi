@@ -1,0 +1,67 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card" style="max-inline-size: 26rem">
+<div class="yi-card__body">
+<div class="yi-tabs yi-tabs--pill yi-tabs--sm">
+<div role="tablist" aria-label="Audience" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Browsers</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Devices</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Countries</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-0" aria-labelledby="yi-0-tab-0" tabindex="0" class="yi-tabs__panel">
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<div class="yi-bar-list__head">
+<span>
+</span>
+<span>Visitors</span>
+</div>
+<ol role="list" aria-label="Browsers" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Chrome</span>
+</span>
+<span class="yi-bar-list__share">59%</span>
+<span class="yi-bar-list__value">5.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:46.1%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Safari</span>
+</span>
+<span class="yi-bar-list__share">27%</span>
+<span class="yi-bar-list__value">2.4k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:22.6%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Firefox</span>
+</span>
+<span class="yi-bar-list__share">13%</span>
+<span class="yi-bar-list__value">1.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:1.8%" class="yi-bar-list__item yi-bar-list__item--muted">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Unknown</span>
+</span>
+<span class="yi-bar-list__share">1%</span>
+<span class="yi-bar-list__value">96</span>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
