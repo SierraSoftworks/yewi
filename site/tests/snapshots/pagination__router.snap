@@ -1,0 +1,45 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Pagination" class="yi-pagination yi-pagination--md">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<a role="link" aria-label="Previous page" aria-disabled="true" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=1" aria-label="Page 1" aria-current="page" class="yi-pagination__control">1</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=2" aria-label="Page 2" class="yi-pagination__control">2</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=3" aria-label="Page 3" class="yi-pagination__control">3</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=4" aria-label="Page 4" class="yi-pagination__control">4</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=5" aria-label="Page 5" class="yi-pagination__control">5</a>
+</li>
+<li aria-hidden="true" class="yi-pagination__slot yi-pagination__gap">…</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=40" aria-label="Page 40" class="yi-pagination__control">40</a>
+</li>
+<li class="yi-pagination__slot">
+<a href="/events?page=2" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</a>
+</li>
+</ul>
+</nav>
+<p role="status">Route: /events</p>
+</div>
