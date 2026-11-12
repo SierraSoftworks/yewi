@@ -23,7 +23,7 @@ hydration = ["yew/hydration"]
 # compiled (Rust and SCSS) only when its feature is enabled.
 avatar-hash = []
 charts = []
-chrono = []
+chrono = ["dep:chrono"]
 code = []
 diff = []
 highlight = []
@@ -59,6 +59,7 @@ full = [
 yew = { workspace = true }
 yewi-fonts = { workspace = true, optional = true }
 qrcodegen = { version = "1.8", optional = true }
+chrono = { version = "0.4", default-features = false, features = ["alloc"], optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = { workspace = true }

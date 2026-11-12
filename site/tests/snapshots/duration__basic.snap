@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Pipeline steps">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Health check</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT0.230S" class="yi-duration">230ms</time>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Lint</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT1.400S" class="yi-duration">1.4s</time>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Unit tests</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT45S" class="yi-duration">45s</time>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Build</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT125S" class="yi-duration">2m 05s</time>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Integration tests</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT3720S" class="yi-duration">1h 02m</time>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Soak</dt>
+<dd class="yi-description-list__value">
+<time datetime="PT273600S" class="yi-duration">3d 4h</time>
+</dd>
+</div>
+</dl>
