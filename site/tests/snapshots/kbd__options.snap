@@ -3,19 +3,19 @@ source: site/tests/snapshots.rs
 ---
 <div class="yi-stack">
 <p class="yi-text">
-<span class="yi-text yi-text--medium">A. Key cap (default): </span>open the palette with <kbd class="yi-kbd-combo">
+<span class="yi-text yi-text--medium">Tinted (default): </span>open the palette with <kbd class="yi-kbd-combo">
 <kbd class="yi-kbd">Ctrl</kbd>
 <span class="yi-kbd-combo__plus">+</span>
 <kbd class="yi-kbd">K</kbd>
 </kbd>.</p>
 <p class="yi-text">
-<span class="yi-text yi-text--medium">B. Flat outline: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-depth: 1px">
+<span class="yi-text yi-text--medium">Outlined: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-bg: var(--yi-surface); --yi-kbd-border: var(--yi-line-strong)">
 <kbd class="yi-kbd">Ctrl</kbd>
 <span class="yi-kbd-combo__plus">+</span>
 <kbd class="yi-kbd">K</kbd>
 </kbd>.</p>
 <p class="yi-text">
-<span class="yi-text yi-text--medium">C. Tinted, no border: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-depth: 1px; --yi-kbd-bg: var(--yi-neutral-soft); --yi-kbd-border: transparent">
+<span class="yi-text yi-text--medium">Raised cap: </span>open the palette with <kbd class="yi-kbd-combo" style="--yi-kbd-bg: var(--yi-surface); --yi-kbd-border: var(--yi-line-strong); --yi-kbd-depth: 2px">
 <kbd class="yi-kbd">Ctrl</kbd>
 <span class="yi-kbd-combo__plus">+</span>
 <kbd class="yi-kbd">K</kbd>
