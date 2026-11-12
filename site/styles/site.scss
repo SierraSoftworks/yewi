@@ -660,6 +660,19 @@ html {
   align-items: start;
 }
 
+// The menu entries are buttons dressed as the documentation's sidebar links.
+.gallery-sidebar button {
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
 .gallery-main {
   max-inline-size: none;
 

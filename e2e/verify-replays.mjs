@@ -31,7 +31,7 @@ for (const [index, recording] of recordings.entries()) {
   if (only && !recording.example.startsWith(only)) continue;
   await page.evaluate((slug) => {
     document.querySelectorAll("[data-gallery-reset]").forEach((button) => button.click());
-    document.querySelector(`a[href$="/_gallery/${slug}"]`).click();
+    document.querySelector(`[data-gallery-link="${slug}"]`).click();
   }, recording.example.split("/")[0]);
   await page.locator(`[data-gallery-replays="${recording.example}"] button`).first().waitFor();
   const end = await page.evaluate((i) => window.__yiReplay.play(i, true), index);

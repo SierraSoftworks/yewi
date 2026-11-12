@@ -6,7 +6,7 @@
 //! The recordings under each example are added by that file's replay player.
 
 use yew::prelude::*;
-use yew_router::prelude::Link;
+use yew_router::prelude::use_navigator;
 use yewi::prelude::*;
 
 use crate::{
@@ -42,6 +42,7 @@ pub fn Gallery(props: &GalleryProps) -> Html {
     let accent = use_state(|| AttrValue::from("default"));
     let width = use_state(|| AttrValue::from("full"));
     let theme = use_theme().preference;
+    let navigator = use_navigator();
 
     {
         // The accent is an attribute on the document, like the theme, so it reaches overlays too.
@@ -121,13 +122,26 @@ pub fn Gallery(props: &GalleryProps) -> Html {
                                 <span class="docs-sidebar__group">{ category.label() }</span>
                                 { for pages.map(|entry| {
                                     let active = page.is_some_and(|page| std::ptr::eq(page, entry));
+                                    let go = {
+                                        let navigator = navigator.clone();
+                                        let slug = entry.slug;
+                                        Callback::from(move |_: MouseEvent| {
+                                            if let Some(navigator) = &navigator {
+                                                navigator.push(&Route::Gallery { slug: slug.to_owned() });
+                                            }
+                                        })
+                                    };
+                                    // A button, not a link: file viewers open every link in a new window.
                                     html! {
-                                        <Link<Route>
-                                            classes={classes!("docs-sidebar__link", active.then_some("docs-sidebar__link--active"))}
-                                            to={Route::Gallery { slug: entry.slug.to_owned() }}
+                                        <button
+                                            type="button"
+                                            class={classes!("docs-sidebar__link", active.then_some("docs-sidebar__link--active"))}
+                                            aria-current={active.then_some("page")}
+                                            data-gallery-link={entry.slug}
+                                            onclick={go}
                                         >
                                             { entry.def.title }
-                                        </Link<Route>>
+                                        </button>
                                     }
                                 }) }
                             </>

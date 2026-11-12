@@ -27,7 +27,7 @@ const yiBytes = async (path) => {
   document.addEventListener(
     "click",
     (event) => {
-      const slug = event.target.closest?.('a[href*="/_gallery/"]')?.getAttribute("href").split("/_gallery/")[1];
+      const slug = event.target.closest?.("[data-gallery-link]")?.getAttribute("data-gallery-link");
       try {
         if (slug) localStorage.setItem("yewi-gallery-page", slug);
       } catch {}
