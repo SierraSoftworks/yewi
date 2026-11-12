@@ -1,0 +1,35 @@
+---
+source: site/tests/snapshots.rs
+---
+<form style="max-inline-size: 22rem" novalidate="novalidate">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="" id="yi-0-control" type="text" name="name" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Port</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="8080" id="yi-1-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" name="port" aria-valuenow="8080" aria-valuemin="1" aria-valuemax="65535" class="yi-number-input__input">
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Description</label>
+<div class="yi-field__body">
+<textarea id="yi-2-control" rows="3" name="description" aria-describedby="yi-2-message" class="yi-input yi-input--md yi-input--multiline yi-input--resize-vertical">
+</textarea>
+<p id="yi-2-message" class="yi-field__message">Optional.</p>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Create service</button>
+</div>
+<span role="status">
+</span>
+</div>
+</form>

@@ -1,0 +1,10 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-field yi-field--stacked" style="max-inline-size: 22rem">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Rollout speed</label>
+<div class="yi-field__body">
+<input value="40" type="range" id="yi-0-control" aria-describedby="yi-0-message">
+<p id="yi-0-message" class="yi-field__message">Share of instances replaced per step.</p>
+</div>
+</div>
