@@ -166,6 +166,13 @@ $wide: 48rem;
   user-select: none;
 }
 
+// The current destination in the dropdown: the underline turned on its side.
+.yi-top-menu__menu-item[aria-current="page"] {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  box-shadow: inset var(--yi-top-menu-indicator-size) 0 0 var(--yi-top-menu-indicator);
+}
+
 // The collapsed form: hidden until the query below, or `Always`, shows it.
 .yi-top-menu__compact {
   display: none;
@@ -204,5 +211,9 @@ $wide: 48rem;
 @media (forced-colors: active) {
   .yi-top-menu__link[aria-current] {
     border-block-end: var(--yi-top-menu-indicator-size) solid Highlight;
+  }
+
+  .yi-top-menu__menu-item[aria-current="page"] {
+    border-inline-start: var(--yi-top-menu-indicator-size) solid Highlight;
   }
 }

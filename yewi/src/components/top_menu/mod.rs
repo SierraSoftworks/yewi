@@ -279,7 +279,7 @@ pub fn TopMenuItem(props: &TopMenuItemProps) -> Html {
         return html! {
             <MenuItem
                 id={props.id.clone()}
-                class={props.class.clone()}
+                class={classes!("yi-top-menu__menu-item", props.class.clone())}
                 href={props.href.clone()}
                 target={external.then_some("_blank")}
                 icon={props.icon}
