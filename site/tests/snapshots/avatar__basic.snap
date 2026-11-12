@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:227" role="img" aria-label="Grace Hopper" title="Grace Hopper" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span style="--yi-avatar-hue:94" role="img" aria-label="Alan Turing" title="Alan Turing" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span style="--yi-avatar-hue:277" role="img" aria-label="Barbara Liskov" title="Barbara Liskov" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">BL</span>
+</span>
+<span style="--yi-avatar-hue:317" role="img" aria-label="Edsger Dijkstra" title="Edsger Dijkstra" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">ED</span>
+</span>
+<span style="--yi-avatar-hue:353" role="img" aria-label="deploy-bot" title="deploy-bot" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">D</span>
+</span>
+<span aria-hidden="true" class="yi-avatar yi-avatar--md yi-avatar--anonymous">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0">
+</path>
+</svg>
+</span>
+</div>

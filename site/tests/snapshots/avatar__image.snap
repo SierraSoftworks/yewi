@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c9d6e8'/%3E%3Ccircle cx='32' cy='25' r='11' fill='%235b7394'/%3E%3Cpath d='M10 64c0-13 10-22 22-22s22 9 22 22z' fill='%235b7394'/%3E%3C/svg%3E" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="yi-avatar__image">
+</span>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c9d6e8'/%3E%3Ccircle cx='32' cy='25' r='11' fill='%235b7394'/%3E%3Cpath d='M10 64c0-13 10-22 22-22s22 9 22 22z' fill='%235b7394'/%3E%3C/svg%3E" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="yi-avatar__image">
+</span>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--lg">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c9d6e8'/%3E%3Ccircle cx='32' cy='25' r='11' fill='%235b7394'/%3E%3Cpath d='M10 64c0-13 10-22 22-22s22 9 22 22z' fill='%235b7394'/%3E%3C/svg%3E" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="yi-avatar__image">
+</span>
+</div>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Break the picture</button>
+<span role="status">Showing the picture</span>
+</div>
+</div>

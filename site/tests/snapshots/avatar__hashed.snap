@@ -1,0 +1,21 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<span style="--yi-avatar-hue:37" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--lg">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span class="yi-user-chip yi-user-chip--plain yi-user-chip--md">
+<span style="--yi-avatar-hue:37" aria-hidden="true" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Ada Lovelace</span>
+<span class="yi-user-chip__detail">ada@example.com</span>
+</span>
+</span>
+<button type="button" class="yi-button yi-button--default yi-button--md">Look up the picture</button>
+</div>
+<code style="overflow-wrap: anywhere">https://seccdn.libravatar.org/avatar/b5fc85e55755f9e0d030a10ab4429b6b2944855f9a0d60077fe832becbc41d72?s=96&amp;d=https%3A%2F%2Fwww.gravatar.com%2Favatar%2Fb5fc85e55755f9e0d030a10ab4429b6b2944855f9a0d60077fe832becbc41d72%3Fs%3D96%26d%3D404</code>
+</div>
