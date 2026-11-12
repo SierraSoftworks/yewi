@@ -27,11 +27,19 @@ export const examples = manifest<ExampleInfo[]>("examples.json");
 /** Every documentation route. */
 export const pages = manifest<string[]>("pages.json");
 
-/** Resolves once the wasm has hydrated the page. */
+/**
+ * Resolves once the wasm has hydrated the page and nothing on it is still
+ * loading. A component that finishes drawing after hydration (a map, a
+ * canvas) marks itself `data-yi-pending` until it has.
+ */
 export async function hydrated(page: Page) {
   await page.locator("html[data-hydrated]").waitFor({ state: "attached" });
+  await expect(page.locator("[data-yi-pending]")).toHaveCount(0, { timeout: 15_000 });
   await page.evaluate(() => document.fonts.ready);
 }
+
+/** Console noise that says nothing about the page: headless WebGL reads frames back in software. */
+const NOISE = /GL Driver Message .* GPU stall due to ReadPixels/;
 
 export interface Fixtures {
   /**
@@ -47,7 +55,9 @@ export const test = base.extend<Fixtures>({
   problems: async ({ page }, use) => {
     const problems: string[] = [];
     page.on("console", (message) => {
-      if (["error", "warning"].includes(message.type())) problems.push(`${message.type()}: ${message.text()}`);
+      if (["error", "warning"].includes(message.type()) && !NOISE.test(message.text())) {
+        problems.push(`${message.type()}: ${message.text()}`);
+      }
     });
     page.on("pageerror", (error) => problems.push(`uncaught: ${error.message}`));
     await use(problems);
