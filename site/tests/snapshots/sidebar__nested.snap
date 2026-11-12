@@ -1,0 +1,79 @@
+---
+source: site/tests/snapshots.rs
+---
+<nav aria-label="Sections" class="yi-sidebar" style="max-inline-size: 14rem">
+<div class="yi-sidebar__items">
+<a href="#dashboard" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 3h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM15 3h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM15 12h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM4 16h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1z">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Dashboard</span>
+</a>
+<a href="#website" aria-current="page" class="yi-sidebar__item yi-sidebar__item--nested yi-sidebar__item--current">
+<span aria-hidden="true" class="yi-sidebar__dot">
+</span>
+<span class="yi-sidebar__label">Website</span>
+</a>
+<a href="#docs" class="yi-sidebar__item yi-sidebar__item--nested">
+<span aria-hidden="true" class="yi-sidebar__dot">
+</span>
+<span class="yi-sidebar__label">Documentation site</span>
+</a>
+<a href="#app" class="yi-sidebar__item yi-sidebar__item--nested">
+<span aria-hidden="true" class="yi-sidebar__dot">
+</span>
+<span class="yi-sidebar__label">Mobile app</span>
+</a>
+<a href="#exceptions" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 20v-9M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4zM14.12 3.88 16 2M21 21a4 4 0 0 0-3.81-4M21 5a4 4 0 0 1-3.55 3.97M22 13h-4M3 21a4 4 0 0 1 3.81-4M3 5a4 4 0 0 0 3.55 3.97M6 13H2M8 2l1.88 1.88M9 7.13V6a3 3 0 1 1 6 0v1.13">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Exceptions</span>
+<span class="yi-sidebar__trailing">12</span>
+</a>
+<div role="group" aria-label="Manage" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Manage</div>
+<a href="#pixels" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M16.247 7.761a6 6 0 0 1 0 8.478M19.075 4.933a10 10 0 0 1 0 14.134M4.925 19.067a10 10 0 0 1 0-14.134M7.753 16.239a6 6 0 0 1 0-8.478M10 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Tracking pixels</span>
+</a>
+<a href="#settings" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Settings</span>
+</a>
+</div>
+</div>
+<div class="yi-sidebar__footer">
+<a href="https://example.com/docs" target="_blank" rel="noopener" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 5v16M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Documentation</span>
+<span class="yi-sidebar__hint">
+<svg viewBox="0 0 24 24" role="img" aria-label="opens in a new tab" focusable="false" class="yi-icon">
+<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+</path>
+</svg>
+</span>
+</a>
+</div>
+</nav>

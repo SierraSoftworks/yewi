@@ -1,0 +1,31 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p>Install the command line tool, then sign in:</p>
+<div class="yi-code-block">
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">cargo install buckle-cli
+buckle login --server https://buckle.example.com</code>
+</pre>
+</div>
+<p>With a language the header returns, and the code is coloured:</p>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Shell</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-function">cargo</span> install buckle-cli
+<span class="yi-tok-function">buckle</span> login --server https://buckle.example.com</code>
+</pre>
+</div>
+</div>

@@ -1,0 +1,287 @@
+// InputGroup, InputGroupSelect and SearchInput.
+//
+// The group draws the outlined box, with the same measurements as
+// `.yi-input`, and the control inside gives up its own. Affixes are inset:
+// plain text inside the field, with buttons and dropdowns as small chips.
+@use "api" as *;
+
+.yi-input-group {
+  // Component tokens
+  --yi-input-group-bg: var(--yi-surface);
+  --yi-input-group-border: var(--yi-line-strong);
+  --yi-input-group-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-input-group-accent: var(--yi-focus); // border and ring while focused
+  --yi-input-group-ring: 2px;
+  --yi-input-group-height: var(--yi-control-height);
+  --yi-input-group-padding: calc(var(--yi-control-padding) - 0.25rem);
+  --yi-input-group-gap: var(--yi-space-sm);
+  --yi-input-group-radius: var(--yi-radius-control);
+  --yi-input-group-affix-fg: var(--yi-fg-muted);
+  --yi-input-group-chip-bg: var(--yi-neutral-soft);
+  --yi-input-group-chip-bg-hover: color-mix(in srgb, var(--yi-neutral) 24%, transparent);
+  --yi-input-group-chip-fg: var(--yi-fg-muted);
+  --yi-input-group-chip-height: calc(var(--yi-input-group-height) - 0.5rem);
+  --yi-input-group-chip-radius: var(--yi-radius-sm);
+
+  // The space between a chip and the border, equal on all three sides.
+  --_inset: calc((var(--yi-input-group-height) - 2px - var(--yi-input-group-chip-height)) / 2);
+
+  display: flex;
+  align-items: center;
+  gap: var(--yi-input-group-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  block-size: var(--yi-input-group-height);
+  padding-inline: var(--yi-input-group-padding);
+  border: 1px solid var(--yi-input-group-border);
+  border-radius: var(--yi-input-group-radius);
+  background: var(--yi-input-group-bg);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  outline: 0 solid var(--yi-input-group-accent);
+  outline-offset: -1px;
+  cursor: text;
+
+  @include motion {
+    transition:
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    border-color: var(--yi-input-group-border-hover);
+  }
+
+  // Focus on the text control lights the whole field; a chip shows its own
+  // ring instead.
+  &:has(:is(input, textarea):focus) {
+    border-color: var(--yi-input-group-accent);
+    outline-width: var(--yi-input-group-ring);
+  }
+
+  &:has(.yi-input--invalid) {
+    --yi-input-group-border: var(--yi-danger);
+    --yi-input-group-border-hover: var(--yi-danger);
+    --yi-input-group-accent: var(--yi-danger);
+  }
+
+  &:has(.yi-input:read-only:not(.yi-number-input), .yi-input--readonly) {
+    --yi-input-group-bg: var(--yi-tone-2);
+    --yi-input-group-border-hover: var(--yi-input-group-border);
+  }
+
+  &:has(.yi-input:disabled, .yi-input--disabled) {
+    --yi-input-group-bg: var(--yi-tone-1);
+    --yi-input-group-border-hover: var(--yi-input-group-border);
+
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    --yi-input-group-height: var(--yi-control-height-sm);
+    --yi-input-group-padding: calc(var(--yi-control-padding) - 0.375rem);
+    --yi-input-group-gap: calc(var(--yi-space-sm) - var(--yi-space-2xs));
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-input-group-height: var(--yi-control-height-lg);
+    --yi-input-group-padding: var(--yi-control-padding);
+  }
+
+  // The control: the box is the group's, the text is its own.
+  .yi-input {
+    --yi-input-ring: 0;
+    --yi-input-padding: 0;
+    --yi-input-height: var(--yi-input-group-height);
+
+    flex: 1;
+    block-size: 100%;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    font-size: inherit;
+  }
+
+  .yi-input--mono {
+    font-size: var(--yi-text-sm);
+  }
+
+  &__affix {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: var(--yi-space-xs);
+    max-inline-size: 60%;
+    color: var(--yi-input-group-affix-fg);
+    white-space: nowrap;
+
+    // A chip at the edge sits as far from the side as from the top.
+    &--prefix:has(> :is(.yi-button, .yi-input-group__select):first-child) {
+      margin-inline-start: calc(var(--_inset) - var(--yi-input-group-padding));
+    }
+
+    &--suffix:has(> :is(.yi-button, .yi-input-group__select):last-child) {
+      margin-inline-end: calc(var(--_inset) - var(--yi-input-group-padding));
+    }
+  }
+
+  // Buttons become chips: the group sets their size, the variant still
+  // sets their colour.
+  .yi-button {
+    --yi-button-height: var(--yi-input-group-chip-height);
+
+    padding-inline: var(--yi-space-sm);
+    border-radius: var(--yi-input-group-chip-radius);
+    font-size: var(--yi-text-sm);
+  }
+
+  .yi-button--icon-only {
+    padding-inline: 0;
+  }
+
+  .yi-button--default:not([aria-pressed="true"]) {
+    --yi-button-bg: var(--yi-input-group-chip-bg);
+    --yi-button-bg-hover: var(--yi-input-group-chip-bg-hover);
+    --yi-button-fg: var(--yi-input-group-chip-fg);
+    --yi-button-border: transparent;
+
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+      --yi-button-fg: var(--yi-fg);
+    }
+  }
+
+  // InputGroupSelect: a native select drawn as a chip, with its own chevron.
+  &__select {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    min-inline-size: 0;
+    color: var(--yi-input-group-chip-fg);
+
+    > .yi-icon {
+      position: absolute;
+      inset-inline-end: var(--yi-space-xs);
+      pointer-events: none;
+    }
+
+    &:hover:not(:has(:disabled)) {
+      color: var(--yi-fg);
+    }
+  }
+
+  &__select-control {
+    appearance: none;
+    box-sizing: border-box;
+    max-inline-size: 100%;
+    block-size: var(--yi-input-group-chip-height);
+    margin: 0;
+    padding-block: 0;
+    padding-inline: var(--yi-space-sm) calc(var(--yi-space-xs) + 1.15em + var(--yi-space-2xs));
+    border: 0;
+    border-radius: var(--yi-input-group-chip-radius);
+    background: var(--yi-input-group-chip-bg);
+    color: inherit;
+    font-family: inherit;
+    font-size: var(--yi-text-sm);
+    font-weight: 500;
+    line-height: 1;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    @include motion {
+      transition: background-color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover:not(:disabled) {
+      background: var(--yi-input-group-chip-bg-hover);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    // The popup list is drawn by the browser on its own surface.
+    option {
+      background: var(--yi-surface-raised);
+      color: var(--yi-fg);
+      font-weight: 400;
+    }
+  }
+}
+
+.yi-search-input {
+  // The clear button is ours, so the query clears the same way everywhere.
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-decoration {
+    appearance: none;
+  }
+
+  // Nothing after the clear button: keep it off the edge like a chip.
+  .yi-input-group__affix--suffix:has(> .yi-search-input__clear:last-child) {
+    margin-inline-end: calc(var(--_inset) - var(--yi-input-group-padding));
+  }
+
+  &__clear {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: var(--yi-input-group-chip-height);
+    block-size: var(--yi-input-group-chip-height);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--yi-input-group-chip-radius);
+    background: none;
+    color: var(--yi-input-group-affix-fg);
+    font-size: var(--yi-text-sm);
+    cursor: pointer;
+
+    @include motion {
+      transition:
+        background-color var(--yi-duration-fast) var(--yi-ease),
+        color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover {
+      background: var(--yi-input-group-chip-bg);
+      color: var(--yi-fg);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  // Nothing to clear, or nothing the user may change.
+  &:has(input:placeholder-shown) &__clear,
+  &:has(input:disabled) &__clear,
+  &:has(input:read-only) &__clear {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-input-group {
+    border-color: FieldText;
+
+    &:has(:is(input, textarea):focus) {
+      border-color: Highlight;
+      outline-color: Highlight;
+    }
+  }
+
+  .yi-input-group__select-control {
+    border: 1px solid ButtonText;
+  }
+}
