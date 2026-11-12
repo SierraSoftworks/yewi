@@ -1,0 +1,93 @@
+// PageHeader
+//
+// A light, large title with its actions anchored at the end of the same row.
+// The row wraps, so on a narrow page the actions drop under the title.
+@use "api" as *;
+
+.yi-page-header {
+  // Component tokens
+  --yi-page-header-gap: var(--yi-space-sm);
+  --yi-page-header-title-size: var(--yi-text-4xl);
+  --yi-page-header-title-weight: var(--yi-heading-weight-4xl);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-page-header-gap);
+  min-inline-size: 0;
+  container-type: inline-size;
+  color: var(--yi-fg);
+
+  &--divided {
+    padding-block-end: var(--yi-space-lg);
+    border-block-end: 1px solid var(--yi-line);
+  }
+}
+
+.yi-page-header__breadcrumbs {
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-page-header__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--yi-space-md) var(--yi-space-lg);
+}
+
+.yi-page-header__heading {
+  display: flex;
+  flex: 1 1 16rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-xs) var(--yi-space-md);
+  min-inline-size: 0;
+}
+
+.yi-page-header__title {
+  @include heading("4xl");
+
+  margin: 0;
+  min-inline-size: 0;
+  font-size: var(--yi-page-header-title-size);
+  font-weight: var(--yi-page-header-title-weight);
+  overflow-wrap: anywhere;
+}
+
+.yi-page-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-page-header__actions {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  max-inline-size: 100%;
+}
+
+.yi-page-header__subtitle {
+  max-inline-size: 70ch;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-lg);
+  line-height: var(--yi-leading);
+}
+
+.yi-page-header__content {
+  margin-block-start: var(--yi-space-sm);
+}
+
+// On a narrow page the title steps down one size.
+@container (inline-size < 30rem) {
+  .yi-page-header__title {
+    font-size: var(--yi-text-3xl);
+    font-weight: var(--yi-heading-weight-3xl);
+  }
+}
