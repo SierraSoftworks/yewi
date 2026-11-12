@@ -1,0 +1,56 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster">
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-0-text" class="yi-tag__text">
+<span class="yi-tag__value">package</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--danger">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+<span id="yi-1-text" class="yi-tag__text">
+<span class="yi-tag__value">destructive</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--warn">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+<span id="yi-2-text" class="yi-tag__text">
+<span class="yi-tag__value">caution</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--info">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7">
+</path>
+</svg>
+<span id="yi-3-text" class="yi-tag__text">
+<span class="yi-tag__value">demo</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--ok">
+<span id="yi-4-text" class="yi-tag__text">
+<span class="yi-tag__value">verified</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--active">
+<span id="yi-5-text" class="yi-tag__text">
+<span class="yi-tag__value">syncing</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 6a9 9 0 0 0-9 9V3M15 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M3 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+<span id="yi-6-text" class="yi-tag__text">
+<span class="yi-tag__value">main</span>
+</span>
+</span>
+</div>
