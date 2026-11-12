@@ -49,6 +49,7 @@ Requires Rust with the `wasm32-unknown-unknown` target, [Trunk](https://trunkrs.
 | `cargo xtask check` | Format, lint, unit tests, snapshots, feature matrix |
 | `cargo xtask e2e` | Build and prerender the site, run the browser tests, build the review gallery |
 | `cargo xtask size` | Enforce `size-budget.toml` |
+| `cargo xtask package` | Package the published crates as `cargo publish` would, uploading nothing |
 | `cargo xtask ci` | All of the above |
 | `cargo xtask ci --changed` | Only what the paths changed since `origin/main` call for |
 
