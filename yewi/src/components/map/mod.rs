@@ -517,7 +517,7 @@ mod engine {
             move |lng, lat, hits: Array| {
                 let hits: Vec<AttrValue> = hits.iter().filter_map(|hit| hit.as_string()).map(AttrValue::from).collect();
                 let hits =
-                    hits.chunks_exact(2).map(|pair| MapHit { layer: pair[0].clone(), id: pair[1].clone() }).collect();
+                    hits.as_chunks::<2>().0.iter().map(|[layer, id]| MapHit { layer: layer.clone(), id: id.clone() }).collect();
                 let on_pick = listeners.borrow().0.clone();
                 on_pick.emit(MapPick { at: LngLat::new(lng, lat), hits });
             }

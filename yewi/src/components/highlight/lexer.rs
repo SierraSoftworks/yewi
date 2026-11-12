@@ -402,8 +402,7 @@ impl<'a, 's> Scanner<'a, 's> {
     /// The index after the bracket that closes the one at or after `from`.
     fn balanced(&self, from: usize, open: u8, close: u8) -> usize {
         let mut depth = 0usize;
-        for j in from..self.end {
-            let b = self.bytes[j];
+        for (j, &b) in self.bytes.iter().enumerate().take(self.end).skip(from) {
             if b == open {
                 depth += 1;
             } else if b == close {

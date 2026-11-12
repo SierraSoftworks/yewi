@@ -1,4 +1,3 @@
-use yew::prelude::*;
 use yewi_test::{render, render_hydratable};
 
 use super::*;
