@@ -2,7 +2,8 @@
 //
 // A row of links as tall as the bar it sits in, so the underline of the
 // current one lands on the bar's lower edge. Where the row has no room a
-// container query swaps it for one menu button, with no script involved.
+// container query swaps it, and the actions after it, for one menu button
+// whose dropdown holds both. No script is involved.
 @use "api" as *;
 
 // Widths of the menu itself below which the row collapses.
@@ -44,9 +45,11 @@ $wide: 48rem;
 .yi-app-bar .yi-top-menu {
   --yi-top-menu-overlap: 1px;
 
+  flex: 1 1 auto;
+
   &--collapse-narrow,
   &--collapse-wide {
-    flex: 1 1 0;
+    flex-basis: 0;
   }
 }
 
@@ -60,6 +63,27 @@ $wide: 48rem;
   list-style: none;
   overflow-x: auto;
   scrollbar-width: none;
+}
+
+// Controls after the row, pushed to the end.
+.yi-top-menu__actions,
+.yi-top-menu__menu-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+}
+
+.yi-top-menu__actions {
+  flex: none;
+  margin-inline-start: auto;
+  padding-inline-start: var(--yi-top-menu-gap);
+}
+
+// The same controls as the first row of the dropdown.
+.yi-top-menu__menu-actions {
+  flex: 1;
+  flex-wrap: wrap;
+  font-weight: 400;
 }
 
 .yi-top-menu__item {
@@ -145,6 +169,8 @@ $wide: 48rem;
 // The collapsed form: hidden until the query below, or `Always`, shows it.
 .yi-top-menu__compact {
   display: none;
+  flex: 1;
+  justify-content: flex-end;
   min-inline-size: 0;
 
   .yi-top-menu--collapse-always > & {
@@ -153,7 +179,8 @@ $wide: 48rem;
 }
 
 @mixin collapsed {
-  > .yi-top-menu__list {
+  > .yi-top-menu__list,
+  > .yi-top-menu__actions {
     display: none;
   }
 

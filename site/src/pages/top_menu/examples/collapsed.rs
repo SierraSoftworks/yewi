@@ -13,12 +13,17 @@ pub fn Example() -> Html {
     };
 
     let brand = html! { <AppBarBrand logo={html! { <Icon icon={icons::ACTIVITY} /> }}>{ "Grey" }</AppBarBrand> };
-    let actions = html! { <Pill tone={Tone::Ok} active=true>{ "live" }</Pill> };
+    let actions = html! {
+        <>
+            <Pill tone={Tone::Ok} active=true>{ "live" }</Pill>
+            <ThemeToggle />
+        </>
+    };
 
     html! {
         <Stack>
-            <AppBar {brand} {actions}>
-                <TopMenu collapse={TopMenuCollapse::Always}>
+            <AppBar {brand}>
+                <TopMenu collapse={TopMenuCollapse::Always} {actions}>
                     <TopMenuItem href="#services" current=true on_click={choose("Services")}>{ "Services" }</TopMenuItem>
                     <TopMenuItem href="#incidents" on_click={choose("Incidents")}>{ "Incidents" }</TopMenuItem>
                     <TopMenuGroup label="Admin">

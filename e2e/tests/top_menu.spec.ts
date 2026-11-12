@@ -59,13 +59,25 @@ test.describe("TopMenu", () => {
     await expect(admin).toBeFocused();
   });
 
-  test("collapsed, one button opens every destination as a menu", async ({ page, example }) => {
+  test("collapsed, one button opens the actions and every destination", async ({ page, example }) => {
     const stage = await example("top-menu/collapsed");
     const button = stage.getByRole("navigation").getByRole("button", { name: "Menu" });
-    const menu = page.getByRole("menu", { name: "Menu" });
+    const dropdown = page.getByRole("group", { name: "Menu" });
+    const menu = dropdown.getByRole("menu", { name: "Main" });
 
     await expect(stage.getByRole("link")).toHaveCount(0);
+    await expect(stage.getByText("live")).toBeHidden();
     await button.click();
+    await expect(button).toHaveAttribute("aria-expanded", "true");
+    await expect(menu.getByRole("menuitem", { name: "Services" })).toBeFocused();
+
+    // The actions are a row above the destinations, and using one leaves the dropdown open.
+    const live = (await dropdown.getByText("live").boundingBox())!;
+    const first = (await menu.getByRole("menuitem", { name: "Services" }).boundingBox())!;
+    expect(live.y + live.height).toBeLessThanOrEqual(first.y);
+    await dropdown.getByRole("button", { name: /theme/i }).click();
+    await expect(menu).toBeVisible();
+
     await expect(menu.getByRole("menuitem")).toHaveText(["Services", "Incidents", "Accounts", "Audit log"]);
     await expect(menu.getByRole("menuitem", { name: "Services" })).toHaveAttribute("aria-current", "page");
     await expect(menu.getByRole("group", { name: "Admin" })).toBeVisible();
@@ -83,11 +95,14 @@ test.describe("TopMenu", () => {
     const button = nav.getByRole("button", { name: "Menu" });
 
     await expect(nav.getByRole("link", { name: "Activity" })).toBeVisible();
+    await expect(nav.getByRole("img", { name: "Ada Lovelace" })).toBeVisible();
     await expect(button).toBeHidden();
 
     await page.setViewportSize({ width: 390, height: 720 });
     await expect(nav.getByRole("link", { name: "Activity" })).toBeHidden();
+    await expect(nav.getByRole("img", { name: "Ada Lovelace" })).toBeHidden();
     await button.click();
+    await expect(page.getByRole("group", { name: "Menu" }).getByRole("img", { name: "Ada Lovelace" })).toBeVisible();
     await page.getByRole("menuitem", { name: "Activity" }).click();
     await expect(stage.getByRole("status")).toHaveText("Showing Activity");
   });

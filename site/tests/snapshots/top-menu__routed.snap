@@ -21,18 +21,13 @@ source: site/tests/snapshots.rs
 </li>
 </ul>
 <div class="yi-top-menu__compact">
-<span class="yi-menu-button">
 <span class="yi-popover">
-<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Menu" title="Menu" aria-expanded="false">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 5h16M4 12h16M4 19h16">
 </path>
-</svg>Menu<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
-<path d="M6 9l6 6 6-6">
-</path>
 </svg>
 </button>
-</span>
 </span>
 </div>
 </nav>

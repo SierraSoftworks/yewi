@@ -74,6 +74,19 @@ fn collapse_decides_which_forms_are_rendered() {
 }
 
 #[test]
+fn actions_follow_the_row_and_wait_in_the_dropdown_until_it_opens() {
+    let html = render(|| {
+        html! {
+            <TopMenu actions={html! { <span>{ "Signed in" }</span> }}>
+                <TopMenuItem href="/a">{ "A" }</TopMenuItem>
+            </TopMenu>
+        }
+    });
+    assert_eq!(html.matches("Signed in").count(), 1);
+    assert!(html.find("Signed in") > html.find(r#"href="/a""#));
+}
+
+#[test]
 fn an_item_without_href_is_a_button() {
     let html = render(|| html! { <TopMenuItem current=true>{ "Overview" }</TopMenuItem> });
     assert!(html.contains("<button") && !html.contains("<a "));

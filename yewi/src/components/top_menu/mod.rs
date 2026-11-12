@@ -4,12 +4,13 @@
 //!
 //! It goes in the start slot of an [`AppBar`](crate::AppBar), or stands on
 //! its own in any header. Where there is no room for the row it collapses
-//! into one button that opens the same destinations as a menu.
+//! into one menu button, which opens the bar's actions and the same
+//! destinations as a dropdown.
 
 use yew::prelude::*;
 
 use crate::{
-    Attrs, ButtonVariant, Icon, IconData, Menu, MenuButton, MenuFocus, MenuGroup, MenuItem, NavTarget, Placement,
+    Attrs, ButtonVariant, Icon, IconButton, IconData, Menu, MenuFocus, MenuGroup, MenuItem, NavTarget, Placement,
     Popover, PopoverTrigger, attrs, icons,
     menu::{focus_menu_within, focus_trigger_within},
     nav_target::use_nav_link,
@@ -59,6 +60,11 @@ pub struct TopMenuProps {
     /// The [`TopMenuItem`]s and [`TopMenuGroup`]s, in order.
     #[prop_or_default]
     pub children: Html,
+    /// Controls at the end of the row: the theme toggle, the user menu, a
+    /// status. Give them here rather than to the `AppBar` and they fold into
+    /// the dropdown with the destinations, as a row above them.
+    #[prop_or_default]
+    pub actions: Option<Html>,
     /// Accessible name of the navigation landmark.
     #[prop_or(AttrValue::Static("Main"))]
     pub label: AttrValue,
@@ -67,7 +73,7 @@ pub struct TopMenuProps {
     /// start slot or a block by itself.
     #[prop_or_default]
     pub collapse: TopMenuCollapse,
-    /// The label of the button the menu collapses into.
+    /// The accessible name of the button the menu collapses into.
     #[prop_or(AttrValue::Static("Menu"))]
     pub menu_label: AttrValue,
     #[prop_or_default]
@@ -84,9 +90,10 @@ pub struct TopMenuProps {
 ///   and work before any script has loaded.
 /// - The current destination is underlined; inside an `AppBar` the underline
 ///   sits on the bar's lower edge.
-/// - Without room for the row it becomes one button that opens the same
-///   destinations as a menu. The switch is made by the stylesheet, so it is
-///   right on the first paint of a server-rendered page.
+/// - Without room for the row it becomes one menu button at the end. Its
+///   dropdown holds the `actions` in a row, then each destination as a row
+///   of its own. The switch is made by the stylesheet, so it is right on the
+///   first paint of a server-rendered page.
 #[function_component]
 pub fn TopMenu(props: &TopMenuProps) -> Html {
     let class = classes!(
@@ -101,16 +108,130 @@ pub fn TopMenu(props: &TopMenuProps) -> Html {
                 <ul class="yi-top-menu__list" role="list">
                     <ContextProvider<Mode> context={Mode::Row}>{ props.children.clone() }</ContextProvider<Mode>>
                 </ul>
+                if let Some(actions) = &props.actions {
+                    <div class="yi-top-menu__actions">{ actions.clone() }</div>
+                }
             }
             if props.collapse != TopMenuCollapse::Never {
-                <div class="yi-top-menu__compact">
-                    <MenuButton label={props.menu_label.clone()} icon={icons::MENU} variant={ButtonVariant::Subtle}>
-                        <ContextProvider<Mode> context={Mode::Menu}>{ props.children.clone() }</ContextProvider<Mode>>
-                    </MenuButton>
-                </div>
+                <Compact label={props.label.clone()} menu_label={props.menu_label.clone()} actions={props.actions.clone()}>
+                    { props.children.clone() }
+                </Compact>
             }
         </nav>
     })
+}
+
+/// What opening and closing a menu from a trigger needs: shared by the
+/// collapsed dropdown and [`TopMenuGroup`].
+struct MenuTrigger {
+    /// Wraps the trigger and its popover.
+    root: NodeRef,
+    shown: bool,
+    /// The item focused as the menu opens.
+    entry: MenuFocus,
+    set_open: Callback<bool>,
+    /// Closes the menu and returns focus to the trigger.
+    on_close: Callback<()>,
+    onkeydown: Callback<KeyboardEvent>,
+}
+
+#[hook]
+fn use_menu_trigger(on_open_change: Callback<bool>) -> MenuTrigger {
+    let root = use_node_ref();
+    let open = use_state(|| false);
+    let entry = use_state(|| MenuFocus::First);
+    let shown = *open;
+
+    let set_open = {
+        let (open, entry) = (open.clone(), entry.clone());
+        Callback::from(move |next: bool| {
+            if !next {
+                entry.set(MenuFocus::First);
+            }
+            open.set(next);
+            on_open_change.emit(next);
+        })
+    };
+    let on_close = {
+        let (root, set_open) = (root.clone(), set_open.clone());
+        Callback::from(move |()| {
+            focus_trigger_within(&root);
+            set_open.emit(false);
+        })
+    };
+    // The arrow keys open the menu from the button, or move into it when it
+    // is already open. Inside the menu they belong to the menu.
+    let onkeydown = {
+        let (root, entry, set_open) = (root.clone(), entry.clone(), set_open.clone());
+        Callback::from(move |event: KeyboardEvent| {
+            let focus = match event.key().as_str() {
+                "ArrowDown" => MenuFocus::First,
+                "ArrowUp" => MenuFocus::Last,
+                _ => return,
+            };
+            if event.default_prevented() {
+                return;
+            }
+            event.prevent_default();
+            if shown {
+                focus_menu_within(&root, focus);
+            } else {
+                entry.set(focus);
+                set_open.emit(true);
+            }
+        })
+    };
+
+    MenuTrigger { root, shown, entry: *entry, set_open, on_close, onkeydown }
+}
+
+#[derive(Properties, PartialEq)]
+struct CompactProps {
+    children: Html,
+    actions: Option<Html>,
+    label: AttrValue,
+    menu_label: AttrValue,
+}
+
+/// The collapsed form: a menu button whose dropdown holds the actions in a
+/// row and the destinations as a menu beneath it.
+#[function_component]
+fn Compact(props: &CompactProps) -> Html {
+    let menu = use_menu_trigger(Callback::noop());
+
+    let head = match &props.actions {
+        Some(actions) => html! { <span class="yi-top-menu__menu-actions">{ actions.clone() }</span> },
+        None => Html::default(),
+    };
+    let content = html! {
+        <Menu label={props.label.clone()} focus={menu.entry} on_close={menu.on_close}>
+            <ContextProvider<Mode> context={Mode::Menu}>{ props.children.clone() }</ContextProvider<Mode>>
+        </Menu>
+    };
+
+    html! {
+        <div ref={menu.root} class="yi-top-menu__compact" onkeydown={menu.onkeydown}>
+            <Popover
+                trigger={PopoverTrigger::Click}
+                open={menu.shown}
+                on_open_change={menu.set_open}
+                placement={Placement::BottomEnd}
+                arrow=false
+                flush=true
+                label={props.menu_label.clone()}
+                surface_class="yi-top-menu__surface"
+                {head}
+                {content}
+            >
+                <IconButton
+                    icon={icons::MENU}
+                    label={props.menu_label.clone()}
+                    variant={ButtonVariant::Subtle}
+                    attrs={attrs! { "aria-expanded" => if menu.shown { "true" } else { "false" } }}
+                />
+            </Popover>
+        </div>
+    }
 }
 
 #[derive(Properties, PartialEq)]
@@ -248,50 +369,8 @@ pub struct TopMenuGroupProps {
 #[function_component]
 pub fn TopMenuGroup(props: &TopMenuGroupProps) -> Html {
     let mode = use_context::<Mode>().unwrap_or_default();
-    let root = use_node_ref();
-    let open = use_state(|| false);
-    let entry = use_state(|| MenuFocus::First);
-    let shown = *open;
-
-    let set_open = {
-        let (open, entry, on_open_change) = (open.clone(), entry.clone(), props.on_open_change.clone());
-        Callback::from(move |next: bool| {
-            if !next {
-                entry.set(MenuFocus::First);
-            }
-            open.set(next);
-            on_open_change.emit(next);
-        })
-    };
-    let on_close = {
-        let (root, set_open) = (root.clone(), set_open.clone());
-        Callback::from(move |()| {
-            focus_trigger_within(&root);
-            set_open.emit(false);
-        })
-    };
-    // The arrow keys open the menu from the button, or move into it when it
-    // is already open. Inside the menu they belong to the menu.
-    let onkeydown = {
-        let (root, entry, set_open) = (root.clone(), entry.clone(), set_open.clone());
-        Callback::from(move |event: KeyboardEvent| {
-            let focus = match event.key().as_str() {
-                "ArrowDown" => MenuFocus::First,
-                "ArrowUp" => MenuFocus::Last,
-                _ => return,
-            };
-            if event.default_prevented() {
-                return;
-            }
-            event.prevent_default();
-            if shown {
-                focus_menu_within(&root, focus);
-            } else {
-                entry.set(focus);
-                set_open.emit(true);
-            }
-        })
-    };
+    let menu = use_menu_trigger(props.on_open_change.clone());
+    let shown = menu.shown;
 
     if mode == Mode::Menu {
         return props.attrs.apply(html! {
@@ -302,7 +381,7 @@ pub fn TopMenuGroup(props: &TopMenuGroupProps) -> Html {
     }
 
     let content = html! {
-        <Menu label={props.label.clone()} focus={*entry} {on_close}>{ props.children.clone() }</Menu>
+        <Menu label={props.label.clone()} focus={menu.entry} on_close={menu.on_close}>{ props.children.clone() }</Menu>
     };
     let trigger = props.attrs.apply(html! {
         <button
@@ -322,12 +401,12 @@ pub fn TopMenuGroup(props: &TopMenuGroupProps) -> Html {
     });
 
     html! {
-        <li ref={root} class="yi-top-menu__item" {onkeydown}>
+        <li ref={menu.root} class="yi-top-menu__item" onkeydown={menu.onkeydown}>
             <Popover
                 class="yi-top-menu__popover"
                 trigger={PopoverTrigger::Click}
                 open={shown}
-                on_open_change={set_open}
+                on_open_change={menu.set_open}
                 placement={Placement::BottomStart}
                 arrow=false
                 flush=true

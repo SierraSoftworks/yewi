@@ -17,8 +17,8 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <AppBar {brand} {actions}>
-                <TopMenu>
+            <AppBar {brand}>
+                <TopMenu {actions}>
                     { for PAGES.into_iter().map(|name| {
                         // An app links to its own pages; the example stays on this one.
                         let on_click = {
