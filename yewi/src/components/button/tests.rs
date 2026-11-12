@@ -67,3 +67,79 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"aria-describedby="hint""#));
 }
+
+#[test]
+fn pressed_reports_toggle_state_on_buttons_only() {
+    for (pressed, expected) in [(true, r#"aria-pressed="true""#), (false, r#"aria-pressed="false""#)] {
+        let html = render(move || html! { <Button {pressed}>{ "Watch" }</Button> });
+        assert!(html.contains(expected), "{html}");
+    }
+    let plain = render(|| html! { <Button>{ "Watch" }</Button> });
+    assert!(!plain.contains("aria-pressed"));
+    let link = render(|| html! { <Button href="/docs" pressed=true>{ "Docs" }</Button> });
+    assert!(!link.contains("aria-pressed"));
+}
+
+#[test]
+fn icon_button_is_named_by_its_label() {
+    let html = render(|| html! { <IconButton icon={icons::TRASH_2} label="Delete" /> });
+    assert!(html.starts_with("<button"));
+    assert!(html.contains(r#"aria-label="Delete""#));
+    assert!(html.contains("<svg"));
+}
+
+#[test]
+fn icon_button_forwards_button_behaviour() {
+    let disabled = render(|| html! { <IconButton icon={icons::COPY} label="Copy" disabled=true /> });
+    assert!(disabled.contains(" disabled"));
+
+    let loading = render(|| html! { <IconButton icon={icons::COPY} label="Copy" loading=true /> });
+    assert!(loading.contains(r#"aria-busy="true""#));
+
+    let pressed = render(|| html! { <IconButton icon={icons::PIN} label="Pin" pressed=true /> });
+    assert!(pressed.contains(r#"aria-pressed="true""#));
+
+    let link = render(|| html! { <IconButton icon={icons::EXTERNAL_LINK} label="Source" href="/src" /> });
+    assert!(link.starts_with("<a"));
+    assert!(link.contains(r#"href="/src""#));
+}
+
+#[test]
+fn icon_button_attrs_override_the_default_names() {
+    let html = render(|| {
+        html! {
+            <IconButton id="pin" class="mine" icon={icons::PIN} label="Pin" attrs={attrs! { "title" => "Pin (P)" }} />
+        }
+    });
+    let root = &html[..html.find('>').unwrap()];
+    assert!(root.contains(r#"id="pin""#));
+    assert!(root.contains("mine"));
+    assert!(root.contains(r#"aria-label="Pin""#));
+    assert!(root.contains(r#"title="Pin (P)""#));
+    assert!(!root.contains(r#"title="Pin""#));
+}
+
+#[test]
+fn group_is_a_labelled_group_containing_its_buttons() {
+    let html = render(|| {
+        html! {
+            <ButtonGroup id="actions" class="mine" label="Connection actions" attrs={attrs! { "data-row" => "7" }}>
+                <Button>{ "Edit" }</Button>
+                <Button>{ "Unlink" }</Button>
+            </ButtonGroup>
+        }
+    });
+    let root = &html[..html.find('>').unwrap()];
+    assert!(root.contains(r#"role="group""#));
+    assert!(root.contains(r#"aria-label="Connection actions""#));
+    assert!(root.contains(r#"id="actions""#));
+    assert!(root.contains("mine"));
+    assert!(root.contains(r#"data-row="7""#));
+    assert_eq!(html.matches("<button").count(), 2);
+}
+
+#[test]
+fn vertical_group_differs_from_horizontal() {
+    let render_group = |vertical: bool| render(move || html! { <ButtonGroup {vertical}><Button>{ "A" }</Button></ButtonGroup> });
+    assert_ne!(render_group(true), render_group(false));
+}
