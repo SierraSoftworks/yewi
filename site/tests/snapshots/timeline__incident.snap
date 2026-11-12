@@ -1,0 +1,75 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-both">
+<ol aria-label="Incident updates" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--warn">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot yi-timeline__marker--active">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Monitoring</span>
+</div>
+</div>
+<div class="yi-timeline__meta">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T11:48:00Z">15 Jan 2026, 11:48</time>
+</span>
+</div>
+<div class="yi-timeline__detail">Traffic is back on the primary region. Error rates are normal; we are watching latency.</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--danger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Identified</span>
+</div>
+</div>
+<div class="yi-timeline__meta">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T11:05:00Z">15 Jan 2026, 11:05</time>
+</span>
+</div>
+<div class="yi-timeline__detail">A certificate on the regional load balancer expired. A replacement is being issued.</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--danger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Investigating</span>
+</div>
+</div>
+<div class="yi-timeline__meta">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T10:32:00Z">15 Jan 2026, 10:32</time>
+</span>
+</div>
+<div class="yi-timeline__detail">Requests to the API from Europe are failing with TLS errors.</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Operational</span>
+</div>
+</div>
+<div class="yi-timeline__meta">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T09:00:00Z">15 Jan 2026, 09:00</time>
+</span>
+</div>
+<div class="yi-timeline__detail">All probes passing.</div>
+</div>
+</li>
+</ol>
+</div>
