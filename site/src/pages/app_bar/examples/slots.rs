@@ -1,7 +1,6 @@
 use yew::prelude::*;
 use yewi::prelude::*;
 
-
 const MENU: [&str; 3] = ["Dashboards", "Alerts", "Settings"];
 
 #[function_component]
@@ -9,6 +8,8 @@ pub fn Example() -> Html {
     let section = use_state(|| MENU[0]);
 
     let brand = html! { <AppBarBrand logo={html! { <Icon icon={icons::ACTIVITY} /> }}>{ "Grey" }</AppBarBrand> };
+    // Given to the menu rather than the bar, so that on a narrow screen they
+    // fold into its dropdown with the destinations.
     let actions = html! {
         <>
             <Pill tone={Tone::Ok} active=true>{ "live" }</Pill>
@@ -19,18 +20,24 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <AppBar {brand} {actions}>
-                <Cluster gap={Space::Xs} attrs={attrs! { "role" => "group", "aria-label" => "Sections" }}>
+            <AppBar {brand}>
+                <TopMenu label="Sections" {actions}>
                     { for MENU.into_iter().map(|name| {
+                        // An app links to its own pages; the example stays on this one.
                         let on_click = {
                             let section = section.clone();
-                            Callback::from(move |_| section.set(name))
+                            Callback::from(move |event: MouseEvent| {
+                                event.prevent_default();
+                                section.set(name);
+                            })
                         };
                         html! {
-                            <Button variant={ButtonVariant::Subtle} pressed={*section == name} {on_click}>{ name }</Button>
+                            <TopMenuItem href={format!("#{}", name.to_lowercase())} current={*section == name} {on_click}>
+                                { name }
+                            </TopMenuItem>
                         }
                     }) }
-                </Cluster>
+                </TopMenu>
             </AppBar>
             <span role="status">{ format!("Showing {}", *section) }</span>
         </Stack>
