@@ -122,7 +122,12 @@ fn edit_script<'a>(a: &[&'a str], b: &[&'a str]) -> Vec<Edit> {
 
     // Within a run of changes, show what was removed before what replaced it.
     for block in script.chunk_by_mut(|x, y| *x != Edit::Keep && *y != Edit::Keep) {
-        block.sort_by_key(|edit| *edit == Edit::Add);
+        if block[0] != Edit::Keep {
+            let removed = block.iter().filter(|edit| **edit == Edit::Remove).count();
+            let (head, tail) = block.split_at_mut(removed);
+            head.fill(Edit::Remove);
+            tail.fill(Edit::Add);
+        }
     }
     script
 }
