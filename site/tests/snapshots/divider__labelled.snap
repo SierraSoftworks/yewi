@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 28rem" class="yi-stack">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Sign in with a passkey</button>
+<div class="yi-divider yi-divider--labelled yi-divider--center">
+<span class="yi-divider__label">or</span>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--md">Sign in with single sign-on</button>
+<div class="yi-divider yi-divider--labelled yi-divider--start">
+<span class="yi-divider__label">Yesterday</span>
+</div>
+<span>edge-01 was enrolled.</span>
+<div class="yi-divider yi-divider--labelled yi-divider--end">
+<span class="yi-divider__label">End of log</span>
+</div>
+</div>

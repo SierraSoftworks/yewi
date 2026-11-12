@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline yi-description-list--ruled" aria-label="Connection settings">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Protocol</dt>
+<dd class="yi-description-list__value">TLS 1.3</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Port</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">8089</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Client certificates</dt>
+<dd class="yi-description-list__value">Required</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Idle timeout</dt>
+<dd class="yi-description-list__value">5 minutes</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Maximum message size</dt>
+<dd class="yi-description-list__value">1 MB</dd>
+</div>
+</dl>
