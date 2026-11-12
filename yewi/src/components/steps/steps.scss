@@ -1,0 +1,288 @@
+// Steps
+//
+// Vertical is the base layout. Horizontal applies only while the container
+// has room for it, so a wizard's steps stack on a phone without any script.
+// Each status sets the marker tokens; nothing else varies by status.
+@use "api" as *;
+
+.yi-steps {
+  // Component tokens
+  --yi-steps-marker-size: 1.75rem;
+  --yi-steps-rail: var(--yi-line-strong); // the line between two steps
+  --yi-steps-rail-done: var(--yi-ok); // the line after a finished step
+  --yi-steps-rail-width: 2px;
+  --yi-steps-gap: var(--yi-space-lg); // space under a vertical step
+
+  container-type: inline-size;
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  color: var(--yi-fg);
+
+  &--sm {
+    --yi-steps-marker-size: 1.25rem;
+    --yi-steps-gap: var(--yi-space-sm);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-steps-marker-size: 2.25rem;
+
+    font-size: var(--yi-text-lg);
+  }
+}
+
+.yi-steps__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: yi-step;
+}
+
+.yi-step {
+  --yi-step-marker-bg: transparent;
+  --yi-step-marker-fg: var(--yi-fg-muted);
+  --yi-step-marker-line: var(--yi-line-strong);
+  --yi-step-rail: var(--yi-steps-rail);
+
+  display: grid;
+  grid-template-columns: var(--yi-steps-marker-size) minmax(0, 1fr);
+  grid-template-rows: var(--yi-steps-marker-size) minmax(0, 1fr);
+  column-gap: var(--yi-space-md);
+  counter-increment: yi-step;
+
+  &--current {
+    --yi-step-marker-bg: var(--yi-accent-solid);
+    --yi-step-marker-fg: var(--yi-on-solid);
+    --yi-step-marker-line: transparent;
+  }
+
+  &--running {
+    --yi-step-marker-bg: var(--yi-active-soft);
+    --yi-step-marker-fg: var(--yi-active);
+    --yi-step-marker-line: transparent;
+  }
+
+  &--done {
+    --yi-step-marker-bg: var(--yi-ok-soft);
+    --yi-step-marker-fg: var(--yi-ok);
+    --yi-step-marker-line: transparent;
+    --yi-step-rail: var(--yi-steps-rail-done);
+  }
+
+  &--failed {
+    --yi-step-marker-bg: var(--yi-danger-soft);
+    --yi-step-marker-fg: var(--yi-danger);
+    --yi-step-marker-line: transparent;
+  }
+
+  &--blocked {
+    --yi-step-marker-bg: var(--yi-warn-soft);
+    --yi-step-marker-fg: var(--yi-warn);
+    --yi-step-marker-line: transparent;
+  }
+
+  &--skipped {
+    --yi-step-marker-fg: var(--yi-fg-subtle);
+  }
+}
+
+.yi-step__marker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  grid-area: 1 / 1;
+  inline-size: var(--yi-steps-marker-size);
+  block-size: var(--yi-steps-marker-size);
+  border: 1px solid var(--yi-step-marker-line);
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-step-marker-bg);
+  color: var(--yi-step-marker-fg);
+  font-size: 0.86em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+
+  // A step without an icon shows its position in the list.
+  &:empty::before {
+    content: counter(yi-step);
+  }
+
+  .yi-step--skipped & {
+    border-style: dashed;
+  }
+
+  // Work in flight: a ring turning around the number.
+  .yi-step--running &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: var(--yi-steps-rail-width) solid color-mix(in srgb, var(--yi-active) 25%, transparent);
+    border-block-start-color: var(--yi-active);
+    border-radius: inherit;
+
+    @include motion {
+      animation: yi-step-turn 1.1s linear infinite;
+    }
+  }
+}
+
+.yi-step__rail {
+  grid-area: 2 / 1;
+  justify-self: center;
+  inline-size: var(--yi-steps-rail-width);
+  min-block-size: var(--yi-space-sm);
+  margin-block: var(--yi-space-xs);
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-step-rail);
+
+  .yi-step:last-child > & {
+    visibility: hidden;
+  }
+}
+
+.yi-step__body {
+  grid-area: 1 / 2 / span 2;
+  min-inline-size: 0;
+  padding-block-end: var(--yi-steps-gap);
+
+  .yi-step:last-child > & {
+    padding-block-end: 0;
+  }
+}
+
+.yi-step__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--yi-space-sm);
+  min-block-size: var(--yi-steps-marker-size);
+}
+
+.yi-step__title {
+  min-inline-size: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+
+  .yi-step--pending &,
+  .yi-step--skipped & {
+    color: var(--yi-fg-muted);
+    font-weight: 400;
+  }
+
+  .yi-step--current & {
+    font-weight: 600;
+  }
+}
+
+.yi-step__action {
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--yi-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-step__meta {
+  margin-inline-start: auto;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.yi-step__description {
+  margin: 0;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  overflow-wrap: anywhere;
+}
+
+.yi-step__detail {
+  margin-block-start: var(--yi-space-sm);
+}
+
+// Horizontal: marker and rail on one line, the text beneath. Below 30rem of
+// container width the steps stay stacked.
+@container (min-width: 30rem) {
+  .yi-steps--horizontal {
+    .yi-steps__list {
+      flex-direction: row;
+    }
+
+    .yi-step {
+      flex: 1 1 0;
+      grid-template-columns: var(--yi-steps-marker-size) minmax(0, 1fr);
+      grid-template-rows: var(--yi-steps-marker-size) auto;
+      column-gap: 0;
+      min-inline-size: 0;
+
+      &:last-child {
+        flex: 0 1 auto;
+      }
+    }
+
+    .yi-step__rail {
+      grid-area: 1 / 2;
+      align-self: center;
+      justify-self: stretch;
+      inline-size: auto;
+      min-block-size: 0;
+      block-size: var(--yi-steps-rail-width);
+      margin-block: 0;
+      margin-inline: var(--yi-space-sm);
+    }
+
+    .yi-step__body {
+      grid-area: 2 / 1 / auto / span 2;
+      padding-block: var(--yi-space-xs) 0;
+      padding-inline-end: var(--yi-space-lg);
+    }
+
+    .yi-step:last-child > .yi-step__body {
+      padding-inline-end: 0;
+    }
+
+    .yi-step__head {
+      min-block-size: 0;
+    }
+
+    .yi-step__meta {
+      margin-inline-start: 0;
+    }
+  }
+}
+
+@keyframes yi-step-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-step__marker {
+    border-color: CanvasText;
+  }
+
+  .yi-step__rail {
+    background: CanvasText;
+  }
+}
