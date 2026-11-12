@@ -24,10 +24,10 @@ pub fn Example() -> Html {
     html! {
         <div style="display: grid; grid-template-columns: auto 1fr auto; gap: var(--yi-space-sm) var(--yi-space-lg); align-items: center; max-inline-size: 30rem">
             { for STAGES.into_iter().map(|(stage, counts)| {
-                let segments: Rc<[Segment]> = STATES
+                let segments: Rc<[BarSegment]> = STATES
                     .into_iter()
                     .zip(counts)
-                    .map(|((tone, label), count)| Segment::new(count, tone, label))
+                    .map(|((tone, label), count)| BarSegment::new(count, tone, label))
                     .collect();
                 html! {
                     <>

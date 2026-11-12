@@ -5,10 +5,10 @@ use yewi::prelude::*;
 
 #[function_component]
 pub fn Example() -> Html {
-    let segments: Rc<[Segment]> = Rc::from([
-        Segment::new(212.5, Tone::Info, "GB volumes"),
-        Segment::new(96.0, Tone::Warn, "GB snapshots"),
-        Segment::new(41.5, Tone::Neutral, "GB logs"),
+    let segments: Rc<[BarSegment]> = Rc::from([
+        BarSegment::new(212.5, Tone::Info, "GB volumes"),
+        BarSegment::new(96.0, Tone::Warn, "GB snapshots"),
+        BarSegment::new(41.5, Tone::Neutral, "GB logs"),
     ]);
 
     html! {

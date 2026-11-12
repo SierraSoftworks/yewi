@@ -1,4 +1,4 @@
-//! Segment bars: how a whole (a rollout's hosts, a quota, the fleet) splits
+//! BarSegment bars: how a whole (a rollout's hosts, a quota, the fleet) splits
 //! into states, readable at a glance.
 
 use std::rc::Rc;
@@ -9,7 +9,7 @@ use crate::{Attrs, Size, Tone, Tooltip};
 
 /// One coloured part of a [`SegmentBar`].
 #[derive(Debug, Clone, PartialEq)]
-pub struct Segment {
+pub struct BarSegment {
     /// The segment's share of the whole, in the same unit as `total`.
     pub value: f64,
     /// What the segment means. `Tone::Active` is drawn with a moving sheen.
@@ -18,7 +18,7 @@ pub struct Segment {
     pub label: AttrValue,
 }
 
-impl Segment {
+impl BarSegment {
     pub fn new(value: f64, tone: Tone, label: impl Into<AttrValue>) -> Self {
         Self { value, tone, label: label.into() }
     }
@@ -28,7 +28,7 @@ impl Segment {
 pub struct SegmentBarProps {
     /// The segments, in display order. Segments without a positive value are
     /// left out.
-    pub segments: Rc<[Segment]>,
+    pub segments: Rc<[BarSegment]>,
     /// The whole. What the segments leave of it is drawn as empty track.
     /// Without one, the segments fill the bar.
     #[prop_or_default]
@@ -67,7 +67,7 @@ fn number(value: f64) -> String {
 /// - Every segment stays wide enough to see, however small its share.
 #[function_component]
 pub fn SegmentBar(props: &SegmentBarProps) -> Html {
-    let shown: Vec<&Segment> = props.segments.iter().filter(|s| s.value > 0.0).collect();
+    let shown: Vec<&BarSegment> = props.segments.iter().filter(|s| s.value > 0.0).collect();
     let used: f64 = shown.iter().map(|s| s.value).sum();
     let rest = props.total.map_or(0.0, |total| (total - used).max(0.0));
 

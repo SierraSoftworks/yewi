@@ -6,8 +6,8 @@ use yewi_test::render;
 use super::*;
 use crate::attrs;
 
-fn segments(values: &[(f64, Tone, &'static str)]) -> Rc<[Segment]> {
-    values.iter().map(|&(value, tone, label)| Segment::new(value, tone, label)).collect()
+fn segments(values: &[(f64, Tone, &'static str)]) -> Rc<[BarSegment]> {
+    values.iter().map(|&(value, tone, label)| BarSegment::new(value, tone, label)).collect()
 }
 
 fn summary(total: Option<f64>, values: &'static [(f64, Tone, &'static str)]) -> String {

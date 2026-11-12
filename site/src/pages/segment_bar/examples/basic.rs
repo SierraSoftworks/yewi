@@ -5,8 +5,8 @@ use yewi::prelude::*;
 
 #[function_component]
 pub fn Example() -> Html {
-    let segments: Rc<[Segment]> =
-        Rc::from([Segment::new(14.0, Tone::Ok, "done"), Segment::new(2.0, Tone::Danger, "failed")]);
+    let segments: Rc<[BarSegment]> =
+        Rc::from([BarSegment::new(14.0, Tone::Ok, "done"), BarSegment::new(2.0, Tone::Danger, "failed")]);
 
     html! {
         <Stack gap={Space::Xs} attrs={attrs! { "style" => "max-inline-size: 22rem" }}>
