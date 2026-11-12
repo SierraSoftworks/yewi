@@ -1,0 +1,136 @@
+// Panel
+//
+// Sibling panels stack flush and full width with no gap or border; the fill
+// alternates between the two tonal neutrals so each reads as its own band.
+@use "api" as *;
+
+.yi-panel {
+  // Component tokens
+  --yi-panel-bg: var(--yi-tone-1);
+  --yi-panel-padding-block: var(--yi-space-md);
+  --yi-panel-padding-inline: var(--yi-card-padding, var(--yi-space-lg));
+  --yi-panel-gap: var(--yi-space-sm);
+
+  display: block;
+  min-inline-size: 0;
+  background: var(--yi-panel-bg);
+  color: var(--yi-fg);
+
+  &:where(:nth-child(even of .yi-panel)) {
+    --yi-panel-bg: var(--yi-tone-2);
+  }
+
+  &--plain {
+    --yi-panel-bg: transparent;
+  }
+
+  &--soft {
+    --yi-panel-bg: var(--yi-tone-2);
+  }
+
+  &--strong {
+    --yi-panel-bg: var(--yi-tone-1);
+  }
+}
+
+.yi-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--yi-space-xs) var(--yi-space-lg);
+  padding: var(--yi-panel-padding-block) var(--yi-panel-padding-inline) 0;
+  border-radius: inherit;
+}
+
+.yi-panel__heading {
+  display: flex;
+  flex: 1 1 8rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--yi-space-2xs) var(--yi-space-sm);
+  min-inline-size: 0;
+}
+
+.yi-panel__title {
+  @include heading("md");
+
+  margin: 0;
+}
+
+.yi-panel__subtitle {
+  margin: 0;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  font-weight: 400;
+}
+
+.yi-panel__actions {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-sm);
+}
+
+.yi-panel__body {
+  min-inline-size: 0;
+  padding: var(--yi-panel-padding-block) var(--yi-panel-padding-inline);
+  font-size: var(--yi-text-md);
+
+  .yi-panel__header + & {
+    padding-block-start: var(--yi-panel-gap);
+  }
+
+  &--flush {
+    padding-inline: 0;
+  }
+}
+
+// Collapsible: the whole heading row is the native <summary>.
+.yi-panel--collapsible {
+  > .yi-panel__header {
+    justify-content: flex-start;
+    gap: var(--yi-space-sm);
+    padding-block-end: var(--yi-panel-padding-block);
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover .yi-panel__chevron {
+      color: var(--yi-fg);
+    }
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+
+  &[open] > .yi-panel__header {
+    padding-block-end: 0;
+  }
+
+  &[open] > .yi-panel__header .yi-panel__chevron {
+    rotate: 90deg;
+  }
+}
+
+.yi-panel__chevron {
+  color: var(--yi-fg-subtle);
+
+  @include motion {
+    transition:
+      rotate var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-panel + .yi-panel {
+    border-block-start: 1px solid CanvasText;
+  }
+}

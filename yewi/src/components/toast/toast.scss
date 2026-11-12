@@ -1,0 +1,163 @@
+// Toast
+//
+// A raised surface whose tone shows as an icon (default) or a stripe along
+// the leading edge. Tones set `--yi-toast-tone`; everything else is shared.
+@use "api" as *;
+
+.yi-toast-region {
+  // Component tokens
+  --yi-toast-width: 24rem;
+  --yi-toast-offset: var(--yi-space-lg);
+  --yi-toast-gap: var(--yi-space-sm);
+  --yi-toast-z: 60;
+
+  position: fixed;
+  z-index: var(--yi-toast-z);
+  inset-block-end: var(--yi-toast-offset);
+  inset-inline-end: var(--yi-toast-offset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-toast-gap);
+  inline-size: var(--yi-toast-width);
+  max-inline-size: calc(100vw - 2 * var(--yi-toast-offset));
+  // The empty or sparse region must not swallow clicks meant for the page.
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+
+  // The newest toast sits nearest the edge the stack grows from.
+  &--top-start,
+  &--top-center,
+  &--top-end {
+    inset-block: var(--yi-toast-offset) auto;
+    flex-direction: column-reverse;
+  }
+
+  &--top-start,
+  &--bottom-start {
+    inset-inline: var(--yi-toast-offset) auto;
+  }
+
+  &--top-center,
+  &--bottom-center {
+    inset-inline: 0;
+    margin-inline: auto;
+  }
+}
+
+.yi-toast {
+  // Component tokens
+  --yi-toast-bg: var(--yi-surface-raised);
+  --yi-toast-fg: var(--yi-fg);
+  --yi-toast-tone: var(--yi-neutral);
+  --yi-toast-border: var(--yi-card-line);
+  --yi-toast-radius: var(--yi-radius-card);
+  --yi-toast-shadow: var(--yi-shadow-overlay);
+  --yi-toast-stripe: 3px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--yi-space-sm);
+  padding: var(--yi-space-sm) var(--yi-space-sm) var(--yi-space-sm) var(--yi-space-md);
+  border: 1px solid var(--yi-toast-border);
+  border-radius: var(--yi-toast-radius);
+  background: var(--yi-toast-bg);
+  box-shadow: var(--yi-toast-shadow);
+  color: var(--yi-toast-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+
+  @include motion {
+    transition:
+      opacity var(--yi-duration) var(--yi-ease),
+      translate var(--yi-duration) var(--yi-ease);
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 var(--yi-space-sm);
+    }
+  }
+
+  &--ok {
+    --yi-toast-tone: var(--yi-ok);
+  }
+
+  &--warn {
+    --yi-toast-tone: var(--yi-warn);
+  }
+
+  &--danger {
+    --yi-toast-tone: var(--yi-danger);
+  }
+
+  &--info {
+    --yi-toast-tone: var(--yi-info);
+  }
+
+  &--active {
+    --yi-toast-tone: var(--yi-active);
+  }
+
+  // Drawn as an inset shadow so the card's radius clips it cleanly.
+  &--stripe {
+    padding-inline-start: calc(var(--yi-space-md) + var(--yi-toast-stripe));
+    box-shadow:
+      inset var(--yi-toast-stripe) 0 0 var(--yi-toast-tone),
+      var(--yi-toast-shadow);
+
+    &:dir(rtl) {
+      box-shadow:
+        inset calc(-1 * var(--yi-toast-stripe)) 0 0 var(--yi-toast-tone),
+        var(--yi-toast-shadow);
+    }
+  }
+}
+
+// The text block sets the row height; the icon and buttons centre on its
+// first line.
+.yi-toast__icon {
+  flex: none;
+  margin-block-start: calc((var(--yi-control-height-sm) - 1.15em) / 2);
+  color: var(--yi-toast-tone);
+}
+
+.yi-toast--active .yi-toast__icon {
+  @include motion {
+    animation: yi-toast-spin 0.9s linear infinite;
+  }
+}
+
+.yi-toast__body {
+  flex: 1;
+  min-inline-size: 0;
+  padding-block: calc((var(--yi-control-height-sm) - 1lh) / 2);
+  overflow-wrap: anywhere;
+}
+
+.yi-toast__title {
+  font-weight: 600;
+}
+
+.yi-toast__title + .yi-toast__message {
+  color: var(--yi-fg-muted);
+}
+
+.yi-toast__action,
+.yi-toast__dismiss {
+  flex: none;
+}
+
+@keyframes yi-toast-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-toast {
+    border-color: CanvasText;
+  }
+}
