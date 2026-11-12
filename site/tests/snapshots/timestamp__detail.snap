@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Signature">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Signed by</dt>
+<dd class="yi-description-list__value">release-bot</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Signed at</dt>
+<dd class="yi-description-list__value">
+<span class="yi-timestamp-detail">
+<span class="yi-timestamp-detail__local">Thursday 15 January 2026, 11:25:42</span>
+<span class="yi-timestamp-detail__utc">11:25:42<span class="yi-pill yi-pill--neutral">UTC</span>
+</span>
+</span>
+</dd>
+</div>
+</dl>

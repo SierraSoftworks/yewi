@@ -1,0 +1,90 @@
+// HistoryStrip
+//
+// Cells share the width and never shrink below a readable minimum; the strip
+// is end-aligned and clips, so when space runs out the oldest cells go first.
+// The active cell holds a Popover whose wrapper covers the cell as the anchor.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-history-strip {
+  // Component tokens
+  --yi-history-strip-height: 0.625rem;
+  --yi-history-strip-gap: 0px;
+  --yi-history-strip-radius: var(--yi-radius-sm);
+  --yi-history-strip-cell-radius: 0px;
+  --yi-history-strip-cell-min: 4px;
+  --yi-history-strip-cell-max: none;
+  --yi-history-strip-dim: 0.45;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--yi-history-strip-gap);
+  inline-size: 100%;
+  block-size: var(--yi-history-strip-height);
+  border-radius: var(--yi-history-strip-radius);
+  overflow: hidden;
+
+  &--sm {
+    --yi-history-strip-height: 0.375rem;
+  }
+
+  &--lg {
+    --yi-history-strip-height: 1rem;
+  }
+
+  &--discrete {
+    --yi-history-strip-gap: var(--yi-space-2xs);
+    --yi-history-strip-cell-radius: var(--yi-radius-sm);
+    --yi-history-strip-cell-max: 0.75rem;
+  }
+
+  &--interactive {
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-history-strip__cell {
+  position: relative;
+  flex: 1 0 var(--yi-history-strip-cell-min);
+  max-inline-size: var(--yi-history-strip-cell-max);
+  border-radius: var(--yi-history-strip-cell-radius);
+  background: var(--yi-history-strip-color, var(--yi-neutral));
+  forced-color-adjust: none;
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-history-strip-color: var(--yi-#{$tone});
+    }
+  }
+
+  // "No data" recedes behind the cells that say something.
+  &--neutral {
+    --yi-history-strip-color: var(--yi-neutral-soft);
+  }
+
+  @include motion {
+    transition: opacity var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  // The cell being looked at stands out by the others stepping back.
+  .yi-history-strip:has([data-yi-active]) &:not([data-yi-active]) {
+    opacity: var(--yi-history-strip-dim);
+  }
+}
+
+.yi-history-strip__anchor {
+  position: absolute;
+  inset: 0;
+}
+
+@media (forced-colors: active) {
+  .yi-history-strip__cell[data-yi-active] {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}

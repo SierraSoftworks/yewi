@@ -1,0 +1,45 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Display modes">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Auto</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-12T14:05:00Z">12 Jan 2026</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Relative</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-12T14:05:00Z">10 months ago</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">DateTime</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-12T14:05:00Z">12 Jan 2026, 14:05</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Date</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-12T14:05:00Z">12 Jan 2026</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Time</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-12T14:05:00Z">14:05</time>
+</span>
+</dd>
+</div>
+</dl>
