@@ -1,0 +1,181 @@
+// TopMenu
+//
+// A row of links as tall as the bar it sits in, so the underline of the
+// current one lands on the bar's lower edge. Where the row has no room a
+// container query swaps it for one menu button, with no script involved.
+@use "api" as *;
+
+// Widths of the menu itself below which the row collapses.
+$narrow: 30rem;
+$wide: 48rem;
+
+.yi-top-menu {
+  // Component tokens
+  --yi-top-menu-height: var(--yi-app-bar-height, var(--yi-space-3xl));
+  --yi-top-menu-gap: var(--yi-space-xs);
+  --yi-top-menu-padding: var(--yi-space-md); // inline padding of a link
+  --yi-top-menu-fg: var(--yi-fg-muted);
+  --yi-top-menu-fg-hover: var(--yi-fg);
+  --yi-top-menu-fg-active: var(--yi-fg); // label of the current link
+  --yi-top-menu-indicator: var(--yi-accent-text); // underline of the current link
+  --yi-top-menu-indicator-size: 2px;
+  --yi-top-menu-overlap: 0px; // how far the row reaches over the edge below it
+  --yi-top-menu-max-height: min(70vh, 32rem); // of an open menu
+  --yi-top-menu-max-width: 22rem;
+
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  block-size: var(--yi-top-menu-height);
+  margin-block-end: calc(var(--yi-top-menu-overlap) * -1);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+
+  &--collapse-narrow,
+  &--collapse-wide {
+    container: yi-top-menu / inline-size;
+  }
+
+}
+
+// The bar draws a rule along its lower edge, which the underline covers. A
+// menu that can collapse is measured, so it takes the room the bar has left.
+.yi-app-bar .yi-top-menu {
+  --yi-top-menu-overlap: 1px;
+
+  &--collapse-narrow,
+  &--collapse-wide {
+    flex: 1 1 0;
+  }
+}
+
+.yi-top-menu__list {
+  display: flex;
+  align-self: stretch;
+  gap: var(--yi-top-menu-gap);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.yi-top-menu__item {
+  display: flex;
+  flex: none;
+}
+
+.yi-top-menu__popover {
+  display: flex;
+}
+
+.yi-top-menu__link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.4em;
+  padding-inline: var(--yi-top-menu-padding);
+  border: 0;
+  background: none;
+  color: var(--yi-top-menu-fg);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      color var(--yi-duration-fast) var(--yi-ease),
+      box-shadow var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover,
+  &[aria-expanded="true"] {
+    color: var(--yi-top-menu-fg-hover);
+    text-decoration: none;
+  }
+
+  // The list clips anything outside it, so the ring sits inside the link.
+  &:focus-visible {
+    @include focus-ring(-2px);
+
+    border-radius: var(--yi-radius-control);
+  }
+
+  &[aria-current] {
+    box-shadow: inset 0 calc(var(--yi-top-menu-indicator-size) * -1) 0 var(--yi-top-menu-indicator);
+    color: var(--yi-top-menu-fg-active);
+  }
+}
+
+.yi-top-menu__external,
+.yi-top-menu__caret {
+  flex: none;
+  opacity: 0.7;
+}
+
+.yi-top-menu__external {
+  --yi-icon-size: 0.9em;
+}
+
+.yi-top-menu__caret {
+  margin-inline-end: -0.2em;
+
+  @include motion {
+    transition: rotate var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  [aria-expanded="true"] > & {
+    rotate: 180deg;
+  }
+}
+
+.yi-top-menu__surface {
+  --yi-popover-radius: var(--yi-radius-control);
+  --yi-popover-max-height: var(--yi-top-menu-max-height);
+  --yi-popover-max-width: var(--yi-top-menu-max-width);
+
+  user-select: none;
+}
+
+// The collapsed form: hidden until the query below, or `Always`, shows it.
+.yi-top-menu__compact {
+  display: none;
+  min-inline-size: 0;
+
+  .yi-top-menu--collapse-always > & {
+    display: flex;
+  }
+}
+
+@mixin collapsed {
+  > .yi-top-menu__list {
+    display: none;
+  }
+
+  > .yi-top-menu__compact {
+    display: flex;
+  }
+}
+
+@container yi-top-menu (inline-size < #{$narrow}) {
+  .yi-top-menu--collapse-narrow {
+    @include collapsed;
+  }
+}
+
+@container yi-top-menu (inline-size < #{$wide}) {
+  .yi-top-menu--collapse-wide {
+    @include collapsed;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-top-menu__link[aria-current] {
+    border-block-end: var(--yi-top-menu-indicator-size) solid Highlight;
+  }
+}

@@ -1,0 +1,65 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<header class="yi-app-bar">
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42ZM7 16.5l-4.74-2.85M7 16.5l5-3M7 16.5v5.17M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3ZM17 16.5l-5-3M17 16.5l4.74-2.85M17 16.5v5.17M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8ZM12 8 7.26 5.15M12 8l4.74-2.85M12 13.5V8">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Buckle</span>
+</span>
+<div class="yi-app-bar__start">
+<nav aria-label="Main" class="yi-top-menu yi-top-menu--collapse-narrow">
+<ul role="list" class="yi-top-menu__list">
+<li class="yi-top-menu__item">
+<a href="#overview" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Overview</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<span class="yi-popover yi-top-menu__popover">
+<button type="button" aria-haspopup="menu" aria-expanded="false" aria-current="true" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Fleet</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-top-menu__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</li>
+<li class="yi-top-menu__item">
+<span class="yi-popover yi-top-menu__popover">
+<button type="button" aria-haspopup="menu" aria-expanded="false" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Admin</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-top-menu__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</li>
+</ul>
+<div class="yi-top-menu__compact">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>Menu<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+</nav>
+</div>
+</header>
+<span role="status">Nothing chosen yet</span>
+</div>

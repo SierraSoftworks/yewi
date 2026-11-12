@@ -1,0 +1,40 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Main" class="yi-top-menu yi-top-menu--collapse-narrow">
+<ul role="list" class="yi-top-menu__list">
+<li class="yi-top-menu__item">
+<a href="/workflows" aria-current="page" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Workflows</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="/connections" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Connections</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="/activity" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Activity</span>
+</a>
+</li>
+</ul>
+<div class="yi-top-menu__compact">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>Menu<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+</nav>
+<p role="status">Route: /workflows</p>
+</div>

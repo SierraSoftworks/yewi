@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<header class="yi-app-bar">
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Grey</span>
+</span>
+<div class="yi-app-bar__start">
+<nav aria-label="Main" class="yi-top-menu yi-top-menu--collapse-always">
+<div class="yi-top-menu__compact">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>Menu<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+</nav>
+</div>
+<div class="yi-app-bar__actions">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>live</span>
+</div>
+</header>
+<span role="status">Nothing chosen yet</span>
+</div>

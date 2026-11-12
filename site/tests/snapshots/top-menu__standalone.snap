@@ -1,0 +1,52 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Status pages" class="yi-top-menu yi-top-menu--collapse-narrow">
+<ul role="list" class="yi-top-menu__list">
+<li class="yi-top-menu__item">
+<a href="#services" aria-current="page" class="yi-top-menu__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+</path>
+</svg>
+<span class="yi-top-menu__label">Services</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="#incidents" class="yi-top-menu__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+<span class="yi-top-menu__label">Incidents</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="#maintenance" class="yi-top-menu__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z">
+</path>
+</svg>
+<span class="yi-top-menu__label">Maintenance</span>
+</a>
+</li>
+</ul>
+<div class="yi-top-menu__compact">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>Menu<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+</nav>
+<span class="yi-text">All 14 services are operating normally.</span>
+</div>
