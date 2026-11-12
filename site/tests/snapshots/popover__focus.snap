@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<span class="yi-popover">
+<input value="" type="search" aria-label="Filter probes" placeholder="Filter probes" style="font: inherit; padding: var(--yi-space-xs) var(--yi-space-sm); inline-size: 16rem">
+</span>
+<span role="status">No filter</span>
+</div>
