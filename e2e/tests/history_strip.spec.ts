@@ -2,7 +2,7 @@ import { expect, test } from "../fixtures";
 
 test.describe("HistoryStrip", () => {
   test("hovering a cell shows its detail, which follows the pointer and hides on leaving", async ({ page, example }) => {
-    const stage = await example("history_strip/basic");
+    const stage = await example("history-strip/basic");
     const popover = page.getByRole("status");
 
     await stage.getByRole("img", { name: "03:30, Failing" }).hover();
@@ -22,7 +22,7 @@ test.describe("HistoryStrip", () => {
   });
 
   test("works from the keyboard: one tab stop, arrows move between cells, Escape closes", async ({ page, example }) => {
-    const stage = await example("history_strip/basic");
+    const stage = await example("history-strip/basic");
     const strip = stage.getByRole("group", { name: "api.example.com, last 24 hours" });
     const popover = page.getByRole("status");
 
@@ -48,7 +48,7 @@ test.describe("HistoryStrip", () => {
   });
 
   test("pressing a cell, or Enter on it, selects it", async ({ page, example }) => {
-    const stage = await example("history_strip/discrete");
+    const stage = await example("history-strip/discrete");
     const status = stage.getByText(/run selected|Selected the run/);
     await expect(status).toHaveText("No run selected");
 
@@ -64,7 +64,7 @@ test.describe("HistoryStrip", () => {
   });
 
   test("a strip without detail takes no focus and shows nothing on hover", async ({ page, example }) => {
-    const stage = await example("history_strip/plain");
+    const stage = await example("history-strip/plain");
     await stage.getByRole("img", { name: "17:00, failing" }).hover();
     await page.keyboard.press("Tab");
     await expect(stage.getByRole("group").first()).not.toBeFocused();
@@ -72,7 +72,7 @@ test.describe("HistoryStrip", () => {
   });
 
   test("a narrow strip keeps the most recent cells in view", async ({ example }) => {
-    const stage = await example("history_strip/narrow");
+    const stage = await example("history-strip/narrow");
     const narrow = stage.getByRole("group").last();
     await expect(narrow.getByRole("img", { name: "23:45" })).toBeInViewport();
     await expect(narrow.getByRole("img", { name: "00:00" })).not.toBeInViewport();
