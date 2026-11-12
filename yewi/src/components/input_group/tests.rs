@@ -4,7 +4,7 @@ use yew::prelude::*;
 use yewi_test::render;
 
 use super::*;
-use crate::{Button, Field, TextInput, attrs, hooks::reset_ids};
+use crate::{Button, Field, MenuButton, MenuItem, Select, SelectOption, SelectOptions, TextInput, attrs, hooks::reset_ids};
 
 /// The opening tag of the first `<tag ...>` in `html`.
 fn tag<'a>(html: &'a str, tag: &str) -> &'a str {
@@ -138,4 +138,42 @@ fn search_input_states_reach_the_markup() {
 fn search_input_suffix_follows_the_clear_button() {
     let html = render(|| html! { <SearchInput suffix={html! { <Button>{ "Go" }</Button> }} /> });
     assert!(html.find("Clear search").unwrap() < html.find("Go").unwrap());
+}
+
+#[test]
+fn select_and_menu_button_render_inside_affixes() {
+    reset_ids();
+    let html = render(|| {
+        let options = SelectOptions::from([SelectOption::new("https", "https://")]);
+        let menu = html! { <MenuButton label="Insert"><MenuItem>{ "Version" }</MenuItem></MenuButton> };
+        html! {
+            <InputGroup prefix={html! { <Select label="Protocol" {options} value="https" /> }} suffix={menu}>
+                <TextInput />
+            </InputGroup>
+        }
+    });
+    let position = |needle: &str| html.find(needle).unwrap_or_else(|| panic!("{needle} missing from {html}"));
+    assert!(position(r#"role="combobox""#) < position("<input"));
+    assert!(position("<input") < position("Insert"));
+}
+
+#[test]
+fn a_control_in_an_affix_does_not_take_the_field_wiring() {
+    reset_ids();
+    let html = render(|| {
+        let options = SelectOptions::from([SelectOption::new("https", "https://")]);
+        html! {
+            <Field label="Webhook URL" error="Unreachable">
+                <InputGroup prefix={html! { <Select label="Protocol" {options} value="https" /> }}>
+                    <TextInput />
+                </InputGroup>
+            </Field>
+        }
+    });
+    let label = tag(&html, "label");
+    let target = &label[label.find(" for=\"").expect("label has `for`") + 6..];
+    let target = &target[..target.find('"').unwrap()];
+    assert_eq!(html.matches(&format!(r#" id="{target}""#)).count(), 1, "{html}");
+    assert!(tag(&html, "input").contains(&format!(r#" id="{target}""#)));
+    assert!(!tag(&html, "button").contains("aria-invalid"));
 }
