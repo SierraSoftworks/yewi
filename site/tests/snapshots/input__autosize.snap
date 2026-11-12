@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-field yi-field--stacked" style="max-inline-size: 22rem">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Message</label>
+<div class="yi-field__body">
+<textarea id="yi-0-control" rows="1" class="yi-input yi-input--md yi-input--multiline yi-input--resize-auto" style="--yi-input-max-height: 8rem">Deploying the hotfix now.</textarea>
+</div>
+</div>

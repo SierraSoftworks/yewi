@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<span class="yi-pill yi-pill--neutral">UTC</span>
+<span class="yi-pill yi-pill--ok">succeeded</span>
+<span class="yi-pill yi-pill--warn">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2zM7 11V7a5 5 0 0 1 10 0v4">
+</path>
+</svg>held for approval</span>
+<span class="yi-pill yi-pill--neutral">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>3 of 4 healthy</span>
+</div>

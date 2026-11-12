@@ -1,0 +1,16 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot">
+</span>body text</div>
+<span style="color: var(--yi-fg-muted)">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot">
+</span>muted text</div>
+</span>
+<span class="yi-pill yi-pill--warn">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>held</span>
+</div>
