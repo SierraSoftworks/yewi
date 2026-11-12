@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<h4 class="yi-heading yi-heading--xl">Deploying with <code class="yi-inline-code">nomad</code>
+</h4>
+<p class="yi-text">Run <code class="yi-inline-code">nomad job run caddy.hcl</code> to deploy, then check <code class="yi-inline-code">/v1/status</code> until it reports <code class="yi-inline-code">healthy</code>.</p>
+<p class="yi-text yi-text--sm yi-text--muted">Set <code class="yi-inline-code">NOMAD_ADDR</code> first.</p>
+</div>

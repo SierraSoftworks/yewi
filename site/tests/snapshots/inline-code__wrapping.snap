@@ -1,0 +1,4 @@
+---
+source: site/tests/snapshots.rs
+---
+<p class="yi-text" style="max-inline-size: 18rem">The image <code class="yi-inline-code">ghcr.io/sierrasoftworks/caddy-ingress@sha256:3f9a1c2b81e07d09c4e5a</code> was pulled from the registry and verified.</p>
