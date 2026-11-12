@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Workloads" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Workload</th>
+<th scope="col" class="yi-table__header">Cluster</th>
+<th scope="col" class="yi-table__header yi-table__cell--end">Replicas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row yi-table__row--clickable">
+<th scope="row" class="yi-table__cell">
+<a href="#clickable-rows" class="yi-link yi-link--default yi-link--underline-auto">caddy</a>
+</th>
+<td class="yi-table__cell">eu-west-1</td>
+<td class="yi-table__cell yi-table__cell--end">6</td>
+</tr>
+<tr class="yi-table__row yi-table__row--clickable">
+<th scope="row" class="yi-table__cell">
+<a href="#clickable-rows" class="yi-link yi-link--default yi-link--underline-auto">postgres</a>
+</th>
+<td class="yi-table__cell">eu-west-1</td>
+<td class="yi-table__cell yi-table__cell--end">3</td>
+</tr>
+<tr class="yi-table__row yi-table__row--clickable">
+<th scope="row" class="yi-table__cell">
+<a href="#clickable-rows" class="yi-link yi-link--default yi-link--underline-auto">grafana</a>
+</th>
+<td class="yi-table__cell">us-east-2</td>
+<td class="yi-table__cell yi-table__cell--end">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<span role="status">Nothing opened</span>
+</div>
