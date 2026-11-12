@@ -1,0 +1,79 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster">
+<span class="yi-user-chip yi-user-chip--plain yi-user-chip--sm">
+<span style="--yi-avatar-hue:273" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Ada Lovelace</span>
+</span>
+</span>
+<span class="yi-user-chip yi-user-chip--plain yi-user-chip--md">
+<span style="--yi-avatar-hue:227" aria-hidden="true" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Grace Hopper</span>
+<span class="yi-user-chip__detail">Platform team</span>
+</span>
+</span>
+<span class="yi-user-chip yi-user-chip--plain yi-user-chip--lg">
+<span style="--yi-avatar-hue:94" aria-hidden="true" class="yi-avatar yi-avatar--lg">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Alan Turing</span>
+<span class="yi-user-chip__detail">alan@example.com</span>
+</span>
+</span>
+</div>
+<div class="yi-cluster">
+<span class="yi-user-chip yi-user-chip--soft yi-user-chip--sm">
+<span style="--yi-avatar-hue:273" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Ada Lovelace</span>
+</span>
+</span>
+<span class="yi-user-chip yi-user-chip--soft yi-user-chip--sm">
+<span style="--yi-avatar-hue:227" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Grace Hopper</span>
+</span>
+</span>
+<span class="yi-user-chip yi-user-chip--soft yi-user-chip--sm">
+<span style="--yi-avatar-hue:94" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Alan Turing</span>
+</span>
+</span>
+</div>
+<div class="yi-cluster">
+<span class="yi-user-chip yi-user-chip--soft yi-user-chip--md">
+<span style="--yi-avatar-hue:277" aria-hidden="true" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">BL</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Barbara Liskov</span>
+<span class="yi-user-chip__detail">Owner</span>
+</span>
+</span>
+<span class="yi-user-chip yi-user-chip--soft yi-user-chip--md">
+<span style="--yi-avatar-hue:279" aria-hidden="true" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">WP</span>
+</span>
+<span class="yi-user-chip__text">
+<span class="yi-user-chip__name">Wolfeschlegelsteinhausenbergerdorff the Elder of Philadelphia</span>
+<span class="yi-user-chip__detail">Long names truncate</span>
+</span>
+</span>
+</div>
+</div>

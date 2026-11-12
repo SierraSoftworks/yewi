@@ -1,0 +1,112 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-steps yi-steps--vertical yi-steps--md">
+<ol aria-label="Release checklist" class="yi-steps__list">
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Build</span>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+<p class="yi-step__description">Finished successfully.</p>
+</div>
+</li>
+<li class="yi-step yi-step--failed">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Unit tests</span>
+<span class="yi-visually-hidden">, failed</span>
+</div>
+<p class="yi-step__description">Finished with an error.</p>
+</div>
+</li>
+<li class="yi-step yi-step--skipped">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Lint</span>
+<span class="yi-visually-hidden">, skipped</span>
+</div>
+<p class="yi-step__description">Deliberately not run.</p>
+</div>
+</li>
+<li aria-current="step" class="yi-step yi-step--current">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Review</span>
+</div>
+<p class="yi-step__description">Where the user is now.</p>
+</div>
+</li>
+<li class="yi-step yi-step--running">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Deploy to staging</span>
+<span class="yi-visually-hidden">, in progress</span>
+</div>
+<p class="yi-step__description">Work is in flight.</p>
+</div>
+</li>
+<li class="yi-step yi-step--blocked">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 3h3a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1zM6 3h3a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1z">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Approval</span>
+<span class="yi-visually-hidden">, blocked</span>
+</div>
+<p class="yi-step__description">Held until something else happens.</p>
+</div>
+</li>
+<li class="yi-step yi-step--pending">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Deploy to production</span>
+</div>
+<p class="yi-step__description">Not reached yet.</p>
+</div>
+</li>
+</ol>
+</div>
