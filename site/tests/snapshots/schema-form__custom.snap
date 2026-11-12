@@ -1,0 +1,47 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<div class="yi-schema-form yi-schema-form--boxed">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/account">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Account<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-2-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-required="true" aria-describedby="yi-2-message" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Sierra Softworks</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<p id="yi-2-message" class="yi-field__message">The Todoist account tasks are created in.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/filter">
+<label id="yi-6-label" for="yi-6-control" class="yi-field__label">Filter</label>
+<div class="yi-field__body">
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="" id="yi-6-control" type="text" role="combobox" placeholder="tag:release" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-describedby="yi-6-message" class="yi-query-input__control">
+</span>
+</span>
+<p id="yi-6-message" class="yi-field__message">Only items matching this are forwarded.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/title">
+<label id="yi-10-label" for="yi-10-control" class="yi-field__label">Task title</label>
+<div class="yi-field__body">
+<input value="" id="yi-10-control" type="text" placeholder="Read: {{ title }}" class="yi-input yi-input--md">
+</div>
+</div>
+</div>
+<code role="status">{"account":"acct_2"}</code>
+</div>

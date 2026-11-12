@@ -1,0 +1,100 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<div class="yi-schema-form yi-schema-form--boxed">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/name">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="Release notes" id="yi-2-control" type="text" aria-describedby="yi-2-message" required="required" class="yi-input yi-input--md">
+<p id="yi-2-message" class="yi-field__message">Shown in the activity log.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/feed">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Feed URL<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="" id="yi-4-control" type="url" placeholder="https://example.com/feed.xml" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/token">
+<label id="yi-6-label" for="yi-6-control" class="yi-field__label">Access token</label>
+<div class="yi-field__body">
+<div class="yi-input yi-secret-input yi-input--md">
+<input value="" id="yi-6-control" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" class="yi-secret-input__input">
+<span class="yi-secret-input__actions">
+<button type="button" aria-label="Show secret" title="Show secret" aria-pressed="false" class="yi-secret-input__action">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/interval">
+<label id="yi-8-label" for="yi-8-control" class="yi-field__label">Check every (minutes)</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="" id="yi-8-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" placeholder="60" aria-valuemin="5" aria-valuemax="1440" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/priority">
+<label id="yi-10-label" for="yi-10-control" class="yi-field__label">Priority</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-10-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Normal</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/enabled">
+<label id="yi-14-label" for="yi-14-control" class="yi-field__label">Enabled</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked id="yi-14-control" type="checkbox" role="switch" aria-describedby="yi-14-message" class="yi-switch__input">
+</span>
+</label>
+<p id="yi-14-message" class="yi-field__message">A paused workflow keeps its history.</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/labels">
+<label id="yi-16-label" for="yi-16-control" class="yi-field__label">Labels</label>
+<div class="yi-field__body">
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control">
+<input value="" id="yi-16-control" type="text" role="combobox" placeholder="Add labels" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<code role="status">{"name":"Release notes","feed":"","priority":2}</code>
+</div>

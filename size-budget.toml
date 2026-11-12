@@ -31,6 +31,9 @@ markdown = 265000
 qr = 30000
 # Mostly yew-router itself; an app that already routes pays almost none of it.
 router = 150000
-schema-form = 20000
+# About 175 KB of this is the form controls it draws with (Select, TagPicker,
+# SecretInput, NumberInput and the popover under them), which an app with any
+# form already ships; the schema reader and the form itself are about 95 KB.
+schema-form = 285000
 serde_json = 60000
 terminal = 40000

@@ -1,0 +1,278 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:16rem" class="yi-grid">
+<div class="yi-stack">
+<span class="yi-text yi-text--muted">Boxed</span>
+<div class="yi-schema-form yi-schema-form--boxed">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/name">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="gateway" id="yi-2-control" type="text" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div role="group" aria-labelledby="yi-3-label" data-yi-pointer="/listen" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-3-label" class="yi-schema-form__title">Listen</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/port">
+<label id="yi-5-label" for="yi-5-control" class="yi-field__label">Port<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="8443" id="yi-5-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="8443" aria-valuemin="1" aria-valuemax="65535" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-6-label" data-yi-pointer="/listen/tls" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-6-label" class="yi-schema-form__title">TLS</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/certificate">
+<label id="yi-8-label" for="yi-8-control" class="yi-field__label">Certificate</label>
+<div class="yi-field__body">
+<input value="gateway.pem" id="yi-8-control" type="text" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/require_client">
+<label id="yi-10-label" for="yi-10-control" class="yi-field__label">Require a client certificate</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input id="yi-10-control" type="checkbox" role="switch" class="yi-switch__input">
+</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-11-label" data-yi-pointer="/peers" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-11-label" class="yi-schema-form__title">Peers</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-schema-form__item">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/peers/0">
+<label id="yi-13-label" for="yi-13-control" class="yi-field__label yi-visually-hidden">Peer 1</label>
+<div class="yi-field__body">
+<input value="https://a.example.net" id="yi-13-control" type="url" class="yi-input yi-input--md">
+</div>
+</div>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Remove Peer 1" title="Remove Peer 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-schema-form__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add</button>
+</div>
+</div>
+</div>
+</div>
+<div class="yi-stack">
+<span class="yi-text yi-text--muted">Ruled</span>
+<div class="yi-schema-form yi-schema-form--ruled">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/name">
+<label id="yi-16-label" for="yi-16-control" class="yi-field__label">Name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="gateway" id="yi-16-control" type="text" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div role="group" aria-labelledby="yi-17-label" data-yi-pointer="/listen" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-17-label" class="yi-schema-form__title">Listen</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/port">
+<label id="yi-19-label" for="yi-19-control" class="yi-field__label">Port<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="8443" id="yi-19-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="8443" aria-valuemin="1" aria-valuemax="65535" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-20-label" data-yi-pointer="/listen/tls" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-20-label" class="yi-schema-form__title">TLS</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/certificate">
+<label id="yi-22-label" for="yi-22-control" class="yi-field__label">Certificate</label>
+<div class="yi-field__body">
+<input value="gateway.pem" id="yi-22-control" type="text" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/require_client">
+<label id="yi-24-label" for="yi-24-control" class="yi-field__label">Require a client certificate</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input id="yi-24-control" type="checkbox" role="switch" class="yi-switch__input">
+</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-25-label" data-yi-pointer="/peers" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-25-label" class="yi-schema-form__title">Peers</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-schema-form__item">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/peers/0">
+<label id="yi-27-label" for="yi-27-control" class="yi-field__label yi-visually-hidden">Peer 1</label>
+<div class="yi-field__body">
+<input value="https://a.example.net" id="yi-27-control" type="url" class="yi-input yi-input--md">
+</div>
+</div>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Remove Peer 1" title="Remove Peer 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-schema-form__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add</button>
+</div>
+</div>
+</div>
+</div>
+<div class="yi-stack">
+<span class="yi-text yi-text--muted">Flat</span>
+<div class="yi-schema-form yi-schema-form--flat">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/name">
+<label id="yi-30-label" for="yi-30-control" class="yi-field__label">Name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="gateway" id="yi-30-control" type="text" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div role="group" aria-labelledby="yi-31-label" data-yi-pointer="/listen" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-31-label" class="yi-schema-form__title">Listen</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/port">
+<label id="yi-33-label" for="yi-33-control" class="yi-field__label">Port<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="8443" id="yi-33-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="8443" aria-valuemin="1" aria-valuemax="65535" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-34-label" data-yi-pointer="/listen/tls" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-34-label" class="yi-schema-form__title">TLS</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/certificate">
+<label id="yi-36-label" for="yi-36-control" class="yi-field__label">Certificate</label>
+<div class="yi-field__body">
+<input value="gateway.pem" id="yi-36-control" type="text" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/listen/tls/require_client">
+<label id="yi-38-label" for="yi-38-control" class="yi-field__label">Require a client certificate</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input id="yi-38-control" type="checkbox" role="switch" class="yi-switch__input">
+</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-39-label" data-yi-pointer="/peers" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-39-label" class="yi-schema-form__title">Peers</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-schema-form__item">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/peers/0">
+<label id="yi-41-label" for="yi-41-control" class="yi-field__label yi-visually-hidden">Peer 1</label>
+<div class="yi-field__body">
+<input value="https://a.example.net" id="yi-41-control" type="url" class="yi-input yi-input--md">
+</div>
+</div>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Remove Peer 1" title="Remove Peer 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-schema-form__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add</button>
+</div>
+</div>
+</div>
+</div>
+</div>

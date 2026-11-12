@@ -1,0 +1,161 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<div class="yi-schema-form yi-schema-form--boxed">
+<div role="group" aria-labelledby="yi-1-label" data-yi-pointer="/area" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-1-label" class="yi-schema-form__title">Area</span>
+<label class="yi-choice yi-choice--sm yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" aria-label="Include Area" class="yi-switch__input">
+</span>
+</label>
+</div>
+<p class="yi-field__message">Where the feed is looking. Leave it out to cover everything.</p>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Kind<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-2-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-required="true" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Circle</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/area/lat">
+<label id="yi-6-label" for="yi-6-control" class="yi-field__label">Latitude<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="51.5" id="yi-6-control" type="text" role="spinbutton" autocomplete="off" aria-valuenow="51.5" aria-valuemin="-90" aria-valuemax="90" required="required" class="yi-number-input__input">
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/area/lon">
+<label id="yi-8-label" for="yi-8-control" class="yi-field__label">Longitude<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="-0.12" id="yi-8-control" type="text" role="spinbutton" autocomplete="off" aria-valuenow="-0.12" aria-valuemin="-180" aria-valuemax="180" required="required" class="yi-number-input__input">
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/area/radius_km">
+<label id="yi-10-label" for="yi-10-control" class="yi-field__label">Radius (km)<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="50" id="yi-10-control" type="text" role="spinbutton" autocomplete="off" placeholder="50" aria-valuenow="50" required="required" class="yi-number-input__input">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-11-label" data-yi-pointer="/retry" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-11-label" class="yi-schema-form__title">Retry</span>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/retry/attempts">
+<label id="yi-13-label" for="yi-13-control" class="yi-field__label">Attempts<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="3" id="yi-13-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" placeholder="3" aria-valuenow="3" aria-valuemin="0" aria-valuemax="10" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/retry/backoff">
+<label id="yi-15-label" for="yi-15-control" class="yi-field__label">Back off</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked id="yi-15-control" type="checkbox" role="switch" class="yi-switch__input">
+</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-16-label" data-yi-pointer="/stations" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-16-label" class="yi-schema-form__title">Stations</span>
+</div>
+<p class="yi-field__message">Receivers to read from.</p>
+<div class="yi-schema-form__body">
+<div role="group" aria-labelledby="yi-17-label" data-yi-pointer="/stations/0" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-17-label" class="yi-schema-form__title">Station 1</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Remove Station 1" title="Remove Station 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--stacked" data-yi-pointer="/stations/0/host">
+<label id="yi-19-label" for="yi-19-control" class="yi-field__label">Host<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="rx1.example.net" id="yi-19-control" type="text" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked" data-yi-pointer="/stations/0/port">
+<label id="yi-21-label" for="yi-21-control" class="yi-field__label">Port<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="30005" id="yi-21-control" type="text" role="spinbutton" autocomplete="off" placeholder="30005" aria-valuenow="30005" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-schema-form__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add</button>
+</div>
+</div>
+</div>
+<code role="status">{"area":{"kind":"circle","lat":51.5,"lon":-0.12,"radius_km":50},"retry":{"attempts":3},"stations":[{"host":"rx1.example.net","port":30005}]}</code>
+</div>
