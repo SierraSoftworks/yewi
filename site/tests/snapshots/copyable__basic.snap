@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p>Deployed commit <span class="yi-copyable yi-copyable--inline yi-copyable--mono">
+<span id="yi-0" class="yi-copyable__value">4f9a2c1</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span> to <span class="yi-copyable yi-copyable--inline">
+<span id="yi-1" class="yi-copyable__value">edge-fra-02</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span> 35 minutes ago.</p>
+<span role="status">Nothing copied yet</span>
+</div>

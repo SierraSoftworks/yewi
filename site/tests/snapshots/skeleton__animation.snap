@@ -1,0 +1,50 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:11rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<b>Shimmer</b>
+<span style="--yi-skeleton-height:4rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--block yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<b>Pulse</b>
+<span style="--yi-skeleton-height:4rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--block yi-skeleton--pulse">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--pulse">
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<b>None</b>
+<span style="--yi-skeleton-height:4rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--block yi-skeleton--static">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--static">
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</div>
+</div>

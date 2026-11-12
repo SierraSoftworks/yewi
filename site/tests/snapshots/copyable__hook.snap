@@ -1,0 +1,12 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<button type="button" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 5a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M3 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M15 19a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M8.59 13.51L15.42 17.49M15.41 6.51L8.59 10.49">
+</path>
+</svg>Share this rollout</button>
+<span role="status">
+</span>
+</div>

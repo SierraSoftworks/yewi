@@ -1,0 +1,35 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Email</label>
+<div class="yi-field__body">
+<input value="ben@example.com" id="yi-0-control" type="email" autocomplete="email" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Password</label>
+<div class="yi-field__body">
+<input value="correct horse" id="yi-1-control" type="password" autocomplete="new-password" spellcheck="false" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Website</label>
+<div class="yi-field__body">
+<input id="yi-2-control" type="url" placeholder="https://" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-3-label" for="yi-3-control" class="yi-field__label">Search</label>
+<div class="yi-field__body">
+<input id="yi-3-control" type="search" placeholder="Search deployments" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Image digest</label>
+<div class="yi-field__body">
+<input value="sha256:9f86d081884c7d65" id="yi-4-control" type="text" spellcheck="false" class="yi-input yi-input--md yi-input--mono">
+</div>
+</div>
+</div>

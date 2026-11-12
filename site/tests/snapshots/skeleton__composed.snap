@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<section aria-label="Latest deploy" aria-busy="true" style="inline-size: min(100%, 24rem); padding: var(--yi-space-lg); border: 1px solid var(--yi-line); border-radius: var(--yi-radius-card); background: var(--yi-surface)">
+<span class="yi-visually-hidden" role="status">Loading the latest deploy</span>
+<div style="display: flex; align-items: center; gap: var(--yi-space-md)">
+<span style="--yi-skeleton-width:2.5rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--circle yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<div style="flex: 1; min-inline-size: 0">
+<span style="--yi-skeleton-width:6rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span style="--yi-skeleton-width:15rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</div>
+</div>
+</section>
+<button type="button" class="yi-button yi-button--default yi-button--md">Finish loading</button>
+</div>
