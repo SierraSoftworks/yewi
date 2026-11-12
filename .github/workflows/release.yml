@@ -29,7 +29,7 @@ concurrency: release
 
 env:
   CARGO_TERM_COLOR: always
-  # In dependency order.
+  # In dependency order; `PUBLISHED` in xtask/src/main.rs lists the same crates.
   CRATES: yewi-fonts yewi-test yewi
 
 jobs:
@@ -82,7 +82,7 @@ jobs:
       - run: cargo xtask check
 
       - name: Verify the packages
-        run: cargo publish --dry-run --allow-dirty $(printf -- '-p %s ' $CRATES)
+        run: cargo xtask package
 
       - name: Authenticate with crates.io
         id: auth

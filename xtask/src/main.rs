@@ -21,7 +21,9 @@ cargo xtask <command>
                    screenshots diffed against a git ref
   size             measure the probe's wasm and the stylesheet per feature
                    and enforce size-budget.toml
-  ci               check, e2e and size: everything, in order
+  package          package the published crates and build each from its package,
+                   as `cargo publish` would (uploads nothing)
+  ci               check, e2e, size and package: everything, in order
     --changed[=ref]  only what the paths changed since `ref` (default origin/main)
                      call for; shared code still gets the full run
     --dry-run        with --changed, print the plan and stop
@@ -43,6 +45,7 @@ fn main() {
         "e2e" => e2e(&rest),
         "gallery" => gallery(&rest),
         "size" => size(),
+        "package" => package(),
         "ci" => ci(&rest),
         _ => {
             eprint!("{HELP}");
@@ -85,6 +88,7 @@ fn ci(args: &[String]) {
         check();
         e2e(&[]);
         size();
+        package();
         return;
     }
     if plan.check {
@@ -171,6 +175,14 @@ fn check() {
     for feature in optional_features() {
         run(cargo().args(["check", "-p", "yewi", "--target", WASM, "--features"]).arg(format!("csr,{feature}")));
     }
+}
+
+/// The crates published to crates.io, in dependency order. The release workflow uploads these.
+const PUBLISHED: [&str; 3] = ["yewi-fonts", "yewi-test", "yewi"];
+
+fn package() {
+    // The release workflow sets the version in the manifests before this runs, hence the dirty tree.
+    run(cargo().args(["publish", "--dry-run", "--allow-dirty"]).args(PUBLISHED.iter().flat_map(|name| ["-p", name])));
 }
 
 fn site() {
