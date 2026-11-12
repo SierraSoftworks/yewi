@@ -1,0 +1,128 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div class="yi-pipeline">
+<ol aria-label="Deployment stages" class="yi-pipeline__track">
+<li class="yi-pipeline__step">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Staging</span>
+<span class="yi-pipeline-stage__status">done</span>
+</div>
+<div class="yi-pipeline-stage__meta">deployed 14:02</div>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<div class="yi-pipeline-gate yi-pipeline-gate--open yi-pipeline-gate--ok">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>checks passed</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Canary</span>
+<span class="yi-pipeline-stage__status">done</span>
+</div>
+<div class="yi-pipeline-stage__meta">5% of traffic</div>
+</div>
+</div>
+</li>
+<li aria-current="step" class="yi-pipeline__step yi-pipeline__step--current">
+<div class="yi-pipeline-gate yi-pipeline-gate--closed yi-pipeline-gate--info">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2zM7 11V7a5 5 0 0 1 10 0v4">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>needs approval</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Production</span>
+<span class="yi-pipeline-stage__status">held</span>
+</div>
+<div class="yi-pipeline-stage__meta">100% of traffic</div>
+</div>
+<button type="button" class="yi-button yi-button--primary yi-button--sm">Approve</button>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<div class="yi-pipeline-gate yi-pipeline-gate--waiting yi-pipeline-gate--neutral">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 6v6l4 2">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>bake 30m</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Cleanup</span>
+<span class="yi-pipeline-stage__status">waiting</span>
+</div>
+<div class="yi-pipeline-stage__meta">removes the old release</div>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<div class="yi-pipeline-gate yi-pipeline-gate--closed yi-pipeline-gate--warn">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 3h3a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1zM6 3h3a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1z">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>paused</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Announce</span>
+<span class="yi-pipeline-stage__status">paused</span>
+</div>
+<div class="yi-pipeline-stage__meta">posts the changelog</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<span role="status">Production is waiting for approval</span>
+</div>
