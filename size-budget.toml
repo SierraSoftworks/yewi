@@ -19,7 +19,7 @@ stylesheet = 250000
 # `core` plus CSS on top of `stylesheet`.
 avatar-hash = 20000
 charts = 70000
-chrono = 20000
+chrono = 105000 # about half is Tooltip, anchor positioning and Pill, which the core probe leaves out
 code = 20000
 diff = 52000
 highlight = 20000
