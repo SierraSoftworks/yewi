@@ -1,0 +1,125 @@
+// SegmentBar
+//
+// Segments share the track by `flex-grow`, set inline from their values. A
+// segment's colour is a token, so the bar and the legend swatch use one rule.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-segment-bar {
+  // Component tokens
+  --yi-segment-bar-height: 0.375rem;
+  --yi-segment-bar-gap: 1px;
+  --yi-segment-bar-radius: var(--yi-radius-full);
+  --yi-segment-bar-track: var(--yi-neutral-soft);
+  --yi-segment-bar-min-segment: 3px;
+  --yi-segment-bar-sweep: 1.6s;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-xs);
+  inline-size: 100%;
+  min-inline-size: 3.75rem;
+
+  &--sm {
+    --yi-segment-bar-height: 0.25rem;
+  }
+
+  &--lg {
+    --yi-segment-bar-height: 0.625rem;
+  }
+}
+
+.yi-segment-bar__track {
+  display: flex;
+  gap: var(--yi-segment-bar-gap);
+  block-size: var(--yi-segment-bar-height);
+  border-radius: var(--yi-segment-bar-radius);
+  background: var(--yi-segment-bar-track);
+  overflow: hidden;
+}
+
+@each $tone in $tones {
+  .yi-segment-bar__segment--#{$tone},
+  .yi-segment-bar__swatch--#{$tone} {
+    --yi-segment-bar-color: var(--yi-#{$tone});
+  }
+}
+
+// Each segment is a Tooltip wrapper, hence the child selector.
+.yi-segment-bar__track > .yi-segment-bar__segment {
+  position: relative;
+  display: block;
+  flex: 0 1 0;
+  min-inline-size: var(--yi-segment-bar-min-segment);
+  max-inline-size: none;
+  background: var(--yi-segment-bar-color, var(--yi-neutral));
+  forced-color-adjust: none;
+  overflow: hidden;
+
+  // Work in flight: a band of light sweeps along the segment.
+  &--active::after {
+    @include motion {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--yi-surface) 55%, transparent), transparent);
+      translate: -100%;
+      animation: yi-segment-bar-sweep var(--yi-segment-bar-sweep) ease-in-out infinite;
+    }
+  }
+}
+
+.yi-segment-bar__rest {
+  flex: 0 1 0;
+}
+
+.yi-segment-bar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yi-space-2xs) var(--yi-space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  line-height: var(--yi-leading-tight);
+}
+
+.yi-segment-bar__entry {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+}
+
+.yi-segment-bar__swatch {
+  flex: none;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-segment-bar-color, var(--yi-neutral));
+  forced-color-adjust: none;
+
+  &--rest {
+    background: var(--yi-segment-bar-track);
+    box-shadow: inset 0 0 0 1px var(--yi-line-strong);
+  }
+}
+
+.yi-segment-bar__value {
+  color: var(--yi-fg);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+@keyframes yi-segment-bar-sweep {
+  to {
+    translate: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-segment-bar__track {
+    outline: 1px solid CanvasText;
+  }
+}
