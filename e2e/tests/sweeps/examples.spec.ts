@@ -10,8 +10,20 @@ const VIEWPORTS = {
   phone: { width: 390, height: 844 },
 };
 
-/** The markup a user would see, without Yew's hydration bookkeeping. */
-const visibleMarkup = (html: string) => html.replace(/<!--.*?-->/gs, "").replace(/\s+/g, " ").trim();
+/**
+ * The markup a user would see, without Yew's hydration bookkeeping. Ids from `use_id` are
+ * renumbered by first appearance: the server and the client may number them differently (they
+ * render components in different orders), which is fine as long as every reference to an id
+ * still points at the same element, and that is what survives the renumbering.
+ */
+const visibleMarkup = (html: string) => {
+  const ids = new Map<string, number>();
+  return html
+    .replace(/<!--.*?-->/gs, "")
+    .replace(/\s+/g, " ")
+    .replace(/\byi-\d+\b/g, (id) => `yi-#${ids.get(id) ?? ids.set(id, ids.size).get(id)}`)
+    .trim();
+};
 
 for (const info of examples) {
   const id = `${info.page}/${info.example}`;

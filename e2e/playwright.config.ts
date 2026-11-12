@@ -32,6 +32,8 @@ export default defineConfig({
   },
   use: {
     baseURL: `http://localhost:${port}`,
+    // Examples show absolute dates in the viewer's zone; pin it so baselines do not depend on the machine.
+    timezoneId: "UTC",
     trace: process.env.YEWI_E2E_TRACE === "on" ? "on" : "retain-on-failure",
   },
   projects: [

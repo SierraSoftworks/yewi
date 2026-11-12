@@ -20,6 +20,20 @@ test.describe("Countdown", () => {
     await expect(status).toHaveText("Bake finished");
   });
 
+  // The shared `use_now` ticker stops when its last subscriber leaves. Its timer must really be
+  // cleared, or the next tick calls a closure that no longer exists.
+  test("the clock can keep running after the countdown ends", async ({ page, example, problems }) => {
+    await page.clock.install({ time: new Date("2026-01-15T11:59:00Z") });
+    const stage = await example("countdown/live");
+    await page.clock.pauseAt(new Date("2026-01-15T12:00:00Z"));
+
+    await stage.getByRole("button", { name: "Start a 10 second bake" }).click();
+    await page.clock.runFor(10_000);
+    await expect(stage.getByRole("status")).toHaveText("Bake finished");
+    await page.clock.runFor(5_000);
+    expect(problems).toEqual([]);
+  });
+
   test("the tooltip gives the exact time it ends", async ({ page, example }) => {
     await page.clock.install({ time: new Date("2026-01-15T11:59:00Z") });
     const stage = await example("countdown/live");
