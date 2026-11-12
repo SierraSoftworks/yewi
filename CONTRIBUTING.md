@@ -78,4 +78,4 @@ e2e/tests/<name>.spec.ts         behaviour specs
 - `cargo xtask ci` passes locally. While the repository is private this, not GitHub Actions, is the verification.
 - The page has at least three examples and reads correctly in both themes.
 - Keyboard and screen-reader behaviour is complete and covered by a behaviour spec.
-- New screenshots are committed, and the pull request links or attaches the review gallery.
+- New screenshots are committed, and the pull request links or attaches the review gallery. For viewers that open a single file, `node e2e/inline-gallery.mjs e2e/gallery gallery.html` embeds the images and videos.
