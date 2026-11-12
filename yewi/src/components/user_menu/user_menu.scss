@@ -1,0 +1,135 @@
+// UserMenu
+//
+// An avatar button at the end of an app bar that opens a Popover holding who
+// is signed in and a Menu. The trigger is as tall as a control, so it lines
+// up with the icon buttons beside it. It is the avatar alone unless the name
+// is asked for and the screen has room for it.
+@use "api" as *;
+
+.yi-user-menu {
+  // Component tokens
+  --yi-user-menu-height: var(--yi-control-height);
+  --yi-user-menu-gap: var(--yi-space-sm);
+  --yi-user-menu-radius: var(--yi-radius-control);
+  --yi-user-menu-bg: transparent;
+  --yi-user-menu-bg-hover: var(--yi-neutral-soft);
+  --yi-user-menu-name-max-width: 12rem;
+  --yi-user-menu-max-height: min(70vh, 32rem);
+  --yi-user-menu-max-width: 20rem;
+
+  display: inline-flex;
+  max-inline-size: 100%;
+  vertical-align: middle;
+}
+
+.yi-user-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-user-menu-gap);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  min-block-size: var(--yi-user-menu-height);
+  padding: var(--yi-space-xs);
+  border: 0;
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-user-menu-bg);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading-tight);
+  text-align: start;
+  cursor: pointer;
+
+  @include motion {
+    transition: background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover,
+  &[aria-expanded="true"] {
+    background: var(--yi-user-menu-bg-hover);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+}
+
+.yi-user-menu__identity {
+  display: grid;
+  min-inline-size: 0;
+}
+
+.yi-user-menu__name {
+  @include truncate;
+
+  font-weight: 500;
+}
+
+.yi-user-menu__detail {
+  @include truncate;
+
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  font-weight: 400;
+}
+
+.yi-user-menu__caret {
+  flex: none;
+  opacity: 0.7;
+
+  @include motion {
+    transition: rotate var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  [aria-expanded="true"] > & {
+    rotate: 180deg;
+  }
+}
+
+.yi-user-menu__surface {
+  --yi-popover-radius: var(--yi-radius-control);
+  --yi-popover-max-height: var(--yi-user-menu-max-height);
+  --yi-popover-max-width: var(--yi-user-menu-max-width);
+
+  user-select: none;
+}
+
+// The name stays in the button for assistive technology even when only the
+// avatar shows, and the menu still says who is signed in.
+.yi-user-menu__trigger > .yi-user-menu__identity {
+  @include visually-hidden;
+}
+
+.yi-user-menu__trigger > .yi-user-menu__caret {
+  display: none;
+}
+
+// With the name, where the bar has room for it.
+@media (width >= 36rem) {
+  .yi-user-menu--named > .yi-popover > .yi-user-menu__trigger {
+    padding: var(--yi-space-2xs) var(--yi-space-sm) var(--yi-space-2xs) var(--yi-space-xs);
+    border-radius: var(--yi-user-menu-radius);
+
+    > .yi-user-menu__identity {
+      position: static;
+      inline-size: auto;
+      block-size: auto;
+      max-inline-size: var(--yi-user-menu-name-max-width);
+      margin: 0;
+      overflow: visible;
+      clip-path: none;
+      white-space: normal;
+    }
+
+    > .yi-user-menu__caret {
+      display: inline-block;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-user-menu__trigger {
+    border: 1px solid ButtonText;
+  }
+}

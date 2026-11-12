@@ -1,0 +1,249 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-table-max-height:24rem" class="yi-table yi-table--open yi-table--sticky yi-table--scroll yi-table--fixed yi-table--virtual">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Requests" aria-rowcount="100001" class="yi-table__grid">
+<colgroup>
+<col style="inline-size:7rem">
+<col style="inline-size:14rem">
+<col style="inline-size:6rem">
+<col style="inline-size:6rem">
+<col style="inline-size:7rem">
+</colgroup>
+<thead>
+<tr aria-rowindex="1">
+<th scope="col" aria-sort="ascending" class="yi-table__header yi-table__header--sortable yi-table__header--sorted">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Request</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Route</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Region</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Status</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Time</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody style="--yi-table-row-height:42px">
+<tr aria-hidden="true" style="height:0px" class="yi-table__spacer">
+<td colspan="5">
+</td>
+</tr>
+<tr aria-rowindex="2" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800000</th>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">3 ms</td>
+</tr>
+<tr aria-rowindex="3" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800001</th>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">40 ms</td>
+</tr>
+<tr aria-rowindex="4" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800002</th>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">77 ms</td>
+</tr>
+<tr aria-rowindex="5" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800003</th>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">114 ms</td>
+</tr>
+<tr aria-rowindex="6" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800004</th>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">151 ms</td>
+</tr>
+<tr aria-rowindex="7" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800005</th>
+<td class="yi-table__cell">/api/sessions</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">188 ms</td>
+</tr>
+<tr aria-rowindex="8" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800006</th>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">225 ms</td>
+</tr>
+<tr aria-rowindex="9" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800007</th>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">262 ms</td>
+</tr>
+<tr aria-rowindex="10" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800008</th>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">299 ms</td>
+</tr>
+<tr aria-rowindex="11" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800009</th>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">336 ms</td>
+</tr>
+<tr aria-rowindex="12" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800010</th>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">373 ms</td>
+</tr>
+<tr aria-rowindex="13" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800011</th>
+<td class="yi-table__cell">/api/sessions</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">410 ms</td>
+</tr>
+<tr aria-rowindex="14" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800012</th>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">447 ms</td>
+</tr>
+<tr aria-rowindex="15" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800013</th>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">484 ms</td>
+</tr>
+<tr aria-rowindex="16" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800014</th>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">521 ms</td>
+</tr>
+<tr aria-rowindex="17" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800015</th>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">558 ms</td>
+</tr>
+<tr aria-rowindex="18" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800016</th>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">595 ms</td>
+</tr>
+<tr aria-rowindex="19" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800017</th>
+<td class="yi-table__cell">/api/sessions</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">632 ms</td>
+</tr>
+<tr aria-rowindex="20" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800018</th>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">669 ms</td>
+</tr>
+<tr aria-rowindex="21" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800019</th>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">706 ms</td>
+</tr>
+<tr aria-rowindex="22" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800020</th>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">ams</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">743 ms</td>
+</tr>
+<tr aria-rowindex="23" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800021</th>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">fra</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">780 ms</td>
+</tr>
+<tr aria-rowindex="24" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800022</th>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">iad</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">817 ms</td>
+</tr>
+<tr aria-rowindex="25" class="yi-table__row">
+<th scope="row" class="yi-table__cell">4800023</th>
+<td class="yi-table__cell">/api/sessions</td>
+<td class="yi-table__cell">syd</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">854 ms</td>
+</tr>
+<tr aria-hidden="true" style="height:4198992px" class="yi-table__spacer">
+<td colspan="5">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="yi-table__footer">
+<span>100,000 requests</span>
+</div>
+</div>
+<span role="status">Sorted by id, ascending</span>
+</div>

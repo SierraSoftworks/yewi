@@ -5,8 +5,8 @@
 //! A table draws every row it is given. Keep `rows` and `columns` in stable
 //! `Rc`s (state, `use_memo`, [`use_columns`]) and a change redraws only the
 //! rows it touches: sorting moves existing rows, and selecting one row
-//! redraws one row. For tens of thousands of rows, paginate or use a
-//! virtualised table.
+//! redraws one row. For tens of thousands of rows, paginate or use
+//! [`VirtualTable`](crate::VirtualTable), which draws only the rows in view.
 
 use std::{cell::RefCell, collections::HashSet, rc::Rc};
 
@@ -20,7 +20,9 @@ pub use column::*;
 pub use simple::*;
 pub use sort::*;
 
-use crate::{Attrs, ButtonVariant, Checkbox, EmptyState, IconButton, Size, Skeleton, VisuallyHidden, attrs, icons};
+use crate::{
+    Attrs, ButtonVariant, Checkbox, EmptyState, IconButton, Size, Skeleton, VirtualWindow, VisuallyHidden, attrs, icons,
+};
 
 /// The keys of the selected rows of a [`Table`].
 pub type Selection = Rc<HashSet<AttrValue>>;
@@ -160,6 +162,15 @@ impl<T: ?Sized> PartialEq for SameRc<T> {
 /// only `sortable`.
 #[function_component]
 pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
+    use_table(props, None)
+}
+
+/// Renders a table. With a `window` only that slice of the sorted rows is
+/// drawn, between two spacer rows standing in for the rest: this is how
+/// [`VirtualTable`](crate::VirtualTable) shares everything else with
+/// [`Table`].
+#[hook]
+pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, window: Option<VirtualWindow>) -> Html {
     let own_sort = use_state(|| props.default_sort.clone());
     let sort = props.sort.clone().unwrap_or_else(|| (*own_sort).clone());
     let expanded = use_state(Selection::default);
@@ -227,8 +238,23 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
     let span = props.columns.len() + usize::from(selectable) + usize::from(expandable);
     let key_of = |index: usize| row_id(props.row_key.as_ref(), &props.rows[index], index);
 
-    let select_all = props.selected.as_ref().map(|selected| {
-        let count = (0..props.rows.len()).filter(|&index| selected.contains(&key_of(index))).count();
+    // Counted once per selection, not on every render: a virtualised table
+    // renders on scroll.
+    let selected_count = use_memo(
+        (SameRc(props.rows.clone()), props.selected.clone().map(SameRc), props.row_key.clone()),
+        |(rows, selected, row_key)| match selected {
+            Some(selected) if !selected.0.is_empty() => rows
+                .0
+                .iter()
+                .enumerate()
+                .filter(|&(index, row)| selected.0.contains(&row_id(row_key.as_ref(), row, index)))
+                .count(),
+            _ => 0,
+        },
+    );
+
+    let select_all = props.selected.as_ref().map(|_| {
+        let count = *selected_count;
         let all = count > 0 && count == props.rows.len();
         let on_change = {
             let (latest, on_select) = (latest.clone(), props.on_select.clone());
@@ -319,9 +345,24 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
             </tr>
         }
     } else {
-        order
+        let range = match &window {
+            Some(window) => window.range.start.min(order.len())..window.range.end.min(order.len()),
+            None => 0..order.len(),
+        };
+        let spacer = |key: &'static str, rows: usize| {
+            let height = window.as_ref().map_or(0.0, |window| window.row_height) * rows as f64;
+            html! {
+                <tr {key} class="yi-table__spacer" aria-hidden="true" style={format!("height:{height}px")}>
+                    <td colspan={span.to_string()} />
+                </tr>
+            }
+        };
+        let before = window.is_some().then(|| spacer("\u{0}before", range.start));
+        let after = (window.is_some() && range.end < order.len()).then(|| spacer("\u{0}after", order.len() - range.end));
+        let rows = order[range.clone()]
             .iter()
-            .map(|&index| {
+            .enumerate()
+            .map(|(at, &index)| {
                 let id = keyed.then(|| key_of(index));
                 let key = match (&props.row_key, &id) {
                     (Some(_), Some(id)) => Key::from(id.to_string()),
@@ -333,6 +374,7 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
                         {key}
                         rows={props.rows.clone()}
                         {index}
+                        position={window.is_some().then_some(range.start + at)}
                         columns={props.columns.clone()}
                         selected={props.selected.as_ref().zip(id.as_ref()).map(|(set, id)| set.contains(id))}
                         expanded={id.as_ref().filter(|_| expandable).map(|id| expanded.contains(id))}
@@ -345,8 +387,8 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
                         on_click={on_click_row.clone()}
                     />
                 }
-            })
-            .collect::<Html>()
+            });
+        before.into_iter().chain(rows).chain(after).collect::<Html>()
     };
 
     let has_widths = props.columns.iter().any(|column| column.width.is_some());
@@ -364,6 +406,7 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
             label={props.label.clone()}
             busy={props.loading}
             footer={props.footer.clone()}
+            row_count={window.is_some().then(|| props.rows.len() + 1)}
         >
             if has_widths {
                 <colgroup>
@@ -375,7 +418,7 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
                 </colgroup>
             }
             <thead>
-                <tr>
+                <tr aria-rowindex={window.is_some().then_some("1")}>
                     if expandable {
                         <th class="yi-table__header yi-table__control" scope="col">
                             <VisuallyHidden>{ "Details" }</VisuallyHidden>
@@ -385,7 +428,12 @@ pub fn Table<T: Clone + PartialEq + 'static>(props: &TableProps<T>) -> Html {
                     { for headers }
                 </tr>
             </thead>
-            <tbody>{ body }</tbody>
+            <tbody
+                ref={window.as_ref().map(|window| window.anchor.clone()).unwrap_or_default()}
+                style={window.as_ref().map(|window| format!("--yi-table-row-height:{}px", window.min_row_height))}
+            >
+                { body }
+            </tbody>
         </SimpleTable>
     }
 }
@@ -400,6 +448,8 @@ fn with_latest<T>(latest: &RefCell<Option<Latest<T>>>, f: impl FnOnce(&Latest<T>
 struct RowProps<T: Clone + PartialEq + 'static> {
     rows: Rc<[T]>,
     index: usize,
+    /// The row's place in the sorted order, when not every row is drawn.
+    position: Option<usize>,
     columns: Rc<[Column<T>]>,
     selected: Option<bool>,
     expanded: Option<bool>,
@@ -415,6 +465,7 @@ struct RowProps<T: Clone + PartialEq + 'static> {
 impl<T: Clone + PartialEq + 'static> PartialEq for RowProps<T> {
     fn eq(&self, other: &Self) -> bool {
         self.index == other.index
+            && self.position == other.position
             && self.selected == other.selected
             && self.expanded == other.expanded
             && self.clickable == other.clickable
@@ -457,7 +508,8 @@ fn Row<T: Clone + PartialEq + 'static>(props: &RowProps<T>) -> Html {
 
     html! {
         <>
-            <tr key="row" {class} {onclick}>
+            // The header is row 1.
+            <tr key="row" {class} {onclick} aria-rowindex={props.position.map(|at| (at + 2).to_string())}>
                 if props.expanded.is_some() {
                     <td class="yi-table__cell yi-table__control">
                         <span class="yi-table__toggle-box">
