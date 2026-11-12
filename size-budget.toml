@@ -1,13 +1,22 @@
-# Wasm size budgets, in bytes, for tests/size-probe built in release mode:
-# the code and data sections of the cargo output, before wasm-opt and
-# compression. Yew itself accounts for most of `core`.
+# Size budgets, in bytes. `cargo xtask size` fails when one is exceeded;
+# change one deliberately, in the pull request that needs it.
 #
-# `core` is the probe with no opt-in features. Every other entry is what
-# enabling that feature may ADD on top of core. `cargo xtask size` fails when a
-# budget is exceeded; raise one deliberately, in the pull request that needs it.
+# `core` is the wasm an app pays before it uses anything optional: the code
+# and data sections of tests/size-probe (Yew, a button and the theme toggle)
+# built in release mode, before wasm-opt and compression. The stylesheet is
+# not embedded in the probe. Unused components are removed by the linker, so
+# this number should not move as components are added.
+core = 340000
 
-core = 400000
+# `stylesheet` is the compiled CSS with no opt-in features. Unlike code, every
+# app ships all of it, so it grows with each core component. About one sixth
+# of this after gzip.
+# PROVISIONAL (2026-11-12): sized for the full core catalogue, pending Ben's
+# decision on what the stylesheet is allowed to cost.
+stylesheet = 250000
 
+# Every other entry is what enabling that feature may ADD: wasm on top of
+# `core` plus CSS on top of `stylesheet`.
 avatar-hash = 20000
 charts = 70000
 chrono = 20000
