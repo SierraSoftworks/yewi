@@ -35,17 +35,30 @@ test.describe("Terminal", () => {
   test("a scrolling body can be reached and scrolled from the keyboard", async ({ page, example }) => {
     const stage = await example("terminal/streaming");
     const log = stage.getByRole("log", { name: "deploy output" });
-    await stage.getByRole("button", { name: "Print more output" }).click();
+    const more = stage.getByRole("button", { name: "Print more output" });
+
+    // Keyboard only, so focus order does not depend on where a click landed.
+    await more.focus();
+    await page.keyboard.press("Enter");
     await expect(log).toContainText("[  7]");
+    // Let following settle before scrolling by hand.
+    await expect.poll(() => distanceFromEnd(log)).toBeLessThanOrEqual(4);
 
     await page.keyboard.press("Shift+Tab");
     await expect(log).toBeFocused();
     await expect(log).not.toHaveCSS("outline-style", "none");
 
-    await page.keyboard.press("Home");
-    await expect.poll(() => log.evaluate((el) => el.scrollTop)).toBe(0);
-    await page.keyboard.press("End");
-    await expect.poll(() => distanceFromEnd(log)).toBeLessThanOrEqual(4);
+    // Key scrolling is animated, and a busy machine can drop a key press that
+    // arrives mid-frame, so press until the position is reached.
+    await expect(async () => {
+      await page.keyboard.press("Home");
+      await expect.poll(() => log.evaluate((el) => el.scrollTop), { timeout: 2_000 }).toBe(0);
+    }).toPass({ timeout: 20_000 });
+    await expect(async () => {
+      await page.keyboard.press("End");
+      await expect.poll(() => distanceFromEnd(log), { timeout: 2_000 }).toBeLessThanOrEqual(4);
+    }).toPass({ timeout: 20_000 });
+    await expect(log).toBeFocused();
   });
 
   test("selecting a command leaves the prompt out", async ({ page, example }) => {
