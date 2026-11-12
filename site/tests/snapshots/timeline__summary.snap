@@ -1,0 +1,35 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-timeline yi-timeline--horizontal yi-timeline--md yi-timeline--run-off-both">
+<ol aria-label="API incident, oldest first" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--danger">
+<span tabindex="0" class="yi-popover yi-timeline__trigger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<span class="yi-visually-hidden">Investigating</span>
+</span>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--danger">
+<span tabindex="0" class="yi-popover yi-timeline__trigger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<span class="yi-visually-hidden">Identified</span>
+</span>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--warn">
+<span tabindex="0" class="yi-popover yi-timeline__trigger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<span class="yi-visually-hidden">Monitoring</span>
+</span>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span tabindex="0" class="yi-popover yi-timeline__trigger">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<span class="yi-visually-hidden">Resolved</span>
+</span>
+</li>
+</ol>
+</div>

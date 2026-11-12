@@ -1,0 +1,137 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-3xl)" class="yi-cluster yi-cluster--align-start">
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-none">
+<ol aria-label="Marker shapes" class="yi-timeline__list">
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Dot</span>
+</div>
+</div>
+<div class="yi-timeline__meta">No tone: an outline</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Dot with a tone</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Filled</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--warn">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--ring">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Ring</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Not settled yet</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--info">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--diamond">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Diamond</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Another kind of event</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--active">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot yi-timeline__marker--active">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Active</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Still going on</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-none">
+<ol aria-label="Icon markers" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok yi-timeline__item--icon">
+<span aria-hidden="true" class="yi-timeline__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05">
+</path>
+</svg>
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Released 2.4.0</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Today, 11:25</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--danger yi-timeline__item--icon">
+<span aria-hidden="true" class="yi-timeline__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Build failed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Today, 10:02</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--icon">
+<span aria-hidden="true" class="yi-timeline__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M3 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M6 21V9a9 9 0 0 0 9 9">
+</path>
+</svg>
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Merged #218</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Yesterday</div>
+</div>
+</li>
+<li class="yi-timeline__item yi-timeline__item--icon">
+<span aria-hidden="true" class="yi-timeline__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 6a9 9 0 0 0-9 9V3M15 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M3 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Branch created</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Monday</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
