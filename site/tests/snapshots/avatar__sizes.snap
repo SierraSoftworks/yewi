@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--lg">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-size: 5rem" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+</div>
