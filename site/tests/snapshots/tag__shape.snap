@@ -1,0 +1,73 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span style="inline-size: 5rem; color: var(--yi-fg-muted)">Squared</span>
+<span class="yi-tag yi-tag--neutral" style="--yi-tag-radius: var(--yi-radius-sm)">
+<span id="yi-0-text" class="yi-tag__text">
+<span class="yi-tag__value">linux</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral" style="--yi-tag-radius: var(--yi-radius-sm)">
+<span id="yi-1-text" class="yi-tag__text">
+<span class="yi-tag__name">env</span>
+<span class="yi-tag__value">production</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--danger" style="--yi-tag-radius: var(--yi-radius-sm)">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+<span id="yi-2-text" class="yi-tag__text">
+<span class="yi-tag__value">destructive</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono" style="--yi-tag-radius: var(--yi-radius-sm)">
+<span id="yi-3-text" class="yi-tag__text">
+<span class="yi-tag__value">v1.42.0</span>
+</span>
+<button id="yi-3-remove" type="button" aria-label="Remove" aria-labelledby="yi-3-remove yi-3-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span style="inline-size: 5rem; color: var(--yi-fg-muted)">Rounded</span>
+<span class="yi-tag yi-tag--neutral" style="--yi-tag-radius: var(--yi-radius-full)">
+<span id="yi-4-text" class="yi-tag__text">
+<span class="yi-tag__value">linux</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral" style="--yi-tag-radius: var(--yi-radius-full)">
+<span id="yi-5-text" class="yi-tag__text">
+<span class="yi-tag__name">env</span>
+<span class="yi-tag__value">production</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--danger" style="--yi-tag-radius: var(--yi-radius-full)">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+<span id="yi-6-text" class="yi-tag__text">
+<span class="yi-tag__value">destructive</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono" style="--yi-tag-radius: var(--yi-radius-full)">
+<span id="yi-7-text" class="yi-tag__text">
+<span class="yi-tag__value">v1.42.0</span>
+</span>
+<button id="yi-7-remove" type="button" aria-label="Remove" aria-labelledby="yi-7-remove yi-7-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>

@@ -17,8 +17,13 @@ highlight = 20000
 highlight-syntect = 20000
 map = 20000
 markdown = 20000
+<<<<<<< HEAD
 qr = 20000
 # Mostly yew-router itself; an app that already routes pays almost none of it.
 router = 120000
+=======
+qr = 30000
+router = 20000
+>>>>>>> origin/main
 schema-form = 20000
-terminal = 20000
+terminal = 40000

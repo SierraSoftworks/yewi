@@ -1,0 +1,33 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:16rem" class="yi-grid">
+<div role="alert" class="yi-empty-state yi-empty-state--center yi-empty-state--md yi-empty-state--danger">
+<span class="yi-empty-state__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2zM7 11V7a5 5 0 0 1 10 0v4">
+</path>
+</svg>
+</span>
+<p class="yi-empty-state__title">Not permitted</p>
+<div class="yi-empty-state__body">Your role cannot view rollouts in the production cluster.</div>
+<div class="yi-empty-state__actions">
+<a href="#access" class="yi-button yi-button--default yi-button--md">Request access</a>
+</div>
+</div>
+<div role="alert" class="yi-empty-state yi-empty-state--start yi-empty-state--sm yi-empty-state--danger">
+<span class="yi-empty-state__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+</span>
+<p class="yi-empty-state__title">Could not load the audit log</p>
+<div class="yi-empty-state__body">
+<p>The request failed with status 502.</p>
+<p>
+<code>request 7f3a9c1e</code>
+</p>
+</div>
+</div>
+</div>

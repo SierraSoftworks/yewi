@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<div aria-busy="true" class="yi-loading-overlay">
+<div inert="inert">
+<section aria-label="edge-ams-01" style="inline-size: 20rem; padding: var(--yi-space-lg); border: 1px solid var(--yi-line); border-radius: var(--yi-radius-card); background: var(--yi-surface)">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack yi-stack--align-start">
+<b>edge-ams-01</b>
+<span style="color: var(--yi-fg-muted)">Healthy, 14 workloads, agent 2.8.1</span>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Restart agent</button>
+</div>
+</section>
+</div>
+<div class="yi-loading-overlay__scrim">
+<div role="status" class="yi-loading yi-loading--inline yi-loading--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+<span class="yi-loading__label">Refreshing hosts</span>
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="button" disabled="disabled" class="yi-button yi-button--primary yi-button--md">Refresh</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Finish refreshing</button>
+</div>
+<span role="status">Restarted 0 times</span>
+</div>

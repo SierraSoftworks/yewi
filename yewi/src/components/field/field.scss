@@ -1,0 +1,80 @@
+// Field: label, control, then a hint or an error.
+//
+// The field owns vertical rhythm inside itself only; space between fields
+// belongs to the surrounding `Stack` or `Grid`.
+@use "api" as *;
+
+.yi-field {
+  // Component tokens
+  --yi-field-gap: var(--yi-space-xs); // between label, control and message
+  --yi-field-label-color: var(--yi-fg);
+  --yi-field-label-width: 10rem; // label column of the inline layout
+  --yi-field-control-min: 12rem; // inline layout stacks below this control width
+  --yi-field-hint-color: var(--yi-fg-muted);
+  --yi-field-error-color: var(--yi-danger);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-field-gap);
+  min-inline-size: 0;
+
+  &__label {
+    color: var(--yi-field-label-color);
+    font-size: var(--yi-text-sm);
+    font-weight: 500;
+    line-height: var(--yi-leading-tight);
+  }
+
+  &__required {
+    margin-inline-start: 0.2em;
+    color: var(--yi-field-error-color);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yi-field-gap);
+    min-inline-size: 0;
+  }
+
+  &__message {
+    margin: 0;
+    color: var(--yi-field-hint-color);
+    font-size: var(--yi-text-xs);
+    line-height: var(--yi-leading);
+
+    &--error {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35em;
+      color: var(--yi-field-error-color);
+
+      .yi-icon {
+        align-self: center;
+      }
+    }
+  }
+
+  // Label column, then the control. Wraps to stacked when there is no room
+  // for the label plus a usable control.
+  &--inline {
+    flex-flow: row wrap;
+    column-gap: var(--yi-space-md);
+
+    > .yi-field__label {
+      display: flex;
+      flex: 0 0 var(--yi-field-label-width);
+      align-items: center;
+      align-self: flex-start;
+      min-block-size: var(--yi-control-height);
+    }
+
+    > .yi-field__body {
+      flex: 1 1 var(--yi-field-control-min);
+    }
+  }
+
+  &--disabled {
+    --yi-field-label-color: var(--yi-fg-muted);
+  }
+}

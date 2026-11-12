@@ -30,7 +30,7 @@ highlight = []
 highlight-syntect = ["highlight"]
 map = []
 markdown = []
-qr = []
+qr = ["dep:qrcodegen"]
 router = ["dep:yew-router"]
 schema-form = []
 terminal = []
@@ -58,6 +58,7 @@ full = [
 [dependencies]
 yew = { workspace = true }
 yewi-fonts = { workspace = true, optional = true }
+qrcodegen = { version = "1.8", optional = true }
 yew-router = { workspace = true, optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
@@ -89,6 +90,7 @@ grass = { workspace = true }
 [dev-dependencies]
 yew = { workspace = true, features = ["ssr"] }
 yewi-test = { workspace = true }
+rqrr = { version = "0.11", default-features = false }
 
 [package.metadata.docs.rs]
 features = ["full", "ssr"]
