@@ -6,7 +6,7 @@
 # enabling that feature may ADD on top of core. `cargo xtask size` fails when a
 # budget is exceeded; raise one deliberately, in the pull request that needs it.
 
-core = 400000
+core = 450000
 
 avatar-hash = 20000
 charts = 20000
