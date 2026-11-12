@@ -16,12 +16,12 @@ pub fn Example() -> Html {
     html! {
         <Grid min="18rem" gap={Space::Xl}>
             <Stack gap={Space::Sm}>
-                <span>{ "A. Accent label (default)" }</span>
-                { account("Accent label", "") }
+                <span>{ "Text-colour label (default)" }</span>
+                { account("Text-colour label", "") }
             </Stack>
             <Stack gap={Space::Sm}>
-                <span>{ "B. Text-colour label" }</span>
-                { account("Text-colour label", "--yi-tabs-fg-active: var(--yi-fg)") }
+                <span>{ "Accent label" }</span>
+                { account("Accent label", "--yi-tabs-fg-active: var(--yi-accent-text)") }
             </Stack>
         </Grid>
     }
