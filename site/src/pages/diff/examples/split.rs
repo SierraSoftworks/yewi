@@ -29,13 +29,8 @@ pub fn Example() -> Html {
 
     let choice = |label: &'static str, value: DiffMode| {
         let mode = mode.clone();
-        let pressed = if *mode == value { "true" } else { "false" };
         html! {
-            <Button
-                size={Size::Small}
-                attrs={attrs! { "aria-pressed" => pressed }}
-                on_click={Callback::from(move |_| mode.set(value))}
-            >
+            <Button size={Size::Small} pressed={*mode == value} on_click={Callback::from(move |_| mode.set(value))}>
                 { label }
             </Button>
         }
@@ -43,10 +38,10 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <Cluster>
+            <ButtonGroup label="Layout">
                 { choice("Side by side", DiffMode::Split) }
                 { choice("Unified", DiffMode::Unified) }
-            </Cluster>
+            </ButtonGroup>
             <Diff title="buckle.toml" mode={*mode} before={BEFORE} after={AFTER} />
         </Stack>
     }

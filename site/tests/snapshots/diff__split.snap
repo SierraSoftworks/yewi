@@ -2,9 +2,9 @@
 source: site/tests/snapshots.rs
 ---
 <div class="yi-stack">
-<div class="yi-cluster">
-<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="true">Side by side</button>
-<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">Unified</button>
+<div role="group" aria-label="Layout" class="yi-button-group">
+<button type="button" aria-pressed="true" class="yi-button yi-button--default yi-button--sm">Side by side</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--default yi-button--sm">Unified</button>
 </div>
 <figure style="--yi-diff-digits:2" class="yi-diff yi-diff--split yi-diff--numbered">
 <figcaption class="yi-diff__header">
