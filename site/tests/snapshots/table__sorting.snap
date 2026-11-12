@@ -1,0 +1,104 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Hosts" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" aria-sort="ascending" class="yi-table__header yi-table__header--sortable yi-table__header--sorted">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Host</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">State</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Memory</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Last seen</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">db-1</th>
+<td class="yi-table__cell">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot">
+</span>Healthy</span>
+</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+<td class="yi-table__cell yi-table__cell--end">2 min ago</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">Edge-ams</th>
+<td class="yi-table__cell">
+<span class="yi-pill yi-pill--danger">
+<span aria-hidden="true" class="yi-status-dot">
+</span>Offline</span>
+</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+<td class="yi-table__cell yi-table__cell--end">190 min ago</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">web-1</th>
+<td class="yi-table__cell">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot">
+</span>Healthy</span>
+</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+<td class="yi-table__cell yi-table__cell--end">1 min ago</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">web-2</th>
+<td class="yi-table__cell">
+<span class="yi-pill yi-pill--warn">
+<span aria-hidden="true" class="yi-status-dot">
+</span>Degraded</span>
+</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+<td class="yi-table__cell yi-table__cell--end">4 min ago</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">web-10</th>
+<td class="yi-table__cell">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot">
+</span>Healthy</span>
+</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+<td class="yi-table__cell yi-table__cell--end">1 min ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<span role="status">Sorted by host, ascending</span>
+</div>

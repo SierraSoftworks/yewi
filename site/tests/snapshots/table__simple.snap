@@ -1,0 +1,52 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-table yi-table--ruled">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Rollout by stage" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" aria-sort="ascending" class="yi-table__header yi-table__header--sortable yi-table__header--sorted">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Host</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col">State</th>
+<th scope="col" class="yi-table__cell--end">Took</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__group">
+<th scope="colgroup" colspan="3">Canary</th>
+</tr>
+<tr class="yi-table__row">
+<th scope="row">web-01</th>
+<td>Updated</td>
+<td class="yi-table__cell--end">42 s</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row">web-02</th>
+<td>Updated</td>
+<td class="yi-table__cell--end">38 s</td>
+</tr>
+<tr class="yi-table__group">
+<th scope="colgroup" colspan="3">Fleet</th>
+</tr>
+<tr class="yi-table__row">
+<th scope="row">db-01</th>
+<td>Waiting</td>
+<td class="yi-table__cell--end">–</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row">edge-ams</th>
+<td>Waiting</td>
+<td class="yi-table__cell--end">–</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
