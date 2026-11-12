@@ -1,0 +1,118 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg);--yi-grid-min:18rem" class="yi-grid">
+<div class="yi-stack">
+<strong>Tree</strong>
+<div class="yi-json-view yi-json-view--tree">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-json-view__copy" aria-label="Copy JSON" title="Copy JSON">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+<div class="yi-json-view__body">
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__count">{6}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">id</span>: <span class="yi-json-view__string">"evt_01JD3Q7"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">type</span>: <span class="yi-json-view__string">"rollout.paused"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">at</span>: <span class="yi-json-view__string">"2026-01-15T11:42:07Z"</span>
+</div>
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">actor</span>
+<span class="yi-json-view__count">{2}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">kind</span>: <span class="yi-json-view__string">"schedule"</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">name</span>: <span class="yi-json-view__string">"nightly"</span>
+</div>
+</div>
+</details>
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">hosts</span>
+<span class="yi-json-view__count">{3}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">done</span>: <span class="yi-json-view__number">2</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">total</span>: <span class="yi-json-view__number">31</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">failed</span>: []</div>
+</div>
+</details>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">stages</span>: [<span class="yi-json-view__string">"canary"</span>, <span class="yi-json-view__string">"staging"</span>, <span class="yi-json-view__string">"production"</span>]</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div class="yi-stack">
+<strong>Source</strong>
+<div class="yi-json-view yi-json-view--source">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-json-view__copy" aria-label="Copy JSON" title="Copy JSON">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+<div class="yi-json-view__body">
+<pre class="yi-json-view__source">
+<code>{
+  <span class="yi-json-view__key">"id"</span>: <span class="yi-json-view__string">"evt_01JD3Q7"</span>,
+  <span class="yi-json-view__key">"type"</span>: <span class="yi-json-view__string">"rollout.paused"</span>,
+  <span class="yi-json-view__key">"at"</span>: <span class="yi-json-view__string">"2026-01-15T11:42:07Z"</span>,
+  <span class="yi-json-view__key">"actor"</span>: {
+    <span class="yi-json-view__key">"kind"</span>: <span class="yi-json-view__string">"schedule"</span>,
+    <span class="yi-json-view__key">"name"</span>: <span class="yi-json-view__string">"nightly"</span>
+  },
+  <span class="yi-json-view__key">"hosts"</span>: {
+    <span class="yi-json-view__key">"done"</span>: <span class="yi-json-view__number">2</span>,
+    <span class="yi-json-view__key">"total"</span>: <span class="yi-json-view__number">31</span>,
+    <span class="yi-json-view__key">"failed"</span>: []
+  },
+  <span class="yi-json-view__key">"stages"</span>: [
+    <span class="yi-json-view__string">"canary"</span>,
+    <span class="yi-json-view__string">"staging"</span>,
+    <span class="yi-json-view__string">"production"</span>
+  ]
+}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>

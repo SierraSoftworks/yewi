@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-json-view yi-json-view--source" style="max-inline-size: 34rem">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-json-view__copy" aria-label="Copy input" title="Copy input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+<div class="yi-json-view__body">
+<pre class="yi-json-view__source">
+<code>{
+  <span class="yi-json-view__key">"workflow"</span>: <span class="yi-json-view__string">"deploy-caddy"</span>,
+  <span class="yi-json-view__key">"trigger"</span>: {
+    <span class="yi-json-view__key">"kind"</span>: <span class="yi-json-view__string">"webhook"</span>,
+    <span class="yi-json-view__key">"id"</span>: <span class="yi-json-view__string">"3f1c9a7e52b84d06"</span>
+  },
+  <span class="yi-json-view__key">"attempt"</span>: <span class="yi-json-view__number">2</span>,
+  <span class="yi-json-view__key">"dry_run"</span>: <span class="yi-json-view__bool">false</span>,
+  <span class="yi-json-view__key">"approved_by"</span>: <span class="yi-json-view__null">null</span>,
+  <span class="yi-json-view__key">"targets"</span>: [
+    <span class="yi-json-view__string">"edge-fra-01"</span>,
+    <span class="yi-json-view__string">"edge-fra-02"</span>
+  ],
+  <span class="yi-json-view__key">"note"</span>: <span class="yi-json-view__string">"Rolls back on the first failed health check."</span>
+}</code>
+</pre>
+</div>
+</div>

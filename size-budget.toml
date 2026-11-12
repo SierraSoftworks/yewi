@@ -29,4 +29,5 @@ markdown = 20000
 qr = 30000
 router = 60000
 schema-form = 20000
+serde_json = 60000
 terminal = 40000

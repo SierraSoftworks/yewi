@@ -1,0 +1,83 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-json-view yi-json-view--tree" style="max-inline-size: 34rem">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-json-view__copy" aria-label="Copy JSON" title="Copy JSON">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+<div class="yi-json-view__body">
+<details open="open" class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">facts</span>
+<span class="yi-json-view__count">{8}</span>
+<span class="yi-json-view__preview">
+</span>
+</summary>
+<div class="yi-json-view__children">
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">hostname</span>: <span class="yi-json-view__string">"edge-fra-02"</span>
+</div>
+<details class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">os</span>
+<span class="yi-json-view__count">{3}</span>
+<span class="yi-json-view__preview">family: "debian", release: "13.2", kernel: "6.12.48-amd64"</span>
+</summary>
+</details>
+<details class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">cpu</span>
+<span class="yi-json-view__count">{3}</span>
+<span class="yi-json-view__preview">model: "AMD EPYC 7443P", cores: 24, flags: […]</span>
+</summary>
+</details>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">memory_mb</span>: <span class="yi-json-view__number">65536</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">virtual</span>: <span class="yi-json-view__bool">false</span>
+</div>
+<div class="yi-json-view__row">
+<span class="yi-json-view__key">maintenance_window</span>: <span class="yi-json-view__null">null</span>
+</div>
+<details class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">interfaces</span>
+<span class="yi-json-view__count">[2]</span>
+<span class="yi-json-view__preview">{…}, {…}</span>
+</summary>
+</details>
+<details class="yi-json-view__node">
+<summary class="yi-json-view__summary">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-json-view__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-json-view__key">labels</span>
+<span class="yi-json-view__count">{3}</span>
+<span class="yi-json-view__preview">role: "edge", region: "eu-central", tier: "production"</span>
+</summary>
+</details>
+</div>
+</details>
+</div>
+</div>
