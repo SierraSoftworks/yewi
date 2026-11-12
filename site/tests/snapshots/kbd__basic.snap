@@ -1,0 +1,14 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<kbd class="yi-kbd">Esc</kbd>
+<kbd class="yi-kbd">Tab</kbd>
+<kbd class="yi-kbd">Enter</kbd>
+<kbd class="yi-kbd">Space</kbd>
+<kbd class="yi-kbd">?</kbd>
+<kbd class="yi-kbd">/</kbd>
+</div>
+<p class="yi-text">Press <kbd class="yi-kbd">/</kbd> to search, or <kbd class="yi-kbd">Esc</kbd> to close.</p>
+</div>

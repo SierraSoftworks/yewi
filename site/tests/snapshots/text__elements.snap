@@ -1,0 +1,7 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 32rem">
+<p class="yi-text yi-text--lg">Pausing a rollout <strong class="yi-text">does not roll back</strong> hosts that have already been updated. Resume it, or start a rollback <em class="yi-text">before</em> the next maintenance window.</p>
+<small class="yi-text yi-text--subtle">Rollbacks are recorded in the audit log.</small>
+</div>
