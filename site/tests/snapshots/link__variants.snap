@@ -1,0 +1,16 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<a href="#variants-and-underline" class="yi-link yi-link--default yi-link--underline-auto">Default</a>
+<a href="#variants-and-underline" class="yi-link yi-link--default yi-link--underline-always">Always underlined</a>
+<a href="#variants-and-underline" class="yi-link yi-link--default yi-link--underline-hover">Underlined on hover</a>
+</div>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<a href="#variants-and-underline" class="yi-link yi-link--subtle yi-link--underline-auto">Subtle</a>
+<a href="#variants-and-underline" class="yi-link yi-link--subtle yi-link--underline-always">Always underlined</a>
+<a href="#variants-and-underline" class="yi-link yi-link--subtle yi-link--underline-hover">Underlined on hover</a>
+</div>
+<p class="yi-text yi-text--muted">Deployed by <a href="#variants-and-underline" class="yi-link yi-link--subtle yi-link--underline-auto">ben</a> from <a href="#variants-and-underline" class="yi-link yi-link--subtle yi-link--underline-auto">main</a>.</p>
+</div>

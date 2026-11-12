@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<h1 class="yi-heading yi-heading--4xl">Rollouts</h1>
+<h2 class="yi-heading yi-heading--3xl">Latest rollout</h2>
+<h3 class="yi-heading yi-heading--2xl">Stage: home</h3>
+<h4 class="yi-heading yi-heading--xl">Hosts in this stage</h4>
+<h5 class="yi-heading yi-heading--md">Health checks</h5>
+<h6 class="yi-heading yi-heading--md">Last probe</h6>
+</div>
