@@ -10,7 +10,12 @@ pub fn Example() -> Html {
             <Toast tone={Tone::Warn} title="Saved with warnings">
                 { "Two hosts were skipped because they are offline." }
             </Toast>
-            <Toast tone={Tone::Danger} title="Publishing failed" on_dismiss={Callback::noop()}>
+            <Toast
+                tone={Tone::Danger}
+                title="Publishing failed"
+                action={ToastAction::new("Retry", Callback::noop())}
+                on_dismiss={Callback::noop()}
+            >
                 { "The registry refused the upload." }
             </Toast>
             <Toast tone={Tone::Active}>{ "Rolling out to 12 hosts." }</Toast>
