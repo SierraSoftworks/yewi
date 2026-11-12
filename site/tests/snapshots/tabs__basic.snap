@@ -1,0 +1,20 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-tabs yi-tabs--line yi-tabs--md">
+<div role="tablist" aria-label="Account" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Profile</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Devices</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Credentials</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-0" aria-labelledby="yi-0-tab-0" tabindex="0" class="yi-tabs__panel">Name, callsign and the groups this person belongs to.</div>
+</div>
+<span role="status">Showing profile</span>
+</div>

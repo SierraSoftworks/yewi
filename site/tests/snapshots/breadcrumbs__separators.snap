@@ -1,0 +1,53 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Slash breadcrumb" class="yi-breadcrumbs yi-breadcrumbs--slash">
+<ol class="yi-breadcrumbs__list">
+<li class="yi-breadcrumbs__item">
+<a href="#fleet" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Fleet</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#eu-west" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">eu-west</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#web" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">web</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<span aria-current="page" class="yi-breadcrumbs__crumb">
+<span class="yi-breadcrumbs__label">Slash</span>
+</span>
+</li>
+</ol>
+</nav>
+<nav aria-label="Chevron breadcrumb" class="yi-breadcrumbs yi-breadcrumbs--chevron">
+<ol class="yi-breadcrumbs__list">
+<li class="yi-breadcrumbs__item">
+<a href="#fleet" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Fleet</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#eu-west" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">eu-west</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#web" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">web</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<span aria-current="page" class="yi-breadcrumbs__crumb">
+<span class="yi-breadcrumbs__label">Chevron</span>
+</span>
+</li>
+</ol>
+</nav>
+</div>
