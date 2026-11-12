@@ -1,6 +1,15 @@
 //! Buttons: the reference implementation every other component follows.
+//!
+//! [`Button`] is the control, [`IconButton`] is a button whose face is only an
+//! icon, and [`ButtonGroup`] joins several buttons into one control.
 
 use yew::prelude::*;
+
+mod group;
+mod icon_button;
+
+pub use group::*;
+pub use icon_button::*;
 
 use crate::{Attrs, Icon, IconData, Size};
 
@@ -70,6 +79,10 @@ pub struct ButtonProps {
     /// focusable so the busy state is announced.
     #[prop_or_default]
     pub loading: bool,
+    /// Makes this a toggle button and says whether it is on. Ignored with
+    /// `href`. The caller owns the state and flips it in `on_click`.
+    #[prop_or_default]
+    pub pressed: Option<bool>,
     /// Renders a link that looks like a button.
     #[prop_or_default]
     pub href: Option<AttrValue>,
@@ -151,6 +164,7 @@ pub fn Button(props: &ButtonProps) -> Html {
                 disabled={props.disabled}
                 aria-disabled={(props.loading && !props.disabled).then_some("true")}
                 aria-busy={aria_busy}
+                aria-pressed={props.pressed.map(|pressed| if pressed { "true" } else { "false" })}
                 {onclick}
             >
                 { content }
