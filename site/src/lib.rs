@@ -12,7 +12,6 @@
 pub mod app;
 pub mod docs;
 pub mod guides;
-mod highlight;
 mod shell;
 
 /// Documentation pages, one module per directory under `src/pages/`.

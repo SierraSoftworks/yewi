@@ -1,0 +1,84 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span title="Cargo.toml" class="yi-code-block__filename">Cargo.toml</span>
+<span class="yi-code-block__language">TOML</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-meta">[dependencies]</span>
+<span class="yi-tok-property">yew</span> = { <span class="yi-tok-property">version</span> = <span class="yi-tok-string">"0.23"</span>, <span class="yi-tok-property">features</span> = [<span class="yi-tok-string">"csr"</span>] }
+<span class="yi-tok-property">yewi</span> = { <span class="yi-tok-property">version</span> = <span class="yi-tok-string">"0.1"</span>, <span class="yi-tok-property">features</span> = [<span class="yi-tok-string">"csr"</span>, <span class="yi-tok-string">"code"</span>, <span class="yi-tok-string">"highlight"</span>] }</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Shell</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-comment"># Build the site, then roll it out to both regions.</span>
+<span class="yi-tok-function">trunk</span> build --release
+<span class="yi-tok-keyword">for</span> region <span class="yi-tok-keyword">in</span> fra ams; <span class="yi-tok-keyword">do</span>
+  <span class="yi-tok-function">nomad</span> job run -var <span class="yi-tok-string">"region=$region"</span> docs.hcl
+<span class="yi-tok-keyword">done</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">JSON</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">{
+  <span class="yi-tok-property">"job"</span>: <span class="yi-tok-string">"docs"</span>,
+  <span class="yi-tok-property">"healthy"</span>: <span class="yi-tok-literal">true</span>,
+  <span class="yi-tok-property">"allocations"</span>: <span class="yi-tok-number">4</span>,
+  <span class="yi-tok-property">"regions"</span>: [<span class="yi-tok-string">"fra"</span>, <span class="yi-tok-string">"ams"</span>]
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">KQL</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">from events | where status &gt;= 500 | summarize count() by service</code>
+</pre>
+</div>
+</div>

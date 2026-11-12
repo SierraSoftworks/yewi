@@ -1,0 +1,253 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:24rem" class="yi-grid">
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Rust</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-meta">#[derive(Debug, Clone)]</span>
+<span class="yi-tok-keyword">pub</span> <span class="yi-tok-keyword">struct</span> <span class="yi-tok-type">Rollout</span>&lt;<span class="yi-tok-meta">'a</span>&gt; {
+    job: &amp;<span class="yi-tok-meta">'a</span> <span class="yi-tok-type">str</span>,
+    healthy: <span class="yi-tok-type">u32</span>, <span class="yi-tok-comment">// of `count`</span>
+}
+
+<span class="yi-tok-keyword">impl</span> <span class="yi-tok-type">Rollout</span>&lt;<span class="yi-tok-meta">'_</span>&gt; {
+    <span class="yi-tok-keyword">pub</span> <span class="yi-tok-keyword">fn</span> <span class="yi-tok-function">done</span>(&amp;<span class="yi-tok-keyword">self</span>, count: <span class="yi-tok-type">u32</span>) -&gt; <span class="yi-tok-type">bool</span> {
+        <span class="yi-tok-meta">println!</span>(<span class="yi-tok-string">"{}: {}/{count}"</span>, <span class="yi-tok-keyword">self</span>.job, <span class="yi-tok-keyword">self</span>.healthy);
+        <span class="yi-tok-keyword">self</span>.healthy &gt;= count &amp;&amp; count != <span class="yi-tok-number">0</span>
+    }
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">TypeScript</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">interface</span> <span class="yi-tok-type">Rollout</span> {
+  <span class="yi-tok-keyword">readonly</span> job: <span class="yi-tok-type">string</span>;
+  healthy: <span class="yi-tok-type">number</span>; <span class="yi-tok-comment">// of `count`</span>
+}
+
+<span class="yi-tok-keyword">export</span> <span class="yi-tok-keyword">async</span> <span class="yi-tok-keyword">function</span> <span class="yi-tok-function">wait</span>(rollout: <span class="yi-tok-type">Rollout</span>, count = <span class="yi-tok-number">4</span>): <span class="yi-tok-type">Promise</span>&lt;<span class="yi-tok-type">boolean</span>&gt; {
+  <span class="yi-tok-keyword">const</span> response = <span class="yi-tok-keyword">await</span> <span class="yi-tok-function">fetch</span>(<span class="yi-tok-string">`/v1/jobs/${rollout.job}`</span>);
+  <span class="yi-tok-keyword">return</span> response.ok &amp;&amp; rollout.healthy &gt;= count;
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">JavaScript</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">import</span> { status } <span class="yi-tok-keyword">from</span> <span class="yi-tok-string">"./api.js"</span>;
+
+<span class="yi-tok-comment">/* Poll until every allocation is healthy. */</span>
+<span class="yi-tok-keyword">export</span> <span class="yi-tok-keyword">function</span> <span class="yi-tok-function">watch</span>(job, onDone) {
+  <span class="yi-tok-keyword">const</span> timer = <span class="yi-tok-function">setInterval</span>(<span class="yi-tok-keyword">async</span> () =&gt; {
+    <span class="yi-tok-keyword">const</span> { healthy, count } = <span class="yi-tok-keyword">await</span> <span class="yi-tok-function">status</span>(job);
+    <span class="yi-tok-keyword">if</span> (healthy === count) <span class="yi-tok-function">clearInterval</span>(timer), <span class="yi-tok-function">onDone</span>(<span class="yi-tok-literal">null</span>);
+  }, <span class="yi-tok-number">2_000</span>);
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Python</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">from</span> dataclasses <span class="yi-tok-keyword">import</span> dataclass
+
+<span class="yi-tok-meta">@dataclass</span>
+<span class="yi-tok-keyword">class</span> <span class="yi-tok-type">Rollout</span>:
+    <span class="yi-tok-string">"""One job being rolled out."""</span>
+    job: <span class="yi-tok-type">str</span>
+    healthy: <span class="yi-tok-type">int</span> = <span class="yi-tok-number">0</span>
+
+    <span class="yi-tok-keyword">def</span> <span class="yi-tok-function">done</span>(self, count: <span class="yi-tok-type">int</span>) -&gt; <span class="yi-tok-type">bool</span>:
+        <span class="yi-tok-function">print</span>(<span class="yi-tok-string">f"{self.job}: {self.healthy}/{count}"</span>)  <span class="yi-tok-comment"># progress</span>
+        <span class="yi-tok-keyword">return</span> self.healthy &gt;= count <span class="yi-tok-keyword">and</span> count != <span class="yi-tok-number">0</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Go</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">package</span> rollout
+
+<span class="yi-tok-keyword">import</span> <span class="yi-tok-string">"fmt"</span>
+
+<span class="yi-tok-comment">// Done reports whether every allocation is healthy.</span>
+<span class="yi-tok-keyword">func</span> (r *Rollout) <span class="yi-tok-function">Done</span>(count <span class="yi-tok-type">int</span>) <span class="yi-tok-type">bool</span> {
+	fmt.<span class="yi-tok-function">Printf</span>(<span class="yi-tok-string">"%s: %d/%d\n"</span>, r.Job, r.Healthy, count)
+	<span class="yi-tok-keyword">return</span> r.Healthy &gt;= count &amp;&amp; count != <span class="yi-tok-number">0</span>
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">SQL</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">SELECT</span> job, <span class="yi-tok-function">count</span>(*) <span class="yi-tok-keyword">AS</span> healthy
+<span class="yi-tok-keyword">FROM</span> allocations
+<span class="yi-tok-keyword">WHERE</span> status = <span class="yi-tok-string">'running'</span> <span class="yi-tok-keyword">AND</span> started_at &gt; <span class="yi-tok-function">now</span>() - interval <span class="yi-tok-string">'5 minutes'</span>
+<span class="yi-tok-keyword">GROUP</span> <span class="yi-tok-keyword">BY</span> job
+<span class="yi-tok-keyword">HAVING</span> <span class="yi-tok-function">count</span>(*) &gt;= <span class="yi-tok-number">4</span> <span class="yi-tok-comment">-- the whole group</span>
+<span class="yi-tok-keyword">ORDER</span> <span class="yi-tok-keyword">BY</span> job;</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Shell</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-comment">#!/usr/bin/env bash</span>
+<span class="yi-tok-function">set</span> -euo pipefail
+
+<span class="yi-tok-keyword">export</span> <span class="yi-tok-variable">NOMAD_ADDR</span>=<span class="yi-tok-string">"https://nomad.example.com"</span>
+<span class="yi-tok-keyword">for</span> region <span class="yi-tok-keyword">in</span> fra ams; <span class="yi-tok-keyword">do</span>
+  <span class="yi-tok-keyword">if</span> ! nomad job run -var <span class="yi-tok-string">"region=$region"</span> docs.hcl; <span class="yi-tok-keyword">then</span>
+    <span class="yi-tok-function">echo</span> <span class="yi-tok-string">"rollout failed in ${region}"</span> &gt;&amp;<span class="yi-tok-number">2</span> <span class="yi-tok-comment"># keep going</span>
+  <span class="yi-tok-keyword">fi</span>
+<span class="yi-tok-keyword">done</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">HCL</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">job</span> <span class="yi-tok-string">"docs"</span> {
+  <span class="yi-tok-property">datacenters</span> = [<span class="yi-tok-string">"fra"</span>, <span class="yi-tok-string">"ams"</span>]
+
+  <span class="yi-tok-keyword">group</span> <span class="yi-tok-string">"web"</span> {
+    <span class="yi-tok-property">count</span> = <span class="yi-tok-number">4</span> <span class="yi-tok-comment"># one per node</span>
+
+    <span class="yi-tok-keyword">task</span> <span class="yi-tok-string">"caddy"</span> {
+      <span class="yi-tok-property">driver</span> = <span class="yi-tok-string">"docker"</span>
+      <span class="yi-tok-keyword">config</span> {
+        <span class="yi-tok-property">image</span> = <span class="yi-tok-string">"caddy:2.8-alpine"</span>
+      }
+    }
+  }
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">TOML</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-meta">[package]</span>
+<span class="yi-tok-property">name</span> = <span class="yi-tok-string">"docs"</span>
+<span class="yi-tok-property">version</span> = <span class="yi-tok-string">"1.4.2"</span>
+<span class="yi-tok-property">edition</span> = <span class="yi-tok-string">"2024"</span>
+
+<span class="yi-tok-meta">[dependencies]</span>
+<span class="yi-tok-comment"># The design system.</span>
+<span class="yi-tok-property">yewi</span> = { <span class="yi-tok-property">version</span> = <span class="yi-tok-string">"0.1"</span>, <span class="yi-tok-property">features</span> = [<span class="yi-tok-string">"csr"</span>, <span class="yi-tok-string">"code"</span>] }
+
+<span class="yi-tok-meta">[profile.release]</span>
+<span class="yi-tok-property">opt-level</span> = <span class="yi-tok-string">"z"</span>
+<span class="yi-tok-property">lto</span> = <span class="yi-tok-literal">true</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">YAML</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-comment"># Local preview of the docs site.</span>
+<span class="yi-tok-property">services</span>:
+  <span class="yi-tok-property">docs</span>:
+    <span class="yi-tok-property">image</span>: ghcr.io/sierrasoftworks/docs:<span class="yi-tok-number">1.4.2</span>
+    <span class="yi-tok-property">ports</span>: [<span class="yi-tok-string">"8080:80"</span>]
+    <span class="yi-tok-property">environment</span>:
+      <span class="yi-tok-property">LOG_LEVEL</span>: info
+      <span class="yi-tok-property">WORKERS</span>: <span class="yi-tok-number">4</span>
+    <span class="yi-tok-property">read_only</span>: <span class="yi-tok-literal">true</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">JSON</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">{
+  <span class="yi-tok-property">"job"</span>: <span class="yi-tok-string">"docs"</span>,
+  <span class="yi-tok-property">"healthy"</span>: <span class="yi-tok-literal">true</span>,
+  <span class="yi-tok-property">"allocations"</span>: <span class="yi-tok-number">4</span>,
+  <span class="yi-tok-property">"regions"</span>: [<span class="yi-tok-string">"fra"</span>, <span class="yi-tok-string">"ams"</span>],
+  <span class="yi-tok-property">"previous"</span>: <span class="yi-tok-literal">null</span>
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">HTML</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-meta">&lt;!doctype html&gt;</span>
+&lt;<span class="yi-tok-tag">html</span> <span class="yi-tok-property">lang</span>=<span class="yi-tok-string">"en"</span>&gt;
+  &lt;<span class="yi-tok-tag">head</span>&gt;
+    <span class="yi-tok-comment">&lt;!-- Set the theme before first paint. --&gt;</span>
+    &lt;<span class="yi-tok-tag">style</span>&gt;:root { <span class="yi-tok-property">--yi-accent</span>: <span class="yi-tok-number">#409eff</span>; }&lt;/<span class="yi-tok-tag">style</span>&gt;
+    &lt;<span class="yi-tok-tag">script</span>&gt;document.documentElement.dataset.theme = <span class="yi-tok-string">"dark"</span>;&lt;/<span class="yi-tok-tag">script</span>&gt;
+  &lt;/<span class="yi-tok-tag">head</span>&gt;
+  &lt;<span class="yi-tok-tag">body</span>&gt;
+    &lt;<span class="yi-tok-tag">a</span> <span class="yi-tok-property">href</span>=<span class="yi-tok-string">"/docs"</span> <span class="yi-tok-property">class</span>=<span class="yi-tok-string">"link"</span>&gt;Docs &amp;amp; guides&lt;/<span class="yi-tok-tag">a</span>&gt;
+  &lt;/<span class="yi-tok-tag">body</span>&gt;
+&lt;/<span class="yi-tok-tag">html</span>&gt;</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">CSS</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">@layer</span> app {
+  .card:hover {
+    <span class="yi-tok-property">--lift</span>: <span class="yi-tok-number">2px</span>; <span class="yi-tok-comment">/* how far it rises */</span>
+    <span class="yi-tok-property">transform</span>: <span class="yi-tok-function">translateY</span>(<span class="yi-tok-function">calc</span>(-<span class="yi-tok-number">1</span> * <span class="yi-tok-function">var</span>(--lift)));
+    <span class="yi-tok-property">border</span>: <span class="yi-tok-number">1px</span> solid <span class="yi-tok-number">#d0d7de</span>;
+    <span class="yi-tok-property">font-family</span>: <span class="yi-tok-string">"Inter"</span>, sans-serif;
+  }
+}</code>
+</pre>
+</div>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Diff</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-meta">--- a/docs.hcl</span>
+<span class="yi-tok-meta">+++ b/docs.hcl</span>
+<span class="yi-tok-meta">@@ -4,3 +4,3 @@</span>
+   group "web" {
+<span class="yi-tok-deleted">-    count = 2</span>
+<span class="yi-tok-inserted">+    count = 4</span>
+ </code>
+</pre>
+</div>
+</div>
