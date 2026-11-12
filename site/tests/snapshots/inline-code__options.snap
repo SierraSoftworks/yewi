@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p class="yi-text">
+<span class="yi-text yi-text--medium">A. Tinted (default): </span>run <code class="yi-inline-code">nomad job run caddy.hcl</code> to deploy.</p>
+<p class="yi-text">
+<span class="yi-text yi-text--medium">B. Outlined: </span>run <code class="yi-inline-code" style="--yi-inline-code-bg: var(--yi-surface); --yi-inline-code-border: var(--yi-line-strong)">nomad job run caddy.hcl</code> to deploy.</p>
+<p class="yi-text">
+<span class="yi-text yi-text--medium">C. Plain accent: </span>run <code class="yi-inline-code" style="--yi-inline-code-bg: transparent; --yi-inline-code-fg: var(--yi-accent-text)">nomad job run caddy.hcl</code> to deploy.</p>
+</div>

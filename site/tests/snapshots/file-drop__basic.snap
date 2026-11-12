@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<label class="yi-file-drop yi-file-drop--md">
+<input type="file" aria-labelledby="yi-0-label" aria-describedby="yi-0-hint" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M12 3v12M17 8l-5-5-5 5M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-0-label" class="yi-file-drop__label">Drop a package here, or choose one</span>
+<span id="yi-0-hint" class="yi-file-drop__hint">One at a time. The file goes straight from the browser to the store.</span>
+</span>
+</label>
+<span role="status">Nothing chosen</span>
+</div>
