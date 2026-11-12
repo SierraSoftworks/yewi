@@ -13,8 +13,8 @@ use crate::{
 };
 
 mod combobox;
-mod listbox;
-mod options;
+pub(crate) mod listbox;
+pub(crate) mod options;
 
 pub use combobox::*;
 use listbox::{Listbox, option_id};
@@ -245,7 +245,8 @@ pub fn Select(props: &SelectProps) -> Html {
             base: &base,
             options,
             order: &order,
-            selected,
+            selected: selected.as_slice(),
+            multi: false,
             active: *active,
             width: *width,
             label: props.label.clone(),

@@ -1,0 +1,18 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 24rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Drain hosts</label>
+<div class="yi-field__body">
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-input--mono yi-select__control yi-select__combobox yi-tag-picker__control">
+<input value="" id="yi-0-control" type="text" role="combobox" placeholder="Search 5,000 hosts" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+</div>
+<span role="status">0 hosts chosen</span>
+</div>
