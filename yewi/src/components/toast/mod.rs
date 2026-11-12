@@ -14,25 +14,6 @@ use crate::{Attrs, Button, ButtonVariant, Icon, IconButton, IconData, Size, Tone
 /// How long a toast stays when neither it nor its host says otherwise.
 pub const DEFAULT_TOAST_DURATION_MS: u32 = 5_000;
 
-/// How a toast shows its tone.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum ToastAccent {
-    /// A tone-coloured icon before the text.
-    #[default]
-    Icon,
-    /// A tone-coloured stripe along the leading edge, with no icon.
-    Stripe,
-}
-
-impl ToastAccent {
-    const fn as_str(self) -> &'static str {
-        match self {
-            ToastAccent::Icon => "icon",
-            ToastAccent::Stripe => "stripe",
-        }
-    }
-}
-
 /// The corner or edge of the viewport where a [`ToastHost`] stacks toasts.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
 pub enum ToastPlacement {
@@ -179,8 +160,6 @@ pub struct ToastProps {
     /// A short heading above the message.
     #[prop_or_default]
     pub title: Option<AttrValue>,
-    #[prop_or_default]
-    pub accent: ToastAccent,
     /// A follow-up shown as a button. Activating it also fires `on_dismiss`.
     #[prop_or_default]
     pub action: Option<ToastAction>,
@@ -205,10 +184,9 @@ pub fn Toast(props: &ToastProps) -> Html {
     let class = classes!(
         "yi-toast",
         format!("yi-toast--{}", props.tone.as_str()),
-        format!("yi-toast--{}", props.accent.as_str()),
         props.class.clone(),
     );
-    let icon = tone_icon(props.tone).filter(|_| props.accent == ToastAccent::Icon);
+    let icon = tone_icon(props.tone);
 
     let dismiss = props.on_dismiss.clone().unwrap_or_default();
     let onkeydown = props.on_dismiss.clone().map(|on_dismiss| {
@@ -374,8 +352,6 @@ pub struct ToastHostProps {
     /// How long a toast stays unless it sets its own [`ToastDuration`].
     #[prop_or(DEFAULT_TOAST_DURATION_MS)]
     pub duration_ms: u32,
-    #[prop_or_default]
-    pub accent: ToastAccent,
     /// The accessible name of the toast region.
     #[prop_or(AttrValue::Static("Notifications"))]
     pub label: AttrValue,
@@ -438,7 +414,6 @@ pub fn ToastHost(props: &ToastHostProps) -> Html {
                     id={entry.id}
                     message={entry.message.clone()}
                     duration={entry.message.duration.resolve(entry.message.tone, props.duration_ms)}
-                    accent={props.accent}
                     {paused}
                     on_dismiss={on_dismiss.clone()}
                 />
@@ -459,7 +434,6 @@ struct HostedToastProps {
     id: ToastId,
     message: Rc<ToastMessage>,
     duration: Option<u32>,
-    accent: ToastAccent,
     paused: bool,
     on_dismiss: Callback<ToastId>,
 }
@@ -490,7 +464,6 @@ fn HostedToast(props: &HostedToastProps) -> Html {
         <Toast
             tone={message.tone}
             title={message.title.clone()}
-            accent={props.accent}
             action={message.action.clone()}
             on_dismiss={dismiss}
         >
