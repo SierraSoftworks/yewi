@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--stacked" aria-label="Rollout">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Started by</dt>
+<dd class="yi-description-list__value">Ben</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Strategy</dt>
+<dd class="yi-description-list__value">Canary, then 25% waves</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Progress</dt>
+<dd class="yi-description-list__value">2 of 31 hosts</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Commit</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">9f9107c</dd>
+</div>
+<div class="yi-description-list__item yi-description-list__item--wide">
+<dt class="yi-description-list__term">Reason</dt>
+<dd class="yi-description-list__value">Picks up the upstream fix for connection resets under load, ahead of the weekend traffic peak.</dd>
+</div>
+</dl>
