@@ -1,0 +1,184 @@
+// Sidebar
+//
+// Selection reads as a neutral lift; the accent-coloured icon (or dot) alone
+// draws the eye. Group labels are small uppercase eyebrows.
+@use "api" as *;
+
+.yi-sidebar {
+  // Component tokens
+  --yi-sidebar-padding: var(--yi-space-md);
+  --yi-sidebar-gap: var(--yi-space-2xs); // Between items.
+  --yi-sidebar-group-gap: var(--yi-space-lg); // Above a group.
+  --yi-sidebar-item-height: var(--yi-control-height);
+  --yi-sidebar-item-fg: var(--yi-fg-muted);
+  --yi-sidebar-item-bg-hover: var(--yi-neutral-soft);
+  --yi-sidebar-item-bg-current: var(--yi-neutral-soft);
+  --yi-sidebar-item-fg-current: var(--yi-fg);
+  --yi-sidebar-marker-current: var(--yi-accent-text); // The current item's icon or dot.
+  --yi-sidebar-heading-fg: var(--yi-fg-subtle);
+  --yi-sidebar-heading-size: var(--yi-text-xs);
+  --yi-sidebar-heading-weight: 600;
+  --yi-sidebar-heading-transform: uppercase;
+  --yi-sidebar-heading-tracking: 0.08em;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--yi-sidebar-padding);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  min-block-size: 100%;
+  padding: var(--yi-sidebar-padding);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+}
+
+.yi-sidebar__items,
+.yi-sidebar__group,
+.yi-sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-sidebar-gap);
+}
+
+.yi-sidebar__items {
+  flex: 1;
+}
+
+.yi-sidebar__group:not(:first-child) {
+  margin-block-start: var(--yi-sidebar-group-gap);
+}
+
+// An ungrouped item after a group starts a new, unlabelled set.
+.yi-sidebar__group + .yi-sidebar__item {
+  margin-block-start: var(--yi-sidebar-group-gap);
+}
+
+.yi-sidebar__heading {
+  padding: 0 var(--yi-space-sm) var(--yi-space-xs);
+  color: var(--yi-sidebar-heading-fg);
+  font-size: var(--yi-sidebar-heading-size);
+  font-weight: var(--yi-sidebar-heading-weight);
+  letter-spacing: var(--yi-sidebar-heading-tracking);
+  text-transform: var(--yi-sidebar-heading-transform);
+}
+
+.yi-sidebar__footer {
+  flex: none;
+  padding-block-start: var(--yi-sidebar-padding);
+  border-block-start: 1px solid var(--yi-line);
+}
+
+.yi-sidebar__item {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--yi-sidebar-item-height);
+  padding: var(--yi-space-xs) var(--yi-space-sm);
+  border: 0;
+  border-radius: var(--yi-radius-control);
+  background: none;
+  color: var(--yi-sidebar-item-fg);
+  font: inherit;
+  font-weight: 500;
+  line-height: var(--yi-leading-tight);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    background: var(--yi-sidebar-item-bg-hover);
+    color: var(--yi-sidebar-item-fg-current);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+
+  &--current {
+    background: var(--yi-sidebar-item-bg-current);
+    color: var(--yi-sidebar-item-fg-current);
+  }
+
+  &--nested {
+    font-weight: 400;
+  }
+}
+
+.yi-sidebar__icon,
+.yi-sidebar__hint {
+  display: inline-flex;
+  flex: none;
+  color: var(--yi-fg-subtle);
+}
+
+.yi-sidebar__icon {
+  --yi-icon-size: 1.125rem;
+
+  justify-content: center;
+  inline-size: 1.125rem;
+
+  .yi-sidebar__item--current > & {
+    color: var(--yi-sidebar-marker-current);
+  }
+}
+
+.yi-sidebar__hint {
+  --yi-icon-size: 0.875rem;
+}
+
+// Sits in the icon column, so nested names line up with the names above.
+.yi-sidebar__dot {
+  flex: none;
+  inline-size: 1.125rem;
+
+  &::before {
+    display: block;
+    inline-size: 0.375rem;
+    block-size: 0.375rem;
+    margin-inline: auto;
+    border-radius: var(--yi-radius-full);
+    background: currentColor;
+    opacity: 0.45;
+    content: "";
+  }
+
+  .yi-sidebar__item--current > &::before {
+    background: var(--yi-sidebar-marker-current);
+    opacity: 1;
+  }
+}
+
+.yi-sidebar__label {
+  @include truncate;
+
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.yi-sidebar__trailing {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-sm);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (forced-colors: active) {
+  .yi-sidebar__item--current {
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+}
