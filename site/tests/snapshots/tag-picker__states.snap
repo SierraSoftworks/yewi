@@ -1,0 +1,184 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:16rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="font-size: var(--yi-text-sm); font-weight: 500" aria-hidden="true">Empty</span>
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control">
+<input value="" type="text" role="combobox" placeholder="Add days" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-label="Empty" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="font-size: var(--yi-text-sm); font-weight: 500" aria-hidden="true">Chosen</span>
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Monday</span>
+</span>
+<button type="button" aria-label="Remove Monday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Friday</span>
+</span>
+<button type="button" aria-label="Remove Friday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-label="Chosen" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="font-size: var(--yi-text-sm); font-weight: 500" aria-hidden="true">Wrapping</span>
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Monday</span>
+</span>
+<button type="button" aria-label="Remove Monday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Tuesday</span>
+</span>
+<button type="button" aria-label="Remove Tuesday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Wednesday</span>
+</span>
+<button type="button" aria-label="Remove Wednesday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Thursday</span>
+</span>
+<button type="button" aria-label="Remove Thursday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Friday</span>
+</span>
+<button type="button" aria-label="Remove Friday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Saturday</span>
+</span>
+<button type="button" aria-label="Remove Saturday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-label="Wrapping" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="font-size: var(--yi-text-sm); font-weight: 500" aria-hidden="true">Disabled</span>
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control yi-input--disabled">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Monday</span>
+</span>
+<button type="button" aria-label="Remove Monday" disabled="disabled" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Friday</span>
+</span>
+<button type="button" aria-label="Remove Friday" disabled="disabled" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-label="Disabled" disabled="disabled" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="font-size: var(--yi-text-sm); font-weight: 500" aria-hidden="true">Invalid</span>
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-input--invalid yi-select__control yi-select__combobox yi-tag-picker__control">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Sunday</span>
+</span>
+<button type="button" aria-label="Remove Sunday" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-label="Invalid" aria-invalid="true" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+</div>
+</div>

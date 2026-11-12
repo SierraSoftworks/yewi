@@ -1,0 +1,158 @@
+// TreeSelect
+//
+// The control is Select's trigger and the rows are Select's options
+// (`.yi-select__*`), so the two never drift apart. The panel adds a search
+// box above the list and, below the top level, a trail of the branches that
+// lead to it.
+@use "api" as *;
+
+.yi-tree-select {
+  // Component tokens
+  --yi-tree-select-panel-min-width: 18rem; // unless the control is wider
+  --yi-tree-select-panel-max-width: 28rem;
+  --yi-tree-select-media-size: 1.5rem; // the box a `render_media` picture sits in
+  --yi-tree-select-detail-fg: var(--yi-fg-muted);
+  --yi-tree-select-trail-fg: var(--yi-accent-text);
+}
+
+.yi-tree-select__panel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  // The surface's border sits outside the panel.
+  inline-size: max(var(--yi-tree-select-panel-min-width), calc(var(--yi-select-anchor-width, 0px) - 2px));
+  max-inline-size: min(
+    max(var(--yi-tree-select-panel-max-width), calc(var(--yi-select-anchor-width, 0px) - 2px)),
+    calc(100vw - var(--yi-space-lg) - 2px)
+  );
+}
+
+.yi-tree-select__search {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  min-block-size: var(--yi-control-height);
+  padding-inline: var(--yi-space-md);
+  border-block-end: 1px solid var(--yi-line);
+  color: var(--yi-fg-subtle);
+  cursor: text;
+
+  > .yi-select__input {
+    color: var(--yi-fg);
+    user-select: text;
+  }
+}
+
+.yi-tree-select__trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-2xs) 0;
+  padding: var(--yi-space-xs) var(--yi-select-menu-padding) 0;
+  font-size: var(--yi-text-xs);
+
+  &[hidden] {
+    display: none;
+  }
+
+  > button {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: var(--yi-space-2xs) var(--yi-space-xs);
+    border: 0;
+    border-radius: var(--yi-radius-sm);
+    background: none;
+    color: var(--yi-tree-select-trail-fg);
+    font: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--yi-select-option-active-bg);
+    }
+
+    &:focus-visible {
+      @include focus-ring(0);
+    }
+
+    &:not(:last-child)::after {
+      margin-inline-start: var(--yi-space-sm);
+      color: var(--yi-fg-subtle);
+      content: "\203a" / "";
+    }
+
+    // Where the list already is: a name, not a way to get there.
+    &[aria-current] {
+      color: var(--yi-fg-muted);
+      pointer-events: none;
+    }
+  }
+}
+
+.yi-tree-select__list {
+  display: flex;
+  flex-direction: column;
+  max-block-size: var(--yi-select-menu-max-height);
+  padding: var(--yi-select-menu-padding);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--yi-select-menu-padding);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.yi-tree-select__row {
+  flex: none;
+  min-block-size: calc(var(--yi-tree-select-media-size) + 2 * var(--yi-space-2xs));
+  box-sizing: border-box;
+}
+
+.yi-tree-select__clear {
+  color: var(--yi-fg-muted);
+}
+
+.yi-tree-select__media {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--yi-tree-select-media-size);
+  block-size: var(--yi-tree-select-media-size);
+
+  > img,
+  > svg {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+  }
+}
+
+.yi-tree-select__detail {
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  color: var(--yi-tree-select-detail-fg);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: var(--yi-text-xs);
+
+  @include truncate;
+}
+
+// The arrow on a row with more inside: a press on it opens the branch
+// without choosing it.
+.yi-tree-select__enter {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  margin-inline-end: calc(-1 * var(--yi-space-2xs));
+  border-radius: var(--yi-radius-sm);
+  color: var(--yi-fg-subtle);
+
+  &:hover {
+    background: var(--yi-surface);
+    box-shadow: inset 0 0 0 1px var(--yi-line);
+    color: var(--yi-fg);
+  }
+}

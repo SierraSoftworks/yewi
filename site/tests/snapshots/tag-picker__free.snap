@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 24rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Allowed hosts</label>
+<div class="yi-field__body">
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-input--mono yi-select__control yi-select__combobox yi-tag-picker__control">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">api.example.net</span>
+</span>
+<button type="button" aria-label="Remove api.example.net" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" id="yi-0-control" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-describedby="yi-0-message" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+</div>
+<p id="yi-0-message" class="yi-field__message">Press Enter or type a comma after each host</p>
+</div>
+</div>
+<span role="status">1 allowed: api.example.net</span>
+</div>

@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 20rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Topic</label>
+<div class="yi-field__body">
+<div class="yi-select yi-tree-select">
+<span class="yi-popover">
+<button type="button" id="yi-0-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">sensors/roof/wind</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<p id="yi-0-message" class="yi-field__message">Pick a known topic or type one, such as sensors/attic/light</p>
+</div>
+</div>
+<span role="status">Subscribed to sensors/roof/wind</span>
+</div>
