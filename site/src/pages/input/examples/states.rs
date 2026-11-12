@@ -21,7 +21,7 @@ pub fn Example() -> Html {
                 <TextInput value="eu-west-9" />
             </Field>
             <Field label="Invalid number" error="Must be at least 1.">
-                <NumberInput value={0.0} min={1.0} stepper=true />
+                <NumberInput value={0.0} min={1.0} />
             </Field>
         </Grid>
     }

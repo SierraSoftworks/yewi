@@ -1,0 +1,33 @@
+---
+source: site/tests/snapshots.rs
+---
+<form style="max-inline-size: 28rem" novalidate="novalidate">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Name</label>
+<div class="yi-field__body">
+<input value="Field team" id="yi-0-control" type="text" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Certificate<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<label class="yi-file-drop yi-file-drop--md">
+<input type="file" id="yi-1-control" accept=".pem,.p12" aria-required="true" aria-labelledby="yi-1-label yi-2-label" aria-describedby="yi-1-message" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M14 2v5a1 1 0 0 0 1 1h5M4 12v6M4 14h2M9.65 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v4M2 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-2-label" class="yi-file-drop__label">Drop a file here, or choose one</span>
+</span>
+</label>
+<p id="yi-1-message" class="yi-field__message">A PEM or PKCS #12 file.</p>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Import</button>
+</div>
+</div>
+</form>

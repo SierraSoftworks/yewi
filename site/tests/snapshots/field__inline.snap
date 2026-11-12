@@ -21,6 +21,20 @@ source: site/tests/snapshots.rs
 <div class="yi-field__body">
 <div class="yi-input yi-number-input yi-input--md yi-input--invalid">
 <input value="12" id="yi-2-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="12" aria-valuemin="0" aria-valuemax="10" aria-invalid="true" aria-describedby="yi-2-message" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" disabled="disabled" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
 </div>
 <p id="yi-2-message" role="alert" class="yi-field__message yi-field__message--error">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
