@@ -1,0 +1,156 @@
+// Menu
+//
+// A column of actions. It draws no surface: a popover or card around it
+// does. Groups, and a dangerous item after gentler ones, are set apart by a
+// rule without the caller asking.
+@use "api" as *;
+
+.yi-menu {
+  // Component tokens
+  --yi-menu-padding: var(--yi-space-xs);
+  --yi-menu-min-width: 11rem;
+  --yi-menu-item-height: var(--yi-control-height);
+  --yi-menu-item-padding: var(--yi-space-sm);
+  --yi-menu-item-radius: var(--yi-radius-sm);
+  --yi-menu-item-bg-active: var(--yi-neutral-soft);
+  --yi-menu-line: var(--yi-line);
+
+  display: flex;
+  flex-direction: column;
+  min-inline-size: var(--yi-menu-min-width);
+  padding: var(--yi-menu-padding);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  font-weight: 400;
+  text-align: start;
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+
+    border-radius: var(--yi-radius-control);
+  }
+}
+
+.yi-menu__item {
+  // Component tokens
+  --yi-menu-item-fg: inherit;
+
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  min-block-size: var(--yi-menu-item-height);
+  padding: var(--yi-space-xs) var(--yi-menu-item-padding);
+  border: 0;
+  border-radius: var(--yi-menu-item-radius);
+  background: none;
+  color: var(--yi-menu-item-fg);
+  font: inherit;
+  line-height: var(--yi-leading-tight);
+  text-align: start;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--yi-menu-item-bg-active);
+    color: var(--yi-menu-item-fg);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &[aria-current="page"] {
+    font-weight: 600;
+  }
+
+  &--warn {
+    --yi-menu-item-fg: var(--yi-warn);
+  }
+
+  &--danger {
+    --yi-menu-item-fg: var(--yi-danger);
+    --yi-menu-item-bg-active: var(--yi-danger-soft);
+  }
+
+  &[aria-disabled="true"] {
+    background: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &[aria-checked="false"] > .yi-menu__check {
+    visibility: hidden;
+  }
+}
+
+.yi-menu__icon {
+  flex: none;
+  color: color-mix(in srgb, currentColor 70%, transparent);
+}
+
+.yi-menu__label {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.yi-menu__aside {
+  flex: none;
+  margin-inline-start: var(--yi-space-md);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-menu__check {
+  flex: none;
+  margin-inline-start: var(--yi-space-md);
+}
+
+.yi-menu__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.yi-menu__heading {
+  padding: var(--yi-space-xs) var(--yi-menu-item-padding) var(--yi-space-2xs);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  font-weight: 600;
+  line-height: var(--yi-leading);
+}
+
+.yi-menu__separator {
+  display: block;
+  margin: var(--yi-menu-padding) calc(-1 * var(--yi-menu-padding));
+  border-block-start: 1px solid var(--yi-menu-line);
+}
+
+// A rule wherever two kinds of thing meet, without a separator being asked
+// for. It runs the full width of the menu, through the padding.
+.yi-menu__group + .yi-menu__group,
+.yi-menu__item + .yi-menu__group,
+.yi-menu__group + .yi-menu__item,
+.yi-menu__item:not(.yi-menu__item--danger) + .yi-menu__item--danger {
+  position: relative;
+  margin-block-start: calc(2 * var(--yi-menu-padding) + 1px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: calc(-1 * var(--yi-menu-padding));
+    inset-block-start: calc(-1 * var(--yi-menu-padding) - 1px);
+    border-block-start: 1px solid var(--yi-menu-line);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-menu__item:hover,
+  .yi-menu__item:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
