@@ -11,7 +11,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__body">
 <div class="yi-toast__message">Settings saved.</div>
 </div>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
@@ -27,7 +27,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__title">Saved with warnings</div>
 <div class="yi-toast__message">Two hosts were skipped because they are offline.</div>
 </div>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
@@ -43,7 +43,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__message">Publishing failed.</div>
 </div>
 <button type="button" class="yi-button yi-button--default yi-button--sm yi-toast__action">Retry</button>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
@@ -56,7 +56,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__body">
 <div class="yi-toast__message">Settings saved.</div>
 </div>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
@@ -68,7 +68,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__title">Saved with warnings</div>
 <div class="yi-toast__message">Two hosts were skipped because they are offline.</div>
 </div>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
@@ -80,7 +80,7 @@ source: site/tests/snapshots.rs
 <div class="yi-toast__message">Publishing failed.</div>
 </div>
 <button type="button" class="yi-button yi-button--default yi-button--sm yi-toast__action">Retry</button>
-<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-toast__dismiss yi-button--icon-only" aria-label="Dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-toast__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>

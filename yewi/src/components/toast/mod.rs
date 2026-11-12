@@ -9,7 +9,7 @@ use std::{cell::Cell, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Icon, IconData, Size, Tone, icons};
+use crate::{Attrs, Button, ButtonVariant, Icon, IconButton, IconData, Size, Tone, icons};
 
 /// How long a toast stays when neither it nor its host says otherwise.
 pub const DEFAULT_TOAST_DURATION_MS: u32 = 5_000;
@@ -248,12 +248,12 @@ pub fn Toast(props: &ToastProps) -> Html {
             </div>
             { action }
             if props.on_dismiss.is_some() {
-                <Button
-                    class="yi-toast__dismiss yi-button--icon-only"
+                <IconButton
+                    class="yi-toast__dismiss"
                     variant={ButtonVariant::Subtle}
                     size={Size::Small}
                     icon={icons::X}
-                    attrs={crate::attrs! { "aria-label" => "Dismiss" }}
+                    label="Dismiss"
                     on_click={move |_| dismiss.emit(())}
                 />
             }
