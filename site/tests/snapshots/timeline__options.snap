@@ -1,0 +1,263 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:11rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Run-off: both</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-both">
+<ol aria-label="Run-off: both" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Run-off: end</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-end">
+<ol aria-label="Run-off: end" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Run-off: start</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-start">
+<ol aria-label="Run-off: start" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Run-off: none</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-none">
+<ol aria-label="Run-off: none" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Divided</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--md yi-timeline--run-off-both yi-timeline--divided">
+<ol aria-label="Divided" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--semibold">Small</span>
+<div class="yi-timeline yi-timeline--vertical yi-timeline--sm yi-timeline--run-off-both">
+<ol aria-label="Small" class="yi-timeline__list">
+<li class="yi-timeline__item yi-timeline__item--toned yi-timeline__item--ok">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Deployed</span>
+</div>
+</div>
+<div class="yi-timeline__meta">35 minutes ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Approved</span>
+</div>
+</div>
+<div class="yi-timeline__meta">3 hours ago</div>
+</div>
+</li>
+<li class="yi-timeline__item">
+<span aria-hidden="true" class="yi-timeline__marker yi-timeline__marker--dot">
+</span>
+<div class="yi-timeline__body">
+<div class="yi-timeline__head">
+<div class="yi-timeline__main">
+<span class="yi-timeline__title">Opened</span>
+</div>
+</div>
+<div class="yi-timeline__meta">Tuesday 14:05</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
