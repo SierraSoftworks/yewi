@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div class="yi-cluster">
+<label class="yi-choice yi-choice--sm yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select web-01" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+<span>web-01</span>
+</div>
+<div class="yi-cluster">
+<label class="yi-choice yi-choice--sm yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" aria-label="Select web-02" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+<span>web-02</span>
+</div>
+<div class="yi-cluster">
+<label class="yi-choice yi-choice--sm yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select web-03" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+<span>web-03</span>
+</div>
+<span role="status">1 selected</span>
+</div>

@@ -1,0 +1,34 @@
+// Highlight
+//
+// One colour per token kind. The palette is six hues and a grey, each at
+// least 4.5:1 against `--yi-code-bg` in both themes. An app restyles code by
+// setting the tokens below, on `:root` or on any ancestor of the code. They
+// are declared on the root so that such an override is inherited.
+@use "api" as *;
+
+:root {
+  // Component tokens
+  --yi-highlight-comment: var(--yi-fg-subtle);
+  --yi-highlight-keyword: light-dark(#8f3a80, #d58bd0);
+  --yi-highlight-string: light-dark(#146f43, #4cbf7f);
+  --yi-highlight-number: light-dark(#855900, #e0a93a);
+  --yi-highlight-literal: var(--yi-highlight-number);
+  --yi-highlight-type: light-dark(#0b6a75, #5cc4cf);
+  --yi-highlight-function: light-dark(#2a63b5, #7aaef0);
+  --yi-highlight-property: light-dark(#a8382c, #f0907f);
+  --yi-highlight-tag: var(--yi-highlight-property);
+  --yi-highlight-variable: var(--yi-highlight-property);
+  --yi-highlight-meta: var(--yi-highlight-number);
+  --yi-highlight-inserted: var(--yi-highlight-string);
+  --yi-highlight-deleted: var(--yi-highlight-property);
+}
+
+@each $kind in comment, keyword, string, number, literal, type, function, property, tag, variable, meta, inserted, deleted {
+  .yi-tok-#{$kind} {
+    color: var(--yi-highlight-#{$kind});
+  }
+}
+
+.yi-tok-comment {
+  font-style: italic;
+}

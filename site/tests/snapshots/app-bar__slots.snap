@@ -1,0 +1,38 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<header class="yi-app-bar">
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Grey</span>
+</span>
+<div class="yi-app-bar__start">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster" role="group" aria-label="Sections">
+<button type="button" aria-pressed="true" class="yi-button yi-button--subtle yi-button--md">Dashboards</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md">Alerts</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md">Settings</button>
+</div>
+</div>
+<div class="yi-app-bar__actions">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>live</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Notifications" title="Notifications">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10.268 21a2 2 0 0 0 3.464 0M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326">
+</path>
+</svg>
+</button>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+</div>
+</header>
+<span role="status">Showing Dashboards</span>
+</div>

@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 20rem">
+<div role="radiogroup" aria-label="Diff view" class="yi-segmented yi-segmented--md yi-segmented--block">
+<label class="yi-segmented__option">
+<input value="combined" checked type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Combined</span>
+</label>
+<label class="yi-segmented__option">
+<input value="target" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">By target</span>
+</label>
+</div>
+</div>
