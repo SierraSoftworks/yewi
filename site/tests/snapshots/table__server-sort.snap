@@ -1,0 +1,73 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Pages" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Page</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" aria-sort="descending" class="yi-table__header yi-table__header--sortable yi-table__header--sorted yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Views</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M12 5v14M19 12l-7 7-7-7">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Visitors</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<td class="yi-table__cell">
+<code class="yi-inline-code">/</code>
+</td>
+<td class="yi-table__cell yi-table__cell--end">18204</td>
+<td class="yi-table__cell yi-table__cell--end">9310</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">
+<code class="yi-inline-code">/blog/yew-0-23</code>
+</td>
+<td class="yi-table__cell yi-table__cell--end">9951</td>
+<td class="yi-table__cell yi-table__cell--end">8206</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">
+<code class="yi-inline-code">/docs/install</code>
+</td>
+<td class="yi-table__cell yi-table__cell--end">6120</td>
+<td class="yi-table__cell yi-table__cell--end">4877</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">
+<code class="yi-inline-code">/pricing</code>
+</td>
+<td class="yi-table__cell yi-table__cell--end">3480</td>
+<td class="yi-table__cell yi-table__cell--end">3012</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<span role="status">Requested /pages?sort=-views</span>
+</div>

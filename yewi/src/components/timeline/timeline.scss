@@ -1,0 +1,410 @@
+// Timeline
+//
+// Each item draws its own two pieces of rail: one arriving from the item
+// above (`::before`, in that item's tone) and one leaving below (`::after`,
+// in its own). The pieces stop short of the marker, so the rail needs no
+// knowledge of the background behind it. At the ends of the list the outer
+// piece is either hidden or masked into a fade (the run-off).
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-timeline {
+  // Component tokens
+  --yi-timeline-track: 1.5rem; // width of the column the rail runs in
+  --yi-timeline-marker-size: 0.75rem;
+  --yi-timeline-marker-line: 2px; // outline of a hollow marker
+  --yi-timeline-icon-size: 1.5rem; // circle behind an icon marker
+  --yi-timeline-rail: var(--yi-line-strong); // rail below an item without a tone
+  --yi-timeline-rail-width: 2px;
+  --yi-timeline-rail-gap: 3px; // clear space between a marker and the rail
+  --yi-timeline-gap: var(--yi-space-lg); // space between two events
+  --yi-timeline-gutter: var(--yi-space-md); // space between rail and text
+  --yi-timeline-run-off: var(--yi-space-xl); // length of a fading end
+  --yi-timeline-divider: var(--yi-line);
+  --yi-timeline-hover: var(--yi-neutral-soft); // behind an event that is a link
+  --yi-timeline-pulse: 1.6s;
+  --yi-timeline-title-min: 12rem; // narrower than this, the aside wraps under the title
+
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  color: var(--yi-fg);
+
+  &--sm {
+    --yi-timeline-track: 1.25rem;
+    --yi-timeline-marker-size: 0.625rem;
+    --yi-timeline-icon-size: 1.25rem;
+    --yi-timeline-gap: var(--yi-space-sm);
+    --yi-timeline-gutter: var(--yi-space-sm);
+    --yi-timeline-run-off: var(--yi-space-lg);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-timeline-track: 2rem;
+    --yi-timeline-marker-size: 0.875rem;
+    --yi-timeline-icon-size: 2rem;
+    --yi-timeline-gap: var(--yi-space-xl);
+
+    font-size: var(--yi-text-lg);
+  }
+}
+
+.yi-timeline__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yi-timeline__item {
+  // The marker's colour, the rail leaving the item and the rail arriving.
+  --yi-timeline-tone: var(--yi-timeline-rail);
+  --yi-timeline-tone-soft: var(--yi-neutral-soft);
+  --yi-timeline-rail-out: var(--yi-timeline-tone);
+  --yi-timeline-rail-in: var(--yi-timeline-rail);
+  // Private geometry: the marker's size, the height of the row it is centred
+  // in (the title's first line) and the space above and below the event.
+  --_marker: var(--yi-timeline-marker-size);
+  --_slot: max(1lh, var(--_marker));
+  --_before: calc(var(--yi-timeline-gap) / 2);
+  --_after: calc(var(--yi-timeline-gap) / 2);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--yi-timeline-track) minmax(0, 1fr);
+  column-gap: var(--yi-timeline-gutter);
+  padding-block: var(--_before) var(--_after);
+
+  &--icon {
+    --_marker: var(--yi-timeline-icon-size);
+  }
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-timeline-tone: var(--yi-#{$tone});
+      --yi-timeline-tone-soft: var(--yi-#{$tone}-soft);
+
+      + .yi-timeline__item {
+        --yi-timeline-rail-in: var(--yi-#{$tone});
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc((var(--yi-timeline-track) - var(--yi-timeline-rail-width)) / 2);
+    inline-size: var(--yi-timeline-rail-width);
+  }
+
+  &::before {
+    inset-block-start: 0;
+    block-size: calc(var(--_before) + (var(--_slot) - var(--_marker)) / 2 - var(--yi-timeline-rail-gap));
+    background: var(--yi-timeline-rail-in);
+  }
+
+  &::after {
+    inset-block: calc(var(--_before) + (var(--_slot) + var(--_marker)) / 2 + var(--yi-timeline-rail-gap)) 0;
+    background: var(--yi-timeline-rail-out);
+  }
+
+  // The ends: no rail beyond the first and last markers, unless it runs off.
+  &:first-child {
+    --_before: 0px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &:last-child {
+    --_after: 0px;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.yi-timeline--run-off-start,
+.yi-timeline--run-off-both {
+  .yi-timeline__item:first-child {
+    --_before: var(--yi-timeline-run-off);
+
+    &::before {
+      display: block;
+      background: var(--yi-timeline-rail-out);
+      mask-image: linear-gradient(to bottom, transparent, black);
+    }
+  }
+}
+
+.yi-timeline--run-off-end,
+.yi-timeline--run-off-both {
+  .yi-timeline__item:last-child {
+    --_after: var(--yi-timeline-run-off);
+
+    &::after {
+      display: block;
+      mask-image: linear-gradient(to bottom, black calc(100% - var(--yi-timeline-run-off)), transparent);
+    }
+  }
+}
+
+.yi-timeline__marker {
+  display: grid;
+  place-items: center;
+  place-self: start center;
+  block-size: var(--_slot);
+  color: var(--yi-timeline-tone);
+
+  // The shape itself, so the row can be taller than the marker.
+  &::before {
+    content: "";
+    box-sizing: border-box;
+    inline-size: var(--_marker);
+    block-size: var(--_marker);
+    border: var(--yi-timeline-marker-line) solid currentColor;
+    border-radius: var(--yi-radius-full);
+  }
+
+  // A dot is filled once it has a tone to show.
+  &--dot::before {
+    .yi-timeline__item--toned & {
+      background: currentColor;
+    }
+  }
+
+  &--diamond::before {
+    inline-size: calc(var(--_marker) * 0.85);
+    block-size: calc(var(--_marker) * 0.85);
+    border-radius: var(--yi-radius-sm);
+    rotate: 45deg;
+  }
+
+  // An icon marker: the icon on a tinted circle.
+  &:has(.yi-icon) {
+    inline-size: var(--_marker);
+    block-size: var(--_marker);
+    margin-block: calc((var(--_slot) - var(--_marker)) / 2);
+    border-radius: var(--yi-radius-full);
+    background: var(--yi-timeline-tone-soft);
+
+    .yi-timeline__item:not(.yi-timeline__item--toned) & {
+      color: var(--yi-fg-muted);
+    }
+
+    &::before {
+      display: none;
+    }
+
+    .yi-icon {
+      --yi-icon-size: calc(var(--_marker) * 0.6);
+    }
+  }
+
+  &--active::before,
+  &--active:has(.yi-icon) {
+    @include motion {
+      animation: yi-timeline-pulse var(--yi-timeline-pulse) ease-out infinite;
+    }
+  }
+}
+
+.yi-timeline__body {
+  min-inline-size: 0;
+}
+
+.yi-timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--yi-space-xs) var(--yi-space-md);
+  min-block-size: var(--_slot);
+}
+
+// The aside drops under the title once the title would have less than this.
+.yi-timeline__main {
+  flex: 1 1 var(--yi-timeline-title-min);
+  align-self: center;
+  min-inline-size: 0;
+}
+
+.yi-timeline__title {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.yi-timeline__action {
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-timeline__aside {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--yi-space-xs) var(--yi-space-sm);
+  min-block-size: var(--_slot);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-2xs) var(--yi-space-md);
+  margin-block-start: var(--yi-space-2xs);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-timeline__detail {
+  margin-block-start: var(--yi-space-sm);
+}
+
+// A rule between events, under the text only so the rail stays unbroken.
+.yi-timeline--divided .yi-timeline__item:not(:last-child) > .yi-timeline__body {
+  padding-block-end: calc(var(--yi-timeline-gap) / 2);
+  margin-block-end: calc(var(--yi-timeline-gap) / -2);
+  border-block-end: 1px solid var(--yi-timeline-divider);
+}
+
+// An event that is a link: the title's target covers the whole event, and
+// the event's own controls sit above it.
+.yi-timeline--vertical .yi-timeline__item--interactive {
+  > .yi-timeline__body {
+    position: relative;
+    border-radius: var(--yi-radius-control);
+
+    @include motion {
+      transition:
+        background-color var(--yi-duration-fast) var(--yi-ease),
+        box-shadow var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover {
+      background: var(--yi-timeline-hover);
+      box-shadow: 0 0 0 var(--yi-space-xs) var(--yi-timeline-hover);
+    }
+
+    :is(a, button, input, select, textarea, summary, label, [tabindex], .yi-timestamp, .yi-tooltip, .yi-popover):not(
+        .yi-timeline__action
+      ) {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .yi-timeline__action::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+// Horizontal: only the markers, on a line that fills the width. The pieces
+// of rail become flex items either side of the marker.
+.yi-timeline--horizontal {
+  .yi-timeline__list {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .yi-timeline__item {
+    --_slot: var(--_marker);
+
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    gap: var(--yi-timeline-rail-gap);
+    min-inline-size: 0;
+    padding: 0;
+
+    &::before,
+    &::after {
+      position: static;
+      flex: 1 1 0;
+      inline-size: auto;
+      min-inline-size: var(--yi-space-xs);
+      block-size: var(--yi-timeline-rail-width);
+    }
+
+    &:first-child,
+    &:last-child {
+      flex-grow: 0.5;
+    }
+  }
+
+  .yi-timeline__trigger {
+    flex: none;
+    border-radius: var(--yi-radius-full);
+  }
+
+  &:is(.yi-timeline--run-off-start, .yi-timeline--run-off-both) .yi-timeline__item:first-child {
+    flex-grow: 1;
+
+    &::before {
+      mask-image: linear-gradient(to right, transparent, black);
+    }
+  }
+
+  &:is(.yi-timeline--run-off-end, .yi-timeline--run-off-both) .yi-timeline__item:last-child {
+    flex-grow: 1;
+
+    &::after {
+      mask-image: linear-gradient(to right, black, transparent);
+    }
+  }
+
+  &:dir(rtl) .yi-timeline__item {
+    &:first-child::before {
+      mask-image: linear-gradient(to left, transparent, black);
+    }
+
+    &:last-child::after {
+      mask-image: linear-gradient(to left, black, transparent);
+    }
+  }
+}
+
+@keyframes yi-timeline-pulse {
+  from {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent);
+  }
+
+  to {
+    box-shadow: 0 0 0 calc(var(--yi-timeline-marker-size) * 0.6) transparent;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-timeline__item::before,
+  .yi-timeline__item::after {
+    background: CanvasText;
+  }
+
+  .yi-timeline__marker {
+    color: CanvasText;
+  }
+}

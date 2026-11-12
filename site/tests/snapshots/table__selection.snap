@@ -1,0 +1,110 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Hosts" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select all rows" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Host</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Agent</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select web-01" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">web-01</th>
+<td class="yi-table__cell">1.4.2</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select web-02" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">web-02</th>
+<td class="yi-table__cell">1.4.2</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select db-01" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">db-01</th>
+<td class="yi-table__cell">1.3.9</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select edge-ams" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">edge-ams</th>
+<td class="yi-table__cell">1.3.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="button" disabled="disabled" class="yi-button yi-button--default yi-button--md">Clear selection</button>
+<span role="status">0 of 4 hosts selected</span>
+</div>
+</div>
