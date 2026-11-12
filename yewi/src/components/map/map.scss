@@ -1,0 +1,438 @@
+// Map
+//
+// The map fills `.yi-map`; everything else is a cell of one grid laid over
+// it, so no piece of chrome can be drawn over another at any width. Each cell
+// is always present, which keeps the canvas element stable while their
+// contents come and go. The layout asks the map's own width, not the
+// window's: the navigation beside it can fold away at any size.
+@use "api" as *;
+
+.yi-map {
+  // Component tokens
+  --yi-map-height: 28rem; // Block size of the map
+  --yi-map-inset: var(--yi-space-md); // Gap between the chrome and the edge
+  --yi-map-sidebar-width: 19rem;
+  --yi-map-panel-width: 21rem;
+  --yi-map-water: color-mix(in oklch, var(--yi-accent) 10%, var(--yi-bg)); // Outline basemap: sea
+  --yi-map-land: var(--yi-surface-raised); // Outline basemap: land
+  --yi-map-border: var(--yi-line-strong); // Outline basemap: coasts and borders
+  --yi-map-marker: var(--yi-accent-solid); // Features with no tone
+  --yi-map-marker-ring: var(--yi-surface); // The ring around a marker
+  --yi-map-label: var(--yi-fg);
+  --yi-map-label-halo: var(--yi-surface);
+  --yi-map-selected: var(--yi-accent); // The halo around the selection
+  --yi-map-chrome-bg: color-mix(in srgb, var(--yi-surface-raised) 95%, transparent); // Toolbar, panels and notes
+
+  position: relative;
+  display: grid;
+  block-size: var(--yi-map-height);
+  min-block-size: 12rem;
+  overflow: hidden;
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-map-water);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  container: yi-map / inline-size;
+  isolation: isolate;
+
+  &__canvas,
+  &__overlay {
+    grid-area: 1 / 1;
+    min-inline-size: 0;
+    min-block-size: 0;
+  }
+
+  &__canvas {
+    position: relative;
+  }
+
+  // The foot is kept clear for the scale bar and the attribution.
+  &__overlay {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: var(--yi-map-sidebar-width) minmax(0, 1fr) var(--yi-map-panel-width);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "sidebar toolbar panel"
+      "sidebar notes panel"
+      "sidebar . panel"
+      "footer footer controls";
+    gap: var(--yi-space-sm) var(--yi-space-md);
+    padding: var(--yi-map-inset) var(--yi-map-inset) calc(var(--yi-map-inset) + var(--yi-space-xl));
+    pointer-events: none;
+
+    > * {
+      min-inline-size: 0;
+      min-block-size: 0;
+    }
+
+    > * > * {
+      pointer-events: auto;
+    }
+  }
+
+  &__toolbar {
+    grid-area: toolbar;
+    justify-self: center;
+    max-inline-size: 100%;
+  }
+
+  &__notes {
+    grid-area: notes;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--yi-space-xs);
+    max-inline-size: min(36rem, 100%);
+  }
+
+  &__sidebar,
+  &__panel {
+    display: flex;
+    align-self: start;
+    max-block-size: 100%;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+  }
+
+  &__panel {
+    grid-area: panel;
+  }
+
+  &__footer {
+    grid-area: footer;
+    align-self: end;
+    inline-size: min(46rem, 100%);
+  }
+
+  &__controls {
+    grid-area: controls;
+    justify-self: end;
+    align-self: end;
+  }
+
+  &__zoom {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--yi-card-line);
+    border-radius: var(--yi-radius-control);
+    background: var(--yi-map-chrome-bg);
+    box-shadow: var(--yi-shadow-card);
+    overflow: hidden;
+  }
+
+  &__zoom-button {
+    display: grid;
+    place-items: center;
+    inline-size: var(--yi-control-height);
+    block-size: var(--yi-control-height);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--yi-fg-muted);
+    cursor: pointer;
+
+    & + & {
+      border-block-start: 1px solid var(--yi-line);
+    }
+
+    &:hover {
+      background: var(--yi-neutral-soft);
+      color: var(--yi-fg);
+    }
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+
+  &__error {
+    margin: 0;
+    padding: var(--yi-space-sm) var(--yi-space-md);
+    border: 1px solid color-mix(in srgb, var(--yi-danger) 40%, transparent);
+    border-radius: var(--yi-radius-control);
+    background: var(--yi-map-chrome-bg);
+    box-shadow: var(--yi-shadow-card);
+    color: var(--yi-danger);
+    text-align: center;
+  }
+
+  &__attribution {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    z-index: 1;
+    padding: var(--yi-space-2xs) var(--yi-space-sm);
+    border-start-start-radius: var(--yi-radius-sm);
+    background: var(--yi-map-chrome-bg);
+    color: var(--yi-fg-muted);
+    font-size: var(--yi-text-xs);
+    line-height: var(--yi-leading-tight);
+
+    a {
+      color: inherit;
+    }
+  }
+
+  // Where three columns do not fit, two: the panel moves under the tools.
+  @container yi-map (max-width: 62rem) {
+    &__overlay {
+      grid-template-columns: minmax(0, min(var(--yi-map-sidebar-width), 42%)) minmax(0, 1fr) auto;
+      grid-template-areas:
+        "sidebar toolbar toolbar"
+        "sidebar notes notes"
+        "sidebar panel panel"
+        "footer footer controls";
+    }
+
+    &__panel {
+      align-self: end;
+      justify-self: end;
+      inline-size: min(var(--yi-map-panel-width), 100%);
+    }
+
+    &__footer {
+      inline-size: 100%;
+    }
+  }
+
+  // Where two do not fit, one stack: the tools, the notes and the sidebar
+  // down from the top; the panel and the footer up from the foot; and the
+  // map, with nothing over it, between them.
+  @container yi-map (max-width: 40rem) {
+    &__overlay {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
+      grid-template-areas:
+        "toolbar"
+        "notes"
+        "sidebar"
+        "."
+        "panel"
+        "footer";
+      padding: var(--yi-space-sm) var(--yi-space-sm) calc(var(--yi-space-sm) + var(--yi-space-xl));
+    }
+
+    &__toolbar,
+    &__sidebar {
+      justify-self: start;
+    }
+
+    // Stretched to their rows rather than sized by their content: when both
+    // are open they share what room there is, and each scrolls inside its own.
+    &__sidebar {
+      align-self: stretch;
+      inline-size: min(var(--yi-map-sidebar-width), 100%);
+      max-block-size: min(18rem, 38cqb);
+    }
+
+    &__panel {
+      align-self: stretch;
+      max-block-size: min(22rem, 42cqb);
+    }
+
+    // A map this narrow is pinched, and the corner is needed for the panel.
+    &__controls {
+      display: none;
+    }
+  }
+}
+
+// A strip of icon buttons in groups, the tool in hand lit.
+.yi-map-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  padding: var(--yi-space-xs);
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-map-chrome-bg);
+  box-shadow: var(--yi-shadow-card);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-2xs);
+    padding-inline: var(--yi-space-xs);
+    white-space: nowrap;
+
+    & + & {
+      border-inline-start: 1px solid var(--yi-line);
+    }
+  }
+
+  // Groups wrap rather than run off a narrow map, and a wrapped group has
+  // no neighbour to be ruled off from.
+  @container yi-map (max-width: 30rem) {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__group + &__group {
+      border-inline-start: 0;
+    }
+  }
+}
+
+// A card laid over the map: the sidebar list and the detail panel.
+.yi-map-panel {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  min-block-size: 0;
+  max-block-size: 100%;
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-map-chrome-bg);
+  box-shadow: var(--yi-shadow-card);
+  overflow: hidden;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-sm);
+    flex: none;
+    min-block-size: calc(var(--yi-control-height) + var(--yi-space-sm));
+    padding: var(--yi-space-xs) var(--yi-space-sm) var(--yi-space-xs) var(--yi-space-md);
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  summary#{&}__head {
+    cursor: pointer;
+    user-select: none;
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+
+  &__title {
+    flex: 1;
+    min-inline-size: 0;
+    font-family: var(--yi-font-heading);
+    font-size: var(--yi-text-md);
+    font-weight: var(--yi-heading-weight-md);
+
+    @include truncate;
+  }
+
+  &__meta {
+    color: var(--yi-fg-subtle);
+    font-size: var(--yi-text-sm);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__chevron {
+    flex: none;
+    margin-inline-end: var(--yi-space-xs);
+    color: var(--yi-fg-subtle);
+
+    @include motion {
+      transition: rotate var(--yi-duration-fast) var(--yi-ease);
+    }
+  }
+
+  &[open] &__chevron {
+    rotate: 180deg;
+  }
+
+  &__body {
+    flex: 1;
+    min-block-size: 0;
+    padding: 0 var(--yi-space-md) var(--yi-space-md);
+    overflow-y: auto;
+  }
+}
+
+.yi-map-note {
+  // Component tokens
+  --yi-map-note-fg: var(--yi-fg-muted);
+
+  margin: 0;
+  padding: var(--yi-space-xs) var(--yi-space-md);
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-map-chrome-bg);
+  box-shadow: var(--yi-shadow-card);
+  color: var(--yi-map-note-fg);
+  font-size: var(--yi-text-sm);
+  text-align: center;
+
+  @each $tone in ok, warn, danger, info, active {
+    &--#{$tone} {
+      --yi-map-note-fg: var(--yi-#{$tone});
+    }
+  }
+}
+
+.yi-map-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-2xs);
+  margin: 0 calc(-1 * var(--yi-space-sm));
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: var(--yi-space-sm);
+    inline-size: 100%;
+    padding: var(--yi-space-xs) var(--yi-space-sm);
+    border: 0;
+    border-radius: var(--yi-radius-control);
+    background: none;
+    color: var(--yi-fg);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--yi-neutral-soft);
+    }
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+
+    &[aria-current="true"] {
+      background: var(--yi-accent-soft);
+      color: var(--yi-accent-text);
+    }
+  }
+
+  &__dot {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: var(--yi-radius-full);
+    background: var(--yi-map-marker);
+
+    @each $tone in neutral, ok, warn, danger, info, active {
+      &--#{$tone} {
+        background: var(--yi-#{$tone});
+      }
+    }
+  }
+
+  &__label {
+    grid-column: 2;
+
+    @include truncate;
+  }
+
+  &__detail {
+    grid-column: 3;
+    color: var(--yi-fg-subtle);
+    font-size: var(--yi-text-sm);
+  }
+}

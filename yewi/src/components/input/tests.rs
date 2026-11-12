@@ -80,11 +80,11 @@ fn an_empty_number_input_has_no_value() {
 }
 
 #[test]
-fn the_stepper_is_opt_in_and_stops_at_the_limits() {
-    let plain = render(|| html! { <NumberInput value={1.0} /> });
+fn the_stepper_can_be_turned_off_and_stops_at_the_limits() {
+    let plain = render(|| html! { <NumberInput value={1.0} stepper=false /> });
     assert!(!plain.contains("<button"));
 
-    let html = render(|| html! { <NumberInput value={1.0} min={1.0} max={5.0} stepper=true /> });
+    let html = render(|| html! { <NumberInput value={1.0} min={1.0} max={5.0} /> });
     let decrease = &html[html.find(r#"aria-label="Decrease""#).expect("decrease button")..];
     let (decrease, increase) = decrease.split_at(decrease.find(r#"aria-label="Increase""#).expect("increase button"));
     assert!(decrease.contains(" disabled"));

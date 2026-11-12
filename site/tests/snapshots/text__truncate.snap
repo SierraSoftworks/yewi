@@ -1,0 +1,8 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-text yi-text--truncate" title="fix(ingress): retry the upstream health probe three times before marking a host unhealthy, so a single dropped packet no longer pauses the whole rollout">fix(ingress): retry the upstream health probe three times before marking a host unhealthy, so a single dropped packet no longer pauses the whole rollout</div>
+<p style="--yi-text-lines:2" class="yi-text yi-text--muted yi-text--clamp">fix(ingress): retry the upstream health probe three times before marking a host unhealthy, so a single dropped packet no longer pauses the whole rollout</p>
+<p style="--yi-text-lines:3" class="yi-text yi-text--muted yi-text--clamp">fix(ingress): retry the upstream health probe three times before marking a host unhealthy, so a single dropped packet no longer pauses the whole rollout</p>
+</div>

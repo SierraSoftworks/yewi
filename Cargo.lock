@@ -967,6 +967,7 @@ dependencies = [
  "serde_json",
  "wasm-bindgen",
  "yew",
+ "yew-router",
  "yewi",
 ]
 

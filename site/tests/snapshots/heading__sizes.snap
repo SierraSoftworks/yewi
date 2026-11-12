@@ -1,0 +1,13 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<h3 class="yi-heading yi-heading--4xl">Stage: home (4xl)</h3>
+<h3 class="yi-heading yi-heading--3xl">Stage: home (3xl)</h3>
+<h3 class="yi-heading yi-heading--2xl">Stage: home (2xl)</h3>
+<h3 class="yi-heading yi-heading--xl">Stage: home (xl)</h3>
+<h3 class="yi-heading yi-heading--lg">Stage: home (lg)</h3>
+<h3 class="yi-heading yi-heading--md">Stage: home (md)</h3>
+<h3 class="yi-heading yi-heading--sm">Stage: home (sm)</h3>
+<h3 class="yi-heading yi-heading--xs">Stage: home (xs)</h3>
+</div>

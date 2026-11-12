@@ -1,0 +1,38 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 32rem">
+<label class="yi-file-drop yi-file-drop--sm">
+<input type="file" aria-labelledby="yi-0-label" aria-describedby="yi-0-hint" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M16 6l-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-0-label" class="yi-file-drop__label">Attach a file</span>
+<span id="yi-0-hint" class="yi-file-drop__hint">Up to 10 MB</span>
+</span>
+</label>
+<label class="yi-file-drop yi-file-drop--md">
+<input type="file" aria-labelledby="yi-1-label" aria-describedby="yi-1-hint" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M12 3v12M17 8l-5-5-5 5M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-1-label" class="yi-file-drop__label">Drop a file here, or choose one</span>
+<span id="yi-1-hint" class="yi-file-drop__hint">Up to 10 MB</span>
+</span>
+</label>
+<label class="yi-file-drop yi-file-drop--lg">
+<input type="file" aria-labelledby="yi-2-label" aria-describedby="yi-2-hint" class="yi-file-drop__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-file-drop__icon">
+<path d="M12 3v12M17 8l-5-5-5 5M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+</path>
+</svg>
+<span class="yi-file-drop__text">
+<span id="yi-2-label" class="yi-file-drop__label">Drop a file here, or choose one</span>
+<span id="yi-2-hint" class="yi-file-drop__hint">Up to 10 MB</span>
+</span>
+</label>
+</div>
