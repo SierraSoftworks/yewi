@@ -1,0 +1,18 @@
+// Countdown
+//
+// The root is a Tooltip wrapper around a <time role="timer"> element.
+@use "api" as *;
+
+.yi-countdown {
+  // Component tokens
+  --yi-countdown-color: inherit;
+  --yi-countdown-done-color: var(--yi-countdown-color);
+
+  color: var(--yi-countdown-color);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+
+  &--done {
+    color: var(--yi-countdown-done-color);
+  }
+}

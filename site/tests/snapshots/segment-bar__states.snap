@@ -1,0 +1,51 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="display: grid; grid-template-columns: auto 1fr auto; gap: var(--yi-space-sm) var(--yi-space-lg); align-items: center; max-inline-size: 30rem">
+<span>canary</span>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="canary: 4 done, 36 to go" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--ok" style="flex-grow: 4">
+</span>
+<span style="flex-grow: 36" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+<span style="color: var(--yi-fg-muted); font-variant-numeric: tabular-nums">4 / 40</span>
+<span>eu-west</span>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="eu-west: 31 done, 6 in flight, 1 failed, 2 skipped" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--ok" style="flex-grow: 31">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--active" style="flex-grow: 6">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--danger" style="flex-grow: 1">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--neutral" style="flex-grow: 2">
+</span>
+</span>
+</div>
+<span style="color: var(--yi-fg-muted); font-variant-numeric: tabular-nums">31 / 40</span>
+<span>us-east</span>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="us-east: 8 done, 4 in flight, 12 held, 16 to go" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--ok" style="flex-grow: 8">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--active" style="flex-grow: 4">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--warn" style="flex-grow: 12">
+</span>
+<span style="flex-grow: 16" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+<span style="color: var(--yi-fg-muted); font-variant-numeric: tabular-nums">8 / 40</span>
+<span>ap-south</span>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="ap-south: 40 to go" class="yi-segment-bar__track">
+<span style="flex-grow: 40" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+<span style="color: var(--yi-fg-muted); font-variant-numeric: tabular-nums">0 / 40</span>
+</div>

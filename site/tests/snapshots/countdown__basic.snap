@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Deadlines">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Bake ends in</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T12:04:05Z">0:00</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Token expires in</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T13:02:30Z">0:00</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Freeze starts in</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-17T15:04:05Z">0:00</time>
+</span>
+</dd>
+</div>
+</dl>

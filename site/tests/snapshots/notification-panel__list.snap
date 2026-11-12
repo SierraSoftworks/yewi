@@ -1,0 +1,60 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 28rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Needs attention</h2>
+<p class="yi-card__subtitle">4 of 31 hosts</p>
+</div>
+</header>
+<div class="yi-card__body">
+<ul role="list" class="yi-notification-list">
+<li class="yi-notification yi-notification--danger">
+<span class="yi-notification__row">
+<a href="#web-03" class="yi-notification__title">web-03.eu-west-1</a>
+<span class="yi-notification__meta">12 min</span>
+</span>
+<span class="yi-notification__body">
+<span class="yi-notification__reason">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span>Agent offline</span>
+</span>
+<span class="yi-notification__reason">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span>Plan is stale</span>
+</span>
+</span>
+</li>
+<li class="yi-notification yi-notification--warn">
+<span class="yi-notification__row">
+<a href="#cache-02" class="yi-notification__title">cache-02.us-east-1</a>
+<span class="yi-notification__meta">1 h</span>
+</span>
+<span class="yi-notification__body">
+<span class="yi-notification__reason">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span>Agent 2.13.1 is behind 2.14.0</span>
+</span>
+</span>
+</li>
+<li class="yi-notification yi-notification--active">
+<span class="yi-notification__row">
+<a href="#queue-01" class="yi-notification__title">queue-01.us-east-1</a>
+<span class="yi-notification__meta">3 min</span>
+</span>
+<span class="yi-notification__body">Rolling out revision 4f2a9c1</span>
+</li>
+<li class="yi-notification yi-notification--info">
+<span class="yi-notification__row">
+<span class="yi-notification__title">batch-07.eu-west-1</span>
+<span class="yi-notification__meta">Yesterday</span>
+</span>
+<span class="yi-notification__body">Waiting for its registration to be approved</span>
+</li>
+</ul>
+</div>
+</section>

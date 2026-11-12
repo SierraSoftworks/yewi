@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 22rem" class="yi-stack">
+<div class="yi-cluster yi-cluster--justify-between">
+<span>Rollout 2.14.0</span>
+<span style="color: var(--yi-fg-muted)">16 of 24 hosts</span>
+</div>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="Hosts: 14 done, 2 failed, 8 to go" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--ok" style="flex-grow: 14">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--danger" style="flex-grow: 2">
+</span>
+<span style="flex-grow: 8" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+</div>

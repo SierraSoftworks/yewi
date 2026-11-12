@@ -1,0 +1,217 @@
+// QueryInput
+//
+// The box matches `.yi-input`: same outline, heights and focus treatment,
+// with an icon before a bare input and a hint after it. Suggestions and
+// errors sit in a flush Popover surface as wide as the box.
+@use "api" as *;
+
+.yi-query-input {
+  display: flex;
+  inline-size: 100%;
+  // Lets the surface, which lives in the top layer, measure the box.
+  container-type: inline-size;
+}
+
+.yi-query-input__box {
+  // Component tokens
+  --yi-query-input-bg: var(--yi-surface);
+  --yi-query-input-fg: var(--yi-fg);
+  --yi-query-input-border: var(--yi-line-strong);
+  --yi-query-input-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-query-input-accent: var(--yi-focus); // border and ring while focused
+  --yi-query-input-ring: 2px;
+  --yi-query-input-height: var(--yi-control-height);
+  --yi-query-input-padding: calc(var(--yi-control-padding) - 0.25rem);
+  --yi-query-input-gap: var(--yi-space-sm);
+  --yi-query-input-radius: var(--yi-radius-control);
+  --yi-query-input-icon: var(--yi-fg-subtle);
+  --yi-query-input-placeholder: var(--yi-fg-subtle);
+  --yi-query-input-hint: var(--yi-fg-muted);
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--yi-query-input-gap);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  block-size: var(--yi-query-input-height);
+  padding-inline: var(--yi-query-input-padding);
+  border: 1px solid var(--yi-query-input-border);
+  border-radius: var(--yi-query-input-radius);
+  background: var(--yi-query-input-bg);
+  color: var(--yi-query-input-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  outline: 0 solid var(--yi-query-input-accent);
+  outline-offset: -1px;
+  cursor: text;
+
+  @include motion {
+    transition:
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    border-color: var(--yi-query-input-border-hover);
+  }
+
+  &:has(.yi-query-input__control:focus) {
+    border-color: var(--yi-query-input-accent);
+    outline-width: var(--yi-query-input-ring);
+  }
+
+  &--invalid {
+    --yi-query-input-border: var(--yi-danger);
+    --yi-query-input-border-hover: var(--yi-danger);
+    --yi-query-input-accent: var(--yi-danger);
+  }
+
+  &:has(.yi-query-input__control:disabled) {
+    --yi-query-input-bg: var(--yi-tone-1);
+    --yi-query-input-fg: var(--yi-fg-muted);
+    --yi-query-input-border-hover: var(--yi-query-input-border);
+
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    --yi-query-input-height: var(--yi-control-height-sm);
+    --yi-query-input-padding: calc(var(--yi-control-padding) - 0.375rem);
+    --yi-query-input-gap: calc(var(--yi-space-sm) - var(--yi-space-2xs));
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-query-input-height: var(--yi-control-height-lg);
+    --yi-query-input-padding: var(--yi-control-padding);
+  }
+}
+
+.yi-query-input__icon {
+  flex: none;
+  color: var(--yi-query-input-icon);
+}
+
+.yi-query-input__control {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: inherit;
+
+  &::placeholder {
+    color: var(--yi-query-input-placeholder);
+    // An example in prose, even when the query itself is code.
+    font-family: var(--yi-font-body);
+    opacity: 1;
+  }
+
+  .yi-query-input__box--mono & {
+    font-family: var(--yi-font-mono);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+    font-size: var(--yi-text-sm);
+  }
+}
+
+.yi-query-input__hint {
+  flex: none;
+  color: var(--yi-query-input-hint);
+  font-size: var(--yi-text-xs);
+  white-space: nowrap;
+
+  kbd {
+    font: inherit;
+    font-weight: 600;
+  }
+
+  // The query matters more than how to apply it.
+  @container (inline-size < 26rem) {
+    display: none;
+  }
+}
+
+.yi-query-input__surface {
+  --yi-popover-max-width: max(100cqi, 20rem);
+
+  min-inline-size: min(100cqi, calc(100vw - var(--yi-space-lg)));
+}
+
+.yi-query-input__list {
+  // Component tokens
+  --yi-query-input-option-active-bg: var(--yi-neutral-soft);
+  --yi-query-input-description: var(--yi-fg-muted);
+
+  display: grid;
+  padding: var(--yi-space-xs);
+}
+
+.yi-query-input__option {
+  display: flex;
+  align-items: baseline;
+  gap: var(--yi-space-md);
+  padding: var(--yi-space-xs) var(--yi-space-sm);
+  border-radius: var(--yi-radius-sm);
+  cursor: pointer;
+
+  &--active {
+    background: var(--yi-query-input-option-active-bg);
+  }
+}
+
+.yi-query-input__token {
+  flex: none;
+  max-inline-size: 100%;
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: var(--yi-text-sm);
+
+  @include truncate;
+}
+
+.yi-query-input__description {
+  min-inline-size: 0;
+  color: var(--yi-query-input-description);
+  font-size: var(--yi-text-sm);
+
+  @include truncate;
+}
+
+.yi-query-input__error {
+  display: flex;
+  align-items: baseline;
+  gap: var(--yi-space-sm);
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  color: var(--yi-danger);
+  font-size: var(--yi-text-sm);
+
+  .yi-icon {
+    flex: none;
+    align-self: center;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-query-input__box {
+    border-color: FieldText;
+
+    &:has(.yi-query-input__control:focus) {
+      border-color: Highlight;
+      outline-color: Highlight;
+    }
+  }
+
+  .yi-query-input__option--active {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}

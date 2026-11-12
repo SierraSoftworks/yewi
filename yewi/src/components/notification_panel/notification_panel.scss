@@ -1,0 +1,176 @@
+// NotificationPanel, NotificationList and NotificationItem
+//
+// The panel is a flush Popover under a bell button; the count is a bold Badge
+// pinned to the bell's corner. The list is a block of its own, so the same
+// items can sit in a page or a card.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-notification-panel {
+  // Component tokens
+  --yi-notification-panel-width: 26rem;
+  --yi-notification-panel-max-height: min(70vh, 32rem);
+  // The gap cut around the count: the colour of the bar the bell sits on.
+  --yi-notification-panel-ring: var(--yi-surface);
+
+  // The bell stays lit while its panel is open.
+  .yi-button[aria-expanded="true"] {
+    --yi-button-bg: var(--yi-button-bg-hover);
+  }
+}
+
+.yi-notification-panel__trigger {
+  position: relative;
+  display: inline-flex;
+}
+
+.yi-notification-panel__count {
+  position: absolute;
+  inset-block-start: var(--yi-space-xs);
+  inset-inline-end: var(--yi-space-xs);
+  display: inline-flex;
+  border-radius: var(--yi-radius-full);
+  box-shadow: 0 0 0 2px var(--yi-notification-panel-ring);
+  translate: 50% -50%;
+  pointer-events: none;
+
+  &:dir(rtl) {
+    translate: -50% -50%;
+  }
+}
+
+// Two classes, so these win over the Popover's own defaults.
+.yi-popover__surface.yi-notification-panel__surface {
+  --yi-popover-max-width: var(--yi-notification-panel-width);
+  --yi-popover-max-height: var(--yi-notification-panel-max-height);
+
+  inline-size: var(--yi-notification-panel-width);
+}
+
+.yi-notification-panel__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-2xs);
+  min-inline-size: 0;
+}
+
+.yi-notification-panel__description {
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  font-weight: 400;
+  line-height: var(--yi-leading);
+}
+
+.yi-notification-panel__content {
+  padding-inline: var(--yi-popover-padding);
+}
+
+.yi-notification-panel__empty {
+  margin: 0;
+  padding-block: var(--yi-space-md);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-notification-list {
+  // Component tokens
+  --yi-notification-padding: var(--yi-space-sm);
+  --yi-notification-rule: var(--yi-line);
+  --yi-notification-edge: 3px; // Width of the tone rule on each item.
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  text-align: start;
+}
+
+.yi-notification {
+  // Component tokens
+  --yi-notification-tone: var(--yi-neutral); // Set by `tone`.
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-2xs);
+  padding-block: var(--yi-notification-padding);
+  padding-inline-start: calc(var(--yi-notification-edge) + var(--yi-space-md));
+  overflow-wrap: anywhere;
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-notification-tone: var(--yi-#{$tone});
+    }
+  }
+
+  & + & {
+    border-block-start: 1px solid var(--yi-notification-rule);
+  }
+
+  // The tone rule along the leading edge, as on Alert.
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block: var(--yi-notification-padding);
+    inset-inline-start: 0;
+    inline-size: var(--yi-notification-edge);
+    border-radius: var(--yi-radius-full);
+    background: var(--yi-notification-tone);
+  }
+}
+
+.yi-notification__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--yi-space-md);
+}
+
+.yi-notification__title {
+  min-inline-size: 0;
+  color: var(--yi-fg);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:is(a) {
+    border-radius: var(--yi-radius-sm);
+
+    &:hover {
+      color: var(--yi-accent-text);
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}
+
+.yi-notification__meta {
+  flex: none;
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+  white-space: nowrap;
+}
+
+.yi-notification__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yi-space-2xs) var(--yi-space-md);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-notification__reason {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--yi-space-xs);
+}
+
+@media (forced-colors: active) {
+  .yi-notification::before {
+    background: CanvasText;
+  }
+}
