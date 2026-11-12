@@ -1,6 +1,16 @@
 use yew::prelude::*;
 use yewi::prelude::*;
 
+/// A caption pointing at the control with this id.
+fn labelled(id: &'static str, caption: &'static str, control: Html) -> Html {
+    html! {
+        <Stack gap={Space::Xs}>
+            <label for={id} style="font-size: var(--yi-text-sm); font-weight: 500">{ caption }</label>
+            { control }
+        </Stack>
+    }
+}
+
 #[function_component]
 pub fn Example() -> Html {
     let options = use_memo((), |_| {
@@ -10,36 +20,28 @@ pub fn Example() -> Html {
             SelectOption::new("us-east-1", "Virginia"),
         ])
     });
+    let select = |id: &'static str, caption: &'static str, size: Size, disabled: bool, invalid: bool| {
+        let control = html! { <Select {id} options={options.clone()} value="eu-west-1" {size} {disabled} {invalid} /> };
+        labelled(id, caption, control)
+    };
+    let combobox = |id: &'static str, caption: &'static str, disabled: bool, invalid: bool| {
+        let control = html! { <Combobox {id} options={options.clone()} value="eu-central-1" {disabled} {invalid} /> };
+        labelled(id, caption, control)
+    };
 
     html! {
         <Grid min="14rem">
-            <Field label="Small">
-                <Select options={options.clone()} value="eu-west-1" size={Size::Small} />
-            </Field>
-            <Field label="Medium">
-                <Select options={options.clone()} value="eu-west-1" />
-            </Field>
-            <Field label="Large">
-                <Select options={options.clone()} value="eu-west-1" size={Size::Large} />
-            </Field>
-            <Field label="Empty">
-                <Select options={options.clone()} placeholder="Choose a region" />
-            </Field>
-            <Field label="Disabled">
-                <Select options={options.clone()} value="eu-west-1" disabled=true />
-            </Field>
-            <Field label="Invalid" error="This region is being retired.">
-                <Select options={options.clone()} value="us-east-1" />
-            </Field>
-            <Field label="Combobox">
-                <Combobox options={options.clone()} value="eu-central-1" />
-            </Field>
-            <Field label="Combobox, disabled">
-                <Combobox options={options.clone()} value="eu-central-1" disabled=true />
-            </Field>
-            <Field label="Combobox, invalid" error="Choose a region.">
-                <Combobox {options} placeholder="Search regions" />
-            </Field>
+            { select("states-small", "Small", Size::Small, false, false) }
+            { select("states-medium", "Medium", Size::Medium, false, false) }
+            { select("states-large", "Large", Size::Large, false, false) }
+            { labelled("states-empty", "Empty", html! {
+                <Select id="states-empty" options={options.clone()} placeholder="Choose a region" />
+            }) }
+            { select("states-disabled", "Disabled", Size::Medium, true, false) }
+            { select("states-invalid", "Invalid", Size::Medium, false, true) }
+            { combobox("states-combobox", "Combobox", false, false) }
+            { combobox("states-combobox-disabled", "Combobox, disabled", true, false) }
+            { combobox("states-combobox-invalid", "Combobox, invalid", false, true) }
         </Grid>
     }
 }
