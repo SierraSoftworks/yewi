@@ -1,0 +1,37 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-start">
+<div style="inline-size: 26rem; max-inline-size: 100%" class="demo-card">
+<dl class="yi-description-list yi-description-list--inline" aria-label="Host">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Host</dt>
+<dd class="yi-description-list__value">nomad-client-07</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Address</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">10.20.4.17</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Last heartbeat</dt>
+<dd class="yi-description-list__value">12 seconds ago</dd>
+</div>
+</dl>
+</div>
+<div style="inline-size: 14rem" class="demo-card">
+<dl class="yi-description-list yi-description-list--inline" aria-label="Host">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Host</dt>
+<dd class="yi-description-list__value">nomad-client-07</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Address</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">10.20.4.17</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Last heartbeat</dt>
+<dd class="yi-description-list__value">12 seconds ago</dd>
+</div>
+</dl>
+</div>
+</div>

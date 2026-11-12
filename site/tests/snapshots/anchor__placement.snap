@@ -1,0 +1,20 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-3xl)" class="yi-stack yi-stack--align-center">
+<div style="--yi-gap:var(--yi-space-xs);--yi-grid-columns:3" class="yi-grid yi-grid--fixed">
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">Top</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">TopStart</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">TopEnd</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">Bottom</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">BottomStart</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">BottomEnd</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">Left</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">LeftStart</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">LeftEnd</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">Right</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">RightStart</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-pressed="false">RightEnd</button>
+</div>
+<span class="demo-card">Anchor</span>
+</div>

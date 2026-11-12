@@ -1,0 +1,336 @@
+// Pipeline
+//
+// Stages are tonal panels in a row that wraps; a gate and the stage behind it
+// wrap together. Below 34rem of container width the row becomes a column and
+// gates lie flat. Tones set the gate and unit tokens.
+@use "api" as *;
+
+.yi-pipeline {
+  // Component tokens
+  --yi-pipeline-stage-bg: var(--yi-tone-1);
+  --yi-pipeline-stage-min: 9.5rem; // narrowest a stage gets
+  --yi-pipeline-stage-padding: var(--yi-space-md);
+  --yi-pipeline-row-gap: var(--yi-space-sm); // between wrapped rows
+  --yi-pipeline-gate-size: 2.25rem; // room a gate or connector takes between stages
+  --yi-pipeline-unit-size: 1.125rem;
+  --yi-pipeline-unit-gap: var(--yi-space-xs);
+  --yi-pipeline-unit-radius: var(--yi-radius-sm);
+
+  container-type: inline-size;
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  color: var(--yi-fg);
+
+  &--compact {
+    --yi-pipeline-stage-min: 7rem;
+    --yi-pipeline-stage-padding: var(--yi-space-sm);
+    --yi-pipeline-gate-size: 1.75rem;
+    --yi-pipeline-unit-size: 0.875rem;
+    --yi-pipeline-unit-gap: 3px;
+
+    .yi-pipeline-stage__meta {
+      display: none;
+    }
+  }
+}
+
+.yi-pipeline__track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--yi-pipeline-row-gap) 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yi-pipeline__step {
+  display: flex;
+  align-items: stretch;
+  min-inline-size: 0;
+
+  .yi-pipeline--fill & {
+    flex: 1 1 0;
+  }
+}
+
+// The plain connector between two stages with no gate.
+.yi-pipeline__link {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--yi-pipeline-gate-size);
+  color: var(--yi-fg-subtle);
+
+  .yi-pipeline__step:first-child > & {
+    display: none;
+  }
+}
+
+.yi-pipeline-stage {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--yi-space-sm);
+  min-inline-size: var(--yi-pipeline-stage-min);
+  padding: var(--yi-pipeline-stage-padding);
+  border: 1px solid transparent;
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-pipeline-stage-bg);
+
+  .yi-pipeline__step--current > & {
+    border-color: var(--yi-accent-line);
+  }
+
+  .yi-pipeline__step--placeholder > & {
+    border: 1px dashed var(--yi-line-strong);
+    background: transparent;
+  }
+}
+
+.yi-pipeline-stage__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-2xs);
+}
+
+.yi-pipeline-stage__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--yi-space-sm);
+}
+
+.yi-pipeline-stage__title {
+  min-inline-size: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.yi-pipeline-stage__status {
+  flex: none;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  white-space: nowrap;
+}
+
+.yi-pipeline-stage__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--yi-space-sm);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+// ---- Gate -----------------------------------------------------------------
+
+.yi-pipeline-gate {
+  --yi-pipeline-gate-fg: var(--yi-fg-subtle);
+  --yi-pipeline-gate-line: var(--yi-line-strong);
+
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  inline-size: var(--yi-pipeline-gate-size);
+  padding-block: var(--yi-space-xs);
+  color: var(--yi-pipeline-gate-fg);
+
+  @each $tone in ok, warn, danger, info, active {
+    &--#{$tone} {
+      --yi-pipeline-gate-fg: var(--yi-#{$tone});
+      --yi-pipeline-gate-line: var(--yi-#{$tone});
+    }
+  }
+}
+
+// The barrier: one segment either side of the icon and label.
+.yi-pipeline-gate__bar {
+  flex: 1 1 0;
+  min-block-size: var(--yi-space-md);
+  border-inline-start: 2px dashed var(--yi-pipeline-gate-line);
+
+  .yi-pipeline-gate--open > & {
+    border-inline-start-style: solid;
+    opacity: 0.6;
+  }
+
+  // Shut in front of the pipeline: a solid, heavier barrier.
+  .yi-pipeline-gate--closed > & {
+    border-inline-start-width: 4px;
+    border-inline-start-style: solid;
+  }
+}
+
+.yi-pipeline-gate__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border: 1px solid var(--yi-pipeline-gate-line);
+  border-radius: var(--yi-radius-full);
+  font-size: var(--yi-text-xs);
+
+  .yi-pipeline-gate--closed > & {
+    background: color-mix(in srgb, var(--yi-pipeline-gate-fg) 12%, transparent);
+  }
+}
+
+.yi-pipeline-gate__label {
+  font-size: var(--yi-text-xs);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+
+// ---- Units ----------------------------------------------------------------
+
+// Unit tokens carry their defaults as fallbacks, so a unit also works
+// outside a pipeline, in a legend.
+.yi-pipeline-units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yi-pipeline-unit-gap, var(--yi-space-xs));
+  // Never wider than `per_row` units, and narrower when the stage is.
+  max-inline-size: calc(
+    var(--yi-pipeline-units-per-row, 999) * (var(--yi-pipeline-unit-size, 1.125rem) + var(--yi-pipeline-unit-gap, var(--yi-space-xs)))
+  );
+}
+
+.yi-pipeline-unit {
+  --yi-pipeline-unit-tone: var(--yi-neutral);
+
+  position: relative;
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  inline-size: var(--yi-pipeline-unit-size, 1.125rem);
+  block-size: var(--yi-pipeline-unit-size, 1.125rem);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--yi-pipeline-unit-radius, var(--yi-radius-sm));
+  background: var(--yi-pipeline-unit-tone);
+  font: inherit;
+
+  @each $tone in ok, warn, danger, info, active {
+    &--#{$tone} {
+      --yi-pipeline-unit-tone: var(--yi-#{$tone});
+    }
+  }
+
+  &--soft {
+    border-color: color-mix(in srgb, var(--yi-pipeline-unit-tone) 70%, transparent);
+    background: color-mix(in srgb, var(--yi-pipeline-unit-tone) 16%, transparent);
+  }
+
+  &--hollow {
+    border-color: color-mix(in srgb, var(--yi-pipeline-unit-tone) 70%, transparent);
+    background: transparent;
+  }
+
+  &--dashed {
+    border: 1px dashed var(--yi-pipeline-unit-tone);
+    background: transparent;
+  }
+
+  &--round {
+    border-radius: var(--yi-radius-full);
+  }
+
+  // The fill pulses, not the opacity, so outlines and focus rings stay put.
+  &--pulse {
+    @include motion {
+      animation: yi-pipeline-unit-pulse 1.8s ease-in-out infinite;
+    }
+  }
+
+  @at-root a#{&},
+    button#{&} {
+    cursor: pointer;
+
+    @include motion {
+      transition: scale var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover,
+    &:focus-visible {
+      z-index: 1;
+      scale: 1.18;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}
+
+@keyframes yi-pipeline-unit-pulse {
+  50% {
+    background-color: color-mix(in srgb, var(--yi-pipeline-unit-tone) 45%, transparent);
+  }
+}
+
+// ---- Narrow containers: stages stack and gates lie flat ----------------------
+
+@container (max-width: 34rem) {
+  .yi-pipeline__track,
+  .yi-pipeline__step {
+    flex-direction: column;
+  }
+
+  .yi-pipeline__track {
+    gap: 0;
+  }
+
+  .yi-pipeline__link {
+    inline-size: auto;
+    block-size: var(--yi-pipeline-gate-size);
+    rotate: 90deg;
+  }
+
+  .yi-pipeline-gate {
+    flex-direction: row;
+    inline-size: auto;
+    block-size: var(--yi-pipeline-gate-size);
+    padding-block: 0;
+    padding-inline: var(--yi-space-xs);
+  }
+
+  .yi-pipeline-gate__bar {
+    min-block-size: 0;
+    min-inline-size: var(--yi-space-md);
+    border-inline-start: 0;
+    border-block-start: 2px dashed var(--yi-pipeline-gate-line);
+
+    .yi-pipeline-gate--open > & {
+      border-block-start-style: solid;
+    }
+
+    .yi-pipeline-gate--closed > & {
+      border-block-start-width: 4px;
+      border-block-start-style: solid;
+    }
+  }
+
+  .yi-pipeline-gate__label {
+    writing-mode: horizontal-tb;
+    rotate: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-pipeline-stage,
+  .yi-pipeline-unit {
+    border-color: CanvasText;
+  }
+
+  .yi-pipeline-unit--solid {
+    background: CanvasText;
+  }
+}
