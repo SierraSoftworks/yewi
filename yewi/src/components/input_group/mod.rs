@@ -10,7 +10,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, Size, icons};
+use crate::{Attrs, FieldContext, Icon, Size, icons};
 
 mod search_input;
 
@@ -26,7 +26,7 @@ fn focus_control(group: &NodeRef, event: &MouseEvent) {
         let on_control = event
             .target()
             .and_then(|target| target.dyn_into::<web_sys::Element>().ok())
-            .and_then(|target| target.closest("input, textarea, select, button, a, label").ok().flatten())
+            .and_then(|target| target.closest("input, textarea, select, button, a, label, [role], .yi-popover__surface").ok().flatten())
             .is_some();
         if on_control {
             return;
@@ -54,12 +54,14 @@ pub struct InputGroupProps {
     /// read-only and invalid states style the whole group.
     #[prop_or_default]
     pub children: Html,
-    /// Shown before the control: text such as `https://`, an icon, a
-    /// `Button` or an `InputGroupSelect`.
+    /// Shown before the control: text such as `https://`, an icon, or a
+    /// `Button`, `MenuButton`, `Select` or `InputGroupSelect`, which are
+    /// drawn as chips.
     #[prop_or_default]
     pub prefix: Option<Html>,
-    /// Shown after the control: a unit such as `ms`, a `Button` or an
-    /// `InputGroupSelect`.
+    /// Shown after the control: a unit such as `ms`, or a `Button`,
+    /// `MenuButton`, `Select` or `InputGroupSelect`, which are drawn as
+    /// chips.
     #[prop_or_default]
     pub suffix: Option<Html>,
     /// The size of the whole group. The control and any buttons inside
@@ -81,6 +83,25 @@ pub struct InputGroupProps {
 #[function_component]
 pub fn InputGroup(props: &InputGroupProps) -> Html {
     let group = use_node_ref();
+    // The surrounding field labels and describes the text control only: a
+    // Select or other control in an affix must not claim the same id.
+    let field = use_context::<FieldContext>();
+    let affix = |modifier: &'static str, content: &Html| {
+        let content = match &field {
+            Some(field) => {
+                let context = FieldContext {
+                    control_id: None,
+                    described_by: None,
+                    invalid: false,
+                    required: false,
+                    ..field.clone()
+                };
+                html! { <ContextProvider<FieldContext> {context}>{ content.clone() }</ContextProvider<FieldContext>> }
+            }
+            None => content.clone(),
+        };
+        html! { <span class={classes!("yi-input-group__affix", modifier)}>{ content }</span> }
+    };
     let onmousedown = {
         let group = group.clone();
         Callback::from(move |event: MouseEvent| focus_control(&group, &event))
@@ -98,11 +119,11 @@ pub fn InputGroup(props: &InputGroupProps) -> Html {
             {onmousedown}
         >
             if let Some(prefix) = &props.prefix {
-                <span class="yi-input-group__affix yi-input-group__affix--prefix">{ prefix.clone() }</span>
+                { affix("yi-input-group__affix--prefix", prefix) }
             }
             { props.children.clone() }
             if let Some(suffix) = &props.suffix {
-                <span class="yi-input-group__affix yi-input-group__affix--suffix">{ suffix.clone() }</span>
+                { affix("yi-input-group__affix--suffix", suffix) }
             }
         </div>
     })
@@ -148,7 +169,8 @@ pub struct InputGroupSelectProps {
 
 /// A compact dropdown for an [`InputGroup`] `prefix` or `suffix`: a protocol,
 /// a unit, a search scope. It is a native `<select>` drawn as a chip, so it
-/// suits a handful of short options.
+/// suits a handful of short options and opens the platform's own picker.
+/// For icons, descriptions or groups, put a `Select` in the affix instead.
 #[function_component]
 pub fn InputGroupSelect(props: &InputGroupSelectProps) -> Html {
     let select = use_node_ref();

@@ -1,0 +1,3061 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-table-max-height:18rem" data-yi-density="compact" class="yi-table yi-table--ruled yi-table--compact yi-table--sticky yi-table--scroll yi-table--fixed">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Recent requests" class="yi-table__grid">
+<colgroup>
+<col style="inline-size:6rem">
+<col>
+<col style="inline-size:6rem">
+<col style="inline-size:6rem">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Request</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Route</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Status</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Time</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48000</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">3 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48001</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">40 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48002</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">77 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48003</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">114 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48004</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">151 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48005</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">188 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48006</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">225 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48007</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">22 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48008</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">59 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48009</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">96 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48010</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">133 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48011</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">170 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48012</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">207 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48013</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">4 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48014</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">41 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48015</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">78 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48016</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">115 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48017</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">152 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48018</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">189 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48019</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">226 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48020</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">23 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48021</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">60 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48022</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">97 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48023</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">134 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48024</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">171 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48025</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">208 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48026</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">5 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48027</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">42 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48028</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">79 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48029</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">116 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48030</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">153 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48031</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">190 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48032</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">227 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48033</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">24 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48034</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">61 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48035</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">98 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48036</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">135 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48037</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">172 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48038</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">209 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48039</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">6 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48040</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">43 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48041</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">80 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48042</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">117 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48043</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">154 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48044</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">191 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48045</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">228 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48046</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">25 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48047</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">62 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48048</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">99 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48049</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">136 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48050</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">173 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48051</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">210 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48052</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">7 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48053</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">44 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48054</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">81 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48055</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">118 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48056</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">155 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48057</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">192 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48058</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">229 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48059</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">26 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48060</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">63 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48061</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">100 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48062</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">137 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48063</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">174 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48064</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">211 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48065</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">8 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48066</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">45 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48067</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">82 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48068</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">119 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48069</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">156 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48070</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">193 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48071</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">230 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48072</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">27 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48073</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">64 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48074</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">101 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48075</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">138 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48076</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">175 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48077</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">212 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48078</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">9 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48079</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">46 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48080</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">83 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48081</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">120 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48082</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">157 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48083</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">194 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48084</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">231 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48085</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">28 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48086</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">65 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48087</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">102 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48088</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">139 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48089</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">176 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48090</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">213 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48091</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">10 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48092</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">47 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48093</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">84 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48094</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">121 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48095</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">158 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48096</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">195 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48097</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">232 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48098</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">29 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48099</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">66 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48100</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">103 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48101</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">140 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48102</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">177 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48103</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">214 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48104</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">11 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48105</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">48 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48106</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">85 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48107</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">122 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48108</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">159 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48109</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">196 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48110</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">233 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48111</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">30 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48112</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">67 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48113</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">104 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48114</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">141 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48115</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">178 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48116</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">215 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48117</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">12 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48118</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">49 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48119</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">86 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48120</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">123 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48121</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">160 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48122</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">197 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48123</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">234 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48124</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">31 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48125</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">68 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48126</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">105 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48127</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">142 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48128</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">179 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48129</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">216 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48130</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">13 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48131</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">50 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48132</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">87 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48133</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">124 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48134</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">161 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48135</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">198 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48136</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">235 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48137</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">32 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48138</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">69 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48139</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">106 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48140</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">143 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48141</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">180 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48142</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">217 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48143</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">14 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48144</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">51 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48145</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">88 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48146</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">125 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48147</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">162 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48148</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">199 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48149</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">236 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48150</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">33 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48151</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">70 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48152</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">107 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48153</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">144 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48154</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">181 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48155</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">218 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48156</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">15 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48157</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">52 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48158</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">89 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48159</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">126 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48160</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">163 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48161</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">200 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48162</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">237 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48163</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">34 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48164</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">71 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48165</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">108 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48166</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">145 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48167</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">182 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48168</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">219 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48169</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">16 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48170</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">53 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48171</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">90 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48172</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">127 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48173</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">164 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48174</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">201 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48175</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">238 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48176</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">35 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48177</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">72 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48178</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">109 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48179</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">146 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48180</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">183 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48181</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">220 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48182</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">17 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48183</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">54 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48184</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">91 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48185</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">128 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48186</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">165 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48187</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">202 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48188</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">239 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48189</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">36 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48190</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">73 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48191</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">110 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48192</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">147 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48193</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">184 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48194</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">221 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48195</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">18 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48196</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">55 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48197</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">92 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48198</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">129 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48199</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">166 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48200</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">203 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48201</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">240 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48202</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">37 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48203</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">74 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48204</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">111 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48205</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">148 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48206</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">185 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48207</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">222 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48208</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">19 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48209</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">56 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48210</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">93 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48211</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">130 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48212</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">167 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48213</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">204 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48214</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">241 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48215</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">38 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48216</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">75 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48217</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">112 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48218</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">149 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48219</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">186 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48220</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">223 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48221</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">20 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48222</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">57 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48223</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">94 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48224</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">131 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48225</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">168 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48226</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">205 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48227</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">242 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48228</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">39 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48229</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">76 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48230</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">113 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48231</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">150 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48232</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">187 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48233</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">224 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48234</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">21 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48235</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">58 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48236</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">95 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48237</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">132 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48238</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">169 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48239</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">206 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48240</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">3 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48241</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">40 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48242</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">77 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48243</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">114 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48244</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">151 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48245</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">188 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48246</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">225 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48247</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">22 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48248</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">59 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48249</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">96 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48250</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">133 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48251</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">170 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48252</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">207 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48253</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">4 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48254</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">41 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48255</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">78 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48256</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">115 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48257</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">152 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48258</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">189 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48259</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">226 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48260</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">23 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48261</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">60 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48262</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">97 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48263</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">134 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48264</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">171 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48265</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">208 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48266</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">5 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48267</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">42 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48268</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">79 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48269</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">116 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48270</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">153 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48271</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">190 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48272</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">227 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48273</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">24 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48274</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">61 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48275</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">98 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48276</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">135 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48277</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">172 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48278</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">209 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48279</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">6 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48280</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">43 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48281</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">80 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48282</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">117 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48283</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">154 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48284</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">191 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48285</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">228 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48286</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">25 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48287</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">62 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48288</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">99 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48289</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">136 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48290</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">173 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48291</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">210 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48292</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">7 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48293</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">44 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48294</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">81 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48295</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">118 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48296</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">155 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48297</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">192 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48298</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">229 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48299</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">26 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48300</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">63 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48301</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">100 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48302</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">137 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48303</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">174 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48304</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">211 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48305</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">8 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48306</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">45 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48307</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">82 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48308</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">119 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48309</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">156 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48310</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">193 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48311</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">230 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48312</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">27 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48313</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">64 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48314</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">101 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48315</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">138 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48316</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">175 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48317</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">212 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48318</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">9 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48319</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">46 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48320</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">83 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48321</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">120 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48322</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">157 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48323</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">194 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48324</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">231 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48325</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">28 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48326</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">65 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48327</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">102 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48328</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">139 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48329</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">176 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48330</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">213 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48331</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">10 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48332</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">47 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48333</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">84 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48334</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">121 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48335</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">158 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48336</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">195 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48337</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">232 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48338</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">29 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48339</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">66 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48340</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">103 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48341</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">140 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48342</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">177 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48343</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">214 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48344</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">11 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48345</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">48 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48346</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">85 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48347</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">122 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48348</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">159 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48349</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">196 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48350</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">233 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48351</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">30 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48352</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">67 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48353</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">104 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48354</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">141 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48355</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">178 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48356</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">215 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48357</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">12 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48358</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">49 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48359</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">86 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48360</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">123 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48361</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">160 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48362</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">197 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48363</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">234 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48364</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">31 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48365</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">68 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48366</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">105 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48367</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">142 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48368</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">179 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48369</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">216 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48370</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">13 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48371</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">50 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48372</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">87 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48373</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">124 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48374</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">161 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48375</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">198 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48376</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">235 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48377</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">32 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48378</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">69 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48379</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">106 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48380</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">143 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48381</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">180 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48382</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">217 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48383</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">14 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48384</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">51 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48385</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">88 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48386</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">125 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48387</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">162 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48388</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">199 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48389</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">236 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48390</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">33 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48391</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">70 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48392</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">107 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48393</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">144 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48394</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">181 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48395</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">218 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48396</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">15 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48397</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">52 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48398</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">89 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48399</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">126 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48400</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">163 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48401</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">200 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48402</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">237 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48403</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">34 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48404</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">71 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48405</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">108 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48406</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">145 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48407</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">182 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48408</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">219 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48409</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">16 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48410</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">53 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48411</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">90 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48412</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">127 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48413</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">164 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48414</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">201 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48415</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">238 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48416</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">35 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48417</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">72 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48418</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">109 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48419</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">146 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48420</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">183 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48421</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">220 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48422</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">17 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48423</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">54 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48424</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">91 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48425</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">128 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48426</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">165 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48427</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">202 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48428</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">239 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48429</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">36 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48430</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">73 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48431</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">110 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48432</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">147 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48433</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">184 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48434</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">221 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48435</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">18 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48436</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">55 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48437</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">92 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48438</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">129 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48439</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">166 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48440</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">203 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48441</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">240 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48442</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">37 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48443</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">74 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48444</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">111 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48445</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">148 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48446</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">185 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48447</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">222 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48448</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">19 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48449</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">56 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48450</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">93 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48451</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">130 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48452</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">167 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48453</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">204 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48454</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">241 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48455</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">38 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48456</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">75 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48457</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">112 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48458</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">149 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48459</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">186 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48460</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">223 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48461</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">20 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48462</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">57 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48463</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">94 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48464</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">131 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48465</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">168 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48466</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">205 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48467</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">242 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48468</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">39 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48469</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">76 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48470</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">113 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48471</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">150 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48472</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">187 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48473</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">224 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48474</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">21 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48475</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">58 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48476</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">95 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48477</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">132 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48478</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">169 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48479</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">206 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48480</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">3 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48481</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">40 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48482</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">77 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48483</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">114 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48484</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">151 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48485</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">188 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48486</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">225 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48487</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">22 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48488</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">59 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48489</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">96 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48490</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">133 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48491</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">170 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48492</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">207 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48493</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">404</td>
+<td class="yi-table__cell yi-table__cell--end">4 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48494</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">41 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48495</td>
+<td class="yi-table__cell">/api/hosts</td>
+<td class="yi-table__cell">502</td>
+<td class="yi-table__cell yi-table__cell--end">78 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48496</td>
+<td class="yi-table__cell">/api/audit</td>
+<td class="yi-table__cell">204</td>
+<td class="yi-table__cell yi-table__cell--end">115 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48497</td>
+<td class="yi-table__cell">/api/workloads/caddy</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">152 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48498</td>
+<td class="yi-table__cell">/api/rollouts</td>
+<td class="yi-table__cell">304</td>
+<td class="yi-table__cell yi-table__cell--end">189 ms</td>
+</tr>
+<tr class="yi-table__row">
+<td class="yi-table__cell">48499</td>
+<td class="yi-table__cell">/healthz</td>
+<td class="yi-table__cell">200</td>
+<td class="yi-table__cell yi-table__cell--end">226 ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="yi-table__footer">
+<span>500 requests</span>
+<span>Shift-click a header to add a tie-break</span>
+</div>
+</div>

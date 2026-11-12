@@ -1,0 +1,119 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:16rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--sm yi-text--muted">Open</span>
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Releases, Open" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Version</th>
+<th scope="col" class="yi-table__header">Channel</th>
+<th scope="col" class="yi-table__header yi-table__cell--end">Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.8.4</th>
+<td class="yi-table__cell">stable</td>
+<td class="yi-table__cell yi-table__cell--end">212</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.2</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">18</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.1</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">3</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.7.9</th>
+<td class="yi-table__cell">previous</td>
+<td class="yi-table__cell yi-table__cell--end">41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--sm yi-text--muted">Ruled</span>
+<div class="yi-table yi-table--ruled">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Releases, Ruled" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Version</th>
+<th scope="col" class="yi-table__header">Channel</th>
+<th scope="col" class="yi-table__header yi-table__cell--end">Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.8.4</th>
+<td class="yi-table__cell">stable</td>
+<td class="yi-table__cell yi-table__cell--end">212</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.2</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">18</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.1</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">3</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.7.9</th>
+<td class="yi-table__cell">previous</td>
+<td class="yi-table__cell yi-table__cell--end">41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<span class="yi-text yi-text--sm yi-text--muted">Zebra</span>
+<div class="yi-table yi-table--zebra">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Releases, Zebra" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Version</th>
+<th scope="col" class="yi-table__header">Channel</th>
+<th scope="col" class="yi-table__header yi-table__cell--end">Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.8.4</th>
+<td class="yi-table__cell">stable</td>
+<td class="yi-table__cell yi-table__cell--end">212</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.2</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">18</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.9.0-rc.1</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">3</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2.7.9</th>
+<td class="yi-table__cell">previous</td>
+<td class="yi-table__cell yi-table__cell--end">41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>

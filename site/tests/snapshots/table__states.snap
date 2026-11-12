@@ -1,0 +1,83 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="radiogroup" aria-label="Table state" class="yi-segmented yi-segmented--md">
+<label class="yi-segmented__option">
+<input value="loading" checked type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Loading</span>
+</label>
+<label class="yi-segmented__option">
+<input value="loaded" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Loaded</span>
+</label>
+<label class="yi-segmented__option">
+<input value="refreshing" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Refreshing</span>
+</label>
+<label class="yi-segmented__option">
+<input value="empty" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Empty</span>
+</label>
+</div>
+<div class="yi-table yi-table--open yi-table--loading">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Open incidents" aria-busy="true" class="yi-table__grid">
+<colgroup>
+<col>
+<col style="inline-size:12rem">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Incident</th>
+<th scope="col" class="yi-table__header">Opened</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row yi-table__row--placeholder">
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+</tr>
+<tr class="yi-table__row yi-table__row--placeholder">
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+</tr>
+<tr class="yi-table__row yi-table__row--placeholder">
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+<td class="yi-table__cell">
+<span aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
