@@ -1,0 +1,56 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-checkbox yi-checkbox--indeterminate">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M5 12h14">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">All services</span>
+</span>
+</label>
+<div style="padding-inline-start: var(--yi-space-xl)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">checkout-api</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">billing</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">search</span>
+</span>
+</label>
+</div>
+<span role="status">1 selected</span>
+</div>

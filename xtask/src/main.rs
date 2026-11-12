@@ -133,7 +133,15 @@ fn e2e(args: &[String]) {
     if !e2e.join("node_modules").exists() {
         run(Command::new("npm").arg("ci").current_dir(&e2e));
     }
-    run(Command::new("npx").args(["playwright", "test"]).args(args).current_dir(&e2e));
+    // Playwright only rewrites a baseline that fails its comparison, so with the usual
+    // tolerance a small change is never recorded. An update run compares exactly instead.
+    let updating = args.iter().any(|arg| arg.starts_with("--update-snapshots") || arg == "-u");
+    let mut test = Command::new("npx");
+    test.args(["playwright", "test"]).args(args).current_dir(&e2e);
+    if updating {
+        test.env("YEWI_E2E_UPDATE", "1");
+    }
+    run(&mut test);
     gallery(&[]);
 }
 

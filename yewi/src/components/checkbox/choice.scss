@@ -1,0 +1,67 @@
+// The row shared by Checkbox, Radio and Switch: a control, then a label with
+// an optional description. The whole row is the click target.
+@use "api" as *;
+
+.yi-choice {
+  // Component tokens
+  --yi-choice-gap: var(--yi-space-sm); // between the control and its text
+  --yi-choice-fg: var(--yi-fg);
+  --yi-choice-description: var(--yi-fg-muted);
+  --yi-choice-font-size: var(--yi-text-md);
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--yi-choice-gap);
+  max-inline-size: 100%;
+  color: var(--yi-choice-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-choice-font-size);
+  line-height: var(--yi-leading);
+  cursor: pointer;
+
+  // One line tall, so the control centres on the first line of the label
+  // however far the text wraps.
+  &__control {
+    position: relative;
+    display: inline-grid;
+    flex: none;
+    place-items: center;
+    block-size: 1lh;
+
+    > * {
+      grid-area: 1 / 1;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+
+  &__description {
+    color: var(--yi-choice-description);
+    font-size: var(--yi-text-sm);
+  }
+
+  &--sm {
+    --yi-choice-font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-choice-font-size: var(--yi-text-lg);
+  }
+
+  &--disabled {
+    --yi-choice-fg: var(--yi-fg-muted);
+
+    cursor: not-allowed;
+  }
+}
+
+// Beside the label of an inline Field, a row is as tall as a text control so
+// its first line sits on the label's baseline.
+.yi-field--inline > .yi-field__body > .yi-choice {
+  align-self: flex-start;
+  padding-block: calc((var(--yi-control-height) - 1lh) / 2);
+}
