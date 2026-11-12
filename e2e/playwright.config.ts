@@ -22,7 +22,13 @@ export default defineConfig({
   ],
   snapshotPathTemplate: "baselines/{arg}{ext}",
   expect: {
-    toHaveScreenshot: { maxDiffPixelRatio: 0.002, animations: "disabled", caret: "hide" },
+    // An update run (`cargo xtask e2e --update-snapshots`) allows no differing pixels, so any
+    // visible change is recorded. Sub-perceptual rendering noise is still ignored per pixel.
+    toHaveScreenshot: {
+      maxDiffPixelRatio: process.env.YEWI_E2E_UPDATE ? 0 : 0.002,
+      animations: "disabled",
+      caret: "hide",
+    },
   },
   use: {
     baseURL: `http://localhost:${port}`,

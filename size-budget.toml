@@ -11,8 +11,8 @@ core = 340000
 # `stylesheet` is the compiled CSS with no opt-in features. Unlike code, every
 # app ships all of it, so it grows with each core component. About one sixth
 # of this after gzip.
-# PROVISIONAL (2026-11-12): sized for the full core catalogue, pending Ben's
-# decision on what the stylesheet is allowed to cost.
+# Approved by Ben on 2026-11-12: one stylesheet for every app, sized for the
+# full core catalogue. Raising it is his decision.
 stylesheet = 250000
 
 # Every other entry is what enabling that feature may ADD: wasm on top of
