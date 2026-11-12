@@ -1,0 +1,174 @@
+// StatTile
+//
+// Variants, sizes and tones set the component tokens below. To restyle a
+// tile from an app, set these tokens rather than the properties.
+@use "api" as *;
+
+.yi-stat-tile {
+  // Component tokens
+  --yi-stat-tile-padding: var(--yi-space-lg);
+  --yi-stat-tile-gap: var(--yi-space-xs);
+  --yi-stat-tile-label-color: var(--yi-fg-muted);
+  --yi-stat-tile-label-size: var(--yi-text-sm);
+  --yi-stat-tile-label-transform: none;
+  --yi-stat-tile-label-tracking: normal;
+  --yi-stat-tile-value-color: var(--yi-fg);
+  --yi-stat-tile-value-font: var(--yi-font-body);
+  --yi-stat-tile-value-size: var(--yi-text-3xl);
+  --yi-stat-tile-value-weight: 500;
+  --yi-stat-tile-border: var(--yi-card-line);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--yi-stat-tile-gap);
+  min-inline-size: 0;
+  margin: 0;
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  text-align: start;
+  text-decoration: none;
+
+  &--card {
+    @include card-surface;
+
+    padding: var(--yi-stat-tile-padding);
+    border-color: var(--yi-stat-tile-border);
+  }
+
+  &--plain {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  &--sm {
+    --yi-stat-tile-value-size: var(--yi-text-2xl);
+    --yi-stat-tile-padding: var(--yi-space-md);
+  }
+
+  &--lg {
+    --yi-stat-tile-value-size: var(--yi-text-4xl);
+    --yi-stat-tile-value-weight: 400;
+  }
+
+  @each $tone in ok, warn, danger, info, active, neutral {
+    &--#{$tone} {
+      --yi-stat-tile-value-color: var(--yi-#{$tone});
+    }
+  }
+
+  &--interactive {
+    cursor: pointer;
+
+    @include motion {
+      transition: border-color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover {
+      --yi-stat-tile-border: var(--yi-line-strong);
+      --yi-stat-tile-label-color: var(--yi-fg);
+
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  // The chosen tile: an accent hairline and label, no wash.
+  &--selected,
+  &--selected:hover {
+    --yi-stat-tile-border: var(--yi-accent-line);
+    --yi-stat-tile-label-color: var(--yi-accent-text);
+  }
+
+  // Without a surface, the choice is carried by a rule under the tile.
+  &--plain#{&}--interactive {
+    padding-block-end: var(--yi-space-sm);
+    border-block-end: 2px solid transparent;
+    border-radius: 0;
+  }
+
+  &--plain#{&}--selected {
+    border-block-end-color: var(--yi-accent-solid);
+  }
+}
+
+.yi-stat-tile__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--yi-stat-tile-label-color);
+  font-size: var(--yi-stat-tile-label-size);
+  font-weight: 500;
+  line-height: var(--yi-leading-tight);
+  letter-spacing: var(--yi-stat-tile-label-tracking);
+  text-transform: var(--yi-stat-tile-label-transform);
+
+  @include motion {
+    transition: color var(--yi-duration-fast) var(--yi-ease);
+  }
+}
+
+.yi-stat-tile__value {
+  max-inline-size: 100%;
+  color: var(--yi-stat-tile-value-color);
+  font-family: var(--yi-stat-tile-value-font);
+  font-size: var(--yi-stat-tile-value-size);
+  font-weight: var(--yi-stat-tile-value-weight);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--yi-leading-tight);
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+.yi-stat-tile__unit {
+  margin-inline-start: 0.2em;
+  color: var(--yi-fg-muted);
+  font-size: 0.55em;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.yi-stat-tile__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--yi-space-sm);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  line-height: var(--yi-leading);
+}
+
+.yi-stat-tile__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+
+  @each $tone in ok, danger {
+    &--#{$tone} {
+      color: var(--yi-#{$tone});
+    }
+  }
+
+  &--neutral {
+    color: var(--yi-fg-subtle);
+  }
+}
+
+.yi-stat-tile__extra {
+  display: block;
+  align-self: stretch;
+  margin-block-start: var(--yi-space-xs);
+}
+
+@media (forced-colors: active) {
+  .yi-stat-tile--selected {
+    border-color: Highlight;
+  }
+}
