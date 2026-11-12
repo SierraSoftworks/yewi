@@ -2,12 +2,23 @@
 
 #[cfg(target_arch = "wasm32")]
 fn main() {
-    use yew_router::history::{AnyHistory, BrowserHistory};
+    use yew_router::history::{AnyHistory, BrowserHistory, History, MemoryHistory};
     use yewi_site::{App, AppProps};
 
-    let props = AppProps { history: AnyHistory::from(BrowserHistory::new()) };
     let document = web_sys::window().and_then(|window| window.document()).expect("no document");
     let root = document.get_element_by_id("app").expect("no #app element");
+
+    // The packed review gallery (`e2e/viewer.mjs`) is one file with no address
+    // of its own, so it keeps its location in memory and starts at the gallery.
+    let history = match root.get_attribute("data-gallery") {
+        Some(slug) => {
+            let history = MemoryHistory::new();
+            history.push(format!("{}/_gallery/{slug}", yewi_site::basename().unwrap_or_default()));
+            AnyHistory::from(history)
+        }
+        None => AnyHistory::from(BrowserHistory::new()),
+    };
+    let props = AppProps { history };
 
     // A prerendered page carries its markup and a stylesheet link; `trunk serve`
     // hands over an empty shell.

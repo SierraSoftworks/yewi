@@ -17,7 +17,8 @@ cargo xtask <command>
   serve            serve the site with live reload (client-rendered)
   e2e [args]       build the site, then run the browser tests and the gallery
                    (args go to Playwright, e.g. `e2e button --update-snapshots`)
-  gallery [base]   rebuild e2e/gallery from the last run, diffed against a git ref
+  gallery [base]   rebuild e2e/gallery from the last run: the live viewer, and
+                   screenshots diffed against a git ref
   size             measure the probe's wasm and the stylesheet per feature
                    and enforce size-budget.toml
   ci               check, e2e and size: everything, in order
@@ -201,6 +202,10 @@ fn e2e(args: &[String]) {
 
 fn gallery(args: &[String]) {
     run(Command::new("node").arg("gallery.mjs").args(args).current_dir(root().join("e2e")));
+    // The live viewer needs the built site; `gallery` alone may run without one.
+    if root().join("site/dist/yewi.css").exists() {
+        run(Command::new("node").arg("viewer.mjs").current_dir(root().join("e2e")));
+    }
 }
 
 fn size() {

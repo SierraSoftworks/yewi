@@ -65,7 +65,7 @@ fn Layout(props: &LayoutProps) -> Html {
                 >
                     <Icon icon={icons::MENU} />
                 </Button>
-                <Link<Route> classes="docs-brand" to={Route::Home}>{ "yewi" }</Link<Route>>
+                <Link<Route> classes="docs-brand" to={Route::Home}><Wordmark /></Link<Route>>
                 <Search />
                 <nav class="docs-header__links" aria-label="Site">
                     <Link<Route> to={Route::guide("getting-started")}>{ "Guide" }</Link<Route>>
@@ -189,6 +189,16 @@ fn Search() -> Html {
     }
 }
 
+/// The yewi wordmark: a light "yew" and a bold accent "i", read as "UI".
+#[function_component]
+fn Wordmark() -> Html {
+    html! {
+        <span class="docs-wordmark">
+            { "yew" }<span class="docs-wordmark__i">{ "i" }</span>
+        </span>
+    }
+}
+
 // ---- Pages ------------------------------------------------------------------
 
 #[function_component]
@@ -196,7 +206,7 @@ pub fn Home() -> Html {
     html! {
         <Layout>
             <header class="docs-page-header">
-                <h1>{ "yewi" }</h1>
+                <h1><Wordmark /></h1>
                 <p class="docs-lede">
                     { "A design system for Yew applications: calm by default, decisive where it matters. \
                        One component library, light and dark themes, an accent per app." }
@@ -357,8 +367,8 @@ fn ExampleBlock(props: &ExampleBlockProps) -> Html {
 }
 
 #[derive(Properties)]
-struct StageProps {
-    example: &'static Example,
+pub(crate) struct StageProps {
+    pub(crate) example: &'static Example,
 }
 
 impl PartialEq for StageProps {
@@ -369,7 +379,7 @@ impl PartialEq for StageProps {
 
 /// Mounts an example with time frozen, so renders are reproducible.
 #[function_component]
-fn Stage(props: &StageProps) -> Html {
+pub(crate) fn Stage(props: &StageProps) -> Html {
     html! {
         <NowProvider now={Now::from_epoch_millis(EXAMPLE_NOW_MILLIS)} live=false>
             { (props.example.render)() }

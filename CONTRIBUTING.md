@@ -67,7 +67,12 @@ e2e/tests/<name>.spec.ts         behaviour specs
 
 ### What you write
 - `tests.rs`: pure logic and server-render assertions with `yewi_test::render`. Assert on text, roles and ARIA state, not class names or exact markup. Parameterise over variants.
-- `e2e/tests/<name>.spec.ts`: one spec per interaction (mouse, keyboard, focus), driven through the `example("<page>/<scenario>")` fixture and role-based locators. These are recorded on video.
+- `e2e/tests/<name>.spec.ts`: one spec per interaction (mouse, keyboard, focus), driven through the `example("<page>/<scenario>")` fixture and role-based locators. Each is recorded twice: on video, and as the input events it caused, which the review gallery replays.
+
+### The review gallery
+- `cargo xtask e2e` (or `cargo xtask gallery` after a run) writes `e2e/gallery/viewer.html`: one self-contained file with every example running live, a menu of components, and theme, accent and stage width controls.
+- Each behaviour spec appears under the example it drove as a replay: the recorded events are dispatched again at the live component. Nothing needs writing for this, but a spec that reaches an example through `example(...)` and real input (`click`, `hover`, `keyboard.press`) replays best.
+- `node e2e/verify-replays.mjs` plays every recording and reports those that end in a different state from the spec. Replays cannot reproduce a faked clock, files, the clipboard, events a spec dispatches itself, or viewport-sized layouts (`AppShell`).
 
 ### Updating recorded output
 - Snapshots: `INSTA_UPDATE=always cargo test -p yewi-site`, then review the diff.
@@ -93,4 +98,4 @@ e2e/tests/<name>.spec.ts         behaviour specs
 - `cargo xtask ci --changed` passes locally with the latest `main` merged in. While the repository is private this, not GitHub Actions, is the verification.
 - The page has at least three examples and reads correctly in both themes.
 - Keyboard and screen-reader behaviour is complete and covered by a behaviour spec.
-- New screenshots are committed, and the pull request links or attaches the review gallery. For viewers that open a single file, `node e2e/inline-gallery.mjs e2e/gallery gallery.html` embeds the images and videos.
+- New screenshots are committed, and the pull request links or attaches the review gallery (`e2e/gallery/viewer.html`). The screenshot comparison is `e2e/gallery/index.html`; `node e2e/inline-gallery.mjs e2e/gallery gallery.html` embeds its images and videos for viewers that open a single file.
