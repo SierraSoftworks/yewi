@@ -31,7 +31,7 @@ highlight-syntect = ["highlight"]
 map = []
 markdown = []
 qr = ["dep:qrcodegen"]
-router = []
+router = ["dep:yew-router"]
 schema-form = []
 # `From<serde_json::Value>` for `Json`, the document type of `JsonView`.
 serde_json = ["dep:serde_json"]
@@ -61,6 +61,7 @@ full = [
 [dependencies]
 yew = { workspace = true }
 yewi-fonts = { workspace = true, optional = true }
+yew-router = { workspace = true, optional = true }
 qrcodegen = { version = "1.8", optional = true }
 serde_json = { version = "1", optional = true }
 
