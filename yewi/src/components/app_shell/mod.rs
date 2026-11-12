@@ -118,7 +118,9 @@ pub fn AppShell(props: &AppShellProps) -> Html {
                 }
                 narrow.set(now);
             });
-            move || drop(listener)
+            move || {
+                let _listener = listener;
+            }
         });
     }
 
@@ -260,7 +262,11 @@ mod dom {
 
     pub fn store(_: Option<&str>, _: bool) {}
 
-    pub fn on_resize(_: impl FnMut() + 'static) {}
+    pub struct Listener;
+
+    pub fn on_resize(_: impl FnMut() + 'static) -> Listener {
+        Listener
+    }
 }
 
 #[cfg(test)]
