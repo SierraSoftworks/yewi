@@ -1,0 +1,11 @@
+// Duration
+@use "api" as *;
+
+.yi-duration {
+  // Component tokens
+  --yi-duration-color: inherit;
+
+  color: var(--yi-duration-color);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

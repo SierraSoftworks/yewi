@@ -1,0 +1,10 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Renew certificate</button>
+<span>Expires <span tabindex="0" class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T15:30:00Z">15 Jan 2026</time>
+</span>
+</span>
+</div>

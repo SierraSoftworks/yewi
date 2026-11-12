@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-2xl)" class="yi-cluster yi-cluster--align-start">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<strong>Short</strong>
+<time datetime="PT1.400S" class="yi-duration">1.4s</time>
+<time datetime="PT45S" class="yi-duration">45s</time>
+<time datetime="PT125S" class="yi-duration">2m 05s</time>
+<time datetime="PT3720S" class="yi-duration">1h 02m</time>
+<time datetime="PT273600S" class="yi-duration">3d 4h</time>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<strong>Compact</strong>
+<time datetime="PT1.400S" class="yi-duration">1s</time>
+<time datetime="PT45S" class="yi-duration">45s</time>
+<time datetime="PT125S" class="yi-duration">2m</time>
+<time datetime="PT3720S" class="yi-duration">1h</time>
+<time datetime="PT273600S" class="yi-duration">3d</time>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<strong>Long</strong>
+<time datetime="PT1.400S" class="yi-duration">1.4 seconds</time>
+<time datetime="PT45S" class="yi-duration">45 seconds</time>
+<time datetime="PT125S" class="yi-duration">2 minutes 5 seconds</time>
+<time datetime="PT3720S" class="yi-duration">1 hour 2 minutes</time>
+<time datetime="PT273600S" class="yi-duration">3 days 4 hours</time>
+</div>
+</div>

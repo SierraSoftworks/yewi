@@ -1,0 +1,6 @@
+---
+source: site/tests/snapshots.rs
+---
+<span>Rollout finished <span class="yi-tooltip yi-timestamp">
+<time datetime="2026-01-15T09:31:04Z">15 Jan 2026</time>
+</span> after <time datetime="PT1114S" class="yi-duration">18 minutes 34 seconds</time>.</span>
