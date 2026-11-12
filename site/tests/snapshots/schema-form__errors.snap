@@ -1,0 +1,120 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 34rem">
+<div class="yi-schema-form yi-schema-form--boxed">
+<div class="yi-field yi-field--inline yi-field--invalid" data-yi-pointer="/host">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Host<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="" id="yi-2-control" type="text" aria-invalid="true" aria-describedby="yi-2-message" required="required" class="yi-input yi-input--md yi-input--invalid">
+<p id="yi-2-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>A host is required</span>
+</p>
+</div>
+</div>
+<div class="yi-field yi-field--inline yi-field--invalid" data-yi-pointer="/port">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Port<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md yi-input--invalid">
+<input value="80" id="yi-4-control" type="text" role="spinbutton" autocomplete="off" aria-valuenow="80" aria-invalid="true" aria-describedby="yi-4-message" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<p id="yi-4-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Port 80 is taken by the proxy</span>
+</p>
+</div>
+</div>
+<div role="group" aria-labelledby="yi-5-label" data-yi-pointer="/window" class="yi-schema-form__group">
+<div class="yi-schema-form__head">
+<span id="yi-5-label" class="yi-schema-form__title">Maintenance window</span>
+<label class="yi-choice yi-choice--sm yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" aria-label="Include Maintenance window" class="yi-switch__input">
+</span>
+</label>
+</div>
+<p role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>The window must start before it ends</span>
+</p>
+<div class="yi-schema-form__body">
+<div class="yi-field yi-field--inline" data-yi-pointer="/window/from">
+<label id="yi-7-label" for="yi-7-control" class="yi-field__label">From (hour)<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="22" id="yi-7-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="22" aria-valuemin="0" aria-valuemax="23" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--inline" data-yi-pointer="/window/until">
+<label id="yi-9-label" for="yi-9-control" class="yi-field__label">Until (hour)<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="4" id="yi-9-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="4" aria-valuemin="0" aria-valuemax="23" required="required" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Save</button>
+<span role="status">Not saved</span>
+</div>
+</div>
