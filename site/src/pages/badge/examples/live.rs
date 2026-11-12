@@ -18,7 +18,7 @@ pub fn Example() -> Html {
         <Stack>
             <Cluster gap={Space::Lg} align={Align::Center}>
                 <Badge count={*unread} max=9 tone={Tone::Danger} bold=true>
-                    <Button class="yi-button--icon-only" icon={icons::BELL} attrs={attrs! { "aria-label" => "Notifications" }} />
+                    <IconButton icon={icons::BELL} label="Notifications" />
                 </Badge>
                 <Button on_click={receive}>{ "Receive 4" }</Button>
                 <Button variant={ButtonVariant::Subtle} disabled={*unread == 0} on_click={read_all}>{ "Mark all read" }</Button>

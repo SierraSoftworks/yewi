@@ -6,7 +6,7 @@ pub fn Example() -> Html {
     html! {
         <Cluster gap={Space::Xl} align={Align::Center}>
             <Badge tone={Tone::Danger} label="New notifications">
-                <Button class="yi-button--icon-only" icon={icons::BELL} attrs={attrs! { "aria-label" => "Notifications" }} />
+                <IconButton icon={icons::BELL} label="Notifications" />
             </Badge>
             <Badge tone={Tone::Info} label="Update available">
                 <Button>{ "Settings" }</Button>
