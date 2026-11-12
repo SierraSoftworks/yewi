@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Hosts<span class="yi-badge yi-badge--neutral">31</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Healthy<span class="yi-badge yi-badge--ok">28</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Held<span class="yi-badge yi-badge--warn">2</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Failing<span class="yi-badge yi-badge--danger">1</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Inbox<span class="yi-badge yi-badge--info yi-badge--bold">4</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Incidents<span class="yi-badge yi-badge--danger yi-badge--bold">1</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Drafts<span class="yi-badge yi-badge--neutral yi-badge--bold">12</span>
+</div>
+</div>
+</div>

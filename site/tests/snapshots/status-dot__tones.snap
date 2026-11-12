@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>healthy</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--active">
+</span>rolling</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>held</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>failing</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>scheduled</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--neutral">
+</span>offline</div>
+</div>

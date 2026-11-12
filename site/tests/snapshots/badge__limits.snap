@@ -1,0 +1,14 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Events<span class="yi-badge yi-badge--neutral">99</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Events<span class="yi-badge yi-badge--neutral">99+</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Events<span class="yi-badge yi-badge--neutral">999+</span>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Errors</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">Errors<span class="yi-badge yi-badge--neutral">0</span>
+</div>
+</div>

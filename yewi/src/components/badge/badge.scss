@@ -1,0 +1,93 @@
+// Badge
+//
+// Tones set the two colour tokens; `bold` swaps which one is the fill, as on
+// Pill. A dot is always solid, since a tint that small cannot be seen.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+.yi-badge {
+  // Component tokens
+  --yi-badge-tone: var(--yi-neutral);
+  --yi-badge-soft: var(--yi-neutral-soft);
+  --yi-badge-bg: var(--yi-badge-soft);
+  --yi-badge-fg: var(--yi-badge-tone);
+  --yi-badge-size: 1.125rem;
+  --yi-badge-dot-size: 0.5rem;
+  // The gap cut around a badge attached to its children.
+  --yi-badge-ring: var(--yi-surface);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-inline-size: var(--yi-badge-size);
+  block-size: var(--yi-badge-size);
+  padding-inline: 0.3125rem;
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-badge-bg);
+  color: var(--yi-badge-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-badge-tone: var(--yi-#{$tone});
+      --yi-badge-soft: var(--yi-#{$tone}-soft);
+    }
+  }
+
+  &--bold,
+  &--dot {
+    --yi-badge-bg: var(--yi-badge-tone);
+    --yi-badge-fg: var(--yi-on-solid);
+  }
+
+  &--dot {
+    min-inline-size: 0;
+    inline-size: var(--yi-badge-dot-size);
+    block-size: var(--yi-badge-dot-size);
+    padding: 0;
+  }
+
+  // Centred on the top corner of the anchor, at the end of the line.
+  &--corner {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    translate: 50% -50%;
+    box-shadow: 0 0 0 2px var(--yi-badge-ring);
+    pointer-events: none;
+
+    &:dir(rtl) {
+      translate: -50% -50%;
+    }
+  }
+
+  // A soft fill is see-through, so over an anchor it needs a base.
+  &--corner:not(.yi-badge--bold, .yi-badge--dot) {
+    background: linear-gradient(var(--yi-badge-bg), var(--yi-badge-bg)), var(--yi-badge-ring);
+  }
+}
+
+.yi-badge-anchor {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+@media (forced-colors: active) {
+  .yi-badge {
+    border: 1px solid CanvasText;
+  }
+
+  .yi-badge--dot {
+    background: CanvasText;
+    forced-color-adjust: none;
+  }
+}
