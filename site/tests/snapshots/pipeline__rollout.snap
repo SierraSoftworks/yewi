@@ -1,0 +1,214 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-pipeline">
+<ol aria-label="Rollout stages" class="yi-pipeline__track">
+<li class="yi-pipeline__step">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">canary</span>
+<span class="yi-pipeline-stage__status">done</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>2/2 done</span>
+<span>parallel 1</span>
+</div>
+</div>
+<div role="group" aria-label="Hosts in canary" style="--yi-pipeline-units-per-row:8" class="yi-pipeline-units">
+<a href="#canary-01" aria-label="canary-01: healthy" title="canary-01: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#canary-02" aria-label="canary-02: healthy" title="canary-02: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+</div>
+</div>
+</li>
+<li aria-current="step" class="yi-pipeline__step yi-pipeline__step--current">
+<div class="yi-pipeline-gate yi-pipeline-gate--open yi-pipeline-gate--ok">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>approved</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">edge</span>
+<span class="yi-pipeline-stage__status">rolling</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>5/12 done</span>
+<span>1 failed</span>
+<span>bake 4m 10s</span>
+</div>
+</div>
+<div role="group" aria-label="Hosts in edge" style="--yi-pipeline-units-per-row:8" class="yi-pipeline-units">
+<a href="#edge-01" aria-label="edge-01: healthy" title="edge-01: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#edge-02" aria-label="edge-02: healthy" title="edge-02: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#edge-03" aria-label="edge-03: healthy" title="edge-03: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#edge-04" aria-label="edge-04: healthy" title="edge-04: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#edge-05" aria-label="edge-05: healthy" title="edge-05: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</a>
+<a href="#edge-06" aria-label="edge-06: failed" title="edge-06: failed" class="yi-pipeline-unit yi-pipeline-unit--danger yi-pipeline-unit--solid">
+</a>
+<a href="#edge-07" aria-label="edge-07: baking" title="edge-07: baking" class="yi-pipeline-unit yi-pipeline-unit--active yi-pipeline-unit--soft yi-pipeline-unit--pulse">
+</a>
+<a href="#edge-08" aria-label="edge-08: baking" title="edge-08: baking" class="yi-pipeline-unit yi-pipeline-unit--active yi-pipeline-unit--soft yi-pipeline-unit--pulse">
+</a>
+<a href="#edge-09" aria-label="edge-09: applying" title="edge-09: applying" class="yi-pipeline-unit yi-pipeline-unit--active yi-pipeline-unit--solid">
+</a>
+<a href="#edge-10" aria-label="edge-10: planned" title="edge-10: planned" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--soft">
+</a>
+<a href="#edge-11" aria-label="edge-11: planned" title="edge-11: planned" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--soft">
+</a>
+<a href="#edge-12" aria-label="edge-12: planned" title="edge-12: planned" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--soft">
+</a>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<div class="yi-pipeline-gate yi-pipeline-gate--waiting yi-pipeline-gate--neutral">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 6v6l4 2">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>approval required</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">core</span>
+<span class="yi-pipeline-stage__status">waiting</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>0/20 done</span>
+<span>parallel 4</span>
+</div>
+</div>
+<div role="group" aria-label="Hosts in core" style="--yi-pipeline-units-per-row:8" class="yi-pipeline-units">
+<a href="#core-01" aria-label="core-01: pending" title="core-01: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-02" aria-label="core-02: pending" title="core-02: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-03" aria-label="core-03: pending" title="core-03: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-04" aria-label="core-04: pending" title="core-04: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-05" aria-label="core-05: pending" title="core-05: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-06" aria-label="core-06: pending" title="core-06: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-07" aria-label="core-07: pending" title="core-07: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-08" aria-label="core-08: pending" title="core-08: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-09" aria-label="core-09: pending" title="core-09: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-10" aria-label="core-10: pending" title="core-10: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-11" aria-label="core-11: pending" title="core-11: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-12" aria-label="core-12: pending" title="core-12: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-13" aria-label="core-13: pending" title="core-13: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-14" aria-label="core-14: pending" title="core-14: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-15" aria-label="core-15: pending" title="core-15: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-16" aria-label="core-16: pending" title="core-16: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-17" aria-label="core-17: pending" title="core-17: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-18" aria-label="core-18: pending" title="core-18: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-19" aria-label="core-19: pending" title="core-19: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+<a href="#core-20" aria-label="core-20: pending" title="core-20: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</a>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step yi-pipeline__step--placeholder">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Not in this rollout</span>
+</div>
+<div class="yi-pipeline-stage__meta">registered since</div>
+</div>
+<div role="group" aria-label="Hosts not in this rollout" class="yi-pipeline-units">
+<span role="img" aria-label="lab-01: healthy" title="lab-01: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid yi-pipeline-unit--round">
+</span>
+<span role="img" aria-label="lab-02: offline" title="lab-02: offline" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--dashed yi-pipeline-unit--round">
+</span>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: pending" title="Legend: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<small>pending</small>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: planned" title="Legend: planned" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--soft">
+</span>
+<small>planned</small>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: applying" title="Legend: applying" class="yi-pipeline-unit yi-pipeline-unit--active yi-pipeline-unit--solid">
+</span>
+<small>applying</small>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: baking" title="Legend: baking" class="yi-pipeline-unit yi-pipeline-unit--active yi-pipeline-unit--soft">
+</span>
+<small>baking</small>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: healthy" title="Legend: healthy" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<small>healthy</small>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span role="img" aria-label="Legend: failed" title="Legend: failed" class="yi-pipeline-unit yi-pipeline-unit--danger yi-pipeline-unit--solid">
+</span>
+<small>failed</small>
+</div>
+</div>
+</div>

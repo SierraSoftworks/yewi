@@ -1,0 +1,165 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-pipeline">
+<ol aria-label="Release stages" class="yi-pipeline__track">
+<li class="yi-pipeline__step">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Build</span>
+<span class="yi-pipeline-stage__status">done</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>3 jobs</span>
+<span>2m 14s</span>
+</div>
+</div>
+<div class="yi-steps yi-steps--vertical yi-steps--sm">
+<ol aria-label="Build jobs" class="yi-steps__list">
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">compile</span>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+</div>
+</li>
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">package</span>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+</div>
+</li>
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">sign</span>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</li>
+<li aria-current="step" class="yi-pipeline__step yi-pipeline__step--current">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Test</span>
+<span class="yi-pipeline-stage__status">running</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>2 jobs</span>
+<span>48s so far</span>
+</div>
+</div>
+<div class="yi-steps yi-steps--vertical yi-steps--sm">
+<ol aria-label="Test jobs" class="yi-steps__list">
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">unit</span>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+</div>
+</li>
+<li class="yi-step yi-step--running">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">integration</span>
+<span class="yi-visually-hidden">, in progress</span>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">Publish</span>
+<span class="yi-pipeline-stage__status">waiting</span>
+</div>
+<div class="yi-pipeline-stage__meta">
+<span>1 job</span>
+</div>
+</div>
+<div class="yi-steps yi-steps--vertical yi-steps--sm">
+<ol aria-label="Publish jobs" class="yi-steps__list">
+<li class="yi-step yi-step--pending">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">upload</span>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</li>
+</ol>
+</div>

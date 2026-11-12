@@ -483,6 +483,12 @@ html {
   }
 }
 
+// Separate boxes, so an enum with many variants wraps instead of scrolling.
+.docs-api__variant {
+  display: inline-block;
+  margin-inline-end: var(--yi-space-xs);
+}
+
 // ---- Helpers for foundation examples ---------------------------------------------
 // Stand-ins until Card, Pill and friends exist. Examples of real components
 // must not need these.

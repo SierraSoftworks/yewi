@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Certificate">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Host names</dt>
+<dd class="yi-description-list__value">
+<div style="--yi-gap:var(--yi-space-2xs)" class="yi-stack">
+<span>tak.example.org</span>
+<span>*.tak.example.org</span>
+</div>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Status</dt>
+<dd class="yi-description-list__value">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon" style="color: var(--yi-ok)">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M16 9l-5.5 5.5L8 12">
+</path>
+</svg>Valid for 61 days</div>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Issuer</dt>
+<dd class="yi-description-list__value">
+<a href="https://letsencrypt.org">Let's Encrypt</a>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Certificate file</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">/etc/rustak/tls/fullchain.pem</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Fingerprint</dt>
+<dd class="yi-description-list__value yi-description-list__value--mono">9f:91:07:c3:fb:b3:1e:e7:5c:07:81:3b:c4:98:ee:2d:4a:11:0c:6e</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Last attempt</dt>
+<dd class="yi-description-list__value yi-description-list__value--empty">—</dd>
+</div>
+</dl>

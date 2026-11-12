@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<span tabindex="0" class="yi-tooltip">
+<span>35 minutes ago</span>
+</span>
+<span class="yi-tooltip">
+<button type="button" class="yi-button yi-button--danger yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>Rollout blocked</button>
+</span>
+</div>
