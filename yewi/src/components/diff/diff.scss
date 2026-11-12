@@ -1,0 +1,265 @@
+// Diff
+//
+// Each line is its own flex row with fixed-width gutters, so a diff of any
+// length lays out line by line. Line numbers are drawn by CSS and markers are
+// not selectable: selecting and copying yields the text alone.
+@use "api" as *;
+
+.yi-diff {
+  // Component tokens
+  --yi-diff-bg: var(--yi-code-bg);
+  --yi-diff-header-bg: var(--yi-tone-1);
+  --yi-diff-added: var(--yi-ok);
+  --yi-diff-removed: var(--yi-danger);
+  --yi-diff-added-bg: var(--yi-ok-soft);
+  --yi-diff-removed-bg: var(--yi-danger-soft);
+  --yi-diff-font-size: var(--yi-text-sm);
+  // Set a length to scroll long diffs inside the component.
+  --yi-diff-max-height: none;
+
+  container-type: inline-size;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-diff-bg);
+  color: var(--yi-fg);
+}
+
+.yi-diff__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--yi-space-md);
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  background: var(--yi-diff-header-bg);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-diff__title {
+  @include truncate;
+
+  font-weight: 500;
+}
+
+.yi-diff__stats {
+  display: flex;
+  flex: none;
+  gap: var(--yi-space-sm);
+  margin-inline-start: auto;
+  color: var(--yi-fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.yi-diff__stat--added {
+  color: var(--yi-diff-added);
+}
+
+.yi-diff__stat--removed {
+  color: var(--yi-diff-removed);
+}
+
+.yi-diff__scroll {
+  max-block-size: var(--yi-diff-max-height);
+  overflow: auto;
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+}
+
+.yi-diff__body {
+  inline-size: max-content;
+  min-inline-size: 100%;
+  padding-block: var(--yi-space-xs);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: var(--yi-diff-font-size);
+  line-height: var(--yi-leading);
+  tab-size: 4;
+}
+
+// One line: gutters, marker, text. In split mode a row holds two of these.
+.yi-diff__side {
+  display: flex;
+  min-block-size: 1lh;
+
+  &--added {
+    background: var(--yi-diff-added-bg);
+  }
+
+  &--removed {
+    background: var(--yi-diff-removed-bg);
+  }
+
+  &--empty {
+    background: var(--yi-tone-1);
+  }
+}
+
+.yi-diff__num {
+  flex: none;
+  box-sizing: content-box;
+  inline-size: calc(var(--yi-diff-digits, 2) * 1ch);
+  padding-inline: var(--yi-space-md) var(--yi-space-xs);
+  // Muted, not subtle: numbers also sit on the added and removed fills.
+  color: var(--yi-fg-muted);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+
+  &::before {
+    content: attr(data-n);
+  }
+}
+
+.yi-diff__sign {
+  flex: none;
+  inline-size: 3ch;
+  text-align: center;
+  user-select: none;
+
+  .yi-diff__side--added > & {
+    color: var(--yi-diff-added);
+  }
+
+  .yi-diff__side--removed > & {
+    color: var(--yi-diff-removed);
+  }
+}
+
+.yi-diff__text {
+  flex: 1 0 auto;
+  padding-inline-end: var(--yi-space-md);
+  color: inherit;
+  text-decoration: none;
+  white-space: pre;
+}
+
+// The part of an edited line that differs from its counterpart.
+.yi-diff__changed {
+  border-radius: var(--yi-radius-sm);
+  background: color-mix(in srgb, var(--yi-diff-added) 26%, transparent);
+  color: inherit;
+
+  .yi-diff__side--removed & {
+    background: color-mix(in srgb, var(--yi-diff-removed) 24%, transparent);
+  }
+}
+
+// Full-width rows: hunk and file headers, patch notes, folded lines.
+.yi-diff__band {
+  padding-inline: var(--yi-space-md);
+  color: var(--yi-fg-subtle);
+  white-space: pre;
+
+  &--hunk {
+    background: var(--yi-tone-2);
+  }
+
+  &--file {
+    color: var(--yi-fg-muted);
+    font-weight: 500;
+  }
+
+  &--meta {
+    font-style: italic;
+  }
+
+  &--fold {
+    padding: 0;
+    background: var(--yi-tone-2);
+  }
+}
+
+.yi-diff__fold {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  inline-size: 100%;
+  padding: var(--yi-space-xs) var(--yi-space-md);
+  border: 0;
+  background: none;
+  color: var(--yi-fg-muted);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-xs);
+  text-align: start;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    background: var(--yi-neutral-soft);
+    color: var(--yi-fg);
+  }
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+}
+
+// Wrapping: the body no longer grows past its container.
+.yi-diff--wrap,
+.yi-diff--split {
+  .yi-diff__body {
+    inline-size: auto;
+  }
+
+  .yi-diff__text {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .yi-diff__band {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+.yi-diff--split {
+  .yi-diff__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .yi-diff__side + .yi-diff__side {
+    border-inline-start: 1px solid var(--yi-line);
+  }
+}
+
+// Too narrow for two columns: stack each pair, removed above added, and show
+// an unchanged line once.
+@container (inline-size < 36rem) {
+  .yi-diff--split {
+    .yi-diff__row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .yi-diff__side + .yi-diff__side {
+      border-inline-start: 0;
+    }
+
+    .yi-diff__side--empty,
+    .yi-diff__side--old {
+      display: none;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-diff {
+    border-color: CanvasText;
+  }
+
+  .yi-diff__changed {
+    outline: 1px solid Highlight;
+  }
+}

@@ -1,0 +1,234 @@
+---
+source: site/tests/snapshots.rs
+---
+<figure style="--yi-diff-digits:2" class="yi-diff yi-diff--unified yi-diff--numbered">
+<figcaption class="yi-diff__header">
+<span class="yi-diff__title">caddy.nomad.hcl</span>
+<span class="yi-diff__stats">
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--added">+6</span>
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--removed">−3</span>
+<span class="yi-visually-hidden">6 lines added, 3 lines removed</span>
+</span>
+</figcaption>
+<div role="group" aria-label="caddy.nomad.hcl" tabindex="0" class="yi-diff__scroll">
+<div class="yi-diff__body">
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 3 unchanged lines</button>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="5" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="5" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">  group "web" {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="6" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">    count = <mark class="yi-diff__changed">1</mark>
+</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="6" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">    count = <mark class="yi-diff__changed">2</mark>
+</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="7" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="7" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="8" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="8" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    network {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="9" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="9" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">      port "http" {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="10" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="10" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">        static = 80</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="11" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="11" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">      }</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">      port "https" {</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        static = 443</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="14" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">      }</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="15" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">    }</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="16" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 2 unchanged lines</button>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="16" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="19" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="17" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="20" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">      config {</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="18" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">        image = "caddy:2.<mark class="yi-diff__changed">7</mark>"</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="19" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">        ports = ["http"]</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="21" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        image = "caddy:2.<mark class="yi-diff__changed">8</mark>"</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="22" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">        ports = ["http"<mark class="yi-diff__changed">, "https"</mark>]</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="20" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="23" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">      }</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="21" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="24" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 7 unchanged lines</button>
+</div>
+</div>
+</div>
+</figure>

@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Breadcrumb" class="yi-breadcrumbs yi-breadcrumbs--slash">
+<ol class="yi-breadcrumbs__list">
+<li class="yi-breadcrumbs__item">
+<a href="/?period=7d&amp;env=production" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Dashboard</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="/exceptions?period=7d&amp;env=production" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Exceptions</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<span aria-current="page" class="yi-breadcrumbs__crumb">
+<span class="yi-breadcrumbs__label">TimeoutError</span>
+</span>
+</li>
+</ol>
+</nav>
+<p role="status">Route: /exceptions/TimeoutError</p>
+</div>

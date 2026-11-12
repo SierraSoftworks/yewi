@@ -1,0 +1,89 @@
+// Breadcrumbs
+//
+// Separators are generated content with empty alternative text, so they are
+// never read out and never part of a crumb's link.
+@use "api" as *;
+
+.yi-breadcrumbs {
+  // Component tokens
+  --yi-breadcrumbs-fg: var(--yi-fg-muted);
+  --yi-breadcrumbs-fg-hover: var(--yi-fg);
+  --yi-breadcrumbs-fg-current: var(--yi-fg); // the page being shown
+  --yi-breadcrumbs-separator-fg: var(--yi-fg-subtle);
+  --yi-breadcrumbs-gap: var(--yi-space-sm); // space either side of a separator
+  --yi-breadcrumbs-crumb-max: 16rem; // longer labels are truncated
+
+  min-inline-size: 0;
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-sm);
+  line-height: var(--yi-leading);
+}
+
+.yi-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-2xs) var(--yi-breadcrumbs-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yi-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-breadcrumbs-gap);
+  min-inline-size: 0;
+
+  // After each crumb but the last, so a wrapped line never starts with one.
+  &:not(:last-child)::after {
+    flex: none;
+    color: var(--yi-breadcrumbs-separator-fg);
+    content: "/" / "";
+  }
+}
+
+.yi-breadcrumbs--chevron .yi-breadcrumbs__item:not(:last-child)::after {
+  inline-size: 0.4em;
+  block-size: 0.4em;
+  margin-inline: -0.1em 0.1em;
+  border-block-start: 1.5px solid;
+  border-inline-end: 1.5px solid;
+  rotate: 45deg;
+  content: "" / "";
+}
+
+.yi-breadcrumbs__crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-inline-size: 0;
+  max-inline-size: var(--yi-breadcrumbs-crumb-max);
+  border-radius: var(--yi-radius-sm);
+  color: var(--yi-breadcrumbs-fg);
+  text-decoration: none;
+
+  &[aria-current="page"] {
+    color: var(--yi-breadcrumbs-fg-current);
+    font-weight: 500;
+  }
+
+  &--link {
+    @include motion {
+      transition: color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover {
+      color: var(--yi-breadcrumbs-fg-hover);
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}
+
+.yi-breadcrumbs__label {
+  @include truncate;
+}

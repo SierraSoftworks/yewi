@@ -1,0 +1,58 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-stack">
+<div class="yi-chart">
+<div class="yi-chart__body">
+<div aria-hidden="true" class="yi-chart__y">
+<span style="inset-block-start:100.00%" class="yi-chart__tick">€0k</span>
+<span style="inset-block-start:66.67%" class="yi-chart__tick">€20k</span>
+<span style="inset-block-start:33.33%" class="yi-chart__tick">€40k</span>
+<span style="inset-block-start:0.00%" class="yi-chart__tick">€60k</span>
+</div>
+<div role="slider" tabindex="0" aria-label="Revenue per month" aria-valuemin="0" aria-valuemax="11" aria-valuenow="11" aria-valuetext="Dec: Revenue €41.9k" class="yi-chart__plot">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
+<path d="M0 667H10000M0 333H10000M0 0H10000" class="yi-chart__grid">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<linearGradient id="yi-0-0" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" class="yi-chart__fade-from">
+</stop>
+<stop offset="1" class="yi-chart__fade-to">
+</stop>
+</linearGradient>
+<path d="M0 1000L0 693L909 646L1818 670L2727 598L3636 552L4545 578L5455 480L6364 504L7273 443L8182 365L9091 390L10000 302L10000 1000Z" fill="url(#yi-0-0)" class="yi-chart__area">
+</path>
+</g>
+</g>
+<path d="M0 1000H10000" class="yi-chart__zero">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<path d="M0 693L909 646L1818 670L2727 598L3636 552L4545 578L5455 480L6364 504L7273 443L8182 365L9091 390L10000 302" class="yi-chart__line">
+</path>
+</g>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="yi-chart__x">
+<span style="inset-inline-start:0.00%" class="yi-chart__tick yi-chart__tick--start">Jan</span>
+<span style="inset-inline-start:9.09%" class="yi-chart__tick">Feb</span>
+<span style="inset-inline-start:18.18%" class="yi-chart__tick">Mar</span>
+<span style="inset-inline-start:27.27%" class="yi-chart__tick">Apr</span>
+<span style="inset-inline-start:36.36%" class="yi-chart__tick">May</span>
+<span style="inset-inline-start:45.45%" class="yi-chart__tick">Jun</span>
+<span style="inset-inline-start:54.55%" class="yi-chart__tick">Jul</span>
+<span style="inset-inline-start:63.64%" class="yi-chart__tick">Aug</span>
+<span style="inset-inline-start:72.73%" class="yi-chart__tick">Sep</span>
+<span style="inset-inline-start:81.82%" class="yi-chart__tick">Oct</span>
+<span style="inset-inline-start:90.91%" class="yi-chart__tick">Nov</span>
+<span style="inset-inline-start:100.00%" class="yi-chart__tick yi-chart__tick--end">Dec</span>
+</div>
+</div>
+</div>
+<div role="group" aria-label="Refunds per month" class="yi-chart">
+<div class="yi-chart__empty">No refunds in this period</div>
+</div>
+</div>

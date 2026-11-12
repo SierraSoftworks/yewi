@@ -1,0 +1,132 @@
+// Tag
+//
+// Squared and outlined, so metadata never reads as a status Pill. Tones set
+// the colour tokens for the few tags that do carry a status.
+@use "api" as *;
+
+$tones: ok, warn, danger, info, active;
+
+.yi-tag {
+  // Component tokens
+  --yi-tag-bg: var(--yi-tone-2);
+  --yi-tag-fg: var(--yi-fg);
+  --yi-tag-border: var(--yi-line);
+  --yi-tag-height: 1.375rem;
+  --yi-tag-radius: var(--yi-radius-sm);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  max-inline-size: 100%;
+  min-block-size: var(--yi-tag-height);
+  padding-inline: 0.4375rem;
+  border: 1px solid var(--yi-tag-border);
+  border-radius: var(--yi-tag-radius);
+  background: var(--yi-tag-bg);
+  color: var(--yi-tag-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-xs);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-tag-bg: transparent;
+      --yi-tag-fg: var(--yi-#{$tone});
+      --yi-tag-border: color-mix(in srgb, var(--yi-#{$tone}) 40%, transparent);
+    }
+  }
+
+  &--mono {
+    font-family: var(--yi-font-mono);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+  }
+
+  > .yi-icon {
+    --yi-icon-size: 1.1em;
+  }
+}
+
+.yi-tag__text {
+  @include truncate;
+
+  display: inline-flex;
+  gap: 0.35em;
+  // Room for descenders, which `line-height: 1` plus the clip would cut.
+  padding-block: 0.15em;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.yi-tag__text {
+  border-radius: var(--yi-radius-sm);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-tag__name {
+  color: var(--yi-fg-muted);
+}
+
+.yi-tag__value {
+  @include truncate;
+
+  font-weight: 500;
+}
+
+.yi-tag__remove {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  margin-inline-end: -0.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: transparent;
+  color: var(--yi-fg-muted);
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  > .yi-icon {
+    --yi-icon-size: 0.8125rem;
+  }
+
+  &:hover {
+    background: var(--yi-neutral-soft);
+    color: var(--yi-fg);
+  }
+
+  &:focus-visible {
+    @include focus-ring(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background: transparent;
+      color: var(--yi-fg-muted);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-tag {
+    border-color: CanvasText;
+  }
+}

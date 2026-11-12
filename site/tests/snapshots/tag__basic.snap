@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster">
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-0-text" class="yi-tag__text">
+<span class="yi-tag__value">linux</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-1-text" class="yi-tag__text">
+<span class="yi-tag__value">arm64</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-2-text" class="yi-tag__text">
+<span class="yi-tag__value">raspberry-pi</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono">
+<span id="yi-3-text" class="yi-tag__text">
+<span class="yi-tag__value">v1.42.0</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono">
+<span id="yi-4-text" class="yi-tag__text">
+<span class="yi-tag__value">9f9107c</span>
+</span>
+</span>
+</div>
