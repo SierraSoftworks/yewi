@@ -1,0 +1,37 @@
+---
+source: site/tests/snapshots.rs
+---
+<form style="max-inline-size: 24rem">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Token scopes</label>
+<div class="yi-field__body">
+<div class="yi-select yi-tag-picker">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-tag-picker__control">
+<span role="list" class="yi-tag-picker__tags">
+<span role="listitem" class="yi-tag yi-tag--neutral yi-tag-picker__tag">
+<span class="yi-tag__text">
+<span class="yi-tag__value">Read</span>
+</span>
+<button type="button" aria-label="Remove Read" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<input value="" id="yi-0-control" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input yi-tag-picker__input">
+</span>
+</span>
+<input value="read" type="hidden" name="scope">
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Create token</button>
+</div>
+<span role="status">Not saved</span>
+</div>
+</form>

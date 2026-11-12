@@ -1,0 +1,249 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-virtual-list-max-height:20rem;--yi-virtual-list-row:36px" role="list" aria-label="Log entries" tabindex="0" class="yi-virtual-list yi-virtual-list--ruled">
+<div role="presentation" style="block-size:360000px" class="yi-virtual-list__sizer">
+<div role="presentation" style="translate:0 0px" class="yi-virtual-list__window">
+<div role="listitem" aria-setsize="10000" aria-posinset="1" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Health check passed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 1</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="2" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>
+<span class="yi-text yi-text--truncate">Configuration reloaded</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 2</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="3" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span class="yi-text yi-text--truncate">Probe failed: connection refused</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 3</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="4" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Rollout step completed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 4</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="5" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span class="yi-text yi-text--truncate">Retrying upstream after timeout</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 5</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="6" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Health check passed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 6</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="7" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>
+<span class="yi-text yi-text--truncate">Configuration reloaded</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 7</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="8" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span class="yi-text yi-text--truncate">Probe failed: connection refused</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 8</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="9" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Rollout step completed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 9</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="10" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span class="yi-text yi-text--truncate">Retrying upstream after timeout</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 10</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="11" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Health check passed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 11</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="12" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>
+<span class="yi-text yi-text--truncate">Configuration reloaded</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 12</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="13" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span class="yi-text yi-text--truncate">Probe failed: connection refused</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 13</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="14" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Rollout step completed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 14</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="15" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span class="yi-text yi-text--truncate">Retrying upstream after timeout</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 15</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="16" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Health check passed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 16</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="17" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>
+<span class="yi-text yi-text--truncate">Configuration reloaded</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 17</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="18" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span class="yi-text yi-text--truncate">Probe failed: connection refused</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 18</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="19" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Rollout step completed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 19</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="20" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--warn">
+</span>
+<span class="yi-text yi-text--truncate">Retrying upstream after timeout</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 20</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="21" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Health check passed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-01 · line 21</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="22" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--info">
+</span>
+<span class="yi-text yi-text--truncate">Configuration reloaded</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">edge-ams · line 22</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="23" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--danger">
+</span>
+<span class="yi-text yi-text--truncate">Probe failed: connection refused</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">db-01 · line 23</span>
+</div>
+</div>
+<div role="listitem" aria-setsize="10000" aria-posinset="24" class="yi-virtual-list__item">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-cluster yi-cluster--nowrap">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>
+<span class="yi-text yi-text--truncate">Rollout step completed</span>
+</div>
+<span class="yi-text yi-text--sm yi-text--subtle yi-text--tabular">web-02 · line 24</span>
+</div>
+</div>
+</div>
+</div>
+</div>

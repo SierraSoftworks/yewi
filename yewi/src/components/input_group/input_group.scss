@@ -68,12 +68,13 @@
     --yi-input-group-accent: var(--yi-danger);
   }
 
-  &:has(.yi-input:read-only:not(.yi-number-input), .yi-input--readonly) {
+  // Only text controls: `:read-only` also matches buttons and wrappers.
+  &:has(:is(input, textarea).yi-input:read-only, .yi-input--readonly) {
     --yi-input-group-bg: var(--yi-tone-2);
     --yi-input-group-border-hover: var(--yi-input-group-border);
   }
 
-  &:has(.yi-input:disabled, .yi-input--disabled) {
+  &:has(:is(input, textarea).yi-input:disabled, .yi-input--disabled) {
     --yi-input-group-bg: var(--yi-tone-1);
     --yi-input-group-border-hover: var(--yi-input-group-border);
 
@@ -121,11 +122,11 @@
     white-space: nowrap;
 
     // A chip at the edge sits as far from the side as from the top.
-    &--prefix:has(> :is(.yi-button, .yi-input-group__select):first-child) {
+    &--prefix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-input-group__select):first-child) {
       margin-inline-start: calc(var(--_inset) - var(--yi-input-group-padding));
     }
 
-    &--suffix:has(> :is(.yi-button, .yi-input-group__select):last-child) {
+    &--suffix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-input-group__select):last-child) {
       margin-inline-end: calc(var(--_inset) - var(--yi-input-group-padding));
     }
   }
@@ -153,6 +154,44 @@
     &:hover:not(:disabled, [aria-disabled="true"]) {
       --yi-button-fg: var(--yi-fg);
     }
+  }
+
+  // A Select in an affix is a chip too: its value and chevron on the chip
+  // fill, sized to its content. Its list opens under the chip.
+  &__affix .yi-select {
+    display: inline-block;
+    inline-size: auto;
+  }
+
+  &__affix .yi-select .yi-select__control {
+    flex: none;
+    block-size: var(--yi-input-group-chip-height);
+    padding-inline: var(--yi-space-sm) var(--yi-space-xs);
+    border-radius: var(--yi-input-group-chip-radius);
+    background: var(--yi-input-group-chip-bg);
+    color: var(--yi-input-group-chip-fg);
+    font-size: var(--yi-text-sm);
+    font-weight: 500;
+
+    &:hover:not(:disabled),
+    &[aria-expanded="true"] {
+      background: var(--yi-input-group-chip-bg-hover);
+      color: var(--yi-fg);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  // Menus and lists opened from a chip are ordinary surfaces again.
+  .yi-popover__surface {
+    white-space: normal;
+    cursor: auto;
   }
 
   // InputGroupSelect: a native select drawn as a chip, with its own chevron.

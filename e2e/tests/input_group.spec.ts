@@ -58,14 +58,51 @@ test.describe("InputGroup", () => {
     const status = stage.getByRole("status");
     await expect(status).toContainText("https://hooks.example.com");
 
-    await stage.getByRole("combobox", { name: "Protocol" }).selectOption("http");
+    const protocol = stage.getByRole("combobox", { name: "Protocol" });
+    await protocol.click();
+    await stage.getByRole("option", { name: /http:\/\// }).click();
     await expect(status).toContainText("http://hooks.example.com");
+    await expect(protocol).toHaveText("http://");
+    await expect(protocol).toBeFocused();
+    await expect(stage.getByRole("textbox", { name: "Webhook URL" })).not.toBeFocused();
 
     const unit = stage.getByRole("combobox", { name: "Unit" });
     await unit.focus();
     await expect(unit).toHaveCSS("outline-style", "solid");
     await page.keyboard.press("ArrowDown");
     await expect(status).toContainText("retry in hr");
+  });
+
+  test("an attached menu opens from the keyboard and acts on the value", async ({ page, example }) => {
+    const stage = await example("input-group/menu");
+    const template = stage.getByRole("textbox", { name: "Message template" });
+    const insert = stage.getByRole("button", { name: "Insert" });
+
+    await template.focus();
+    await page.keyboard.press("Tab");
+    await expect(insert).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(stage.getByRole("menuitem", { name: "Service name" })).toBeFocused();
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("Enter");
+    await expect(template).toHaveValue("Deployed {version}");
+
+    await insert.click();
+    await stage.getByRole("menuitem", { name: "Author" }).click();
+    await expect(stage.getByRole("status")).toHaveText("Template: Deployed {version}{author}");
+  });
+
+  test("open chip menus look right in place", async ({ page, example }) => {
+    for (const theme of ["light", "dark"] as const) {
+      const stage = await example("input-group/dropdown", { theme });
+      await stage.getByRole("combobox", { name: "Protocol" }).click();
+      await expect(stage.getByRole("option", { name: /https/ })).toBeVisible();
+      await expect(page).toHaveScreenshot(["input-group", `open-select-${theme}-desktop.png`]);
+      const menu = await example("input-group/menu", { theme });
+      await menu.getByRole("button", { name: "Insert" }).click();
+      await expect(menu.getByRole("menuitem").first()).toBeVisible();
+      await expect(page).toHaveScreenshot(["input-group", `open-menu-${theme}-desktop.png`]);
+    }
   });
 
   test("takes its state from the control inside", async ({ example }) => {

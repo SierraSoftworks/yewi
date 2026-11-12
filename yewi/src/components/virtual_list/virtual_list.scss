@@ -1,0 +1,64 @@
+// VirtualList and VirtualTable
+//
+// `.yi-virtual-list` scrolls; its sizer is as tall as every row together and
+// the window of drawn rows is shifted to where they belong. The virtualised
+// table is `.yi-table` with rows of one height between two spacer rows.
+@use "api" as *;
+
+.yi-virtual-list {
+  // Component tokens
+  --yi-virtual-list-max-height: 24rem;
+  --yi-virtual-list-line: var(--yi-line); // the rule between rows of a ruled list
+  --yi-virtual-list-padding-inline: 0px;
+
+  max-block-size: var(--yi-virtual-list-max-height);
+  overflow: auto;
+  // The window moves under the reader on purpose; anchoring would fight it.
+  overflow-anchor: none;
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+}
+
+.yi-virtual-list__item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  block-size: var(--yi-virtual-list-row);
+  padding-inline: var(--yi-virtual-list-padding-inline);
+  overflow: hidden;
+  contain: strict;
+
+  > * {
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  .yi-virtual-list--ruled & {
+    border-block-end: 1px solid var(--yi-virtual-list-line);
+  }
+}
+
+.yi-table--virtual > .yi-table__scroll {
+  overflow-anchor: none;
+}
+
+// A row is at least the height the window is computed from, with its
+// content centred should that be more than the content needs.
+.yi-table--virtual > .yi-table__scroll > .yi-table__grid > tbody > .yi-table__row {
+  block-size: var(--yi-table-row-height);
+
+  > :is(td, th) {
+    vertical-align: middle;
+  }
+}
+
+.yi-table__grid > tbody > .yi-table__spacer > td {
+  padding: 0;
+  border: 0;
+}
