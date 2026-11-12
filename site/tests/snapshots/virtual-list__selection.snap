@@ -1,0 +1,454 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-table-max-height:20rem" data-yi-density="compact" class="yi-table yi-table--zebra yi-table--compact yi-table--sticky yi-table--scroll yi-table--fixed yi-table--virtual">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Hosts" aria-rowcount="20001" class="yi-table__grid">
+<colgroup>
+<col class="yi-table__control-col">
+<col>
+<col style="inline-size:8rem">
+<col style="inline-size:8rem">
+</colgroup>
+<thead>
+<tr aria-rowindex="1">
+<th scope="col" class="yi-table__header yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select all rows" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Host</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Zone</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+<th scope="col" class="yi-table__header yi-table__header--sortable yi-table__cell--end">
+<button type="button" class="yi-table__sort">
+<span class="yi-table__sort-label">Memory</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-table__sort-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>
+</button>
+</th>
+</tr>
+</thead>
+<tbody style="--yi-table-row-height:34px">
+<tr aria-hidden="true" style="height:0px" class="yi-table__spacer">
+<td colspan="4">
+</td>
+</tr>
+<tr aria-rowindex="2" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-1" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-1</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="3" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-2" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-2</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="4" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-3" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-3</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="5" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-4" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-4</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-rowindex="6" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-5" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-5</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="7" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-6" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-6</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="8" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-7" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-7</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="9" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-8" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-8</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-rowindex="10" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-9" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-9</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="11" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-10" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-10</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="12" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-11" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-11</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="13" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-12" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-12</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-rowindex="14" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-13" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-13</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="15" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-14" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-14</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="16" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-15" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-15</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="17" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-16" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-16</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-rowindex="18" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-17" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-17</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="19" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-18" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-18</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="20" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-19" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-19</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="21" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-20" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-20</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-rowindex="22" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-21" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-21</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">8 GB</td>
+</tr>
+<tr aria-rowindex="23" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-22" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-22</th>
+<td class="yi-table__cell">ams-1</td>
+<td class="yi-table__cell yi-table__cell--end">16 GB</td>
+</tr>
+<tr aria-rowindex="24" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-23" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-23</th>
+<td class="yi-table__cell">fra-2</td>
+<td class="yi-table__cell yi-table__cell--end">32 GB</td>
+</tr>
+<tr aria-rowindex="25" class="yi-table__row yi-table__row--clickable">
+<td class="yi-table__cell yi-table__control">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" aria-label="Select node-24" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+</label>
+</td>
+<th scope="row" class="yi-table__cell">node-24</th>
+<td class="yi-table__cell">iad-1</td>
+<td class="yi-table__cell yi-table__cell--end">64 GB</td>
+</tr>
+<tr aria-hidden="true" style="height:679184px" class="yi-table__spacer">
+<td colspan="4">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<span role="status">0 of 20000 hosts selected</span>
+</div>

@@ -29,7 +29,7 @@ diff = []
 highlight = []
 highlight-syntect = ["highlight", "dep:syntect"]
 map = []
-markdown = []
+markdown = ["code", "dep:pulldown-cmark"]
 qr = ["dep:qrcodegen"]
 router = ["dep:yew-router"]
 schema-form = []
@@ -66,6 +66,7 @@ qrcodegen = { version = "1.8", optional = true }
 chrono = { version = "0.4", default-features = false, features = ["alloc"], optional = true }
 syntect = { version = "5.2", default-features = false, features = ["default-syntaxes", "regex-fancy"], optional = true }
 serde_json = { version = "1", optional = true }
+pulldown-cmark = { version = "0.13", default-features = false, optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = { workspace = true }

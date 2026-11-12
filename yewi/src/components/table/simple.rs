@@ -70,6 +70,11 @@ pub struct SimpleTableProps {
     /// pagination.
     #[prop_or_default]
     pub footer: Option<Html>,
+    /// How many rows the table has in all, header included, when only some
+    /// of them are in the document (`aria-rowcount`). Give each row that is
+    /// present its `aria-rowindex`.
+    #[prop_or_default]
+    pub row_count: Option<usize>,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -110,6 +115,7 @@ pub fn SimpleTable(props: &SimpleTableProps) -> Html {
                     class="yi-table__grid"
                     aria-label={props.label.clone()}
                     aria-busy={props.busy.then_some("true")}
+                    aria-rowcount={props.row_count.map(|count| count.to_string())}
                 >
                     { props.children.clone() }
                 </table>

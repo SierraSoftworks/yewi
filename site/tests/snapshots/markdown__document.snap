@@ -1,0 +1,104 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-markdown" style="max-inline-size: 44rem">
+<h1 class="yi-heading yi-heading--4xl">Rolling out a release</h1>
+<p>A rollout moves the fleet to a new revision <strong class="yi-text">one stage at a time</strong>. Each stage
+waits for its hosts to report healthy before the next begins; see the
+<a href="/reference/stages" class="yi-link yi-link--default yi-link--underline-auto">stage reference</a> for the checks involved.</p>
+<h2 class="yi-heading yi-heading--3xl">Before you start</h2>
+<ul>
+<li class="yi-markdown__task">
+<input checked type="checkbox" aria-label="Completed" disabled="disabled" class="yi-markdown__task-box">The revision passed its build</li>
+<li class="yi-markdown__task">
+<input checked type="checkbox" aria-label="Completed" disabled="disabled" class="yi-markdown__task-box">A maintenance window is open</li>
+<li class="yi-markdown__task">
+<input type="checkbox" aria-label="Not completed" disabled="disabled" class="yi-markdown__task-box">Someone is on call for the <del>first hour</del> whole rollout</li>
+</ul>
+<h2 class="yi-heading yi-heading--3xl">Starting it</h2>
+<ol>
+<li>Pick the revision to deploy.</li>
+<li>Choose the stages it should reach.</li>
+<li>Run the command below, or press <em>Deploy</em> in the console.</li>
+</ol>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Shell</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-comment"># Deploys to staging, then waits for approval.</span>
+<span class="yi-tok-function">fleet</span> rollout start --revision <span class="yi-tok-number">4f2a91c</span> --until staging</code>
+</pre>
+</div>
+<p>The job file names the image, so a rollout never guesses at it:</p>
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">HCL</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">job</span> <span class="yi-tok-string">"caddy"</span> {
+  <span class="yi-tok-property">count</span> = <span class="yi-tok-number">3</span>
+  <span class="yi-tok-property">image</span> = <span class="yi-tok-string">"caddy:2.8"</span>
+}</code>
+</pre>
+</div>
+<blockquote class="yi-markdown__quote">
+<p>A rollout that is paused keeps its place. Resume it with <code class="yi-inline-code">fleet rollout resume</code>
+and it carries on from the stage it stopped at.</p>
+</blockquote>
+<h2 class="yi-heading yi-heading--3xl">Stages</h2>
+<div class="yi-table yi-table--open yi-table--wrap">
+<div tabindex="0" class="yi-table__scroll">
+<table class="yi-table__grid">
+<thead>
+<tr class="yi-table__row">
+<th scope="col">Stage</th>
+<th scope="col" class="yi-table__cell--end">Hosts</th>
+<th scope="col" class="yi-table__cell--center">Approval</th>
+<th scope="col" class="yi-table__cell--end">Typical duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<td>Canary</td>
+<td class="yi-table__cell--end">2</td>
+<td class="yi-table__cell--center">no</td>
+<td class="yi-table__cell--end">4 min</td>
+</tr>
+<tr class="yi-table__row">
+<td>Staging</td>
+<td class="yi-table__cell--end">9</td>
+<td class="yi-table__cell--center">no</td>
+<td class="yi-table__cell--end">12 min</td>
+</tr>
+<tr class="yi-table__row">
+<td>Production</td>
+<td class="yi-table__cell--end">18</td>
+<td class="yi-table__cell--center">yes</td>
+<td class="yi-table__cell--end">35 min</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="yi-divider">
+<p>Questions go to <a href="mailto:ops@example.com" class="yi-link yi-link--default yi-link--underline-auto">ops@example.com</a>.</p>
+</div>

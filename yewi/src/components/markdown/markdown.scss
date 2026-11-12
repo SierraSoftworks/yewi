@@ -1,0 +1,89 @@
+// Markdown
+//
+// The document's rhythm only: the space between blocks, lists, quotes and
+// images. Headings, links, code and tables are styled by their own
+// components.
+@use "api" as *;
+
+.yi-markdown {
+  // Component tokens
+  --yi-markdown-gap: var(--yi-space-md); // Space between blocks.
+  --yi-markdown-heading-gap: var(--yi-space-xl); // Space above a heading.
+  --yi-markdown-indent: var(--yi-space-xl); // Indent of lists.
+  --yi-markdown-quote-line: var(--yi-line-strong); // Rule beside a quote.
+  --yi-markdown-quote-fg: var(--yi-fg-muted);
+
+  line-height: var(--yi-leading-relaxed);
+  overflow-wrap: break-word;
+
+  // Blocks are spaced from the one before, at any depth, so the first and
+  // last add nothing to the container's own padding.
+  & :where(p, ul, ol, blockquote, hr, .yi-heading, .yi-table, .yi-code-block) {
+    margin-block: 0;
+  }
+
+  & :where(* + :is(p, ul, ol, blockquote, .yi-table, .yi-code-block)) {
+    margin-block-start: var(--yi-markdown-gap);
+  }
+
+  & :where(* + .yi-heading, * + hr, hr + *) {
+    margin-block-start: var(--yi-markdown-heading-gap);
+  }
+
+  & :where(ul, ol) {
+    padding-inline-start: var(--yi-markdown-indent);
+  }
+
+  & :where(li + li, li > :is(ul, ol)) {
+    margin-block-start: var(--yi-space-xs);
+  }
+
+  & :where(li)::marker {
+    color: var(--yi-fg-subtle);
+  }
+
+  & :where(del) {
+    color: var(--yi-fg-muted);
+  }
+
+  & :where(sup, sub) {
+    font-size: 0.75em;
+    line-height: 0;
+  }
+
+  &__quote {
+    padding-inline-start: var(--yi-space-lg);
+    border-inline-start: 3px solid var(--yi-markdown-quote-line);
+    color: var(--yi-markdown-quote-fg);
+  }
+
+  &__task {
+    list-style: none;
+    // Pull the box into the place of the marker.
+    margin-inline-start: calc(-1 * var(--yi-markdown-indent));
+    padding-inline-start: var(--yi-markdown-indent);
+  }
+
+  &__task-box {
+    inline-size: 1em;
+    block-size: 1em;
+    margin: 0;
+    margin-inline: calc(-1 * var(--yi-markdown-indent) + 0.25em) calc(var(--yi-markdown-indent) - 1.25em);
+    vertical-align: -0.125em;
+    accent-color: var(--yi-accent);
+  }
+
+  &__image {
+    max-inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--yi-radius-sm);
+    vertical-align: middle;
+  }
+
+  // Raw HTML shown as written.
+  &__html {
+    font-family: var(--yi-font-mono);
+    font-size: 0.9em;
+    white-space: pre-wrap;
+  }
+}
