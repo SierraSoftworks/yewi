@@ -1,0 +1,10 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="block-size: 12rem; overflow: auto" tabindex="0" role="group" aria-label="Scrolling area" class="demo-panel">
+<div style="block-size: 30rem; padding-block-start: 9rem">
+<span>
+<button type="button" class="yi-button yi-button--default yi-button--md">Show</button>
+</span>
+</div>
+</div>

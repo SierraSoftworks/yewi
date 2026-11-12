@@ -1,0 +1,95 @@
+// Avatar, AvatarGroup
+//
+// The colour comes from `--yi-avatar-hue`, which the component sets from a
+// hash of the person's name. Lightness and chroma are fixed per theme, so
+// every hue reads with the same weight and the initials always have contrast.
+@use "api" as *;
+
+.yi-avatar {
+  // Component tokens
+  --yi-avatar-size: var(--yi-space-2xl);
+  --yi-avatar-hue: 250; // set per person by the component
+  --yi-avatar-bg: light-dark(oklch(0.92 0.045 var(--yi-avatar-hue)), oklch(0.37 0.05 var(--yi-avatar-hue)));
+  --yi-avatar-fg: light-dark(oklch(0.38 0.09 var(--yi-avatar-hue)), oklch(0.89 0.06 var(--yi-avatar-hue)));
+  --yi-avatar-ring: var(--yi-surface); // the gap between overlapping avatars; match the background behind a group
+
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--yi-avatar-size);
+  block-size: var(--yi-avatar-size);
+  overflow: hidden;
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-avatar-bg);
+  color: var(--yi-avatar-fg);
+  font-family: var(--yi-font-body);
+  font-size: calc(var(--yi-avatar-size) * 0.4);
+  font-weight: 500;
+  line-height: 1;
+  vertical-align: middle;
+  user-select: none;
+
+  &--sm {
+    --yi-avatar-size: var(--yi-space-xl);
+  }
+
+  &--lg {
+    --yi-avatar-size: var(--yi-space-3xl);
+  }
+
+  &--bold {
+    --yi-avatar-bg: light-dark(oklch(0.5 0.12 var(--yi-avatar-hue)), oklch(0.78 0.1 var(--yi-avatar-hue)));
+    --yi-avatar-fg: var(--yi-on-solid);
+  }
+
+  // Nobody in particular: no name, email or seed to derive a colour from.
+  &--anonymous,
+  &--more {
+    --yi-avatar-bg: var(--yi-tone-1);
+    --yi-avatar-fg: var(--yi-fg-muted);
+  }
+
+  &--anonymous.yi-avatar--bold {
+    --yi-avatar-bg: var(--yi-neutral);
+    --yi-avatar-fg: var(--yi-on-solid);
+  }
+
+  // The "+N" marker that ends a group.
+  &--more {
+    inline-size: auto;
+    min-inline-size: var(--yi-avatar-size);
+    padding-inline: calc(var(--yi-avatar-size) * 0.2);
+    font-size: calc(var(--yi-avatar-size) * 0.36);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.yi-avatar__image {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.yi-avatar-group {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  isolation: isolate;
+
+  > .yi-avatar {
+    box-shadow: 0 0 0 2px var(--yi-avatar-ring);
+  }
+
+  > .yi-avatar + .yi-avatar {
+    margin-inline-start: calc(var(--yi-avatar-size) * -0.125);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-avatar {
+    border: 1px solid CanvasText;
+  }
+}

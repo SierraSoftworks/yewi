@@ -1,0 +1,146 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-pipeline yi-pipeline--compact yi-pipeline--fill">
+<ol aria-label="Rollout overview" class="yi-pipeline__track">
+<li class="yi-pipeline__step">
+<span aria-hidden="true" class="yi-pipeline__link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</span>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">canary</span>
+<span class="yi-pipeline-stage__status">2/2</span>
+</div>
+<div class="yi-pipeline-stage__meta">hidden when compact</div>
+</div>
+<div role="group" aria-label="Hosts in canary" class="yi-pipeline-units">
+<span role="img" aria-label="canary 1: done" title="canary 1: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="canary 2: done" title="canary 2: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+</div>
+</div>
+</li>
+<li aria-current="step" class="yi-pipeline__step yi-pipeline__step--current">
+<div class="yi-pipeline-gate yi-pipeline-gate--open yi-pipeline-gate--ok">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>approved</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">edge</span>
+<span class="yi-pipeline-stage__status">7/12</span>
+</div>
+</div>
+<div role="group" aria-label="Hosts in edge" class="yi-pipeline-units">
+<span role="img" aria-label="edge 1: done" title="edge 1: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 2: done" title="edge 2: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 3: done" title="edge 3: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 4: done" title="edge 4: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 5: done" title="edge 5: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 6: done" title="edge 6: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 7: done" title="edge 7: done" class="yi-pipeline-unit yi-pipeline-unit--ok yi-pipeline-unit--solid">
+</span>
+<span role="img" aria-label="edge 8: pending" title="edge 8: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="edge 9: pending" title="edge 9: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="edge 10: pending" title="edge 10: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="edge 11: pending" title="edge 11: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="edge 12: pending" title="edge 12: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+</div>
+</div>
+</li>
+<li class="yi-pipeline__step">
+<div class="yi-pipeline-gate yi-pipeline-gate--waiting yi-pipeline-gate--neutral">
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+<span aria-hidden="true" class="yi-pipeline-gate__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 6v6l4 2">
+</path>
+</svg>
+</span>
+<span class="yi-pipeline-gate__label">
+<span class="yi-visually-hidden">Gate: </span>approval</span>
+<span aria-hidden="true" class="yi-pipeline-gate__bar">
+</span>
+</div>
+<div class="yi-pipeline-stage">
+<div class="yi-pipeline-stage__head">
+<div class="yi-pipeline-stage__title-row">
+<span class="yi-pipeline-stage__title">core</span>
+<span class="yi-pipeline-stage__status">0/20</span>
+</div>
+</div>
+<div role="group" aria-label="Hosts in core" class="yi-pipeline-units">
+<span role="img" aria-label="core 1: pending" title="core 1: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 2: pending" title="core 2: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 3: pending" title="core 3: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 4: pending" title="core 4: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 5: pending" title="core 5: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 6: pending" title="core 6: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 7: pending" title="core 7: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 8: pending" title="core 8: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 9: pending" title="core 9: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 10: pending" title="core 10: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 11: pending" title="core 11: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 12: pending" title="core 12: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 13: pending" title="core 13: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 14: pending" title="core 14: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 15: pending" title="core 15: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 16: pending" title="core 16: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 17: pending" title="core 17: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 18: pending" title="core 18: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 19: pending" title="core 19: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+<span role="img" aria-label="core 20: pending" title="core 20: pending" class="yi-pipeline-unit yi-pipeline-unit--neutral yi-pipeline-unit--hollow">
+</span>
+</div>
+</div>
+</li>
+</ol>
+</div>
