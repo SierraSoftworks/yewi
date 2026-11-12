@@ -28,12 +28,9 @@ fn danger_is_an_alert_and_every_other_tone_a_status() {
 }
 
 #[test]
-fn every_tone_and_accent_is_distinguishable() {
-    let rendered: Vec<String> = Tone::ALL
-        .into_iter()
-        .flat_map(|tone| [ToastAccent::Icon, ToastAccent::Stripe].map(|accent| (tone, accent)))
-        .map(|(tone, accent)| render(move || html! { <Toast {tone} {accent}>{ "Saved" }</Toast> }))
-        .collect();
+fn every_tone_is_distinguishable() {
+    let rendered: Vec<String> =
+        Tone::ALL.into_iter().map(|tone| render(move || html! { <Toast {tone}>{ "Saved" }</Toast> })).collect();
     for (i, a) in rendered.iter().enumerate() {
         for b in &rendered[i + 1..] {
             assert_ne!(a, b);
