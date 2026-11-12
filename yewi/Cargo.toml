@@ -31,7 +31,7 @@ highlight-syntect = ["highlight"]
 map = []
 markdown = []
 qr = []
-router = []
+router = ["dep:yew-router"]
 schema-form = []
 terminal = []
 
@@ -58,6 +58,7 @@ full = [
 [dependencies]
 yew = { workspace = true }
 yewi-fonts = { workspace = true, optional = true }
+yew-router = { workspace = true, optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = { workspace = true }

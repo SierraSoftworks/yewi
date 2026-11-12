@@ -18,6 +18,6 @@ highlight-syntect = 20000
 map = 20000
 markdown = 20000
 qr = 20000
-router = 20000
+router = 60000
 schema-form = 20000
 terminal = 20000
