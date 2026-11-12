@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Tone, icons};
+use crate::{Attrs, ButtonVariant, Icon, IconButton, Size, Tone, icons};
 
 #[derive(Properties, PartialEq)]
 pub struct MapToolbarProps {
@@ -46,7 +46,8 @@ pub fn MapToolbar(props: &MapToolbarProps) -> Html {
 
 #[derive(Properties, PartialEq)]
 pub struct MapToolGroupProps {
-    /// [`MapTool`]s, or a status such as a pill and a count.
+    /// Tools, usually subtle [`IconButton`]s, or a status such as a pill and
+    /// a count.
     #[prop_or_default]
     pub children: Html,
     /// The accessible name of the group, when its tools belong together.
@@ -72,46 +73,6 @@ pub fn MapToolGroup(props: &MapToolGroupProps) -> Html {
         >
             { props.children.clone() }
         </div>
-    })
-}
-
-#[derive(Properties, PartialEq)]
-pub struct MapToolProps {
-    pub icon: IconData,
-    /// What the tool does: its accessible name and its tooltip.
-    pub label: AttrValue,
-    /// For a tool that stays chosen: whether it is the one in hand. Leave
-    /// unset for a tool that acts once, such as "fit everything".
-    #[prop_or_default]
-    pub pressed: Option<bool>,
-    #[prop_or_default]
-    pub disabled: bool,
-    #[prop_or_default]
-    pub on_click: Callback<MouseEvent>,
-    #[prop_or_default]
-    pub class: Classes,
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    #[prop_or_default]
-    pub attrs: Attrs,
-}
-
-/// An icon button in a [`MapToolGroup`].
-#[function_component]
-pub fn MapTool(props: &MapToolProps) -> Html {
-    props.attrs.apply(html! {
-        <button
-            id={props.id.clone()}
-            type="button"
-            class={classes!("yi-map-tool", props.class.clone())}
-            aria-label={props.label.clone()}
-            aria-pressed={props.pressed.map(|pressed| if pressed { "true" } else { "false" })}
-            title={props.label.clone()}
-            disabled={props.disabled}
-            onclick={props.on_click.clone()}
-        >
-            <Icon icon={props.icon} />
-        </button>
     })
 }
 
@@ -169,11 +130,9 @@ pub fn MapPanel(props: &MapPanelProps) -> Html {
         }
     } else {
         let close = props.on_close.clone().map(|on_close| {
-            let onclick = Callback::from(move |_: MouseEvent| on_close.emit(()));
+            let on_click = Callback::from(move |_: MouseEvent| on_close.emit(()));
             html! {
-                <button type="button" class="yi-map-tool yi-map-panel__close" aria-label="Close" {onclick}>
-                    <Icon icon={icons::X} />
-                </button>
+                <IconButton icon={icons::X} label="Close" variant={ButtonVariant::Subtle} size={Size::Small} {on_click} />
             }
         });
         html! {

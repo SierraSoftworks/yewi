@@ -55,21 +55,28 @@ pub fn Example() -> Html {
     let toolbar = html! {
         <MapToolbar>
             <MapToolGroup>
-                <MapTool
+                <IconButton
                     icon={icons::MOUSE_POINTER}
                     label="Select"
+                    variant={ButtonVariant::Subtle}
                     pressed={*tool == Tool::Select}
                     on_click={choose(Tool::Select)}
                 />
-                <MapTool
+                <IconButton
                     icon={icons::MAP_PIN}
                     label="Place a marker"
+                    variant={ButtonVariant::Subtle}
                     pressed={*tool == Tool::Pin}
                     on_click={choose(Tool::Pin)}
                 />
             </MapToolGroup>
             <MapToolGroup>
-                <MapTool icon={icons::MAXIMIZE} label="Fit everything" on_click={fit} />
+                <IconButton
+                    icon={icons::MAXIMIZE}
+                    label="Fit everything"
+                    variant={ButtonVariant::Subtle}
+                    on_click={fit}
+                />
             </MapToolGroup>
             <MapToolGroup>{ format!("{} sites", SITES.len()) }</MapToolGroup>
         </MapToolbar>
@@ -100,7 +107,10 @@ pub fn Example() -> Html {
     let panel = site.map(|(_, name, detail, lng, lat, _)| {
         html! {
             <MapPanel title={*name} on_close={close}>
-                <p>{ format!("{detail} at {lat:.2}, {lng:.2}.") }</p>
+                <DescriptionList>
+                    <DescriptionItem term="Capacity">{ *detail }</DescriptionItem>
+                    <DescriptionItem term="Position" mono=true>{ format!("{lat:.2}, {lng:.2}") }</DescriptionItem>
+                </DescriptionList>
             </MapPanel>
         }
     });

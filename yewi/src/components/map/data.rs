@@ -458,8 +458,18 @@ fn position(out: &mut String, at: LngLat) {
 }
 
 /// JSON has no NaN or infinity; a position that is neither is nowhere.
+///
+/// In the browser the number is written by JavaScript: Rust's own float
+/// formatting would add some 18 KB to the wasm binary for the same text.
 pub(super) fn json_number(out: &mut String, value: f64) {
-    let _ = write!(out, "{}", if value.is_finite() { value } else { 0.0 });
+    let value = if value.is_finite() { value } else { 0.0 };
+    #[cfg(target_arch = "wasm32")]
+    match js_sys::Number::from(value).to_string_with_radix(10) {
+        Ok(text) => out.push_str(&String::from(text)),
+        Err(_) => out.push('0'),
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    let _ = write!(out, "{value}");
 }
 
 pub(super) fn json_option(out: &mut String, value: Option<&str>) {

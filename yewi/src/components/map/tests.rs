@@ -125,18 +125,6 @@ fn bounds_contain_every_position() {
 }
 
 #[test]
-fn a_tool_announces_whether_it_is_in_hand() {
-    for (pressed, expected) in [(Some(true), Some("true")), (Some(false), Some("false")), (None, None)] {
-        let html = render(move || html! { <MapTool icon={crate::icons::MAP_PIN} label="Place a marker" {pressed} /> });
-        assert!(html.contains(r#"aria-label="Place a marker""#));
-        match expected {
-            Some(value) => assert!(html.contains(&format!(r#"aria-pressed="{value}""#))),
-            None => assert!(!html.contains("aria-pressed")),
-        }
-    }
-}
-
-#[test]
 fn a_collapsible_panel_folds_natively() {
     let open = render(|| html! { <MapPanel title="On the map" meta="4" collapsible=true>{ "rows" }</MapPanel> });
     assert!(open.starts_with("<details") && open.contains(" open"));

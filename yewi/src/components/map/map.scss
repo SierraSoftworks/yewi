@@ -279,47 +279,6 @@
   }
 }
 
-.yi-map-tool {
-  display: inline-grid;
-  place-items: center;
-  flex: none;
-  inline-size: var(--yi-control-height);
-  block-size: var(--yi-control-height);
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: var(--yi-radius-control);
-  background: none;
-  color: var(--yi-fg-muted);
-  font-size: var(--yi-text-lg);
-  cursor: pointer;
-
-  @include motion {
-    transition:
-      background-color var(--yi-duration-fast) var(--yi-ease),
-      color var(--yi-duration-fast) var(--yi-ease);
-  }
-
-  &:hover:not(:disabled) {
-    background: var(--yi-neutral-soft);
-    color: var(--yi-fg);
-  }
-
-  &:focus-visible {
-    @include focus-ring(1px);
-  }
-
-  &[aria-pressed="true"] {
-    border-color: var(--yi-accent-line);
-    background: var(--yi-accent-soft);
-    color: var(--yi-accent-text);
-  }
-
-  &:disabled {
-    opacity: 0.45;
-    cursor: default;
-  }
-}
-
 // A card laid over the map: the sidebar list and the detail panel.
 .yi-map-panel {
   display: flex;
