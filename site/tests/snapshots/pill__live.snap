@@ -1,0 +1,12 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster yi-cluster--align-center">
+<span class="yi-pill yi-pill--neutral">
+<span aria-hidden="true" class="yi-status-dot">
+</span>idle</span>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Start rollout</button>
+</div>
+<span role="status">Rollout is idle</span>
+</div>

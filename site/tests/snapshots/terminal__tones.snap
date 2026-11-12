@@ -1,0 +1,37 @@
+---
+source: site/tests/snapshots.rs
+---
+<div role="group" aria-label="root@edge-01" class="yi-terminal">
+<div class="yi-terminal__bar">
+<span aria-hidden="true" class="yi-terminal__controls">
+<span class="yi-terminal__control yi-terminal__control--close">
+</span>
+<span class="yi-terminal__control yi-terminal__control--minimise">
+</span>
+<span class="yi-terminal__control yi-terminal__control--zoom">
+</span>
+</span>
+<span class="yi-terminal__title">root@edge-01</span>
+</div>
+<div class="yi-terminal__body">
+<div data-prompt="#" class="yi-terminal__command">
+<span class="yi-terminal__input">systemctl restart caddy</span>
+</div>
+<div class="yi-terminal__output yi-terminal__output--danger">Job for caddy.service failed because the control process exited with error code.
+</div>
+<div data-prompt="#" class="yi-terminal__command">
+<span class="yi-terminal__input">caddy validate --config /etc/caddy/Caddyfile</span>
+</div>
+<div class="yi-terminal__output yi-terminal__output--warn">warning: Caddyfile input is not formatted
+</div>
+<div class="yi-terminal__output yi-terminal__output--info">using adapter: caddyfile
+</div>
+<div class="yi-terminal__output yi-terminal__output--ok">Valid configuration
+</div>
+<div data-prompt="&gt;&gt;&gt;" class="yi-terminal__command">
+<span class="yi-terminal__input">print("a REPL prompt")</span>
+</div>
+<div class="yi-terminal__output">a REPL prompt
+</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster yi-cluster--align-center">
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-0-text" class="yi-tag__text">
+<span class="yi-tag__name">env</span>
+<span class="yi-tag__value">production</span>
+</span>
+<button id="yi-0-remove" type="button" aria-label="Remove" aria-labelledby="yi-0-remove yi-0-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-1-text" class="yi-tag__text">
+<span class="yi-tag__name">region</span>
+<span class="yi-tag__value">eu-west</span>
+</span>
+<button id="yi-1-remove" type="button" aria-label="Remove" aria-labelledby="yi-1-remove yi-1-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-2-text" class="yi-tag__text">
+<span class="yi-tag__name">os</span>
+<span class="yi-tag__value">linux</span>
+</span>
+<button id="yi-2-remove" type="button" aria-label="Remove" aria-labelledby="yi-2-remove yi-2-text" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-3-text" class="yi-tag__text">
+<span class="yi-tag__name">owner</span>
+<span class="yi-tag__value">platform</span>
+</span>
+<button id="yi-3-remove" type="button" aria-label="Remove" aria-labelledby="yi-3-remove yi-3-text" disabled="disabled" class="yi-tag__remove">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm">Reset</button>
+</div>
+<span role="status">3 filters</span>
+</div>

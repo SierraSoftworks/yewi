@@ -1,0 +1,149 @@
+// Drawer
+//
+// As with Dialog, the `<dialog>` element is a transparent box that its
+// `__surface` covers, so a click on the element itself is on the backdrop.
+@use "api" as *;
+
+.yi-drawer {
+  // Component tokens
+  --yi-drawer-width: 28.75rem; // `size` sets it.
+  --yi-drawer-padding: var(--yi-space-xl);
+  --yi-drawer-gutter: var(--yi-space-3xl); // Page left visible beside it on a narrow screen.
+  --yi-drawer-bg: var(--yi-surface-raised);
+  --yi-drawer-foot-bg: var(--yi-tone-1);
+  --yi-drawer-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.45));
+  // Where it slides in from, as a share of its own width.
+  --yi-drawer-from: 100%;
+
+  inset-block: 0;
+  inset-inline: auto 0;
+  inline-size: min(var(--yi-drawer-width), 100% - var(--yi-drawer-gutter));
+  max-inline-size: none;
+  block-size: 100dvb;
+  max-block-size: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--yi-fg);
+  overflow: visible;
+
+  &[open] {
+    display: flex;
+  }
+
+  &::backdrop {
+    background: var(--yi-drawer-scrim);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &--start {
+    --yi-drawer-from: -100%;
+
+    inset-inline: 0 auto;
+  }
+
+  &:dir(rtl) {
+    --yi-drawer-from: -100%;
+  }
+
+  &--start:dir(rtl) {
+    --yi-drawer-from: 100%;
+  }
+
+  &--sm {
+    --yi-drawer-width: 18rem;
+  }
+
+  &--lg {
+    --yi-drawer-width: 40rem;
+  }
+}
+
+.yi-drawer__surface {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+  min-block-size: 0;
+  border-inline-start: 1px solid var(--yi-card-line);
+  background: var(--yi-drawer-bg);
+  box-shadow: var(--yi-shadow-overlay);
+
+  .yi-drawer--start > & {
+    border-inline-start: 0;
+    border-inline-end: 1px solid var(--yi-card-line);
+  }
+}
+
+.yi-drawer__head {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--yi-space-lg);
+  padding: var(--yi-drawer-padding) var(--yi-drawer-padding) var(--yi-space-md);
+}
+
+.yi-drawer__title {
+  @include heading("xl");
+
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.yi-drawer__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--yi-space-lg);
+  min-block-size: 0;
+  padding: 0 var(--yi-drawer-padding) var(--yi-drawer-padding);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  line-height: var(--yi-leading);
+
+  // With no header the body starts at the top edge.
+  &:first-child {
+    padding-block-start: var(--yi-drawer-padding);
+  }
+}
+
+.yi-drawer__foot {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--yi-space-sm);
+  padding: var(--yi-space-md) var(--yi-drawer-padding);
+  background: var(--yi-drawer-foot-bg);
+}
+
+@include motion {
+  .yi-drawer[open] {
+    transition: translate var(--yi-duration) var(--yi-ease);
+
+    &::backdrop {
+      transition: opacity var(--yi-duration) var(--yi-ease);
+    }
+  }
+
+  @starting-style {
+    .yi-drawer[open] {
+      translate: var(--yi-drawer-from) 0;
+    }
+
+    .yi-drawer[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-drawer__surface {
+    border-color: CanvasText;
+  }
+}

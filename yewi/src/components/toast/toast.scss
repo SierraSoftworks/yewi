@@ -1,7 +1,7 @@
 // Toast
 //
-// A raised surface whose tone shows as an icon (default) or a stripe along
-// the leading edge. Tones set `--yi-toast-tone`; everything else is shared.
+// A raised surface whose tone shows as a coloured icon. Tones set
+// `--yi-toast-tone`; everything else is shared.
 @use "api" as *;
 
 .yi-toast-region {
@@ -55,7 +55,6 @@
   --yi-toast-border: var(--yi-card-line);
   --yi-toast-radius: var(--yi-radius-card);
   --yi-toast-shadow: var(--yi-shadow-overlay);
-  --yi-toast-stripe: 3px;
 
   display: flex;
   align-items: flex-start;
@@ -99,20 +98,6 @@
 
   &--active {
     --yi-toast-tone: var(--yi-active);
-  }
-
-  // Drawn as an inset shadow so the card's radius clips it cleanly.
-  &--stripe {
-    padding-inline-start: calc(var(--yi-space-md) + var(--yi-toast-stripe));
-    box-shadow:
-      inset var(--yi-toast-stripe) 0 0 var(--yi-toast-tone),
-      var(--yi-toast-shadow);
-
-    &:dir(rtl) {
-      box-shadow:
-        inset calc(-1 * var(--yi-toast-stripe)) 0 0 var(--yi-toast-tone),
-        var(--yi-toast-shadow);
-    }
   }
 }
 
