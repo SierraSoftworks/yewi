@@ -68,11 +68,21 @@ html {
   }
 }
 
-.docs-brand {
+// The wordmark; `assets/logo-*.svg` are the same shapes outlined.
+.docs-wordmark {
   font-family: var(--yi-font-heading);
-  font-size: var(--yi-text-xl);
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: -0.02em;
   color: var(--yi-fg);
+
+  &__i {
+    font-weight: 600;
+    color: var(--yi-accent-text);
+  }
+}
+
+.docs-brand {
+  font-size: var(--yi-text-2xl);
   inline-size: calc($sidebar - var(--yi-space-xl) - var(--yi-space-lg));
 
   &:hover {
