@@ -1,0 +1,99 @@
+// Text
+//
+// Every modifier changes one aspect and leaves the rest inherited, so a bare
+// `.yi-text` is indistinguishable from the text around it.
+@use "api" as *;
+
+.yi-text {
+  // Component tokens
+  --yi-text-lines: 2; // Lines kept by the `lines` clamp.
+
+  // Element defaults carry no extra specificity, so any modifier below wins.
+  &:where(strong) {
+    font-weight: 600;
+  }
+
+  &:where(small) {
+    font-size: var(--yi-text-sm);
+  }
+
+  @each $size in ("xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl") {
+    &--#{$size} {
+      font-size: var(--yi-text-#{$size});
+    }
+  }
+
+  // Reading text gets more air; display sizes get less.
+  &--lg {
+    line-height: var(--yi-leading-relaxed);
+  }
+
+  &--2xl,
+  &--3xl,
+  &--4xl {
+    line-height: var(--yi-leading-tight);
+  }
+
+  &--primary {
+    color: var(--yi-fg);
+  }
+
+  &--muted {
+    color: var(--yi-fg-muted);
+  }
+
+  &--subtle {
+    color: var(--yi-fg-subtle);
+  }
+
+  &--accent {
+    color: var(--yi-accent-text);
+  }
+
+  @each $tone in ("neutral", "ok", "warn", "danger", "info", "active") {
+    &--#{$tone} {
+      color: var(--yi-#{$tone});
+    }
+  }
+
+  &--regular {
+    font-weight: 400;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--semibold {
+    font-weight: 600;
+  }
+
+  &--truncate {
+    @include truncate;
+
+    // Inline text cannot clip, so give it a box that still sits on the line.
+    &:where(span, strong, em, small) {
+      display: inline-block;
+      max-inline-size: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+  &--clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--yi-text-lines);
+    line-clamp: var(--yi-text-lines);
+    overflow: hidden;
+  }
+
+  &--mono {
+    font-family: var(--yi-font-mono);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+    font-size: 0.92em;
+  }
+
+  &--tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}

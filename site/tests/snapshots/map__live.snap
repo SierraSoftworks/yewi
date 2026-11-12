@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Next fix</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Centre on Aurora</button>
+</div>
+<div style="--yi-map-height:20rem" class="yi-map">
+<div class="yi-map__canvas">
+</div>
+<div class="yi-map__overlay">
+<div class="yi-map__toolbar">
+</div>
+<div class="yi-map__notes">
+</div>
+<div class="yi-map__sidebar">
+</div>
+<div class="yi-map__panel">
+</div>
+<div class="yi-map__footer">
+</div>
+<div class="yi-map__controls">
+<div role="group" aria-label="Zoom" class="yi-map__zoom">
+<button type="button" aria-label="Zoom in" class="yi-map__zoom-button">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+<button type="button" aria-label="Zoom out" class="yi-map__zoom-button">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<span role="status">Fix 1 of 4</span>
+</div>
