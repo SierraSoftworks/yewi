@@ -1,0 +1,28 @@
+---
+source: site/tests/snapshots.rs
+---
+<form style="max-inline-size: 18rem">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Plan</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-0-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Team</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+<input value="team" type="hidden" name="plan">
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Save</button>
+</div>
+<span role="status">Not saved</span>
+</div>
+</form>

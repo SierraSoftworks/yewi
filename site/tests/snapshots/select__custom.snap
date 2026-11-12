@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 18rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Branch</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox">
+<input value="main" id="yi-0-control" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-describedby="yi-0-message" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+<p id="yi-0-message" class="yi-field__message">Pick a branch or type the name of a new one.</p>
+</div>
+</div>
+<span role="status">Deploying from main</span>
+</div>

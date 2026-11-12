@@ -1,0 +1,24 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Only run for</label>
+<div class="yi-field__body">
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md yi-query-input__box--mono yi-query-input__box--invalid">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M2 5h20M6 12h12M9 19h6">
+</path>
+</svg>
+<input value="draft == false &amp;&amp; owner == &quot;ada&quot;" id="yi-0-control" type="text" role="combobox" placeholder="title contains &quot;release&quot;" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-invalid="true" aria-describedby="yi-0-message" class="yi-query-input__control">
+</span>
+</span>
+<p id="yi-0-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Unsupported field: owner.</span>
+</p>
+</div>
+</div>
