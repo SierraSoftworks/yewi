@@ -1,0 +1,65 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:11rem" class="yi-grid">
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">Visitors</span>
+<span class="yi-stat-tile__value">12,480</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--ok">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12l7-7 7 7M12 19V5">
+</path>
+</svg>
+<span class="yi-visually-hidden">Up </span>8%</span>
+<span class="yi-stat-tile__detail">vs. previous 7 days</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">Pageviews</span>
+<span class="yi-stat-tile__value">31,902</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--danger">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 5v14M19 12l-7 7-7-7">
+</path>
+</svg>
+<span class="yi-visually-hidden">Down </span>3%</span>
+<span class="yi-stat-tile__detail">vs. previous 7 days</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">Bounce rate</span>
+<span class="yi-stat-tile__value">42<span class="yi-stat-tile__unit">%</span>
+</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--ok">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 5v14M19 12l-7 7-7-7">
+</path>
+</svg>
+<span class="yi-visually-hidden">Down </span>5%</span>
+<span class="yi-stat-tile__detail">vs. previous 7 days</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">Median time</span>
+<span class="yi-stat-tile__value">1m 24s</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__delta yi-stat-tile__delta--neutral">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+<span class="yi-visually-hidden">No change </span>0%</span>
+<span class="yi-stat-tile__detail">vs. previous 7 days</span>
+</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md">
+<span class="yi-stat-tile__label">Events</span>
+<span class="yi-stat-tile__value">–</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__detail">No events recorded</span>
+</span>
+</div>
+</div>
