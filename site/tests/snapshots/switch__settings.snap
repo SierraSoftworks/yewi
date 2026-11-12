@@ -1,0 +1,39 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 32rem">
+<div class="yi-field yi-field--inline">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Automatic rollback</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked id="yi-0-control" type="checkbox" role="switch" aria-describedby="yi-0-message" class="yi-switch__input">
+</span>
+</label>
+<p id="yi-0-message" class="yi-field__message">Roll back when health checks fail after a deploy.</p>
+</div>
+</div>
+<div class="yi-field yi-field--inline">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Require approval</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked id="yi-1-control" type="checkbox" role="switch" aria-describedby="yi-1-message" class="yi-switch__input">
+</span>
+</label>
+<p id="yi-1-message" class="yi-field__message">Production deploys wait for a second person.</p>
+</div>
+</div>
+<div class="yi-field yi-field--inline">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Weekend freeze</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input id="yi-2-control" type="checkbox" role="switch" aria-describedby="yi-2-message" class="yi-switch__input">
+</span>
+</label>
+<p id="yi-2-message" class="yi-field__message">Block deploys from Friday 18:00 to Monday 08:00.</p>
+</div>
+</div>
+<span role="status">2 of 3 enabled</span>
+</div>

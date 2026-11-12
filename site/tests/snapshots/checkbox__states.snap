@@ -1,0 +1,131 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:12rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Unchecked</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Checked</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox yi-checkbox--indeterminate">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M5 12h14">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Indeterminate</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox yi-checkbox--invalid">
+<span class="yi-choice__control">
+<input type="checkbox" aria-invalid="true" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Invalid</span>
+</span>
+</label>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" disabled="disabled" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" disabled="disabled" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled, checked</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-checkbox yi-checkbox--indeterminate">
+<span class="yi-choice__control">
+<input type="checkbox" disabled="disabled" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M5 12h14">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled, indeterminate</span>
+</span>
+</label>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<label class="yi-choice yi-choice--sm yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Small</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Medium</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--lg yi-checkbox">
+<span class="yi-choice__control">
+<input checked type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Large</span>
+</span>
+</label>
+</div>
+</div>
