@@ -1,25 +1,25 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-grid-min:10rem" class="yw-grid">
-<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
-<div style="border-radius: var(--yw-radius-sm); box-shadow: none" class="demo-shape">
+<div style="--yi-grid-min:10rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div style="border-radius: var(--yi-radius-sm); box-shadow: none" class="demo-shape">
 </div>
-<code>--yw-radius-sm</code>
+<code>--yi-radius-sm</code>
 </div>
-<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
-<div style="border-radius: var(--yw-radius-control); box-shadow: none" class="demo-shape">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div style="border-radius: var(--yi-radius-control); box-shadow: none" class="demo-shape">
 </div>
-<code>--yw-radius-control</code>
+<code>--yi-radius-control</code>
 </div>
-<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
-<div style="border-radius: var(--yw-radius-card); box-shadow: var(--yw-shadow-card)" class="demo-shape">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div style="border-radius: var(--yi-radius-card); box-shadow: var(--yi-shadow-card)" class="demo-shape">
 </div>
-<code>--yw-radius-card</code>
+<code>--yi-radius-card</code>
 </div>
-<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
-<div style="border-radius: var(--yw-radius-card); box-shadow: var(--yw-shadow-overlay)" class="demo-shape">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div style="border-radius: var(--yi-radius-card); box-shadow: var(--yi-shadow-overlay)" class="demo-shape">
 </div>
-<code>--yw-shadow-overlay</code>
+<code>--yi-shadow-overlay</code>
 </div>
 </div>

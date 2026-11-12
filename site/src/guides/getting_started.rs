@@ -68,9 +68,9 @@ fn main() {
             <h3>{ "System fonts only" }</h3>
             { plain(r#"
 :root {
-  --yw-font-heading: var(--yw-font-system);
-  --yw-font-body: var(--yw-font-system);
-  --yw-font-mono: var(--yw-font-system-mono);
+  --yi-font-heading: var(--yi-font-system);
+  --yi-font-body: var(--yi-font-system);
+  --yi-font-mono: var(--yi-font-system-mono);
 }
 "#) }
 

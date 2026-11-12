@@ -10,7 +10,7 @@ pub fn Example() -> Html {
             <h3>{ "Stage: home" }</h3>
             <h4>{ "Hosts in this stage" }</h4>
             <h5>{ "Health checks" }</h5>
-            <p style="color: var(--yw-fg-muted)">{ "Commits and operator actions, newest first." }</p>
+            <p style="color: var(--yi-fg-muted)">{ "Commits and operator actions, newest first." }</p>
         </Stack>
     }
 }

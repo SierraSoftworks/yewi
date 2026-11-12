@@ -1,7 +1,7 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<svg style="--yw-icon-size:32px" viewBox="0 0 24 24" role="img" aria-label="Mountains" focusable="false" class="yw-icon">
+<svg style="--yi-icon-size:32px" viewBox="0 0 24 24" role="img" aria-label="Mountains" focusable="false" class="yi-icon">
 <path d="M3 19l6-11 4 7 2-3 6 7z">
 </path>
 </svg>

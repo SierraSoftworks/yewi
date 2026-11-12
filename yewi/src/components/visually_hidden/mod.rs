@@ -21,7 +21,7 @@ pub struct VisuallyHiddenProps {
 #[function_component]
 pub fn VisuallyHidden(props: &VisuallyHiddenProps) -> Html {
     props.attrs.apply(html! {
-        <span id={props.id.clone()} class={classes!("yw-visually-hidden", props.class.clone())}>
+        <span id={props.id.clone()} class={classes!("yi-visually-hidden", props.class.clone())}>
             { props.children.clone() }
         </span>
     })

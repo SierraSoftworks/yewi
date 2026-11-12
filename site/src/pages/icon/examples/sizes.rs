@@ -12,10 +12,10 @@ pub fn Example() -> Html {
                 <Icon icon={icons::LAYERS} size="24px" />
                 <Icon icon={icons::LAYERS} size="32px" />
             </Cluster>
-            <span style="color: var(--yw-ok)">
+            <span style="color: var(--yi-ok)">
                 <Icon icon={icons::CIRCLE_CHECK} />{ " All 31 hosts are healthy" }
             </span>
-            <span style="color: var(--yw-danger)">
+            <span style="color: var(--yi-danger)">
                 <Icon icon={icons::CIRCLE_X} />{ " 2 hosts failed their health check" }
             </span>
         </Stack>

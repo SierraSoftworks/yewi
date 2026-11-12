@@ -1,14 +1,14 @@
 // Utilities. This is the last yewi layer, so these win over components.
 @use "api" as *;
 
-.yw-visually-hidden {
+.yi-visually-hidden {
   @include visually-hidden;
 }
 
-.yw-tabular {
+.yi-tabular {
   font-variant-numeric: tabular-nums;
 }
 
-.yw-truncate {
+.yi-truncate {
   @include truncate;
 }

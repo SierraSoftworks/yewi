@@ -18,8 +18,8 @@ pub fn Example() -> Html {
         <Stack gap={Space::Sm}>
             { for SIZES.into_iter().map(|(name, px)| html! {
                 <Cluster align={Align::Baseline} gap={Space::Lg} nowrap=true>
-                    <code style="inline-size: 9rem; flex: none">{ format!("--yw-text-{name}") }</code>
-                    <span style={format!("font-size: var(--yw-text-{name})")}>{ format!("Rollout #42 paused ({px}px)") }</span>
+                    <code style="inline-size: 9rem; flex: none">{ format!("--yi-text-{name}") }</code>
+                    <span style={format!("font-size: var(--yi-text-{name})")}>{ format!("Rollout #42 paused ({px}px)") }</span>
                 </Cluster>
             }) }
         </Stack>

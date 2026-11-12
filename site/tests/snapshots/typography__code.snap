@@ -1,14 +1,14 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div class="yw-stack">
+<div class="yi-stack">
 <p>Run <code>nomad job run caddy.hcl</code> to deploy.</p>
 <pre>fn main() -&gt; Result&lt;(), Error&gt; {
     if a != b &amp;&amp; c &gt;= d { run()?; }
     Ok(())
 }</pre>
-<pre style="--yw-font-mono-ligatures: normal">ligatures on:  -&gt; != &gt;= =&gt; ==</pre>
-<div style="--yw-gap:0" class="yw-stack yw-stack--align-end yw-tabular">
+<pre style="--yi-font-mono-ligatures: normal">ligatures on:  -&gt; != &gt;= =&gt; ==</pre>
+<div style="--yi-gap:0" class="yi-stack yi-stack--align-end yi-tabular">
 <span>12,904</span>
 <span>1,117</span>
 <span>88</span>

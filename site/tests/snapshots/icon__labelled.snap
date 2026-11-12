@@ -1,13 +1,13 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
 <span>
-<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2zM7 11V7a5 5 0 0 1 10 0v4">
 </path>
 </svg> Private</span>
-<svg viewBox="0 0 24 24" role="img" aria-label="Private" focusable="false" class="yw-icon">
+<svg viewBox="0 0 24 24" role="img" aria-label="Private" focusable="false" class="yi-icon">
 <path d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-7a2 2 0 0 1 2 -2zM7 11V7a5 5 0 0 1 10 0v4">
 </path>
 </svg>

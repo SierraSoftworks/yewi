@@ -58,7 +58,7 @@ fn Layout(props: &LayoutProps) -> Html {
             <a class="docs-skip" href="#content">{ "Skip to content" }</a>
             <header class="docs-header">
                 <Button
-                    class="docs-header__menu yw-button--icon-only"
+                    class="docs-header__menu yi-button--icon-only"
                     variant={ButtonVariant::Subtle}
                     attrs={attrs! { "aria-label" => "Menu", "aria-expanded" => if *nav_open { "true" } else { "false" } }}
                     on_click={toggle_nav}
@@ -402,7 +402,7 @@ pub fn IsolatedExample(props: &IsolatedExampleProps) -> Html {
     };
     html! {
         <main class="docs-isolated">
-            <h1 class="yw-visually-hidden">{ format!("{}: {}", page.def.title, example.title) }</h1>
+            <h1 class="yi-visually-hidden">{ format!("{}: {}", page.def.title, example.title) }</h1>
             <div class="docs-isolated__stage" data-example={format!("{}/{}", page.slug, example.slug())}>
                 <Stage {example} />
             </div>

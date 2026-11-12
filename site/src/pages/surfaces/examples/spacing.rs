@@ -9,8 +9,8 @@ pub fn Example() -> Html {
         <Stack gap={Space::Xs}>
             { for STEPS.into_iter().map(|step| html! {
                 <Cluster gap={Space::Lg} nowrap=true>
-                    <code style="inline-size: 9rem; flex: none">{ format!("--yw-space-{step}") }</code>
-                    <div class="demo-bar" style={format!("inline-size: var(--yw-space-{step})")} />
+                    <code style="inline-size: 9rem; flex: none">{ format!("--yi-space-{step}") }</code>
+                    <div class="demo-bar" style={format!("inline-size: var(--yi-space-{step})")} />
                 </Cluster>
             }) }
         </Stack>

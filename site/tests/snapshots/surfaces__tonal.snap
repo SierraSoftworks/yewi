@@ -2,17 +2,17 @@
 source: site/tests/snapshots.rs
 ---
 <div style="max-inline-size: 22rem" class="demo-card demo-card--flush">
-<b style="display: block; padding: var(--yw-space-md) var(--yw-space-lg)" class="demo-title">Latest rollout</b>
-<div class="yw-cluster yw-cluster--justify-between" style="padding: var(--yw-space-sm) var(--yw-space-lg); background: var(--yw-tone-1)">
-<span style="color: var(--yw-fg-subtle)">Hosts</span>
+<b style="display: block; padding: var(--yi-space-md) var(--yi-space-lg)" class="demo-title">Latest rollout</b>
+<div class="yi-cluster yi-cluster--justify-between" style="padding: var(--yi-space-sm) var(--yi-space-lg); background: var(--yi-tone-1)">
+<span style="color: var(--yi-fg-subtle)">Hosts</span>
 <span>2 / 31 done</span>
 </div>
-<div class="yw-cluster yw-cluster--justify-between" style="padding: var(--yw-space-sm) var(--yw-space-lg); background: var(--yw-tone-2)">
-<span style="color: var(--yw-fg-subtle)">Started</span>
+<div class="yi-cluster yi-cluster--justify-between" style="padding: var(--yi-space-sm) var(--yi-space-lg); background: var(--yi-tone-2)">
+<span style="color: var(--yi-fg-subtle)">Started</span>
 <span>35m ago</span>
 </div>
-<div class="yw-cluster yw-cluster--justify-between" style="padding: var(--yw-space-sm) var(--yw-space-lg); background: var(--yw-tone-1)">
-<span style="color: var(--yw-fg-subtle)">Stage</span>
+<div class="yi-cluster yi-cluster--justify-between" style="padding: var(--yi-space-sm) var(--yi-space-lg); background: var(--yi-tone-1)">
+<span style="color: var(--yi-fg-subtle)">Stage</span>
 <span>home</span>
 </div>
 </div>

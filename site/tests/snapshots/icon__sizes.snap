@@ -1,36 +1,36 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div class="yw-stack">
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-end">
-<svg style="--yw-icon-size:14px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-end">
+<svg style="--yi-icon-size:14px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
 </path>
 </svg>
-<svg style="--yw-icon-size:16px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<svg style="--yi-icon-size:16px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
 </path>
 </svg>
-<svg style="--yw-icon-size:20px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<svg style="--yi-icon-size:20px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
 </path>
 </svg>
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
 </path>
 </svg>
-<svg style="--yw-icon-size:32px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<svg style="--yi-icon-size:32px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
 </path>
 </svg>
 </div>
-<span style="color: var(--yw-ok)">
-<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<span style="color: var(--yi-ok)">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M16 9l-5.5 5.5L8 12">
 </path>
 </svg> All 31 hosts are healthy</span>
-<span style="color: var(--yw-danger)">
-<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<span style="color: var(--yi-danger)">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M15 9l-6 6M9 9l6 6">
 </path>
 </svg> 2 hosts failed their health check</span>

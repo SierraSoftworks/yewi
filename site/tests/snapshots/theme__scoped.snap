@@ -1,17 +1,17 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-gap:var(--yw-space-sm);--yw-grid-columns:2" class="yw-grid yw-grid--fixed">
+<div style="--yi-gap:var(--yi-space-sm);--yi-grid-columns:2" class="yi-grid yi-grid--fixed">
 <div data-theme="light" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div class="yi-stack yi-stack--align-start">
 <span>Always light</span>
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
 </div>
 </div>
 <div data-theme="dark" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div class="yi-stack yi-stack--align-start">
 <span>Always dark</span>
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
 </div>
 </div>
 </div>

@@ -1,17 +1,17 @@
 // Icon: a stroked 24-unit SVG that inherits colour and scales with text.
 
-.yw-icon {
+.yi-icon {
   // Component tokens
-  --yw-icon-size: 1.15em;
+  --yi-icon-size: 1.15em;
 
   display: inline-block;
   flex: none;
   vertical-align: -0.18em;
-  inline-size: var(--yw-icon-size);
-  block-size: var(--yw-icon-size);
+  inline-size: var(--yi-icon-size);
+  block-size: var(--yi-icon-size);
   fill: none;
   stroke: currentColor;
-  stroke-width: var(--yw-icon-stroke);
+  stroke-width: var(--yi-icon-stroke);
   stroke-linecap: round;
   stroke-linejoin: round;
 }

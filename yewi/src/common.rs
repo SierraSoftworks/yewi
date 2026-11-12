@@ -41,7 +41,7 @@ pub enum Tone {
 impl Tone {
     pub const ALL: [Tone; 6] = [Tone::Neutral, Tone::Ok, Tone::Warn, Tone::Danger, Tone::Info, Tone::Active];
 
-    /// The token and BEM modifier suffix, e.g. `ok` for `--yw-ok`.
+    /// The token and BEM modifier suffix, e.g. `ok` for `--yi-ok`.
     pub const fn as_str(self) -> &'static str {
         match self {
             Tone::Neutral => "neutral",
@@ -69,18 +69,18 @@ pub enum Space {
 }
 
 impl Space {
-    /// The CSS value: a `var(--yw-space-*)` reference, or `0`.
+    /// The CSS value: a `var(--yi-space-*)` reference, or `0`.
     pub const fn css(self) -> &'static str {
         match self {
             Space::None => "0",
-            Space::Xxs => "var(--yw-space-2xs)",
-            Space::Xs => "var(--yw-space-xs)",
-            Space::Sm => "var(--yw-space-sm)",
-            Space::Md => "var(--yw-space-md)",
-            Space::Lg => "var(--yw-space-lg)",
-            Space::Xl => "var(--yw-space-xl)",
-            Space::Xxl => "var(--yw-space-2xl)",
-            Space::Xxxl => "var(--yw-space-3xl)",
+            Space::Xxs => "var(--yi-space-2xs)",
+            Space::Xs => "var(--yi-space-xs)",
+            Space::Sm => "var(--yi-space-sm)",
+            Space::Md => "var(--yi-space-md)",
+            Space::Lg => "var(--yi-space-lg)",
+            Space::Xl => "var(--yi-space-xl)",
+            Space::Xxl => "var(--yi-space-2xl)",
+            Space::Xxxl => "var(--yi-space-3xl)",
         }
     }
 }

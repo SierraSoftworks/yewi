@@ -8,23 +8,23 @@ pub fn render() -> Html {
             <h2>{ "Tokens" }</h2>
             <p>
                 { "Every colour, size, radius, shadow and duration a component uses is a CSS custom \
-                   property named " }<code>{ "--yw-*" }</code>
+                   property named " }<code>{ "--yi-*" }</code>
                 { ". Components never contain literal values, so changing a token changes the whole \
                    system. The Foundations pages list them." }
             </p>
 
             <h2>{ "One accent per app" }</h2>
             <p>
-                { "Set " }<code>{ "--yw-accent" }</code>
+                { "Set " }<code>{ "--yi-accent" }</code>
                 { " and everything follows: the primary button fill, links, focus rings and selection. \
                    The neutral greys lean towards the accent's hue, so a blue accent gives slate greys \
                    and a green one graphite." }
             </p>
             { plain(r#"
 :root {
-  --yw-accent: #b9852f;
+  --yi-accent: #b9852f;
   /* Optional: 0 for pure greys, 1 (default) for the full lean. */
-  --yw-neutral-tint: 0.6;
+  --yi-neutral-tint: 0.6;
 }
 "#) }
             <p>
@@ -52,15 +52,15 @@ pub fn render() -> Html {
                    CSS variables on its page:" }
             </p>
             { plain(r#"
-.danger-zone .yw-button {
-  --yw-button-border: var(--yw-danger);
+.danger-zone .yi-button {
+  --yi-button-border: var(--yi-danger);
 }
 "#) }
 
             <h2>{ "Density" }</h2>
             <p>
                 { "Controls are 32px tall by default. Mark a dense region, such as a table toolbar, \
-                   with " }<code>{ "data-yw-density=\"compact\"" }</code>{ " to drop them to 28px." }
+                   with " }<code>{ "data-yi-density=\"compact\"" }</code>{ " to drop them to 28px." }
             </p>
         </>
     }

@@ -27,13 +27,13 @@ pub struct IconProps {
 /// Draws an [`IconData`] as an inline SVG in the current text colour.
 #[function_component]
 pub fn Icon(props: &IconProps) -> Html {
-    let style = props.size.as_ref().map(|size| format!("--yw-icon-size:{size}"));
+    let style = props.size.as_ref().map(|size| format!("--yi-icon-size:{size}"));
     let decorative = props.label.is_none();
 
     props.attrs.apply(html! {
         <svg
             id={props.id.clone()}
-            class={classes!("yw-icon", props.class.clone())}
+            class={classes!("yi-icon", props.class.clone())}
             {style}
             viewBox="0 0 24 24"
             role={(!decorative).then_some("img")}

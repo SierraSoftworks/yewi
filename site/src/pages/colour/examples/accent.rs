@@ -14,8 +14,8 @@ pub fn Example() -> Html {
     html! {
         <Grid min="15rem" gap={Space::Sm}>
             { for ACCENTS.into_iter().map(|(name, accent)| html! {
-                // `data-yw-scope` re-derives every token from this element's accent.
-                <div class="demo-panel" data-yw-scope="" style={format!("--yw-accent: {accent}")}>
+                // `data-yi-scope` re-derives every token from this element's accent.
+                <div class="demo-panel" data-yi-scope="" style={format!("--yi-accent: {accent}")}>
                     <Stack align={Align::Start}>
                         <b>{ name }</b>
                         <Cluster>
@@ -23,8 +23,8 @@ pub fn Example() -> Html {
                             <Button>{ "Cancel" }</Button>
                         </Cluster>
                         <a href="#accent">{ "A link in the accent" }</a>
-                        <span style="color: var(--yw-fg-muted)">{ "Supporting text on a tinted neutral" }</span>
-                        <span class="demo-chip" style="background: var(--yw-accent-soft); color: var(--yw-accent-text)">
+                        <span style="color: var(--yi-fg-muted)">{ "Supporting text on a tinted neutral" }</span>
+                        <span class="demo-chip" style="background: var(--yi-accent-soft); color: var(--yi-accent-text)">
                             { "Soft accent" }
                         </span>
                     </Stack>

@@ -15,7 +15,7 @@ pub fn Example() -> Html {
     html! {
         <Stack>
             <Cluster>{ toolbar() }</Cluster>
-            <Cluster attrs={attrs! { "data-yw-density" => "compact" }}>{ toolbar() }</Cluster>
+            <Cluster attrs={attrs! { "data-yi-density" => "compact" }}>{ toolbar() }</Cluster>
         </Stack>
     }
 }

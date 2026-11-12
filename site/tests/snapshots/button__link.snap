@@ -1,11 +1,11 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div class="yw-cluster">
-<a href="https://github.com/SierraSoftworks/yewi" target="_blank" rel="noopener" class="yw-button yw-button--default yw-button--md">
-<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div class="yi-cluster">
+<a href="https://github.com/SierraSoftworks/yewi" target="_blank" rel="noopener" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
 </path>
 </svg>Source</a>
-<a href="#as-a-link" class="yw-button yw-button--subtle yw-button--md">Jump to this section</a>
+<a href="#as-a-link" class="yi-button yi-button--subtle yi-button--md">Jump to this section</a>
 </div>

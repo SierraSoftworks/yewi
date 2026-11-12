@@ -1,677 +1,677 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div class="yw-stack">
+<div class="yi-stack">
 <input type="search" placeholder="Search icons" aria-label="Search icons">
 <span role="status">Showing 96 of 2356 icons</span>
-<div style="--yw-gap:var(--yw-space-sm);--yw-grid-min:7rem" class="yw-grid">
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-sm);--yi-grid-min:7rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M14 12l4 4 4-4M18 16V7M2 16l4.039-9.69a.5.5 0 0 1 .923 0L11 16M3.304 13h6.392">
 </path>
 </svg>
 <small>a-arrow-down</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M14 11l4-4 4 4M18 16V7M2 16l4.039-9.69a.5.5 0 0 1 .923 0L11 16M3.304 13h6.392">
 </path>
 </svg>
 <small>a-arrow-up</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 16l2.536-7.328a1.02 1.02 1 0 1 1.928 0L22 16M15.697 14h5.606M2 16l4.039-9.69a.5.5 0 0 1 .923 0L11 16M3.304 13h6.392">
 </path>
 </svg>
 <small>a-large-small</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 4a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M18 19l1-7-6 1M5 8l3-3 5.5 3-2.36 3.5M4.24 14.5a5 5 0 0 0 6.88 6M13.76 17.5a5 5 0 0 0-6.88-6">
 </path>
 </svg>
 <small>accessibility</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
 </path>
 </svg>
 <small>activity</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2zM17 12h-2l-2 5-2-10-2 5H7">
 </path>
 </svg>
 <small>activity-square</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M10 13H6M10 15v-4a2 2 0 0 0-4 0v4M14 14.5a.5.5 0 0 0 .5.5h1a2.5 2.5 0 0 0 2.5-2.5v-1A2.5 2.5 0 0 0 15.5 9h-1a.5.5 0 0 0-.5.5zM4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>ad</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 17.5a2.5 2.5 0 1 1-4 2.03V12M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 8h12M6.6 15.572A2 2 0 1 0 10 17v-5">
 </path>
 </svg>
 <small>air-vent</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1M12 15l5 6H7Z">
 </path>
 </svg>
 <small>airplay</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M9 13l2 2 4-4">
 </path>
 </svg>
 <small>alarm-check</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M12 9v4l2 2M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21">
 </path>
 </svg>
 <small>alarm-clock</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M9 13l2 2 4-4">
 </path>
 </svg>
 <small>alarm-clock-check</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M9 13h6">
 </path>
 </svg>
 <small>alarm-clock-minus</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6.87 6.87a8 8 0 1 0 11.26 11.26M19.9 14.25a8 8 0 0 0-9.15-9.15M22 6l-3-3M6.26 18.67 4 21M2 2l20 20M4 4 2 6">
 </path>
 </svg>
 <small>alarm-clock-off</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M12 10v6M9 13h6">
 </path>
 </svg>
 <small>alarm-clock-plus</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M9 13h6">
 </path>
 </svg>
 <small>alarm-minus</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M5 3 2 6M22 6l-3-3M6.38 18.7 4 21M17.64 18.67 20 21M12 10v6M9 13h6">
 </path>
 </svg>
 <small>alarm-plus</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M11 21c0-2.5 2-2.5 2-5M16 21c0-2.5 2-2.5 2-5M19 8l-.8 3a1.25 1.25 0 0 1-1.2 1H7a1.25 1.25 0 0 1-1.2-1L5 8M21 3a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1zM6 21c0-2.5 2-2.5 2-5">
 </path>
 </svg>
 <small>alarm-smoke</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M11 3v7.751a.25.25 0 00.407.195l2.28-1.834a.5.5 0 01.627 0l2.28 1.834a.25.25 0 00.406-.195V3M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>album</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
 </path>
 </svg>
 <small>alert-circle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 16h.01M12 8v4M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z">
 </path>
 </svg>
 <small>alert-octagon</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
 </path>
 </svg>
 <small>alert-triangle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M21 5H3M17 12H7M19 19H5">
 </path>
 </svg>
 <small>align-center</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12h20M10 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4M10 8V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4M20 16v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1M14 8V7c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v1">
 </path>
 </svg>
 <small>align-center-horizontal</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 2v20M8 10H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h4M16 10h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4M8 20H7a2 2 0 0 1-2-2v-2c0-1.1.9-2 2-2h1M16 14h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1">
 </path>
 </svg>
 <small>align-center-vertical</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6 2h2a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2zM16 9h2a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-5a2 2 0 0 1 2 -2zM22 22H2">
 </path>
 </svg>
 <small>align-end-horizontal</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 4h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM11 14h5a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-5a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM22 22V2">
 </path>
 </svg>
 <small>align-end-vertical</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM16 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM17 22v-5M17 7V2M7 22v-3M7 5V2">
 </path>
 </svg>
 <small>align-horizontal-distribute-center</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM16 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM10 2v20M20 2v20">
 </path>
 </svg>
 <small>align-horizontal-distribute-end</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM16 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM4 2v20M14 2v20">
 </path>
 </svg>
 <small>align-horizontal-distribute-start</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM18 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM12 2v20">
 </path>
 </svg>
 <small>align-horizontal-justify-center</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM14 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM22 2v20">
 </path>
 </svg>
 <small>align-horizontal-justify-end</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M8 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM18 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM2 2v20">
 </path>
 </svg>
 <small>align-horizontal-justify-start</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M11 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM4 22V2M20 22V2">
 </path>
 </svg>
 <small>align-horizontal-space-around</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M5 5h2a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM17 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zM3 2v20M21 2v20">
 </path>
 </svg>
 <small>align-horizontal-space-between</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 5h18M3 12h18M3 19h18">
 </path>
 </svg>
 <small>align-justify</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M21 5H3M15 12H3M17 19H3">
 </path>
 </svg>
 <small>align-left</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M21 5H3M21 12H9M21 19H7">
 </path>
 </svg>
 <small>align-right</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M6 6h2a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2zM16 6h2a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-5a2 2 0 0 1 2 -2zM22 2H2">
 </path>
 </svg>
 <small>align-start-horizontal</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M8 14h5a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-5a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM8 4h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 2v20">
 </path>
 </svg>
 <small>align-start-vertical</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M22 17h-3M22 7h-5M5 17H2M7 7H2M7 14h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 4h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>align-vertical-distribute-center</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 14h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 4h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 20h20M2 10h20">
 </path>
 </svg>
 <small>align-vertical-distribute-end</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 14h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 4h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 14h20M2 4h20">
 </path>
 </svg>
 <small>align-vertical-distribute-start</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 16h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 2h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 12h20">
 </path>
 </svg>
 <small>align-vertical-justify-center</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 12h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 2h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 22h20">
 </path>
 </svg>
 <small>align-vertical-justify-end</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 16h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 6h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 2h20">
 </path>
 </svg>
 <small>align-vertical-justify-start</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M9 9h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM22 20H2M22 4H2">
 </path>
 </svg>
 <small>align-vertical-space-around</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 15h10a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM9 3h6a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM2 21h20M2 3h20">
 </path>
 </svg>
 <small>align-vertical-space-between</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M10 10H6M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14M8 8v4M9 18h6M15 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0">
 </path>
 </svg>
 <small>ambulance</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M16 12h3M17.5 12a8 8 0 0 1-8 8A4.5 4.5 0 0 1 5 15.5c0-6 8-4 8-8.5a3 3 0 1 0-6 0c0 3 2.5 8.5 12 13">
 </path>
 </svg>
 <small>ampersand</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M10 17c-5-3-7-7-7-9a2 2 0 0 1 4 0c0 2.5-5 2.5-5 6 0 1.7 1.3 3 3 3 2.8 0 5-2.2 5-5M22 17c-5-3-7-7-7-9a2 2 0 0 1 4 0c0 2.5-5 2.5-5 6 0 1.7 1.3 3 3 3 2.8 0 5-2.2 5-5">
 </path>
 </svg>
 <small>ampersands</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M10 2v5.632c0 .424-.272.795-.653.982A6 6 0 0 0 6 14c.006 4 3 7 5 8M10 5H8a2 2 0 0 0 0 4h.68M14 2v5.632c0 .424.272.795.652.982A6 6 0 0 1 18 14c0 4-3 7-5 8M14 5h2a2 2 0 0 1 0 4h-.68M18 22H6M9 2h6">
 </path>
 </svg>
 <small>amphora</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 6v16M19 13l2-1a9 9 0 0 1-18 0l2 1M9 11h6M10 4a2 2 0 1 0 4 0a2 2 0 1 0 -4 0">
 </path>
 </svg>
 <small>anchor</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3v16a2 2 0 0 0 2 2h16M3 11a10 10 0 0 1 10 10">
 </path>
 </svg>
 <small>angle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 12v-1.584M17 10a5 5 0 00-3 1M7 10a5 5 0 013 1M9 12v-1.584M9 17a5 5 0 016.001 0M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0">
 </path>
 </svg>
 <small>angry</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M14 10h2M8 10h2M8 16h8M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0">
 </path>
 </svg>
 <small>annoyed</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12 7 2M7 12l5-10M12 12l5-10M17 12l5-10M4.5 7h15M12 16v6">
 </path>
 </svg>
 <small>antenna</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 10H6a4 4 0 0 1-4-4 1 1 0 0 1 1-1h4M7 5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1 7 7 0 0 1-7 7H8a1 1 0 0 1-1-1zM9 12v5M15 12v5M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1">
 </path>
 </svg>
 <small>anvil</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94">
 </path>
 </svg>
 <small>aperture</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2zM10 4v4M2 8h20M6 4v4">
 </path>
 </svg>
 <small>app-window</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2zM6 8h.01M10 8h.01M14 8h.01">
 </path>
 </svg>
 <small>app-window-mac</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 6.528V3a1 1 0 0 1 1-1h0M18.237 21A15 15 0 0 0 22 11a6 6 0 0 0-10-4.472A6 6 0 0 0 2 11a15.1 15.1 0 0 0 3.763 10 3 3 0 0 0 3.648.648 5.5 5.5 0 0 1 5.178 0A3 3 0 0 0 18.237 21">
 </path>
 </svg>
 <small>apple</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3h18a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-18a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8M10 12h4">
 </path>
 </svg>
 <small>archive</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3h18a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-18a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM4 8v11a2 2 0 0 0 2 2h.343M20 8v11a2 2 0 0 1-2 2h-.343M9 18l3 3 3-3M12 12v9">
 </path>
 </svg>
 <small>archive-arrow-down</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3h18a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-18a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM4 8v11a2 2 0 0 0 2 2h2M20 8v11a2 2 0 0 1-2 2h-2M9 15l3-3 3 3M12 12v9">
 </path>
 </svg>
 <small>archive-arrow-up</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3h18a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-18a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM4 8v11a2 2 0 0 0 2 2h2M20 8v11a2 2 0 0 1-2 2h-2M9 15l3-3 3 3M12 12v9">
 </path>
 </svg>
 <small>archive-restore</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3h18a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-18a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8M9.5 17l5-5M9.5 12l5 5">
 </path>
 </svg>
 <small>archive-x</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 3v16a2 2 0 0 0 2 2h16M7 11.207a.5.5 0 0 1 .146-.353l2-2a.5.5 0 0 1 .708 0l3.292 3.292a.5.5 0 0 0 .708 0l4.292-4.292a.5.5 0 0 1 .854.353V16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z">
 </path>
 </svg>
 <small>area-chart</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0zM5 18v2M19 18v2">
 </path>
 </svg>
 <small>armchair</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M11 10h8M11 14h8M17 20V10a6 6 0 0 0-12 0">
 </path>
 </svg>
 <small>armenian-dram</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M9 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-7.086 7.086a1 1 0 0 1-1.414 0l-7.086-7.086a.707.707 0 0 1 .5-1.207H8a1 1 0 0 0 1-1z">
 </path>
 </svg>
 <small>arrow-big-down</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1zM9 4h6">
 </path>
 </svg>
 <small>arrow-big-down-dash</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M10.793 19.793a.707.707 0 0 0 1.207-.5V16a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-6a1 1 0 0 1-1-1V4.707a.707.707 0 0 0-1.207-.5l-6.94 6.94a1.207 1.207 0 0 0 0 1.707z">
 </path>
 </svg>
 <small>arrow-big-left</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M13 9a1 1 0 0 1-1-1V4.707a.707.707 0 0 0-1.207-.5l-6.94 6.94a1.207 1.207 0 0 0 0 1.707l6.94 6.94a.707.707 0 0 0 1.207-.5V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1zM20 9v6">
 </path>
 </svg>
 <small>arrow-big-left-dash</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M13.207 19.793a.707.707 0 0 1-1.207-.5V16a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1V4.707a.707.707 0 0 1 1.207-.5l6.94 6.94a1.207 1.207 0 0 1 0 1.707z">
 </path>
 </svg>
 <small>arrow-big-right</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M11 9a1 1 0 0 0 1-1V4.707a.707.707 0 0 1 1.207-.5l6.94 6.94a1.207 1.207 0 0 1 0 1.707l-6.94 6.94a.707.707 0 0 1-1.207-.5V16a1 1 0 0 0-1-1H9a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zM4 9v6">
 </path>
 </svg>
 <small>arrow-big-right-dash</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M9 19a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-6a1 1 0 0 1 1-1h3.293a.707.707 0 0 0 .5-1.207l-7.086-7.086a1 1 0 0 0-1.414 0l-7.086 7.086a.707.707 0 0 0 .5 1.207H8a1 1 0 0 1 1 1z">
 </path>
 </svg>
 <small>arrow-big-up</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M14 16a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h3.293a.707.707 0 0 0 .5-1.207l-6.939-6.939a1.207 1.207 0 0 0-1.708 0l-6.94 6.94a.707.707 0 0 0 .5 1.206H8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1zM9 20h6">
 </path>
 </svg>
 <small>arrow-big-up-dash</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 5v14M19 12l-7 7-7-7">
 </path>
 </svg>
 <small>arrow-down</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M17 4h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM17 20v-6h-2M15 20h4">
 </path>
 </svg>
 <small>arrow-down-0-1</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M17 4h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zM17 20v-6h-2M15 20h4">
 </path>
 </svg>
 <small>arrow-down-01</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M17 10V4h-2M15 10h4M17 14h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>arrow-down-1-0</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M17 10V4h-2M15 10h4M17 14h0a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h0a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>arrow-down-10</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M20 8h-5M15 10V6.5a2.5 2.5 0 0 1 5 0V10M15 14h5l-5 6h5">
 </path>
 </svg>
 <small>arrow-down-a-z</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M20 8h-5M15 10V6.5a2.5 2.5 0 0 1 5 0V10M15 14h5l-5 6h5">
 </path>
 </svg>
 <small>arrow-down-az</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8v8M8 12l4 4 4-4">
 </path>
 </svg>
 <small>arrow-down-circle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M19 3H5M12 21V7M6 15l6 6 6-6">
 </path>
 </svg>
 <small>arrow-down-from-line</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M17 7 7 17M17 17H7V7">
 </path>
 </svg>
 <small>arrow-down-left</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 1 10 10M2 22l10-10M8 22H2v-6">
 </path>
 </svg>
 <small>arrow-down-left-from-circle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M13 21h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6M3 21l9-9M9 21H3v-6">
 </path>
 </svg>
 <small>arrow-down-left-from-square</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 15H9l6-6M9 15V9M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2z">
 </path>
 </svg>
 <small>arrow-down-left-square</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M3 16l4 4 4-4M7 20V4M11 4h4M11 8h7M11 12h10">
 </path>
 </svg>
 <small>arrow-down-narrow-wide</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M7 7l10 10M17 7v10H7">
 </path>
 </svg>
 <small>arrow-down-right</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M12 22a10 10 0 1 1 10-10M22 22 12 12M22 16v6h-6">
 </path>
 </svg>
 <small>arrow-down-right-from-circle</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6M21 21l-9-9M21 15v6h-6">
 </path>
 </svg>
 <small>arrow-down-right-from-square</small>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack yw-stack--align-center">
-<svg style="--yw-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yw-icon">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack yi-stack--align-center">
+<svg style="--yi-icon-size:24px" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M15 15 9 9M9 15h6V9M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2z">
 </path>
 </svg>
