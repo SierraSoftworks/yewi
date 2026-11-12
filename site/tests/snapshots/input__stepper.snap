@@ -47,5 +47,14 @@ source: site/tests/snapshots.rs
 <p id="yi-1-message" class="yi-field__message">From 0 to 1, in steps of 0.05.</p>
 </div>
 </div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Port</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="8080" id="yi-2-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="8080" aria-valuemin="1" aria-valuemax="65535" aria-describedby="yi-2-message" class="yi-number-input__input">
+</div>
+<p id="yi-2-message" class="yi-field__message">Typed, so no stepper.</p>
+</div>
+</div>
 <span role="status">3 replicas, threshold 0.5</span>
 </div>
