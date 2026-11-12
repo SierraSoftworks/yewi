@@ -1,0 +1,84 @@
+// SchemaForm: a column of fields, with nested groups set apart by a tonal box, a
+// rule or a title alone. The controls are the library's own.
+@use "api" as *;
+
+.yi-schema-form {
+  // Component tokens
+  --yi-schema-form-gap: var(--yi-space-md); // between fields
+  --yi-schema-form-indent: var(--yi-space-md); // inset of a group's fields
+  --yi-schema-form-rule: var(--yi-line-strong); // the rule of a ruled group
+  --yi-schema-form-group-bg: var(--yi-tone-1); // the fill of a boxed group
+  --yi-schema-form-group-bg-nested: var(--yi-surface); // a boxed group inside another
+  --yi-schema-form-title-color: var(--yi-fg);
+
+  // A group's own hint and error reuse the field's message styles, outside a field.
+  --yi-field-hint-color: var(--yi-fg-muted);
+  --yi-field-error-color: var(--yi-danger);
+
+  &,
+  &__group,
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yi-schema-form-gap);
+    min-inline-size: 0;
+  }
+
+  &__group {
+    gap: var(--yi-space-xs);
+  }
+
+  &__body[hidden] {
+    display: none;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-sm);
+    min-block-size: var(--yi-control-height-sm);
+  }
+
+  &__title {
+    flex: 1;
+    color: var(--yi-schema-form-title-color);
+    font-size: var(--yi-text-md);
+    font-weight: 500;
+    line-height: var(--yi-leading-tight);
+  }
+
+  // A list item that is a single control: the control, then its remove button.
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--yi-space-xs);
+
+    > .yi-field {
+      flex: 1;
+    }
+  }
+
+  &__add {
+    align-self: flex-start;
+  }
+
+  &--ruled &__body {
+    padding-inline-start: var(--yi-schema-form-indent);
+    border-inline-start: 2px solid var(--yi-schema-form-rule);
+  }
+
+  &--boxed &__group {
+    padding: var(--yi-space-sm) var(--yi-schema-form-indent) var(--yi-schema-form-indent);
+    border-radius: var(--yi-radius-control);
+    background: var(--yi-schema-form-group-bg);
+
+    // Alternate the fill so a group inside a group still reads as one.
+    > .yi-schema-form__body > .yi-schema-form__group {
+      background: var(--yi-schema-form-group-bg-nested);
+
+      > .yi-schema-form__body > .yi-schema-form__group {
+        background: var(--yi-schema-form-group-bg);
+      }
+    }
+  }
+}
