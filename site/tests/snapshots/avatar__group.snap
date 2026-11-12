@@ -1,0 +1,43 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<span role="group" aria-label="Reviewers" class="yi-avatar-group">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:227" role="img" aria-label="Grace Hopper" title="Grace Hopper" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span style="--yi-avatar-hue:94" role="img" aria-label="Alan Turing" title="Alan Turing" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+</span>
+<span role="group" aria-label="Contributors" class="yi-avatar-group">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:227" role="img" aria-label="Grace Hopper" title="Grace Hopper" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span style="--yi-avatar-hue:94" role="img" aria-label="Alan Turing" title="Alan Turing" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span style="--yi-avatar-hue:277" role="img" aria-label="Barbara Liskov" title="Barbara Liskov" class="yi-avatar yi-avatar--md">
+<span aria-hidden="true" class="yi-avatar__initials">BL</span>
+</span>
+<span role="img" aria-label="2 more" title="Edsger Dijkstra, Margaret Hamilton" class="yi-avatar yi-avatar--more yi-avatar--md">+2</span>
+</span>
+<span role="group" aria-label="Watchers" class="yi-avatar-group">
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span style="--yi-avatar-hue:227" role="img" aria-label="Grace Hopper" title="Grace Hopper" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">GH</span>
+</span>
+<span style="--yi-avatar-hue:94" role="img" aria-label="Alan Turing" title="Alan Turing" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span role="img" aria-label="125 more" class="yi-avatar yi-avatar--more yi-avatar--sm">+125</span>
+</span>
+</div>

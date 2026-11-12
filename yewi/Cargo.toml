@@ -64,12 +64,21 @@ qrcodegen = { version = "1.8", optional = true }
 wasm-bindgen = { workspace = true }
 js-sys = { workspace = true }
 web-sys = { workspace = true, features = [
+    "AddEventListenerOptions",
+    "CssStyleDeclaration",
     "Document",
+    "DomRect",
     "DomTokenList",
     "Element",
+    "Event",
+    "EventTarget",
+    "FocusEvent",
     "HtmlElement",
     "HtmlHeadElement",
+    "KeyboardEvent",
     "MediaQueryList",
+    "MouseEvent",
+    "Node",
     "Storage",
     "Window",
 ] }
