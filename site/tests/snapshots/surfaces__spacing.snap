@@ -1,0 +1,50 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-2xs</code>
+<div style="inline-size: var(--yw-space-2xs)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-xs</code>
+<div style="inline-size: var(--yw-space-xs)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-sm</code>
+<div style="inline-size: var(--yw-space-sm)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-md</code>
+<div style="inline-size: var(--yw-space-md)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-lg</code>
+<div style="inline-size: var(--yw-space-lg)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-xl</code>
+<div style="inline-size: var(--yw-space-xl)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-2xl</code>
+<div style="inline-size: var(--yw-space-2xl)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-3xl</code>
+<div style="inline-size: var(--yw-space-3xl)" class="demo-bar">
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yw-space-4xl</code>
+<div style="inline-size: var(--yw-space-4xl)" class="demo-bar">
+</div>
+</div>
+</div>

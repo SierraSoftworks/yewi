@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yw-cluster">
+<button type="button" class="yw-button yw-button--default yw-button--md">Light</button>
+<button type="button" class="yw-button yw-button--default yw-button--md">Dark</button>
+<button type="button" class="yw-button yw-button--default yw-button--md">System</button>
+<span role="status">Preference: System. The page is light.</span>
+</div>

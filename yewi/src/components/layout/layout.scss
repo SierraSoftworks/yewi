@@ -1,0 +1,71 @@
+// Layout primitives: Stack, Cluster and Grid. Each reads `--yw-gap`, which
+// the Rust components set from their `gap` prop.
+
+.yw-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yw-gap, var(--yw-space-md));
+  min-inline-size: 0;
+}
+
+.yw-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yw-gap, var(--yw-space-sm));
+  min-inline-size: 0;
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+.yw-stack,
+.yw-cluster {
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+
+  &--align-baseline {
+    align-items: baseline;
+  }
+
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-end {
+    justify-content: flex-end;
+  }
+
+  &--justify-between {
+    justify-content: space-between;
+  }
+}
+
+.yw-grid {
+  display: grid;
+  gap: var(--yw-gap, var(--yw-space-lg));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--yw-grid-min, 16rem), 100%), 1fr));
+  min-inline-size: 0;
+
+  &--fixed {
+    grid-template-columns: repeat(var(--yw-grid-columns), minmax(0, 1fr));
+  }
+}

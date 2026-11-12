@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yw-cluster">
+<span style="background: var(--yw-neutral-soft); color: var(--yw-neutral)" class="demo-chip">neutral</span>
+<span style="background: var(--yw-ok-soft); color: var(--yw-ok)" class="demo-chip">ok</span>
+<span style="background: var(--yw-warn-soft); color: var(--yw-warn)" class="demo-chip">warn</span>
+<span style="background: var(--yw-danger-soft); color: var(--yw-danger)" class="demo-chip">danger</span>
+<span style="background: var(--yw-info-soft); color: var(--yw-info)" class="demo-chip">info</span>
+<span style="background: var(--yw-active-soft); color: var(--yw-active)" class="demo-chip">active</span>
+</div>

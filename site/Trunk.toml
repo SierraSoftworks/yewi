@@ -1,0 +1,11 @@
+[build]
+target = "index.html"
+dist = "dist"
+# Prerendering rewrites the HTML, and integrity on preloads only logs a warning.
+no_sri = true
+
+[watch]
+watch = ["src", "styles", "index.html", "../yewi/src", "../yewi/scss"]
+
+[serve]
+port = 8090

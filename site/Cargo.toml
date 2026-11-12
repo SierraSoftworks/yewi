@@ -1,0 +1,40 @@
+[package]
+name = "yewi-site"
+description = "The yewi reference site: documentation, live examples and the browser test fixture."
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "yewi-site"
+path = "src/main.rs"
+
+[[bin]]
+name = "prerender"
+path = "src/bin/prerender.rs"
+required-features = ["ssr"]
+
+[features]
+default = []
+csr = ["yew/csr", "yewi/csr"]
+hydration = ["csr", "yew/hydration", "yewi/hydration"]
+ssr = ["yew/ssr", "yewi/ssr", "dep:tokio"]
+
+[dependencies]
+yew = { workspace = true }
+yew-router = { workspace = true }
+yewi = { workspace = true, features = ["full"] }
+tokio = { workspace = true, features = ["rt", "macros"], optional = true }
+web-sys = { workspace = true, features = ["Clipboard", "Document", "Element", "HtmlInputElement", "Navigator", "Window"] }
+
+[build-dependencies]
+syn = { version = "2", features = ["full", "extra-traits"] }
+quote = "1"
+proc-macro2 = "1"
+
+[dev-dependencies]
+insta = { workspace = true }
+yewi-test = { workspace = true }

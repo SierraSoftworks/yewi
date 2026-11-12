@@ -1,0 +1,84 @@
+[package]
+name = "yewi"
+description = "A design system and component library for Yew applications."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "../README.md"
+keywords = ["yew", "ui", "components", "design-system", "wasm"]
+categories = ["gui", "wasm", "web-programming"]
+
+[features]
+default = []
+
+# Rendering modes. These forward to Yew; pick the ones your app uses.
+csr = ["yew/csr"]
+ssr = ["yew/ssr"]
+hydration = ["yew/hydration"]
+
+# Opt-in components. Each is owned by one component directory, which is
+# compiled (Rust and SCSS) only when its feature is enabled.
+avatar-hash = []
+charts = []
+chrono = []
+code = []
+diff = []
+highlight = []
+highlight-syntect = ["highlight"]
+map = []
+markdown = []
+qr = []
+router = []
+schema-form = []
+terminal = []
+
+# Re-exports the self-hosted font files (`yewi::fonts`). For servers and build
+# scripts; do not enable it in a wasm build.
+fonts = ["dep:yewi-fonts"]
+
+# Everything except `highlight-syntect` and `fonts`.
+full = [
+    "avatar-hash",
+    "charts",
+    "chrono",
+    "code",
+    "diff",
+    "highlight",
+    "map",
+    "markdown",
+    "qr",
+    "router",
+    "schema-form",
+    "terminal",
+]
+
+[dependencies]
+yew = { workspace = true }
+yewi-fonts = { workspace = true, optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = { workspace = true }
+js-sys = { workspace = true }
+web-sys = { workspace = true, features = [
+    "Document",
+    "DomTokenList",
+    "Element",
+    "HtmlElement",
+    "HtmlHeadElement",
+    "MediaQueryList",
+    "Storage",
+    "Window",
+] }
+
+[build-dependencies]
+grass = { workspace = true }
+
+[dev-dependencies]
+yew = { workspace = true, features = ["ssr"] }
+yewi-test = { workspace = true }
+
+[package.metadata.docs.rs]
+features = ["full", "ssr"]

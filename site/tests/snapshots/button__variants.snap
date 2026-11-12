@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yw-cluster">
+<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
+<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<button type="button" class="yw-button yw-button--subtle yw-button--md">Details</button>
+<button type="button" class="yw-button yw-button--danger yw-button--md">Roll back</button>
+</div>

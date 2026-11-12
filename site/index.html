@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <base data-trunk-public-url />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>yewi</title>
+    <meta name="description" content="A design system and component library for Yew applications." />
+    <!-- yewi::THEME_SCRIPT, plus a ?theme= override so tests and reviewers can pin a theme. -->
+    <script>
+      (function () {
+        try {
+          var t = new URLSearchParams(location.search).get("theme") || localStorage.getItem("yewi-theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+    <link data-trunk rel="copy-dir" href="../yewi-fonts/fonts" />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link data-trunk rel="scss" href="styles/site.scss" />
+    <link
+      data-trunk
+      rel="rust"
+      data-bin="yewi-site"
+      data-cargo-features="hydration"
+      data-wasm-opt="z"
+      data-wasm-opt-params="--enable-bulk-memory --enable-nontrapping-float-to-int --enable-sign-ext --enable-mutable-globals --enable-reference-types --enable-multivalue"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

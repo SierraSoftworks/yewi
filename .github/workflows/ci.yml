@@ -1,0 +1,64 @@
+name: CI
+
+# Dormant while the repository is private: run it by hand from the Actions tab.
+# When the repository goes public, replace the trigger with:
+#
+#   on:
+#     push:
+#       branches: [main]
+#     pull_request:
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo xtask check
+      - run: cargo xtask size
+
+  e2e:
+    name: Browser tests
+    runs-on: ubuntu-latest
+    # The image pins the browsers that the committed screenshots were made with.
+    container: mcr.microsoft.com/playwright:v1.63.0-noble
+    env:
+      CI: "true"
+      YEWI_E2E_BROWSERS: all
+      HOME: /root
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: cargo-bins/cargo-binstall@main
+      - run: cargo binstall --no-confirm trunk
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: cargo xtask e2e
+      - name: Upload the review gallery, report and recordings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review
+          path: |
+            e2e/gallery
+            e2e/report
+            e2e/test-results
+          retention-days: 14

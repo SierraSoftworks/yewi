@@ -1,0 +1,88 @@
+// Shared Sass helpers for foundations and component partials.
+// Usage: `@use "api" as *;`. This file must not emit CSS on its own.
+@use "sass:color";
+@use "sass:math";
+
+/// A neutral that leans towards the accent's hue. `$amount` is the share of
+/// accent mixed in at `--yw-neutral-tint: 1`.
+///
+/// The accent is first moved to the lightness of `$base`, so tinting changes
+/// hue and chroma only. Contrast between neutrals therefore holds for any
+/// accent, however light or dark.
+@function tinted($amount, $base) {
+  $accent: oklch(from var(--yw-accent) #{oklab-lightness($base)} c h);
+
+  @return color-mix(in oklch, #{$accent} calc(#{$amount} * var(--yw-neutral-tint)), #{$base});
+}
+
+/// OKLab lightness (0 to 1) of a near-grey colour.
+@function oklab-lightness($color) {
+  $y: 0.2126 * linear(color.red($color)) + 0.7152 * linear(color.green($color)) + 0.0722 * linear(color.blue($color));
+
+  @return math.div(math.round(math.pow($y, math.div(1, 3)) * 1000), 1000);
+}
+
+@function linear($channel) {
+  $s: math.div($channel, 255);
+
+  @return if($s <= 0.04045, math.div($s, 12.92), math.pow(math.div($s + 0.055, 1.055), 2.4));
+}
+
+/// The standard keyboard focus indicator.
+@mixin focus-ring($offset: 2px) {
+  outline: 2px solid var(--yw-focus);
+  outline-offset: $offset;
+}
+
+/// Single-line text that truncates with an ellipsis.
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/// Hidden visually, still read by assistive technology.
+@mixin visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Heading type: Montserrat, lighter as it gets larger.
+@mixin heading($size) {
+  font-family: var(--yw-font-heading);
+  font-size: var(--yw-text-#{$size});
+  font-weight: var(--yw-heading-weight-#{$size});
+  line-height: var(--yw-leading-tight);
+  text-wrap: balance;
+}
+
+/// Small uppercase section label.
+@mixin eyebrow {
+  font-size: var(--yw-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--yw-fg-subtle);
+}
+
+/// The lifted card surface: soft border plus a faint two-layer shadow.
+@mixin card-surface {
+  background: var(--yw-surface);
+  border: 1px solid var(--yw-card-line);
+  border-radius: var(--yw-radius-card);
+  box-shadow: var(--yw-shadow-card);
+}
+
+/// Wraps rules that animate, so reduced-motion users get none.
+@mixin motion {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

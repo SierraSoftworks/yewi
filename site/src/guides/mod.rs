@@ -1,0 +1,54 @@
+//! Long-form guides. Unlike component pages these are an explicit list: add
+//! the module and an entry to [`GUIDES`].
+
+use yew::prelude::*;
+
+use crate::highlight;
+
+mod contributing;
+mod getting_started;
+mod theming;
+
+pub struct Guide {
+    pub slug: &'static str,
+    pub title: &'static str,
+    pub summary: &'static str,
+    pub render: fn() -> Html,
+}
+
+pub static GUIDES: &[Guide] = &[
+    Guide {
+        slug: "getting-started",
+        title: "Getting started",
+        summary: "Add yewi to an app, deliver its stylesheet and fonts, and pick a rendering mode.",
+        render: getting_started::render,
+    },
+    Guide {
+        slug: "theming",
+        title: "Theming",
+        summary: "Tokens, the per-app accent, light and dark themes, and how to override anything.",
+        render: theming::render,
+    },
+    Guide {
+        slug: "contributing",
+        title: "Adding a component",
+        summary: "Where a component's code, styles, documentation and tests live, and what done means.",
+        render: contributing::render,
+    },
+];
+
+impl Guide {
+    pub fn find(slug: &str) -> Option<&'static Guide> {
+        GUIDES.iter().find(|guide| guide.slug == slug)
+    }
+}
+
+/// A block of Rust source.
+fn rust(source: &str) -> Html {
+    html! { <pre class="docs-snippet"><code>{ highlight::rust(source.trim()) }</code></pre> }
+}
+
+/// A block of anything else (TOML, HTML, CSS, shell), shown plain.
+fn plain(source: &str) -> Html {
+    html! { <pre class="docs-snippet"><code>{ source.trim().to_owned() }</code></pre> }
+}

@@ -1,0 +1,13 @@
+[package]
+name = "yewi-test"
+description = "Server-side render helpers for testing Yew components."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+yew = { workspace = true, features = ["ssr"] }
+tokio = { workspace = true, features = ["rt"] }

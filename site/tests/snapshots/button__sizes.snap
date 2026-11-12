@@ -1,0 +1,8 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yw-cluster">
+<button type="button" class="yw-button yw-button--default yw-button--sm">Small</button>
+<button type="button" class="yw-button yw-button--default yw-button--md">Medium</button>
+<button type="button" class="yw-button yw-button--default yw-button--lg">Large</button>
+</div>

@@ -1,0 +1,9 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 22rem" class="demo-card">
+<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
+<b class="demo-title">Latest rollout</b>
+<span style="color: var(--yw-fg-muted)">2 of 31 hosts done, started 35 minutes ago.</span>
+</div>
+</div>

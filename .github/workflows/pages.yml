@@ -1,0 +1,44 @@
+name: Reference site
+
+# Dormant while the repository is private: run it by hand from the Actions tab.
+# When the repository goes public, enable Pages (Settings > Pages > Source:
+# GitHub Actions) and replace the trigger with:
+#
+#   on:
+#     push:
+#       branches: [main]
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      # Project pages are served from /<repository>/.
+      YEWI_SITE_BASE: /${{ github.event.repository.name }}/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: cargo-bins/cargo-binstall@main
+      - run: cargo binstall --no-confirm trunk
+      - run: cargo xtask site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,151 @@
+// Design tokens. Every value a component uses comes from here.
+//
+// - Apps set `--yw-accent` (and optionally `--yw-neutral-tint`, or any token)
+//   on `:root`, unlayered, and everything else follows.
+// - Colours use `light-dark()`, so the theme is decided by `color-scheme`
+//   alone: the system setting by default, `data-theme` when the user chooses.
+// - `[data-yw-scope]` re-derives the tokens for a subtree, for example to
+//   preview a different accent.
+@use "api" as *;
+
+:where(:root, [data-yw-scope]) {
+  // ---- Inputs an app is expected to set --------------------------------
+  --yw-accent: light-dark(#409eff, #69b4ff);
+  // 0 gives pure greys, 1 the default lean towards the accent's hue.
+  --yw-neutral-tint: 1;
+
+  // ---- Neutrals ----------------------------------------------------------
+  --yw-bg: light-dark(#{tinted(3%, #f6f6f6)}, #{tinted(5%, #1a1b1d)});
+  --yw-surface: light-dark(#fff, #{tinted(6%, #222224)});
+  --yw-surface-raised: light-dark(#fff, #{tinted(6%, #2a2a2d)});
+  // Tonal fills for flush sibling panels; alternate the two.
+  --yw-tone-1: light-dark(#{tinted(4%, #f3f3f3)}, #{tinted(6%, #2a2a2c)});
+  --yw-tone-2: light-dark(#{tinted(3%, #f9f9f9)}, #{tinted(6%, #262628)});
+  --yw-line: light-dark(#{tinted(7%, #e6e6e6)}, #{tinted(8%, #353536)});
+  --yw-line-strong: light-dark(#{tinted(8%, #cdcdcd)}, #{tinted(8%, #4a4a4d)});
+  --yw-fg: light-dark(#{tinted(14%, #15171a)}, #{tinted(6%, #d0d0d1)});
+  --yw-fg-muted: light-dark(#{tinted(12%, #5e5e5e)}, #{tinted(9%, #a0a0a2)});
+  --yw-fg-subtle: light-dark(#{tinted(12%, #6b6b6b)}, #{tinted(10%, #949497)});
+
+  // ---- Accent, derived ---------------------------------------------------
+  // Fill for primary actions; lightness is clamped so `--yw-on-solid` stays legible.
+  --yw-accent-solid: light-dark(
+    oklch(from var(--yw-accent) min(l, 0.52) min(c, 0.15) h),
+    oklch(from var(--yw-accent) max(l, 0.74) c h)
+  );
+  --yw-accent-solid-hover: color-mix(in oklch, var(--yw-accent-solid), light-dark(#000, #fff) 12%);
+  // Accent as text or icon colour on a surface.
+  --yw-accent-text: light-dark(
+    oklch(from var(--yw-accent) min(l, 0.48) min(c, 0.16) h),
+    oklch(from var(--yw-accent) max(l, 0.76) c h)
+  );
+  --yw-accent-soft: color-mix(in srgb, var(--yw-accent) 12%, transparent);
+  --yw-accent-line: color-mix(in srgb, var(--yw-accent) 45%, transparent);
+  // Text and icons on any solid accent or status fill.
+  --yw-on-solid: light-dark(#fff, #0c1117);
+  --yw-focus: var(--yw-accent-text);
+
+  // ---- Status tones: semantic only, never decoration ---------------------
+  --yw-ok: light-dark(#146f43, #4cbf7f);
+  --yw-warn: light-dark(#855900, #e0a93a);
+  --yw-danger: light-dark(#b82c24, #f27970);
+  --yw-info: light-dark(#2a63b5, #7aaef0);
+  --yw-active: light-dark(#0f6696, #5fb7e8);
+  --yw-neutral: light-dark(#5a6470, #9aa3b0);
+  --yw-ok-soft: color-mix(in srgb, var(--yw-ok) 12%, transparent);
+  --yw-warn-soft: color-mix(in srgb, var(--yw-warn) 13%, transparent);
+  --yw-danger-soft: color-mix(in srgb, var(--yw-danger) 12%, transparent);
+  --yw-info-soft: color-mix(in srgb, var(--yw-info) 12%, transparent);
+  --yw-active-soft: color-mix(in srgb, var(--yw-active) 12%, transparent);
+  --yw-neutral-soft: color-mix(in srgb, var(--yw-neutral) 13%, transparent);
+
+  // ---- Code --------------------------------------------------------------
+  --yw-code-bg: light-dark(#{tinted(5%, #f6f6f6)}, #{tinted(6%, #1a1b1e)});
+
+  // ---- Type --------------------------------------------------------------
+  // Set `--yw-font-heading`, `-body` or `-mono` to `var(--yw-font-system)` /
+  // `var(--yw-font-system-mono)` to opt out of the web fonts.
+  --yw-font-system: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --yw-font-system-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  --yw-font-heading: "Montserrat", var(--yw-font-system);
+  --yw-font-body: "Inter", var(--yw-font-system);
+  --yw-font-mono: "Fira Code", var(--yw-font-system-mono);
+  // Fira Code ligatures: `none` (default) or `normal`.
+  --yw-font-mono-ligatures: none;
+
+  --yw-text-xs: 0.75rem; // 12
+  --yw-text-sm: 0.8125rem; // 13
+  --yw-text-md: 0.875rem; // 14, controls and dense UI
+  --yw-text-lg: 0.9375rem; // 15, reading text
+  --yw-text-xl: 1.0625rem; // 17
+  --yw-text-2xl: 1.25rem; // 20
+  --yw-text-3xl: 1.5rem; // 24
+  --yw-text-4xl: 1.875rem; // 30
+
+  // Heading weight falls as size rises.
+  --yw-heading-weight-md: 600;
+  --yw-heading-weight-lg: 600;
+  --yw-heading-weight-xl: 500;
+  --yw-heading-weight-2xl: 400;
+  --yw-heading-weight-3xl: 400;
+  --yw-heading-weight-4xl: 300;
+
+  --yw-leading-tight: 1.25;
+  --yw-leading: 1.5;
+  --yw-leading-relaxed: 1.65;
+
+  // ---- Space (4px grid) --------------------------------------------------
+  --yw-space-2xs: 0.125rem; // 2
+  --yw-space-xs: 0.25rem; // 4
+  --yw-space-sm: 0.5rem; // 8
+  --yw-space-md: 0.75rem; // 12
+  --yw-space-lg: 1rem; // 16
+  --yw-space-xl: 1.5rem; // 24
+  --yw-space-2xl: 2rem; // 32
+  --yw-space-3xl: 3rem; // 48
+  --yw-space-4xl: 4rem; // 64
+
+  // ---- Shape and density -------------------------------------------------
+  --yw-radius-sm: 4px;
+  --yw-radius-control: 6px;
+  --yw-radius-card: 9px;
+  --yw-radius-full: 999px;
+  --yw-control-height-sm: 1.75rem; // 28
+  --yw-control-height: 2rem; // 32
+  --yw-control-height-lg: 2.25rem; // 36
+  --yw-control-padding: 0.875rem;
+  --yw-icon-stroke: 1.5;
+
+  // ---- Elevation ---------------------------------------------------------
+  --yw-card-line: color-mix(in srgb, var(--yw-line) 70%, transparent);
+  --yw-shadow-card: 0 1px 2px light-dark(rgb(20 26 34 / 0.06), rgb(0 0 0 / 0.3)),
+    0 4px 14px light-dark(rgb(20 26 34 / 0.07), rgb(0 0 0 / 0.22));
+  --yw-shadow-overlay: 0 1px 2px light-dark(rgb(20 26 34 / 0.08), rgb(0 0 0 / 0.4)),
+    0 8px 24px light-dark(rgb(20 26 34 / 0.12), rgb(0 0 0 / 0.38));
+
+  // ---- Motion ------------------------------------------------------------
+  --yw-duration-fast: 120ms;
+  --yw-duration: 180ms;
+  --yw-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:where(:root) {
+  color-scheme: light dark;
+}
+
+// An explicit choice wins over the system setting, on the root or any subtree.
+:where([data-theme="light"]) {
+  color-scheme: light;
+}
+
+:where([data-theme="dark"]) {
+  color-scheme: dark;
+}
+
+// Compact density for tables, toolbars and other dense regions.
+:where([data-yw-density="compact"]) {
+  --yw-control-height: 1.75rem;
+  --yw-control-height-sm: 1.5rem;
+  --yw-control-height-lg: 2rem;
+  --yw-control-padding: 0.625rem;
+}

@@ -1,0 +1,8 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
+<div class="demo-box">First</div>
+<div class="demo-box">Second</div>
+<div class="demo-box">Third</div>
+</div>

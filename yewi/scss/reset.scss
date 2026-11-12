@@ -1,0 +1,37 @@
+// A small reset. Element selectors are wrapped in :where() so they carry no
+// specificity, and the whole layer loses to any app style.
+
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+:where(html) {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+:where(body) {
+  margin: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, pre) {
+  margin: 0;
+}
+
+:where(img, svg, video, canvas) {
+  display: block;
+  max-inline-size: 100%;
+}
+
+:where(button, input, select, textarea) {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+:where([hidden]:not([hidden="until-found"])) {
+  display: none !important;
+}

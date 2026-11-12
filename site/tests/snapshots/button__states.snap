@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yw-stack">
+<div class="yw-cluster">
+<button type="button" class="yw-button yw-button--primary yw-button--md">Save</button>
+<button type="button" disabled="disabled" class="yw-button yw-button--default yw-button--md">Finish saving</button>
+<button type="button" disabled="disabled" class="yw-button yw-button--default yw-button--md">Unavailable</button>
+</div>
+<span role="status">Saved 0 times</span>
+</div>

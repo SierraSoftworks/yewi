@@ -1,0 +1,50 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yw-gap:var(--yw-space-lg)" class="yw-stack">
+<div style="--yw-gap:var(--yw-space-sm);--yw-grid-min:8rem" class="yw-grid">
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-bg)" class="demo-swatch">
+</div>
+<code>--yw-bg</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-surface)" class="demo-swatch">
+</div>
+<code>--yw-surface</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-surface-raised)" class="demo-swatch">
+</div>
+<code>--yw-surface-raised</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-tone-1)" class="demo-swatch">
+</div>
+<code>--yw-tone-1</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-tone-2)" class="demo-swatch">
+</div>
+<code>--yw-tone-2</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-line)" class="demo-swatch">
+</div>
+<code>--yw-line</code>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<div style="background: var(--yw-line-strong)" class="demo-swatch">
+</div>
+<code>--yw-line-strong</code>
+</div>
+</div>
+<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
+<span style="color: var(--yw-fg)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg</code>
+</span>
+<span style="color: var(--yw-fg-muted)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg-muted</code>
+</span>
+<span style="color: var(--yw-fg-subtle)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg-subtle</code>
+</span>
+</div>
+</div>

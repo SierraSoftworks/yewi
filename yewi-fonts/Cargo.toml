@@ -1,0 +1,9 @@
+[package]
+name = "yewi-fonts"
+description = "The self-hosted font files used by the yewi design system."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license = "MIT AND OFL-1.1"
+repository.workspace = true

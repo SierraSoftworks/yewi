@@ -1,0 +1,23 @@
+# Wasm size budgets, in bytes, for tests/size-probe built in release mode:
+# the code and data sections of the cargo output, before wasm-opt and
+# compression. Yew itself accounts for most of `core`.
+#
+# `core` is the probe with no opt-in features. Every other entry is what
+# enabling that feature may ADD on top of core. `cargo xtask size` fails when a
+# budget is exceeded; raise one deliberately, in the pull request that needs it.
+
+core = 400000
+
+avatar-hash = 20000
+charts = 20000
+chrono = 20000
+code = 20000
+diff = 20000
+highlight = 20000
+highlight-syntect = 20000
+map = 20000
+markdown = 20000
+qr = 20000
+router = 20000
+schema-form = 20000
+terminal = 20000

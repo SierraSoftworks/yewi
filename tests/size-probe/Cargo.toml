@@ -1,0 +1,30 @@
+[package]
+name = "size-probe"
+description = "A minimal client-rendered app, built per feature to track what yewi adds to a wasm binary."
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+# One per opt-in yewi feature. `cargo xtask size` builds the probe with each.
+avatar-hash = ["yewi/avatar-hash"]
+charts = ["yewi/charts"]
+chrono = ["yewi/chrono"]
+code = ["yewi/code"]
+diff = ["yewi/diff"]
+highlight = ["yewi/highlight"]
+highlight-syntect = ["yewi/highlight-syntect"]
+map = ["yewi/map"]
+markdown = ["yewi/markdown"]
+qr = ["yewi/qr"]
+router = ["yewi/router"]
+schema-form = ["yewi/schema-form"]
+terminal = ["yewi/terminal"]
+
+[dependencies]
+yew = { workspace = true, features = ["csr"] }
+yewi = { workspace = true, features = ["csr"] }
+wasm-bindgen = { workspace = true }
