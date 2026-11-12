@@ -1,0 +1,83 @@
+// Link
+//
+// The same class dresses an `<a>` and a `<button>`, so an action that does
+// not navigate can still read as a link.
+@use "api" as *;
+
+.yi-link {
+  // Component tokens
+  --yi-link-fg: var(--yi-accent-text);
+  --yi-link-fg-hover: var(--yi-accent-text);
+  --yi-link-line: var(--yi-accent-line); // Underline colour at rest.
+
+  // Button reset; no effect on an anchor.
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: none;
+  font: inherit;
+  text-align: inherit;
+  color: var(--yi-link-fg);
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      color var(--yi-duration-fast) var(--yi-ease),
+      text-decoration-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover:not(:disabled, [aria-disabled="true"]) {
+    color: var(--yi-link-fg-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &--subtle {
+    --yi-link-fg: inherit;
+    --yi-link-line: color-mix(in srgb, currentColor 40%, transparent);
+  }
+
+  &--underline-always,
+  :where(p, li, dd, dt, td, figcaption, blockquote) > &--underline-auto {
+    text-decoration: underline;
+    text-decoration-color: var(--yi-link-line);
+    text-decoration-thickness: 1px;
+
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  // Keeps any underline, so a disabled link in a sentence is still told
+  // apart from the text around it by more than colour.
+  &:disabled,
+  &[aria-disabled="true"] {
+    color: var(--yi-fg-subtle);
+    cursor: not-allowed;
+  }
+}
+
+.yi-link__icon {
+  margin-inline-end: 0.3em;
+}
+
+.yi-link__external {
+  --yi-icon-size: 0.85em;
+
+  margin-inline-start: 0.15em;
+  vertical-align: 0.02em;
+}
+
+@media (forced-colors: active) {
+  .yi-link {
+    color: LinkText;
+  }
+}

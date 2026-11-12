@@ -1,0 +1,20 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span class="yi-text yi-text--xs">Rollout #42 paused (xs)</span>
+<span class="yi-text yi-text--sm">Rollout #42 paused (sm)</span>
+<span class="yi-text yi-text--md">Rollout #42 paused (md)</span>
+<span class="yi-text yi-text--lg">Rollout #42 paused (lg)</span>
+<span class="yi-text yi-text--xl">Rollout #42 paused (xl)</span>
+<span class="yi-text yi-text--2xl">Rollout #42 paused (2xl)</span>
+<span class="yi-text yi-text--3xl">Rollout #42 paused (3xl)</span>
+<span class="yi-text yi-text--4xl">Rollout #42 paused (4xl)</span>
+</div>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<span class="yi-text yi-text--regular">Regular</span>
+<span class="yi-text yi-text--medium">Medium</span>
+<span class="yi-text yi-text--semibold">Semibold</span>
+</div>
+</div>
