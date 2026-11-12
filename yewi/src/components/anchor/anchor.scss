@@ -1,0 +1,19 @@
+// Anchor positioning
+//
+// The base every anchored floating element shares. `use_anchored` moves the
+// element with `translate`, so `transform`, `scale` and `opacity` stay free
+// for the component's own entry animation.
+
+.yi-anchored {
+  position: fixed;
+  inset: 0 auto auto 0;
+  margin: 0;
+  // The popover defaults would scroll content and clip an arrow.
+  overflow: visible;
+
+  // Not placed yet, or its anchor has scrolled out of view.
+  &:not([data-yi-side]),
+  &[data-yi-anchor-hidden] {
+    visibility: hidden;
+  }
+}

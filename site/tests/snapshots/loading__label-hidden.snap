@@ -1,0 +1,49 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div role="status" class="yi-loading yi-loading--inline yi-loading--sm">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+<span class="yi-loading__label yi-visually-hidden">Loading avatar</span>
+</div>
+<div role="status" class="yi-loading yi-loading--inline yi-loading--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+<span class="yi-loading__label yi-visually-hidden">Loading chart</span>
+</div>
+<div role="status" class="yi-loading yi-loading--inline yi-loading--lg">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+<span class="yi-loading__label yi-visually-hidden">Loading map</span>
+</div>
+</div>
+<span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg> Syncing 3 of 12 repositories <span style="color: var(--yi-ok)">
+<svg style="--yi-spinner-size:1.5em" viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+</span>
+</span>
+</div>
