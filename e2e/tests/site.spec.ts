@@ -38,8 +38,8 @@ test.describe("Reference site", () => {
   test("documents props from the library's doc comments", async ({ page }) => {
     await page.goto("/components/button");
     const api = page.locator("#api");
-    await expect(api.getByRole("row", { name: /^loading/ })).toContainText("spinner");
-    await expect(api.getByRole("row", { name: /^on_click/ })).toContainText("Callback");
+    await expect(api.getByRole("row", { name: /^loading/ }).first()).toContainText("spinner");
+    await expect(api.getByRole("row", { name: /^on_click/ }).first()).toContainText("Callback");
     await expect(api.getByRole("row", { name: /--yi-button-bg-hover/ })).toBeVisible();
   });
 
