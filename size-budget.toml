@@ -20,4 +20,4 @@ markdown = 20000
 qr = 20000
 router = 20000
 schema-form = 20000
-terminal = 20000
+terminal = 40000

@@ -1,0 +1,35 @@
+---
+source: site/tests/snapshots.rs
+---
+<div role="group" aria-label="ben@workstation: ~/src/yewi" class="yi-terminal">
+<div class="yi-terminal__bar">
+<span aria-hidden="true" class="yi-terminal__controls">
+<span class="yi-terminal__control yi-terminal__control--close">
+</span>
+<span class="yi-terminal__control yi-terminal__control--minimise">
+</span>
+<span class="yi-terminal__control yi-terminal__control--zoom">
+</span>
+</span>
+<span class="yi-terminal__title">ben@workstation: ~/src/yewi</span>
+</div>
+<div class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">cargo add yewi --features terminal</span>
+</div>
+<div class="yi-terminal__output">    Updating crates.io index
+      Adding yewi v0.1.0 to dependencies
+</div>
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">trunk build --release</span>
+</div>
+<div class="yi-terminal__output">    Finished release profile [optimized] target(s) in 41.07s
+</div>
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">
+</span>
+<span aria-hidden="true" class="yi-terminal__cursor">
+</span>
+</div>
+</div>
+</div>

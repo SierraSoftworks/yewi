@@ -1,0 +1,70 @@
+---
+source: site/tests/snapshots.rs
+---
+<div role="group" aria-label="cargo test" class="yi-terminal">
+<div class="yi-terminal__bar">
+<span aria-hidden="true" class="yi-terminal__controls">
+<span class="yi-terminal__control yi-terminal__control--close">
+</span>
+<span class="yi-terminal__control yi-terminal__control--minimise">
+</span>
+<span class="yi-terminal__control yi-terminal__control--zoom">
+</span>
+</span>
+<span class="yi-terminal__title">cargo test</span>
+</div>
+<div class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">cargo test --color always</span>
+</div>
+<div class="yi-terminal__output">
+<span class="yi-terminal__sgr--fg-2 yi-terminal__sgr--bold">   Compiling</span> yewi v0.1.0 (/src/yewi)
+<span class="yi-terminal__sgr--fg-3 yi-terminal__sgr--bold">warning</span>
+<span class="yi-terminal__sgr--bold">: unused variable: `rows`</span>
+ <span class="yi-terminal__sgr--fg-4 yi-terminal__sgr--bold">--&gt;</span> yewi/src/components/table/mod.rs:42:9
+<span class="yi-terminal__sgr--fg-2 yi-terminal__sgr--bold">    Finished</span> `test` profile in 8.31s
+<span class="yi-terminal__sgr--fg-2 yi-terminal__sgr--bold">     Running</span> unittests src/lib.rs
+
+test table::sorts_by_column ... <span class="yi-terminal__sgr--fg-2">ok</span>
+test table::keeps_selection ... <span class="yi-terminal__sgr--fg-1">FAILED</span>
+test table::virtual_rows ... <span class="yi-terminal__sgr--fg-3">ignored</span>
+
+test result: <span class="yi-terminal__sgr--fg-1">FAILED</span>. 1 passed; 1 failed; 1 ignored; <span class="yi-terminal__sgr--dim">finished in 0.02s</span>
+</div>
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">colortest</span>
+</div>
+<div class="yi-terminal__output" aria-hidden="true">
+<span class="yi-terminal__sgr--fg-0"> 0 </span>
+<span class="yi-terminal__sgr--fg-1"> 1 </span>
+<span class="yi-terminal__sgr--fg-2"> 2 </span>
+<span class="yi-terminal__sgr--fg-3"> 3 </span>
+<span class="yi-terminal__sgr--fg-4"> 4 </span>
+<span class="yi-terminal__sgr--fg-5"> 5 </span>
+<span class="yi-terminal__sgr--fg-6"> 6 </span>
+<span class="yi-terminal__sgr--fg-7"> 7 </span>  <span class="yi-terminal__sgr--bg-0">   </span>
+<span class="yi-terminal__sgr--bg-1">   </span>
+<span class="yi-terminal__sgr--bg-2">   </span>
+<span class="yi-terminal__sgr--bg-3">   </span>
+<span class="yi-terminal__sgr--bg-4">   </span>
+<span class="yi-terminal__sgr--bg-5">   </span>
+<span class="yi-terminal__sgr--bg-6">   </span>
+<span class="yi-terminal__sgr--bg-7">   </span>
+<span class="yi-terminal__sgr--fg-8"> 8 </span>
+<span class="yi-terminal__sgr--fg-9"> 9 </span>
+<span class="yi-terminal__sgr--fg-10"> 10</span>
+<span class="yi-terminal__sgr--fg-11"> 11</span>
+<span class="yi-terminal__sgr--fg-12"> 12</span>
+<span class="yi-terminal__sgr--fg-13"> 13</span>
+<span class="yi-terminal__sgr--fg-14"> 14</span>
+<span class="yi-terminal__sgr--fg-15"> 15</span>  <span class="yi-terminal__sgr--bg-8">   </span>
+<span class="yi-terminal__sgr--bg-9">   </span>
+<span class="yi-terminal__sgr--bg-10">   </span>
+<span class="yi-terminal__sgr--bg-11">   </span>
+<span class="yi-terminal__sgr--bg-12">   </span>
+<span class="yi-terminal__sgr--bg-13">   </span>
+<span class="yi-terminal__sgr--bg-14">   </span>
+<span class="yi-terminal__sgr--bg-15">   </span>
+</div>
+</div>
+</div>
