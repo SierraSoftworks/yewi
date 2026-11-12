@@ -1,0 +1,28 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<header class="yi-page-header yi-page-header--divided">
+<div class="yi-page-header__row">
+<div class="yi-page-header__heading">
+<h1 class="yi-page-header__title">Hosts</h1>
+</div>
+<div class="yi-page-header__actions">
+<button type="button" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Enrol host</button>
+</div>
+</div>
+<div class="yi-page-header__subtitle">31 hosts across 3 clusters.</div>
+<div class="yi-page-header__content">
+<div class="yi-cluster" role="group" aria-label="Filter hosts">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm" aria-pressed="true">All</button>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm" aria-pressed="false">Healthy</button>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm" aria-pressed="false">Needs attention</button>
+</div>
+</div>
+</header>
+<span role="status">Showing: All</span>
+</div>
