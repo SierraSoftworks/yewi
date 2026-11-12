@@ -1,0 +1,50 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-stack">
+<div class="yi-tabs yi-tabs--line yi-tabs--sm">
+<div role="tablist" aria-label="Small" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Small</span>
+<span class="yi-tabs__count">4</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Steps</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Output</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-0" aria-labelledby="yi-0-tab-0" tabindex="0" class="yi-tabs__panel">Summary of the run.</div>
+</div>
+<div class="yi-tabs yi-tabs--line yi-tabs--md">
+<div role="tablist" aria-label="Medium" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-1-tab-0" aria-selected="true" aria-controls="yi-1-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Medium</span>
+<span class="yi-tabs__count">4</span>
+</button>
+<button type="button" role="tab" id="yi-1-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Steps</span>
+</button>
+<button type="button" role="tab" id="yi-1-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Output</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-1-panel-0" aria-labelledby="yi-1-tab-0" tabindex="0" class="yi-tabs__panel">Summary of the run.</div>
+</div>
+<div class="yi-tabs yi-tabs--line yi-tabs--lg">
+<div role="tablist" aria-label="Large" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-2-tab-0" aria-selected="true" aria-controls="yi-2-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Large</span>
+<span class="yi-tabs__count">4</span>
+</button>
+<button type="button" role="tab" id="yi-2-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Steps</span>
+</button>
+<button type="button" role="tab" id="yi-2-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Output</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-2-panel-0" aria-labelledby="yi-2-tab-0" tabindex="0" class="yi-tabs__panel">Summary of the run.</div>
+</div>
+</div>

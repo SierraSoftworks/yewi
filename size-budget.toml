@@ -9,15 +9,15 @@
 core = 400000
 
 avatar-hash = 20000
-charts = 20000
+charts = 70000
 chrono = 20000
 code = 20000
-diff = 20000
+diff = 52000
 highlight = 20000
 highlight-syntect = 20000
 map = 20000
 markdown = 20000
 qr = 30000
-router = 20000
+router = 60000
 schema-form = 20000
 terminal = 40000

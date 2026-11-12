@@ -1,0 +1,185 @@
+---
+source: site/tests/snapshots.rs
+---
+<figure style="--yi-diff-max-height: 18rem" class="yi-diff yi-diff--unified yi-diff--wrap yi-diff--numbered">
+<figcaption class="yi-diff__header">
+<span class="yi-diff__title">firewall.rules</span>
+<span class="yi-diff__stats">
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--added">+3</span>
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--removed">−3</span>
+<span class="yi-visually-hidden">3 lines added, 3 lines removed</span>
+</span>
+</figcaption>
+<div role="group" aria-label="firewall.rules" tabindex="0" class="yi-diff__scroll">
+<div class="yi-diff__body">
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 10 unchanged lines</button>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="11" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="11" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.11.0/24 to service "edge-11" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="12" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.12.0/24 to service "edge-12" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">allow from 10.0.13.0/24 to service "edge-13" port 443 action <mark class="yi-diff__changed">accep</mark>t # reviewed quarterly by the platform team</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="13" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">allow from 10.0.13.0/24 to service "edge-13" port 443 action <mark class="yi-diff__changed">rejec</mark>t # reviewed quarterly by the platform team</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="14" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="14" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.14.0/24 to service "edge-14" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="15" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="15" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.15.0/24 to service "edge-15" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 8 unchanged lines</button>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="24" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="24" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.24.0/24 to service "edge-24" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="25" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="25" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.25.0/24 to service "edge-25" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="26" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">allow from 10.0.26.0/24 to service "edge-26" port 443 action <mark class="yi-diff__changed">accep</mark>t # reviewed quarterly by the platform team</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="26" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">allow from 10.0.26.0/24 to service "edge-26" port 443 action <mark class="yi-diff__changed">rejec</mark>t # reviewed quarterly by the platform team</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="27" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="27" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.27.0/24 to service "edge-27" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="28" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="28" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.28.0/24 to service "edge-28" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__band yi-diff__band--fold">
+<button type="button" class="yi-diff__fold">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 15l5 5 5-5M7 9l5-5 5 5">
+</path>
+</svg>Show 8 unchanged lines</button>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="37" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="37" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.37.0/24 to service "edge-37" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="38" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="38" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.38.0/24 to service "edge-38" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="39" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">allow from 10.0.39.0/24 to service "edge-39" port 443 action <mark class="yi-diff__changed">accep</mark>t # reviewed quarterly by the platform team</del>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="39" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">allow from 10.0.39.0/24 to service "edge-39" port 443 action <mark class="yi-diff__changed">rejec</mark>t # reviewed quarterly by the platform team</ins>
+</div>
+<div class="yi-diff__row yi-diff__side yi-diff__side--context">
+<span aria-hidden="true" data-n="40" class="yi-diff__num">
+</span>
+<span aria-hidden="true" data-n="40" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">allow from 10.0.40.0/24 to service "edge-40" port 443 action accept # reviewed quarterly by the platform team</span>
+</div>
+</div>
+</div>
+</figure>
