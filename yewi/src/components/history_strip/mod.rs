@@ -10,7 +10,7 @@ use crate::{Attrs, Placement, Popover, PopoverTrigger, Size, Tone};
 /// How the cells of a [`HistoryStrip`] are drawn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
 pub enum HistoryStripVariant {
-    /// Cells joined into one bar that fills the width: a continuous record,
+    /// Cells side by side in one bar that fills the width, a hairline apart: a continuous record,
     /// such as availability per hour.
     #[default]
     Continuous,
