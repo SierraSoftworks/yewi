@@ -1,0 +1,39 @@
+// Heading
+//
+// The size modifier carries the whole look, so an `<h2>` can be set at any
+// size without changing the document outline.
+@use "api" as *;
+
+.yi-heading {
+  // Component tokens
+  --yi-heading-color: var(--yi-fg);
+  --yi-heading-tracking: -0.01em; // Letter spacing at display sizes (20px and up).
+
+  margin: 0;
+  color: var(--yi-heading-color);
+
+  @each $size in ("md", "lg", "xl", "2xl", "3xl", "4xl") {
+    &--#{$size} {
+      @include heading($size);
+    }
+  }
+
+  // Below body size a heading keeps the body-size weight.
+  @each $size in ("xs", "sm") {
+    &--#{$size} {
+      @include heading("md");
+
+      font-size: var(--yi-text-#{$size});
+    }
+  }
+
+  &--2xl,
+  &--3xl,
+  &--4xl {
+    letter-spacing: var(--yi-heading-tracking);
+  }
+
+  &--truncate {
+    @include truncate;
+  }
+}

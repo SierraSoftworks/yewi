@@ -1,0 +1,34 @@
+// Inline code: a tinted chip that sits on the text baseline.
+
+.yi-inline-code {
+  // Component tokens
+  --yi-inline-code-bg: var(--yi-neutral-soft);
+  --yi-inline-code-fg: inherit;
+  --yi-inline-code-border: transparent;
+  --yi-inline-code-radius: var(--yi-radius-sm);
+
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--yi-inline-code-border);
+  border-radius: var(--yi-inline-code-radius);
+  background: var(--yi-inline-code-bg);
+  color: var(--yi-inline-code-fg);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: 0.9em;
+  font-weight: 400;
+  // A chip that wraps keeps its padding and corners on both lines.
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  overflow-wrap: anywhere;
+
+  // Inside a link the chip takes the link's colour.
+  :where(a) > & {
+    color: inherit;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-inline-code {
+    border-color: CanvasText;
+  }
+}

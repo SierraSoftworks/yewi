@@ -20,7 +20,7 @@ highlight-syntect = ["yewi/highlight-syntect"]
 map = ["yewi/map"]
 markdown = ["yewi/markdown"]
 qr = ["yewi/qr"]
-router = ["yewi/router"]
+router = ["yewi/router", "dep:yew-router"]
 schema-form = ["yewi/schema-form"]
 terminal = ["yewi/terminal"]
 
@@ -28,3 +28,4 @@ terminal = ["yewi/terminal"]
 yew = { workspace = true, features = ["csr"] }
 yewi = { workspace = true, features = ["csr"] }
 wasm-bindgen = { workspace = true }
+yew-router = { workspace = true, optional = true }

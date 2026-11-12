@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 28rem" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<h1 class="yi-heading yi-heading--4xl yi-heading--truncate">caddy-ingress-eu-west-1-production-2026-01-15</h1>
+<span class="yi-text yi-text--muted">Rollout #42, started by ben 4 minutes ago.</span>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<h2 class="yi-heading yi-heading--xl">Stages</h2>
+<p class="yi-text">Each stage must report healthy before the next one starts.</p>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<h2 class="yi-heading yi-heading--xl">History</h2>
+<p class="yi-text">Commits and operator actions, newest first.</p>
+</div>
+</div>

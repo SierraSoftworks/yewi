@@ -1,0 +1,27 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 18rem" class="yi-stack">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">Search</span>
+<kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">/</kbd>
+</kbd>
+</div>
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">Command palette</span>
+<kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">K</kbd>
+</kbd>
+</div>
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">Go to rollouts</span>
+<kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">G</kbd>
+<span class="yi-kbd-combo__then"> </span>
+<kbd class="yi-kbd">R</kbd>
+</kbd>
+</div>
+</div>

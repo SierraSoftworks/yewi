@@ -290,7 +290,8 @@ html {
   }
 }
 
-.docs-main code {
+// `InlineCode` brings its own chip; this dresses bare `<code>` in prose.
+.docs-main code:not(.yi-inline-code) {
   padding: 0.1em 0.35em;
   border-radius: var(--yi-radius-sm);
   background: var(--yi-tone-1);

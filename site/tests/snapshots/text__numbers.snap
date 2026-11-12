@@ -1,0 +1,26 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 22rem" class="yi-stack">
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">caddy-ingress</span>
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster yi-cluster--nowrap">
+<span class="yi-text yi-text--muted yi-text--mono">3f9a1c2</span>
+<span class="yi-text yi-text--tabular" style="inline-size: 4rem; text-align: end">12,904</span>
+</div>
+</div>
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">grey-probe</span>
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster yi-cluster--nowrap">
+<span class="yi-text yi-text--muted yi-text--mono">b81e07d</span>
+<span class="yi-text yi-text--tabular" style="inline-size: 4rem; text-align: end">1,117</span>
+</div>
+</div>
+<div class="yi-cluster yi-cluster--justify-between yi-cluster--nowrap">
+<span class="yi-text">symbols</span>
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster yi-cluster--nowrap">
+<span class="yi-text yi-text--muted yi-text--mono">09c4e5a</span>
+<span class="yi-text yi-text--tabular" style="inline-size: 4rem; text-align: end">88</span>
+</div>
+</div>
+</div>

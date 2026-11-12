@@ -1,0 +1,60 @@
+// Kbd: a key cap with a heavier lower edge, and a row of them for shortcuts.
+
+// Tokens sit on the outermost element, so setting one on a shortcut reaches
+// every cap inside it.
+.yi-kbd-combo,
+.yi-kbd:not(.yi-kbd-combo > .yi-kbd) {
+  // Component tokens
+  --yi-kbd-bg: var(--yi-surface);
+  --yi-kbd-fg: var(--yi-fg-muted);
+  --yi-kbd-border: var(--yi-line-strong);
+  --yi-kbd-depth: 2px; // Thickness of the lower edge; 1px gives a flat key.
+  --yi-kbd-radius: var(--yi-radius-sm);
+}
+
+.yi-kbd {
+  display: inline-block;
+  min-inline-size: 1.7em;
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--yi-kbd-border);
+  border-block-end-width: var(--yi-kbd-depth);
+  border-radius: var(--yi-kbd-radius);
+  background: var(--yi-kbd-bg);
+  color: var(--yi-kbd-fg);
+  font-family: var(--yi-font-body);
+  font-size: 0.82em;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: 0.06em;
+}
+
+.yi-kbd-combo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font: inherit;
+  white-space: nowrap;
+  vertical-align: 0.06em;
+
+  > .yi-kbd {
+    vertical-align: baseline;
+  }
+}
+
+.yi-kbd-combo__plus {
+  color: var(--yi-fg-subtle);
+  font-size: 0.82em;
+}
+
+// The gap between steps pressed in turn.
+.yi-kbd-combo__then {
+  inline-size: 0.3em;
+}
+
+@media (forced-colors: active) {
+  .yi-kbd {
+    border-color: CanvasText;
+  }
+}

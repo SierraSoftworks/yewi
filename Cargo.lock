@@ -880,6 +880,7 @@ version = "0.0.0"
 dependencies = [
  "wasm-bindgen",
  "yew",
+ "yew-router",
  "yewi",
 ]
 
@@ -1281,6 +1282,7 @@ dependencies = [
  "wasm-bindgen",
  "web-sys",
  "yew",
+ "yew-router",
  "yewi-fonts",
  "yewi-test",
 ]
