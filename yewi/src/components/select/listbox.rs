@@ -1,4 +1,5 @@
-//! The floating list of options, shared by `Select` and `Combobox`.
+//! The floating list of options, shared by `Select`, `Combobox` and
+//! `TagPicker`.
 
 use yew::prelude::*;
 
@@ -17,7 +18,10 @@ pub(crate) struct Listbox<'a> {
     pub options: &'a [SelectOption],
     /// The options on show, as indices into `options`.
     pub order: &'a [usize],
-    pub selected: Option<usize>,
+    /// The chosen options, as indices into `options`.
+    pub selected: &'a [usize],
+    /// Whether more than one option can be chosen at once.
+    pub multi: bool,
     pub active: Option<usize>,
     /// The control's width, which the list is at least as wide as.
     pub width: f64,
@@ -30,7 +34,7 @@ pub(crate) struct Listbox<'a> {
 impl Listbox<'_> {
     fn option(&self, index: usize) -> Html {
         let option = &self.options[index];
-        let selected = self.selected == Some(index);
+        let selected = self.selected.contains(&index);
         let class = classes!("yi-select__option", (self.active == Some(index)).then_some("yi-select__option--active"));
         html! {
             <div
@@ -109,6 +113,7 @@ impl Listbox<'_> {
                 id={self.id.clone()}
                 class="yi-select__list"
                 role="listbox"
+                aria-multiselectable={self.multi.then_some("true")}
                 aria-label={self.label.clone()}
                 aria-labelledby={self.labelled_by.clone()}
                 style={format!("--yi-select-anchor-width:{}px", self.width)}

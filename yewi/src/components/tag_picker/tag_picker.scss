@@ -1,0 +1,51 @@
+// TagPicker
+//
+// The outlined `.yi-input` box, grown to hold its tags: they wrap with the
+// bare input, which takes whatever is left of the last line. The list and its
+// options are Select's (`.yi-select__*`), so the two never drift apart.
+@use "api" as *;
+
+.yi-tag-picker {
+  // Component tokens
+  --yi-tag-picker-gap: var(--yi-space-xs); // between tags, and between lines
+  --yi-tag-picker-tag-height: 1.375rem;
+  --yi-tag-picker-input-min-width: 4rem; // narrower than this, the input wraps
+}
+
+.yi-select .yi-tag-picker__control {
+  flex-wrap: wrap;
+  gap: var(--yi-tag-picker-gap);
+  block-size: auto;
+  min-block-size: var(--yi-input-height);
+  // Centres one line of tags at exactly the control height.
+  padding-block: calc((var(--yi-input-height) - 2px - var(--yi-tag-picker-tag-height)) / 2);
+  padding-inline: calc((var(--yi-input-height) - 2px - var(--yi-tag-picker-tag-height)) / 2) var(--yi-input-padding);
+
+  // With nothing chosen the text starts where it does in any other input.
+  &:not(:has(.yi-tag-picker__tag)) {
+    padding-inline-start: var(--yi-input-padding);
+  }
+}
+
+// The list is for assistive technology; the tags lay out with the input.
+.yi-tag-picker__tags {
+  display: contents;
+}
+
+.yi-tag-picker__tag {
+  --yi-tag-height: var(--yi-tag-picker-tag-height);
+
+  font-family: inherit;
+}
+
+.yi-tag-picker__input {
+  flex: 1 1 var(--yi-tag-picker-input-min-width);
+  min-inline-size: var(--yi-tag-picker-input-min-width);
+  block-size: var(--yi-tag-picker-tag-height);
+}
+
+.yi-tag-picker__hint strong {
+  color: var(--yi-fg);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
