@@ -115,9 +115,11 @@ test.describe("Chart", () => {
     const plot = stage.getByRole("slider", { name: "Visitors per day" });
     for (const width of [1100, 420]) {
       await page.setViewportSize({ width, height: 800 });
-      const marks = (await stage.locator(".yi-chart__marks").boundingBox())!;
-      const box = (await plot.boundingBox())!;
-      expect(Math.abs(marks.width - box.width)).toBeLessThan(1);
+      const widths = await plot.evaluate((el) => [
+        el.getBoundingClientRect().width,
+        el.querySelector(".yi-chart__marks")!.getBoundingClientRect().width,
+      ]);
+      expect(Math.abs(widths[0] - widths[1])).toBeLessThan(1);
       await pointAt(page, plot, 0.995);
       await expect(plot).toHaveAttribute("aria-valuenow", "13");
     }
