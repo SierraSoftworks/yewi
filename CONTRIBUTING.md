@@ -30,7 +30,7 @@ e2e/tests/<name>.spec.ts         behaviour specs
 ### Opt-in features
 - A component that needs a new dependency goes behind a Cargo feature. Start `mod.rs` with `#![cfg(feature = "<feature>")]`; the build script then skips its Rust and SCSS unless the feature is on.
 - Features are already declared in `yewi/Cargo.toml` and `tests/size-probe/Cargo.toml`. Add the optional dependency to the feature's list.
-- Add `tests/size-probe/src/features/<feature>.rs` with `pub fn view() -> yew::Html` so the size budget measures it.
+- Add `tests/size-probe/src/features/<feature>.rs` with `pub fn view() -> yew::Html` so the size budget measures it. Core components count against the `stylesheet` budget only; their code is paid by the apps that use them.
 
 ## Styles (`<name>.scss`)
 

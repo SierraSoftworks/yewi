@@ -1,0 +1,172 @@
+// JsonView
+//
+// A monospace block on the code surface. The tree indents with a guide rule
+// per level; the source view is one wrapped `pre`.
+@use "api" as *;
+
+.yi-json-view {
+  // Component tokens
+  --yi-json-view-bg: var(--yi-code-bg);
+  --yi-json-view-padding: var(--yi-space-md);
+  --yi-json-view-radius: var(--yi-radius-control);
+  --yi-json-view-font-size: var(--yi-text-sm);
+  --yi-json-view-indent: var(--yi-space-lg);
+  --yi-json-view-guide: var(--yi-line);
+  --yi-json-view-key: var(--yi-fg);
+  --yi-json-view-string: var(--yi-ok);
+  --yi-json-view-number: var(--yi-warn);
+  --yi-json-view-literal: var(--yi-info);
+  --yi-json-view-punctuation: var(--yi-fg-muted);
+
+  position: relative;
+  min-inline-size: 0;
+  border-radius: var(--yi-json-view-radius);
+  background: var(--yi-json-view-bg);
+  color: var(--yi-json-view-punctuation);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+  font-size: var(--yi-json-view-font-size);
+  line-height: var(--yi-leading);
+
+  &--plain {
+    --yi-json-view-bg: transparent;
+    --yi-json-view-padding: 0;
+  }
+}
+
+.yi-json-view__body {
+  padding: var(--yi-json-view-padding);
+  border-radius: inherit;
+  overflow: auto;
+  overflow-wrap: anywhere;
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+}
+
+// Floats over the first line; the body keeps its full width below it.
+.yi-json-view__copy.yi-button {
+  position: absolute;
+  inset-block-start: var(--yi-space-xs);
+  inset-inline-end: var(--yi-space-xs);
+  z-index: 1;
+  background: var(--yi-json-view-bg);
+}
+
+.yi-json-view--plain > .yi-json-view__copy.yi-button {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+}
+
+.yi-json-view__source {
+  margin: 0;
+  font: inherit;
+  white-space: pre-wrap;
+
+  > code {
+    font: inherit;
+  }
+}
+
+.yi-json-view__key {
+  color: var(--yi-json-view-key);
+}
+
+.yi-json-view__index {
+  color: var(--yi-fg-subtle);
+}
+
+.yi-json-view__string {
+  color: var(--yi-json-view-string);
+}
+
+.yi-json-view__number {
+  color: var(--yi-json-view-number);
+}
+
+.yi-json-view__bool,
+.yi-json-view__null {
+  color: var(--yi-json-view-literal);
+}
+
+// ---- Tree ----------------------------------------------------------------
+
+// Leaves line up with the label of a branch, past its chevron.
+.yi-json-view__row {
+  padding-inline-start: var(--yi-json-view-indent);
+}
+
+.yi-json-view__summary {
+  display: flex;
+  align-items: center;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  border-radius: var(--yi-radius-sm);
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    background: var(--yi-accent-soft);
+  }
+
+  &:focus-visible {
+    @include focus-ring(0);
+  }
+}
+
+.yi-json-view__chevron.yi-icon {
+  --yi-icon-size: var(--yi-json-view-indent);
+
+  padding: var(--yi-space-2xs);
+  color: var(--yi-fg-subtle);
+
+  @include motion {
+    transition: rotate var(--yi-duration-fast) var(--yi-ease);
+  }
+}
+
+.yi-json-view__node[open] > .yi-json-view__summary > .yi-json-view__chevron {
+  rotate: 90deg;
+}
+
+.yi-json-view__count {
+  padding-inline: var(--yi-space-xs);
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+}
+
+// What a folded branch holds, cut to the width left on its line.
+.yi-json-view__preview {
+  @include truncate;
+
+  flex: 1;
+  min-inline-size: 0;
+  color: var(--yi-fg-subtle);
+}
+
+// The rule sits under the centre of the chevron.
+.yi-json-view__children {
+  margin-inline-start: calc(var(--yi-json-view-indent) / 2);
+  padding-inline-start: calc(var(--yi-json-view-indent) / 2 - 1px);
+  border-inline-start: 1px solid var(--yi-json-view-guide);
+}
+
+.yi-json-view__more {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  padding-inline-start: var(--yi-json-view-indent);
+  font-family: var(--yi-font-body);
+}
+
+.yi-json-view__hidden {
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+}
