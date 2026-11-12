@@ -1,0 +1,14 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input type="checkbox" role="switch" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Pause deploys</span>
+</span>
+</label>
+<span role="status">Deploys are running</span>
+</div>

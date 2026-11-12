@@ -127,10 +127,10 @@ test.describe("Tooltip", () => {
   for (const theme of ["light", "dark"] as Theme[]) {
     test(`looks right when shown: ${theme}`, async ({ page, example }) => {
       const stage = await example("tooltip/variants", { theme });
-      for (const name of ["Surface", "Surface, arrow", "Dark", "Dark, arrow"]) {
+      for (const name of ["Surface", "Surface, no arrow", "Dark", "Dark, no arrow"]) {
         await stage.getByRole("button", { name, exact: true }).hover();
         await expect(page.getByRole("tooltip")).toBeVisible();
-        const file = `shown-${name.toLowerCase().replace(", ", "-")}-${theme}.png`;
+        const file = `shown-${name.toLowerCase().replace(/[, ]+/g, "-")}-${theme}.png`;
         await expect(page).toHaveScreenshot(["tooltip", file], { clip: await around(page, stage) });
       }
 

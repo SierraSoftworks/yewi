@@ -46,7 +46,7 @@ pub struct TooltipProps {
     #[prop_or_default]
     pub variant: TooltipVariant,
     /// Draws an arrow pointing at the element.
-    #[prop_or_default]
+    #[prop_or(true)]
     pub arrow: bool,
     /// Milliseconds the pointer rests before the tooltip shows. Keyboard
     /// focus shows it at once, as does moving on from another tooltip.

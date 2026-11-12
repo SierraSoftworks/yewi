@@ -1,0 +1,56 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<div class="yi-cluster">
+<div role="radiogroup" aria-label="Range" class="yi-segmented yi-segmented--sm">
+<label class="yi-segmented__option">
+<input value="day" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Day</span>
+</label>
+<label class="yi-segmented__option">
+<input value="week" checked type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Week</span>
+</label>
+<label class="yi-segmented__option">
+<input value="month" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Month</span>
+</label>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Refresh</button>
+</div>
+<div class="yi-cluster">
+<div role="radiogroup" aria-label="Range" class="yi-segmented yi-segmented--md">
+<label class="yi-segmented__option">
+<input value="day" type="radio" name="yi-1" class="yi-segmented__input">
+<span class="yi-segmented__label">Day</span>
+</label>
+<label class="yi-segmented__option">
+<input value="week" checked type="radio" name="yi-1" class="yi-segmented__input">
+<span class="yi-segmented__label">Week</span>
+</label>
+<label class="yi-segmented__option">
+<input value="month" type="radio" name="yi-1" class="yi-segmented__input">
+<span class="yi-segmented__label">Month</span>
+</label>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--md">Refresh</button>
+</div>
+<div class="yi-cluster">
+<div role="radiogroup" aria-label="Range" class="yi-segmented yi-segmented--lg">
+<label class="yi-segmented__option">
+<input value="day" type="radio" name="yi-2" class="yi-segmented__input">
+<span class="yi-segmented__label">Day</span>
+</label>
+<label class="yi-segmented__option">
+<input value="week" checked type="radio" name="yi-2" class="yi-segmented__input">
+<span class="yi-segmented__label">Week</span>
+</label>
+<label class="yi-segmented__option">
+<input value="month" type="radio" name="yi-2" class="yi-segmented__input">
+<span class="yi-segmented__label">Month</span>
+</label>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--lg">Refresh</button>
+</div>
+</div>
