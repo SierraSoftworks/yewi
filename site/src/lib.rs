@@ -11,6 +11,7 @@
 
 pub mod app;
 pub mod docs;
+mod gallery;
 pub mod guides;
 mod shell;
 

@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { expect, test as base, type Locator, type Page } from "@playwright/test";
 
@@ -13,6 +13,7 @@ export interface ExampleInfo {
   path: string;
 }
 
+const recorder = fileURLToPath(new URL("./replay/recorder.js", import.meta.url));
 const dist = fileURLToPath(new URL("../site/dist/", import.meta.url));
 const manifest = <T>(name: string): T => {
   try {
@@ -49,6 +50,8 @@ export interface Fixtures {
   example: (id: string, options?: { theme?: Theme }) => Promise<Locator>;
   /** Console errors, warnings and uncaught exceptions seen so far. */
   problems: string[];
+  /** Records what a behaviour spec does to each example, for the review gallery to replay. */
+  replay: void;
 }
 
 export const test = base.extend<Fixtures>({
@@ -62,6 +65,32 @@ export const test = base.extend<Fixtures>({
     page.on("pageerror", (error) => problems.push(`uncaught: ${error.message}`));
     await use(problems);
   },
+
+  replay: [
+    async ({ page }, use, testInfo) => {
+      if (testInfo.project.name !== "behaviour") return use();
+      // One segment per example document the spec opened, in order.
+      const segments = new Map<string, { example: string; events: unknown[]; end?: string }>();
+      await page.exposeBinding("__yiReplayEmit", (_source, { doc, example, event }) => {
+        if (!segments.has(doc)) segments.set(doc, { example, events: [] });
+        segments.get(doc)!.events.push(event);
+      });
+      await page.addInitScript({ path: recorder });
+      await use();
+      // What the example read at the end, so a replay can be checked against it.
+      const end = await page
+        .evaluate(() => (document.querySelector("[data-example]") as HTMLElement | null)?.innerText)
+        .catch(() => undefined);
+      const last = [...segments.values()].at(-1);
+      if (last && end !== undefined) last.end = end;
+      const recorded = [...segments.values()].filter((segment) => segment.events.length > 0);
+      if (recorded.length === 0) return;
+      const file = testInfo.outputPath("replay.json");
+      writeFileSync(file, JSON.stringify(recorded));
+      await testInfo.attach("replay", { path: file, contentType: "application/json" });
+    },
+    { auto: true },
+  ],
 
   example: async ({ page }, use) => {
     await use(async (id, { theme } = {}) => {

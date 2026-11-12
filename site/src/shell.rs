@@ -357,8 +357,8 @@ fn ExampleBlock(props: &ExampleBlockProps) -> Html {
 }
 
 #[derive(Properties)]
-struct StageProps {
-    example: &'static Example,
+pub(crate) struct StageProps {
+    pub(crate) example: &'static Example,
 }
 
 impl PartialEq for StageProps {
@@ -369,7 +369,7 @@ impl PartialEq for StageProps {
 
 /// Mounts an example with time frozen, so renders are reproducible.
 #[function_component]
-fn Stage(props: &StageProps) -> Html {
+pub(crate) fn Stage(props: &StageProps) -> Html {
     html! {
         <NowProvider now={Now::from_epoch_millis(EXAMPLE_NOW_MILLIS)} live=false>
             { (props.example.render)() }
