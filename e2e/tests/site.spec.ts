@@ -7,7 +7,7 @@ test.describe("Reference site", () => {
     await hydrated(page);
     await page.evaluate(() => ((window as any).stillHere = true));
 
-    await page.getByRole("navigation", { name: "Pages" }).getByRole("link", { name: "Button" }).click();
+    await page.getByRole("navigation", { name: "Pages" }).getByRole("link", { name: "Button", exact: true }).click();
     await expect(page).toHaveURL(/\/components\/button$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Button");
     expect(await page.evaluate(() => (window as any).stillHere)).toBe(true);

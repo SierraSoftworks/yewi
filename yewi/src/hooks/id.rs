@@ -9,9 +9,13 @@ thread_local! {
 /// A document-unique element id that is stable for the component's lifetime,
 /// for wiring `for`, `aria-controls`, `aria-describedby` and anchors.
 ///
-/// Ids are allocated in render order. A server render and the client render
-/// that hydrates it normally agree; if they do not, hydration rewrites the
-/// attributes, so references between elements always stay consistent.
+/// Ids are allocated in render order, and Yew renders depth-first on the
+/// server but level by level on the client, so a hydrated page can number its
+/// components differently from the server render. Hydration rewrites every
+/// attribute built from the id in the same pass, so `for`, `aria-*` and anchor
+/// references stay consistent; only the number may change. Where the value
+/// itself must be stable (a fragment link, a test hook), pass an explicit `id`
+/// to the component instead.
 #[hook]
 pub fn use_id() -> AttrValue {
     (*use_memo((), |_| {

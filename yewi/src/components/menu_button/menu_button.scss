@@ -1,0 +1,37 @@
+// MenuButton
+//
+// A Button inside a Popover that holds a Menu. Only the surface's limits and
+// the chevron are styled here.
+@use "api" as *;
+
+.yi-menu-button {
+  // Component tokens
+  --yi-menu-button-max-height: min(70vh, 32rem);
+  --yi-menu-button-max-width: 22rem;
+
+  display: inline-flex;
+  max-inline-size: 100%;
+  vertical-align: middle;
+}
+
+.yi-menu-button__surface {
+  --yi-popover-radius: var(--yi-radius-control);
+  --yi-popover-max-height: var(--yi-menu-button-max-height);
+  --yi-popover-max-width: var(--yi-menu-button-max-width);
+
+  user-select: none;
+}
+
+.yi-menu-button__caret {
+  flex: none;
+  margin-inline-end: -0.2em;
+  opacity: 0.7;
+
+  @include motion {
+    transition: rotate var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  [aria-expanded="true"] > & {
+    rotate: 180deg;
+  }
+}

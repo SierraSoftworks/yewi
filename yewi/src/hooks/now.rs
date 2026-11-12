@@ -111,7 +111,7 @@ mod ticker {
 
     use std::cell::RefCell;
 
-    use wasm_bindgen::{JsCast, closure::Closure};
+    use wasm_bindgen::{JsValue, closure::Closure, prelude::wasm_bindgen};
     use yew::Callback;
 
     use super::Now;
@@ -127,7 +127,19 @@ mod ticker {
     struct Ticker {
         next_id: u32,
         subscribers: Vec<Subscriber>,
-        interval: Option<(i32, Closure<dyn FnMut()>)>,
+        interval: Option<(JsValue, Closure<dyn FnMut()>)>,
+    }
+
+    // The handle is kept as whatever the host returns. It is a small integer in
+    // browsers, but not everywhere (fake clocks, other runtimes), and squeezing
+    // it into an `i32` makes `clearInterval` miss, leaving a timer that calls a
+    // dropped closure.
+    #[wasm_bindgen]
+    extern "C" {
+        #[wasm_bindgen(js_name = setInterval, catch)]
+        fn set_interval(callback: &Closure<dyn FnMut()>, millis: u32) -> Result<JsValue, JsValue>;
+        #[wasm_bindgen(js_name = clearInterval)]
+        fn clear_interval(handle: &JsValue);
     }
 
     thread_local! {
@@ -143,13 +155,9 @@ mod ticker {
             let bucket = (Now::system().epoch_millis() / period).floor();
             ticker.subscribers.push(Subscriber { id, period, bucket, callback });
 
-            if ticker.interval.is_none()
-                && let Some(window) = web_sys::window()
-            {
+            if ticker.interval.is_none() {
                 let closure = Closure::<dyn FnMut()>::new(tick);
-                if let Ok(handle) = window
-                    .set_interval_with_callback_and_timeout_and_arguments_0(closure.as_ref().unchecked_ref(), 1_000)
-                {
+                if let Ok(handle) = set_interval(&closure, 1_000) {
                     ticker.interval = Some((handle, closure));
                 }
             }
@@ -184,9 +192,8 @@ mod ticker {
                 ticker.subscribers.retain(|s| s.id != self.0);
                 if ticker.subscribers.is_empty()
                     && let Some((handle, _closure)) = ticker.interval.take()
-                    && let Some(window) = web_sys::window()
                 {
-                    window.clear_interval_with_handle(handle);
+                    clear_interval(&handle);
                 }
             });
         }

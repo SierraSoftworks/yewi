@@ -1,0 +1,81 @@
+// SplitButton
+//
+// A Button and an icon-only MenuButton joined as ButtonGroup joins buttons:
+// they overlap by their border and only the outer corners round. The chevron
+// is narrower than a square icon button, so it reads as part of the face.
+@use "api" as *;
+
+.yi-split-button {
+  // Component tokens
+  --yi-split-button-radius: var(--yi-radius-control);
+  --yi-split-button-toggle-trim: var(--yi-space-xs);
+
+  display: inline-flex;
+  max-inline-size: 100%;
+  vertical-align: middle;
+  // Keeps the stacking below from leaking into the page.
+  isolation: isolate;
+}
+
+.yi-split-button__face {
+  position: relative;
+  border-radius: var(--yi-split-button-radius);
+
+  &:not(:last-child) {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  &:focus-visible {
+    z-index: 2;
+  }
+
+  // A coloured outline is drawn whole and opaque, over the chevron's.
+  &.yi-button--danger {
+    --yi-button-border: color-mix(in srgb, var(--yi-danger) 45%, var(--yi-surface));
+
+    z-index: 1;
+  }
+}
+
+.yi-split-button__toggle {
+  margin-inline-start: -1px;
+
+  .yi-button {
+    position: relative;
+    inline-size: calc(var(--yi-button-height) - var(--yi-split-button-toggle-trim));
+    border-radius: 0 var(--yi-split-button-radius) var(--yi-split-button-radius) 0;
+
+    &:dir(rtl) {
+      border-radius: var(--yi-split-button-radius) 0 0 var(--yi-split-button-radius);
+    }
+
+    &:focus-visible {
+      z-index: 2;
+    }
+
+    > svg {
+      @include motion {
+        transition: rotate var(--yi-duration-fast) var(--yi-ease);
+      }
+    }
+
+    &[aria-expanded="true"] > svg {
+      rotate: 180deg;
+    }
+  }
+
+  .yi-button--danger {
+    --yi-button-border: color-mix(in srgb, var(--yi-danger) 45%, var(--yi-surface));
+  }
+
+  // Filled halves have no border of their own to share, so give them a seam.
+  .yi-button--primary {
+    border-inline-start-color: color-mix(in srgb, var(--yi-on-solid) 35%, transparent);
+  }
+
+  // Nothing to join with no chrome: keep the two apart instead.
+  .yi-button--subtle {
+    border-radius: var(--yi-split-button-radius);
+  }
+}

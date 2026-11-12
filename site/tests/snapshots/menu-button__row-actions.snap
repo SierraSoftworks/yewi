@@ -1,0 +1,45 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-cluster yi-cluster--justify-between">
+<code>web-1</code>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Actions for web-1" title="Actions for web-1" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+<div class="yi-cluster yi-cluster--justify-between">
+<code>web-2</code>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Actions for web-2" title="Actions for web-2" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+<div class="yi-cluster yi-cluster--justify-between">
+<code>worker-1</code>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Actions for worker-1" title="Actions for worker-1" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M11 19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+<span role="status">Nothing done yet</span>
+</div>
