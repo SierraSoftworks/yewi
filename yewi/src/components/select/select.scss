@@ -1,0 +1,217 @@
+// Select and Combobox
+//
+// The control is the outlined `.yi-input` box, so it lines up with text
+// inputs: a button for Select, a wrapper around a bare input for Combobox.
+// The list floats in a flush, arrowless Popover and is at least as wide as
+// the control (`--yi-select-anchor-width`, measured when it opens).
+@use "api" as *;
+
+.yi-select {
+  // Component tokens
+  --yi-select-min-width: 9rem; // of a `fit` control
+  --yi-select-chevron-color: var(--yi-fg-subtle);
+  --yi-select-menu-max-height: 18rem;
+  --yi-select-menu-max-width: 24rem; // unless the control is wider
+  --yi-select-menu-padding: var(--yi-space-xs);
+  --yi-select-option-padding: var(--yi-space-xs) var(--yi-space-sm);
+  --yi-select-option-radius: var(--yi-radius-sm);
+  --yi-select-option-active-bg: var(--yi-neutral-soft);
+  --yi-select-option-selected-fg: var(--yi-accent-text);
+
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+
+  &--fit {
+    display: inline-block;
+    inline-size: auto;
+    min-inline-size: var(--yi-select-min-width);
+    vertical-align: middle;
+  }
+
+  > .yi-popover {
+    display: flex;
+    inline-size: 100%;
+  }
+}
+
+// The box is a button or a wrapper, which `:read-only` also matches: put
+// back what the input's read-only state changes.
+.yi-select .yi-input.yi-select__control:not(:disabled, .yi-input--disabled) {
+  --yi-input-bg: var(--yi-surface);
+  --yi-input-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+
+  &.yi-input--invalid {
+    --yi-input-border-hover: var(--yi-danger);
+  }
+}
+
+.yi-select .yi-select__control {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  padding-inline-end: calc(var(--yi-input-padding) - 0.125rem);
+  text-align: start;
+  cursor: pointer;
+
+  &:disabled,
+  &.yi-input--disabled {
+    cursor: not-allowed;
+  }
+
+  // Open, or typing: the same emphasis as a focused input.
+  &[aria-expanded="true"],
+  &:has(.yi-select__input:focus) {
+    border-color: var(--yi-input-accent);
+    outline-width: var(--yi-input-ring);
+  }
+}
+
+.yi-select__combobox {
+  cursor: text;
+}
+
+.yi-select__value {
+  display: block;
+  flex: 1;
+  min-inline-size: 0;
+
+  @include truncate;
+
+  &--placeholder {
+    color: var(--yi-input-placeholder);
+  }
+}
+
+.yi-select__value-icon {
+  margin-inline-end: var(--yi-space-xs);
+  vertical-align: -0.2em;
+}
+
+.yi-select__input {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: inherit;
+  text-overflow: ellipsis;
+
+  &::placeholder {
+    color: var(--yi-input-placeholder);
+    opacity: 1;
+  }
+}
+
+.yi-select__chevron {
+  flex: none;
+  color: var(--yi-select-chevron-color);
+}
+
+.yi-popover__surface.yi-select__surface {
+  --yi-popover-max-width: 100vw;
+
+  cursor: default;
+  user-select: none;
+}
+
+.yi-select__list,
+.yi-select__status {
+  box-sizing: border-box;
+  // The surface's border sits outside the list.
+  min-inline-size: calc(var(--yi-select-anchor-width, 0px) - 2px);
+  max-inline-size: max(var(--yi-select-menu-max-width), calc(var(--yi-select-anchor-width, 0px) - 2px));
+}
+
+.yi-select__list {
+  display: flex;
+  flex-direction: column;
+  max-block-size: var(--yi-select-menu-max-height);
+  padding: var(--yi-select-menu-padding);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: var(--yi-select-menu-padding);
+}
+
+.yi-select__group {
+  display: flex;
+  flex-direction: column;
+
+  & + & {
+    margin-block-start: var(--yi-select-menu-padding);
+    padding-block-start: var(--yi-select-menu-padding);
+    border-block-start: 1px solid var(--yi-line);
+  }
+}
+
+.yi-select__group-label {
+  padding: var(--yi-select-option-padding);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  font-weight: 500;
+  line-height: var(--yi-leading-tight);
+}
+
+.yi-select__option {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  padding: var(--yi-select-option-padding);
+  border-radius: var(--yi-select-option-radius);
+  color: var(--yi-fg);
+  cursor: pointer;
+
+  &--active {
+    background: var(--yi-select-option-active-bg);
+  }
+
+  &[aria-selected="true"] {
+    color: var(--yi-select-option-selected-fg);
+  }
+
+  &[aria-disabled="true"] {
+    color: var(--yi-fg-subtle);
+    cursor: not-allowed;
+  }
+}
+
+.yi-select__option-icon,
+.yi-select__check {
+  flex: none;
+}
+
+.yi-select__option-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.yi-select__option-label,
+.yi-select__option-description {
+  @include truncate;
+}
+
+.yi-select__option-description {
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+}
+
+.yi-select__status {
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+@media (forced-colors: active) {
+  .yi-select__option--active {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}

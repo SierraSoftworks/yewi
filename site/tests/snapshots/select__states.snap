@@ -1,0 +1,163 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Small</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-0-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--sm yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-3-label" for="yi-3-control" class="yi-field__label">Medium</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-3-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-6-label" for="yi-6-control" class="yi-field__label">Large</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-6-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--lg yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-9-label" for="yi-9-control" class="yi-field__label">Empty</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-9-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value yi-select__value--placeholder">Choose a region</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-12-label" for="yi-12-control" class="yi-field__label">Disabled</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-12-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" disabled="disabled" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-15-label" for="yi-15-control" class="yi-field__label">Invalid</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="yi-15-control" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-invalid="true" aria-describedby="yi-15-message" class="yi-input yi-input--md yi-input--invalid yi-select__control yi-select__trigger">
+<span class="yi-select__value">Virginia</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<p id="yi-15-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>This region is being retired.</span>
+</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-18-label" for="yi-18-control" class="yi-field__label">Combobox</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox">
+<input value="Frankfurt" id="yi-18-control" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-21-label" for="yi-21-control" class="yi-field__label">Combobox, disabled</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-input--disabled">
+<input value="Frankfurt" id="yi-21-control" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" disabled="disabled" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-24-label" for="yi-24-control" class="yi-field__label">Combobox, invalid</label>
+<div class="yi-field__body">
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-input--invalid yi-select__control yi-select__combobox">
+<input value="" id="yi-24-control" type="text" role="combobox" placeholder="Search regions" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-invalid="true" aria-describedby="yi-24-message" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+<p id="yi-24-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Choose a region.</span>
+</p>
+</div>
+</div>
+</div>
