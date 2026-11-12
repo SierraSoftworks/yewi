@@ -1,7 +1,7 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div class="yi-stack" style="max-inline-size: 36rem">
+<div class="yi-stack" style="max-inline-size: 22rem">
 <div class="yi-cluster yi-cluster--nowrap">
 <div class="yi-input-group yi-input-group--sm yi-search-input">
 <span class="yi-input-group__affix yi-input-group__affix--prefix">
@@ -20,14 +20,14 @@ source: site/tests/snapshots.rs
 </button>
 </span>
 </div>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Apply</button>
+</div>
 <div class="yi-input-group yi-input-group--sm">
 <span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
 <input type="text" placeholder="Small" class="yi-input yi-input--md" aria-label="Small">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
 <button type="button" class="yi-button yi-button--default yi-button--md">Check</button>
 </span>
-</div>
-<button type="button" class="yi-button yi-button--default yi-button--sm">Apply</button>
 </div>
 <div class="yi-cluster yi-cluster--nowrap">
 <div class="yi-input-group yi-input-group--md yi-search-input">
@@ -47,14 +47,14 @@ source: site/tests/snapshots.rs
 </button>
 </span>
 </div>
+<button type="button" class="yi-button yi-button--default yi-button--md">Apply</button>
+</div>
 <div class="yi-input-group yi-input-group--md">
 <span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
 <input type="text" placeholder="Medium" class="yi-input yi-input--md" aria-label="Medium">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
 <button type="button" class="yi-button yi-button--default yi-button--md">Check</button>
 </span>
-</div>
-<button type="button" class="yi-button yi-button--default yi-button--md">Apply</button>
 </div>
 <div class="yi-cluster yi-cluster--nowrap">
 <div class="yi-input-group yi-input-group--lg yi-search-input">
@@ -74,13 +74,13 @@ source: site/tests/snapshots.rs
 </button>
 </span>
 </div>
+<button type="button" class="yi-button yi-button--default yi-button--lg">Apply</button>
+</div>
 <div class="yi-input-group yi-input-group--lg">
 <span class="yi-input-group__affix yi-input-group__affix--prefix">https://</span>
 <input type="text" placeholder="Large" class="yi-input yi-input--md" aria-label="Large">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
 <button type="button" class="yi-button yi-button--default yi-button--md">Check</button>
 </span>
-</div>
-<button type="button" class="yi-button yi-button--default yi-button--lg">Apply</button>
 </div>
 </div>
