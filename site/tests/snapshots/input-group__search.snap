@@ -1,0 +1,31 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-input-group yi-input-group--md yi-search-input">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+</span>
+<input value="" type="search" placeholder="Search services" autocomplete="off" class="yi-input yi-input--md" aria-label="Search services">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<span role="status">6 of 6 services</span>
+<ul style="margin: 0; padding-inline-start: 1.25rem">
+<li>billing-api</li>
+<li>checkout-api</li>
+<li>checkout-web</li>
+<li>identity</li>
+<li>search-indexer</li>
+<li>webhooks</li>
+</ul>
+</div>

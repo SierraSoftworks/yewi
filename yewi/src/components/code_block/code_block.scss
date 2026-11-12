@@ -1,0 +1,154 @@
+// CodeBlock
+//
+// A header bar over a scrolling `<pre>`. The block follows the theme of the
+// page, or carries its own `data-theme` to stay dark on a light page.
+@use "api" as *;
+
+.yi-code-block {
+  // Component tokens
+  --yi-code-block-bg: var(--yi-code-bg);
+  --yi-code-block-header-bg: color-mix(in srgb, var(--yi-fg) 5%, var(--yi-code-bg));
+  --yi-code-block-border: var(--yi-line);
+  --yi-code-block-radius: var(--yi-radius-card);
+  --yi-code-block-font-size: var(--yi-text-sm);
+  --yi-code-block-padding: var(--yi-space-lg);
+  --yi-code-block-max-height: none; // a length makes long code scroll inside the block
+  --yi-code-block-tab-size: 4;
+  --yi-code-block-number-color: var(--yi-fg-subtle);
+  --yi-code-block-marked-bg: color-mix(in srgb, var(--yi-accent) 12%, var(--yi-code-bg));
+  --yi-code-block-marked-line: var(--yi-accent-text);
+
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  overflow: hidden;
+  border: 1px solid var(--yi-code-block-border);
+  border-radius: var(--yi-code-block-radius);
+  background: var(--yi-code-block-bg);
+  // Restated so that a forced theme recolours the text as well.
+  color: var(--yi-fg);
+}
+
+.yi-code-block__header {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-md);
+  min-block-size: var(--yi-control-height-lg);
+  padding-inline: var(--yi-code-block-padding) var(--yi-space-xs);
+  background: var(--yi-code-block-header-bg);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-code-block__filename {
+  @include truncate;
+
+  flex: 0 1 auto;
+  color: var(--yi-fg);
+  font-family: var(--yi-font-mono);
+  font-variant-ligatures: var(--yi-font-mono-ligatures);
+}
+
+.yi-code-block__language {
+  flex: none;
+}
+
+.yi-code-block__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--yi-space-2xs);
+  margin-inline-start: auto;
+}
+
+.yi-code-block__body {
+  // The width of the line-number gutter, from the number of digits.
+  --_gutter: calc(var(--_digits, 2) * 1ch + var(--yi-space-lg));
+
+  margin: 0;
+  padding-block: var(--yi-space-md);
+  max-block-size: var(--yi-code-block-max-height);
+  overflow: auto;
+  font-size: var(--yi-code-block-font-size);
+  line-height: var(--yi-leading-relaxed);
+  tab-size: var(--yi-code-block-tab-size);
+
+  &:focus-visible {
+    @include focus-ring(-2px);
+  }
+
+  > code {
+    display: block;
+    // As wide as the longest line, so that a marked line is tinted all the
+    // way across when the block scrolls sideways.
+    inline-size: max-content;
+    min-inline-size: 100%;
+    padding-inline: var(--yi-code-block-padding);
+    font-size: inherit;
+  }
+
+  @for $digits from 1 through 6 {
+    &[data-yi-digits="#{$digits}"] {
+      --_digits: #{$digits};
+    }
+  }
+}
+
+.yi-code-block--wrap > .yi-code-block__body > code {
+  inline-size: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+// Line mode: each line is a block, so it can be numbered and marked.
+.yi-code-block--lines > .yi-code-block__body > code {
+  padding-inline: 0;
+  counter-reset: yi-code-line;
+}
+
+.yi-code-block__line {
+  --_line-bg: var(--yi-code-block-bg);
+
+  display: block;
+  min-block-size: 1lh;
+  padding-inline: var(--yi-code-block-padding);
+  background: var(--_line-bg);
+  counter-increment: yi-code-line;
+
+  &--marked {
+    --_line-bg: var(--yi-code-block-marked-bg);
+    // The subtle grey of a comment is too faint on the tint.
+    --yi-highlight-comment: var(--yi-fg-muted);
+
+    box-shadow: inset 2px 0 0 var(--yi-code-block-marked-line);
+  }
+}
+
+// The number is generated content: it is never selected or copied. It hangs
+// in the line's padding, so wrapped text lines up under the code, and it
+// stays put while the code scrolls sideways.
+.yi-code-block--numbered .yi-code-block__line {
+  padding-inline-start: calc(var(--yi-space-md) + var(--_gutter));
+  text-indent: calc(-1 * var(--_gutter));
+
+  &::before {
+    content: counter(yi-code-line);
+    position: sticky;
+    inset-inline-start: 0;
+    display: inline-block;
+    box-sizing: content-box;
+    inline-size: calc(var(--_gutter) - var(--yi-space-lg));
+    margin-inline-start: calc(-1 * var(--yi-space-md));
+    padding-inline: var(--yi-space-md) var(--yi-space-lg);
+    background: var(--_line-bg);
+    color: var(--yi-code-block-number-color);
+    text-align: end;
+    text-indent: 0;
+    user-select: none;
+  }
+
+  &.yi-code-block__line--marked::before {
+    box-shadow: inset 2px 0 0 var(--yi-code-block-marked-line);
+    color: var(--yi-fg);
+  }
+}

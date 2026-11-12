@@ -1,0 +1,67 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-code-block yi-code-block--lines yi-code-block--numbered">
+<div class="yi-code-block__header">
+<span title="rollout.log" class="yi-code-block__filename">rollout.log</span>
+<span class="yi-code-block__actions">
+<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--sm">Wrap</button>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" data-yi-digits="1" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-code-block__line">2026-01-15T11:58:02Z INFO  rollout{job="docs" region="fra"}: placed 4 of 4 allocations in 1.8s, waiting for health checks to pass
+</span>
+<span class="yi-code-block__line">2026-01-15T11:58:09Z WARN  rollout{job="docs" region="fra"}: allocation 7f3a9c1e is slow to start: image pull took 6.2s (caddy:2.8-alpine)
+</span>
+<span class="yi-code-block__line">2026-01-15T11:58:14Z INFO  rollout{job="docs" region="fra"}: all allocations healthy, promoting canaries and draining the previous version
+</span>
+<span class="yi-code-block__line">2026-01-15T11:58:15Z INFO  rollout{job="docs" region="ams"}: placed 4 of 4 allocations in 1.1s, waiting for health checks to pass
+</span>
+<span class="yi-code-block__line">2026-01-15T11:58:21Z INFO  rollout{job="docs" region="ams"}: all allocations healthy, promoting canaries and draining the previous version
+</span>
+<span class="yi-code-block__line">2026-01-15T11:58:21Z INFO  rollout{job="docs"}: finished in 19.4s</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block" style="--yi-code-block-max-height: 9rem">
+<div class="yi-code-block__header">
+<span title="rollout.log" class="yi-code-block__filename">rollout.log</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">2026-01-15T11:58:02Z INFO  rollout{job="docs" region="fra"}: placed 4 of 4 allocations in 1.8s, waiting for health checks to pass
+2026-01-15T11:58:09Z WARN  rollout{job="docs" region="fra"}: allocation 7f3a9c1e is slow to start: image pull took 6.2s (caddy:2.8-alpine)
+2026-01-15T11:58:14Z INFO  rollout{job="docs" region="fra"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:15Z INFO  rollout{job="docs" region="ams"}: placed 4 of 4 allocations in 1.1s, waiting for health checks to pass
+2026-01-15T11:58:21Z INFO  rollout{job="docs" region="ams"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:21Z INFO  rollout{job="docs"}: finished in 19.4s
+2026-01-15T11:58:02Z INFO  rollout{job="docs" region="fra"}: placed 4 of 4 allocations in 1.8s, waiting for health checks to pass
+2026-01-15T11:58:09Z WARN  rollout{job="docs" region="fra"}: allocation 7f3a9c1e is slow to start: image pull took 6.2s (caddy:2.8-alpine)
+2026-01-15T11:58:14Z INFO  rollout{job="docs" region="fra"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:15Z INFO  rollout{job="docs" region="ams"}: placed 4 of 4 allocations in 1.1s, waiting for health checks to pass
+2026-01-15T11:58:21Z INFO  rollout{job="docs" region="ams"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:21Z INFO  rollout{job="docs"}: finished in 19.4s
+2026-01-15T11:58:02Z INFO  rollout{job="docs" region="fra"}: placed 4 of 4 allocations in 1.8s, waiting for health checks to pass
+2026-01-15T11:58:09Z WARN  rollout{job="docs" region="fra"}: allocation 7f3a9c1e is slow to start: image pull took 6.2s (caddy:2.8-alpine)
+2026-01-15T11:58:14Z INFO  rollout{job="docs" region="fra"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:15Z INFO  rollout{job="docs" region="ams"}: placed 4 of 4 allocations in 1.1s, waiting for health checks to pass
+2026-01-15T11:58:21Z INFO  rollout{job="docs" region="ams"}: all allocations healthy, promoting canaries and draining the previous version
+2026-01-15T11:58:21Z INFO  rollout{job="docs"}: finished in 19.4s</code>
+</pre>
+</div>
+</div>

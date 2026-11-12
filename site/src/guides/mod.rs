@@ -2,8 +2,7 @@
 //! the module and an entry to [`GUIDES`].
 
 use yew::prelude::*;
-
-use crate::highlight;
+use yewi::Highlight;
 
 mod contributing;
 mod getting_started;
@@ -44,8 +43,8 @@ impl Guide {
 }
 
 /// A block of Rust source.
-fn rust(source: &str) -> Html {
-    html! { <pre class="docs-snippet"><code>{ highlight::rust(source.trim()) }</code></pre> }
+fn rust(source: &'static str) -> Html {
+    html! { <pre class="docs-snippet"><Highlight code={source.trim()} language="rust" /></pre> }
 }
 
 /// A block of anything else (TOML, HTML, CSS, shell), shown plain.
