@@ -1,0 +1,103 @@
+// Radio: the native input restyled as a ring. The dot is the background
+// showing through a thick border, so there is nothing to position.
+@use "api" as *;
+
+.yi-radio {
+  // Component tokens
+  --yi-radio-size: 1rem;
+  --yi-radio-bg: var(--yi-surface);
+  --yi-radio-border: var(--yi-line-strong);
+  --yi-radio-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-radio-accent: var(--yi-accent-solid); // ring when selected
+  --yi-radio-accent-hover: var(--yi-accent-solid-hover);
+  --yi-radio-dot: var(--yi-on-solid);
+
+  &__input {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: var(--yi-radio-size);
+    block-size: var(--yi-radio-size);
+    margin: 0;
+    border: 1px solid var(--yi-radio-border);
+    border-radius: var(--yi-radius-full);
+    background: var(--yi-radio-bg);
+    cursor: inherit;
+
+    @include motion {
+      transition:
+        border-color var(--yi-duration-fast) var(--yi-ease),
+        border-width var(--yi-duration-fast) var(--yi-ease),
+        background-color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:checked {
+      border-width: calc(var(--yi-radio-size) * 0.3125);
+      border-color: var(--yi-radio-accent);
+      background: var(--yi-radio-dot);
+    }
+  }
+
+  &:hover &__input:not(:disabled) {
+    border-color: var(--yi-radio-border-hover);
+
+    &:checked {
+      border-color: var(--yi-radio-accent-hover);
+    }
+  }
+
+  &--invalid {
+    --yi-radio-border: var(--yi-danger);
+    --yi-radio-border-hover: var(--yi-danger);
+  }
+
+  &.yi-choice--disabled {
+    --yi-radio-bg: var(--yi-tone-1);
+    --yi-radio-accent: var(--yi-line-strong);
+    --yi-radio-dot: var(--yi-surface);
+  }
+
+  &.yi-choice--sm {
+    --yi-radio-size: 0.875rem;
+  }
+
+  &.yi-choice--lg {
+    --yi-radio-size: 1.125rem;
+  }
+}
+
+.yi-radio-group {
+  // Component tokens
+  --yi-radio-group-gap: var(--yi-space-sm); // between options
+  --yi-radio-group-gap-inline: var(--yi-space-lg); // between options in a row
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--yi-radio-group-gap);
+  min-inline-size: 0;
+
+  &--horizontal {
+    flex-flow: row wrap;
+    column-gap: var(--yi-radio-group-gap-inline);
+  }
+}
+
+// Beside the label of an inline Field, the first option lines up with it.
+.yi-field--inline > .yi-field__body > .yi-radio-group {
+  padding-block: calc((var(--yi-control-height) - var(--yi-text-md) * var(--yi-leading)) / 2);
+}
+
+@media (forced-colors: active) {
+  .yi-radio__input {
+    border-color: FieldText;
+
+    &:checked {
+      border-color: Highlight;
+      background: HighlightText;
+    }
+  }
+}

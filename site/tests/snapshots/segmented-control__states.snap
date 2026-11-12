@@ -1,0 +1,34 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<div role="radiogroup" aria-label="Range" class="yi-segmented yi-segmented--md">
+<label class="yi-segmented__option">
+<input value="day" checked type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Day</span>
+</label>
+<label class="yi-segmented__option">
+<input value="week" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Week</span>
+</label>
+<label class="yi-segmented__option">
+<input value="year" type="radio" name="yi-0" disabled="disabled" class="yi-segmented__input">
+<span class="yi-segmented__label">Year</span>
+</label>
+</div>
+<div role="radiogroup" aria-label="Archived range" class="yi-segmented yi-segmented--md">
+<label class="yi-segmented__option">
+<input value="day" type="radio" name="yi-1" disabled="disabled" class="yi-segmented__input">
+<span class="yi-segmented__label">Day</span>
+</label>
+<label class="yi-segmented__option">
+<input value="week" checked type="radio" name="yi-1" disabled="disabled" class="yi-segmented__input">
+<span class="yi-segmented__label">Week</span>
+</label>
+<label class="yi-segmented__option">
+<input value="year" type="radio" name="yi-1" disabled="disabled" class="yi-segmented__input">
+<span class="yi-segmented__label">Year</span>
+</label>
+</div>
+<span role="status">Range: day</span>
+</div>

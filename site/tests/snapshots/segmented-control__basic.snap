@@ -1,0 +1,16 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="radiogroup" aria-label="Files shown" class="yi-segmented yi-segmented--md">
+<label class="yi-segmented__option">
+<input value="changed" checked type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">Changed</span>
+</label>
+<label class="yi-segmented__option">
+<input value="all" type="radio" name="yi-0" class="yi-segmented__input">
+<span class="yi-segmented__label">All</span>
+</label>
+</div>
+<span role="status">Showing 4 changed files</span>
+</div>
