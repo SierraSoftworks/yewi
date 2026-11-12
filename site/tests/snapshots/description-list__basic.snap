@@ -1,0 +1,21 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Workload">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Name</dt>
+<dd class="yi-description-list__value">caddy</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Cluster</dt>
+<dd class="yi-description-list__value">eu-west-1</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Running version</dt>
+<dd class="yi-description-list__value">2.8.4</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">On removal</dt>
+<dd class="yi-description-list__value">Drain connections, then stop</dd>
+</div>
+</dl>
