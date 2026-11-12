@@ -1,0 +1,36 @@
+---
+source: site/tests/snapshots.rs
+---
+<nav aria-label="Breadcrumb" class="yi-breadcrumbs yi-breadcrumbs--chevron">
+<ol class="yi-breadcrumbs__list">
+<li class="yi-breadcrumbs__item">
+<a href="#home" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+</path>
+</svg>
+<span class="yi-breadcrumbs__label">Home</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#missions" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Missions</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#mission" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Search and rescue exercise, northern sector, second rotation, night shift</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#members" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Members</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<span aria-current="page" class="yi-breadcrumbs__crumb">
+<span class="yi-breadcrumbs__label">Ada Lovelace</span>
+</span>
+</li>
+</ol>
+</nav>

@@ -1,0 +1,88 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="--yi-chart-axis-width: 2.5rem">
+<div class="yi-chart">
+<div class="yi-chart__body">
+<div aria-hidden="true" class="yi-chart__y">
+<span style="inset-block-start:100.00%" class="yi-chart__tick">0</span>
+<span style="inset-block-start:75.00%" class="yi-chart__tick">500</span>
+<span style="inset-block-start:50.00%" class="yi-chart__tick">1,000</span>
+<span style="inset-block-start:25.00%" class="yi-chart__tick">1,500</span>
+<span style="inset-block-start:0.00%" class="yi-chart__tick">2,000</span>
+</div>
+<div role="slider" tabindex="0" aria-label="Requests per hour" aria-valuemin="0" aria-valuemax="23" aria-valuenow="23" aria-valuetext="23:00: Requests 861" class="yi-chart__plot">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
+<path d="M0 750H10000M0 500H10000M0 250H10000M0 0H10000" class="yi-chart__grid">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<linearGradient id="yi-0-0" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" class="yi-chart__fade-from">
+</stop>
+<stop offset="1" class="yi-chart__fade-to">
+</stop>
+</linearGradient>
+<path d="M208 1000L208 590L625 605L1042 620L1458 629L1875 635L2292 616L2708 548L3125 410L3542 290L3958 245L4375 256L4792 234L5208 200L5625 213L6042 230L6458 251L6875 267L7292 305L7708 363L8125 420L8542 476L8958 520L9375 549L9792 570L9792 1000Z" fill="url(#yi-0-0)" class="yi-chart__area">
+</path>
+</g>
+</g>
+<path d="M0 1000H10000" class="yi-chart__zero">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<path d="M208 590L625 605L1042 620L1458 629L1875 635L2292 616L2708 548L3125 410L3542 290L3958 245L4375 256L4792 234L5208 200L5625 213L6042 230L6458 251L6875 267L7292 305L7708 363L8125 420L8542 476L8958 520L9375 549L9792 570" class="yi-chart__line">
+</path>
+</g>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="yi-chart__x">
+<span style="inset-inline-start:2.08%" class="yi-chart__tick yi-chart__tick--start">00:00</span>
+<span style="inset-inline-start:14.58%" class="yi-chart__tick">03:00</span>
+<span style="inset-inline-start:27.08%" class="yi-chart__tick">06:00</span>
+<span style="inset-inline-start:39.58%" class="yi-chart__tick">09:00</span>
+<span style="inset-inline-start:52.08%" class="yi-chart__tick">12:00</span>
+<span style="inset-inline-start:64.58%" class="yi-chart__tick">15:00</span>
+<span style="inset-inline-start:77.08%" class="yi-chart__tick">18:00</span>
+<span style="inset-inline-start:89.58%" class="yi-chart__tick">21:00</span>
+</div>
+</div>
+</div>
+<div class="yi-chart" style="--yi-chart-height: 6rem">
+<div class="yi-chart__body">
+<div aria-hidden="true" class="yi-chart__y">
+<span style="inset-block-start:100.00%" class="yi-chart__tick">0</span>
+<span style="inset-block-start:66.67%" class="yi-chart__tick">5</span>
+<span style="inset-block-start:33.33%" class="yi-chart__tick">10</span>
+<span style="inset-block-start:0.00%" class="yi-chart__tick">15</span>
+</div>
+<div role="slider" tabindex="0" aria-label="Errors per hour" aria-valuemin="0" aria-valuemax="23" aria-valuenow="23" aria-valuetext="23:00: Errors 0" class="yi-chart__plot">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
+<path d="M0 667H10000M0 333H10000M0 0H10000" class="yi-chart__grid">
+</path>
+<g>
+<g class="yi-chart__c--danger">
+<path d="M917 1000V933H1167V1000ZM2583 1000V867H2833V1000ZM3417 1000V800H3667V1000ZM3833 1000V67H4083V1000ZM4250 1000V400H4500V1000ZM4667 1000V867H4917V1000ZM5917 1000V933H6167V1000ZM7167 1000V733H7417V1000ZM7583 1000V933H7833V1000Z" class="yi-chart__bars">
+</path>
+</g>
+</g>
+<path d="M0 1000H10000" class="yi-chart__zero">
+</path>
+<g>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="yi-chart__x">
+<span style="inset-inline-start:2.08%" class="yi-chart__tick yi-chart__tick--start">00:00</span>
+<span style="inset-inline-start:14.58%" class="yi-chart__tick">03:00</span>
+<span style="inset-inline-start:27.08%" class="yi-chart__tick">06:00</span>
+<span style="inset-inline-start:39.58%" class="yi-chart__tick">09:00</span>
+<span style="inset-inline-start:52.08%" class="yi-chart__tick">12:00</span>
+<span style="inset-inline-start:64.58%" class="yi-chart__tick">15:00</span>
+<span style="inset-inline-start:77.08%" class="yi-chart__tick">18:00</span>
+<span style="inset-inline-start:89.58%" class="yi-chart__tick">21:00</span>
+</div>
+</div>
+</div>
+</div>

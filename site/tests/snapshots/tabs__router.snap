@@ -1,0 +1,26 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Mission sections" class="yi-tabs yi-tabs--line yi-tabs--md">
+<ul role="list" class="yi-tabs__list">
+<li class="yi-tabs__item">
+<a href="/missions/alpha" aria-current="page" class="yi-tabs__tab">
+<span class="yi-tabs__label">Overview</span>
+</a>
+</li>
+<li class="yi-tabs__item">
+<a href="/missions/alpha/members" class="yi-tabs__tab">
+<span class="yi-tabs__label">Members</span>
+<span class="yi-tabs__count">6</span>
+</a>
+</li>
+<li class="yi-tabs__item">
+<a href="/missions/alpha/logs" class="yi-tabs__tab">
+<span class="yi-tabs__label">Logs</span>
+</a>
+</li>
+</ul>
+</nav>
+<p role="status">Route: /missions/alpha</p>
+</div>

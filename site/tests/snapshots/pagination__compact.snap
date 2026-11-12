@@ -1,0 +1,47 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Results" class="yi-pagination yi-pagination--md">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot yi-pagination__status">Page 3 of 12</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+<nav aria-label="Audit log" class="yi-pagination yi-pagination--md">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot yi-pagination__status">Page 4</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" disabled="disabled" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+</div>

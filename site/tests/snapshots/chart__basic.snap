@@ -1,0 +1,49 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-chart">
+<div class="yi-chart__body">
+<div aria-hidden="true" class="yi-chart__y">
+<span style="inset-block-start:100.00%" class="yi-chart__tick">0</span>
+<span style="inset-block-start:75.00%" class="yi-chart__tick">200</span>
+<span style="inset-block-start:50.00%" class="yi-chart__tick">400</span>
+<span style="inset-block-start:25.00%" class="yi-chart__tick">600</span>
+<span style="inset-block-start:0.00%" class="yi-chart__tick">800</span>
+</div>
+<div role="slider" tabindex="0" aria-label="Visitors per day" aria-valuemin="0" aria-valuemax="13" aria-valuenow="13" aria-valuetext="14 Jan: Visitors 318" class="yi-chart__plot">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
+<path d="M0 750H10000M0 500H10000M0 250H10000M0 0H10000" class="yi-chart__grid">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<linearGradient id="yi-0-0" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" class="yi-chart__fade-from">
+</stop>
+<stop offset="1" class="yi-chart__fade-to">
+</stop>
+</linearGradient>
+<path d="M0 1000L0 485L769 515L1538 436L2308 350L3077 378L3846 624L4615 655L5385 419L6154 325L6923 235L7692 266L8462 208L9231 560L10000 603L10000 1000Z" fill="url(#yi-0-0)" class="yi-chart__area">
+</path>
+</g>
+</g>
+<path d="M0 1000H10000" class="yi-chart__zero">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<path d="M0 485L769 515L1538 436L2308 350L3077 378L3846 624L4615 655L5385 419L6154 325L6923 235L7692 266L8462 208L9231 560L10000 603" class="yi-chart__line">
+</path>
+</g>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="yi-chart__x">
+<span style="inset-inline-start:0.00%" class="yi-chart__tick yi-chart__tick--start">1 Jan</span>
+<span style="inset-inline-start:15.38%" class="yi-chart__tick">3 Jan</span>
+<span style="inset-inline-start:30.77%" class="yi-chart__tick">5 Jan</span>
+<span style="inset-inline-start:46.15%" class="yi-chart__tick">7 Jan</span>
+<span style="inset-inline-start:61.54%" class="yi-chart__tick">9 Jan</span>
+<span style="inset-inline-start:76.92%" class="yi-chart__tick">11 Jan</span>
+<span style="inset-inline-start:92.31%" class="yi-chart__tick">13 Jan</span>
+</div>
+</div>
+</div>
