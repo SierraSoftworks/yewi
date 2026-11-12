@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 26rem">
+<span class="yi-copyable yi-copyable--field yi-copyable--mono">
+<span id="yi-0" class="yi-copyable__value">rtk_live_9Zp4mQ2vX7cL1sT8bN5wK3hJ6dF0gR4yU2aE7iO1pM8nB5vC3xZ6lK9jH</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy token" title="Copy token" aria-describedby="yi-0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+<span class="yi-copyable yi-copyable--field yi-copyable--mono yi-copyable--truncate">
+<span id="yi-1" title="https://automate.example.com/api/v1/webhooks/deploy-caddy/3f1c9a7e52b84d06" class="yi-copyable__value">https://automate.example.com/api/v1/webhooks/deploy-caddy/3f1c9a7e52b84d06</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy address" title="Copy address" aria-describedby="yi-1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+<span class="yi-copyable yi-copyable--field">
+<span id="yi-2" class="yi-copyable__value">Sierra Softworks, 12 Harbour Road, Cape Town, 8001</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-2">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>

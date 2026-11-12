@@ -1,0 +1,94 @@
+// Copyable and CopyButton
+//
+// The trigger is a Button, so it follows button tokens. Copyable only sizes
+// it down to sit inside a line of text, and draws the chip and field frames.
+@use "api" as *;
+
+// Small enough for a line of text, large enough to hit (WCAG 2.5.8). The
+// negative margin stops it from pushing the lines of a paragraph apart.
+.yi-copyable__button.yi-button {
+  --yi-button-height: var(--yi-copyable-button-size);
+
+  flex: none;
+  margin-block: -0.25rem;
+}
+
+.yi-copyable {
+  // Component tokens
+  --yi-copyable-gap: var(--yi-space-2xs);
+  --yi-copyable-button-size: 1.5rem;
+  --yi-copyable-chip-bg: var(--yi-code-bg);
+  --yi-copyable-field-bg: var(--yi-surface);
+  --yi-copyable-field-border: var(--yi-line-strong);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-copyable-gap);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+
+  &--mono > .yi-copyable__value {
+    font-family: var(--yi-font-mono);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+    font-size: 0.92em;
+  }
+
+  &--truncate > .yi-copyable__value {
+    @include truncate;
+  }
+
+  &--chip {
+    padding-inline: var(--yi-space-sm) var(--yi-space-2xs);
+    border-radius: var(--yi-radius-sm);
+    background: var(--yi-copyable-chip-bg);
+  }
+
+  &--field {
+    display: flex;
+    gap: var(--yi-space-sm);
+    min-block-size: var(--yi-control-height);
+    padding-inline: calc(var(--yi-control-padding) - 0.25rem) var(--yi-space-xs);
+    border: 1px solid var(--yi-copyable-field-border);
+    border-radius: var(--yi-radius-control);
+    background: var(--yi-copyable-field-bg);
+
+    > .yi-copyable__value {
+      flex: 1;
+      padding-block: var(--yi-space-xs);
+    }
+
+    // Stays level with the first line when the value wraps.
+    > .yi-copyable__button.yi-button {
+      align-self: flex-start;
+      margin-block: calc((var(--yi-control-height) - 2px - var(--yi-copyable-button-size)) / 2);
+    }
+  }
+}
+
+.yi-copyable__value {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.yi-copy-button {
+  &[data-yi-state="copied"] > .yi-icon {
+    color: var(--yi-ok);
+  }
+
+  &[data-yi-state="failed"] > .yi-icon {
+    color: var(--yi-danger);
+  }
+}
+
+// Holds the text for the `execCommand` fallback for the length of one call.
+.yi-copyable-scratch {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}

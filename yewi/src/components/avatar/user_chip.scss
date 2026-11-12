@@ -1,0 +1,95 @@
+// UserChip
+@use "api" as *;
+
+.yi-user-chip {
+  // Component tokens
+  --yi-user-chip-gap: var(--yi-space-sm);
+  --yi-user-chip-bg: transparent;
+  --yi-user-chip-bg-hover: transparent;
+  --yi-user-chip-max-width: 18rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-user-chip-gap);
+  min-inline-size: 0;
+  max-inline-size: min(100%, var(--yi-user-chip-max-width));
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-user-chip-bg);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading-tight);
+  text-align: start;
+  text-decoration: none;
+  vertical-align: middle;
+
+  &--sm {
+    --yi-user-chip-gap: var(--yi-space-xs);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-user-chip-gap: var(--yi-space-md);
+
+    font-size: var(--yi-text-lg);
+  }
+
+  &--soft {
+    --yi-user-chip-bg: var(--yi-neutral-soft);
+    --yi-user-chip-bg-hover: color-mix(in srgb, var(--yi-neutral) 22%, transparent);
+
+    padding: var(--yi-space-2xs);
+    padding-inline-end: var(--yi-space-md);
+  }
+}
+
+// Links and buttons.
+:is(a, button).yi-user-chip {
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    background: var(--yi-user-chip-bg-hover);
+    text-decoration: none;
+  }
+
+  &.yi-user-chip--plain:hover .yi-user-chip__name {
+    color: var(--yi-accent-text);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-user-chip__text {
+  display: grid;
+  min-inline-size: 0;
+}
+
+.yi-user-chip__name {
+  @include truncate;
+
+  font-weight: 500;
+}
+
+.yi-user-chip__detail {
+  @include truncate;
+
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+}
+
+@media (forced-colors: active) {
+  .yi-user-chip--soft {
+    border: 1px solid CanvasText;
+  }
+}

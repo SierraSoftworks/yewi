@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 12rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Replicas</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="3" id="yi-0-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="3" aria-valuemin="1" aria-valuemax="20" aria-describedby="yi-0-message" class="yi-number-input__input">
+</div>
+<p id="yi-0-message" class="yi-field__message">Between 1 and 20.</p>
+</div>
+</div>
+<span role="status">Replicas: 3</span>
+</div>

@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<section aria-label="Rollouts" style="inline-size: min(100%, 26rem); min-block-size: 9rem; display: grid; align-items: center; border: 1px solid var(--yi-line); border-radius: var(--yi-radius-card); background: var(--yi-surface)">
+<div role="status" class="yi-loading yi-loading--block yi-loading--md yi-loading--delay">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+<span class="yi-loading__label">Loading rollouts</span>
+</div>
+</section>
+<button type="button" class="yi-button yi-button--default yi-button--md">Finish loading</button>
+</div>

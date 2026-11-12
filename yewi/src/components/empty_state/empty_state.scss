@@ -1,0 +1,108 @@
+// EmptyState and ErrorState: an icon, a headline, supporting copy and actions.
+//
+// Neither draws a surface. Sizes and tones set the component tokens below.
+@use "api" as *;
+
+.yi-empty-state {
+  // Component tokens
+  --yi-empty-state-padding: var(--yi-space-2xl) var(--yi-space-xl);
+  --yi-empty-state-gap: var(--yi-space-sm);
+  --yi-empty-state-measure: 30rem;
+  --yi-empty-state-icon-size: 3rem;
+  --yi-empty-state-icon-fg: var(--yi-fg-muted);
+  --yi-empty-state-icon-bg: var(--yi-neutral-soft);
+  --yi-empty-state-fg: var(--yi-fg-muted);
+  --yi-empty-state-title-fg: var(--yi-fg);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--yi-empty-state-gap);
+  padding: var(--yi-empty-state-padding);
+  color: var(--yi-empty-state-fg);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  text-align: center;
+  text-wrap: pretty;
+
+  &--start {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  &--sm {
+    --yi-empty-state-padding: var(--yi-space-lg);
+    --yi-empty-state-gap: var(--yi-space-xs);
+    --yi-empty-state-icon-size: 2.25rem;
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-empty-state-padding: var(--yi-space-4xl) var(--yi-space-xl);
+    --yi-empty-state-gap: var(--yi-space-md);
+    --yi-empty-state-icon-size: 3.75rem;
+
+    font-size: var(--yi-text-lg);
+  }
+
+  @each $tone in ok, warn, danger, info, active {
+    &--#{$tone} {
+      --yi-empty-state-icon-fg: var(--yi-#{$tone});
+      --yi-empty-state-icon-bg: var(--yi-#{$tone}-soft);
+    }
+  }
+}
+
+.yi-empty-state__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--yi-empty-state-icon-size);
+  block-size: var(--yi-empty-state-icon-size);
+  margin-block-end: var(--yi-space-xs);
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-empty-state-icon-bg);
+  color: var(--yi-empty-state-icon-fg);
+
+  --yi-icon-size: calc(var(--yi-empty-state-icon-size) / 2);
+}
+
+.yi-empty-state__title {
+  @include heading("xl");
+
+  margin: 0;
+  color: var(--yi-empty-state-title-fg);
+
+  .yi-empty-state--sm > & {
+    @include heading("md");
+  }
+
+  .yi-empty-state--lg > & {
+    @include heading("2xl");
+  }
+}
+
+.yi-empty-state__body {
+  max-inline-size: var(--yi-empty-state-measure);
+
+  > :where(p) {
+    margin: 0;
+  }
+
+  > :where(p + p) {
+    margin-block-start: var(--yi-space-sm);
+  }
+}
+
+.yi-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--yi-space-sm);
+  margin-block-start: var(--yi-space-sm);
+
+  .yi-empty-state--start > & {
+    justify-content: flex-start;
+  }
+}

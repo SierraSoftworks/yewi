@@ -1,0 +1,17 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster yi-cluster--align-center">
+<span style="--yi-skeleton-width:12rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--text yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span style="--yi-skeleton-width:8rem;--yi-skeleton-height:4.5rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--block yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+<span style="--yi-skeleton-width:3rem;" aria-hidden="true" class="yi-skeleton yi-skeleton--circle yi-skeleton--shimmer">
+<span class="yi-skeleton__bone">
+</span>
+</span>
+</div>
