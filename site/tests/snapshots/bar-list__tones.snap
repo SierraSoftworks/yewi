@@ -1,0 +1,77 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:16rem" class="yi-grid">
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<div class="yi-bar-list__head">
+<span>Status</span>
+<span>Responses</span>
+</div>
+<ol role="list" aria-label="Responses by status" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item yi-bar-list__item--ok">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">2xx Success</span>
+</span>
+<span class="yi-bar-list__value">48.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:10.6%" class="yi-bar-list__item yi-bar-list__item--info">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">3xx Redirect</span>
+</span>
+<span class="yi-bar-list__value">5.1k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:4.7%" class="yi-bar-list__item yi-bar-list__item--warn">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">4xx Client error</span>
+</span>
+<span class="yi-bar-list__value">2.3k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:0.7%" class="yi-bar-list__item yi-bar-list__item--danger">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">5xx Server error</span>
+</span>
+<span class="yi-bar-list__value">318</span>
+</div>
+</li>
+</ol>
+</div>
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--sm yi-bar-list--warn">
+<div class="yi-bar-list__head">
+<span>Endpoint</span>
+<span>p95</span>
+</div>
+<ol role="list" aria-label="Slowest endpoints" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<a href="#search" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">GET /api/v1/search</span>
+</span>
+<span class="yi-bar-list__value">1.84 s</span>
+</a>
+</li>
+<li style="--yi-bar-list-fill:33.7%" class="yi-bar-list__item">
+<a href="#events" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">POST /api/v1/events</span>
+</span>
+<span class="yi-bar-list__value">620 ms</span>
+</a>
+</li>
+<li style="--yi-bar-list-fill:5.2%" class="yi-bar-list__item">
+<a href="#projects" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">GET /api/v1/projects</span>
+</span>
+<span class="yi-bar-list__value">95 ms</span>
+</a>
+</li>
+</ol>
+</div>
+</div>

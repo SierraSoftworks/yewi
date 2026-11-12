@@ -1,0 +1,109 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:16rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<strong>Behind</strong>
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<ol role="list" aria-label="Referrers, bar Behind" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Google</span>
+</span>
+<span class="yi-bar-list__share">44%</span>
+<span class="yi-bar-list__value">3.1k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:60.1%" class="yi-bar-list__item yi-bar-list__item--muted">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Direct</span>
+</span>
+<span class="yi-bar-list__share">27%</span>
+<span class="yi-bar-list__value">1.9k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:38.6%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">github.com</span>
+</span>
+<span class="yi-bar-list__share">17%</span>
+<span class="yi-bar-list__value">1.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:21.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">news.ycombinator.com</span>
+</span>
+<span class="yi-bar-list__share">9%</span>
+<span class="yi-bar-list__value">655</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:6.9%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">duckduckgo.com</span>
+</span>
+<span class="yi-bar-list__share">3%</span>
+<span class="yi-bar-list__value">214</span>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<strong>Under</strong>
+<div class="yi-bar-list yi-bar-list--under yi-bar-list--md">
+<ol role="list" aria-label="Referrers, bar Under" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Google</span>
+</span>
+<span class="yi-bar-list__share">44%</span>
+<span class="yi-bar-list__value">3.1k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:60.1%" class="yi-bar-list__item yi-bar-list__item--muted">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Direct</span>
+</span>
+<span class="yi-bar-list__share">27%</span>
+<span class="yi-bar-list__value">1.9k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:38.6%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">github.com</span>
+</span>
+<span class="yi-bar-list__share">17%</span>
+<span class="yi-bar-list__value">1.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:21.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">news.ycombinator.com</span>
+</span>
+<span class="yi-bar-list__share">9%</span>
+<span class="yi-bar-list__value">655</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:6.9%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">duckduckgo.com</span>
+</span>
+<span class="yi-bar-list__share">3%</span>
+<span class="yi-bar-list__value">214</span>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
