@@ -1,0 +1,335 @@
+// BarList
+//
+// The bar is a pseudo-element of the row sized by `--yi-bar-list-fill`, which
+// each item sets inline, so a row costs no extra elements. Variants, sizes
+// and tones set the component tokens below.
+@use "api" as *;
+
+.yi-bar-list {
+  // Component tokens
+  --yi-bar-list-tone: var(--yi-accent); // colour the bars are mixed from
+  --yi-bar-list-strength: 14%; // how much of the tone a bar carries
+  --yi-bar-list-strength-hover: 22%;
+  --yi-bar-list-strength-selected: 26%;
+  --yi-bar-list-selected-line: var(--yi-accent-line); // outline of the chosen row's bar
+  --yi-bar-list-track: var(--yi-neutral-soft); // track of an `Under` bar
+  --yi-bar-list-bar-size: var(--yi-space-xs); // thickness of an `Under` bar
+  --yi-bar-list-row-height: var(--yi-control-height);
+  --yi-bar-list-row-padding: var(--yi-space-sm);
+  --yi-bar-list-gap: var(--yi-space-2xs); // space between rows
+  --yi-bar-list-radius: var(--yi-radius-sm);
+  --yi-bar-list-fg: var(--yi-fg);
+  --yi-bar-list-value-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-xs);
+  min-inline-size: 0;
+  color: var(--yi-bar-list-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+
+  &--sm {
+    --yi-bar-list-row-height: var(--yi-control-height-sm);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-bar-list-row-height: var(--yi-control-height-lg);
+  }
+
+  @each $tone in ok, warn, danger, info, active, neutral {
+    &--#{$tone},
+    .yi-bar-list__item--#{$tone} {
+      --yi-bar-list-tone: var(--yi-#{$tone});
+      --yi-bar-list-selected-line: color-mix(in srgb, var(--yi-#{$tone}) 45%, transparent);
+    }
+  }
+}
+
+.yi-bar-list__head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--yi-space-md);
+  padding-inline: var(--yi-bar-list-row-padding);
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+  font-weight: 500;
+}
+
+.yi-bar-list__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-bar-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yi-bar-list__item {
+  position: relative;
+}
+
+// Long lists: rows far from the viewport skip layout and paint.
+.yi-bar-list--long .yi-bar-list__item {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto var(--yi-bar-list-row-height);
+}
+
+.yi-bar-list__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-md);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--yi-bar-list-row-height);
+  margin: 0;
+  padding: 0 var(--yi-bar-list-row-padding);
+  border: 0;
+  border-radius: var(--yi-bar-list-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+
+  // The bar.
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--yi-bar-list-fill, 0%);
+    border-radius: var(--yi-bar-list-radius);
+    background: color-mix(in srgb, var(--yi-bar-list-tone) var(--yi-bar-list-strength), transparent);
+    pointer-events: none;
+
+    @include motion {
+      transition:
+        background-color var(--yi-duration-fast) var(--yi-ease),
+        inline-size var(--yi-duration) var(--yi-ease);
+    }
+  }
+
+  &:is(a, button) {
+    cursor: pointer;
+
+    &:hover {
+      --yi-bar-list-strength: var(--yi-bar-list-strength-hover);
+
+      text-decoration: none;
+    }
+
+    // Rows may be clipped by a scrolling parent, so the ring sits inside.
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+
+  &[aria-pressed="true"] {
+    --yi-bar-list-strength: var(--yi-bar-list-strength-selected);
+
+    &::before {
+      box-shadow: inset 0 0 0 1px var(--yi-bar-list-selected-line);
+    }
+  }
+}
+
+.yi-bar-list__label {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.5em;
+  min-inline-size: 0;
+}
+
+.yi-bar-list__glyph {
+  flex: none;
+  color: var(--yi-fg-subtle);
+  font-size: 0.85em;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.yi-bar-list__text {
+  @include truncate;
+}
+
+.yi-bar-list__item--muted .yi-bar-list__text {
+  color: var(--yi-fg-muted);
+  font-style: italic;
+}
+
+.yi-bar-list__share,
+.yi-bar-list__value {
+  position: relative;
+  flex: none;
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.yi-bar-list__share {
+  min-inline-size: 4ch;
+  color: var(--yi-fg-subtle);
+  font-size: var(--yi-text-xs);
+}
+
+.yi-bar-list__value {
+  min-inline-size: 4ch;
+  font-weight: var(--yi-bar-list-value-weight);
+}
+
+// The row action floats over the end of the row. It is a sibling of the
+// row, never a child, so a button is not nested in a button.
+.yi-bar-list__action {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: var(--yi-space-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  block-size: calc(var(--yi-bar-list-row-height) - var(--yi-space-sm));
+  aspect-ratio: 1;
+  margin-block: auto;
+  padding: 0;
+  border: 1px solid var(--yi-line-strong);
+  border-radius: var(--yi-radius-sm);
+  background: var(--yi-surface-raised);
+  color: var(--yi-fg-muted);
+  cursor: pointer;
+  opacity: 0;
+
+  @include motion {
+    transition: opacity var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    color: var(--yi-fg);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  .yi-bar-list__item:hover > &,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  // Without hover the control is always there, beside the figures.
+  @media (hover: none) {
+    position: static;
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .yi-bar-list__item:has(> .yi-bar-list__action) {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-xs);
+  }
+}
+
+.yi-bar-list--under {
+  --yi-bar-list-strength: 75%;
+  --yi-bar-list-strength-hover: 100%;
+  --yi-bar-list-strength-selected: 100%;
+  --yi-bar-list-row-padding: 0;
+  --yi-bar-list-gap: var(--yi-space-xs);
+
+  .yi-bar-list__row {
+    padding-block-end: calc(var(--yi-bar-list-bar-size) + var(--yi-space-xs));
+
+    &::before,
+    &::after {
+      inset-block: auto 0;
+      block-size: var(--yi-bar-list-bar-size);
+      border-radius: var(--yi-radius-full);
+    }
+
+    // The track.
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      z-index: -1;
+      background: var(--yi-bar-list-track);
+      pointer-events: none;
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--yi-accent-text);
+
+      &::before {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .yi-bar-list__item {
+    isolation: isolate;
+  }
+
+  .yi-bar-list__action {
+    inset-block-end: calc(var(--yi-bar-list-bar-size) + var(--yi-space-xs));
+    inset-inline-end: 0;
+  }
+}
+
+.yi-bar-list__more {
+  align-self: flex-start;
+  block-size: var(--yi-control-height-sm);
+  padding-inline: var(--yi-bar-list-row-padding);
+  border: 0;
+  border-radius: var(--yi-radius-control);
+  background: none;
+  color: var(--yi-fg-muted);
+  font: inherit;
+  font-size: var(--yi-text-sm);
+  font-weight: 500;
+  cursor: pointer;
+
+  @include motion {
+    transition: color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    color: var(--yi-fg);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-bar-list__pages {
+  align-self: flex-end;
+}
+
+.yi-bar-list__empty {
+  display: grid;
+  place-items: center;
+  min-block-size: calc(var(--yi-bar-list-row-height) * 3);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+// Fills are dropped in forced colours, so the bar becomes a rule.
+@media (forced-colors: active) {
+  .yi-bar-list__row::before {
+    border-block-end: 2px solid CanvasText;
+    border-radius: 0;
+    background: none;
+  }
+
+  .yi-bar-list__row[aria-pressed="true"]::before {
+    border-block-end-color: Highlight;
+    box-shadow: none;
+  }
+}

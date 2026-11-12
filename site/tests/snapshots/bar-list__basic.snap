@@ -1,0 +1,67 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 28rem">
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<div class="yi-bar-list__head">
+<span>Page</span>
+<span>Visitors</span>
+</div>
+<ol role="list" aria-label="Top pages" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/</span>
+</span>
+<span class="yi-bar-list__share">46%</span>
+<span class="yi-bar-list__value">4.8k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:44.5%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/pricing</span>
+</span>
+<span class="yi-bar-list__share">21%</span>
+<span class="yi-bar-list__value">2.1k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:41.3%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/docs/getting-started</span>
+</span>
+<span class="yi-bar-list__share">19%</span>
+<span class="yi-bar-list__value">2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:19.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/blog/shipping-faster-with-fewer-dashboards</span>
+</span>
+<span class="yi-bar-list__share">9%</span>
+<span class="yi-bar-list__value">913</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:8.4%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/changelog</span>
+</span>
+<span class="yi-bar-list__share">4%</span>
+<span class="yi-bar-list__value">402</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:2.6%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/about</span>
+</span>
+<span class="yi-bar-list__share">1%</span>
+<span class="yi-bar-list__value">127</span>
+</div>
+</li>
+</ol>
+</div>
+</div>
