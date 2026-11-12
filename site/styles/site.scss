@@ -583,3 +583,258 @@ html {
     padding: var(--yi-space-xl) var(--yi-space-lg) var(--yi-space-3xl);
   }
 }
+
+// ---- Review gallery ------------------------------------------------------------
+// The packed single-file gallery (`e2e/viewer.mjs`, `src/gallery.rs`).
+
+// Accents a reviewer can preview. Apps set the same two inputs on `:root`.
+[data-gallery-accent="violet"] {
+  --yi-accent: light-dark(#6d4aff, #8b6dff);
+}
+
+[data-gallery-accent="teal"] {
+  --yi-accent: light-dark(#0f9d94, #3cc6bb);
+}
+
+[data-gallery-accent="green"] {
+  --yi-accent: light-dark(#2a9d5c, #55c184);
+}
+
+[data-gallery-accent="amber"] {
+  --yi-accent: light-dark(#c77700, #f0a93a);
+}
+
+[data-gallery-accent="rose"] {
+  --yi-accent: light-dark(#d6336c, #f06a97);
+}
+
+[data-gallery-accent="grey"] {
+  --yi-accent: light-dark(#5c6470, #a3abb8);
+  --yi-neutral-tint: 0;
+}
+
+.gallery-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-lg);
+  min-block-size: $header;
+  padding: var(--yi-space-xs) var(--yi-space-xl);
+  background: color-mix(in srgb, var(--yi-surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-block-end: 1px solid var(--yi-line);
+
+  &__build {
+    color: var(--yi-fg-subtle);
+    font-size: var(--yi-text-sm);
+  }
+
+  &__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--yi-space-md);
+    margin-inline-start: auto;
+  }
+}
+
+.gallery-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--yi-space-sm);
+  font-family: var(--yi-font-heading);
+  font-size: var(--yi-text-xl);
+  font-weight: 500;
+
+  small {
+    @include eyebrow;
+  }
+}
+
+.gallery-body {
+  display: grid;
+  grid-template-columns: $sidebar minmax(0, 1fr);
+  align-items: start;
+}
+
+// The menu entries are buttons dressed as the documentation's sidebar links.
+.gallery-sidebar button {
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.gallery-main {
+  max-inline-size: none;
+
+  --gallery-stage: 100%;
+
+  &--tablet {
+    --gallery-stage: 48rem;
+  }
+
+  &--phone {
+    --gallery-stage: 24.375rem;
+  }
+}
+
+.gallery-example {
+  display: grid;
+  gap: var(--yi-space-sm);
+  scroll-margin-block-start: calc($header + 1rem);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-md);
+
+    code {
+      margin-inline-end: auto;
+      color: var(--yi-fg-subtle);
+      font-size: var(--yi-text-sm);
+      background: none;
+    }
+  }
+
+  > p {
+    max-inline-size: 46rem;
+    color: var(--yi-fg-muted);
+  }
+
+  // The checkered gutter shows where a narrowed stage ends.
+  &__frame {
+    border: 1px solid var(--yi-line);
+    border-radius: var(--yi-radius-card);
+    background: var(--yi-tone-1);
+    overflow: clip;
+  }
+
+  &__stage {
+    position: relative;
+    inline-size: min(100%, var(--gallery-stage));
+    padding: var(--yi-space-xl);
+    background: var(--yi-surface);
+    // Container queries inside an example answer to the stage, so a narrow stage
+    // shows the narrow layout.
+    container-type: inline-size;
+  }
+
+  &__replays {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--yi-space-xs);
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// The replay player's own pieces.
+.gallery-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  padding: var(--yi-space-2xs) var(--yi-space-md);
+  border: 1px solid var(--yi-line-strong);
+  border-radius: 999px;
+  background: var(--yi-surface);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  cursor: pointer;
+
+  &::before {
+    content: "\25B6";
+    font-size: 0.7em;
+    color: var(--yi-accent-text);
+  }
+
+  &:hover {
+    color: var(--yi-fg);
+    border-color: var(--yi-accent-line);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  // Ends differently from its spec: see `e2e/verify-replays.mjs`.
+  &[data-inexact] {
+    border-style: dashed;
+    color: var(--yi-fg-subtle);
+  }
+
+  &[data-state="playing"] {
+    background: var(--yi-accent-soft);
+    color: var(--yi-accent-text);
+    border-color: var(--yi-accent-line);
+
+    &::before {
+      content: "\25A0";
+    }
+  }
+}
+
+.gallery-cursor {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 2147483647;
+  inline-size: 20px;
+  block-size: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--yi-accent-solid);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--yi-accent) 25%, transparent);
+  pointer-events: none;
+  transition:
+    translate 0.35s ease,
+    scale 0.12s ease,
+    opacity 0.2s ease;
+
+  &[data-down] {
+    scale: 0.6;
+    background: var(--yi-accent-solid);
+  }
+
+  &[hidden] {
+    display: block;
+    opacity: 0;
+  }
+}
+
+.gallery-keys {
+  position: fixed;
+  inset: auto auto var(--yi-space-xl) 50%;
+  translate: -50% 0;
+  z-index: 2147483647;
+  display: flex;
+  gap: var(--yi-space-sm);
+  align-items: center;
+  padding: var(--yi-space-sm) var(--yi-space-lg);
+  border-radius: var(--yi-radius-card);
+  background: light-dark(#15171a, #f3f3f3);
+  color: light-dark(#fff, #15171a);
+  font-size: var(--yi-text-sm);
+  box-shadow: var(--yi-shadow-overlay);
+  pointer-events: none;
+
+  kbd {
+    padding: 0 var(--yi-space-xs);
+    border: 1px solid currentcolor;
+    border-radius: var(--yi-radius-sm);
+    font-family: var(--yi-font-mono);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}

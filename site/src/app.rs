@@ -3,7 +3,7 @@
 use yew::prelude::*;
 use yew_router::{history::AnyHistory, prelude::*};
 
-use crate::shell;
+use crate::{gallery::Gallery, shell};
 
 #[derive(Debug, Clone, PartialEq, Routable)]
 pub enum Route {
@@ -13,6 +13,11 @@ pub enum Route {
     Guide { slug: String },
     #[at("/components/:slug")]
     Component { slug: String },
+    /// The review gallery for one component: see `gallery.rs`.
+    #[at("/_gallery")]
+    GalleryHome,
+    #[at("/_gallery/:slug")]
+    Gallery { slug: String },
     /// One example on a bare page: the fixture the browser tests drive.
     #[at("/_examples/:page/:example")]
     Example { page: String, example: String },
@@ -60,6 +65,8 @@ fn switch(route: Route) -> Html {
         Route::Home => html! { <shell::Home /> },
         Route::Guide { slug } => html! { <shell::GuidePage {slug} /> },
         Route::Component { slug } => html! { <shell::ComponentPage {slug} /> },
+        Route::GalleryHome => html! { <Gallery /> },
+        Route::Gallery { slug } => html! { <Gallery {slug} /> },
         Route::Example { page, example } => html! { <shell::IsolatedExample {page} {example} /> },
         Route::NotFound => html! { <shell::NotFound /> },
     }
