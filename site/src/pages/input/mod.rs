@@ -10,7 +10,7 @@ crate::page! {
         text_area => "Text area": "`rows` sets the height. `monospace` also stops lines wrapping, for values whose alignment matters.",
         autosize => "Growing with content": "`TextAreaResize::Auto` starts at `rows` lines and grows as the user types. Cap it with `--yi-input-max-height`.",
         number => "Number input": "An empty field is `None`, not zero. Arrow keys step the value, Page Up and Page Down step by ten, and Home and End jump to the limits. Typed values are clamped to `min` and `max` on blur.",
-        stepper => "With a stepper": "`stepper` adds decrease and increase chips inside the field, for values people nudge rather than type. `step` can be fractional.",
+        stepper => "Stepper": "Decrease and increase chips sit inside the field by default and stop at the limits; `step` can be fractional. Set `stepper=false` for numbers people type rather than nudge, such as a port.",
         form => "In a form": "Inputs are native elements with a `name`, so a plain `<form>` submits them and Enter in any single-line input submits the form.",
     ],
 }
