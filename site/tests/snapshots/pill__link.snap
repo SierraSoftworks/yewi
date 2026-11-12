@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<a href="#rollout-42" class="yi-pill yi-pill--active">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>rolling</a>
+<a href="#incident-7" class="yi-pill yi-pill--danger yi-pill--bold">
+<span aria-hidden="true" class="yi-status-dot">
+</span>incident open</a>
+</div>
