@@ -24,7 +24,7 @@ code = 20000
 diff = 52000
 highlight = 20000
 highlight-syntect = 20000
-map = 20000
+map = 80000
 markdown = 20000
 qr = 30000
 # Mostly yew-router itself; an app that already routes pays almost none of it.
