@@ -1,0 +1,31 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 30rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Signing key</h2>
+</div>
+</header>
+<div class="yi-card__body">
+<section class="yi-panel yi-panel--plain">
+<div class="yi-panel__body">Used to sign every revision before it is offered to a host.</div>
+</section>
+<section class="yi-panel yi-panel--strong">
+<header class="yi-panel__header">
+<div class="yi-panel__heading">
+<h3 class="yi-panel__title">Strong</h3>
+</div>
+</header>
+<div class="yi-panel__body">The stronger tonal fill.</div>
+</section>
+<section class="yi-panel yi-panel--soft">
+<header class="yi-panel__header">
+<div class="yi-panel__heading">
+<h3 class="yi-panel__title">Soft</h3>
+</div>
+</header>
+<div class="yi-panel__body">The lighter tonal fill.</div>
+</section>
+</div>
+</section>

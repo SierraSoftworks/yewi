@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:15rem" class="yi-grid">
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Plain</h2>
+<p class="yi-card__subtitle">Certificate authority</p>
+</div>
+<div class="yi-card__actions">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Renew</button>
+</div>
+</header>
+<div class="yi-card__body">The signing certificate expires in 212 days.</div>
+</section>
+<section class="yi-card yi-card--header-ruled">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Ruled</h2>
+<p class="yi-card__subtitle">Certificate authority</p>
+</div>
+<div class="yi-card__actions">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Renew</button>
+</div>
+</header>
+<div class="yi-card__body">The signing certificate expires in 212 days.</div>
+</section>
+<section class="yi-card yi-card--header-tonal">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Tonal</h2>
+<p class="yi-card__subtitle">Certificate authority</p>
+</div>
+<div class="yi-card__actions">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Renew</button>
+</div>
+</header>
+<div class="yi-card__body">The signing certificate expires in 212 days.</div>
+</section>
+</div>

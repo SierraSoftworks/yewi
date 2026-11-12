@@ -1,0 +1,43 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 28rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Latest rollout</h2>
+<p class="yi-card__subtitle">2 of 31 hosts done</p>
+</div>
+<div class="yi-card__actions">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+</div>
+</header>
+<div class="yi-card__body">
+<section class="yi-panel yi-panel--auto">
+<header class="yi-panel__header">
+<div class="yi-panel__heading">
+<h3 class="yi-panel__title">Home</h3>
+<p class="yi-panel__subtitle">4 hosts</p>
+</div>
+</header>
+<div class="yi-panel__body">Done 12 minutes ago</div>
+</section>
+<section class="yi-panel yi-panel--auto">
+<header class="yi-panel__header">
+<div class="yi-panel__heading">
+<h3 class="yi-panel__title">Staging</h3>
+<p class="yi-panel__subtitle">9 hosts</p>
+</div>
+</header>
+<div class="yi-panel__body">2 of 9 done</div>
+</section>
+<section class="yi-panel yi-panel--auto">
+<header class="yi-panel__header">
+<div class="yi-panel__heading">
+<h3 class="yi-panel__title">Production</h3>
+<p class="yi-panel__subtitle">18 hosts</p>
+</div>
+</header>
+<div class="yi-panel__body">Waiting for approval</div>
+</section>
+</div>
+</section>
