@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Pin to dashboard" title="Pin to dashboard">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 17v5M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z">
+</path>
+</svg>
+</button>
+<button type="button" aria-pressed="true" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Mute alerts" title="Mute alerts">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10.268 21a2 2 0 0 0 3.464 0M17 17H4a1 1 0 0 1-.74-1.673C4.59 13.956 6 12.499 6 8a6 6 0 0 1 .258-1.742M2 2l20 20M8.668 3.01A6 6 0 0 1 18 8c0 2.687.77 4.653 1.707 6.05">
+</path>
+</svg>
+</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>Watch</button>
+</div>
+<span role="status">Not pinned, alerts muted</span>
+</div>
