@@ -1,0 +1,123 @@
+// Card
+//
+// The lifted surface: a soft border and a faint two-layer shadow. Panels
+// inside it stack flush, so the card rounds the corners of whichever part
+// touches its edge instead of clipping its content.
+@use "api" as *;
+
+.yi-card {
+  // Component tokens
+  --yi-card-padding: var(--yi-space-lg);
+  --yi-card-gap: var(--yi-space-md);
+  --yi-card-header-bg: transparent;
+  --yi-card-footer-bg: var(--yi-tone-2);
+
+  @include card-surface;
+
+  // The radius of anything flush against the inside of the border.
+  --yi-card-inner-radius: calc(var(--yi-radius-card) - 1px);
+
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  color: var(--yi-fg);
+
+  &--header-ruled > .yi-card__header {
+    border-block-end: 1px solid var(--yi-line);
+  }
+
+  &--header-tonal {
+    --yi-card-header-bg: var(--yi-tone-1);
+  }
+
+  // A plain header and a padded body share one gap.
+  &--header-plain > .yi-card__header + .yi-card__body {
+    padding-block-start: 0;
+  }
+}
+
+.yi-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--yi-space-sm) var(--yi-space-lg);
+  padding: var(--yi-card-padding) var(--yi-card-padding) var(--yi-card-gap);
+  background: var(--yi-card-header-bg);
+  border-start-start-radius: var(--yi-card-inner-radius);
+  border-start-end-radius: var(--yi-card-inner-radius);
+}
+
+.yi-card__heading {
+  flex: 1 1 12rem;
+  min-inline-size: 0;
+}
+
+.yi-card__title {
+  @include heading("xl");
+
+  margin: 0;
+}
+
+.yi-card__subtitle {
+  margin: var(--yi-space-2xs) 0 0;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+}
+
+.yi-card__actions {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-space-sm);
+}
+
+.yi-card__body {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  padding: var(--yi-card-padding);
+
+  // Panels bring their own padding and run edge to edge.
+  &--flush,
+  &:has(> .yi-panel) {
+    padding: 0;
+  }
+
+  &--flush:first-child > :first-child,
+  &:first-child > .yi-panel:first-child {
+    border-start-start-radius: var(--yi-card-inner-radius);
+    border-start-end-radius: var(--yi-card-inner-radius);
+  }
+
+  &--flush:last-child > :last-child,
+  &:last-child > .yi-panel:last-child {
+    border-end-start-radius: var(--yi-card-inner-radius);
+    border-end-end-radius: var(--yi-card-inner-radius);
+  }
+}
+
+.yi-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--yi-space-sm);
+  padding: var(--yi-card-gap) var(--yi-card-padding);
+  background: var(--yi-card-footer-bg);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-sm);
+  border-end-start-radius: var(--yi-card-inner-radius);
+  border-end-end-radius: var(--yi-card-inner-radius);
+}
+
+:where([data-yi-density="compact"]) .yi-card {
+  --yi-card-padding: var(--yi-space-md);
+  --yi-card-gap: var(--yi-space-sm);
+}
+
+@media (forced-colors: active) {
+  .yi-card {
+    border-color: CanvasText;
+  }
+}

@@ -1,0 +1,80 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-steps yi-steps--vertical yi-steps--sm">
+<ol aria-label="Steps of nginx" class="yi-steps__list">
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">package nginx</span>
+<span class="yi-visually-hidden">, completed</span>
+<span class="yi-step__meta">2.4s</span>
+</div>
+<p class="yi-step__description">Installed 1.27.2-1 from the distribution repository.</p>
+</div>
+</li>
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">file /etc/nginx/nginx.conf</span>
+<span class="yi-visually-hidden">, completed</span>
+<span class="yi-step__meta">38ms</span>
+</div>
+<p class="yi-step__description">Rendered from the template; 4 lines changed.</p>
+</div>
+</li>
+<li class="yi-step yi-step--failed">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">service nginx reload</span>
+<span class="yi-visually-hidden">, failed</span>
+<span class="yi-step__meta">1.1s</span>
+</div>
+<div class="yi-step__detail">
+<pre style="margin: 0; white-space: pre-wrap">nginx: [emerg] unknown directive "upstrem" in /etc/nginx/nginx.conf:41</pre>
+</div>
+</div>
+</li>
+<li class="yi-step yi-step--skipped">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">check http :443</span>
+<span class="yi-visually-hidden">, skipped</span>
+</div>
+<p class="yi-step__description">Not run: an earlier step failed.</p>
+</div>
+</li>
+</ol>
+</div>
