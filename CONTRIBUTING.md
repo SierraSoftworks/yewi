@@ -73,9 +73,24 @@ e2e/tests/<name>.spec.ts         behaviour specs
 - Snapshots: `INSTA_UPDATE=always cargo test -p yewi-site`, then review the diff.
 - Screenshots: `cargo xtask e2e --update-snapshots` compares with no pixel tolerance, so it records every visible change however small and leaves unchanged baselines alone. Then review `e2e/gallery/index.html`, which shows before and after for everything that changed. Baselines are made with the Chromium that Playwright 1.63 installs, on Linux.
 
+### Checking a change
+- `cargo xtask ci --changed` runs what the paths changed since `origin/main` call for (fetch it first; `--changed=<ref>` compares with another ref, `--dry-run` prints the plan and stops).
+- `cargo xtask ci` runs everything. Use it for shared code and to verify `main`.
+
+| Changed | Runs |
+| --- | --- |
+| Docs, licences, `.github/` | format check |
+| `site/src/pages/<name>/`, its baselines and snapshots | `check`, that page's sweeps and behaviour spec |
+| `yewi/src/components/<name>/` | the same for its page and every page that uses it, plus `size` |
+| `e2e/tests/<name>.spec.ts` | that spec |
+| The rest of `site/` (shell, guides, styles) | `check`, the site spec, every sweep |
+| Anything else (`yewi/scss/`, `common.rs`, hooks, icons, manifests, `xtask/`, the e2e harness) | everything |
+
+"Uses" is read from the source: components that import the changed one, then pages whose examples name any of them. A component that only restyles another through its `--yi-<name>-*` properties is not seen, so run the full check when you change how those behave.
+
 ## Definition of done
 
-- `cargo xtask ci` passes locally. While the repository is private this, not GitHub Actions, is the verification.
+- `cargo xtask ci --changed` passes locally with the latest `main` merged in. While the repository is private this, not GitHub Actions, is the verification.
 - The page has at least three examples and reads correctly in both themes.
 - Keyboard and screen-reader behaviour is complete and covered by a behaviour spec.
 - New screenshots are committed, and the pull request links or attaches the review gallery. For viewers that open a single file, `node e2e/inline-gallery.mjs e2e/gallery gallery.html` embeds the images and videos.
