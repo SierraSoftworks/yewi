@@ -23,11 +23,10 @@ test.describe("Checkbox", () => {
     await expect(box).toHaveCSS("outline-style", "solid");
   });
 
-  test("a description is announced with its option", async ({ example }) => {
+  test("a description is read out with its option", async ({ example }) => {
     const stage = await example("checkbox/descriptions");
     const group = stage.getByRole("group", { name: "Email me about" });
-    const noisy = group.getByRole("checkbox", { name: "Successful deploys" });
-    await expect(noisy).toHaveAccessibleDescription(/can be noisy/);
+    const noisy = group.getByRole("checkbox", { name: /Successful deploys.*can be noisy/ });
 
     await noisy.check();
     await expect(stage.getByRole("status")).toHaveText("3 of 3 selected");

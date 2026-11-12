@@ -1,15 +1,15 @@
-//! [`Switch`]: a setting that is on or off and applies as soon as it is flipped.
+//! [`ToggleSwitch`]: a setting that is on or off and applies as soon as it is flipped.
 
 use yew::prelude::*;
 
 use crate::{
     Attrs, Size,
-    checkbox::{choice_classes, choice_text, described_by, target_checked},
-    use_field_control, use_id,
+    checkbox::{choice_classes, choice_text, target_checked},
+    use_field_control,
 };
 
 #[derive(Properties, PartialEq)]
-pub struct SwitchProps {
+pub struct ToggleSwitchProps {
     /// The label: what the switch controls, not its state ("Email alerts",
     /// not "On"). Leave it out only inside a `Field`, or give `label`.
     #[prop_or_default]
@@ -21,7 +21,7 @@ pub struct SwitchProps {
     /// Fired with the new state when the user flips the switch.
     #[prop_or_default]
     pub on_change: Callback<bool>,
-    /// A second, quieter line under the label.
+    /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
     pub description: Option<Html>,
     /// The accessible name for a switch with no visible label.
@@ -56,10 +56,12 @@ pub struct SwitchProps {
 ///
 /// It is a native checkbox with `role="switch"`: Space flips it, and it
 /// submits with a form.
+///
+/// Named `ToggleSwitch` rather than `Switch` so that it can be glob-imported
+/// alongside `yew_router::prelude::*`, which exports its own `Switch`.
 #[function_component]
-pub fn Switch(props: &SwitchProps) -> Html {
+pub fn ToggleSwitch(props: &ToggleSwitchProps) -> Html {
     let control = use_field_control(props.id.clone(), false, false, props.disabled);
-    let description_id = use_id();
 
     let onchange = props.on_change.reform(|event: Event| target_checked(&event));
     let class = classes!(choice_classes(props.size, control.disabled), "yi-switch", props.class.clone());
@@ -78,14 +80,11 @@ pub fn Switch(props: &SwitchProps) -> Html {
                     value={props.value.clone()}
                     disabled={control.disabled}
                     aria-label={props.label.clone()}
-                    aria-describedby={described_by([
-                        props.description.as_ref().map(|_| &description_id),
-                        control.described_by.as_ref(),
-                    ])}
+                    aria-describedby={control.described_by.clone()}
                     {onchange}
                 />
             </span>
-            { choice_text(&props.children, props.description.as_ref(), &description_id) }
+            { choice_text(&props.children, props.description.as_ref()) }
         </label>
     })
 }

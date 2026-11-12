@@ -31,13 +31,10 @@ fn states_use_native_attributes() {
 }
 
 #[test]
-fn a_description_describes_the_input() {
-    reset_ids();
+fn a_description_is_part_of_the_label() {
     let html = render(|| html! { <Checkbox description="Applies to new deploys.">{ "Canary" }</Checkbox> });
-    assert!(html.contains("Applies to new deploys."));
-    let id = input(&html).split(r#"aria-describedby=""#).nth(1).expect("is described");
-    let id = &id[..id.find('"').unwrap()];
-    assert!(html.contains(&format!(r#"<span id="{id}""#)));
+    let label = &html[..html.find("</label>").unwrap()];
+    assert!(label.contains("Canary") && label.contains("Applies to new deploys."));
 }
 
 #[test]
@@ -67,12 +64,4 @@ fn a_field_supplies_id_description_and_state() {
     assert!(input.contains(r#"aria-invalid="true""#));
     assert!(input.contains("aria-describedby"));
     assert!(input.contains(" required"));
-}
-
-#[test]
-fn described_by_joins_only_the_ids_present() {
-    let (a, b) = (AttrValue::from("a"), AttrValue::from("b"));
-    assert_eq!(described_by([None, None]), None);
-    assert_eq!(described_by([Some(&a), None]).as_deref(), Some("a"));
-    assert_eq!(described_by([Some(&a), Some(&b)]).as_deref(), Some("a b"));
 }

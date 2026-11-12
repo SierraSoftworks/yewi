@@ -6,7 +6,7 @@ test.describe("SegmentedControl", () => {
     const control = stage.getByRole("radiogroup", { name: "Files shown" });
     await expect(control.getByRole("radio", { name: "Changed" })).toBeChecked();
 
-    await stage.getByText("All", { exact: true }).click();
+    await control.getByRole("radio", { name: "All" }).click();
     await expect(control.getByRole("radio", { name: "All" })).toBeChecked();
     await expect(control.getByRole("radio", { name: "Changed" })).not.toBeChecked();
     await expect(stage.getByRole("status")).toHaveText("Showing all 37 files");

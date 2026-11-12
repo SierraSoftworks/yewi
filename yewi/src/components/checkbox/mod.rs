@@ -1,11 +1,11 @@
 //! [`Checkbox`]: one independent yes-or-no choice, or one of several.
 //!
 //! This directory also holds the label-and-description row (`.yi-choice`)
-//! that [`Radio`](crate::Radio) and [`Switch`](crate::Switch) share.
+//! that [`Radio`](crate::Radio) and [`ToggleSwitch`](crate::ToggleSwitch) share.
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, Size, icons, use_field_control, use_id};
+use crate::{Attrs, Icon, Size, icons, use_field_control};
 
 /// Whether the checkbox or radio an event came from is now checked.
 ///
@@ -26,12 +26,6 @@ pub(crate) fn target_checked(event: &Event) -> bool {
     }
 }
 
-/// Joins the ids a control is described by, skipping the ones not present.
-pub(crate) fn described_by(ids: [Option<&AttrValue>; 2]) -> Option<AttrValue> {
-    let ids: Vec<&str> = ids.into_iter().flatten().map(AttrValue::as_str).collect();
-    (!ids.is_empty()).then(|| ids.join(" ").into())
-}
-
 /// The classes of the row shared by checkboxes, radios and switches.
 pub(crate) fn choice_classes(size: Size, disabled: bool) -> Classes {
     classes!("yi-choice", format!("yi-choice--{}", size.as_str()), disabled.then_some("yi-choice--disabled"))
@@ -39,7 +33,10 @@ pub(crate) fn choice_classes(size: Size, disabled: bool) -> Classes {
 
 /// The label and description beside a checkbox, radio or switch. Renders
 /// nothing when there is neither, so a bare control stays just the control.
-pub(crate) fn choice_text(label: &Html, description: Option<&Html>, description_id: &AttrValue) -> Html {
+///
+/// Both sit inside the `<label>`, so the description is read with the option
+/// without needing an id of its own.
+pub(crate) fn choice_text(label: &Html, description: Option<&Html>) -> Html {
     let has_label = *label != Html::default();
     if !has_label && description.is_none() {
         return Html::default();
@@ -50,7 +47,7 @@ pub(crate) fn choice_text(label: &Html, description: Option<&Html>, description_
                 <span class="yi-choice__label">{ label.clone() }</span>
             }
             if let Some(description) = description {
-                <span id={description_id.clone()} class="yi-choice__description">{ description.clone() }</span>
+                <span class="yi-choice__description">{ description.clone() }</span>
             }
         </span>
     }
@@ -73,7 +70,7 @@ pub struct CheckboxProps {
     /// Fired with the new state when the user toggles the box.
     #[prop_or_default]
     pub on_change: Callback<bool>,
-    /// A second, quieter line under the label.
+    /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
     pub description: Option<Html>,
     /// The accessible name for a checkbox with no visible label.
@@ -111,11 +108,10 @@ pub struct CheckboxProps {
 
 /// A box the user ticks. Each checkbox is independent of its neighbours; for
 /// one choice out of several use [`RadioGroup`](crate::RadioGroup), and for a
-/// setting that applies immediately use [`Switch`](crate::Switch).
+/// setting that applies immediately use [`ToggleSwitch`](crate::ToggleSwitch).
 #[function_component]
 pub fn Checkbox(props: &CheckboxProps) -> Html {
     let control = use_field_control(props.id.clone(), props.invalid, props.required, props.disabled);
-    let description_id = use_id();
     let input_ref = props.input_ref.clone();
 
     // `indeterminate` exists only as a DOM property, so it is set after render.
@@ -157,15 +153,12 @@ pub fn Checkbox(props: &CheckboxProps) -> Html {
                     required={control.required}
                     aria-label={props.label.clone()}
                     aria-invalid={control.aria_invalid()}
-                    aria-describedby={described_by([
-                        props.description.as_ref().map(|_| &description_id),
-                        control.described_by.as_ref(),
-                    ])}
+                    aria-describedby={control.described_by.clone()}
                     {onchange}
                 />
                 <Icon icon={if mixed { icons::MINUS } else { icons::CHECK }} class="yi-checkbox__mark" />
             </span>
-            { choice_text(&props.children, props.description.as_ref(), &description_id) }
+            { choice_text(&props.children, props.description.as_ref()) }
         </label>
     })
 }

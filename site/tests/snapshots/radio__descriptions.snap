@@ -8,29 +8,29 @@ source: site/tests/snapshots.rs
 <div role="radiogroup" aria-labelledby="yi-0-label" class="yi-radio-group yi-radio-group--vertical">
 <label class="yi-choice yi-choice--md yi-radio">
 <span class="yi-choice__control">
-<input value="viewer" checked type="radio" name="yi-1" aria-describedby="yi-2" class="yi-radio__input">
+<input value="viewer" checked type="radio" name="yi-1" class="yi-radio__input">
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Viewer</span>
-<span id="yi-2" class="yi-choice__description">Can see deploys and logs.</span>
+<span class="yi-choice__description">Can see deploys and logs.</span>
 </span>
 </label>
 <label class="yi-choice yi-choice--md yi-radio">
 <span class="yi-choice__control">
-<input value="operator" type="radio" name="yi-1" aria-describedby="yi-3" class="yi-radio__input">
+<input value="operator" type="radio" name="yi-1" class="yi-radio__input">
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Operator</span>
-<span id="yi-3" class="yi-choice__description">Can start, pause and roll back deploys.</span>
+<span class="yi-choice__description">Can start, pause and roll back deploys.</span>
 </span>
 </label>
 <label class="yi-choice yi-choice--md yi-choice--disabled yi-radio">
 <span class="yi-choice__control">
-<input value="owner" type="radio" name="yi-1" aria-describedby="yi-4" disabled="disabled" class="yi-radio__input">
+<input value="owner" type="radio" name="yi-1" disabled="disabled" class="yi-radio__input">
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Owner</span>
-<span id="yi-4" class="yi-choice__description">Only an existing owner can grant this.</span>
+<span class="yi-choice__description">Only an existing owner can grant this.</span>
 </span>
 </label>
 </div>

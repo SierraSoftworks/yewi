@@ -8,7 +8,7 @@ source: site/tests/snapshots.rs
 <div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
 <label class="yi-choice yi-choice--md yi-checkbox">
 <span class="yi-choice__control">
-<input checked type="checkbox" aria-describedby="yi-1 yi-0-message" class="yi-checkbox__input">
+<input checked type="checkbox" aria-describedby="yi-0-message" class="yi-checkbox__input">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
 <path d="M20 6 9 17l-5-5">
 </path>
@@ -16,12 +16,12 @@ source: site/tests/snapshots.rs
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Failed deploys</span>
-<span id="yi-1" class="yi-choice__description">A rollout stopped or was rolled back.</span>
+<span class="yi-choice__description">A rollout stopped or was rolled back.</span>
 </span>
 </label>
 <label class="yi-choice yi-choice--md yi-checkbox">
 <span class="yi-choice__control">
-<input checked type="checkbox" aria-describedby="yi-2 yi-0-message" class="yi-checkbox__input">
+<input checked type="checkbox" aria-describedby="yi-0-message" class="yi-checkbox__input">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
 <path d="M20 6 9 17l-5-5">
 </path>
@@ -29,12 +29,12 @@ source: site/tests/snapshots.rs
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Approval requests</span>
-<span id="yi-2" class="yi-choice__description">Someone needs you to approve a production deploy.</span>
+<span class="yi-choice__description">Someone needs you to approve a production deploy.</span>
 </span>
 </label>
 <label class="yi-choice yi-choice--md yi-checkbox">
 <span class="yi-choice__control">
-<input type="checkbox" aria-describedby="yi-3 yi-0-message" class="yi-checkbox__input">
+<input type="checkbox" aria-describedby="yi-0-message" class="yi-checkbox__input">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
 <path d="M20 6 9 17l-5-5">
 </path>
@@ -42,7 +42,7 @@ source: site/tests/snapshots.rs
 </span>
 <span class="yi-choice__text">
 <span class="yi-choice__label">Successful deploys</span>
-<span id="yi-3" class="yi-choice__description">Every rollout that completes. This can be noisy.</span>
+<span class="yi-choice__description">Every rollout that completes. This can be noisy.</span>
 </span>
 </label>
 </div>

@@ -131,7 +131,7 @@ pub struct RadioProps {
     pub children: Html,
     /// What the group reports when this option is selected.
     pub value: AttrValue,
-    /// A second, quieter line under the label.
+    /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
     pub description: Option<Html>,
     /// The accessible name for a radio with no visible label.
@@ -173,7 +173,6 @@ pub struct RadioProps {
 #[function_component]
 pub fn Radio(props: &RadioProps) -> Html {
     let group = use_context::<RadioGroupContext>();
-    let description_id = use_id();
 
     let (checked, name, on_change, size) = match &group {
         Some(group) => (
@@ -217,11 +216,10 @@ pub fn Radio(props: &RadioProps) -> Html {
                     {disabled}
                     {required}
                     aria-label={props.label.clone()}
-                    aria-describedby={props.description.as_ref().map(|_| description_id.clone())}
                     {onchange}
                 />
             </span>
-            { choice_text(&props.children, props.description.as_ref(), &description_id) }
+            { choice_text(&props.children, props.description.as_ref()) }
         </label>
     })
 }

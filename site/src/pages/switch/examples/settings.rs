@@ -24,7 +24,7 @@ pub fn Example() -> Html {
                 };
                 html! {
                     <Field {label} {hint} layout={FieldLayout::Inline}>
-                        <Switch checked={enabled[index]} {on_change} />
+                        <ToggleSwitch checked={enabled[index]} {on_change} />
                     </Field>
                 }
             }) }

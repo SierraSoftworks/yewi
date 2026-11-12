@@ -11,7 +11,7 @@ fn input(html: &str) -> &str {
 
 #[test]
 fn is_a_native_checkbox_exposed_as_a_switch() {
-    let html = render(|| html! { <Switch name="alerts">{ "Email alerts" }</Switch> });
+    let html = render(|| html! { <ToggleSwitch name="alerts">{ "Email alerts" }</ToggleSwitch> });
     assert!(html.starts_with("<label"));
     assert!(html.contains("Email alerts"));
     let input = input(&html);
@@ -23,7 +23,7 @@ fn is_a_native_checkbox_exposed_as_a_switch() {
 #[test]
 fn reflects_its_state() {
     for (checked, disabled) in [(false, false), (true, false), (true, true)] {
-        let html = render(move || html! { <Switch {checked} {disabled} label="Alerts" /> });
+        let html = render(move || html! { <ToggleSwitch {checked} {disabled} label="Alerts" /> });
         let input = input(&html);
         assert_eq!(input.contains(" checked"), checked);
         assert_eq!(input.contains(" disabled"), disabled);
@@ -37,7 +37,7 @@ fn a_field_labels_and_describes_it() {
     let html = render(|| {
         html! {
             <Field label="Maintenance mode" hint="Pauses all deploys." layout={FieldLayout::Inline}>
-                <Switch description="Visible to everyone." />
+                <ToggleSwitch description="Visible to everyone." />
             </Field>
         }
     });
@@ -45,6 +45,6 @@ fn a_field_labels_and_describes_it() {
     let target = &target[..target.find('"').unwrap()];
     let input = input(&html);
     assert!(input.contains(&format!(r#"id="{target}""#)));
-    let described_by = input.split(r#"aria-describedby=""#).nth(1).expect("is described");
-    assert_eq!(described_by[..described_by.find('"').unwrap()].split(' ').count(), 2);
+    assert!(input.contains("aria-describedby"));
+    assert!(html.contains("Visible to everyone."));
 }

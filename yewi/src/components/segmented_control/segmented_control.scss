@@ -70,15 +70,15 @@
     }
   }
 
-  // Invisible but still focusable; clicks land on the label around it.
+  // Covers the segment invisibly, so it stays focusable and takes the click.
   &__input {
-    pointer-events: none;
     position: absolute;
     inset: 0;
     inline-size: 100%;
     block-size: 100%;
     margin: 0;
     opacity: 0;
+    cursor: inherit;
   }
 
   &__label {

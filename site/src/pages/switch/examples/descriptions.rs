@@ -10,12 +10,12 @@ pub fn Example() -> Html {
     };
 
     html! {
-        <Switch
+        <ToggleSwitch
             checked={*digest}
             {on_change}
             description="One email each Monday with the week's deploys and incidents."
         >
             { "Weekly digest" }
-        </Switch>
+        </ToggleSwitch>
     }
 }

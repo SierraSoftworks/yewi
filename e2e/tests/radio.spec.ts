@@ -37,9 +37,7 @@ test.describe("RadioGroup", () => {
 
   test("skips a disabled option and announces descriptions", async ({ page, example }) => {
     const stage = await example("radio/descriptions");
-    const owner = stage.getByRole("radio", { name: "Owner" });
-    await expect(owner).toBeDisabled();
-    await expect(owner).toHaveAccessibleDescription("Only an existing owner can grant this.");
+    await expect(stage.getByRole("radio", { name: /Owner.*Only an existing owner/ })).toBeDisabled();
 
     await stage.getByRole("radio", { name: "Operator" }).focus();
     await page.keyboard.press("ArrowDown");

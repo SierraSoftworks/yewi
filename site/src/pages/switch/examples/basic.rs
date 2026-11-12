@@ -11,7 +11,7 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <Switch checked={*paused} {on_change}>{ "Pause deploys" }</Switch>
+            <ToggleSwitch checked={*paused} {on_change}>{ "Pause deploys" }</ToggleSwitch>
             <span role="status">{ if *paused { "Deploys are paused" } else { "Deploys are running" } }</span>
         </Stack>
     }

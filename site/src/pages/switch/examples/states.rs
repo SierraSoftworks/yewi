@@ -6,17 +6,17 @@ pub fn Example() -> Html {
     html! {
         <Grid min="11rem">
             <Stack gap={Space::Sm}>
-                <Switch>{ "Off" }</Switch>
-                <Switch checked=true>{ "On" }</Switch>
+                <ToggleSwitch>{ "Off" }</ToggleSwitch>
+                <ToggleSwitch checked=true>{ "On" }</ToggleSwitch>
             </Stack>
             <Stack gap={Space::Sm}>
-                <Switch disabled=true>{ "Disabled, off" }</Switch>
-                <Switch disabled=true checked=true>{ "Disabled, on" }</Switch>
+                <ToggleSwitch disabled=true>{ "Disabled, off" }</ToggleSwitch>
+                <ToggleSwitch disabled=true checked=true>{ "Disabled, on" }</ToggleSwitch>
             </Stack>
             <Stack gap={Space::Sm}>
-                <Switch size={Size::Small} checked=true>{ "Small" }</Switch>
-                <Switch checked=true>{ "Medium" }</Switch>
-                <Switch size={Size::Large} checked=true>{ "Large" }</Switch>
+                <ToggleSwitch size={Size::Small} checked=true>{ "Small" }</ToggleSwitch>
+                <ToggleSwitch checked=true>{ "Medium" }</ToggleSwitch>
+                <ToggleSwitch size={Size::Large} checked=true>{ "Large" }</ToggleSwitch>
             </Stack>
         </Grid>
     }
