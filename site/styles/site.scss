@@ -343,28 +343,6 @@ html {
   border-radius: var(--yi-radius-card);
 }
 
-.tok-kw {
-  color: light-dark(#8f3a80, #d58bd0);
-}
-
-.tok-type {
-  color: var(--yi-info);
-}
-
-.tok-str {
-  color: var(--yi-ok);
-}
-
-.tok-macro,
-.tok-num {
-  color: var(--yi-warn);
-}
-
-.tok-comment {
-  color: var(--yi-fg-subtle);
-  font-style: italic;
-}
-
 // ---- Examples ----------------------------------------------------------------
 
 .docs-example {
