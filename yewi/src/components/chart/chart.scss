@@ -1,0 +1,366 @@
+// Chart and Sparkline
+//
+// Marks live in one SVG stretched over the plot (`preserveAspectRatio: none`)
+// and keep their stroke widths with `vector-effect`. Everything with text or
+// a fixed shape (axis labels, legend, crosshair, point dots, tooltip) is HTML
+// placed by percentage, so nothing is measured and nothing distorts.
+@use "api" as *;
+
+.yi-chart,
+.yi-sparkline {
+  // Component tokens
+  --yi-chart-height: 15rem; // Height of the plot area.
+  --yi-chart-axis-width: auto; // Width of the value axis. Set the same length on stacked charts to align their plots.
+  --yi-chart-series-1: light-dark(var(--yi-accent-solid), var(--yi-accent)); // The primary series follows the accent.
+  --yi-chart-series-2: light-dark(#eb6834, #d95926); // Palette slots 2 to 6, in a fixed order chosen to stay distinguishable with colour-vision deficiencies.
+  --yi-chart-series-3: light-dark(#1baf7a, #199e70);
+  --yi-chart-series-4: light-dark(#eda100, #c98500);
+  --yi-chart-series-5: light-dark(#e87ba4, #d55181);
+  --yi-chart-series-6: light-dark(#6250d6, #9085e9);
+  --yi-chart-muted: var(--yi-neutral); // Context series such as a previous period.
+  --yi-chart-grid: var(--yi-line);
+  --yi-chart-line-width: 2px;
+  --yi-chart-marker-size: 7px;
+  --yi-chart-area-opacity: 0.24; // Opacity of an area fill at the line; it fades to nothing at the baseline.
+  --yi-sparkline-height: 1.75rem;
+
+  // The colour of the series being drawn; set by the classes below.
+  --yi-chart-color: var(--yi-chart-series-1);
+}
+
+@for $slot from 1 through 6 {
+  .yi-chart__c--#{$slot} {
+    --yi-chart-color: var(--yi-chart-series-#{$slot});
+  }
+}
+
+.yi-chart__c--muted {
+  --yi-chart-color: var(--yi-chart-muted);
+}
+
+@each $tone in ok, warn, danger, info, active, neutral {
+  .yi-chart__c--#{$tone} {
+    --yi-chart-color: var(--yi-#{$tone});
+  }
+}
+
+.yi-chart {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-space-md);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-xs);
+  color: var(--yi-fg-subtle);
+}
+
+.yi-chart__empty {
+  display: grid;
+  place-items: center;
+  block-size: var(--yi-chart-height);
+  font-size: var(--yi-text-md);
+}
+
+// ---- Legend ----------------------------------------------------------------
+
+.yi-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yi-space-xs) var(--yi-space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--yi-text-sm);
+  color: var(--yi-fg-muted);
+}
+
+.yi-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+}
+
+// A short stroke in the series colour and dash. Text beside it stays in a
+// text colour: the key, not the label, carries the identity.
+.yi-chart__key {
+  flex: none;
+  inline-size: 1rem;
+  block-size: var(--yi-chart-line-width);
+  border-radius: var(--yi-radius-full);
+  background: var(--yi-chart-color);
+
+  &.yi-chart--dashed {
+    background: repeating-linear-gradient(to right, var(--yi-chart-color) 0 5px, transparent 5px 8px);
+  }
+
+  &.yi-chart--dotted {
+    background: repeating-linear-gradient(to right, var(--yi-chart-color) 0 2px, transparent 2px 5px);
+  }
+
+  &--block {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    border-radius: 2px;
+    opacity: 0.75;
+  }
+}
+
+// ---- Layout: value axis, plot, position axis ---------------------------------
+
+.yi-chart__body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--yi-space-sm);
+  // Room for the half of the top tick label that sits above the plot.
+  padding-block-start: 0.5em;
+  font-variant-numeric: tabular-nums;
+}
+
+.yi-chart__y {
+  display: grid;
+  inline-size: var(--yi-chart-axis-width);
+  block-size: var(--yi-chart-height);
+  text-align: end;
+
+  // Every label shares one cell, so the column is as wide as the widest,
+  // and is then moved down the plot by percentage.
+  .yi-chart__tick {
+    grid-area: 1 / 1;
+    align-self: start;
+    position: relative;
+    line-height: 1;
+    translate: 0 -50%;
+  }
+}
+
+.yi-chart__x {
+  grid-column: 2;
+  position: relative;
+  block-size: 1lh;
+  margin-block-start: var(--yi-space-sm);
+
+  .yi-chart__tick {
+    position: absolute;
+    translate: -50% 0;
+    white-space: nowrap;
+
+    &--start {
+      translate: 0 0;
+    }
+
+    &--end {
+      translate: -100% 0;
+    }
+  }
+}
+
+// Too narrow for every label: keep every other one.
+@container (inline-size < 30rem) {
+  .yi-chart__x .yi-chart__tick:nth-child(even) {
+    display: none;
+  }
+}
+
+.yi-chart__plot {
+  position: relative;
+  block-size: var(--yi-chart-height);
+  border-radius: var(--yi-radius-sm);
+  touch-action: pan-y;
+  user-select: none;
+
+  &[role="slider"] {
+    cursor: crosshair;
+  }
+
+  &:focus-visible {
+    @include focus-ring(4px);
+  }
+
+  // The plot alone receives pointer events, so offsets are relative to it.
+  > * {
+    pointer-events: none;
+  }
+}
+
+// ---- Marks -------------------------------------------------------------------
+
+.yi-chart__marks {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+
+  path {
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+.yi-chart__grid,
+.yi-chart__zero {
+  fill: none;
+  stroke: var(--yi-chart-grid);
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.yi-chart__zero {
+  stroke: var(--yi-line-strong);
+}
+
+.yi-chart__line,
+.yi-sparkline__line {
+  fill: none;
+  stroke: var(--yi-chart-color);
+  stroke-width: var(--yi-chart-line-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.yi-chart--dashed .yi-chart__line {
+  stroke-dasharray: 5 4;
+  stroke-linecap: butt;
+}
+
+.yi-chart--dotted .yi-chart__line {
+  stroke-dasharray: 0.1 4.5;
+}
+
+.yi-chart__area {
+  stroke: none;
+}
+
+.yi-chart__fade-from {
+  stop-color: var(--yi-chart-color);
+  stop-opacity: var(--yi-chart-area-opacity);
+}
+
+.yi-chart__fade-to {
+  stop-color: var(--yi-chart-color);
+  stop-opacity: 0;
+}
+
+.yi-chart__bars {
+  fill: var(--yi-chart-color);
+  stroke: none;
+  opacity: 0.75;
+}
+
+// Dots are zero-length segments given their shape by a round cap, so they
+// stay circular however the plot is stretched. The ring keeps a dot legible
+// where it crosses another line.
+.yi-chart__marker,
+.yi-chart__marker-ring {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.yi-chart__marker {
+  stroke: var(--yi-chart-color);
+  stroke-width: var(--yi-chart-marker-size);
+}
+
+.yi-chart__marker-ring {
+  stroke: var(--yi-surface);
+  stroke-width: calc(var(--yi-chart-marker-size) + 3px);
+}
+
+// ---- Cursor ------------------------------------------------------------------
+
+.yi-chart__crosshair {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 1px;
+  translate: -50% 0;
+  background: var(--yi-line-strong);
+}
+
+.yi-chart__dot {
+  position: absolute;
+  inline-size: calc(var(--yi-chart-marker-size) + 2px);
+  block-size: calc(var(--yi-chart-marker-size) + 2px);
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--yi-chart-color);
+  box-shadow: 0 0 0 2px var(--yi-surface);
+}
+
+.yi-chart__selection {
+  position: absolute;
+  inset-block: 0;
+  background: var(--yi-accent-soft);
+  border-inline: 1px solid var(--yi-accent-line);
+}
+
+.yi-chart__tooltip {
+  position: absolute;
+  inset-block-start: var(--yi-space-sm);
+  z-index: 1;
+  display: grid;
+  gap: var(--yi-space-xs);
+  min-inline-size: 9rem;
+  max-inline-size: min(18rem, 80cqi);
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  border: 1px solid var(--yi-line);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-surface-raised);
+  box-shadow: var(--yi-shadow-overlay);
+  font-size: var(--yi-text-sm);
+  color: var(--yi-fg-muted);
+
+  &--after {
+    margin-inline-start: var(--yi-space-md);
+  }
+
+  &--before {
+    margin-inline-end: var(--yi-space-md);
+  }
+}
+
+.yi-chart__tooltip-title {
+  font-size: var(--yi-text-xs);
+  color: var(--yi-fg-subtle);
+}
+
+.yi-chart__tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+
+  strong {
+    margin-inline-start: auto;
+    padding-inline-start: var(--yi-space-md);
+    font-weight: 600;
+    color: var(--yi-fg);
+  }
+}
+
+// ---- Sparkline ---------------------------------------------------------------
+
+.yi-sparkline {
+  display: block;
+  inline-size: 100%;
+  block-size: var(--yi-sparkline-height);
+  overflow: visible;
+  --yi-chart-line-width: 1.5px;
+
+  path {
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+.yi-sparkline__area {
+  fill: color-mix(in srgb, var(--yi-chart-color) 14%, transparent);
+  stroke: none;
+}
+
+@media (forced-colors: active) {
+  .yi-chart__line,
+  .yi-sparkline__line {
+    stroke: CanvasText;
+  }
+
+  .yi-chart__tooltip {
+    border-color: CanvasText;
+  }
+}
