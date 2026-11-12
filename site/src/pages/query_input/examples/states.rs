@@ -9,7 +9,13 @@ pub fn Example() -> Html {
             <QueryInput label="Medium" placeholder="Medium" />
             <QueryInput size={Size::Large} label="Large" placeholder="Large" />
             <QueryInput label="Filled" value="status:failed budget" />
-            <QueryInput label="Expression" syntax={QuerySyntax::Expression} value={r#"country == "DE""#} />
+            <QueryInput
+                label="As code"
+                syntax={QuerySyntax::Expression}
+                icon={icons::TERMINAL}
+                monospace=true
+                value={r#"country == "DE""#}
+            />
             <QueryInput label="Invalid" syntax={QuerySyntax::Expression} value="country ==" invalid=true />
             <QueryInput label="Disabled" value="status:failed" disabled=true />
         </Grid>

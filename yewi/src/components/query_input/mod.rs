@@ -49,14 +49,13 @@ pub struct QueryInputProps {
     /// instead.
     #[prop_or_default]
     pub error: Option<AttrValue>,
-    /// The icon before the text. Defaults to a magnifier for `Terms` and a
-    /// prompt for `Expression`.
+    /// The icon before the text.
+    #[prop_or(icons::SEARCH)]
+    pub icon: IconData,
+    /// Sets the query in the monospaced face, for expressions that read
+    /// better as code.
     #[prop_or_default]
-    pub icon: Option<IconData>,
-    /// Sets the query in the monospaced face. Defaults to on for
-    /// `Expression` and off for `Terms`.
-    #[prop_or_default]
-    pub monospace: Option<bool>,
+    pub monospace: bool,
     /// The most suggestions offered at once.
     #[prop_or(8)]
     pub max_suggestions: usize,
@@ -301,14 +300,11 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
         Html::default()
     };
 
-    let expression = props.syntax == QuerySyntax::Expression;
-    let monospace = props.monospace.unwrap_or(expression);
-    let icon = props.icon.unwrap_or(if expression { icons::TERMINAL } else { icons::SEARCH });
     let invalid = control.invalid || props.error.is_some();
     let box_class = classes!(
         "yi-query-input__box",
         format!("yi-query-input__box--{}", props.size.as_str()),
-        monospace.then_some("yi-query-input__box--mono"),
+        props.monospace.then_some("yi-query-input__box--mono"),
         invalid.then_some("yi-query-input__box--invalid"),
     );
     let described_by = match (&control.described_by, error.is_some()) {
@@ -332,7 +328,7 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
             {content}
         >
             <span class={box_class}>
-                <Icon {icon} class="yi-query-input__icon" />
+                <Icon icon={props.icon} class="yi-query-input__icon" />
                 <input
                     ref={input_ref}
                     id={control.id.clone()}
