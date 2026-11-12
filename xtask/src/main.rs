@@ -6,7 +6,7 @@ use std::{
     collections::BTreeMap,
     env, fs,
     path::{Path, PathBuf},
-    process::{Command, exit},
+    process::{Command, Stdio, exit},
 };
 
 const HELP: &str = "\
@@ -18,7 +18,8 @@ cargo xtask <command>
   e2e [args]       build the site, then run the browser tests and the gallery
                    (args go to Playwright, e.g. `e2e button --update-snapshots`)
   gallery [base]   rebuild e2e/gallery from the last run, diffed against a git ref
-  size             build the size probe per feature and enforce size-budget.toml
+  size             measure the probe's wasm and the stylesheet per feature
+                   and enforce size-budget.toml
   ci               check, e2e and size: everything, in order
 ";
 
@@ -149,25 +150,37 @@ fn size() {
         .filter_map(|(name, bytes)| Some((name.trim().to_owned(), bytes.trim().parse().ok()?)))
         .collect();
 
-    let measure = |features: &str| -> u64 {
+    // (wasm code and data, stylesheet) in bytes. The probe does not embed the
+    // stylesheet, so the two are measured apart.
+    let measure = |features: &str| -> (u64, u64) {
         let mut build = cargo();
-        build.args(["build", "-p", "size-probe", "--release", "--target", WASM]);
+        build.args(["build", "-p", "size-probe", "--release", "--target", WASM, "--message-format=json"]);
         if !features.is_empty() {
             build.args(["--features", features]);
         }
-        run(&mut build);
+        eprintln!("\x1b[1m$ cargo build -p size-probe --release --features '{features}'\x1b[0m");
+        let output = build.stderr(Stdio::inherit()).output().expect("failed to run cargo");
+        if !output.status.success() {
+            exit(output.status.code().unwrap_or(1));
+        }
         let wasm = root().join("target").join(WASM).join("release/size_probe.wasm");
-        code_and_data(&fs::read(&wasm).unwrap_or_else(|e| panic!("{}: {e}", wasm.display())))
+        let wasm = code_and_data(&fs::read(&wasm).unwrap_or_else(|e| panic!("{}: {e}", wasm.display())));
+        let css = stylesheet_dir(&String::from_utf8_lossy(&output.stdout)).join("yewi.css");
+        (wasm, fs::metadata(&css).unwrap_or_else(|e| panic!("{}: {e}", css.display())).len())
     };
 
-    let core = measure("");
-    let mut rows = vec![("core".to_owned(), core, budgets.get("core").copied())];
+    let (core, stylesheet) = measure("");
+    let mut rows = vec![
+        ("core".to_owned(), core, budgets.get("core").copied()),
+        ("stylesheet".to_owned(), stylesheet, budgets.get("stylesheet").copied()),
+    ];
     for feature in optional_features() {
-        let added = measure(&feature).saturating_sub(core);
+        let (wasm, css) = measure(&feature);
+        let added = wasm.saturating_sub(core) + css.saturating_sub(stylesheet);
         rows.push((feature.clone(), added, budgets.get(&feature).copied()));
     }
 
-    println!("\n{:<16} {:>10} {:>10}", "feature", "bytes", "budget");
+    println!("\n{:<16} {:>10} {:>10}", "", "bytes", "budget");
     let mut failed = false;
     for (name, bytes, budget) in rows {
         let verdict = match budget {
@@ -188,6 +201,18 @@ fn size() {
         eprintln!("\nsize budget exceeded or missing: see size-budget.toml");
         exit(1);
     }
+}
+
+/// The `OUT_DIR` of the `yewi` build script, from cargo's JSON messages.
+fn stylesheet_dir(messages: &str) -> PathBuf {
+    messages
+        .lines()
+        .filter(|line| line.contains("\"build-script-executed\"") && line.contains("/yewi#"))
+        .find_map(|line| {
+            let path = line.split("\"out_dir\":\"").nth(1)?.split('"').next()?;
+            Some(PathBuf::from(path.replace("\\\\", "\\")))
+        })
+        .expect("cargo did not report the yewi build script")
 }
 
 /// The bytes of a wasm module's code and data sections: what an app ships,

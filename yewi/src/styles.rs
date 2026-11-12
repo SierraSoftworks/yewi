@@ -33,3 +33,15 @@ pub fn install_styles() {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::STYLESHEET;
+
+    #[test]
+    fn stylesheet_has_no_encoding_markers() {
+        // A byte order mark or `@charset` inside a layer swallows the rule after it.
+        assert!(!STYLESHEET.contains('\u{feff}'), "byte order mark in the stylesheet");
+        assert!(!STYLESHEET.contains("@charset"), "@charset in the stylesheet");
+    }
+}
