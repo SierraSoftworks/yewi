@@ -1,0 +1,124 @@
+// Tooltip
+//
+// The wrapper is the anchor; the bubble is rendered inside it only while
+// shown and lifted into the top layer. Position, side and arrow offset come
+// from the anchor helper (`.yi-anchored`).
+@use "api" as *;
+
+.yi-tooltip {
+  display: inline-flex;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  vertical-align: middle;
+
+  &:focus-visible {
+    @include focus-ring;
+
+    border-radius: var(--yi-radius-sm);
+  }
+}
+
+.yi-tooltip__bubble {
+  // Component tokens
+  --yi-tooltip-bg: var(--yi-surface-raised);
+  --yi-tooltip-fg: var(--yi-fg);
+  --yi-tooltip-border: var(--yi-line-strong);
+  --yi-tooltip-shadow: var(--yi-shadow-card);
+  --yi-tooltip-radius: var(--yi-radius-control);
+  --yi-tooltip-padding: var(--yi-space-xs) var(--yi-space-sm);
+  --yi-tooltip-max-width: 22rem;
+  --yi-tooltip-arrow-size: 0.5rem;
+
+  inline-size: max-content;
+  max-inline-size: min(var(--yi-tooltip-max-width), calc(100vw - var(--yi-space-lg)));
+  padding: var(--yi-tooltip-padding);
+  border: 1px solid var(--yi-tooltip-border);
+  border-radius: var(--yi-tooltip-radius);
+  background: var(--yi-tooltip-bg);
+  box-shadow: var(--yi-tooltip-shadow);
+  color: var(--yi-tooltip-fg);
+  // The bubble sits inside whatever it describes, so undo what that sets.
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-sm);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: start;
+  text-transform: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: default;
+  user-select: text;
+
+  @include motion {
+    transition: opacity var(--yi-duration-fast) var(--yi-ease);
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  // Bridges the gap to the element, so the pointer can cross onto the bubble.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1px - var(--yi-anchor-offset, 0px));
+    z-index: -1;
+  }
+
+  // Near-black in both themes; tokens inside resolve to their dark values.
+  &--dark {
+    --yi-tooltip-bg: var(--yi-bg);
+    --yi-tooltip-border: var(--yi-line);
+
+    color-scheme: dark;
+  }
+
+  // A square turned 45 degrees, centred on the edge facing the element, with
+  // only its two outer borders drawn.
+  &--arrow::after {
+    content: "";
+    position: absolute;
+    inline-size: var(--yi-tooltip-arrow-size);
+    block-size: var(--yi-tooltip-arrow-size);
+    border: inherit;
+    background: inherit;
+    translate: -50% -50%;
+    rotate: 45deg;
+  }
+
+  &--arrow[data-yi-side="top"]::after {
+    inset-block-start: calc(100% + 0.5px);
+    inset-inline-start: calc(var(--yi-anchor-arrow) - 1px);
+    border-block-start-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  &--arrow[data-yi-side="bottom"]::after {
+    inset-block-start: -0.5px;
+    inset-inline-start: calc(var(--yi-anchor-arrow) - 1px);
+    border-block-end-color: transparent;
+    border-inline-end-color: transparent;
+  }
+
+  &--arrow[data-yi-side="left"]::after {
+    inset-block-start: calc(var(--yi-anchor-arrow) - 1px);
+    inset-inline-start: calc(100% + 0.5px);
+    border-block-end-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  &--arrow[data-yi-side="right"]::after {
+    inset-block-start: calc(var(--yi-anchor-arrow) - 1px);
+    inset-inline-start: -0.5px;
+    border-block-start-color: transparent;
+    border-inline-end-color: transparent;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-tooltip__bubble {
+    border-color: CanvasText;
+  }
+}
