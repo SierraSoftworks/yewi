@@ -1,0 +1,83 @@
+// ButtonGroup
+//
+// Joins its direct children into one control: neighbours overlap by their
+// border so a single line separates them, and only the outer corners round.
+@use "api" as *;
+
+.yi-button-group {
+  // Component tokens
+  --yi-button-group-radius: var(--yi-radius-control);
+
+  display: inline-flex;
+  vertical-align: middle;
+  // Keeps the stacking below from leaking into the page.
+  isolation: isolate;
+
+  > * {
+    position: relative;
+    border-radius: 0;
+  }
+
+  > :not(:first-child) {
+    margin-inline-start: -1px;
+  }
+
+  > :first-child {
+    border-start-start-radius: var(--yi-button-group-radius);
+    border-end-start-radius: var(--yi-button-group-radius);
+  }
+
+  > :last-child {
+    border-start-end-radius: var(--yi-button-group-radius);
+    border-end-end-radius: var(--yi-button-group-radius);
+  }
+
+  // A coloured outline is drawn whole, over the neighbour it overlaps, and
+  // opaque so the shared edge does not blend two borders.
+  > .yi-button--danger {
+    --yi-button-border: color-mix(in srgb, var(--yi-danger) 45%, var(--yi-surface));
+
+    z-index: 1;
+  }
+
+  > [aria-pressed="true"] {
+    z-index: 1;
+  }
+
+  > :focus-visible {
+    z-index: 2;
+  }
+
+  // Filled neighbours have no border of their own to share, so give them a seam.
+  > .yi-button--primary + .yi-button--primary {
+    border-inline-start-color: color-mix(in srgb, var(--yi-on-solid) 35%, transparent);
+  }
+
+  &--vertical {
+    flex-direction: column;
+
+    > :not(:first-child) {
+      margin-inline-start: 0;
+      margin-block-start: -1px;
+    }
+
+    > :first-child {
+      border-end-start-radius: 0;
+      border-start-end-radius: var(--yi-button-group-radius);
+    }
+
+    > :last-child {
+      border-start-end-radius: 0;
+      border-end-start-radius: var(--yi-button-group-radius);
+    }
+
+    > :only-child {
+      border-radius: var(--yi-button-group-radius);
+    }
+
+    > .yi-button--primary + .yi-button--primary {
+      border-inline-start-color: transparent;
+      border-block-start-color: color-mix(in srgb, var(--yi-on-solid) 35%, transparent);
+    }
+  }
+}
