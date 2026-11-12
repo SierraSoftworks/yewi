@@ -1,0 +1,112 @@
+// DescriptionList
+//
+// A `<dl>` whose items are `<div>` groups. Inline lists share one term column
+// through subgrid, so every value starts on the same line. The list is a size
+// container: give it room (`flex: 1`) when it sits in a row of other things.
+@use "api" as *;
+
+.yi-description-list {
+  // Component tokens
+  --yi-description-list-term-size: fit-content(40%);
+  --yi-description-list-term-fg: var(--yi-fg-muted);
+  --yi-description-list-gap-block: var(--yi-space-sm);
+  --yi-description-list-gap-inline: var(--yi-space-lg);
+  --yi-description-list-line: var(--yi-line);
+  --yi-description-list-min: 9rem;
+
+  display: grid;
+  grid-template-columns: var(--yi-description-list-term-size) minmax(0, 1fr);
+  gap: var(--yi-description-list-gap-block) var(--yi-description-list-gap-inline);
+  min-inline-size: 0;
+  margin: 0;
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  container-type: inline-size;
+
+  &--ruled {
+    row-gap: 0;
+  }
+
+  &--stacked {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--yi-description-list-min), 100%), 1fr));
+    gap: var(--yi-space-lg) var(--yi-space-xl);
+  }
+
+  &--fixed {
+    grid-template-columns: repeat(var(--yi-description-list-columns), minmax(0, 1fr));
+  }
+}
+
+.yi-description-list__item {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  min-inline-size: 0;
+
+  .yi-description-list--ruled > & {
+    padding-block: var(--yi-description-list-gap-block);
+    border-block-end: 1px solid var(--yi-description-list-line);
+
+    &:first-child {
+      padding-block-start: 0;
+    }
+
+    &:last-child {
+      padding-block-end: 0;
+      border-block-end: 0;
+    }
+  }
+
+  .yi-description-list--stacked > & {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yi-space-2xs);
+    grid-column: auto;
+    align-items: stretch;
+  }
+
+  .yi-description-list--stacked > &--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.yi-description-list__term {
+  color: var(--yi-description-list-term-fg);
+  overflow-wrap: anywhere;
+
+  .yi-description-list--stacked > .yi-description-list__item > & {
+    font-size: var(--yi-text-sm);
+  }
+}
+
+.yi-description-list__value {
+  min-inline-size: 0;
+  margin: 0;
+  color: var(--yi-fg);
+  overflow-wrap: anywhere;
+
+  &--mono {
+    font-family: var(--yi-font-mono);
+    font-size: var(--yi-text-sm);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+  }
+
+  &--empty {
+    color: var(--yi-fg-subtle);
+  }
+}
+
+// Too narrow for two columns: the term moves above its value.
+@container (inline-size < 20rem) {
+  .yi-description-list--inline > .yi-description-list__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yi-space-2xs);
+    align-items: stretch;
+  }
+
+  .yi-description-list--inline > .yi-description-list__item > .yi-description-list__term {
+    font-size: var(--yi-text-sm);
+  }
+}

@@ -1,0 +1,47 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="status" class="yi-banner yi-banner--info yi-banner--soft yi-banner--md">
+<span class="yi-banner__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 16v-4M12 8h.01">
+</path>
+</svg>
+</span>
+<div class="yi-banner__message">Version 2.4 is out, with faster mission sync.</div>
+<div class="yi-banner__actions">
+<a href="#changes">What changed</a>
+</div>
+<button type="button" aria-label="Dismiss announcement" class="yi-banner__dismiss">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<div role="alert" class="yi-banner yi-banner--warn yi-banner--soft yi-banner--md">
+<span class="yi-banner__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01">
+</path>
+</svg>
+</span>
+<div class="yi-banner__message">You are offline. Changes are kept on this device until the connection returns.</div>
+<div class="yi-banner__actions">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Reconnect</button>
+</div>
+</div>
+<div role="alert" class="yi-banner yi-banner--danger yi-banner--soft yi-banner--md">
+<span class="yi-banner__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+</span>
+<div class="yi-banner__message">The server is in read-only mode while a restore is running.</div>
+</div>
+<p class="yi-note yi-note--neutral" role="status">
+<span class="yi-note__text">Announcement shown</span>
+</p>
+</div>
