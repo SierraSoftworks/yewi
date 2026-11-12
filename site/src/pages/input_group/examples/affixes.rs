@@ -24,12 +24,12 @@ pub fn Example() -> Html {
             </Field>
             <Field label="Timeout" hint="In milliseconds.">
                 <InputGroup suffix="ms">
-                    <NumberInput value={*timeout} on_input={set_timeout} min={0.0} step={50.0} />
+                    <NumberInput value={*timeout} on_input={set_timeout} min={0.0} step={50.0} stepper=false />
                 </InputGroup>
             </Field>
             <Field label="Monthly budget" hint="In US dollars.">
                 <InputGroup prefix="$" suffix="USD">
-                    <NumberInput value={1200.0} min={0.0} />
+                    <NumberInput value={1200.0} min={0.0} stepper=false />
                 </InputGroup>
             </Field>
             <span role="status">

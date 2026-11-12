@@ -35,7 +35,7 @@ pub fn Example() -> Html {
             </Field>
             <Field label="Retry after">
                 <InputGroup suffix={unit_select}>
-                    <NumberInput value={5.0} min={1.0} />
+                    <NumberInput value={5.0} min={1.0} stepper=false />
                 </InputGroup>
             </Field>
             <span role="status">{ format!("{}://{} · retry in {}", *protocol, *host, *unit) }</span>
