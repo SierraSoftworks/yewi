@@ -56,7 +56,9 @@ pub fn Example() -> Html {
                     danger=true
                     {on_confirm}
                     {on_cancel}
-                />
+                >
+                    <p>{ "Its 3 dashboards are removed. This cannot be undone." }</p>
+                </ConfirmDialog>
             </Drawer>
         </Stack>
     }

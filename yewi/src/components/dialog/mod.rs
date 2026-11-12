@@ -16,6 +16,9 @@ use crate::{Attrs, Button, ButtonVariant, Icon, Size, hooks::use_id, icons};
 pub(crate) struct Modal {
     /// Goes on the `<dialog>` element.
     pub node: NodeRef,
+    /// The `closedby` attribute: `none` when it cannot be dismissed.
+    pub closedby: Option<&'static str>,
+    pub onkeydown: Callback<KeyboardEvent>,
     pub oncancel: Callback<Event>,
     pub onclose: Callback<Event>,
     pub onmousedown: Callback<MouseEvent>,
@@ -55,6 +58,14 @@ pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) 
     }
 
     Modal {
+        closedby: (!dismissible).then_some("none"),
+        // A dialog that may not be dismissed swallows `Escape` before the
+        // browser acts on it.
+        onkeydown: Callback::from(move |event: KeyboardEvent| {
+            if !dismissible && event.key() == "Escape" {
+                event.prevent_default();
+            }
+        }),
         // `Escape`. The owner decides, so the native close is always cancelled.
         oncancel: {
             let on_close = on_close.clone();
@@ -65,13 +76,19 @@ pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) 
                 }
             })
         },
-        // The browser closed it without being asked (it stops honouring a
-        // cancelled `Escape` when pressed repeatedly): tell the owner.
+        // The browser closed it without being asked: it stops honouring a
+        // cancelled `Escape` when the key is pressed again. Hand the decision
+        // to the owner, or put back a dialog that may not be dismissed.
         onclose: {
-            let (wanted, on_close) = (wanted.clone(), on_close.clone());
+            let (node, wanted, on_close) = (node.clone(), wanted.clone(), on_close.clone());
             Callback::from(move |_| {
-                if *wanted.borrow() {
+                if !*wanted.borrow() {
+                    return;
+                }
+                if dismissible {
                     on_close.emit(());
+                } else {
+                    dom::show(&node);
                 }
             })
         },
@@ -169,6 +186,8 @@ pub fn Dialog(props: &DialogProps) -> Html {
             role={props.alert.then_some("alertdialog")}
             aria-labelledby={title_id.clone()}
             aria-describedby={props.alert.then(|| body_id.clone())}
+            closedby={modal.closedby}
+            onkeydown={modal.onkeydown}
             oncancel={modal.oncancel}
             onclose={modal.onclose}
             onmousedown={modal.onmousedown}

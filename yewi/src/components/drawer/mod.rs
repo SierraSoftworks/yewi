@@ -97,6 +97,8 @@ pub fn Drawer(props: &DrawerProps) -> Html {
             {class}
             aria-labelledby={props.title.is_some().then(|| title_id.clone())}
             aria-label={if props.title.is_none() { props.label.clone() } else { None }}
+            closedby={modal.closedby}
+            onkeydown={modal.onkeydown}
             oncancel={modal.oncancel}
             onclose={modal.onclose}
             onmousedown={modal.onmousedown}

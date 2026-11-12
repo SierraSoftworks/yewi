@@ -13,7 +13,7 @@
   --yi-dialog-radius: var(--yi-radius-card);
   --yi-dialog-bg: var(--yi-surface-raised);
   --yi-dialog-foot-bg: var(--yi-tone-1);
-  --yi-dialog-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.58));
+  --yi-dialog-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.45));
 
   inline-size: min(var(--yi-dialog-width), 100% - 2 * var(--yi-dialog-margin));
   max-inline-size: none;
@@ -81,6 +81,10 @@
   flex: none;
   margin-block: calc(var(--yi-space-xs) * -1);
   margin-inline-end: calc(var(--yi-space-sm) * -1);
+
+  .yi-icon {
+    --yi-icon-size: 1rem;
+  }
 }
 
 .yi-dialog__body {
@@ -93,6 +97,11 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   line-height: var(--yi-leading);
+
+  // A title with nothing to add still needs air above the actions.
+  &:empty {
+    padding-block-end: var(--yi-space-sm);
+  }
 }
 
 // A tonal band rather than a rule, as sibling panels are told apart elsewhere.

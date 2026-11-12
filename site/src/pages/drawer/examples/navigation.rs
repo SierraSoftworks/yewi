@@ -24,7 +24,7 @@ pub fn Example() -> Html {
             </Cluster>
             <span role="status">{ format!("Showing {}", *page) }</span>
             <Drawer open={*open} label="Navigation" side={DrawerSide::Start} size={Size::Small} on_close={close}>
-                <Stack gap={Space::Xs}>
+                <Stack gap={Space::Xs} align={Align::Start}>
                     { for PAGES.into_iter().map(|name| {
                         let (open, page) = (open.clone(), page.clone());
                         let on_click = move |_| {
