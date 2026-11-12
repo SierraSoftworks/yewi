@@ -1,0 +1,24 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-empty-state yi-empty-state--center yi-empty-state--md yi-empty-state--neutral">
+<span class="yi-empty-state__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 2h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM4 14h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM6 6L6.01 6M6 18L6.01 18">
+</path>
+</svg>
+</span>
+<p class="yi-empty-state__title">No clusters yet</p>
+<div class="yi-empty-state__body">Clusters appear here once an agent connects. Adding one takes about two minutes.</div>
+<div class="yi-empty-state__actions">
+<button type="button" class="yi-button yi-button--primary yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add a cluster</button>
+<a href="#clusters" class="yi-button yi-button--subtle yi-button--md">Read the guide</a>
+</div>
+</div>
+<span role="status">Started adding 0 clusters</span>
+</div>

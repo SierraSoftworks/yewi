@@ -1,0 +1,143 @@
+// Loading: Spinner, Loading and LoadingOverlay.
+//
+// The spinner is drawn like an icon (24-unit grid, round caps) and inherits
+// its arc colour from `--yi-spinner-color`.
+@use "api" as *;
+
+.yi-spinner {
+  // Component tokens
+  --yi-spinner-size: 1em;
+  --yi-spinner-color: currentColor;
+  --yi-spinner-track: color-mix(in srgb, currentColor 22%, transparent);
+  --yi-spinner-stroke: 2.5;
+  --yi-spinner-duration: calc(var(--yi-duration) * 4.5);
+
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.125em;
+  inline-size: var(--yi-spinner-size);
+  block-size: var(--yi-spinner-size);
+  fill: none;
+  stroke-width: var(--yi-spinner-stroke);
+  stroke-linecap: round;
+
+  @include motion {
+    animation: yi-spinner-turn var(--yi-spinner-duration) linear infinite;
+  }
+}
+
+.yi-spinner__track {
+  stroke: var(--yi-spinner-track);
+}
+
+.yi-spinner__arc {
+  stroke: var(--yi-spinner-color);
+}
+
+@keyframes yi-spinner-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.yi-loading {
+  // Component tokens
+  --yi-loading-fg: var(--yi-fg-muted);
+  --yi-loading-accent: var(--yi-accent-text);
+  --yi-loading-gap: var(--yi-space-sm);
+  --yi-loading-padding: var(--yi-space-2xl);
+  --yi-loading-delay: calc(var(--yi-duration) * 2);
+
+  --yi-spinner-color: var(--yi-loading-accent);
+  --yi-spinner-track: var(--yi-line-strong);
+  --yi-spinner-size: 1.125rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--yi-loading-gap);
+  color: var(--yi-loading-fg);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading-tight);
+
+  &--sm {
+    --yi-spinner-size: 0.875rem;
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-spinner-size: 1.75rem;
+    --yi-loading-gap: var(--yi-space-md);
+
+    font-size: var(--yi-text-lg);
+  }
+
+  &--block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--yi-loading-padding);
+    text-align: center;
+  }
+
+  &--delay {
+    @include motion {
+      animation: yi-loading-appear 0s var(--yi-loading-delay) backwards;
+    }
+  }
+}
+
+// Hidden, not transparent, during the delay: nothing is announced or
+// measured until the indicator is really there.
+@keyframes yi-loading-appear {
+  from {
+    visibility: hidden;
+  }
+}
+
+.yi-loading-overlay {
+  // Component tokens
+  --yi-loading-overlay-scrim: color-mix(in srgb, var(--yi-surface) 65%, transparent);
+  --yi-loading-overlay-radius: var(--yi-radius-card);
+  --yi-loading-overlay-delay: calc(var(--yi-duration) * 2);
+
+  position: relative;
+}
+
+.yi-loading-overlay__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  border-radius: var(--yi-loading-overlay-radius);
+  background: var(--yi-loading-overlay-scrim);
+  cursor: progress;
+
+  // The indicator floats on its own chip, so it stays legible over any content.
+  .yi-loading {
+    --yi-loading-fg: var(--yi-fg);
+
+    max-inline-size: calc(100% - 2 * var(--yi-space-sm));
+    padding: var(--yi-space-sm) var(--yi-space-md);
+    border-radius: var(--yi-radius-control);
+    background: var(--yi-surface-raised);
+    box-shadow: var(--yi-shadow-overlay);
+  }
+
+  .yi-loading-overlay--delay > & {
+    @include motion {
+      animation: yi-loading-appear 0s var(--yi-loading-overlay-delay) backwards;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-spinner__track {
+    stroke: GrayText;
+  }
+
+  .yi-spinner__arc {
+    stroke: CanvasText;
+  }
+}
