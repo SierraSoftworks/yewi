@@ -27,7 +27,7 @@ chrono = []
 code = []
 diff = []
 highlight = []
-highlight-syntect = ["highlight"]
+highlight-syntect = ["highlight", "dep:syntect"]
 map = []
 markdown = []
 qr = ["dep:qrcodegen"]
@@ -59,6 +59,7 @@ full = [
 yew = { workspace = true }
 yewi-fonts = { workspace = true, optional = true }
 qrcodegen = { version = "1.8", optional = true }
+syntect = { version = "5.2", default-features = false, features = ["default-syntaxes", "regex-fancy"], optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = { workspace = true }
