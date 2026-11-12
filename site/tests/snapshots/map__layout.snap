@@ -1,0 +1,106 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-map-height:30rem" class="yi-map">
+<div class="yi-map__canvas">
+</div>
+<div class="yi-map__overlay">
+<div class="yi-map__toolbar">
+<div role="toolbar" aria-label="Map tools" class="yi-map-toolbar">
+<div class="yi-map-toolbar__group">
+<button type="button" aria-pressed="true" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Select" title="Select">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12.586 12.586 19 19M3.688 3.037a.497.497 0 0 0-.651.651l6.5 15.999a.501.501 0 0 0 .947-.062l1.569-6.083a2 2 0 0 1 1.448-1.479l6.124-1.579a.5.5 0 0 0 .063-.947z">
+</path>
+</svg>
+</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Place a marker" title="Place a marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</button>
+</div>
+<div class="yi-map-toolbar__group">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Fit everything" title="Fit everything">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3">
+</path>
+</svg>
+</button>
+</div>
+<div class="yi-map-toolbar__group">4 sites</div>
+</div>
+</div>
+<div class="yi-map__notes">
+</div>
+<div class="yi-map__sidebar">
+<details open="open" class="yi-map-panel">
+<summary class="yi-map-panel__head">
+<span class="yi-map-panel__title">On the map</span>
+<span class="yi-map-panel__meta">4</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-map-panel__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</summary>
+<div class="yi-map-panel__body">
+<ul class="yi-map-list">
+<li class="yi-map-list__row">
+<button type="button" class="yi-map-list__item">
+<span class="yi-map-list__dot yi-map-list__dot--ok">
+</span>
+<span class="yi-map-list__label">Frankfurt</span>
+<span class="yi-map-list__detail">12 nodes</span>
+</button>
+</li>
+<li class="yi-map-list__row">
+<button type="button" class="yi-map-list__item">
+<span class="yi-map-list__dot yi-map-list__dot--ok">
+</span>
+<span class="yi-map-list__label">Dublin</span>
+<span class="yi-map-list__detail">8 nodes</span>
+</button>
+</li>
+<li class="yi-map-list__row">
+<button type="button" class="yi-map-list__item">
+<span class="yi-map-list__dot yi-map-list__dot--warn">
+</span>
+<span class="yi-map-list__label">Madrid</span>
+<span class="yi-map-list__detail">5 nodes</span>
+</button>
+</li>
+<li class="yi-map-list__row">
+<button type="button" class="yi-map-list__item">
+<span class="yi-map-list__dot yi-map-list__dot--danger">
+</span>
+<span class="yi-map-list__label">Stockholm</span>
+<span class="yi-map-list__detail">3 nodes</span>
+</button>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="yi-map__panel">
+</div>
+<div class="yi-map__footer">
+</div>
+<div class="yi-map__controls">
+<div role="group" aria-label="Zoom" class="yi-map__zoom">
+<button type="button" aria-label="Zoom in" class="yi-map__zoom-button">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+<button type="button" aria-label="Zoom out" class="yi-map__zoom-button">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>

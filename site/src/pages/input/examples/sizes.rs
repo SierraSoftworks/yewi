@@ -7,7 +7,7 @@ pub fn Example() -> Html {
         html! {
             <Cluster nowrap=true>
                 <TextInput {size} placeholder={label} attrs={attrs! { "aria-label" => label }} />
-                <NumberInput {size} value={3.0} stepper=true attrs={attrs! { "aria-label" => "Replicas" }} />
+                <NumberInput {size} value={3.0} attrs={attrs! { "aria-label" => "Replicas" }} />
                 <Button {size}>{ "Apply" }</Button>
             </Cluster>
         }
