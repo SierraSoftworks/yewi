@@ -1,0 +1,54 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-input-group yi-input-group--lg yi-search-input">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+</span>
+<input value="" type="search" placeholder="Search events" autocomplete="off" class="yi-input yi-input--md" aria-label="Search events">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+<span class="yi-input-group__select">
+<select aria-label="Scope" class="yi-input-group__select-control">
+<option value="all" selected="selected">All</option>
+<option value="errors">Errors</option>
+<option value="deploys">Deploys</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Search</button>
+</span>
+</div>
+<span role="status">No search yet</span>
+<div class="yi-input-group yi-input-group--md yi-search-input" aria-busy="true">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
+</span>
+<input value="timeout" type="search" placeholder="Search logs" autocomplete="off" class="yi-input yi-input--md" aria-label="Search logs">
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>

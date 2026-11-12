@@ -1,0 +1,36 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<pre style="margin: 0; padding: var(--yi-space-md); border-radius: var(--yi-radius-control); background: var(--yi-code-bg); overflow-x: auto">
+<code class="yi-highlight">
+<span class="yi-tok-comment">// Greets whoever is signed in.</span>
+<span class="yi-tok-keyword">fn</span> <span class="yi-tok-function">greet</span>(user: &amp;<span class="yi-tok-type">User</span>) -&gt; <span class="yi-tok-type">String</span> {
+    <span class="yi-tok-meta">format!</span>(<span class="yi-tok-string">"Hello {}, you have {} alerts"</span>, user.name, <span class="yi-tok-number">3</span>)
+}</code>
+</pre>
+<code class="yi-highlight">
+<div class="yi-cluster">
+<span class="yi-tok-comment">comment × 1</span>
+<span class="yi-tok-keyword">keyword × 1</span>
+<span class="yi-tok-literal">literal × 0</span>
+<span class="yi-tok-number">number × 1</span>
+<span class="yi-tok-string">string × 1</span>
+<span class="yi-tok-type">type × 2</span>
+<span class="yi-tok-function">function × 1</span>
+<span class="yi-tok-property">property × 0</span>
+<span class="yi-tok-tag">tag × 0</span>
+<span class="yi-tok-variable">variable × 0</span>
+<span class="yi-tok-meta">meta × 1</span>
+<span class="yi-tok-inserted">inserted × 0</span>
+<span class="yi-tok-deleted">deleted × 0</span>
+</div>
+</code>
+<pre style="margin: 0; padding: var(--yi-space-md); border-radius: var(--yi-radius-control); background: var(--yi-code-bg); overflow-x: auto; --yi-highlight-comment: var(--yi-accent-text)">
+<code class="yi-highlight">
+<span class="yi-tok-comment">// Greets whoever is signed in.</span>
+<span class="yi-tok-keyword">fn</span> <span class="yi-tok-function">greet</span>(user: &amp;<span class="yi-tok-type">User</span>) -&gt; <span class="yi-tok-type">String</span> {
+    <span class="yi-tok-meta">format!</span>(<span class="yi-tok-string">"Hello {}, you have {} alerts"</span>, user.name, <span class="yi-tok-number">3</span>)
+}</code>
+</pre>
+</div>

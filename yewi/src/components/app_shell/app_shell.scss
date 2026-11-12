@@ -1,0 +1,175 @@
+// AppShell
+//
+// By default the document scrolls: the bar sticks to the top and the sidebar
+// stays beside the page. `--fill` pins the shell to one viewport and scrolls
+// the page area instead. On a narrow screen the sidebar leaves the layout and
+// is shown in a Drawer.
+@use "api" as *;
+
+// Where the sidebar becomes a drawer. A page shell follows the viewport; an
+// embedded one follows its own width, and is narrower before it gives in.
+$narrow: 54rem;
+$narrow-embedded: 36rem;
+
+@mixin narrow {
+  .yi-app-shell__body {
+    // Read by the component to decide what the menu button does.
+    --yi-app-shell-narrow: 1;
+
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yi-app-shell__sidebar {
+    display: none;
+  }
+
+  .yi-app-shell__main {
+    padding: min(var(--yi-app-shell-padding), var(--yi-space-lg));
+  }
+}
+
+.yi-app-shell {
+  // Component tokens
+  --yi-app-shell-height: 100dvb; // Of a `fill` or `embedded` shell.
+  --yi-app-shell-bar-height: var(--yi-space-3xl); // Also read by AppBar.
+  --yi-app-shell-sidebar-width: 13.75rem;
+  --yi-app-shell-padding: var(--yi-space-xl); // Around the page. `flush` removes it.
+  --yi-app-shell-bg: var(--yi-bg);
+  --yi-app-shell-sidebar-bg: var(--yi-bg);
+  --yi-app-shell-line: var(--yi-line);
+
+  display: flex;
+  flex-direction: column;
+  min-block-size: var(--yi-app-shell-height);
+  background: var(--yi-app-shell-bg);
+  color: var(--yi-fg);
+}
+
+.yi-app-shell__skip {
+  position: absolute;
+  inset-block-start: var(--yi-space-sm);
+  inset-inline-start: var(--yi-space-sm);
+  z-index: 3;
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-surface-raised);
+  box-shadow: var(--yi-shadow-overlay);
+  color: var(--yi-accent-text);
+  font-size: var(--yi-text-md);
+  font-weight: 500;
+
+  &:not(:focus-visible) {
+    @include visually-hidden;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.yi-app-shell__body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: var(--yi-app-shell-sidebar-width) minmax(0, 1fr);
+  align-items: start;
+  min-block-size: 0;
+}
+
+.yi-app-shell__sidebar {
+  position: sticky;
+  inset-block-start: var(--yi-app-shell-bar-height);
+  display: flex;
+  block-size: calc(100dvb - var(--yi-app-shell-bar-height));
+  border-inline-end: 1px solid var(--yi-app-shell-line);
+  background: var(--yi-app-shell-sidebar-bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  // With no bar above it the sidebar has the full height.
+  .yi-app-shell__body:first-child > &,
+  .yi-app-shell__skip + .yi-app-shell__body > & {
+    inset-block-start: 0;
+    block-size: 100dvb;
+  }
+}
+
+.yi-app-shell__main {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  padding: var(--yi-app-shell-padding);
+  // Keeps a heading that the skip link or a fragment jumps to clear of the bar.
+  scroll-margin-block-start: var(--yi-app-shell-bar-height);
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.yi-app-shell--flush {
+  --yi-app-shell-padding: 0;
+}
+
+.yi-app-shell--collapsed {
+  > .yi-app-shell__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  > .yi-app-shell__body > .yi-app-shell__sidebar {
+    display: none;
+  }
+}
+
+// One viewport tall: the regions scroll, the document does not.
+.yi-app-shell--fill {
+  block-size: var(--yi-app-shell-height);
+  min-block-size: 0;
+
+  > .yi-app-shell__body {
+    align-items: stretch;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  > .yi-app-shell__body > .yi-app-shell__sidebar {
+    position: static;
+    block-size: auto;
+  }
+
+  > .yi-app-shell__body > .yi-app-shell__main {
+    overflow: auto;
+
+    &:focus-visible {
+      @include focus-ring(-2px);
+    }
+  }
+}
+
+.yi-app-shell--embedded {
+  --yi-app-shell-height: 30rem;
+
+  position: relative;
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-card);
+  overflow: hidden;
+  container: yi-app-shell / inline-size;
+}
+
+// The drawer's body is the sidebar, which brings its own padding.
+.yi-drawer.yi-app-shell__drawer {
+  --yi-drawer-padding: 0;
+}
+
+@media (width < #{$narrow}) {
+  .yi-app-shell:not(.yi-app-shell--embedded) {
+    @include narrow;
+  }
+}
+
+@container yi-app-shell (inline-size < #{$narrow-embedded}) {
+  @include narrow;
+}
+
+@media (forced-colors: active) {
+  .yi-app-shell__sidebar {
+    border-color: CanvasText;
+  }
+}
