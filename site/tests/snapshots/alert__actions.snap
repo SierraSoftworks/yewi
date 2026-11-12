@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="alert" class="yi-alert yi-alert--danger yi-alert--soft">
+<span class="yi-alert__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+</span>
+<div class="yi-alert__body">
+<div class="yi-alert__title">Could not save the mission</div>
+<div class="yi-alert__message">The server rejected the update because the mission changed while you were editing it.</div>
+<div class="yi-alert__actions">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Retry</button>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm">Discard changes</button>
+</div>
+</div>
+<button type="button" aria-label="Dismiss" class="yi-alert__dismiss">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<p class="yi-note yi-note--neutral" role="status">
+<span class="yi-note__text">Alert shown</span>
+</p>
+</div>
