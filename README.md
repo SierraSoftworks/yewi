@@ -7,6 +7,8 @@
 
 A design system and component library for [Yew](https://yew.rs): one visual language, light and dark themes, an accent per app, and a reference site that doubles as the test bed.
 
+Documentation and live examples: [yewi.sierrasoftworks.com](https://yewi.sierrasoftworks.com).
+
 ```rust
 use yew::prelude::*;
 use yewi::prelude::*;
