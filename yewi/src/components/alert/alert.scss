@@ -1,0 +1,284 @@
+// Alert, Banner and Note
+//
+// Each block reads a `-tone` and a `-soft` token; the tone modifiers set that
+// pair and nothing else, so a new look only has to read the two.
+@use "api" as *;
+
+$tones: neutral, ok, warn, danger, info, active;
+
+@mixin tones($block) {
+  @each $tone in $tones {
+    &--#{$tone} {
+      --yi-#{$block}-tone: var(--yi-#{$tone});
+      --yi-#{$block}-soft: var(--yi-#{$tone}-soft);
+    }
+  }
+}
+
+// The dismiss button of an alert or banner: a small square that takes the
+// colour of the text around it.
+@mixin dismiss {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--yi-space-xl);
+  block-size: var(--yi-space-xl);
+  margin-inline-end: calc(var(--yi-space-xs) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--yi-radius-sm);
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      opacity var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+
+    opacity: 1;
+  }
+}
+
+// ---- Alert -----------------------------------------------------------------
+
+.yi-alert {
+  // Component tokens
+  --yi-alert-tone: var(--yi-info); // Icon, title and border colour; set by `tone`.
+  --yi-alert-soft: var(--yi-info-soft); // Tinted fill; set by `tone`.
+  --yi-alert-bg: var(--yi-alert-soft);
+  --yi-alert-border: color-mix(in srgb, var(--yi-alert-tone) 28%, transparent);
+  --yi-alert-fg: var(--yi-fg);
+  --yi-alert-radius: var(--yi-radius-control);
+  --yi-alert-padding: var(--yi-space-md) var(--yi-space-lg);
+  --yi-alert-edge: 3px; // Width of the `Edge` variant's rule.
+
+  @include tones("alert");
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--yi-space-md);
+  padding: var(--yi-alert-padding);
+  border: 1px solid var(--yi-alert-border);
+  border-radius: var(--yi-alert-radius);
+  background: var(--yi-alert-bg);
+  color: var(--yi-alert-fg);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  text-align: start;
+
+  &--edge {
+    --yi-alert-bg: var(--yi-surface);
+    --yi-alert-border: var(--yi-card-line);
+
+    box-shadow:
+      inset var(--yi-alert-edge) 0 0 var(--yi-alert-tone),
+      var(--yi-shadow-card);
+
+    &:dir(rtl) {
+      box-shadow:
+        inset calc(var(--yi-alert-edge) * -1) 0 0 var(--yi-alert-tone),
+        var(--yi-shadow-card);
+    }
+  }
+}
+
+.yi-alert__icon {
+  flex: none;
+  display: inline-flex;
+  // Centres the icon on the first line of text.
+  block-size: calc(var(--yi-text-md) * var(--yi-leading));
+  align-items: center;
+  color: var(--yi-alert-tone);
+
+  > .yi-icon {
+    --yi-icon-size: var(--yi-text-2xl);
+  }
+}
+
+.yi-alert__body {
+  flex: 1;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.yi-alert__title {
+  color: var(--yi-alert-tone);
+  font-weight: 600;
+}
+
+.yi-alert__message {
+  .yi-alert__title + & {
+    margin-block-start: var(--yi-space-2xs);
+  }
+
+  :where(p, ul, ol) {
+    margin: 0;
+  }
+
+  :where(p, ul, ol) + :where(p, ul, ol) {
+    margin-block-start: var(--yi-space-sm);
+  }
+
+  :where(ul, ol) {
+    padding-inline-start: var(--yi-space-lg);
+    color: var(--yi-fg-muted);
+  }
+}
+
+.yi-alert__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yi-space-sm);
+  margin-block-start: var(--yi-space-md);
+}
+
+.yi-alert__dismiss {
+  @include dismiss;
+
+  // Sits level with the first line of text.
+  margin-block: calc((var(--yi-text-md) * var(--yi-leading) - var(--yi-space-xl)) / 2);
+  color: var(--yi-fg-muted);
+}
+
+// ---- Banner ----------------------------------------------------------------
+
+.yi-banner {
+  // Component tokens
+  --yi-banner-tone: var(--yi-info); // Icon and solid fill colour; set by `tone`.
+  --yi-banner-soft: var(--yi-info-soft); // Tinted fill; set by `tone`.
+  --yi-banner-bg: var(--yi-banner-soft);
+  --yi-banner-fg: var(--yi-fg);
+  --yi-banner-icon: var(--yi-banner-tone);
+  --yi-banner-border: color-mix(in srgb, var(--yi-banner-tone) 28%, transparent);
+  --yi-banner-padding: var(--yi-space-sm) var(--yi-space-lg);
+  --yi-banner-justify: flex-start; // `center` centres the message.
+
+  @include tones("banner");
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: var(--yi-banner-justify);
+  gap: var(--yi-space-sm) var(--yi-space-md);
+  padding: var(--yi-banner-padding);
+  border-block-end: 1px solid var(--yi-banner-border);
+  background: var(--yi-banner-bg);
+  color: var(--yi-banner-fg);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+
+  &--solid {
+    --yi-banner-bg: var(--yi-banner-tone);
+    --yi-banner-fg: var(--yi-on-solid);
+    --yi-banner-icon: currentColor;
+    --yi-banner-border: transparent;
+
+    font-weight: 500;
+
+    .yi-banner__dismiss:focus-visible {
+      outline-color: currentColor;
+    }
+
+    :where(a) {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  &--sm {
+    --yi-banner-padding: var(--yi-space-xs) var(--yi-space-md);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-banner-padding: var(--yi-space-xl);
+
+    font-size: var(--yi-text-xl);
+  }
+}
+
+.yi-banner__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  block-size: calc(1em * var(--yi-leading));
+  color: var(--yi-banner-icon);
+}
+
+.yi-banner__message {
+  // Grows unless the banner is centred, so actions sit at the trailing end.
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.yi-banner__actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  min-block-size: calc(1em * var(--yi-leading));
+  margin-inline-start: auto;
+}
+
+.yi-banner__dismiss {
+  @include dismiss;
+
+  margin-block: calc((1em * var(--yi-leading) - var(--yi-space-xl)) / 2);
+
+  .yi-banner__message + & {
+    margin-inline-start: auto;
+  }
+}
+
+// ---- Note ------------------------------------------------------------------
+
+.yi-note {
+  // Component tokens
+  --yi-note-tone: var(--yi-fg-muted); // Text and icon colour; set by `tone`.
+  --yi-note-size: var(--yi-text-sm);
+
+  @include tones("note");
+
+  // Neutral is plain muted text rather than the neutral status colour.
+  &--neutral {
+    --yi-note-tone: var(--yi-fg-muted);
+  }
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--yi-space-xs);
+  margin: 0;
+  color: var(--yi-note-tone);
+  font-size: var(--yi-note-size);
+  line-height: var(--yi-leading);
+}
+
+.yi-note__icon {
+  // Centres the icon on the first line of text.
+  margin-block-start: calc((1em * var(--yi-leading) - var(--yi-icon-size)) / 2);
+}
+
+.yi-note__text {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (forced-colors: active) {
+  .yi-alert,
+  .yi-banner {
+    border: 1px solid CanvasText;
+  }
+}
