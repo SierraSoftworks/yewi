@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span title="src/app.rs" class="yi-code-block__filename">src/app.rs</span>
+<span class="yi-code-block__language">Rust</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">use</span> yew::prelude::*;
+<span class="yi-tok-keyword">use</span> yewi::prelude::*;
+
+<span class="yi-tok-comment">/// The landing page of the deploy console.</span>
+<span class="yi-tok-meta">#[function_component]</span>
+<span class="yi-tok-keyword">pub</span> <span class="yi-tok-keyword">fn</span> <span class="yi-tok-type">App</span>() -&gt; <span class="yi-tok-type">Html</span> {
+    <span class="yi-tok-keyword">let</span> rollouts = <span class="yi-tok-function">use_state</span>(|| <span class="yi-tok-number">0_u32</span>);
+    <span class="yi-tok-keyword">let</span> on_click = {
+        <span class="yi-tok-keyword">let</span> rollouts = rollouts.<span class="yi-tok-function">clone</span>();
+        <span class="yi-tok-type">Callback</span>::<span class="yi-tok-function">from</span>(<span class="yi-tok-keyword">move</span> |_| rollouts.<span class="yi-tok-function">set</span>(*rollouts + <span class="yi-tok-number">1</span>))
+    };
+
+    <span class="yi-tok-meta">html!</span> {
+        &lt;<span class="yi-tok-type">Stack</span>&gt;
+            &lt;<span class="yi-tok-type">Button</span> variant={<span class="yi-tok-type">ButtonVariant</span>::<span class="yi-tok-type">Primary</span>} {on_click}&gt;{ <span class="yi-tok-string">"Deploy"</span> }&lt;/<span class="yi-tok-type">Button</span>&gt;
+            &lt;span&gt;{ <span class="yi-tok-meta">format!</span>(<span class="yi-tok-string">"{} rollouts today"</span>, *rollouts) }&lt;/span&gt;
+        &lt;/<span class="yi-tok-type">Stack</span>&gt;
+    }
+}</code>
+</pre>
+</div>
+<span role="status">Nothing copied yet</span>
+</div>

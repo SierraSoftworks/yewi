@@ -290,7 +290,8 @@ html {
   }
 }
 
-.docs-main code {
+// `InlineCode` brings its own chip; this dresses bare `<code>` in prose.
+.docs-main code:not(.yi-inline-code) {
   padding: 0.1em 0.35em;
   border-radius: var(--yi-radius-sm);
   background: var(--yi-tone-1);
@@ -340,28 +341,6 @@ html {
 .docs-snippet {
   border: 1px solid var(--yi-line);
   border-radius: var(--yi-radius-card);
-}
-
-.tok-kw {
-  color: light-dark(#8f3a80, #d58bd0);
-}
-
-.tok-type {
-  color: var(--yi-info);
-}
-
-.tok-str {
-  color: var(--yi-ok);
-}
-
-.tok-macro,
-.tok-num {
-  color: var(--yi-warn);
-}
-
-.tok-comment {
-  color: var(--yi-fg-subtle);
-  font-style: italic;
 }
 
 // ---- Examples ----------------------------------------------------------------
