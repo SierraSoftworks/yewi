@@ -7,6 +7,20 @@ source: site/tests/snapshots.rs
 <div class="yi-field__body">
 <div class="yi-input yi-number-input yi-input--md">
 <input value="3" id="yi-0-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="3" aria-valuemin="1" aria-valuemax="20" aria-describedby="yi-0-message" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
 </div>
 <p id="yi-0-message" class="yi-field__message">Between 1 and 20.</p>
 </div>

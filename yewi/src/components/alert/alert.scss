@@ -55,14 +55,13 @@ $tones: neutral, ok, warn, danger, info, active;
 
 .yi-alert {
   // Component tokens
-  --yi-alert-tone: var(--yi-info); // Icon, title and border colour; set by `tone`.
-  --yi-alert-soft: var(--yi-info-soft); // Tinted fill; set by `tone`.
-  --yi-alert-bg: var(--yi-alert-soft);
-  --yi-alert-border: color-mix(in srgb, var(--yi-alert-tone) 28%, transparent);
+  --yi-alert-tone: var(--yi-info); // Icon, title and rule colour; set by `tone`.
+  --yi-alert-bg: var(--yi-surface);
+  --yi-alert-border: var(--yi-card-line);
   --yi-alert-fg: var(--yi-fg);
   --yi-alert-radius: var(--yi-radius-control);
   --yi-alert-padding: var(--yi-space-md) var(--yi-space-lg);
-  --yi-alert-edge: 3px; // Width of the `Edge` variant's rule.
+  --yi-alert-edge: 3px; // Width of the rule along the leading edge.
 
   @include tones("alert");
 
@@ -78,19 +77,14 @@ $tones: neutral, ok, warn, danger, info, active;
   line-height: var(--yi-leading);
   text-align: start;
 
-  &--edge {
-    --yi-alert-bg: var(--yi-surface);
-    --yi-alert-border: var(--yi-card-line);
+  box-shadow:
+    inset var(--yi-alert-edge) 0 0 var(--yi-alert-tone),
+    var(--yi-shadow-card);
 
+  &:dir(rtl) {
     box-shadow:
-      inset var(--yi-alert-edge) 0 0 var(--yi-alert-tone),
+      inset calc(var(--yi-alert-edge) * -1) 0 0 var(--yi-alert-tone),
       var(--yi-shadow-card);
-
-    &:dir(rtl) {
-      box-shadow:
-        inset calc(var(--yi-alert-edge) * -1) 0 0 var(--yi-alert-tone),
-        var(--yi-shadow-card);
-    }
   }
 }
 

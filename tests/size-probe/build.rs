@@ -1,3 +1,5 @@
+//! The probe never installs the stylesheet: `cargo xtask size` measures it apart.
+//!
 //! Includes `src/features/<feature>.rs` for every enabled feature. Each file
 //! defines `pub fn view() -> yew::Html` that renders the feature's components,
 //! so their code is linked and counted.
