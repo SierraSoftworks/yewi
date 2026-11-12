@@ -10,7 +10,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Icon, Size, hooks::use_id, icons};
+use crate::{Attrs, Button, ButtonVariant, IconButton, Size, hooks::use_id, icons};
 
 /// What [`use_modal`] hands a component that renders a modal `<dialog>`.
 pub(crate) struct Modal {
@@ -115,15 +115,14 @@ pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) 
 /// The close button shared by dialog and drawer headers.
 pub(crate) fn close_button(label: &AttrValue, on_click: Callback<MouseEvent>) -> Html {
     html! {
-        <Button
-            class="yi-button--icon-only yi-dialog__close"
+        <IconButton
+            class="yi-dialog__close"
+            icon={icons::X}
+            label={label.clone()}
             variant={ButtonVariant::Subtle}
             size={Size::Small}
-            attrs={Attrs::new([("aria-label", label.clone())])}
             {on_click}
-        >
-            <Icon icon={icons::X} />
-        </Button>
+        />
     }
 }
 
