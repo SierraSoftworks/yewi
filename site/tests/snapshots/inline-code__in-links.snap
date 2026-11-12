@@ -1,0 +1,4 @@
+---
+source: site/tests/snapshots.rs
+---
+<p class="yi-text">See <a href="#inside-a-link" class="yi-link yi-link--default yi-link--underline-auto">the <code class="yi-inline-code">Styles</code> component</a> for how the stylesheet is installed.</p>

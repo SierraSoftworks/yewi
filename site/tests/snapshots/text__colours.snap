@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span class="yi-text yi-text--primary">caddy-ingress</span>
+<span class="yi-text yi-text--muted">Reverse proxy for the home cluster.</span>
+<span class="yi-text yi-text--sm yi-text--subtle">Updated 4 minutes ago</span>
+<span class="yi-text yi-text--accent">3 new commits</span>
+</div>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<span class="yi-text yi-text--ok">Healthy</span>
+<span class="yi-text yi-text--warn">Degraded</span>
+<span class="yi-text yi-text--danger">Failed</span>
+<span class="yi-text yi-text--info">Scheduled</span>
+<span class="yi-text yi-text--active">Rolling out</span>
+<span class="yi-text yi-text--neutral">Paused</span>
+</div>
+</div>

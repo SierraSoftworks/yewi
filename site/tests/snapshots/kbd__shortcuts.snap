@@ -1,0 +1,31 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p class="yi-text">Open the command palette with <kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">Shift</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">P</kbd>
+</kbd>.</p>
+<p class="yi-text">Go to hosts with <kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">G</kbd>
+<span class="yi-kbd-combo__then"> </span>
+<kbd class="yi-kbd">H</kbd>
+</kbd>.</p>
+<p class="yi-text">Save everything with <kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">K</kbd>
+<span class="yi-kbd-combo__then"> </span>
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">S</kbd>
+</kbd>.</p>
+<p class="yi-text">Zoom in with <kbd class="yi-kbd-combo">
+<kbd class="yi-kbd">Ctrl</kbd>
+<span class="yi-kbd-combo__plus">+</span>
+<kbd class="yi-kbd">+</kbd>
+</kbd>.</p>
+</div>
