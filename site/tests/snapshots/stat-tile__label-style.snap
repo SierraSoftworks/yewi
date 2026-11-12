@@ -1,0 +1,39 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div style="--yi-grid-min:10rem" class="yi-grid">
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="">
+<span class="yi-stat-tile__label">Accounts</span>
+<span class="yi-stat-tile__value">4</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="">
+<span class="yi-stat-tile__label">Administrators</span>
+<span class="yi-stat-tile__value">1</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="">
+<span class="yi-stat-tile__label">Suspended</span>
+<span class="yi-stat-tile__value">1</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__detail">Cannot sign in or connect.</span>
+</span>
+</div>
+</div>
+<div style="--yi-grid-min:10rem" class="yi-grid">
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="--yi-stat-tile-label-size: var(--yi-text-xs); --yi-stat-tile-label-transform: uppercase; --yi-stat-tile-label-tracking: 0.06em">
+<span class="yi-stat-tile__label">Accounts</span>
+<span class="yi-stat-tile__value">4</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="--yi-stat-tile-label-size: var(--yi-text-xs); --yi-stat-tile-label-transform: uppercase; --yi-stat-tile-label-tracking: 0.06em">
+<span class="yi-stat-tile__label">Administrators</span>
+<span class="yi-stat-tile__value">1</span>
+</div>
+<div class="yi-stat-tile yi-stat-tile--card yi-stat-tile--md" style="--yi-stat-tile-label-size: var(--yi-text-xs); --yi-stat-tile-label-transform: uppercase; --yi-stat-tile-label-tracking: 0.06em">
+<span class="yi-stat-tile__label">Suspended</span>
+<span class="yi-stat-tile__value">1</span>
+<span class="yi-stat-tile__foot">
+<span class="yi-stat-tile__detail">Cannot sign in or connect.</span>
+</span>
+</div>
+</div>
+</div>
