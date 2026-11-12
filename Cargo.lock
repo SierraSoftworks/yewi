@@ -1486,6 +1486,7 @@ dependencies = [
  "wasm-bindgen",
  "web-sys",
  "yew",
+ "yew-router",
  "yewi-fonts",
  "yewi-test",
 ]

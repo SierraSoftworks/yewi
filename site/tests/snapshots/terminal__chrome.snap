@@ -1,0 +1,44 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-label="Neutral buttons" class="yi-terminal yi-terminal--muted">
+<div class="yi-terminal__bar">
+<span aria-hidden="true" class="yi-terminal__controls">
+<span class="yi-terminal__control yi-terminal__control--close">
+</span>
+<span class="yi-terminal__control yi-terminal__control--minimise">
+</span>
+<span class="yi-terminal__control yi-terminal__control--zoom">
+</span>
+</span>
+<span class="yi-terminal__title">Neutral buttons</span>
+</div>
+<div class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">git status --short</span>
+</div>
+<div class="yi-terminal__output"> M yewi/src/components/terminal/mod.rs
+</div>
+</div>
+</div>
+<div role="group" aria-label="No buttons" class="yi-terminal">
+<div class="yi-terminal__bar">
+<span class="yi-terminal__title">No buttons</span>
+</div>
+<div class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">git status --short</span>
+</div>
+<div class="yi-terminal__output"> M yewi/src/components/terminal/mod.rs
+</div>
+</div>
+</div>
+<div role="group" aria-label="Install command" class="yi-terminal yi-terminal--nowrap">
+<div tabindex="0" class="yi-terminal__body">
+<div data-prompt="$" class="yi-terminal__command">
+<span class="yi-terminal__input">curl --proto '=https' --tlsv1.2 --silent --show-error --fail --location https://example.com/install.sh --output install.sh</span>
+</div>
+</div>
+</div>
+</div>

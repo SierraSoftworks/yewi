@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot">
+</span>healthy</span>
+<span class="yi-pill yi-pill--active">
+<span aria-hidden="true" class="yi-status-dot">
+</span>rolling</span>
+<span class="yi-pill yi-pill--warn">
+<span aria-hidden="true" class="yi-status-dot">
+</span>held</span>
+<span class="yi-pill yi-pill--danger">
+<span aria-hidden="true" class="yi-status-dot">
+</span>failing</span>
+<span class="yi-pill yi-pill--info">
+<span aria-hidden="true" class="yi-status-dot">
+</span>scheduled</span>
+<span class="yi-pill yi-pill--neutral">
+<span aria-hidden="true" class="yi-status-dot">
+</span>offline</span>
+</div>
