@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Email</label>
+<div class="yi-field__body">
+<input value="ben@example" id="yi-0-control" type="email" aria-invalid="true" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-input--invalid">
+<p id="yi-0-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Enter an address like name@example.com.</span>
+</p>
+</div>
+</div>
+<span role="status">Not a valid address</span>
+</div>

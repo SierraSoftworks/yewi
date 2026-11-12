@@ -1,0 +1,71 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Empty</label>
+<div class="yi-field__body">
+<input id="yi-0-control" type="text" placeholder="Placeholder" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Filled</label>
+<div class="yi-field__body">
+<input value="eu-west-1" id="yi-1-control" type="text" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Read-only</label>
+<div class="yi-field__body">
+<input value="eu-west-1" id="yi-2-control" type="text" readonly="readonly" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-3-label" for="yi-3-control" class="yi-field__label">Disabled</label>
+<div class="yi-field__body">
+<input value="eu-west-1" id="yi-3-control" type="text" disabled="disabled" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Invalid</label>
+<div class="yi-field__body">
+<input value="eu-west-9" id="yi-4-control" type="text" aria-invalid="true" aria-describedby="yi-4-message" class="yi-input yi-input--md yi-input--invalid">
+<p id="yi-4-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Unknown region.</span>
+</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-5-label" for="yi-5-control" class="yi-field__label">Invalid number</label>
+<div class="yi-field__body">
+<div class="yi-input yi-number-input yi-input--md yi-input--invalid">
+<input value="0" id="yi-5-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="0" aria-valuemin="1" aria-invalid="true" aria-describedby="yi-5-message" class="yi-number-input__input">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" disabled="disabled" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<p id="yi-5-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>Must be at least 1.</span>
+</p>
+</div>
+</div>
+</div>

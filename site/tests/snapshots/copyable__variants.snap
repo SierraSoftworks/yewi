@@ -1,0 +1,34 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 26rem" class="yi-stack">
+<span>Trace <span class="yi-copyable yi-copyable--inline yi-copyable--mono">
+<span id="yi-0" class="yi-copyable__value">7c3e0b52a9d14f68</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span>Trace <span class="yi-copyable yi-copyable--chip yi-copyable--mono">
+<span id="yi-1" class="yi-copyable__value">7c3e0b52a9d14f68</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-copyable yi-copyable--field yi-copyable--mono">
+<span id="yi-2" class="yi-copyable__value">7c3e0b52a9d14f68</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only yi-copyable__button" aria-label="Copy" title="Copy" aria-describedby="yi-2">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>

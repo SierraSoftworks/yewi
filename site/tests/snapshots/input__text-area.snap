@@ -1,0 +1,20 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Notes</label>
+<div class="yi-field__body">
+<textarea id="yi-0-control" rows="3" maxlength="200" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-input--multiline yi-input--resize-vertical">Rolled back after the error rate doubled.</textarea>
+<p id="yi-0-message" class="yi-field__message">41 of 200 characters</p>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Filter expression</label>
+<div class="yi-field__body">
+<textarea id="yi-1-control" rows="4" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-input--multiline yi-input--resize-none">service == "checkout-api"
+  and status &gt;= 500
+  and region in ["eu-west-1", "us-east-1"]</textarea>
+</div>
+</div>
+</div>
