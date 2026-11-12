@@ -1,0 +1,28 @@
+---
+source: site/tests/snapshots.rs
+---
+<nav aria-label="Settings sections" class="yi-tabs yi-tabs--line yi-tabs--md">
+<ul role="list" class="yi-tabs__list">
+<li class="yi-tabs__item">
+<a href="#general" aria-current="page" class="yi-tabs__tab">
+<span class="yi-tabs__label">General</span>
+</a>
+</li>
+<li class="yi-tabs__item">
+<a href="#members" class="yi-tabs__tab">
+<span class="yi-tabs__label">Members</span>
+<span class="yi-tabs__count">8</span>
+</a>
+</li>
+<li class="yi-tabs__item">
+<a href="#tokens" class="yi-tabs__tab">
+<span class="yi-tabs__label">Access tokens</span>
+</a>
+</li>
+<li class="yi-tabs__item">
+<a href="#billing" class="yi-tabs__tab">
+<span class="yi-tabs__label">Billing</span>
+</a>
+</li>
+</ul>
+</nav>

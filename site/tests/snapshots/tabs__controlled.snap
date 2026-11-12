@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Open summary</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Open notes</button>
+</div>
+<div class="yi-tabs yi-tabs--line yi-tabs--md">
+<div role="tablist" aria-label="Incident" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Summary</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="false" aria-controls="yi-0-panel-1" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Timeline</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" aria-controls="yi-0-panel-2" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Notes</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-0" aria-labelledby="yi-0-tab-0" tabindex="0" class="yi-tabs__panel">What happened and who is on it.</div>
+<div role="tabpanel" id="yi-0-panel-1" aria-labelledby="yi-0-tab-1" tabindex="0" hidden="hidden" class="yi-tabs__panel">Events in the order they were seen.</div>
+<div role="tabpanel" id="yi-0-panel-2" aria-labelledby="yi-0-tab-2" tabindex="0" hidden="hidden" class="yi-tabs__panel">
+<label>Notes <input type="text" placeholder="Kept while you look at other tabs">
+</label>
+</div>
+</div>
+<span role="status">Selected: summary</span>
+</div>

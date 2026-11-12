@@ -1,0 +1,22 @@
+---
+source: site/tests/snapshots.rs
+---
+<nav aria-label="Breadcrumb" class="yi-breadcrumbs yi-breadcrumbs--slash">
+<ol class="yi-breadcrumbs__list">
+<li class="yi-breadcrumbs__item">
+<a href="#dashboard" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Dashboard</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<a href="#exceptions" class="yi-breadcrumbs__crumb yi-breadcrumbs__crumb--link">
+<span class="yi-breadcrumbs__label">Exceptions</span>
+</a>
+</li>
+<li class="yi-breadcrumbs__item">
+<span aria-current="page" class="yi-breadcrumbs__crumb">
+<span class="yi-breadcrumbs__label">TimeoutError</span>
+</span>
+</li>
+</ol>
+</nav>
