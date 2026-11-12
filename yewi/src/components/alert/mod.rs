@@ -38,28 +38,6 @@ fn dismiss_button(class: &'static str, label: &AttrValue, on_dismiss: &Option<Ca
     }
 }
 
-/// How an alert is drawn.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum AlertVariant {
-    /// A fill and border tinted with the tone.
-    #[default]
-    Soft,
-    /// A plain raised surface with a rule in the tone along its leading
-    /// edge, for alerts that sit on a tinted or busy background.
-    Edge,
-}
-
-impl AlertVariant {
-    pub const ALL: [AlertVariant; 2] = [AlertVariant::Soft, AlertVariant::Edge];
-
-    const fn as_str(self) -> &'static str {
-        match self {
-            AlertVariant::Soft => "soft",
-            AlertVariant::Edge => "edge",
-        }
-    }
-}
-
 #[derive(Properties, PartialEq)]
 pub struct AlertProps {
     /// The message. Rich content such as a list of advice is fine.
@@ -72,8 +50,6 @@ pub struct AlertProps {
     /// urgently it is announced.
     #[prop_or(Tone::Info)]
     pub tone: Tone,
-    #[prop_or_default]
-    pub variant: AlertVariant,
     /// Replaces the tone's icon.
     #[prop_or_default]
     pub icon: Option<IconData>,
@@ -101,14 +77,14 @@ pub struct AlertProps {
 }
 
 /// A block-level message in the page flow that surfaces a problem or an
-/// outcome and offers a way forward. `Warn` and `Danger` use `role="alert"`,
+/// outcome and offers a way forward: a raised surface with a rule in the
+/// tone along its leading edge. `Warn` and `Danger` use `role="alert"`,
 /// other tones `role="status"`; pass `role` through `attrs` to override.
 #[function_component]
 pub fn Alert(props: &AlertProps) -> Html {
     let class = classes!(
         "yi-alert",
         format!("yi-alert--{}", props.tone.as_str()),
-        format!("yi-alert--{}", props.variant.as_str()),
         props.class.clone(),
     );
 

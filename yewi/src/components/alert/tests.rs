@@ -38,13 +38,11 @@ fn problems_interrupt_and_everything_else_is_polite() {
 fn every_tone_and_variant_is_distinguishable() {
     let mut rendered = Vec::new();
     for tone in Tone::ALL {
-        for variant in AlertVariant::ALL {
-            rendered.push(render(move || html! { <Alert {tone} {variant}>{ "Message" }</Alert> }));
-        }
+        rendered.push(render(move || html! { <Alert {tone} hide_icon=true>{ "Message" }</Alert> }));
         for variant in BannerVariant::ALL {
             rendered.push(render(move || html! { <Banner {tone} {variant}>{ "Message" }</Banner> }));
         }
-        // Neutral and Info share an icon, so compare notes without one.
+        // Neutral and Info share an icon, so alerts and notes are compared without one.
         rendered.push(render(move || html! { <Note {tone}>{ "Message" }</Note> }));
     }
     for (i, a) in rendered.iter().enumerate() {
