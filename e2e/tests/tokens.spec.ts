@@ -18,22 +18,22 @@ const ACCENTS: Record<string, string> = {
   ...Object.fromEntries([0, 60, 120, 180, 240, 300].map((hue) => [`hue ${hue}`, `oklch(0.7 0.17 ${hue})`])),
 };
 
-const SURFACES = ["--yw-bg", "--yw-surface", "--yw-surface-raised", "--yw-tone-1", "--yw-tone-2"];
+const SURFACES = ["--yi-bg", "--yi-surface", "--yi-surface-raised", "--yi-tone-1", "--yi-tone-2"];
 const TONES = ["ok", "warn", "danger", "info", "active", "neutral"];
 
 /** `[foreground, ...layers painted beneath it, bottom first]` */
 const PAIRS: string[][] = [
-  ...SURFACES.flatMap((surface) => ["--yw-fg", "--yw-fg-muted", "--yw-fg-subtle"].map((fg) => [fg, surface])),
-  ["--yw-accent-text", "--yw-surface"],
-  ["--yw-accent-text", "--yw-bg"],
-  ["--yw-accent-text", "--yw-surface", "--yw-accent-soft"],
-  ["--yw-on-solid", "--yw-accent-solid"],
-  ["--yw-on-solid", "--yw-accent-solid-hover"],
+  ...SURFACES.flatMap((surface) => ["--yi-fg", "--yi-fg-muted", "--yi-fg-subtle"].map((fg) => [fg, surface])),
+  ["--yi-accent-text", "--yi-surface"],
+  ["--yi-accent-text", "--yi-bg"],
+  ["--yi-accent-text", "--yi-surface", "--yi-accent-soft"],
+  ["--yi-on-solid", "--yi-accent-solid"],
+  ["--yi-on-solid", "--yi-accent-solid-hover"],
   ...TONES.flatMap((tone) => [
-    [`--yw-${tone}`, "--yw-surface"],
-    [`--yw-${tone}`, "--yw-bg"],
-    [`--yw-${tone}`, "--yw-surface", `--yw-${tone}-soft`],
-    ["--yw-on-solid", `--yw-${tone}`],
+    [`--yi-${tone}`, "--yi-surface"],
+    [`--yi-${tone}`, "--yi-bg"],
+    [`--yi-${tone}`, "--yi-surface", `--yi-${tone}-soft`],
+    ["--yi-on-solid", `--yi-${tone}`],
   ]),
 ];
 
@@ -44,7 +44,7 @@ for (const theme of ["light", "dark"] as Theme[]) {
     const failures = await page.evaluate(
       ({ accents, pairs, theme, AA }) => {
         const probe = document.createElement("div");
-        probe.setAttribute("data-yw-scope", "");
+        probe.setAttribute("data-yi-scope", "");
         probe.setAttribute("data-theme", theme);
         document.body.append(probe);
         const canvas = new OffscreenCanvas(1, 1).getContext("2d", { willReadFrequently: true })!;
@@ -69,7 +69,7 @@ for (const theme of ["light", "dark"] as Theme[]) {
 
         const failures: string[] = [];
         for (const [name, accent] of Object.entries(accents)) {
-          probe.style.setProperty("--yw-accent", accent);
+          probe.style.setProperty("--yi-accent", accent);
           for (const [foreground, ...layers] of pairs) {
             const [a, b] = [luminance(paint([...layers, foreground])), luminance(paint(layers))];
             const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);

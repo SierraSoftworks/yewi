@@ -1,65 +1,65 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-gap:var(--yw-space-sm);--yw-grid-min:15rem" class="yw-grid">
-<div data-yw-scope="" style="--yw-accent: light-dark(#409eff, #69b4ff)" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div style="--yi-gap:var(--yi-space-sm);--yi-grid-min:15rem" class="yi-grid">
+<div data-yi-scope="" style="--yi-accent: light-dark(#409eff, #69b4ff)" class="demo-panel">
+<div class="yi-stack yi-stack--align-start">
 <b>Default</b>
-<div class="yw-cluster">
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
-<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Cancel</button>
 </div>
 <a href="#accent">A link in the accent</a>
-<span style="color: var(--yw-fg-muted)">Supporting text on a tinted neutral</span>
-<span style="background: var(--yw-accent-soft); color: var(--yw-accent-text)" class="demo-chip">Soft accent</span>
+<span style="color: var(--yi-fg-muted)">Supporting text on a tinted neutral</span>
+<span style="background: var(--yi-accent-soft); color: var(--yi-accent-text)" class="demo-chip">Soft accent</span>
 </div>
 </div>
-<div data-yw-scope="" style="--yw-accent: #b9852f" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div data-yi-scope="" style="--yi-accent: #b9852f" class="demo-panel">
+<div class="yi-stack yi-stack--align-start">
 <b>Amber</b>
-<div class="yw-cluster">
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
-<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Cancel</button>
 </div>
 <a href="#accent">A link in the accent</a>
-<span style="color: var(--yw-fg-muted)">Supporting text on a tinted neutral</span>
-<span style="background: var(--yw-accent-soft); color: var(--yw-accent-text)" class="demo-chip">Soft accent</span>
+<span style="color: var(--yi-fg-muted)">Supporting text on a tinted neutral</span>
+<span style="background: var(--yi-accent-soft); color: var(--yi-accent-text)" class="demo-chip">Soft accent</span>
 </div>
 </div>
-<div data-yw-scope="" style="--yw-accent: #156a4f" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div data-yi-scope="" style="--yi-accent: #156a4f" class="demo-panel">
+<div class="yi-stack yi-stack--align-start">
 <b>Green</b>
-<div class="yw-cluster">
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
-<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Cancel</button>
 </div>
 <a href="#accent">A link in the accent</a>
-<span style="color: var(--yw-fg-muted)">Supporting text on a tinted neutral</span>
-<span style="background: var(--yw-accent-soft); color: var(--yw-accent-text)" class="demo-chip">Soft accent</span>
+<span style="color: var(--yi-fg-muted)">Supporting text on a tinted neutral</span>
+<span style="background: var(--yi-accent-soft); color: var(--yi-accent-text)" class="demo-chip">Soft accent</span>
 </div>
 </div>
-<div data-yw-scope="" style="--yw-accent: #c4372e" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div data-yi-scope="" style="--yi-accent: #c4372e" class="demo-panel">
+<div class="yi-stack yi-stack--align-start">
 <b>Red</b>
-<div class="yw-cluster">
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
-<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Cancel</button>
 </div>
 <a href="#accent">A link in the accent</a>
-<span style="color: var(--yw-fg-muted)">Supporting text on a tinted neutral</span>
-<span style="background: var(--yw-accent-soft); color: var(--yw-accent-text)" class="demo-chip">Soft accent</span>
+<span style="color: var(--yi-fg-muted)">Supporting text on a tinted neutral</span>
+<span style="background: var(--yi-accent-soft); color: var(--yi-accent-text)" class="demo-chip">Soft accent</span>
 </div>
 </div>
-<div data-yw-scope="" style="--yw-accent: #6d4aff" class="demo-panel">
-<div class="yw-stack yw-stack--align-start">
+<div data-yi-scope="" style="--yi-accent: #6d4aff" class="demo-panel">
+<div class="yi-stack yi-stack--align-start">
 <b>Violet</b>
-<div class="yw-cluster">
-<button type="button" class="yw-button yw-button--primary yw-button--md">Approve</button>
-<button type="button" class="yw-button yw-button--default yw-button--md">Cancel</button>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Cancel</button>
 </div>
 <a href="#accent">A link in the accent</a>
-<span style="color: var(--yw-fg-muted)">Supporting text on a tinted neutral</span>
-<span style="background: var(--yw-accent-soft); color: var(--yw-accent-text)" class="demo-chip">Soft accent</span>
+<span style="color: var(--yi-fg-muted)">Supporting text on a tinted neutral</span>
+<span style="background: var(--yi-accent-soft); color: var(--yi-accent-text)" class="demo-chip">Soft accent</span>
 </div>
 </div>
 </div>

@@ -4,26 +4,26 @@
 // restyle a button from an app, set these tokens rather than the properties.
 @use "api" as *;
 
-.yw-button {
+.yi-button {
   // Component tokens
-  --yw-button-bg: var(--yw-surface);
-  --yw-button-bg-hover: var(--yw-tone-1);
-  --yw-button-fg: var(--yw-fg);
-  --yw-button-border: var(--yw-line-strong);
-  --yw-button-height: var(--yw-control-height);
+  --yi-button-bg: var(--yi-surface);
+  --yi-button-bg-hover: var(--yi-tone-1);
+  --yi-button-fg: var(--yi-fg);
+  --yi-button-border: var(--yi-line-strong);
+  --yi-button-height: var(--yi-control-height);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4em;
-  block-size: var(--yw-button-height);
-  padding-inline: var(--yw-control-padding);
-  border: 1px solid var(--yw-button-border);
-  border-radius: var(--yw-radius-control);
-  background: var(--yw-button-bg);
-  color: var(--yw-button-fg);
-  font-family: var(--yw-font-body);
-  font-size: var(--yw-text-md);
+  block-size: var(--yi-button-height);
+  padding-inline: var(--yi-control-padding);
+  border: 1px solid var(--yi-button-border);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-button-bg);
+  color: var(--yi-button-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
@@ -33,18 +33,18 @@
 
   @include motion {
     transition:
-      background-color var(--yw-duration-fast) var(--yw-ease),
-      border-color var(--yw-duration-fast) var(--yw-ease),
-      color var(--yw-duration-fast) var(--yw-ease);
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
   }
 
   &:hover {
-    background: var(--yw-button-bg-hover);
+    background: var(--yi-button-bg-hover);
     text-decoration: none;
   }
 
   &:active {
-    background: color-mix(in oklch, var(--yw-button-bg-hover), var(--yw-fg) 6%);
+    background: color-mix(in oklch, var(--yi-button-bg-hover), var(--yi-fg) 6%);
   }
 
   &:focus-visible {
@@ -52,45 +52,45 @@
   }
 
   &--primary {
-    --yw-button-bg: var(--yw-accent-solid);
-    --yw-button-bg-hover: var(--yw-accent-solid-hover);
-    --yw-button-fg: var(--yw-on-solid);
-    --yw-button-border: transparent;
+    --yi-button-bg: var(--yi-accent-solid);
+    --yi-button-bg-hover: var(--yi-accent-solid-hover);
+    --yi-button-fg: var(--yi-on-solid);
+    --yi-button-border: transparent;
   }
 
   &--subtle {
-    --yw-button-bg: transparent;
-    --yw-button-bg-hover: var(--yw-neutral-soft);
-    --yw-button-fg: var(--yw-fg-muted);
-    --yw-button-border: transparent;
+    --yi-button-bg: transparent;
+    --yi-button-bg-hover: var(--yi-neutral-soft);
+    --yi-button-fg: var(--yi-fg-muted);
+    --yi-button-border: transparent;
 
     &:hover {
-      --yw-button-fg: var(--yw-fg);
+      --yi-button-fg: var(--yi-fg);
     }
   }
 
   &--danger {
-    --yw-button-bg-hover: var(--yw-danger-soft);
-    --yw-button-fg: var(--yw-danger);
-    --yw-button-border: color-mix(in srgb, var(--yw-danger) 45%, transparent);
+    --yi-button-bg-hover: var(--yi-danger-soft);
+    --yi-button-fg: var(--yi-danger);
+    --yi-button-border: color-mix(in srgb, var(--yi-danger) 45%, transparent);
   }
 
   &--sm {
-    --yw-button-height: var(--yw-control-height-sm);
+    --yi-button-height: var(--yi-control-height-sm);
 
-    padding-inline: calc(var(--yw-control-padding) - 0.25rem);
-    font-size: var(--yw-text-sm);
+    padding-inline: calc(var(--yi-control-padding) - 0.25rem);
+    font-size: var(--yi-text-sm);
   }
 
   &--lg {
-    --yw-button-height: var(--yw-control-height-lg);
+    --yi-button-height: var(--yi-control-height-lg);
 
-    padding-inline: calc(var(--yw-control-padding) + 0.25rem);
+    padding-inline: calc(var(--yi-control-padding) + 0.25rem);
   }
 
   // A square button holding only an icon. It needs an `aria-label`.
   &--icon-only {
-    inline-size: var(--yw-button-height);
+    inline-size: var(--yi-button-height);
     padding-inline: 0;
   }
 
@@ -100,13 +100,13 @@
   }
 
   &:disabled,
-  &[aria-disabled="true"]:not(.yw-button--loading) {
+  &[aria-disabled="true"]:not(.yi-button--loading) {
     opacity: 0.5;
   }
 
   &:disabled:hover,
   &[aria-disabled="true"]:hover {
-    background: var(--yw-button-bg);
+    background: var(--yi-button-bg);
   }
 
   &--loading {
@@ -114,7 +114,7 @@
   }
 }
 
-.yw-button__spinner {
+.yi-button__spinner {
   flex: none;
   inline-size: 1em;
   block-size: 1em;
@@ -123,18 +123,18 @@
   border-radius: 50%;
 
   @include motion {
-    animation: yw-button-spin 0.8s linear infinite;
+    animation: yi-button-spin 0.8s linear infinite;
   }
 }
 
-@keyframes yw-button-spin {
+@keyframes yi-button-spin {
   to {
     transform: rotate(1turn);
   }
 }
 
 @media (forced-colors: active) {
-  .yw-button {
+  .yi-button {
     border-color: ButtonText;
   }
 }

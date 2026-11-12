@@ -83,8 +83,8 @@ pub fn Stack(props: &StackProps) -> Html {
     props.attrs.apply(html! {
         <div
             id={props.id.clone()}
-            class={flex_classes("yw-stack", props.align, props.justify, &props.class)}
-            style={props.gap.map(|gap| format!("--yw-gap:{}", gap.css()))}
+            class={flex_classes("yi-stack", props.align, props.justify, &props.class)}
+            style={props.gap.map(|gap| format!("--yi-gap:{}", gap.css()))}
         >
             { props.children.clone() }
         </div>
@@ -116,12 +116,12 @@ pub struct ClusterProps {
 /// Children in a row that wraps: toolbars, button rows, tag lists.
 #[function_component]
 pub fn Cluster(props: &ClusterProps) -> Html {
-    let mut class = flex_classes("yw-cluster", props.align, props.justify, &props.class);
+    let mut class = flex_classes("yi-cluster", props.align, props.justify, &props.class);
     if props.nowrap {
-        class.push("yw-cluster--nowrap");
+        class.push("yi-cluster--nowrap");
     }
     props.attrs.apply(html! {
-        <div id={props.id.clone()} {class} style={props.gap.map(|gap| format!("--yw-gap:{}", gap.css()))}>
+        <div id={props.id.clone()} {class} style={props.gap.map(|gap| format!("--yi-gap:{}", gap.css()))}>
             { props.children.clone() }
         </div>
     })
@@ -153,9 +153,9 @@ pub struct GridProps {
 #[function_component]
 pub fn Grid(props: &GridProps) -> Html {
     let style: String = [
-        props.gap.map(|gap| format!("--yw-gap:{}", gap.css())),
-        props.columns.map(|n| format!("--yw-grid-columns:{n}")),
-        props.min.as_ref().map(|min| format!("--yw-grid-min:{min}")),
+        props.gap.map(|gap| format!("--yi-gap:{}", gap.css())),
+        props.columns.map(|n| format!("--yi-grid-columns:{n}")),
+        props.min.as_ref().map(|min| format!("--yi-grid-min:{min}")),
     ]
     .into_iter()
     .flatten()
@@ -165,7 +165,7 @@ pub fn Grid(props: &GridProps) -> Html {
     props.attrs.apply(html! {
         <div
             id={props.id.clone()}
-            class={classes!("yw-grid", props.columns.map(|_| "yw-grid--fixed"), props.class.clone())}
+            class={classes!("yi-grid", props.columns.map(|_| "yi-grid--fixed"), props.class.clone())}
             style={(!style.is_empty()).then_some(style)}
         >
             { props.children.clone() }
@@ -180,7 +180,7 @@ mod tests {
     #[test]
     fn gap_is_taken_from_the_spacing_scale() {
         let html = yewi_test::render(|| html! { <Stack gap={Space::Xl}>{ "a" }</Stack> });
-        assert!(html.contains("var(--yw-space-xl)"));
+        assert!(html.contains("var(--yi-space-xl)"));
     }
 
     #[test]

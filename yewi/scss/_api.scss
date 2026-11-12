@@ -4,15 +4,15 @@
 @use "sass:math";
 
 /// A neutral that leans towards the accent's hue. `$amount` is the share of
-/// accent mixed in at `--yw-neutral-tint: 1`.
+/// accent mixed in at `--yi-neutral-tint: 1`.
 ///
 /// The accent is first moved to the lightness of `$base`, so tinting changes
 /// hue and chroma only. Contrast between neutrals therefore holds for any
 /// accent, however light or dark.
 @function tinted($amount, $base) {
-  $accent: oklch(from var(--yw-accent) #{oklab-lightness($base)} c h);
+  $accent: oklch(from var(--yi-accent) #{oklab-lightness($base)} c h);
 
-  @return color-mix(in oklch, #{$accent} calc(#{$amount} * var(--yw-neutral-tint)), #{$base});
+  @return color-mix(in oklch, #{$accent} calc(#{$amount} * var(--yi-neutral-tint)), #{$base});
 }
 
 /// OKLab lightness (0 to 1) of a near-grey colour.
@@ -30,7 +30,7 @@
 
 /// The standard keyboard focus indicator.
 @mixin focus-ring($offset: 2px) {
-  outline: 2px solid var(--yw-focus);
+  outline: 2px solid var(--yi-focus);
   outline-offset: $offset;
 }
 
@@ -56,28 +56,28 @@
 
 /// Heading type: Montserrat, lighter as it gets larger.
 @mixin heading($size) {
-  font-family: var(--yw-font-heading);
-  font-size: var(--yw-text-#{$size});
-  font-weight: var(--yw-heading-weight-#{$size});
-  line-height: var(--yw-leading-tight);
+  font-family: var(--yi-font-heading);
+  font-size: var(--yi-text-#{$size});
+  font-weight: var(--yi-heading-weight-#{$size});
+  line-height: var(--yi-leading-tight);
   text-wrap: balance;
 }
 
 /// Small uppercase section label.
 @mixin eyebrow {
-  font-size: var(--yw-text-xs);
+  font-size: var(--yi-text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--yw-fg-subtle);
+  color: var(--yi-fg-subtle);
 }
 
 /// The lifted card surface: soft border plus a faint two-layer shadow.
 @mixin card-surface {
-  background: var(--yw-surface);
-  border: 1px solid var(--yw-card-line);
-  border-radius: var(--yw-radius-card);
-  box-shadow: var(--yw-shadow-card);
+  background: var(--yi-surface);
+  border: 1px solid var(--yi-card-line);
+  border-radius: var(--yi-radius-card);
+  box-shadow: var(--yi-shadow-card);
 }
 
 /// Wraps rules that animate, so reduced-motion users get none.

@@ -1,30 +1,30 @@
 // ThemeToggle: shows the icon for the document's current theme. The choice is
 // made here, from `data-theme`, so no state is needed to draw it.
 
-.yw-theme-toggle__icon {
+.yi-theme-toggle__icon {
   display: none;
 }
 
-.yw-theme-toggle__icon--system {
+.yi-theme-toggle__icon--system {
   display: inline-block;
 }
 
-:root[data-theme="light"] .yw-theme-toggle {
-  .yw-theme-toggle__icon--system {
+:root[data-theme="light"] .yi-theme-toggle {
+  .yi-theme-toggle__icon--system {
     display: none;
   }
 
-  .yw-theme-toggle__icon--light {
+  .yi-theme-toggle__icon--light {
     display: inline-block;
   }
 }
 
-:root[data-theme="dark"] .yw-theme-toggle {
-  .yw-theme-toggle__icon--system {
+:root[data-theme="dark"] .yi-theme-toggle {
+  .yi-theme-toggle__icon--system {
     display: none;
   }
 
-  .yw-theme-toggle__icon--dark {
+  .yi-theme-toggle__icon--dark {
     display: inline-block;
   }
 }

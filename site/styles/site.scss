@@ -17,14 +17,14 @@ html {
 .docs-skip {
   position: absolute;
   inset-block-start: -10rem;
-  inset-inline-start: var(--yw-space-sm);
+  inset-inline-start: var(--yi-space-sm);
   z-index: 2;
-  padding: var(--yw-space-sm) var(--yw-space-md);
-  background: var(--yw-surface);
-  border-radius: var(--yw-radius-control);
+  padding: var(--yi-space-sm) var(--yi-space-md);
+  background: var(--yi-surface);
+  border-radius: var(--yi-radius-control);
 
   &:focus {
-    inset-block-start: var(--yw-space-sm);
+    inset-block-start: var(--yi-space-sm);
   }
 }
 
@@ -34,12 +34,12 @@ html {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: var(--yw-space-lg);
+  gap: var(--yi-space-lg);
   block-size: $header;
-  padding-inline: var(--yw-space-xl);
-  background: color-mix(in srgb, var(--yw-surface) 88%, transparent);
+  padding-inline: var(--yi-space-xl);
+  background: color-mix(in srgb, var(--yi-surface) 88%, transparent);
   backdrop-filter: blur(10px);
-  border-block-end: 1px solid var(--yw-line);
+  border-block-end: 1px solid var(--yi-line);
 
   &__menu {
     display: none;
@@ -48,32 +48,32 @@ html {
   &__links {
     display: flex;
     align-items: center;
-    gap: var(--yw-space-lg);
+    gap: var(--yi-space-lg);
     margin-inline-start: auto;
 
     a {
-      color: var(--yw-fg-muted);
+      color: var(--yi-fg-muted);
 
       &:hover {
-        color: var(--yw-fg);
+        color: var(--yi-fg);
         text-decoration: none;
       }
     }
   }
 
   &__version {
-    color: var(--yw-fg-subtle);
-    font-size: var(--yw-text-sm);
+    color: var(--yi-fg-subtle);
+    font-size: var(--yi-text-sm);
     font-variant-numeric: tabular-nums;
   }
 }
 
 .docs-brand {
-  font-family: var(--yw-font-heading);
-  font-size: var(--yw-text-xl);
+  font-family: var(--yi-font-heading);
+  font-size: var(--yi-text-xl);
   font-weight: 500;
-  color: var(--yw-fg);
-  inline-size: calc($sidebar - var(--yw-space-xl) - var(--yw-space-lg));
+  color: var(--yi-fg);
+  inline-size: calc($sidebar - var(--yi-space-xl) - var(--yi-space-lg));
 
   &:hover {
     text-decoration: none;
@@ -84,18 +84,18 @@ html {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--yw-space-sm);
+  gap: var(--yi-space-sm);
   flex: 0 1 18rem;
-  block-size: var(--yw-control-height);
-  padding-inline: var(--yw-space-md);
-  border: 1px solid var(--yw-line-strong);
-  border-radius: var(--yw-radius-control);
-  background: var(--yw-surface);
-  color: var(--yw-fg-subtle);
+  block-size: var(--yi-control-height);
+  padding-inline: var(--yi-space-md);
+  border: 1px solid var(--yi-line-strong);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-surface);
+  color: var(--yi-fg-subtle);
 
   &:focus-within {
-    border-color: var(--yw-accent-text);
-    box-shadow: 0 0 0 3px var(--yw-accent-soft);
+    border-color: var(--yi-accent-text);
+    box-shadow: 0 0 0 3px var(--yi-accent-soft);
   }
 
   input {
@@ -103,54 +103,54 @@ html {
     min-inline-size: 0;
     border: 0;
     background: none;
-    color: var(--yw-fg);
+    color: var(--yi-fg);
     outline: none;
 
     &::placeholder {
-      color: var(--yw-fg-subtle);
+      color: var(--yi-fg-subtle);
     }
   }
 
   &__results {
     position: absolute;
-    inset-block-start: calc(100% + var(--yw-space-xs));
+    inset-block-start: calc(100% + var(--yi-space-xs));
     inset-inline: 0;
     display: grid;
-    padding: var(--yw-space-xs);
-    background: var(--yw-surface-raised);
-    border: 1px solid var(--yw-card-line);
-    border-radius: var(--yw-radius-card);
-    box-shadow: var(--yw-shadow-overlay);
+    padding: var(--yi-space-xs);
+    background: var(--yi-surface-raised);
+    border: 1px solid var(--yi-card-line);
+    border-radius: var(--yi-radius-card);
+    box-shadow: var(--yi-shadow-overlay);
     min-inline-size: 18rem;
   }
 
   &__result {
     display: grid;
-    gap: var(--yw-space-2xs);
-    padding: var(--yw-space-sm) var(--yw-space-md);
-    border-radius: var(--yw-radius-control);
-    color: var(--yw-fg);
+    gap: var(--yi-space-2xs);
+    padding: var(--yi-space-sm) var(--yi-space-md);
+    border-radius: var(--yi-radius-control);
+    color: var(--yi-fg);
 
     b {
       font-weight: 500;
     }
 
     small {
-      color: var(--yw-fg-muted);
+      color: var(--yi-fg-muted);
 
       @include truncate;
     }
 
     &:hover,
     &:focus-visible {
-      background: var(--yw-tone-1);
+      background: var(--yi-tone-1);
       text-decoration: none;
     }
   }
 
   &__empty {
-    padding: var(--yw-space-sm) var(--yw-space-md);
-    color: var(--yw-fg-muted);
+    padding: var(--yi-space-sm) var(--yi-space-md);
+    color: var(--yi-fg-muted);
   }
 }
 
@@ -171,51 +171,51 @@ html {
   display: grid;
   align-content: start;
   gap: 1px;
-  padding: var(--yw-space-lg) var(--yw-space-md) var(--yw-space-3xl);
+  padding: var(--yi-space-lg) var(--yi-space-md) var(--yi-space-3xl);
 }
 
 .docs-sidebar {
   &__group {
     @include eyebrow;
 
-    padding: var(--yw-space-lg) var(--yw-space-md) var(--yw-space-xs);
+    padding: var(--yi-space-lg) var(--yi-space-md) var(--yi-space-xs);
   }
 
   &__link {
-    padding: var(--yw-space-xs) var(--yw-space-md);
-    border-radius: var(--yw-radius-control);
-    color: var(--yw-fg-muted);
+    padding: var(--yi-space-xs) var(--yi-space-md);
+    border-radius: var(--yi-radius-control);
+    color: var(--yi-fg-muted);
 
     &:hover {
-      background: var(--yw-tone-1);
-      color: var(--yw-fg);
+      background: var(--yi-tone-1);
+      color: var(--yi-fg);
       text-decoration: none;
     }
 
     &--active {
-      background: var(--yw-accent-soft);
-      color: var(--yw-accent-text);
+      background: var(--yi-accent-soft);
+      color: var(--yi-accent-text);
       font-weight: 500;
     }
   }
 }
 
 .docs-toc {
-  padding-block-start: var(--yw-space-2xl);
-  font-size: var(--yw-text-sm);
+  padding-block-start: var(--yi-space-2xl);
+  font-size: var(--yi-text-sm);
 
   &__title {
     @include eyebrow;
 
-    padding-block-end: var(--yw-space-xs);
+    padding-block-end: var(--yi-space-xs);
   }
 
   a {
-    padding-block: var(--yw-space-2xs);
-    color: var(--yw-fg-muted);
+    padding-block: var(--yi-space-2xs);
+    color: var(--yi-fg-muted);
 
     &:hover {
-      color: var(--yw-fg);
+      color: var(--yi-fg);
       text-decoration: none;
     }
   }
@@ -223,10 +223,10 @@ html {
 
 .docs-main {
   display: grid;
-  gap: var(--yw-space-3xl);
+  gap: var(--yi-space-3xl);
   min-inline-size: 0;
   max-inline-size: 54rem;
-  padding: var(--yw-space-2xl) var(--yw-space-2xl) var(--yw-space-4xl);
+  padding: var(--yi-space-2xl) var(--yi-space-2xl) var(--yi-space-4xl);
 }
 
 // ---- Page content ------------------------------------------------------------
@@ -234,66 +234,66 @@ html {
 .docs-eyebrow {
   @include eyebrow;
 
-  font-family: var(--yw-font-body);
+  font-family: var(--yi-font-body);
 }
 
 .docs-page-header {
   display: grid;
-  gap: var(--yw-space-md);
+  gap: var(--yi-space-md);
   justify-items: start;
 }
 
 .docs-lede {
   max-inline-size: 42rem;
-  color: var(--yw-fg-muted);
-  font-size: var(--yw-text-xl);
-  line-height: var(--yw-leading);
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xl);
+  line-height: var(--yi-leading);
   text-wrap: pretty;
 }
 
 .docs-feature {
-  padding: var(--yw-space-xs) var(--yw-space-md);
-  border-radius: var(--yw-radius-control);
-  background: var(--yw-accent-soft);
-  color: var(--yw-accent-text);
-  font-size: var(--yw-text-sm);
+  padding: var(--yi-space-xs) var(--yi-space-md);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-accent-soft);
+  color: var(--yi-accent-text);
+  font-size: var(--yi-text-sm);
 }
 
 .docs-section {
   display: grid;
-  gap: var(--yw-space-lg);
+  gap: var(--yi-space-lg);
 }
 
 .docs-card {
   @include card-surface;
 
   display: grid;
-  gap: var(--yw-space-xs);
+  gap: var(--yi-space-xs);
   align-content: start;
-  padding: var(--yw-space-lg);
-  color: var(--yw-fg);
+  padding: var(--yi-space-lg);
+  color: var(--yi-fg);
 
   b {
-    font-family: var(--yw-font-heading);
-    font-size: var(--yw-text-lg);
+    font-family: var(--yi-font-heading);
+    font-size: var(--yi-text-lg);
     font-weight: 600;
   }
 
   span {
-    color: var(--yw-fg-muted);
-    font-size: var(--yw-text-sm);
+    color: var(--yi-fg-muted);
+    font-size: var(--yi-text-sm);
   }
 
   &:hover {
-    border-color: var(--yw-accent-line);
+    border-color: var(--yi-accent-line);
     text-decoration: none;
   }
 }
 
 .docs-main code {
   padding: 0.1em 0.35em;
-  border-radius: var(--yw-radius-sm);
-  background: var(--yw-tone-1);
+  border-radius: var(--yi-radius-sm);
+  background: var(--yi-tone-1);
 }
 
 .docs-main pre code {
@@ -303,43 +303,43 @@ html {
 
 .docs-prose {
   display: grid;
-  gap: var(--yw-space-md);
+  gap: var(--yi-space-md);
   max-inline-size: 44rem;
-  font-size: var(--yw-text-lg);
-  line-height: var(--yw-leading-relaxed);
+  font-size: var(--yi-text-lg);
+  line-height: var(--yi-leading-relaxed);
 
   h2 {
-    margin-block-start: var(--yw-space-xl);
+    margin-block-start: var(--yi-space-xl);
   }
 
   h3 {
     @include heading("xl");
 
-    margin-block-start: var(--yw-space-sm);
+    margin-block-start: var(--yi-space-sm);
   }
 
   ul {
     display: grid;
-    gap: var(--yw-space-xs);
+    gap: var(--yi-space-xs);
     margin: 0;
-    padding-inline-start: var(--yw-space-xl);
+    padding-inline-start: var(--yi-space-xl);
   }
 }
 
 .docs-snippet,
 .docs-example__source {
   margin: 0;
-  padding: var(--yw-space-md) var(--yw-space-lg);
+  padding: var(--yi-space-md) var(--yi-space-lg);
   overflow-x: auto;
-  background: var(--yw-code-bg);
-  font-size: var(--yw-text-sm);
-  line-height: var(--yw-leading-relaxed);
+  background: var(--yi-code-bg);
+  font-size: var(--yi-text-sm);
+  line-height: var(--yi-leading-relaxed);
   tab-size: 4;
 }
 
 .docs-snippet {
-  border: 1px solid var(--yw-line);
-  border-radius: var(--yw-radius-card);
+  border: 1px solid var(--yi-line);
+  border-radius: var(--yi-radius-card);
 }
 
 .tok-kw {
@@ -347,20 +347,20 @@ html {
 }
 
 .tok-type {
-  color: var(--yw-info);
+  color: var(--yi-info);
 }
 
 .tok-str {
-  color: var(--yw-ok);
+  color: var(--yi-ok);
 }
 
 .tok-macro,
 .tok-num {
-  color: var(--yw-warn);
+  color: var(--yi-warn);
 }
 
 .tok-comment {
-  color: var(--yw-fg-subtle);
+  color: var(--yi-fg-subtle);
   font-style: italic;
 }
 
@@ -368,7 +368,7 @@ html {
 
 .docs-example {
   display: grid;
-  gap: var(--yw-space-md);
+  gap: var(--yi-space-md);
 
   > h2 {
     @include heading("2xl");
@@ -376,9 +376,9 @@ html {
 
   > p {
     max-inline-size: 44rem;
-    color: var(--yw-fg-muted);
-    font-size: var(--yw-text-lg);
-    line-height: var(--yw-leading-relaxed);
+    color: var(--yi-fg-muted);
+    font-size: var(--yi-text-lg);
+    line-height: var(--yi-leading-relaxed);
     text-wrap: pretty;
   }
 
@@ -389,31 +389,31 @@ html {
   }
 
   &__stage {
-    padding: var(--yw-space-xl);
+    padding: var(--yi-space-xl);
   }
 
   &__tools {
     display: flex;
     justify-content: flex-end;
-    gap: var(--yw-space-xs);
-    padding: var(--yw-space-xs) var(--yw-space-sm);
-    border-block-start: 1px solid var(--yw-line);
+    gap: var(--yi-space-xs);
+    padding: var(--yi-space-xs) var(--yi-space-sm);
+    border-block-start: 1px solid var(--yi-line);
   }
 
   &__source {
-    border-block-start: 1px solid var(--yw-line);
+    border-block-start: 1px solid var(--yi-line);
   }
 }
 
 .docs-isolated {
   min-block-size: 100dvh;
-  padding: var(--yw-space-xl);
-  background: var(--yw-surface);
+  padding: var(--yi-space-xl);
+  background: var(--yi-surface);
 
   &__stage {
     // The width an example gets on its documentation page.
     inline-size: min(100%, 46rem);
-    padding: var(--yw-space-lg);
+    padding: var(--yi-space-lg);
   }
 }
 
@@ -421,27 +421,27 @@ html {
 
 .docs-api {
   display: grid;
-  gap: var(--yw-space-sm);
+  gap: var(--yi-space-sm);
 
   h3 {
     @include heading("xl");
 
-    margin-block-start: var(--yw-space-md);
+    margin-block-start: var(--yi-space-md);
   }
 
   h4 {
     @include eyebrow;
 
-    font-family: var(--yw-font-body);
-    margin-block-start: var(--yw-space-sm);
+    font-family: var(--yi-font-body);
+    margin-block-start: var(--yi-space-sm);
   }
 
   p {
-    color: var(--yw-fg-muted);
+    color: var(--yi-fg-muted);
   }
 
   &__variant {
-    margin-inline-end: var(--yw-space-xs);
+    margin-inline-end: var(--yi-space-xs);
   }
 }
 
@@ -451,12 +451,12 @@ html {
   table {
     inline-size: 100%;
     border-collapse: collapse;
-    font-size: var(--yw-text-sm);
+    font-size: var(--yi-text-sm);
   }
 
   th,
   td {
-    padding: var(--yw-space-sm) var(--yw-space-md);
+    padding: var(--yi-space-sm) var(--yi-space-md);
     text-align: start;
     vertical-align: top;
   }
@@ -468,8 +468,8 @@ html {
 
   th {
     font-weight: 500;
-    color: var(--yw-fg-muted);
-    border-block-end: 1px solid var(--yw-line);
+    color: var(--yi-fg-muted);
+    border-block-end: 1px solid var(--yi-line);
     white-space: nowrap;
   }
 
@@ -478,7 +478,7 @@ html {
   }
 
   em {
-    color: var(--yw-fg-subtle);
+    color: var(--yi-fg-subtle);
   }
 }
 
@@ -487,24 +487,24 @@ html {
 // must not need these.
 
 .demo-box {
-  padding: var(--yw-space-md);
-  border-radius: var(--yw-radius-control);
-  background: var(--yw-accent-soft);
-  color: var(--yw-accent-text);
+  padding: var(--yi-space-md);
+  border-radius: var(--yi-radius-control);
+  background: var(--yi-accent-soft);
+  color: var(--yi-accent-text);
   text-align: center;
 }
 
 .demo-panel {
-  padding: var(--yw-space-lg);
-  border-radius: var(--yw-radius-card);
-  background: var(--yw-bg);
-  color: var(--yw-fg);
+  padding: var(--yi-space-lg);
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-bg);
+  color: var(--yi-fg);
 }
 
 .demo-card {
   @include card-surface;
 
-  padding: var(--yw-space-lg);
+  padding: var(--yi-space-lg);
 
   &--flush {
     padding: 0;
@@ -518,28 +518,28 @@ html {
 
 .demo-swatch {
   block-size: 3rem;
-  border: 1px solid var(--yw-line);
-  border-radius: var(--yw-radius-control);
+  border: 1px solid var(--yi-line);
+  border-radius: var(--yi-radius-control);
 }
 
 .demo-shape {
   block-size: 4rem;
-  background: var(--yw-surface-raised);
-  border: 1px solid var(--yw-card-line);
+  background: var(--yi-surface-raised);
+  border: 1px solid var(--yi-card-line);
 }
 
 .demo-bar {
   block-size: 0.75rem;
   border-radius: 2px;
-  background: var(--yw-accent-solid);
+  background: var(--yi-accent-solid);
 }
 
 .demo-chip {
   display: inline-flex;
   align-items: center;
   padding: 0.1rem 0.6rem;
-  border-radius: var(--yw-radius-full);
-  font-size: var(--yw-text-xs);
+  border-radius: var(--yi-radius-full);
+  font-size: var(--yi-text-xs);
   font-weight: 500;
   line-height: 1.25rem;
 }
@@ -558,8 +558,8 @@ html {
 
 @media (max-width: $narrow) {
   .docs-header {
-    gap: var(--yw-space-sm);
-    padding-inline: var(--yw-space-md);
+    gap: var(--yi-space-sm);
+    padding-inline: var(--yi-space-md);
 
     &__menu {
       display: inline-flex;
@@ -587,7 +587,7 @@ html {
     display: none;
     position: static;
     max-block-size: none;
-    border-block-end: 1px solid var(--yw-line);
+    border-block-end: 1px solid var(--yi-line);
 
     &--open {
       display: grid;
@@ -595,6 +595,6 @@ html {
   }
 
   .docs-main {
-    padding: var(--yw-space-xl) var(--yw-space-lg) var(--yw-space-3xl);
+    padding: var(--yi-space-xl) var(--yi-space-lg) var(--yi-space-3xl);
   }
 }

@@ -36,11 +36,11 @@ e2e/tests/<name>.spec.ts         behaviour specs
 
 ### Rules
 - Tokens only: no literal colours, sizes, fonts, radii, shadows or durations. If a token is missing, add it to `yewi/scss/tokens.scss` and show it on a Foundations page.
-- BEM classes prefixed `yw-`: `.yw-button`, `.yw-button--primary`, `.yw-button__spinner`. The build wraps the file in `@layer yewi.components`.
+- BEM classes prefixed `yi-`: `.yi-button`, `.yi-button--primary`, `.yi-button__spinner`. The build wraps the file in `@layer yewi.components`.
 - `@use "api" as *;` for the shared mixins (`focus-ring`, `heading`, `card-surface`, `truncate`, `motion`, `eyebrow`).
 
 ### Component tokens
-- Expose what an app may reasonably restyle as `--yw-<name>-*` custom properties, declared first under a `// Component tokens` comment. That block becomes the "CSS variables" table.
+- Expose what an app may reasonably restyle as `--yi-<name>-*` custom properties, declared first under a `// Component tokens` comment. That block becomes the "CSS variables" table.
 - Variants set those tokens rather than repeating properties.
 
 ### Both themes, all inputs
@@ -78,4 +78,4 @@ e2e/tests/<name>.spec.ts         behaviour specs
 - `cargo xtask ci` passes locally. While the repository is private this, not GitHub Actions, is the verification.
 - The page has at least three examples and reads correctly in both themes.
 - Keyboard and screen-reader behaviour is complete and covered by a behaviour spec.
-- New screenshots are committed, and the pull request links or attaches the review gallery.
+- New screenshots are committed, and the pull request links or attaches the review gallery. For viewers that open a single file, `node e2e/inline-gallery.mjs e2e/gallery gallery.html` embeds the images and videos.

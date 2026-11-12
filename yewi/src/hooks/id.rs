@@ -16,7 +16,7 @@ thread_local! {
 pub fn use_id() -> AttrValue {
     (*use_memo((), |_| {
         let id = NEXT_ID.with(|next| next.replace(next.get() + 1));
-        AttrValue::from(format!("yw-{id}"))
+        AttrValue::from(format!("yi-{id}"))
     }))
     .clone()
 }

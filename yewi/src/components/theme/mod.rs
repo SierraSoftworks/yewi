@@ -153,15 +153,15 @@ pub fn ThemeToggle(props: &ThemeToggleProps) -> Html {
     html! {
         <Button
             id={props.id.clone()}
-            class={classes!("yw-theme-toggle", "yw-button--icon-only", props.class.clone())}
+            class={classes!("yi-theme-toggle", "yi-button--icon-only", props.class.clone())}
             variant={ButtonVariant::Subtle}
             size={props.size}
             attrs={Attrs::new(attrs)}
             {on_click}
         >
-            <Icon icon={icons::MONITOR} class="yw-theme-toggle__icon yw-theme-toggle__icon--system" />
-            <Icon icon={icons::SUN} class="yw-theme-toggle__icon yw-theme-toggle__icon--light" />
-            <Icon icon={icons::MOON} class="yw-theme-toggle__icon yw-theme-toggle__icon--dark" />
+            <Icon icon={icons::MONITOR} class="yi-theme-toggle__icon yi-theme-toggle__icon--system" />
+            <Icon icon={icons::SUN} class="yi-theme-toggle__icon yi-theme-toggle__icon--light" />
+            <Icon icon={icons::MOON} class="yi-theme-toggle__icon yi-theme-toggle__icon--dark" />
         </Button>
     }
 }
@@ -174,7 +174,7 @@ mod dom {
     use super::{THEME_STORAGE_KEY, Theme, ThemeState};
 
     const EVENT: &str = "yewi:theme";
-    const TRANSITION_ATTR: &str = "data-yw-theme-transition";
+    const TRANSITION_ATTR: &str = "data-yi-theme-transition";
     const DARK_QUERY: &str = "(prefers-color-scheme: dark)";
 
     fn root() -> Option<(Window, Element)> {

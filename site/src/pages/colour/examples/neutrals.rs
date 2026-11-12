@@ -2,8 +2,8 @@ use yew::prelude::*;
 use yewi::prelude::*;
 
 const SURFACES: [&str; 7] =
-    ["--yw-bg", "--yw-surface", "--yw-surface-raised", "--yw-tone-1", "--yw-tone-2", "--yw-line", "--yw-line-strong"];
-const TEXT: [&str; 3] = ["--yw-fg", "--yw-fg-muted", "--yw-fg-subtle"];
+    ["--yi-bg", "--yi-surface", "--yi-surface-raised", "--yi-tone-1", "--yi-tone-2", "--yi-line", "--yi-line-strong"];
+const TEXT: [&str; 3] = ["--yi-fg", "--yi-fg-muted", "--yi-fg-subtle"];
 
 #[function_component]
 pub fn Example() -> Html {

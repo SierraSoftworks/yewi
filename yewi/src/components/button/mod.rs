@@ -96,10 +96,10 @@ pub fn Button(props: &ButtonProps) -> Html {
     let inert = props.disabled || props.loading;
 
     let class = classes!(
-        "yw-button",
-        format!("yw-button--{}", props.variant.as_str()),
-        format!("yw-button--{}", props.size.as_str()),
-        props.loading.then_some("yw-button--loading"),
+        "yi-button",
+        format!("yi-button--{}", props.variant.as_str()),
+        format!("yi-button--{}", props.size.as_str()),
+        props.loading.then_some("yi-button--loading"),
         props.class.clone(),
     );
 
@@ -117,7 +117,7 @@ pub fn Button(props: &ButtonProps) -> Html {
     let content = html! {
         <>
             if props.loading {
-                <span class="yw-button__spinner" aria-hidden="true" />
+                <span class="yi-button__spinner" aria-hidden="true" />
             } else if let Some(icon) = props.icon {
                 <Icon {icon} />
             }

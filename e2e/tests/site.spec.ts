@@ -40,7 +40,7 @@ test.describe("Reference site", () => {
     const api = page.locator("#api");
     await expect(api.getByRole("row", { name: /^loading/ })).toContainText("spinner");
     await expect(api.getByRole("row", { name: /^on_click/ })).toContainText("Callback");
-    await expect(api.getByRole("row", { name: /--yw-button-bg-hover/ })).toBeVisible();
+    await expect(api.getByRole("row", { name: /--yi-button-bg-hover/ })).toBeVisible();
   });
 
   test("the menu opens the page list on a narrow screen", async ({ page }) => {

@@ -26,7 +26,7 @@ fn main() {
 
 ### Styles and fonts
 - The stylesheet for the enabled features is compiled into the crate: `install_styles()`, `<Styles />` or `STYLESHEET`.
-- Everything is a `--yw-*` token inside `@layer yewi.*`; set `--yw-accent` and any unlayered app rule wins.
+- Everything is a `--yi-*` token inside `@layer yewi.*`; set `--yi-accent` and any unlayered app rule wins.
 - Fonts ship in the dependency-free `yewi-fonts` crate, with a system fallback when they are not served.
 
 ### Opt-in features

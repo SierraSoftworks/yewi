@@ -2,10 +2,10 @@ use yew::prelude::*;
 use yewi::prelude::*;
 
 const SHAPES: [(&str, &str, &str); 4] = [
-    ("--yw-radius-sm", "var(--yw-radius-sm)", "none"),
-    ("--yw-radius-control", "var(--yw-radius-control)", "none"),
-    ("--yw-radius-card", "var(--yw-radius-card)", "var(--yw-shadow-card)"),
-    ("--yw-shadow-overlay", "var(--yw-radius-card)", "var(--yw-shadow-overlay)"),
+    ("--yi-radius-sm", "var(--yi-radius-sm)", "none"),
+    ("--yi-radius-control", "var(--yi-radius-control)", "none"),
+    ("--yi-radius-card", "var(--yi-radius-card)", "var(--yi-shadow-card)"),
+    ("--yi-shadow-overlay", "var(--yi-radius-card)", "var(--yi-shadow-overlay)"),
 ];
 
 #[function_component]

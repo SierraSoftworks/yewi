@@ -1,50 +1,50 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-stack">
-<div style="--yw-gap:var(--yw-space-sm);--yw-grid-min:8rem" class="yw-grid">
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-bg)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-sm);--yi-grid-min:8rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-bg)" class="demo-swatch">
 </div>
-<code>--yw-bg</code>
+<code>--yi-bg</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-surface)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-surface)" class="demo-swatch">
 </div>
-<code>--yw-surface</code>
+<code>--yi-surface</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-surface-raised)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-surface-raised)" class="demo-swatch">
 </div>
-<code>--yw-surface-raised</code>
+<code>--yi-surface-raised</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-tone-1)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-tone-1)" class="demo-swatch">
 </div>
-<code>--yw-tone-1</code>
+<code>--yi-tone-1</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-tone-2)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-tone-2)" class="demo-swatch">
 </div>
-<code>--yw-tone-2</code>
+<code>--yi-tone-2</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-line)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-line)" class="demo-swatch">
 </div>
-<code>--yw-line</code>
+<code>--yi-line</code>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<div style="background: var(--yw-line-strong)" class="demo-swatch">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<div style="background: var(--yi-line-strong)" class="demo-swatch">
 </div>
-<code>--yw-line-strong</code>
+<code>--yi-line-strong</code>
 </div>
 </div>
-<div style="--yw-gap:var(--yw-space-xs)" class="yw-stack">
-<span style="color: var(--yw-fg)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg</code>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<span style="color: var(--yi-fg)">Clients go first, so the servers never schedule onto an older client. <code>--yi-fg</code>
 </span>
-<span style="color: var(--yw-fg-muted)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg-muted</code>
+<span style="color: var(--yi-fg-muted)">Clients go first, so the servers never schedule onto an older client. <code>--yi-fg-muted</code>
 </span>
-<span style="color: var(--yw-fg-subtle)">Clients go first, so the servers never schedule onto an older client. <code>--yw-fg-subtle</code>
+<span style="color: var(--yi-fg-subtle)">Clients go first, so the servers never schedule onto an older client. <code>--yi-fg-subtle</code>
 </span>
 </div>
 </div>

@@ -1,37 +1,37 @@
 ---
 source: site/tests/snapshots.rs
 ---
-<div style="--yw-gap:var(--yw-space-sm)" class="yw-stack">
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-xs</code>
-<span style="font-size: var(--yw-text-xs)">Rollout #42 paused (12px)</span>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-xs</code>
+<span style="font-size: var(--yi-text-xs)">Rollout #42 paused (12px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-sm</code>
-<span style="font-size: var(--yw-text-sm)">Rollout #42 paused (13px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-sm</code>
+<span style="font-size: var(--yi-text-sm)">Rollout #42 paused (13px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-md</code>
-<span style="font-size: var(--yw-text-md)">Rollout #42 paused (14px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-md</code>
+<span style="font-size: var(--yi-text-md)">Rollout #42 paused (14px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-lg</code>
-<span style="font-size: var(--yw-text-lg)">Rollout #42 paused (15px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-lg</code>
+<span style="font-size: var(--yi-text-lg)">Rollout #42 paused (15px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-xl</code>
-<span style="font-size: var(--yw-text-xl)">Rollout #42 paused (17px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-xl</code>
+<span style="font-size: var(--yi-text-xl)">Rollout #42 paused (17px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-2xl</code>
-<span style="font-size: var(--yw-text-2xl)">Rollout #42 paused (20px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-2xl</code>
+<span style="font-size: var(--yi-text-2xl)">Rollout #42 paused (20px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-3xl</code>
-<span style="font-size: var(--yw-text-3xl)">Rollout #42 paused (24px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-3xl</code>
+<span style="font-size: var(--yi-text-3xl)">Rollout #42 paused (24px)</span>
 </div>
-<div style="--yw-gap:var(--yw-space-lg)" class="yw-cluster yw-cluster--align-baseline yw-cluster--nowrap">
-<code style="inline-size: 9rem; flex: none">--yw-text-4xl</code>
-<span style="font-size: var(--yw-text-4xl)">Rollout #42 paused (30px)</span>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster yi-cluster--align-baseline yi-cluster--nowrap">
+<code style="inline-size: 9rem; flex: none">--yi-text-4xl</code>
+<span style="font-size: var(--yi-text-4xl)">Rollout #42 paused (30px)</span>
 </div>
 </div>
