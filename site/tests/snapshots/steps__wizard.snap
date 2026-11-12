@@ -1,0 +1,67 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-stack">
+<div class="yi-steps yi-steps--horizontal yi-steps--md">
+<ol aria-label="Checkout progress" class="yi-steps__list">
+<li class="yi-step yi-step--done">
+<span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<button type="button" class="yi-step__title yi-step__action">Cart</button>
+<span class="yi-visually-hidden">, completed</span>
+</div>
+<p class="yi-step__description">3 items</p>
+</div>
+</li>
+<li aria-current="step" class="yi-step yi-step--current">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Shipping</span>
+</div>
+<p class="yi-step__description">Address and method</p>
+</div>
+</li>
+<li class="yi-step yi-step--pending">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Payment</span>
+</div>
+<p class="yi-step__description">Card or invoice</p>
+</div>
+</li>
+<li class="yi-step yi-step--pending">
+<span aria-hidden="true" class="yi-step__marker">
+</span>
+<span aria-hidden="true" class="yi-step__rail">
+</span>
+<div class="yi-step__body">
+<div class="yi-step__head">
+<span class="yi-step__title">Review</span>
+</div>
+<p class="yi-step__description">Confirm the order</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="yi-cluster">
+<button type="button" class="yi-button yi-button--default yi-button--md">Back</button>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Next</button>
+</div>
+<span role="status">Step 2 of 4: Shipping</span>
+</div>

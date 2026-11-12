@@ -1,0 +1,8 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 28rem" class="yi-stack">
+<span>The rollout reached every host in the staging cluster.</span>
+<hr class="yi-divider">
+<span>Production is waiting for approval.</span>
+</div>
