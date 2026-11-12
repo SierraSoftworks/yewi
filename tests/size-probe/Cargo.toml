@@ -22,6 +22,7 @@ markdown = ["yewi/markdown"]
 qr = ["yewi/qr"]
 router = ["yewi/router", "dep:yew-router"]
 schema-form = ["yewi/schema-form"]
+serde_json = ["yewi/serde_json", "dep:serde_json"]
 terminal = ["yewi/terminal"]
 
 [dependencies]
@@ -29,3 +30,4 @@ yew = { workspace = true, features = ["csr"] }
 yewi = { workspace = true, features = ["csr"] }
 wasm-bindgen = { workspace = true }
 yew-router = { workspace = true, optional = true }
+serde_json = { version = "1", optional = true }
