@@ -1,0 +1,71 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-chart">
+<ul aria-label="Series" class="yi-chart__legend">
+<li class="yi-chart__legend-item">
+<span class="yi-chart__key yi-chart__c--1">
+</span>p50</li>
+<li class="yi-chart__legend-item">
+<span class="yi-chart__key yi-chart__c--2">
+</span>p95</li>
+<li class="yi-chart__legend-item">
+<span class="yi-chart__key yi-chart__c--3 yi-chart--dotted">
+</span>p99</li>
+<li class="yi-chart__legend-item">
+<span class="yi-chart__key yi-chart__c--muted yi-chart--dashed">
+</span>Target</li>
+</ul>
+<div class="yi-chart__body">
+<div aria-hidden="true" class="yi-chart__y">
+<span style="inset-block-start:100.00%" class="yi-chart__tick">0 ms</span>
+<span style="inset-block-start:66.67%" class="yi-chart__tick">100 ms</span>
+<span style="inset-block-start:33.33%" class="yi-chart__tick">200 ms</span>
+<span style="inset-block-start:0.00%" class="yi-chart__tick">300 ms</span>
+</div>
+<div role="slider" tabindex="0" aria-label="Response time by percentile" aria-valuemin="0" aria-valuemax="11" aria-valuenow="11" aria-valuetext="22:00: p50 44 ms, p95 93 ms, p99 152 ms, Target 200 ms" class="yi-chart__plot">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
+<path d="M0 667H10000M0 333H10000M0 0H10000" class="yi-chart__grid">
+</path>
+<g>
+</g>
+<path d="M0 1000H10000" class="yi-chart__zero">
+</path>
+<g>
+<g class="yi-chart__c--1">
+<path d="M0 860L909 853L1818 863L2727 857L3636 843L4545 827L5455 837L6364 850L7273 853L8182 857L9091 847L10000 853" class="yi-chart__line">
+</path>
+<path d="M0 860h0M909 853h0M1818 863h0M2727 857h0M3636 843h0M4545 827h0M5455 837h0M6364 850h0M7273 853h0M8182 857h0M9091 847h0M10000 853h0" class="yi-chart__marker-ring">
+</path>
+<path d="M0 860h0M909 853h0M1818 863h0M2727 857h0M3636 843h0M4545 827h0M5455 837h0M6364 850h0M7273 853h0M8182 857h0M9091 847h0M10000 853h0" class="yi-chart__marker">
+</path>
+</g>
+<g class="yi-chart__c--2">
+<path d="M0 707L909 697L1818 713L2727 700L3636 653L4545 563L5455 607L6364 677L7273 693L8182 700L9091 683L10000 690" class="yi-chart__line">
+</path>
+<path d="M0 707h0M909 697h0M1818 713h0M2727 700h0M3636 653h0M4545 563h0M5455 607h0M6364 677h0M7273 693h0M8182 700h0M9091 683h0M10000 690h0" class="yi-chart__marker-ring">
+</path>
+<path d="M0 707h0M909 697h0M1818 713h0M2727 700h0M3636 653h0M4545 563h0M5455 607h0M6364 677h0M7273 693h0M8182 700h0M9091 683h0M10000 690h0" class="yi-chart__marker">
+</path>
+</g>
+<g class="yi-chart__c--3 yi-chart--dotted">
+<path d="M0 533L909 497L1818 537L2727 507L3636 367L4545 127L5455 263L6364 457L7273 500L8182 503L9091 473L10000 493" class="yi-chart__line">
+</path>
+</g>
+<g class="yi-chart__c--muted yi-chart--dashed">
+<path d="M0 333L909 333L1818 333L2727 333L3636 333L4545 333L5455 333L6364 333L7273 333L8182 333L9091 333L10000 333" class="yi-chart__line">
+</path>
+</g>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="yi-chart__x">
+<span style="inset-inline-start:0.00%" class="yi-chart__tick yi-chart__tick--start">00:00</span>
+<span style="inset-inline-start:18.18%" class="yi-chart__tick">04:00</span>
+<span style="inset-inline-start:36.36%" class="yi-chart__tick">08:00</span>
+<span style="inset-inline-start:54.55%" class="yi-chart__tick">12:00</span>
+<span style="inset-inline-start:72.73%" class="yi-chart__tick">16:00</span>
+<span style="inset-inline-start:90.91%" class="yi-chart__tick">20:00</span>
+</div>
+</div>
+</div>

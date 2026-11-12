@@ -18,7 +18,7 @@ stylesheet = 250000
 # Every other entry is what enabling that feature may ADD: wasm on top of
 # `core` plus CSS on top of `stylesheet`.
 avatar-hash = 20000
-charts = 20000
+charts = 70000
 chrono = 20000
 code = 20000
 diff = 52000

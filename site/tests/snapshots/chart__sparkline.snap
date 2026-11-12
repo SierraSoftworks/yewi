@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div class="yi-cluster yi-cluster--nowrap">
+<span style="inline-size: 6rem">Page views</span>
+<span style="inline-size: 8rem">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" focusable="false" role="img" aria-label="Page views, last 12 hours" class="yi-sparkline yi-chart__c--1">
+<path d="M0 1000L0 530L909 485L1818 545L2727 424L3636 333L4545 379L5455 288L6364 212L7273 258L8182 121L9091 76L10000 0L10000 1000Z" class="yi-sparkline__area">
+</path>
+<path d="M0 530L909 485L1818 545L2727 424L3636 333L4545 379L5455 288L6364 212L7273 258L8182 121L9091 76L10000 0" class="yi-sparkline__line">
+</path>
+</svg>
+</span>
+<strong>66</strong>
+</div>
+<div class="yi-cluster yi-cluster--nowrap">
+<span style="inline-size: 6rem">Sign-ups</span>
+<span style="inline-size: 8rem">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" focusable="false" role="img" aria-label="Sign-ups, last 12 hours" class="yi-sparkline yi-chart__c--muted">
+<path d="M0 1000L0 0L909 111L1818 0L2727 222L3636 111L4545 0L5455 111L6364 111L7273 222L8182 0L9091 111L10000 111L10000 1000Z" class="yi-sparkline__area">
+</path>
+<path d="M0 0L909 111L1818 0L2727 222L3636 111L4545 0L5455 111L6364 111L7273 222L8182 0L9091 111L10000 111" class="yi-sparkline__line">
+</path>
+</svg>
+</span>
+<strong>8</strong>
+</div>
+<div class="yi-cluster yi-cluster--nowrap">
+<span style="inline-size: 6rem">Errors</span>
+<span style="inline-size: 8rem">
+<svg viewBox="0 0 10000 1000" preserveAspectRatio="none" focusable="false" role="img" aria-label="Errors, last 12 hours" class="yi-sparkline yi-chart__c--danger">
+<path d="M0 1000L0 952L909 1000L1818 1000L2727 905L3636 952L4545 1000L5455 857L6364 905L7273 714L8182 571L9091 333L10000 0L10000 1000Z" class="yi-sparkline__area">
+</path>
+<path d="M0 952L909 1000L1818 1000L2727 905L3636 952L4545 1000L5455 857L6364 905L7273 714L8182 571L9091 333L10000 0" class="yi-sparkline__line">
+</path>
+</svg>
+</span>
+<strong>21</strong>
+</div>
+</div>
