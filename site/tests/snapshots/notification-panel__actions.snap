@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-end">
+<span class="yi-popover yi-notification-panel">
+<span class="yi-notification-panel__trigger">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="3 unread notifications" title="3 unread notifications">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10.268 21a2 2 0 0 0 3.464 0M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326">
+</path>
+</svg>
+</button>
+<span aria-hidden="true" class="yi-notification-panel__count">
+<span class="yi-badge yi-badge--danger yi-badge--bold">3</span>
+</span>
+</span>
+</span>
+<span role="status">3 unread notifications</span>
+</div>

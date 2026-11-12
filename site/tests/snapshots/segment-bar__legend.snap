@@ -1,0 +1,59 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 26rem" class="yi-stack">
+<div class="yi-segment-bar yi-segment-bar--lg">
+<span role="img" aria-label="Storage: 212.5 GB volumes, 96 GB snapshots, 41.5 GB logs, 150 GB free" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--info" style="flex-grow: 212.5">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--warn" style="flex-grow: 96">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--neutral" style="flex-grow: 41.5">
+</span>
+<span style="flex-grow: 150" class="yi-segment-bar__rest">
+</span>
+</span>
+<ul aria-hidden="true" class="yi-segment-bar__legend">
+<li class="yi-segment-bar__entry">
+<span class="yi-segment-bar__swatch yi-segment-bar__swatch--info">
+</span>
+<span class="yi-segment-bar__value">212.5</span>GB volumes</li>
+<li class="yi-segment-bar__entry">
+<span class="yi-segment-bar__swatch yi-segment-bar__swatch--warn">
+</span>
+<span class="yi-segment-bar__value">96</span>GB snapshots</li>
+<li class="yi-segment-bar__entry">
+<span class="yi-segment-bar__swatch yi-segment-bar__swatch--neutral">
+</span>
+<span class="yi-segment-bar__value">41.5</span>GB logs</li>
+<li class="yi-segment-bar__entry">
+<span class="yi-segment-bar__swatch yi-segment-bar__swatch--rest">
+</span>
+<span class="yi-segment-bar__value">150</span>GB free</li>
+</ul>
+</div>
+<div class="yi-segment-bar yi-segment-bar--md">
+<span role="img" aria-label="Storage: 212.5 GB volumes, 96 GB snapshots, 41.5 GB logs, 150 GB free" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--info" style="flex-grow: 212.5">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--warn" style="flex-grow: 96">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--neutral" style="flex-grow: 41.5">
+</span>
+<span style="flex-grow: 150" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+<div class="yi-segment-bar yi-segment-bar--sm">
+<span role="img" aria-label="Storage: 212.5 GB volumes, 96 GB snapshots, 41.5 GB logs, 150 GB free" class="yi-segment-bar__track">
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--info" style="flex-grow: 212.5">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--warn" style="flex-grow: 96">
+</span>
+<span class="yi-tooltip yi-segment-bar__segment yi-segment-bar__segment--neutral" style="flex-grow: 41.5">
+</span>
+<span style="flex-grow: 150" class="yi-segment-bar__rest">
+</span>
+</span>
+</div>
+</div>
