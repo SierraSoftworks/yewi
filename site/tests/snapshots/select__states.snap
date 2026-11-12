@@ -1,0 +1,131 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-small" style="font-size: var(--yi-text-sm); font-weight: 500">Small</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-small" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--sm yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-medium" style="font-size: var(--yi-text-sm); font-weight: 500">Medium</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-medium" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-large" style="font-size: var(--yi-text-sm); font-weight: 500">Large</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-large" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--lg yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-empty" style="font-size: var(--yi-text-sm); font-weight: 500">Empty</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-empty" role="combobox" aria-haspopup="listbox" aria-expanded="false" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value yi-select__value--placeholder">Choose a region</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-disabled" style="font-size: var(--yi-text-sm); font-weight: 500">Disabled</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-disabled" role="combobox" aria-haspopup="listbox" aria-expanded="false" disabled="disabled" class="yi-input yi-input--md yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-invalid" style="font-size: var(--yi-text-sm); font-weight: 500">Invalid</label>
+<div class="yi-select">
+<span class="yi-popover">
+<button type="button" id="states-invalid" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-invalid="true" class="yi-input yi-input--md yi-input--invalid yi-select__control yi-select__trigger">
+<span class="yi-select__value">Ireland</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-combobox" style="font-size: var(--yi-text-sm); font-weight: 500">Combobox</label>
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox">
+<input value="Frankfurt" id="states-combobox" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-combobox-disabled" style="font-size: var(--yi-text-sm); font-weight: 500">Combobox, disabled</label>
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-select__control yi-select__combobox yi-input--disabled">
+<input value="Frankfurt" id="states-combobox-disabled" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" disabled="disabled" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-stack">
+<label for="states-combobox-invalid" style="font-size: var(--yi-text-sm); font-weight: 500">Combobox, invalid</label>
+<div class="yi-select">
+<span class="yi-popover">
+<span class="yi-input yi-input--md yi-input--invalid yi-select__control yi-select__combobox">
+<input value="Frankfurt" id="states-combobox-invalid" type="text" role="combobox" autocomplete="off" autocapitalize="none" spellcheck="false" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-invalid="true" class="yi-select__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-select__chevron">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>

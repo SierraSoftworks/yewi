@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<span role="group" class="yi-split-button">
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-split-button__face">Pause</button>
+<span class="yi-menu-button yi-split-button__toggle">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-button--icon-only" aria-label="More actions" title="More actions" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</span>
+<span role="status">Nothing done yet</span>
+</div>

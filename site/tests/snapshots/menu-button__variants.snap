@@ -1,0 +1,90 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-cluster">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">Default<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--primary yi-button--md" aria-haspopup="menu" aria-expanded="false">Primary<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md" aria-haspopup="menu" aria-expanded="false">Subtle<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" disabled="disabled" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">Disabled<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>
+<div class="yi-cluster">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--sm" aria-haspopup="menu" aria-expanded="false">Small<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">Medium<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--lg" aria-haspopup="menu" aria-expanded="false">Large<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2">
+</path>
+</svg>Time range<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">No chevron</button>
+</span>
+</span>
+</div>
+</div>

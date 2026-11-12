@@ -1,0 +1,36 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<section class="yi-card">
+<div class="yi-card__body yi-card__body--flush">
+<span role="menu" aria-label="Host web-2" tabindex="0" class="yi-menu">
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
+<span class="yi-menu__label">Pause</span>
+</button>
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
+<span class="yi-menu__label">Check drift</span>
+</button>
+<span role="group" aria-label="Actions" class="yi-menu__group">
+<span aria-hidden="true" class="yi-menu__heading">Actions</span>
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
+<span class="yi-menu__label">Restart</span>
+<span class="yi-menu__aside">systemd</span>
+</button>
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
+<span class="yi-menu__label">Reboot</span>
+<span class="yi-menu__aside">systemd</span>
+</button>
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
+<span class="yi-menu__label">Drain</span>
+<span class="yi-menu__aside">nomad</span>
+</button>
+</span>
+<button role="menuitem" type="button" tabindex="-1" class="yi-menu__item yi-menu__item--danger">
+<span class="yi-menu__label">Forget</span>
+</button>
+</span>
+</div>
+</section>
+<span role="status">Nothing chosen yet</span>
+</div>

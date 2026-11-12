@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<span class="yi-menu-button">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--default yi-button--md" aria-haspopup="menu" aria-expanded="false">Actions<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-menu-button__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span role="status">Nothing chosen yet</span>
+</div>
