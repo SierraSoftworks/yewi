@@ -1,14 +1,14 @@
-// Kbd: a key cap with a heavier lower edge, and a row of them for shortcuts.
+// Kbd: a tinted key, and a row of them for shortcuts.
 
 // Tokens sit on the outermost element, so setting one on a shortcut reaches
 // every cap inside it.
 .yi-kbd-combo,
 .yi-kbd:not(.yi-kbd-combo > .yi-kbd) {
   // Component tokens
-  --yi-kbd-bg: var(--yi-surface);
+  --yi-kbd-bg: var(--yi-neutral-soft);
   --yi-kbd-fg: var(--yi-fg-muted);
-  --yi-kbd-border: var(--yi-line-strong);
-  --yi-kbd-depth: 2px; // Thickness of the lower edge; 1px gives a flat key.
+  --yi-kbd-border: transparent;
+  --yi-kbd-depth: 1px; // Thickness of the lower edge; 2px with a border gives a raised cap.
   --yi-kbd-radius: var(--yi-radius-sm);
 }
 
