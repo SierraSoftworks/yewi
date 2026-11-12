@@ -3,9 +3,9 @@ source: site/tests/snapshots.rs
 ---
 <div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:18rem" class="yi-grid">
 <div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
-<span>A. Accent label (default)</span>
+<span>Text-colour label (default)</span>
 <div class="yi-tabs yi-tabs--line yi-tabs--md" style="">
-<div role="tablist" aria-label="Accent label" class="yi-tabs__list">
+<div role="tablist" aria-label="Text-colour label" class="yi-tabs__list">
 <button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
 <span class="yi-tabs__label">Profile</span>
 </button>
@@ -20,9 +20,9 @@ source: site/tests/snapshots.rs
 </div>
 </div>
 <div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
-<span>B. Text-colour label</span>
-<div class="yi-tabs yi-tabs--line yi-tabs--md" style="--yi-tabs-fg-active: var(--yi-fg)">
-<div role="tablist" aria-label="Text-colour label" class="yi-tabs__list">
+<span>Accent label</span>
+<div class="yi-tabs yi-tabs--line yi-tabs--md" style="--yi-tabs-fg-active: var(--yi-accent-text)">
+<div role="tablist" aria-label="Accent label" class="yi-tabs__list">
 <button type="button" role="tab" id="yi-1-tab-0" aria-selected="true" aria-controls="yi-1-panel-0" tabindex="0" class="yi-tabs__tab">
 <span class="yi-tabs__label">Profile</span>
 </button>

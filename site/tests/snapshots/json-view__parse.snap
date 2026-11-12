@@ -33,7 +33,7 @@ source: site/tests/snapshots.rs
 </details>
 </div>
 </div>
-<div role="alert" class="yi-alert yi-alert--danger yi-alert--soft">
+<div role="alert" class="yi-alert yi-alert--danger">
 <span class="yi-alert__icon">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">

@@ -1,0 +1,167 @@
+// Popover
+//
+// The wrapper is the anchor; the surface is rendered inside it only while
+// open and lifted into the top layer. Position, side and arrow offset come
+// from the anchor helper (`.yi-anchored`). The surface matches Tooltip's
+// `Surface` variant, one step up in elevation.
+@use "api" as *;
+
+.yi-popover {
+  display: inline-flex;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  vertical-align: middle;
+
+  &:focus-visible {
+    @include focus-ring;
+
+    border-radius: var(--yi-radius-sm);
+  }
+
+  &[role="button"] {
+    cursor: pointer;
+  }
+}
+
+.yi-popover__surface {
+  // Component tokens
+  --yi-popover-bg: var(--yi-surface-raised);
+  --yi-popover-fg: var(--yi-fg);
+  --yi-popover-border: var(--yi-line-strong);
+  --yi-popover-shadow: var(--yi-shadow-overlay);
+  --yi-popover-radius: var(--yi-radius-card);
+  --yi-popover-padding: var(--yi-space-md);
+  --yi-popover-gap: var(--yi-space-sm);
+  --yi-popover-max-width: 20rem;
+  --yi-popover-max-height: none;
+  --yi-popover-arrow-size: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--yi-popover-gap);
+  inline-size: max-content;
+  max-inline-size: min(var(--yi-popover-max-width), calc(100vw - var(--yi-space-lg)));
+  padding: var(--yi-popover-padding);
+  border: 1px solid var(--yi-popover-border);
+  border-radius: var(--yi-popover-radius);
+  background: var(--yi-popover-bg);
+  box-shadow: var(--yi-popover-shadow);
+  color: var(--yi-popover-fg);
+  // The surface sits inside its trigger's wrapper, so undo what that sets.
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--yi-leading);
+  letter-spacing: normal;
+  text-align: start;
+  text-transform: none;
+  white-space: normal;
+  cursor: default;
+  user-select: text;
+
+  @include motion {
+    transition: opacity var(--yi-duration-fast) var(--yi-ease);
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  // Bridges the gap to the trigger, so the pointer can cross onto the surface.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1px - var(--yi-anchor-offset, 0px));
+    z-index: -1;
+  }
+
+  // A square turned 45 degrees, centred on the edge facing the trigger, with
+  // only its two outer borders drawn.
+  &--arrow::after {
+    content: "";
+    position: absolute;
+    inline-size: var(--yi-popover-arrow-size);
+    block-size: var(--yi-popover-arrow-size);
+    border: inherit;
+    background: inherit;
+    translate: -50% -50%;
+    rotate: 45deg;
+  }
+
+  &--arrow[data-yi-side="top"]::after {
+    inset-block-start: calc(100% + 0.5px);
+    inset-inline-start: calc(var(--yi-anchor-arrow) - 1px);
+    border-block-start-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  &--arrow[data-yi-side="bottom"]::after {
+    inset-block-start: -0.5px;
+    inset-inline-start: calc(var(--yi-anchor-arrow) - 1px);
+    border-block-end-color: transparent;
+    border-inline-end-color: transparent;
+  }
+
+  &--arrow[data-yi-side="left"]::after {
+    inset-block-start: calc(var(--yi-anchor-arrow) - 1px);
+    inset-inline-start: calc(100% + 0.5px);
+    border-block-end-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  &--arrow[data-yi-side="right"]::after {
+    inset-block-start: calc(var(--yi-anchor-arrow) - 1px);
+    inset-inline-start: -0.5px;
+    border-block-start-color: transparent;
+    border-inline-end-color: transparent;
+  }
+
+  // Edge-to-edge content: the rows around it keep their padding and gain a
+  // rule, since no whitespace separates them any more.
+  &--flush {
+    gap: 0;
+    padding: 0;
+
+    > .yi-popover__head,
+    > .yi-popover__foot {
+      padding: var(--yi-space-sm) var(--yi-popover-padding);
+    }
+
+    > .yi-popover__head {
+      border-block-end: 1px solid var(--yi-line);
+    }
+
+    > .yi-popover__foot {
+      border-block-start: 1px solid var(--yi-line);
+    }
+  }
+}
+
+.yi-popover__head {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  font-weight: 600;
+  line-height: var(--yi-leading-tight);
+}
+
+.yi-popover__body {
+  display: block;
+  min-block-size: 0;
+  max-block-size: var(--yi-popover-max-height);
+  overflow: auto;
+  overflow-wrap: anywhere;
+}
+
+.yi-popover__foot {
+  display: block;
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+}
+
+@media (forced-colors: active) {
+  .yi-popover__surface {
+    border-color: CanvasText;
+  }
+}
