@@ -71,7 +71,7 @@ e2e/tests/<name>.spec.ts         behaviour specs
 
 ### Updating recorded output
 - Snapshots: `INSTA_UPDATE=always cargo test -p yewi-site`, then review the diff.
-- Screenshots: `cargo xtask e2e --update-snapshots`, then review `e2e/gallery/index.html`, which shows before and after for everything that changed. Baselines are made with the Chromium that Playwright 1.63 installs, on Linux.
+- Screenshots: `cargo xtask e2e --update-snapshots` compares with no pixel tolerance, so it records every visible change however small and leaves unchanged baselines alone. Then review `e2e/gallery/index.html`, which shows before and after for everything that changed. Baselines are made with the Chromium that Playwright 1.63 installs, on Linux.
 
 ## Definition of done
 

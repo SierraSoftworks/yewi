@@ -1,0 +1,102 @@
+// Switch: the native checkbox restyled as the track; its `::before` is the
+// thumb.
+@use "api" as *;
+
+.yi-switch {
+  // Component tokens
+  --yi-switch-width: 2rem;
+  --yi-switch-height: 1.125rem;
+  --yi-switch-inset: 2px; // gap between the thumb and the edge of the track
+  --yi-switch-track: color-mix(in oklch, var(--yi-fg-subtle) 70%, var(--yi-surface));
+  --yi-switch-track-hover: var(--yi-fg-subtle);
+  --yi-switch-accent: var(--yi-accent-solid); // track when on
+  --yi-switch-accent-hover: var(--yi-accent-solid-hover);
+  --yi-switch-thumb: var(--yi-on-solid);
+
+  &__input {
+    appearance: none;
+    box-sizing: border-box;
+    inline-size: var(--yi-switch-width);
+    block-size: var(--yi-switch-height);
+    margin: 0;
+    padding: var(--yi-switch-inset);
+    border: 0;
+    border-radius: var(--yi-radius-full);
+    background: var(--yi-switch-track);
+    cursor: inherit;
+
+    @include motion {
+      transition: background-color var(--yi-duration) var(--yi-ease);
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      block-size: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--yi-radius-full);
+      background: var(--yi-switch-thumb);
+
+      @include motion {
+        transition: translate var(--yi-duration) var(--yi-ease);
+      }
+    }
+
+    &:checked {
+      background: var(--yi-switch-accent);
+
+      &::before {
+        translate: calc(var(--yi-switch-width) - var(--yi-switch-height)) 0;
+      }
+
+      &:dir(rtl)::before {
+        translate: calc(var(--yi-switch-height) - var(--yi-switch-width)) 0;
+      }
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &:hover &__input:not(:disabled) {
+    background: var(--yi-switch-track-hover);
+
+    &:checked {
+      background: var(--yi-switch-accent-hover);
+    }
+  }
+
+  &.yi-choice--disabled &__input {
+    opacity: 0.5;
+  }
+
+  &.yi-choice--sm {
+    --yi-switch-width: 1.625rem;
+    --yi-switch-height: 0.875rem;
+  }
+
+  &.yi-choice--lg {
+    --yi-switch-width: 2.25rem;
+    --yi-switch-height: 1.25rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-switch__input {
+    border: 1px solid FieldText;
+    background: Field;
+
+    &::before {
+      background: FieldText;
+    }
+
+    &:checked {
+      background: Highlight;
+
+      &::before {
+        background: HighlightText;
+      }
+    }
+  }
+}

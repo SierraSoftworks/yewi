@@ -1,0 +1,18 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input type="checkbox" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Notify me when the deploy finishes</span>
+</span>
+</label>
+<span role="status">Notifications off</span>
+</div>

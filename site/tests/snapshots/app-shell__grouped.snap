@@ -1,0 +1,73 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-app-shell yi-app-shell--fill yi-app-shell--embedded" style="--yi-app-shell-height: 27rem">
+<header class="yi-app-bar">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-app-bar__menu" aria-label="Navigation" title="Navigation" aria-expanded="true" aria-controls="yi-0">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>
+</button>
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__name">rustak</span>
+</span>
+<div class="yi-app-bar__start">
+</div>
+</header>
+<div class="yi-app-shell__body">
+<div id="yi-0" class="yi-app-shell__sidebar">
+<nav aria-label="Admin sections" class="yi-sidebar">
+<div class="yi-sidebar__items">
+<div role="group" aria-label="Overview" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Overview</div>
+<button type="button" aria-current="true" class="yi-sidebar__item yi-sidebar__item--current">
+<span class="yi-sidebar__label">Dashboard</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Map</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Activity</span>
+</button>
+</div>
+<div role="group" aria-label="Clients" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Clients</div>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Users</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Devices</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Profiles</span>
+</button>
+</div>
+<div role="group" aria-label="Settings" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Settings</div>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Account</span>
+</button>
+<button type="button" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Security</span>
+</button>
+</div>
+</div>
+</nav>
+</div>
+<div id="yi-1" tabindex="0" class="yi-app-shell__main">
+<div class="yi-stack">
+<header class="yi-page-header">
+<div class="yi-page-header__row">
+<div class="yi-page-header__heading">
+<h1 class="yi-page-header__title">Dashboard</h1>
+</div>
+</div>
+</header>
+<span role="status">Showing Dashboard</span>
+</div>
+</div>
+</div>
+<dialog aria-label="Navigation" class="yi-drawer yi-drawer--start yi-drawer--sm yi-app-shell__drawer">
+</dialog>
+</div>
