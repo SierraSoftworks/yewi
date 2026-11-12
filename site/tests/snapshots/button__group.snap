@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<div role="group" aria-label="Connection actions" class="yi-button-group">
+<button type="button" class="yi-button yi-button--default yi-button--md">Reconnect</button>
+<button type="button" class="yi-button yi-button--default yi-button--md">Edit</button>
+<button type="button" class="yi-button yi-button--danger yi-button--md">Unlink</button>
+</div>
+<div role="group" aria-label="Mission archive" class="yi-button-group">
+<button type="button" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 15V3M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5">
+</path>
+</svg>Download archive</button>
+<button type="button" disabled="disabled" class="yi-button yi-button--default yi-button--md">Restore</button>
+</div>
+<div role="group" aria-label="Rollout" class="yi-button-group">
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve all</button>
+</div>
+</div>
+<span role="status">Last action: Nothing yet</span>
+</div>
