@@ -1,0 +1,91 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:11rem" class="yi-grid">
+<div role="radiogroup" aria-label="Default" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--md yi-radio">
+<span class="yi-choice__control">
+<input value="off" type="radio" name="yi-0" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Unselected</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-radio">
+<span class="yi-choice__control">
+<input value="on" checked type="radio" name="yi-0" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Selected</span>
+</span>
+</label>
+</div>
+<div role="radiogroup" aria-label="Disabled" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-radio">
+<span class="yi-choice__control">
+<input value="off" type="radio" name="yi-3" disabled="disabled" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-radio">
+<span class="yi-choice__control">
+<input value="on" checked type="radio" name="yi-3" disabled="disabled" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Disabled, selected</span>
+</span>
+</label>
+</div>
+<div role="radiogroup" aria-label="Invalid" aria-invalid="true" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--md yi-radio yi-radio--invalid">
+<span class="yi-choice__control">
+<input value="a" type="radio" name="yi-6" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Invalid</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-radio yi-radio--invalid">
+<span class="yi-choice__control">
+<input value="b" type="radio" name="yi-6" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Invalid</span>
+</span>
+</label>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<div role="radiogroup" aria-label="Small" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--sm yi-radio">
+<span class="yi-choice__control">
+<input value="on" checked type="radio" name="yi-9" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Small</span>
+</span>
+</label>
+</div>
+<div role="radiogroup" aria-label="Medium" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--md yi-radio">
+<span class="yi-choice__control">
+<input value="on" checked type="radio" name="yi-11" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Medium</span>
+</span>
+</label>
+</div>
+<div role="radiogroup" aria-label="Large" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--lg yi-radio">
+<span class="yi-choice__control">
+<input value="on" checked type="radio" name="yi-13" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Large</span>
+</span>
+</label>
+</div>
+</div>
+</div>

@@ -1,0 +1,125 @@
+// SegmentedControl: a tonal track holding native radios. The selected segment
+// is a raised chip; state comes from `:checked`, so it needs no script.
+@use "api" as *;
+
+.yi-segmented {
+  // Component tokens
+  --yi-segmented-height: var(--yi-control-height);
+  --yi-segmented-inset: 2px; // gap between the track's edge and the segments
+  --yi-segmented-padding: var(--yi-space-md); // inline padding of a segment
+  --yi-segmented-radius: var(--yi-radius-control);
+  --yi-segmented-bg: light-dark(var(--yi-tone-1), var(--yi-bg)); // a well, darker than the selected chip
+  --yi-segmented-border: var(--yi-line);
+  --yi-segmented-fg: var(--yi-fg-muted);
+  --yi-segmented-fg-hover: var(--yi-fg);
+  --yi-segmented-selected-bg: var(--yi-surface-raised);
+  --yi-segmented-selected-fg: var(--yi-fg);
+  --yi-segmented-selected-shadow: var(--yi-shadow-card);
+
+  display: inline-flex;
+  box-sizing: border-box;
+  gap: var(--yi-segmented-inset);
+  // Keeps its own width where a flex or grid parent would stretch it.
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  block-size: var(--yi-segmented-height);
+  padding: var(--yi-segmented-inset);
+  border: 1px solid var(--yi-segmented-border);
+  border-radius: var(--yi-segmented-radius);
+  background: var(--yi-segmented-bg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-sm);
+  font-weight: 500;
+  line-height: var(--yi-leading-tight);
+  vertical-align: middle;
+
+  &__option {
+    position: relative;
+    display: flex;
+    min-inline-size: 0;
+    border-radius: calc(var(--yi-segmented-radius) - var(--yi-segmented-inset));
+    color: var(--yi-segmented-fg);
+    cursor: pointer;
+    user-select: none;
+
+    @include motion {
+      transition:
+        color var(--yi-duration-fast) var(--yi-ease),
+        background-color var(--yi-duration-fast) var(--yi-ease),
+        box-shadow var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover {
+      color: var(--yi-segmented-fg-hover);
+    }
+
+    &:has(:checked) {
+      background: var(--yi-segmented-selected-bg);
+      box-shadow: var(--yi-segmented-selected-shadow);
+      color: var(--yi-segmented-selected-fg);
+    }
+
+    &:has(:focus-visible) {
+      @include focus-ring(1px);
+    }
+
+    &:has(:disabled) {
+      color: var(--yi-segmented-fg);
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  // Invisible but still focusable; clicks land on the label around it.
+  &__input {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    opacity: 0;
+  }
+
+  &__label {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: var(--yi-space-xs);
+    min-inline-size: 0;
+    padding-inline: var(--yi-segmented-padding);
+    white-space: nowrap;
+  }
+
+  &--sm {
+    --yi-segmented-height: var(--yi-control-height-sm);
+    --yi-segmented-padding: var(--yi-space-sm);
+
+    font-size: var(--yi-text-xs);
+  }
+
+  &--lg {
+    --yi-segmented-height: var(--yi-control-height-lg);
+    --yi-segmented-padding: var(--yi-space-lg);
+
+    font-size: var(--yi-text-md);
+  }
+
+  &--block {
+    display: flex;
+    inline-size: auto;
+
+    > .yi-segmented__option {
+      flex: 1 1 0;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-segmented__option:has(:checked) {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}

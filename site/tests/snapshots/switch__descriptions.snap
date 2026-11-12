@@ -1,0 +1,12 @@
+---
+source: site/tests/snapshots.rs
+---
+<label class="yi-choice yi-choice--md yi-switch">
+<span class="yi-choice__control">
+<input checked type="checkbox" role="switch" aria-describedby="yi-0" class="yi-switch__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Weekly digest</span>
+<span id="yi-0" class="yi-choice__description">One email each Monday with the week's deploys and incidents.</span>
+</span>
+</label>

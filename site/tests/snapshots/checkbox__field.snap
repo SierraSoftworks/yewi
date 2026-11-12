@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<form style="max-inline-size: 24rem" novalidate="novalidate">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Change window<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<label class="yi-choice yi-choice--md yi-checkbox">
+<span class="yi-choice__control">
+<input id="yi-0-control" type="checkbox" name="confirmed" required="required" class="yi-checkbox__input">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-checkbox__mark">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">This deploy is inside an approved change window</span>
+</span>
+</label>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Deploy</button>
+</div>
+<span role="status">
+</span>
+</div>
+</form>
