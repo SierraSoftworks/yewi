@@ -1,0 +1,67 @@
+// Divider
+//
+// A hairline in the line colour. No outer margin: Stack, Cluster or the
+// parent's gap decides the space around it.
+@use "api" as *;
+
+.yi-divider {
+  // Component tokens
+  --yi-divider-color: var(--yi-line);
+  --yi-divider-size: 1px;
+  --yi-divider-gap: var(--yi-space-md);
+
+  flex: none;
+  align-self: stretch;
+  margin: 0;
+  border: 0;
+  block-size: var(--yi-divider-size);
+  background: var(--yi-divider-color);
+
+  &--vertical {
+    display: inline-block;
+    inline-size: var(--yi-divider-size);
+    block-size: auto;
+    min-block-size: 1em;
+  }
+
+  &--labelled {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-divider-gap);
+    block-size: auto;
+    background: none;
+    color: var(--yi-fg-subtle);
+    font-size: var(--yi-text-sm);
+    line-height: var(--yi-leading-tight);
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1 1 0;
+      block-size: var(--yi-divider-size);
+      background: var(--yi-divider-color);
+    }
+  }
+
+  &--start::before,
+  &--end::after {
+    flex: 0 0 var(--yi-divider-gap);
+  }
+}
+
+.yi-divider__label {
+  flex: none;
+  max-inline-size: 80%;
+}
+
+@media (forced-colors: active) {
+  .yi-divider,
+  .yi-divider--labelled::before,
+  .yi-divider--labelled::after {
+    background: CanvasText;
+  }
+
+  .yi-divider--labelled {
+    background: none;
+  }
+}

@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 30rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Rollout policy</h2>
+</div>
+</header>
+<div class="yi-card__body">
+<details open="open" class="yi-panel yi-panel--auto yi-panel--collapsible">
+<summary class="yi-panel__header">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-panel__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-panel__heading">
+<span class="yi-panel__title">Schedule</span>
+<span class="yi-panel__subtitle">Weekdays, 22:00 to 04:00</span>
+</span>
+</summary>
+<div class="yi-panel__body">Rollouts start inside the maintenance window and finish the stage they are on.</div>
+</details>
+<details class="yi-panel yi-panel--auto yi-panel--collapsible">
+<summary class="yi-panel__header">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-panel__chevron">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+<span class="yi-panel__heading">
+<span class="yi-panel__title">Advanced</span>
+<span class="yi-panel__subtitle">Health checks and timeouts</span>
+</span>
+</summary>
+<div class="yi-panel__body">A host must report healthy for 5 minutes before the next one starts.</div>
+</details>
+</div>
+</section>
+<span role="status">Advanced settings are hidden</span>
+</div>
