@@ -1,0 +1,38 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-tabs yi-tabs--line yi-tabs--md">
+<div role="tablist" aria-label="Account" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0">
+</path>
+</svg>
+<span class="yi-tabs__label">Profile</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="true" aria-controls="yi-0-panel-1" tabindex="0" class="yi-tabs__tab">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-16a2 2 0 0 1 2 -2zM12 18h.01">
+</path>
+</svg>
+<span class="yi-tabs__label">Devices</span>
+<span class="yi-tabs__count">3</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4zM16 7.5a0.5 0.5 0 1 0 1 0a0.5 0.5 0 1 0 -1 0">
+</path>
+</svg>
+<span class="yi-tabs__label">Credentials</span>
+<span class="yi-tabs__count">12</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-3" aria-selected="false" tabindex="-1" disabled="disabled" class="yi-tabs__tab">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73zM12 22V12M3.29 7L12 12L20.71 7M7.5 4.27l9 5.15">
+</path>
+</svg>
+<span class="yi-tabs__label">Config package</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-1" aria-labelledby="yi-0-tab-1" tabindex="0" class="yi-tabs__panel">Three devices are enrolled.</div>
+</div>

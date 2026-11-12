@@ -1,0 +1,174 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-label="Layout" class="yi-button-group">
+<button type="button" aria-pressed="true" class="yi-button yi-button--default yi-button--sm">Side by side</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--default yi-button--sm">Unified</button>
+</div>
+<figure style="--yi-diff-digits:2" class="yi-diff yi-diff--split yi-diff--numbered">
+<figcaption class="yi-diff__header">
+<span class="yi-diff__title">buckle.toml</span>
+<span class="yi-diff__stats">
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--added">+3</span>
+<span aria-hidden="true" class="yi-diff__stat yi-diff__stat--removed">−5</span>
+<span class="yi-visually-hidden">3 lines added, 5 lines removed</span>
+</span>
+</figcaption>
+<div role="group" aria-label="buckle.toml" tabindex="0" class="yi-diff__scroll">
+<div class="yi-diff__body">
+<div class="yi-diff__row yi-diff__row--context">
+<div class="yi-diff__side yi-diff__side--old">
+<span aria-hidden="true" data-n="1" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">[server]</span>
+</div>
+<div class="yi-diff__side yi-diff__side--new">
+<span aria-hidden="true" data-n="1" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">[server]</span>
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="2" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">listen = "0.0.0.0:8<mark class="yi-diff__changed">080</mark>"</del>
+</div>
+<div class="yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" data-n="2" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">listen = "0.0.0.0:8<mark class="yi-diff__changed">443</mark>"</ins>
+</div>
+</div>
+<div class="yi-diff__row yi-diff__row--context">
+<div class="yi-diff__side yi-diff__side--old">
+<span aria-hidden="true" data-n="3" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">workers = 4</span>
+</div>
+<div class="yi-diff__side yi-diff__side--new">
+<span aria-hidden="true" data-n="3" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">workers = 4</span>
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--empty">
+</div>
+<div class="yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">tls = true</ins>
+</div>
+</div>
+<div class="yi-diff__row yi-diff__row--context">
+<div class="yi-diff__side yi-diff__side--old">
+<span aria-hidden="true" data-n="4" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+<div class="yi-diff__side yi-diff__side--new">
+<span aria-hidden="true" data-n="5" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">
+</span>
+</div>
+</div>
+<div class="yi-diff__row yi-diff__row--context">
+<div class="yi-diff__side yi-diff__side--old">
+<span aria-hidden="true" data-n="5" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">[storage]</span>
+</div>
+<div class="yi-diff__side yi-diff__side--new">
+<span aria-hidden="true" data-n="6" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">[storage]</span>
+</div>
+</div>
+<div class="yi-diff__row yi-diff__row--context">
+<div class="yi-diff__side yi-diff__side--old">
+<span aria-hidden="true" data-n="6" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">path = "/var/lib/buckle"</span>
+</div>
+<div class="yi-diff__side yi-diff__side--new">
+<span aria-hidden="true" data-n="7" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">
+</span>
+<span class="yi-diff__text">path = "/var/lib/buckle"</span>
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="7" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">retention = "<mark class="yi-diff__changed">3</mark>0d"</del>
+</div>
+<div class="yi-diff__side yi-diff__side--added">
+<span aria-hidden="true" data-n="8" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">+</span>
+<ins class="yi-diff__text">retention = "<mark class="yi-diff__changed">9</mark>0d"</ins>
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="8" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">
+</del>
+</div>
+<div class="yi-diff__side yi-diff__side--empty">
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="9" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">[log]</del>
+</div>
+<div class="yi-diff__side yi-diff__side--empty">
+</div>
+</div>
+<div class="yi-diff__row">
+<div class="yi-diff__side yi-diff__side--removed">
+<span aria-hidden="true" data-n="10" class="yi-diff__num">
+</span>
+<span aria-hidden="true" class="yi-diff__sign">−</span>
+<del class="yi-diff__text">level = "debug"</del>
+</div>
+<div class="yi-diff__side yi-diff__side--empty">
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>

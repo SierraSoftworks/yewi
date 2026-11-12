@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-stack">
+<div class="yi-tabs yi-tabs--line yi-tabs--md">
+<div role="tablist" aria-label="Deployment" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-0-tab-0" aria-selected="true" aria-controls="yi-0-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Overview</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Changes</span>
+</button>
+<button type="button" role="tab" id="yi-0-tab-2" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">Logs</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-0-panel-0" aria-labelledby="yi-0-tab-0" tabindex="0" class="yi-tabs__panel">Rollout status across every region.</div>
+</div>
+<div class="yi-tabs yi-tabs--pill yi-tabs--md">
+<div role="tablist" aria-label="Change set" class="yi-tabs__list">
+<button type="button" role="tab" id="yi-1-tab-0" aria-selected="true" aria-controls="yi-1-panel-0" tabindex="0" class="yi-tabs__tab">
+<span class="yi-tabs__label">Changed</span>
+</button>
+<button type="button" role="tab" id="yi-1-tab-1" aria-selected="false" tabindex="-1" class="yi-tabs__tab">
+<span class="yi-tabs__label">All</span>
+</button>
+</div>
+<div role="tabpanel" id="yi-1-panel-0" aria-labelledby="yi-1-tab-0" tabindex="0" class="yi-tabs__panel">Only the resources this plan touches.</div>
+</div>
+</div>
