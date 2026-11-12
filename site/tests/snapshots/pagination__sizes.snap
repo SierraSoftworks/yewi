@@ -1,0 +1,161 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Small" class="yi-pagination yi-pagination--sm">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 1" class="yi-pagination__control">1</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 2" aria-current="page" class="yi-pagination__control">2</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 3" class="yi-pagination__control">3</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 4" class="yi-pagination__control">4</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 5" class="yi-pagination__control">5</button>
+</li>
+<li aria-hidden="true" class="yi-pagination__slot yi-pagination__gap">…</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 8" class="yi-pagination__control">8</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+<nav aria-label="Medium" class="yi-pagination yi-pagination--md">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 1" class="yi-pagination__control">1</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 2" aria-current="page" class="yi-pagination__control">2</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 3" class="yi-pagination__control">3</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 4" class="yi-pagination__control">4</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 5" class="yi-pagination__control">5</button>
+</li>
+<li aria-hidden="true" class="yi-pagination__slot yi-pagination__gap">…</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 8" class="yi-pagination__control">8</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+<nav aria-label="Large" class="yi-pagination yi-pagination--lg">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 1" class="yi-pagination__control">1</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 2" aria-current="page" class="yi-pagination__control">2</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 3" class="yi-pagination__control">3</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 4" class="yi-pagination__control">4</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 5" class="yi-pagination__control">5</button>
+</li>
+<li aria-hidden="true" class="yi-pagination__slot yi-pagination__gap">…</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 8" class="yi-pagination__control">8</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+<nav aria-label="Loading" class="yi-pagination yi-pagination--md">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" disabled="disabled" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 1" disabled="disabled" class="yi-pagination__control">1</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 2" aria-current="page" disabled="disabled" class="yi-pagination__control">2</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 3" disabled="disabled" class="yi-pagination__control">3</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 4" disabled="disabled" class="yi-pagination__control">4</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 5" disabled="disabled" class="yi-pagination__control">5</button>
+</li>
+<li aria-hidden="true" class="yi-pagination__slot yi-pagination__gap">…</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Page 8" disabled="disabled" class="yi-pagination__control">8</button>
+</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" disabled="disabled" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+</div>

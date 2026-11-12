@@ -1,0 +1,114 @@
+// Pagination
+//
+// Every control is a quiet square; the current page is found by its ARIA
+// state and marked with a soft accent fill.
+@use "api" as *;
+
+.yi-pagination {
+  // Component tokens
+  --yi-pagination-fg: var(--yi-fg-muted);
+  --yi-pagination-fg-hover: var(--yi-fg);
+  --yi-pagination-bg-hover: var(--yi-neutral-soft);
+  --yi-pagination-fg-current: var(--yi-accent-text);
+  --yi-pagination-bg-current: var(--yi-accent-soft);
+  --yi-pagination-size: var(--yi-control-height); // height and least width of a control
+  --yi-pagination-gap: var(--yi-space-2xs);
+
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+
+  &--sm {
+    --yi-pagination-size: var(--yi-control-height-sm);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-pagination-size: var(--yi-control-height-lg);
+  }
+}
+
+.yi-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-pagination-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.yi-pagination__slot {
+  display: flex;
+}
+
+.yi-pagination__control,
+.yi-pagination__gap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-inline-size: var(--yi-pagination-size);
+  block-size: var(--yi-pagination-size);
+  color: var(--yi-pagination-fg);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.yi-pagination__control {
+  padding-inline: var(--yi-space-xs);
+  border: 0;
+  border-radius: var(--yi-radius-control);
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+
+  @include motion {
+    transition:
+      color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &:hover {
+    background: var(--yi-pagination-bg-hover);
+    color: var(--yi-pagination-fg-hover);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &[aria-current="page"] {
+    background: var(--yi-pagination-bg-current);
+    color: var(--yi-pagination-fg-current);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    background: none;
+    color: var(--yi-pagination-fg);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.yi-pagination__status {
+  align-items: center;
+  padding-inline: var(--yi-space-sm);
+  color: var(--yi-pagination-fg);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  .yi-pagination__control[aria-current="page"] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
