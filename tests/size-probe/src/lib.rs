@@ -19,6 +19,5 @@ fn App() -> Html {
 
 #[wasm_bindgen(start)]
 fn start() {
-    install_styles();
     yew::Renderer::<App>::new().render();
 }
