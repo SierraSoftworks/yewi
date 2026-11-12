@@ -1,7 +1,6 @@
-use yew::prelude::*;
 use yewi_test::render;
 
-use super::{number_input::*, *};
+use super::*;
 use crate::attrs;
 
 #[test]

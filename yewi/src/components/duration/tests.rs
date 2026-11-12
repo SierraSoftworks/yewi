@@ -1,5 +1,4 @@
 use chrono::TimeZone;
-use yew::prelude::*;
 use yewi_test::render;
 
 use super::*;

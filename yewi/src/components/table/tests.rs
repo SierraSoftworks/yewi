@@ -1,6 +1,5 @@
 use std::{cmp::Ordering, rc::Rc};
 
-use yew::prelude::*;
 use yewi_test::render;
 
 use super::*;
