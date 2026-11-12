@@ -2,7 +2,8 @@
 //! These are site components, styled in `styles/site.scss` with yewi tokens.
 
 use yew::prelude::*;
-use yew_router::prelude::*;
+// Named explicitly: `yewi::prelude` also exports a `Link`.
+use yew_router::prelude::{Link, *};
 use yewi::prelude::*;
 
 use crate::{

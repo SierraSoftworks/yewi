@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p class="yi-text">The rollout is paused. Read the <a href="#in-text-and-alone" class="yi-link yi-link--default yi-link--underline-auto">runbook</a> before you resume it, or ask in <a href="#in-text-and-alone" class="yi-link yi-link--default yi-link--underline-auto">#operations</a>.</p>
+<div style="--yi-gap:var(--yi-space-lg)" class="yi-cluster">
+<a href="#in-text-and-alone" class="yi-link yi-link--default yi-link--underline-auto">Documentation</a>
+<a href="#in-text-and-alone" class="yi-link yi-link--default yi-link--underline-auto">Changelog</a>
+<a href="#in-text-and-alone" class="yi-link yi-link--default yi-link--underline-auto">Status</a>
+</div>
+</div>
