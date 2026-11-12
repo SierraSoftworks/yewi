@@ -66,10 +66,10 @@ impl DurationProps {
 
 /// How often a running duration's text changes: each second while seconds
 /// show, each minute after that.
-fn tick_for(elapsed: TimeDelta, style: DurationStyle) -> Tick {
+fn tick_for(elapsed_millis: i64, style: DurationStyle) -> Tick {
     let shows_seconds = match style {
-        DurationStyle::Compact => elapsed.num_minutes() < 1,
-        DurationStyle::Short | DurationStyle::Long => elapsed.num_hours() < 1,
+        DurationStyle::Compact => elapsed_millis < 60_000,
+        DurationStyle::Short | DurationStyle::Long => elapsed_millis < 3_600_000,
     };
     if shows_seconds { Tick::Second } else { Tick::Minute }
 }
@@ -86,14 +86,19 @@ pub fn Duration(props: &DurationProps) -> Html {
     let fixed = props.fixed();
     let running_from = if fixed.is_none() { props.since } else { None };
     let tick = running_from.map_or(Tick::Never, |since| {
-        tick_for(DateTime::<Utc>::from(crate::Now::system()).signed_duration_since(since), props.style)
+        tick_for(crate::Now::system().epoch_millis() as i64 - since.timestamp_millis(), props.style)
     });
-    let now: DateTime<Utc> = use_now(tick).into();
+    let now = use_now(tick).epoch_millis() as i64;
 
-    let length = fixed.or_else(|| running_from.map(|since| now.signed_duration_since(since))).unwrap_or_default();
-    let millis = length.num_milliseconds();
-    // A running duration moves in whole seconds.
-    let millis = if running_from.is_some() { millis - millis % 1_000 } else { millis };
+    let millis = match (fixed, running_from) {
+        (Some(length), _) => length.num_milliseconds(),
+        // A running duration moves in whole seconds.
+        (None, Some(since)) => {
+            let elapsed = now - since.timestamp_millis();
+            elapsed - elapsed % 1_000
+        }
+        (None, None) => 0,
+    };
 
     props.attrs.apply(html! {
         <time

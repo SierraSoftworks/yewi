@@ -4,10 +4,7 @@
 //! Formatting is written out by hand rather than through chrono's `format`,
 //! which would add its whole strftime machinery to the wasm.
 
-use chrono::{DateTime, Datelike, NaiveDateTime, TimeDelta, Timelike, Utc};
-
 use super::TimestampDisplay;
-use crate::Now;
 
 const MONTHS: [&str; 12] = [
     "January",
@@ -43,8 +40,8 @@ pub(crate) enum Zone {
 }
 
 impl Zone {
-    /// Wall-clock time at `at` in this zone.
-    pub(crate) fn wall(self, at: DateTime<Utc>) -> NaiveDateTime {
+    /// Wall-clock time at `at` (milliseconds since the Unix epoch) in this zone.
+    pub(crate) fn wall(self, at: i64) -> Wall {
         let offset = match self {
             Zone::Viewer { known: true } => viewer_offset_minutes(at),
             _ => 0,
@@ -53,17 +50,67 @@ impl Zone {
     }
 }
 
-/// Wall-clock time at `at`, `offset_minutes` east of UTC.
-pub(crate) fn wall(at: DateTime<Utc>, offset_minutes: i32) -> NaiveDateTime {
-    at.checked_add_signed(TimeDelta::minutes(offset_minutes.into())).unwrap_or(at).naive_utc()
+/// A date and time of day as a calendar and clock show them.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) struct Wall {
+    pub year: i64,
+    /// 1 to 12.
+    pub month: u32,
+    pub day: u32,
+    /// Days since Monday.
+    pub weekday: u32,
+    pub hour: u32,
+    pub minute: u32,
+    pub second: u32,
+    pub millis: u32,
+}
+
+impl Wall {
+    pub(crate) fn same_day(&self, other: &Wall) -> bool {
+        (self.year, self.month, self.day) == (other.year, other.month, other.day)
+    }
+}
+
+/// Wall-clock time at `at` (milliseconds since the Unix epoch),
+/// `offset_minutes` east of UTC.
+///
+/// The calendar arithmetic is done here, not by chrono, whose date types
+/// bring lookup tables this never needs.
+pub(crate) fn wall(at: i64, offset_minutes: i32) -> Wall {
+    let local = at.saturating_add(i64::from(offset_minutes) * 60_000);
+    let (days, in_day) = (local.div_euclid(86_400_000), local.rem_euclid(86_400_000) as u32);
+
+    // Days since the epoch to a proleptic Gregorian date, counting years from
+    // 1 March so the leap day falls at the end (Howard Hinnant's algorithm).
+    let shifted = days + 719_468;
+    let era = shifted.div_euclid(146_097);
+    let day_of_era = shifted.rem_euclid(146_097);
+    let year_of_era = (day_of_era - day_of_era / 1_460 + day_of_era / 36_524 - day_of_era / 146_096) / 365;
+    let day_of_year = day_of_era - (365 * year_of_era + year_of_era / 4 - year_of_era / 100);
+    let shifted_month = (5 * day_of_year + 2) / 153;
+    let day = (day_of_year - (153 * shifted_month + 2) / 5 + 1) as u32;
+    let month = (if shifted_month < 10 { shifted_month + 3 } else { shifted_month - 9 }) as u32;
+    let year = year_of_era + era * 400 + i64::from(month <= 2);
+
+    Wall {
+        year,
+        month,
+        day,
+        // 1 January 1970 was a Thursday.
+        weekday: (days + 3).rem_euclid(7) as u32,
+        hour: in_day / 3_600_000,
+        minute: in_day / 60_000 % 60,
+        second: in_day / 1_000 % 60,
+        millis: in_day % 1_000,
+    }
 }
 
 /// How far east of UTC the viewer's zone is at `at`, daylight saving
 /// included. Only a browser knows; everywhere else it is zero.
-pub(crate) fn viewer_offset_minutes(at: DateTime<Utc>) -> i32 {
+pub(crate) fn viewer_offset_minutes(at: i64) -> i32 {
     #[cfg(target_arch = "wasm32")]
     {
-        let date = js_sys::Date::new(&wasm_bindgen::JsValue::from_f64(at.timestamp_millis() as f64));
+        let date = js_sys::Date::new(&wasm_bindgen::JsValue::from_f64(at as f64));
         let offset = -date.get_timezone_offset();
         if offset.is_finite() { offset as i32 } else { 0 }
     }
@@ -74,8 +121,11 @@ pub(crate) fn viewer_offset_minutes(at: DateTime<Utc>) -> i32 {
     }
 }
 
-pub(crate) fn to_utc(now: Now) -> DateTime<Utc> {
-    DateTime::from_timestamp_millis(now.epoch_millis() as i64).unwrap_or_default()
+/// The instant as `<time datetime>` wants it: `2026-01-15T12:00:00Z`.
+pub(crate) fn machine_readable(at: i64) -> String {
+    let w = wall(at, 0);
+    let fraction = if w.millis == 0 { String::new() } else { format!(".{:03}", w.millis) };
+    format!("{:04}-{:02}-{:02}T{:02}:{:02}:{:02}{fraction}Z", w.year, w.month, w.day, w.hour, w.minute, w.second)
 }
 
 fn plural(n: u64, unit: &str) -> String {
@@ -83,8 +133,9 @@ fn plural(n: u64, unit: &str) -> String {
 }
 
 /// `at` relative to `now`: `35 minutes ago`, `in 2 hours`; compact `35m ago`.
-pub(crate) fn relative(at: DateTime<Utc>, now: DateTime<Utc>, compact: bool) -> String {
-    let secs = at.signed_duration_since(now).num_seconds();
+pub(crate) fn relative(at: i64, now: i64, compact: bool) -> String {
+    // Whole seconds, towards zero.
+    let secs = at.saturating_sub(now) / 1_000;
     let (past, abs) = (secs <= 0, secs.unsigned_abs());
     let (n, long, short) = match abs {
         0..MINUTE => {
@@ -105,33 +156,33 @@ pub(crate) fn relative(at: DateTime<Utc>, now: DateTime<Utc>, compact: bool) -> 
     if past { format!("{magnitude} ago") } else { format!("in {magnitude}") }
 }
 
-fn clock(at: &NaiveDateTime) -> String {
-    format!("{:02}:{:02}", at.hour(), at.minute())
+fn clock(at: &Wall) -> String {
+    format!("{:02}:{:02}", at.hour, at.minute)
 }
 
-fn month(at: &NaiveDateTime) -> &'static str {
-    MONTHS[at.month0() as usize]
+fn month(at: &Wall) -> &'static str {
+    MONTHS[(at.month as usize + 11) % 12]
 }
 
-fn weekday(at: &NaiveDateTime) -> &'static str {
-    WEEKDAYS[at.weekday().num_days_from_monday() as usize]
+fn weekday(at: &Wall) -> &'static str {
+    WEEKDAYS[at.weekday as usize % 7]
 }
 
 /// `12 Jan 2026`. Compact drops the year when it is the current one.
-fn date(at: &NaiveDateTime, now: &NaiveDateTime, compact: bool) -> String {
-    let (day, month) = (at.day(), &month(at)[..3]);
-    if compact && at.year() == now.year() { format!("{day} {month}") } else { format!("{day} {month} {}", at.year()) }
+fn date(at: &Wall, now: &Wall, compact: bool) -> String {
+    let (day, month) = (at.day, &month(at)[..3]);
+    if compact && at.year == now.year { format!("{day} {month}") } else { format!("{day} {month} {}", at.year) }
 }
 
 /// What a [`Timestamp`](super::Timestamp) shows.
 pub(crate) fn timestamp(
-    at: DateTime<Utc>,
-    now: DateTime<Utc>,
+    at: i64,
+    now: i64,
     display: TimestampDisplay,
     compact: bool,
     zone: Zone,
 ) -> String {
-    let age = at.signed_duration_since(now).num_seconds().unsigned_abs();
+    let age = (at.saturating_sub(now) / 1_000).unsigned_abs();
     let display = match display {
         TimestampDisplay::Auto if age < DAY => TimestampDisplay::Relative,
         TimestampDisplay::Auto if age < 7 * DAY => TimestampDisplay::Auto,
@@ -156,18 +207,18 @@ pub(crate) fn timestamp(
 }
 
 /// The full date and time to the second: `Thursday 15 January 2026, 13:00:00`.
-pub(crate) fn exact(at: &NaiveDateTime) -> String {
+pub(crate) fn exact(at: &Wall) -> String {
     format!("{} {}, {}", weekday(at), exact_date(at), exact_time(at))
 }
 
 /// `15 January 2026`
-pub(crate) fn exact_date(at: &NaiveDateTime) -> String {
-    format!("{} {} {}", at.day(), month(at), at.year())
+pub(crate) fn exact_date(at: &Wall) -> String {
+    format!("{} {} {}", at.day, month(at), at.year)
 }
 
 /// `13:00:00`
-pub(crate) fn exact_time(at: &NaiveDateTime) -> String {
-    format!("{:02}:{:02}:{:02}", at.hour(), at.minute(), at.second())
+pub(crate) fn exact_time(at: &Wall) -> String {
+    format!("{:02}:{:02}:{:02}", at.hour, at.minute, at.second)
 }
 
 /// How a length of time is written.

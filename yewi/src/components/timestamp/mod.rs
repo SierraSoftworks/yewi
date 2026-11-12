@@ -4,7 +4,7 @@
 
 /// The chrono version yewi's time components are built against.
 pub use chrono;
-use chrono::{DateTime, SecondsFormat, Utc};
+use chrono::{DateTime, Utc};
 use yew::prelude::*;
 
 use crate::{Attrs, Now, Pill, Placement, Tick, Tooltip, use_now};
@@ -15,7 +15,7 @@ use format::Zone;
 
 impl From<Now> for DateTime<Utc> {
     fn from(now: Now) -> Self {
-        format::to_utc(now)
+        DateTime::from_timestamp_millis(now.epoch_millis() as i64).unwrap_or_default()
     }
 }
 
@@ -68,8 +68,8 @@ fn tick_for(at: DateTime<Utc>, display: TimestampDisplay) -> Tick {
         // More than a week old, it is a date and stays one. This only picks
         // how often to look again, so the real clock is good enough.
         TimestampDisplay::Auto => {
-            let age = DateTime::<Utc>::from(Now::system()).signed_duration_since(at);
-            if age.num_days() > 7 { Tick::Never } else { Tick::Minute }
+            let age_millis = Now::system().epoch_millis() - at.timestamp_millis() as f64;
+            if age_millis > 8.0 * 86_400_000.0 { Tick::Never } else { Tick::Minute }
         }
     }
 }
@@ -121,7 +121,8 @@ pub fn Timestamp(props: &TimestampProps) -> Html {
     let zone = use_viewer_zone(props.utc);
     let now = use_now(tick_for(props.at, props.display));
 
-    let text = format::timestamp(props.at, now.into(), props.display, props.compact, zone);
+    let at = props.at.timestamp_millis();
+    let text = format::timestamp(at, now.epoch_millis() as i64, props.display, props.compact, zone);
     let tip = if props.tooltip { html! { <TimestampDetail at={props.at} /> } } else { Html::default() };
 
     html! {
@@ -133,14 +134,9 @@ pub fn Timestamp(props: &TimestampProps) -> Html {
             placement={props.placement}
             focusable={props.focusable && props.tooltip}
         >
-            <time datetime={machine_readable(props.at)}>{ text }</time>
+            <time datetime={format::machine_readable(at)}>{ text }</time>
         </Tooltip>
     }
-}
-
-/// The instant as `<time datetime>` wants it: `2026-01-15T12:00:00Z`.
-pub(crate) fn machine_readable(at: DateTime<Utc>) -> String {
-    at.to_rfc3339_opts(SecondsFormat::AutoSi, true)
 }
 
 #[derive(Properties, PartialEq)]
@@ -163,9 +159,10 @@ pub struct TimestampDetailProps {
 #[function_component]
 pub fn TimestampDetail(props: &TimestampDetailProps) -> Html {
     let zone = use_viewer_zone(false);
-    let (local, utc) = (zone.wall(props.at), Zone::Utc.wall(props.at));
+    let at = props.at.timestamp_millis();
+    let (local, utc) = (zone.wall(at), Zone::Utc.wall(at));
     // The UTC line repeats the date only when it is a different day there.
-    let utc_text = if local.date() == utc.date() {
+    let utc_text = if local.same_day(&utc) {
         format::exact_time(&utc)
     } else {
         format!("{}, {}", format::exact_date(&utc), format::exact_time(&utc))

@@ -14,6 +14,10 @@ fn ago(seconds: i64) -> DateTime<Utc> {
     noon() - TimeDelta::seconds(seconds)
 }
 
+fn ms(at: DateTime<Utc>) -> i64 {
+    at.timestamp_millis()
+}
+
 const UTC_STANDIN: Zone = Zone::Viewer { known: false };
 
 /// Renders with the clock fixed at [`noon`], as a server would.
@@ -43,8 +47,8 @@ fn relative_text_reads_naturally_in_both_directions() {
         (-5 * 60, "in 5 minutes", "in 5m"),
         (-2 * 86_400, "in 2 days", "in 2d"),
     ] {
-        assert_eq!(relative(ago(seconds), noon(), false), long);
-        assert_eq!(relative(ago(seconds), noon(), true), compact);
+        assert_eq!(relative(ms(ago(seconds)), ms(noon()), false), long);
+        assert_eq!(relative(ms(ago(seconds)), ms(noon()), true), compact);
     }
 }
 
@@ -60,7 +64,7 @@ fn auto_moves_from_relative_to_weekday_to_date() {
         (40 * 86_400, "6 Dec 2025", "6 Dec 2025"),
         (-40 * 86_400, "24 Feb 2026", "24 Feb"),
     ] {
-        let text = |compact| timestamp(ago(seconds), noon(), TimestampDisplay::Auto, compact, UTC_STANDIN);
+        let text = |compact| timestamp(ms(ago(seconds)), ms(noon()), TimestampDisplay::Auto, compact, UTC_STANDIN);
         assert_eq!(text(false), long);
         assert_eq!(text(true), compact);
     }
@@ -75,23 +79,48 @@ fn fixed_displays_ignore_how_recent_the_moment_is() {
         (TimestampDisplay::Date, "15 Jan 2026", "15 Jan"),
         (TimestampDisplay::Time, "09:05", "09:05"),
     ] {
-        assert_eq!(timestamp(at, noon(), display, false, UTC_STANDIN), long);
-        assert_eq!(timestamp(at, noon(), display, true, UTC_STANDIN), compact);
+        assert_eq!(timestamp(ms(at), ms(noon()), display, false, UTC_STANDIN), long);
+        assert_eq!(timestamp(ms(at), ms(noon()), display, true, UTC_STANDIN), compact);
     }
 }
 
 #[test]
 fn utc_is_labelled_on_dates_and_times_but_not_on_relative_text() {
-    assert_eq!(timestamp(ago(60), noon(), TimestampDisplay::Time, false, Zone::Utc), "11:59 UTC");
-    assert_eq!(timestamp(ago(60), noon(), TimestampDisplay::Auto, false, Zone::Utc), "1 minute ago");
+    assert_eq!(timestamp(ms(ago(60)), ms(noon()), TimestampDisplay::Time, false, Zone::Utc), "11:59 UTC");
+    assert_eq!(timestamp(ms(ago(60)), ms(noon()), TimestampDisplay::Auto, false, Zone::Utc), "1 minute ago");
 }
 
 #[test]
 fn wall_clock_time_follows_the_zone_offset_across_midnight() {
     let late = Utc.with_ymd_and_hms(2026, 1, 15, 23, 30, 0).unwrap();
-    assert_eq!(exact(&wall(late, 0)), "Thursday 15 January 2026, 23:30:00");
-    assert_eq!(exact(&wall(late, 60)), "Friday 16 January 2026, 00:30:00");
-    assert_eq!(exact(&wall(late, -8 * 60)), "Thursday 15 January 2026, 15:30:00");
+    assert_eq!(exact(&wall(ms(late), 0)), "Thursday 15 January 2026, 23:30:00");
+    assert_eq!(exact(&wall(ms(late), 60)), "Friday 16 January 2026, 00:30:00");
+    assert_eq!(exact(&wall(ms(late), -8 * 60)), "Thursday 15 January 2026, 15:30:00");
+}
+
+#[test]
+fn the_calendar_agrees_with_chrono() {
+    use chrono::{Datelike, Timelike};
+    // Leap days, year ends, the epoch, and times before it.
+    for (y, mo, d, h, mi, sec) in [
+        (1970, 1, 1, 0, 0, 0),
+        (1969, 12, 31, 23, 59, 59),
+        (1900, 3, 1, 6, 7, 8),
+        (2000, 2, 29, 12, 0, 0),
+        (2024, 2, 29, 23, 59, 59),
+        (2024, 3, 1, 0, 0, 0),
+        (2025, 12, 31, 23, 59, 59),
+        (2026, 1, 15, 12, 0, 0),
+        (2100, 2, 28, 1, 2, 3),
+        (2400, 2, 29, 4, 5, 6),
+    ] {
+        let at = Utc.with_ymd_and_hms(y, mo, d, h, mi, sec).unwrap();
+        let w = wall(ms(at), 0);
+        assert_eq!((w.year, w.month, w.day, w.hour, w.minute, w.second), (y.into(), mo, d, h, mi, sec));
+        assert_eq!(w.weekday, at.weekday().num_days_from_monday(), "{at}");
+        assert_eq!(at.nanosecond(), 0);
+        assert_eq!(machine_readable(ms(at)), at.to_rfc3339_opts(chrono::SecondsFormat::AutoSi, true));
+    }
 }
 
 #[test]

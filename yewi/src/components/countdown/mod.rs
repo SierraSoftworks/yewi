@@ -6,10 +6,7 @@ use yew::prelude::*;
 
 use crate::{
     Attrs, Placement, Tick, TimestampDetail, Tooltip,
-    timestamp::{
-        format::{self, Units},
-        machine_readable,
-    },
+    timestamp::format::{self, Units},
     use_now,
 };
 
@@ -69,12 +66,12 @@ pub struct CountdownProps {
 ///   announce each second; announce the outcome yourself from `on_done`.
 #[function_component]
 pub fn Countdown(props: &CountdownProps) -> Html {
-    let until = props.until;
+    let until = props.until.timestamp_millis();
     // Past the target nothing changes; this only picks how often to look.
-    let pending = DateTime::<Utc>::from(crate::Now::system()) < until;
-    let now: DateTime<Utc> = use_now(if pending { Tick::Second } else { Tick::Never }).into();
+    let pending = (crate::Now::system().epoch_millis() as i64) < until;
+    let now = use_now(if pending { Tick::Second } else { Tick::Never }).epoch_millis() as i64;
 
-    let left = until.signed_duration_since(now).num_milliseconds();
+    let left = until - now;
     let done = left <= 0;
 
     {
@@ -99,7 +96,7 @@ pub fn Countdown(props: &CountdownProps) -> Html {
         }
         .into(),
     };
-    let tip = if props.tooltip { html! { <TimestampDetail at={until} /> } } else { Html::default() };
+    let tip = if props.tooltip { html! { <TimestampDetail at={props.until} /> } } else { Html::default() };
 
     html! {
         <Tooltip
@@ -110,7 +107,7 @@ pub fn Countdown(props: &CountdownProps) -> Html {
             placement={props.placement}
             focusable={props.focusable && props.tooltip}
         >
-            <time role="timer" datetime={machine_readable(until)}>{ text }</time>
+            <time role="timer" datetime={format::machine_readable(until)}>{ text }</time>
         </Tooltip>
     }
 }
