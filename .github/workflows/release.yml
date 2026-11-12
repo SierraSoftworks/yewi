@@ -1,0 +1,120 @@
+name: Release
+
+# Publishes yewi, yewi-fonts and yewi-test to crates.io at one shared version,
+# then tags the commit and creates the GitHub release. Releases are cut by
+# running this workflow: the tag only appears once every crate is uploaded, so
+# a tag always has its crates behind it.
+#
+# Authentication is crates.io trusted publishing (OIDC, no stored secret). A
+# crate's first version cannot use it, so the first release reads the
+# CARGO_REGISTRY_TOKEN secret instead; delete that secret once each crate lists
+# this workflow as a trusted publisher.
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Which part of the version to increment (ignored for the first release)
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+      dry_run:
+        description: Package and verify only; upload, tag and release nothing
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency: release
+
+env:
+  CARGO_TERM_COLOR: always
+  # In dependency order.
+  CRATES: yewi-fonts yewi-test yewi
+
+jobs:
+  publish:
+    name: Publish to crates.io
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Determine the version
+        id: version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUMP: ${{ inputs.bump }}
+        run: |
+          latest="$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName 2>/dev/null || true)"
+          if [ -z "$latest" ]; then
+            # First release: the version in Cargo.toml as it stands.
+            version="$(sed -n '0,/^version\s*=\s*"\(.*\)"/s//\1/p' Cargo.toml)"
+          else
+            IFS=. read -r major minor patch <<< "${latest#v}"
+            case "$BUMP" in
+              major) major=$((major + 1)); minor=0; patch=0 ;;
+              minor) minor=$((minor + 1)); patch=0 ;;
+              patch) patch=$((patch + 1)) ;;
+            esac
+            version="$major.$minor.$patch"
+          fi
+          echo "Releasing v$version (previous: ${latest:-none})" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      # The workspace version, and the version the crates require of each other.
+      - name: Set the package version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sed -i "0,/^version\s*=\s*\".*\"/s//version = \"$VERSION\"/" Cargo.toml
+          sed -i "/^yewi[a-z-]*\s*=\s*{\s*path/s/version\s*=\s*\"[^\"]*\"/version = \"$VERSION\"/" Cargo.toml
+          cargo update --workspace
+          git diff --stat
+
+      - run: cargo xtask check
+
+      - name: Verify the packages
+        run: cargo publish --dry-run --allow-dirty $(printf -- '-p %s ' $CRATES)
+
+      - name: Authenticate with crates.io
+        id: auth
+        if: ${{ !inputs.dry_run && env.HAS_TOKEN != 'true' }}
+        uses: rust-lang/crates-io-auth-action@v1
+        env:
+          HAS_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN != '' }}
+
+      # One crate at a time, skipping any that a failed earlier run already
+      # uploaded, so a release can always be finished by running it again.
+      - name: Publish
+        if: ${{ !inputs.dry_run }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token || secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          for crate in $CRATES; do
+            status="$(curl -sS -o /dev/null -w '%{http_code}' -A "$GITHUB_REPOSITORY release workflow" \
+              "https://crates.io/api/v1/crates/$crate/$VERSION")"
+            if [ "$status" = 200 ]; then
+              echo "$crate $VERSION is already published" | tee -a "$GITHUB_STEP_SUMMARY"
+              continue
+            fi
+            cargo publish --allow-dirty -p "$crate"
+            echo "Published [$crate $VERSION](https://crates.io/crates/$crate/$VERSION)" >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - name: Tag and release
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: v${{ steps.version.outputs.version }}
+        run: |
+          git push origin "$GITHUB_SHA:refs/tags/$TAG"
+          gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes
