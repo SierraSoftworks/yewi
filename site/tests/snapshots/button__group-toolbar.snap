@@ -1,0 +1,52 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster yi-cluster--align-start">
+<div role="group" aria-label="Map zoom" class="yi-button-group yi-button-group--vertical">
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Zoom in" title="Zoom in">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Zoom out" title="Zoom out">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+</div>
+<div role="group" aria-label="Map tools" class="yi-button-group">
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Centre on my position" title="Centre on my position">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12L5 12M19 12L22 12M12 2L12 5M12 19L12 22M5 12a7 7 0 1 0 14 0a7 7 0 1 0 -14 0">
+</path>
+</svg>
+</button>
+<button type="button" aria-pressed="false" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Show layers" title="Show layers">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83zM2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17">
+</path>
+</svg>
+</button>
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Full screen" title="Full screen">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3">
+</path>
+</svg>
+</button>
+</div>
+<div role="group" aria-label="Row actions" class="yi-button-group">
+<button type="button" class="yi-button yi-button--default yi-button--sm">Edit</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Duplicate</button>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-button--icon-only" aria-label="More actions" title="More actions">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0">
+</path>
+</svg>
+</button>
+</div>
+</div>
+<span role="status">Zoom 8, layers hidden</span>
+</div>
