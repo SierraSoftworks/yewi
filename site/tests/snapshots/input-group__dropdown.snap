@@ -1,0 +1,49 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Webhook URL</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
+<span class="yi-input-group__select">
+<select aria-label="Protocol" class="yi-input-group__select-control">
+<option value="https" selected="selected">https://</option>
+<option value="http">http://</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+<input value="hooks.example.com" id="yi-0-control" type="text" spellcheck="false" class="yi-input yi-input--md yi-input--mono">
+</div>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Retry after</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="5" id="yi-1-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="5" aria-valuemin="1" class="yi-number-input__input">
+</div>
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<span class="yi-input-group__select">
+<select aria-label="Unit" class="yi-input-group__select-control">
+<option value="sec">seconds</option>
+<option value="min" selected="selected">minutes</option>
+<option value="hr">hours</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>
+<span role="status">https://hooks.example.com · retry in min</span>
+</div>
