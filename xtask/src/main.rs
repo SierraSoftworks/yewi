@@ -22,7 +22,12 @@ cargo xtask <command>
   size             measure the probe's wasm and the stylesheet per feature
                    and enforce size-budget.toml
   ci               check, e2e and size: everything, in order
+    --changed[=ref]  only what the paths changed since `ref` (default origin/main)
+                     call for; shared code still gets the full run
+    --dry-run        with --changed, print the plan and stop
 ";
+
+mod changed;
 
 const WASM: &str = "wasm32-unknown-unknown";
 
@@ -38,15 +43,60 @@ fn main() {
         "e2e" => e2e(&rest),
         "gallery" => gallery(&rest),
         "size" => size(),
-        "ci" => {
-            check();
-            e2e(&[]);
-            size();
-        }
+        "ci" => ci(&rest),
         _ => {
             eprint!("{HELP}");
             exit(if command.is_empty() || command == "help" { 0 } else { 2 });
         }
+    }
+}
+
+fn ci(args: &[String]) {
+    let mut base = None;
+    let mut dry_run = false;
+    for arg in args {
+        match arg.as_str() {
+            "--changed" => base = Some("origin/main"),
+            "--dry-run" => dry_run = true,
+            _ => match arg.strip_prefix("--changed=") {
+                Some(reference) => base = Some(reference),
+                None => {
+                    eprint!("unknown argument `{arg}`\n\n{HELP}");
+                    exit(2);
+                }
+            },
+        }
+    }
+
+    let plan = match base {
+        Some(base) => {
+            let paths = changed::changed_paths(&root(), base);
+            let plan = changed::Plan::new(&paths, |component| changed::pages_using(&root(), component));
+            eprintln!("\x1b[1m{} path(s) changed since {base}: {}\x1b[0m", paths.len(), plan.describe());
+            plan
+        }
+        None => changed::Plan { full: Some("everything".into()), ..Default::default() },
+    };
+    if dry_run {
+        return;
+    }
+
+    if plan.full.is_some() {
+        check();
+        e2e(&[]);
+        size();
+        return;
+    }
+    if plan.check {
+        check();
+    } else {
+        fmt();
+    }
+    if let Some(grep) = plan.grep() {
+        e2e(&["--grep".into(), grep]);
+    }
+    if plan.size {
+        size();
     }
 }
 
@@ -88,8 +138,12 @@ fn optional_features() -> Vec<String> {
         .collect()
 }
 
-fn check() {
+fn fmt() {
     run(cargo().args(["fmt", "--all", "--check"]));
+}
+
+fn check() {
+    fmt();
     run(cargo().args([
         "clippy",
         "--workspace",

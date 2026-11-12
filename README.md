@@ -50,6 +50,7 @@ Requires Rust with the `wasm32-unknown-unknown` target, [Trunk](https://trunkrs.
 | `cargo xtask e2e` | Build and prerender the site, run the browser tests, build the review gallery |
 | `cargo xtask size` | Enforce `size-budget.toml` |
 | `cargo xtask ci` | All of the above |
+| `cargo xtask ci --changed` | Only what the paths changed since `origin/main` call for |
 
 ### Layout
 - `yewi/`: the library. `scss/` holds tokens and base styles, `src/components/<name>/` one component each.
