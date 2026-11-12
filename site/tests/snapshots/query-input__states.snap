@@ -1,0 +1,68 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:16rem" class="yi-grid">
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--sm">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="" type="text" role="combobox" placeholder="Small" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Small" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="" type="text" role="combobox" placeholder="Medium" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Medium" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--lg">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="" type="text" role="combobox" placeholder="Large" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Large" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="status:failed budget" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Filled" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md yi-query-input__box--mono">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M12 19h8M4 17l6-6-6-6">
+</path>
+</svg>
+<input value="country == &quot;DE&quot;" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="As code" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md yi-query-input__box--invalid">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="country ==" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Invalid" aria-autocomplete="list" aria-expanded="false" aria-invalid="true" class="yi-query-input__control">
+</span>
+</span>
+<span class="yi-popover yi-query-input">
+<span class="yi-query-input__box yi-query-input__box--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
+<path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
+</path>
+</svg>
+<input value="status:failed" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Disabled" aria-autocomplete="list" aria-expanded="false" disabled="disabled" class="yi-query-input__control">
+</span>
+</span>
+</div>
