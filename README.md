@@ -32,7 +32,7 @@ fn main() {
 ### Opt-in features
 - Heavier components sit behind features (`charts`, `map`, `code`, `markdown`, ...; `full` for all).
 - A disabled feature adds no Rust, no CSS and no dependencies.
-- `cargo xtask size` enforces a wasm budget per feature.
+- `cargo xtask size` enforces budgets for the core wasm, the stylesheet and each feature.
 
 ## Working on it
 

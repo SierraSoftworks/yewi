@@ -30,13 +30,20 @@ fn main() {
 
     let options = grass::Options::default().style(grass::OutputStyle::Compressed).load_path(&scss);
     let compile = |path: &Path| -> String {
-        grass::from_path(path, &options).unwrap_or_else(|e| panic!("failed to compile {}: {e}", path.display()))
+        let css =
+            grass::from_path(path, &options).unwrap_or_else(|e| panic!("failed to compile {}: {e}", path.display()));
+        fragment(&css).to_owned()
     };
+
+    // Guards the encoding-marker handling in `fragment`: a file with non-ASCII
+    // text must still begin with its first rule once it is inside a layer.
+    let probe = grass::from_string("a{content:\"\u{2192}\"}", &options).expect("encoding probe");
+    assert_eq!(fragment(&probe), "a{content:\"\u{2192}\"}", "grass output is not a clean fragment");
 
     let mut css = String::from(LAYERS);
     for (stem, layer) in FOUNDATIONS {
         let body = compile(&scss.join(format!("{stem}.scss")));
-        write!(css, "@layer {layer}{{{}}}", body.trim()).unwrap();
+        write!(css, "@layer {layer}{{{body}}}").unwrap();
     }
 
     let mut modules = String::new();
@@ -64,16 +71,28 @@ fn main() {
                 && !file.file_name().unwrap().to_str().unwrap().starts_with('_');
             if is_partial {
                 let body = compile(&file);
-                write!(css, "@layer yewi.components{{{}}}", body.trim()).unwrap();
+                write!(css, "@layer yewi.components{{{body}}}").unwrap();
             }
         }
     }
 
     let utilities = compile(&scss.join("utilities.scss"));
-    write!(css, "@layer yewi.utilities{{{}}}", utilities.trim()).unwrap();
+    write!(css, "@layer yewi.utilities{{{utilities}}}").unwrap();
 
     fs::write(out.join("components.rs"), modules).unwrap();
     fs::write(out.join("yewi.css"), css).unwrap();
+}
+
+/// Strips what `grass` puts in front of a stylesheet that has non-ASCII
+/// text: a byte order mark (compressed output) or `@charset` (expanded).
+/// Either is only valid at the very start of a file, so inside `@layer {}` it
+/// would swallow the first rule. The embedded stylesheet is always UTF-8.
+fn fragment(css: &str) -> &str {
+    let css = css.trim().trim_start_matches('\u{feff}');
+    match css.strip_prefix("@charset") {
+        Some(rest) => rest.split_once(';').map_or("", |(_, body)| body).trim(),
+        None => css,
+    }
 }
 
 fn sorted(dir: &Path) -> Vec<PathBuf> {

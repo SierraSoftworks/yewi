@@ -33,7 +33,7 @@ pub fn Example() -> Html {
                     <TextInput name="name" value={(*name).clone()} on_input={set_name} />
                 </Field>
                 <Field label="Port">
-                    <NumberInput name="port" value={*port} on_input={set_port} min={1.0} max={65535.0} />
+                    <NumberInput name="port" value={*port} on_input={set_port} min={1.0} max={65535.0} stepper=false />
                 </Field>
                 <Field label="Description" hint="Optional.">
                     <TextArea name="description" />
