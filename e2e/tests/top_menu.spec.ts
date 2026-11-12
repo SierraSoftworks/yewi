@@ -80,6 +80,10 @@ test.describe("TopMenu", () => {
 
     await expect(menu.getByRole("menuitem")).toHaveText(["Services", "Incidents", "Accounts", "Audit log"]);
     await expect(menu.getByRole("menuitem", { name: "Services" })).toHaveAttribute("aria-current", "page");
+    // Only the current destination carries the accent edge.
+    const edge = (name: string) => menu.getByRole("menuitem", { name }).evaluate((el) => getComputedStyle(el).boxShadow);
+    expect(await edge("Services")).not.toBe("none");
+    expect(await edge("Incidents")).toBe("none");
     await expect(menu.getByRole("group", { name: "Admin" })).toBeVisible();
 
     await menu.getByRole("menuitem", { name: "Incidents" }).click();

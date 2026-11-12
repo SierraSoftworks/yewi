@@ -13,13 +13,25 @@ source: site/tests/snapshots.rs
 <span class="yi-app-bar__name">Grey</span>
 </span>
 <div class="yi-app-bar__start">
-<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster" role="group" aria-label="Sections">
-<button type="button" aria-pressed="true" class="yi-button yi-button--subtle yi-button--md">Dashboards</button>
-<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md">Alerts</button>
-<button type="button" aria-pressed="false" class="yi-button yi-button--subtle yi-button--md">Settings</button>
-</div>
-</div>
-<div class="yi-app-bar__actions">
+<nav aria-label="Sections" class="yi-top-menu yi-top-menu--collapse-narrow">
+<ul role="list" class="yi-top-menu__list">
+<li class="yi-top-menu__item">
+<a href="#dashboards" aria-current="page" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Dashboards</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="#alerts" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Alerts</span>
+</a>
+</li>
+<li class="yi-top-menu__item">
+<a href="#settings" class="yi-top-menu__link">
+<span class="yi-top-menu__label">Settings</span>
+</a>
+</li>
+</ul>
+<div class="yi-top-menu__actions">
 <span class="yi-pill yi-pill--ok">
 <span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
 </span>live</span>
@@ -32,6 +44,18 @@ source: site/tests/snapshots.rs
 <span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
 <span aria-hidden="true" class="yi-avatar__initials">AL</span>
 </span>
+</div>
+<div class="yi-top-menu__compact">
+<span class="yi-popover">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only" aria-label="Menu" title="Menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 5h16M4 12h16M4 19h16">
+</path>
+</svg>
+</button>
+</span>
+</div>
+</nav>
 </div>
 </header>
 <span role="status">Showing Dashboards</span>
