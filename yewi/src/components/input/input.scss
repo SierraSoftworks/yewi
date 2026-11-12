@@ -1,0 +1,212 @@
+// Text controls: TextInput, TextArea and NumberInput.
+//
+// `.yi-input` is the outlined box. It is the `<input>` or `<textarea>` itself,
+// or for NumberInput a wrapper holding a bare input and its stepper. A
+// composite control (an input group) can reuse the box by setting the tokens
+// below on a bare input inside its own wrapper.
+@use "api" as *;
+
+.yi-input {
+  // Component tokens
+  --yi-input-bg: var(--yi-surface);
+  --yi-input-fg: var(--yi-fg);
+  --yi-input-border: var(--yi-line-strong);
+  --yi-input-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-input-accent: var(--yi-focus); // border and ring while focused
+  --yi-input-ring: 2px; // focus ring width; 0 inside a composite control
+  --yi-input-placeholder: var(--yi-fg-subtle);
+  --yi-input-height: var(--yi-control-height);
+  --yi-input-padding: calc(var(--yi-control-padding) - 0.25rem);
+  --yi-input-radius: var(--yi-radius-control);
+  --yi-input-max-height: none; // cap for an auto-growing TextArea
+
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  block-size: var(--yi-input-height);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--yi-input-padding);
+  border: 1px solid var(--yi-input-border);
+  border-radius: var(--yi-input-radius);
+  background: var(--yi-input-bg);
+  color: var(--yi-input-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+  line-height: var(--yi-leading);
+  // The ring sits on the border, so focus reads as a heavier outline rather
+  // than a halo, and never shifts the layout.
+  outline: 0 solid var(--yi-input-accent);
+  outline-offset: -1px;
+
+  @include motion {
+    transition:
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &::placeholder {
+    color: var(--yi-input-placeholder);
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: var(--yi-input-border-hover);
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:has(.yi-number-input__input:focus) {
+    border-color: var(--yi-input-accent);
+    outline-width: var(--yi-input-ring);
+  }
+
+  &--invalid {
+    --yi-input-border: var(--yi-danger);
+    --yi-input-border-hover: var(--yi-danger);
+    --yi-input-accent: var(--yi-danger);
+  }
+
+  &:read-only:not(.yi-number-input),
+  &--readonly {
+    --yi-input-bg: var(--yi-tone-2);
+    --yi-input-border-hover: var(--yi-input-border);
+  }
+
+  &:disabled,
+  &--disabled {
+    --yi-input-bg: var(--yi-tone-1);
+    --yi-input-fg: var(--yi-fg-muted);
+    --yi-input-border-hover: var(--yi-input-border);
+
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    --yi-input-height: var(--yi-control-height-sm);
+    --yi-input-padding: calc(var(--yi-control-padding) - 0.375rem);
+
+    font-size: var(--yi-text-sm);
+  }
+
+  &--lg {
+    --yi-input-height: var(--yi-control-height-lg);
+    --yi-input-padding: var(--yi-control-padding);
+  }
+
+  &--mono {
+    font-family: var(--yi-font-mono);
+    font-variant-ligatures: var(--yi-font-mono-ligatures);
+    font-size: var(--yi-text-sm);
+  }
+
+  // TextArea. Height comes from `rows`; the padding centres a single line at
+  // exactly the control height, so a one-row area lines up with an input.
+  &--multiline {
+    block-size: auto;
+    min-block-size: var(--yi-input-height);
+    max-block-size: var(--yi-input-max-height);
+    padding-block: calc((var(--yi-input-height) - 2px - 1lh) / 2);
+    resize: vertical;
+
+    &.yi-input--mono {
+      white-space: pre;
+      overflow-x: auto;
+    }
+  }
+
+  &--resize-none {
+    resize: none;
+  }
+
+  &--resize-auto {
+    resize: none;
+    field-sizing: content;
+  }
+}
+
+.yi-number-input {
+  display: flex;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  padding-inline-end: var(--yi-space-2xs);
+  cursor: text;
+
+  &:not(:has(.yi-number-input__steps)) {
+    padding-inline-end: var(--yi-input-padding);
+  }
+
+  &__input {
+    flex: 1;
+    min-inline-size: 0;
+    block-size: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    cursor: inherit;
+
+    &::placeholder {
+      color: var(--yi-input-placeholder);
+      opacity: 1;
+    }
+  }
+
+  &__steps {
+    display: flex;
+    flex: none;
+    gap: var(--yi-space-2xs);
+  }
+
+  // Small chips inside the field, as with inset affix buttons.
+  &__step {
+    display: grid;
+    place-items: center;
+    inline-size: calc(var(--yi-input-height) - 0.5rem);
+    block-size: calc(var(--yi-input-height) - 0.5rem);
+    padding: 0;
+    border: 0;
+    border-radius: var(--yi-radius-sm);
+    background: var(--yi-neutral-soft);
+    color: var(--yi-fg-muted);
+    font-size: var(--yi-text-sm);
+    cursor: pointer;
+
+    @include motion {
+      transition:
+        background-color var(--yi-duration-fast) var(--yi-ease),
+        color var(--yi-duration-fast) var(--yi-ease);
+    }
+
+    &:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--yi-neutral) 24%, transparent);
+      color: var(--yi-fg);
+    }
+
+    &:active:not(:disabled) {
+      background: color-mix(in srgb, var(--yi-neutral) 32%, transparent);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-input {
+    border-color: FieldText;
+
+    &:focus,
+    &:has(.yi-number-input__input:focus) {
+      border-color: Highlight;
+      outline-color: Highlight;
+    }
+  }
+}

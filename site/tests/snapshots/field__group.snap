@@ -1,0 +1,18 @@
+---
+source: site/tests/snapshots.rs
+---
+<div role="group" aria-labelledby="yi-0-label" aria-describedby="yi-0-message" class="yi-field yi-field--stacked">
+<span id="yi-0-label" class="yi-field__label">Latency alert range (ms)</span>
+<div class="yi-field__body">
+<div class="yi-cluster yi-cluster--nowrap" style="max-inline-size: 16rem">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="50" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="50" aria-valuemin="0" aria-describedby="yi-0-message" class="yi-number-input__input" aria-label="Minimum">
+</div>
+<span aria-hidden="true">to</span>
+<div class="yi-input yi-number-input yi-input--md">
+<input value="400" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="400" aria-valuemin="0" aria-describedby="yi-0-message" class="yi-number-input__input" aria-label="Maximum">
+</div>
+</div>
+<p id="yi-0-message" class="yi-field__message">Alerts fire outside this range.</p>
+</div>
+</div>
