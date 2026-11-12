@@ -10,7 +10,6 @@ use crate::{
     EXAMPLE_NOW_MILLIS, Route,
     docs::{ApiModule, ApiProp, Category, Example, Page},
     guides::{self, Guide},
-    highlight,
 };
 
 const REPOSITORY: &str = "https://github.com/SierraSoftworks/yewi";
@@ -350,7 +349,7 @@ fn ExampleBlock(props: &ExampleBlockProps) -> Html {
                     </Button>
                 </div>
                 <pre class="docs-example__source" id={source_id} hidden={!*open}>
-                    <code>{ highlight::rust(example.source.trim_end()) }</code>
+                    <Highlight code={example.source.trim_end()} language="rust" />
                 </pre>
             </div>
         </section>

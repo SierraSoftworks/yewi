@@ -1,0 +1,38 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<header class="yi-app-bar">
+<a href="#" class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Automate</span>
+</a>
+<div class="yi-app-bar__start">
+</div>
+</header>
+<header class="yi-app-bar">
+<a href="#" class="yi-app-bar__brand">
+<span class="yi-app-bar__name">rustak</span>
+</a>
+<div class="yi-app-bar__start">
+</div>
+</header>
+<header class="yi-app-bar" style="--yi-app-bar-logo-color: var(--yi-danger)">
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M12 2 22 20H2Z">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Sierra</span>
+</span>
+<div class="yi-app-bar__start">
+</div>
+</header>
+</div>
