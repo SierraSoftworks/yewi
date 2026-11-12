@@ -203,7 +203,7 @@ pub(crate) fn duration(millis: i64, units: Units) -> String {
                 0 => if words { "0 seconds".into() } else { "0s".into() },
                 1..1_000 => if words { plural(ms, "millisecond") } else { format!("{ms}ms") },
                 // Whole seconds stay whole, so a running value reads `5s`, not `5.0s`.
-                1_000..10_000 if units != Units::One && ms % 1_000 != 0 => {
+                1_000..10_000 if units != Units::One && !ms.is_multiple_of(1_000) => {
                     let value = format!("{}.{}", ms / 1_000, ms % 1_000 / 100);
                     if words { format!("{value} seconds") } else { format!("{value}s") }
                 }
