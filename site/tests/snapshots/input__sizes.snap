@@ -1,0 +1,68 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 28rem">
+<div class="yi-cluster yi-cluster--nowrap">
+<input type="text" placeholder="Small" class="yi-input yi-input--sm" aria-label="Small">
+<div class="yi-input yi-number-input yi-input--sm">
+<input value="3" type="text" role="spinbutton" autocomplete="off" aria-valuenow="3" class="yi-number-input__input" aria-label="Replicas">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm">Apply</button>
+</div>
+<div class="yi-cluster yi-cluster--nowrap">
+<input type="text" placeholder="Medium" class="yi-input yi-input--md" aria-label="Medium">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="3" type="text" role="spinbutton" autocomplete="off" aria-valuenow="3" class="yi-number-input__input" aria-label="Replicas">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--md">Apply</button>
+</div>
+<div class="yi-cluster yi-cluster--nowrap">
+<input type="text" placeholder="Large" class="yi-input yi-input--lg" aria-label="Large">
+<div class="yi-input yi-number-input yi-input--lg">
+<input value="3" type="text" role="spinbutton" autocomplete="off" aria-valuenow="3" class="yi-number-input__input" aria-label="Replicas">
+<span class="yi-number-input__steps">
+<button type="button" tabindex="-1" aria-label="Decrease" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14">
+</path>
+</svg>
+</button>
+<button type="button" tabindex="-1" aria-label="Increase" class="yi-number-input__step">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--lg">Apply</button>
+</div>
+</div>

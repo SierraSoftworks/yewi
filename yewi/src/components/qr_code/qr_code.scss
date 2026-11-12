@@ -1,0 +1,72 @@
+// QrCode
+//
+// The code itself is pinned to the light scheme: scanners expect dark modules
+// on a light ground, so it does not invert with the theme. The caption and
+// the fallback message follow the page.
+@use "api" as *;
+
+.yi-qr-code {
+  // Component tokens
+  --yi-qr-code-size: 12.5rem;
+  --yi-qr-code-fg: var(--yi-fg);
+  --yi-qr-code-bg: var(--yi-surface);
+  --yi-qr-code-border: var(--yi-line-strong);
+  --yi-qr-code-radius: var(--yi-radius-control);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  max-inline-size: 100%;
+  margin: 0;
+}
+
+.yi-qr-code__image {
+  // Resolves the `light-dark()` tokens below to their light values.
+  color-scheme: light;
+
+  display: block;
+  inline-size: var(--yi-qr-code-size);
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--yi-qr-code-border);
+  border-radius: var(--yi-qr-code-radius);
+}
+
+.yi-qr-code__paper {
+  fill: var(--yi-qr-code-bg);
+}
+
+.yi-qr-code__modules {
+  fill: var(--yi-qr-code-fg);
+}
+
+.yi-qr-code__caption,
+.yi-qr-code__error {
+  max-inline-size: var(--yi-qr-code-size);
+  font-size: var(--yi-text-sm);
+  line-height: var(--yi-leading);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.yi-qr-code__caption {
+  color: var(--yi-fg-muted);
+}
+
+.yi-qr-code__error {
+  color: var(--yi-danger);
+}
+
+@media (forced-colors: active) {
+  .yi-qr-code__image {
+    forced-color-adjust: none;
+  }
+}
+
+@media print {
+  .yi-qr-code__image {
+    border-color: transparent;
+  }
+}

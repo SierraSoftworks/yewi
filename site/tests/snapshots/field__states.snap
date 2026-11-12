@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Project name<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<input value="buckle" id="yi-0-control" type="text" required="required" class="yi-input yi-input--md">
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--disabled">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Region</label>
+<div class="yi-field__body">
+<input value="eu-west-1" id="yi-1-control" type="text" aria-describedby="yi-1-message" disabled="disabled" class="yi-input yi-input--md">
+<p id="yi-1-message" class="yi-field__message">Set by your organisation.</p>
+</div>
+</div>
+</div>

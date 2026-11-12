@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:0" class="yi-stack">
+<div class="yi-empty-state yi-empty-state--center yi-empty-state--sm yi-empty-state--neutral">
+<p class="yi-empty-state__title">No audit events</p>
+<div class="yi-empty-state__body">Nothing has changed in the last 7 days.</div>
+</div>
+<div class="yi-empty-state yi-empty-state--center yi-empty-state--md yi-empty-state--neutral">
+<span class="yi-empty-state__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12L16 12L14 15L10 15L8 12L2 12M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+</path>
+</svg>
+</span>
+<p class="yi-empty-state__title">No audit events</p>
+<div class="yi-empty-state__body">Nothing has changed in the last 7 days.</div>
+</div>
+<div class="yi-empty-state yi-empty-state--center yi-empty-state--lg yi-empty-state--neutral">
+<span class="yi-empty-state__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12L16 12L14 15L10 15L8 12L2 12M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+</path>
+</svg>
+</span>
+<p class="yi-empty-state__title">No audit events</p>
+<div class="yi-empty-state__body">Nothing has changed in the last 7 days.</div>
+</div>
+</div>

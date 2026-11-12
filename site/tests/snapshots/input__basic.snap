@@ -1,0 +1,13 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Service name</label>
+<div class="yi-field__body">
+<input value="checkout-api" id="yi-0-control" type="text" placeholder="my-service" aria-describedby="yi-0-message" class="yi-input yi-input--md">
+<p id="yi-0-message" class="yi-field__message">Lowercase letters, digits and dashes.</p>
+</div>
+</div>
+<span role="status">Typing: checkout-api · Saved: checkout-api</span>
+</div>

@@ -1,0 +1,11 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<figure class="yi-qr-code">
+<div role="alert" class="yi-qr-code__error">This value is too long to show as a QR code.</div>
+</figure>
+<figure class="yi-qr-code">
+<div role="alert" class="yi-qr-code__error">This bundle is too large to scan. Download it instead.</div>
+</figure>
+</div>
