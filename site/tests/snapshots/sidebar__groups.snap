@@ -1,0 +1,37 @@
+---
+source: site/tests/snapshots.rs
+---
+<nav aria-label="Admin sections" class="yi-sidebar" style="max-inline-size: 14rem">
+<div class="yi-sidebar__items">
+<div role="group" aria-label="Overview" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Overview</div>
+<a href="#dashboard" aria-current="page" class="yi-sidebar__item yi-sidebar__item--current">
+<span class="yi-sidebar__label">Dashboard</span>
+</a>
+<a href="#map" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Map</span>
+</a>
+<a href="#activity" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Activity</span>
+</a>
+</div>
+<div role="group" aria-label="Clients" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Clients</div>
+<a href="#users" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Users</span>
+</a>
+<a href="#devices" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Devices</span>
+</a>
+</div>
+<div role="group" aria-label="Settings" class="yi-sidebar__group">
+<div aria-hidden="true" class="yi-sidebar__heading">Settings</div>
+<a href="#account" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Account</span>
+</a>
+<a href="#security" class="yi-sidebar__item">
+<span class="yi-sidebar__label">Security</span>
+</a>
+</div>
+</div>
+</nav>

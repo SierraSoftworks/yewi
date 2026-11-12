@@ -1,0 +1,53 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:20rem" class="yi-grid">
+<div class="yi-code-block">
+<div class="yi-code-block__header">
+<span title="compose.yaml" class="yi-code-block__filename">compose.yaml</span>
+<span class="yi-code-block__language">YAML</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-property">services</span>:
+  <span class="yi-tok-property">docs</span>:
+    <span class="yi-tok-property">image</span>: ghcr.io/sierrasoftworks/docs:<span class="yi-tok-number">1.4.2</span>
+    <span class="yi-tok-property">ports</span>: [<span class="yi-tok-string">"8080:80"</span>]
+    <span class="yi-tok-property">environment</span>:
+      <span class="yi-tok-property">LOG_LEVEL</span>: info <span class="yi-tok-comment"># debug, info, warn or error</span>
+    <span class="yi-tok-property">restart</span>: unless-stopped</code>
+</pre>
+</div>
+<div data-theme="dark" class="yi-code-block">
+<div class="yi-code-block__header">
+<span title="compose.yaml" class="yi-code-block__filename">compose.yaml</span>
+<span class="yi-code-block__language">YAML</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-tok-property">services</span>:
+  <span class="yi-tok-property">docs</span>:
+    <span class="yi-tok-property">image</span>: ghcr.io/sierrasoftworks/docs:<span class="yi-tok-number">1.4.2</span>
+    <span class="yi-tok-property">ports</span>: [<span class="yi-tok-string">"8080:80"</span>]
+    <span class="yi-tok-property">environment</span>:
+      <span class="yi-tok-property">LOG_LEVEL</span>: info <span class="yi-tok-comment"># debug, info, warn or error</span>
+    <span class="yi-tok-property">restart</span>: unless-stopped</code>
+</pre>
+</div>
+</div>

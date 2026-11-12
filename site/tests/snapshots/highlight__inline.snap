@@ -1,0 +1,14 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<p>Read the flag with <code class="yi-highlight">std::env::<span class="yi-tok-function">var</span>(<span class="yi-tok-string">"LOG_LEVEL"</span>)</code>, or set it for one run: <code class="yi-highlight">
+<span class="yi-tok-variable">LOG_LEVEL</span>=debug cargo run</code>.</p>
+<pre style="margin: 0; padding: var(--yi-space-md); border-radius: var(--yi-radius-control); background: var(--yi-code-bg); overflow-x: auto">
+<code class="yi-highlight">
+<span class="yi-tok-keyword">SELECT</span> service, <span class="yi-tok-function">count</span>(*) <span class="yi-tok-keyword">AS</span> errors
+<span class="yi-tok-keyword">FROM</span> events
+<span class="yi-tok-keyword">WHERE</span> status &gt;= <span class="yi-tok-number">500</span> <span class="yi-tok-comment">-- server errors only</span>
+<span class="yi-tok-keyword">GROUP</span> <span class="yi-tok-keyword">BY</span> service;</code>
+</pre>
+</div>

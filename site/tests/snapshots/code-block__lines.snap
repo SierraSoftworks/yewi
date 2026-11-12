@@ -1,0 +1,80 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-code-block yi-code-block--lines yi-code-block--numbered">
+<div class="yi-code-block__header">
+<span title="docs.hcl" class="yi-code-block__filename">docs.hcl</span>
+<span class="yi-code-block__language">HCL</span>
+<span class="yi-code-block__actions">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-copy-button yi-button--icon-only" aria-label="Copy code" title="Copy code">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+</path>
+</svg>
+</button>
+</span>
+</div>
+<pre tabindex="0" data-yi-digits="2" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-code-block__line">
+<span class="yi-tok-keyword">job</span> <span class="yi-tok-string">"docs"</span> {
+</span>
+<span class="yi-code-block__line">  <span class="yi-tok-property">datacenters</span> = [<span class="yi-tok-string">"fra"</span>, <span class="yi-tok-string">"ams"</span>]
+</span>
+<span class="yi-code-block__line">
+</span>
+<span class="yi-code-block__line">  <span class="yi-tok-keyword">group</span> <span class="yi-tok-string">"web"</span> {
+</span>
+<span class="yi-code-block__line yi-code-block__line--marked">    <span class="yi-tok-property">count</span> = <span class="yi-tok-number">4</span>
+</span>
+<span class="yi-code-block__line">
+</span>
+<span class="yi-code-block__line">    <span class="yi-tok-keyword">task</span> <span class="yi-tok-string">"caddy"</span> {
+</span>
+<span class="yi-code-block__line">      <span class="yi-tok-property">driver</span> = <span class="yi-tok-string">"docker"</span>
+</span>
+<span class="yi-code-block__line">
+</span>
+<span class="yi-code-block__line">      <span class="yi-tok-keyword">config</span> {
+</span>
+<span class="yi-code-block__line">        <span class="yi-tok-property">image</span> = <span class="yi-tok-string">"caddy:2.8-alpine"</span>
+</span>
+<span class="yi-code-block__line">        <span class="yi-tok-property">ports</span> = [<span class="yi-tok-string">"http"</span>]
+</span>
+<span class="yi-code-block__line">      }
+</span>
+<span class="yi-code-block__line">
+</span>
+<span class="yi-code-block__line">      <span class="yi-tok-keyword">resources</span> {
+</span>
+<span class="yi-code-block__line">        <span class="yi-tok-property">cpu</span>    = <span class="yi-tok-number">200</span> <span class="yi-tok-comment"># MHz</span>
+</span>
+<span class="yi-code-block__line yi-code-block__line--marked">        <span class="yi-tok-property">memory</span> = <span class="yi-tok-number">128</span> <span class="yi-tok-comment"># MB</span>
+</span>
+<span class="yi-code-block__line yi-code-block__line--marked">      }
+</span>
+<span class="yi-code-block__line">    }
+</span>
+<span class="yi-code-block__line">  }
+</span>
+<span class="yi-code-block__line">}</span>
+</code>
+</pre>
+</div>
+<div class="yi-code-block yi-code-block--lines">
+<div class="yi-code-block__header">
+<span class="yi-code-block__language">Diff</span>
+</div>
+<pre tabindex="0" class="yi-code-block__body">
+<code class="yi-highlight">
+<span class="yi-code-block__line">
+<span class="yi-tok-deleted">- count = 2</span>
+</span>
+<span class="yi-code-block__line yi-code-block__line--marked">
+<span class="yi-tok-inserted">+ count = 4</span>
+</span>
+</code>
+</pre>
+</div>
+</div>

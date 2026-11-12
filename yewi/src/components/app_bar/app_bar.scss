@@ -1,0 +1,99 @@
+// AppBar
+//
+// One row: menu button, brand, the app's own content, then actions pushed to
+// the end. Its height comes from the enclosing AppShell when there is one, so
+// the sidebar can sit exactly beneath it.
+@use "api" as *;
+
+.yi-app-bar {
+  // Component tokens
+  --yi-app-bar-height: var(--yi-app-shell-bar-height, var(--yi-space-3xl));
+  --yi-app-bar-padding: var(--yi-space-lg);
+  --yi-app-bar-gap: var(--yi-space-md);
+  --yi-app-bar-bg: var(--yi-surface);
+  --yi-app-bar-line: var(--yi-line);
+  --yi-app-bar-logo-size: 1.5rem;
+  --yi-app-bar-logo-color: var(--yi-accent-text);
+
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--yi-app-bar-gap);
+  box-sizing: border-box;
+  block-size: var(--yi-app-bar-height);
+  padding-inline: var(--yi-app-bar-padding);
+  border-block-end: 1px solid var(--yi-app-bar-line);
+  background: var(--yi-app-bar-bg);
+  color: var(--yi-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-md);
+}
+
+// Lines the button's icon up with the icons in the sidebar below.
+.yi-app-bar__menu {
+  flex: none;
+  margin-inline-start: calc(var(--yi-space-xs) * -1);
+}
+
+.yi-app-bar__brand {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--yi-space-sm);
+  border-radius: var(--yi-radius-sm);
+  color: var(--yi-fg);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--yi-fg);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring(4px);
+  }
+}
+
+.yi-app-bar__logo {
+  display: inline-flex;
+  color: var(--yi-app-bar-logo-color);
+
+  > * {
+    --yi-icon-size: var(--yi-app-bar-logo-size);
+
+    inline-size: var(--yi-app-bar-logo-size);
+    block-size: var(--yi-app-bar-logo-size);
+  }
+}
+
+.yi-app-bar__name {
+  @include heading("lg");
+
+  white-space: nowrap;
+}
+
+.yi-app-bar__start,
+.yi-app-bar__actions {
+  display: flex;
+  align-items: center;
+}
+
+.yi-app-bar__start {
+  flex: 1;
+  gap: var(--yi-app-bar-gap);
+  min-inline-size: 0;
+}
+
+.yi-app-bar__actions {
+  flex: none;
+  gap: var(--yi-space-sm);
+}
+
+@media (forced-colors: active) {
+  .yi-app-bar {
+    border-color: CanvasText;
+  }
+}
