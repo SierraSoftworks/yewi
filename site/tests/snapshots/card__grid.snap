@@ -1,0 +1,32 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h3 class="yi-card__title">Home</h3>
+<p class="yi-card__subtitle">4 hosts</p>
+</div>
+</header>
+<div class="yi-card__body">All hosts are healthy and on the latest revision.</div>
+</section>
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h3 class="yi-card__title">Staging</h3>
+<p class="yi-card__subtitle">9 hosts</p>
+</div>
+</header>
+<div class="yi-card__body">One host is rebooting after a kernel update.</div>
+</section>
+<section class="yi-card yi-card--header-plain">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h3 class="yi-card__title">Production</h3>
+<p class="yi-card__subtitle">18 hosts</p>
+</div>
+</header>
+<div class="yi-card__body">Healthy.</div>
+</section>
+</div>

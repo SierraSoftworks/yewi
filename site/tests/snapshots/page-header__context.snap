@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<header class="yi-page-header">
+<div class="yi-page-header__breadcrumbs">
+<a href="#rollouts">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 19l-7-7 7-7M19 12H5">
+</path>
+</svg> All rollouts</a>
+</div>
+<div class="yi-page-header__row">
+<div class="yi-page-header__heading">
+<h1 class="yi-page-header__title">Rollout 4f2a91c</h1>
+<div class="yi-page-header__meta">
+<span>Waiting for approval</span>
+</div>
+</div>
+<div class="yi-page-header__actions">
+<button type="button" class="yi-button yi-button--default yi-button--md">Pause</button>
+<button type="button" class="yi-button yi-button--primary yi-button--md">Approve</button>
+</div>
+</div>
+<div class="yi-page-header__subtitle">Bump grafana to 12.3 and rotate the loki retention policy.</div>
+</header>
