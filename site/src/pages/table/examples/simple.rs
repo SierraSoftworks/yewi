@@ -1,7 +1,10 @@
 use yew::prelude::*;
 use yewi::prelude::*;
 
-const STAGES: [(&str, [(&str, &str, u32); 2]); 2] = [
+/// A host, its state and how long its update took in seconds.
+type Host = (&'static str, &'static str, u32);
+
+const STAGES: [(&str, [Host; 2]); 2] = [
     ("Canary", [("web-01", "Updated", 42), ("web-02", "Updated", 38)]),
     ("Fleet", [("db-01", "Waiting", 0), ("edge-ams", "Waiting", 0)]),
 ];
