@@ -1,0 +1,29 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xs)" class="yi-cluster">
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-0-text" class="yi-tag__text">
+<span class="yi-tag__name">env</span>
+<span class="yi-tag__value">production</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-1-text" class="yi-tag__text">
+<span class="yi-tag__name">region</span>
+<span class="yi-tag__value">eu-west</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-2-text" class="yi-tag__text">
+<span class="yi-tag__name">tier</span>
+<span class="yi-tag__value">edge</span>
+</span>
+</span>
+<span class="yi-tag yi-tag--neutral yi-tag--mono">
+<span id="yi-3-text" class="yi-tag__text">
+<span class="yi-tag__name">commit</span>
+<span class="yi-tag__value">9f9107c</span>
+</span>
+</span>
+</div>

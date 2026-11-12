@@ -1,0 +1,40 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl)" class="yi-cluster">
+<span class="yi-badge-anchor">
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Notifications">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M10.268 21a2 2 0 0 0 3.464 0M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326">
+</path>
+</svg>
+</button>
+<span class="yi-badge yi-badge--danger yi-badge--bold yi-badge--corner">
+<span aria-hidden="true">3</span>
+<span class="yi-visually-hidden">3 unread notifications</span>
+</span>
+</span>
+<span class="yi-badge-anchor">
+<button type="button" class="yi-button yi-button--default yi-button--md yi-button--icon-only" aria-label="Messages">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2z">
+</path>
+</svg>
+</button>
+<span class="yi-badge yi-badge--info yi-badge--bold yi-badge--corner">
+<span aria-hidden="true">99+</span>
+<span class="yi-visually-hidden">128 unread messages</span>
+</span>
+</span>
+<span class="yi-badge-anchor">
+<button type="button" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12L16 12L14 15L10 15L8 12L2 12M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+</path>
+</svg>Queue</button>
+<span class="yi-badge yi-badge--neutral yi-badge--corner">
+<span aria-hidden="true">5</span>
+<span class="yi-visually-hidden">5 queued changes</span>
+</span>
+</span>
+</div>
