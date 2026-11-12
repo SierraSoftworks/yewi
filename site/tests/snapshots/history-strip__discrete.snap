@@ -1,0 +1,35 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="max-inline-size: 24rem" class="yi-stack">
+<div class="yi-cluster yi-cluster--align-center yi-cluster--justify-between">
+<span>nightly-backup</span>
+<div role="group" aria-label="nightly-backup, last 12 runs" tabindex="0" class="yi-history-strip yi-history-strip--discrete yi-history-strip--lg yi-history-strip--interactive" style="inline-size: 12rem">
+<span data-yi-index="0" role="img" aria-label="3 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="1" role="img" aria-label="4 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="2" role="img" aria-label="5 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="3" role="img" aria-label="6 January, Failed" class="yi-history-strip__cell yi-history-strip__cell--danger">
+</span>
+<span data-yi-index="4" role="img" aria-label="7 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="5" role="img" aria-label="8 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="6" role="img" aria-label="9 January, Slow" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+<span data-yi-index="7" role="img" aria-label="10 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="8" role="img" aria-label="11 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="9" role="img" aria-label="12 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="10" role="img" aria-label="13 January, Succeeded" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="11" role="img" aria-label="14 January, Running" class="yi-history-strip__cell yi-history-strip__cell--active">
+</span>
+</div>
+</div>
+<span role="status" style="color: var(--yi-fg-muted)">No run selected</span>
+</div>

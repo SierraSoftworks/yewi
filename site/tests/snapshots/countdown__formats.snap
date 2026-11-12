@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<span>
+<span class="yi-pill yi-pill--active">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>baking</span> <span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T12:04:05Z">0:00</time>
+</span>
+</span>
+<span>Promotes to the next ring in <span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T12:04:05Z">0s</time>
+</span>.</span>
+</div>

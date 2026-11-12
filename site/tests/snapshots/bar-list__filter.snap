@@ -1,0 +1,64 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 26rem">
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<div class="yi-bar-list__head">
+<span>Project</span>
+<span>Events</span>
+</div>
+<ol role="list" aria-label="Projects" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<button type="button" aria-pressed="false" data-yi-row="0" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Website</span>
+</span>
+<span class="yi-bar-list__value">8.4k</span>
+</button>
+<button type="button" title="Manage" aria-label="Manage: Website" data-yi-action="0" class="yi-bar-list__action">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</button>
+</li>
+<li style="--yi-bar-list-fill:47.2%" class="yi-bar-list__item">
+<button type="button" aria-pressed="true" data-yi-row="1" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Documentation</span>
+</span>
+<span class="yi-bar-list__value">4k</span>
+</button>
+<button type="button" title="Manage" aria-label="Manage: Documentation" data-yi-action="1" class="yi-bar-list__action">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</button>
+</li>
+<li style="--yi-bar-list-fill:14.8%" class="yi-bar-list__item">
+<button type="button" aria-pressed="false" data-yi-row="2" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">Status page</span>
+</span>
+<span class="yi-bar-list__value">1.2k</span>
+</button>
+<button type="button" title="Manage" aria-label="Manage: Status page" data-yi-action="2" class="yi-bar-list__action">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+</path>
+</svg>
+</button>
+</li>
+<li style="--yi-bar-list-fill:3.7%" class="yi-bar-list__item yi-bar-list__item--muted">
+<button type="button" aria-pressed="false" data-yi-row="3" class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">No project</span>
+</span>
+<span class="yi-bar-list__value">310</span>
+</button>
+</li>
+</ol>
+</div>
+<span role="status">Showing events for docs</span>
+</div>

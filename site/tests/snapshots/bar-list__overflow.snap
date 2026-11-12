@@ -1,0 +1,131 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="--yi-gap:var(--yi-space-xl);--yi-grid-min:16rem" class="yi-grid">
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<strong>Expand</strong>
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<ol role="list" aria-label="Pages by views" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/docs/page-01</span>
+</span>
+<span class="yi-bar-list__share">17%</span>
+<span class="yi-bar-list__value">5.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:50.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/blog/page-02</span>
+</span>
+<span class="yi-bar-list__share">8%</span>
+<span class="yi-bar-list__value">2.6k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:33.3%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/guides/page-03</span>
+</span>
+<span class="yi-bar-list__share">6%</span>
+<span class="yi-bar-list__value">1.7k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:25.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/api/page-04</span>
+</span>
+<span class="yi-bar-list__share">4%</span>
+<span class="yi-bar-list__value">1.3k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:20.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/changelog/page-05</span>
+</span>
+<span class="yi-bar-list__share">3%</span>
+<span class="yi-bar-list__value">1k</span>
+</div>
+</li>
+</ol>
+<button type="button" aria-expanded="false" class="yi-bar-list__more">Show all 24</button>
+</div>
+</div>
+<div style="--yi-gap:var(--yi-space-sm)" class="yi-stack">
+<strong>Pages</strong>
+<div class="yi-bar-list yi-bar-list--behind yi-bar-list--md">
+<ol role="list" aria-label="Pages by visitors" class="yi-bar-list__rows">
+<li style="--yi-bar-list-fill:100.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/docs/page-01</span>
+</span>
+<span class="yi-bar-list__share">17%</span>
+<span class="yi-bar-list__value">5.2k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:50.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/blog/page-02</span>
+</span>
+<span class="yi-bar-list__share">8%</span>
+<span class="yi-bar-list__value">2.6k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:33.3%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/guides/page-03</span>
+</span>
+<span class="yi-bar-list__share">6%</span>
+<span class="yi-bar-list__value">1.7k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:25.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/api/page-04</span>
+</span>
+<span class="yi-bar-list__share">4%</span>
+<span class="yi-bar-list__value">1.3k</span>
+</div>
+</li>
+<li style="--yi-bar-list-fill:20.0%" class="yi-bar-list__item">
+<div class="yi-bar-list__row">
+<span class="yi-bar-list__label">
+<span class="yi-bar-list__text">/changelog/page-05</span>
+</span>
+<span class="yi-bar-list__share">3%</span>
+<span class="yi-bar-list__value">1k</span>
+</div>
+</li>
+</ol>
+<nav aria-label="Pages by visitors pages" class="yi-pagination yi-pagination--sm yi-bar-list__pages">
+<ul role="list" class="yi-pagination__list">
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Previous page" disabled="disabled" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M15 18l-6-6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="yi-pagination__slot yi-pagination__status">Page 1 of 5</li>
+<li class="yi-pagination__slot">
+<button type="button" aria-label="Next page" class="yi-pagination__control">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M9 18l6-6-6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>

@@ -1,0 +1,32 @@
+// Timestamp
+//
+// The root is a Tooltip wrapper around a <time> element. TimestampDetail is
+// the two-line exact time the tooltip shows, also usable on its own.
+@use "api" as *;
+
+.yi-timestamp {
+  // Component tokens
+  --yi-timestamp-color: inherit;
+
+  color: var(--yi-timestamp-color);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.yi-timestamp-detail {
+  // Component tokens
+  --yi-timestamp-detail-gap: var(--yi-space-2xs);
+  --yi-timestamp-detail-utc-color: var(--yi-fg-muted);
+
+  display: inline-grid;
+  gap: var(--yi-timestamp-detail-gap);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+
+  &__utc {
+    display: flex;
+    align-items: center;
+    gap: var(--yi-space-sm);
+    color: var(--yi-timestamp-detail-utc-color);
+  }
+}

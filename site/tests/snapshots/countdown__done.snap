@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<dl class="yi-description-list yi-description-list--inline" aria-label="Passed deadlines">
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">Without done</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T11:58:00Z">0:00</time>
+</span>
+</dd>
+</div>
+<div class="yi-description-list__item">
+<dt class="yi-description-list__term">With done</dt>
+<dd class="yi-description-list__value">
+<span class="yi-tooltip yi-countdown yi-countdown--done">
+<time role="timer" datetime="2026-01-15T11:58:00Z">
+<span class="yi-pill yi-pill--warn">
+<span aria-hidden="true" class="yi-status-dot">
+</span>expired</span>
+</time>
+</span>
+</dd>
+</div>
+</dl>

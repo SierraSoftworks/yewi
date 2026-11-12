@@ -1,0 +1,209 @@
+---
+source: site/tests/snapshots.rs
+---
+<div style="display: grid; grid-template-columns: auto 1fr; gap: var(--yi-space-sm) var(--yi-space-lg); align-items: center; max-inline-size: 24rem">
+<span>gateway</span>
+<div role="group" aria-label="gateway, last 24 hours" class="yi-history-strip yi-history-strip--continuous yi-history-strip--sm">
+<span data-yi-index="0" role="img" aria-label="00:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="1" role="img" aria-label="01:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="2" role="img" aria-label="02:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="3" role="img" aria-label="03:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="4" role="img" aria-label="04:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="5" role="img" aria-label="05:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="6" role="img" aria-label="06:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="7" role="img" aria-label="07:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="8" role="img" aria-label="08:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="9" role="img" aria-label="09:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="10" role="img" aria-label="10:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="11" role="img" aria-label="11:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="12" role="img" aria-label="12:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="13" role="img" aria-label="13:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="14" role="img" aria-label="14:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="15" role="img" aria-label="15:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="16" role="img" aria-label="16:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="17" role="img" aria-label="17:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="18" role="img" aria-label="18:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="19" role="img" aria-label="19:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="20" role="img" aria-label="20:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="21" role="img" aria-label="21:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="22" role="img" aria-label="22:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="23" role="img" aria-label="23:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+</div>
+<span>accounts</span>
+<div role="group" aria-label="accounts, last 24 hours" class="yi-history-strip yi-history-strip--continuous yi-history-strip--sm">
+<span data-yi-index="0" role="img" aria-label="00:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="1" role="img" aria-label="01:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="2" role="img" aria-label="02:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="3" role="img" aria-label="03:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="4" role="img" aria-label="04:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="5" role="img" aria-label="05:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="6" role="img" aria-label="06:00, degraded" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+<span data-yi-index="7" role="img" aria-label="07:00, degraded" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+<span data-yi-index="8" role="img" aria-label="08:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="9" role="img" aria-label="09:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="10" role="img" aria-label="10:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="11" role="img" aria-label="11:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="12" role="img" aria-label="12:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="13" role="img" aria-label="13:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="14" role="img" aria-label="14:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="15" role="img" aria-label="15:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="16" role="img" aria-label="16:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="17" role="img" aria-label="17:00, failing" class="yi-history-strip__cell yi-history-strip__cell--danger">
+</span>
+<span data-yi-index="18" role="img" aria-label="18:00, failing" class="yi-history-strip__cell yi-history-strip__cell--danger">
+</span>
+<span data-yi-index="19" role="img" aria-label="19:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="20" role="img" aria-label="20:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="21" role="img" aria-label="21:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="22" role="img" aria-label="22:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="23" role="img" aria-label="23:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+</div>
+<span>search</span>
+<div role="group" aria-label="search, last 24 hours" class="yi-history-strip yi-history-strip--continuous yi-history-strip--sm">
+<span data-yi-index="0" role="img" aria-label="00:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="1" role="img" aria-label="01:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="2" role="img" aria-label="02:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="3" role="img" aria-label="03:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="4" role="img" aria-label="04:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="5" role="img" aria-label="05:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="6" role="img" aria-label="06:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="7" role="img" aria-label="07:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="8" role="img" aria-label="08:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="9" role="img" aria-label="09:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="10" role="img" aria-label="10:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="11" role="img" aria-label="11:00, no data" class="yi-history-strip__cell yi-history-strip__cell--neutral">
+</span>
+<span data-yi-index="12" role="img" aria-label="12:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="13" role="img" aria-label="13:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="14" role="img" aria-label="14:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="15" role="img" aria-label="15:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="16" role="img" aria-label="16:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="17" role="img" aria-label="17:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="18" role="img" aria-label="18:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="19" role="img" aria-label="19:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="20" role="img" aria-label="20:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="21" role="img" aria-label="21:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="22" role="img" aria-label="22:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="23" role="img" aria-label="23:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+</div>
+<span>billing</span>
+<div role="group" aria-label="billing, last 24 hours" class="yi-history-strip yi-history-strip--continuous yi-history-strip--sm">
+<span data-yi-index="0" role="img" aria-label="00:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="1" role="img" aria-label="01:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="2" role="img" aria-label="02:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="3" role="img" aria-label="03:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="4" role="img" aria-label="04:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="5" role="img" aria-label="05:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="6" role="img" aria-label="06:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="7" role="img" aria-label="07:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="8" role="img" aria-label="08:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="9" role="img" aria-label="09:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="10" role="img" aria-label="10:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="11" role="img" aria-label="11:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="12" role="img" aria-label="12:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="13" role="img" aria-label="13:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="14" role="img" aria-label="14:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="15" role="img" aria-label="15:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="16" role="img" aria-label="16:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="17" role="img" aria-label="17:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="18" role="img" aria-label="18:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="19" role="img" aria-label="19:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="20" role="img" aria-label="20:00, passing" class="yi-history-strip__cell yi-history-strip__cell--ok">
+</span>
+<span data-yi-index="21" role="img" aria-label="21:00, degraded" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+<span data-yi-index="22" role="img" aria-label="22:00, degraded" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+<span data-yi-index="23" role="img" aria-label="23:00, degraded" class="yi-history-strip__cell yi-history-strip__cell--warn">
+</span>
+</div>
+</div>
