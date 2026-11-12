@@ -1,0 +1,146 @@
+// FileDrop: a dashed zone around a visually hidden file input.
+//
+// The zone is the input's `<label>`, so hover, focus and disabled states all
+// follow the native control through `:has()`.
+@use "api" as *;
+
+.yi-file-drop {
+  // Component tokens
+  --yi-file-drop-bg: var(--yi-tone-1);
+  --yi-file-drop-fg: var(--yi-fg);
+  --yi-file-drop-border: var(--yi-line-strong);
+  --yi-file-drop-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
+  --yi-file-drop-accent: var(--yi-accent); // border while files are dragged over
+  --yi-file-drop-accent-bg: var(--yi-accent-soft); // fill while files are dragged over
+  --yi-file-drop-hint-color: var(--yi-fg-muted);
+  --yi-file-drop-icon-color: var(--yi-fg-subtle);
+  --yi-file-drop-icon-size: 1.5rem;
+  --yi-file-drop-padding: var(--yi-space-xl) var(--yi-space-lg);
+  --yi-file-drop-gap: var(--yi-space-sm);
+  --yi-file-drop-radius: var(--yi-radius-control);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--yi-file-drop-gap);
+  box-sizing: border-box;
+  min-inline-size: 0;
+  padding: var(--yi-file-drop-padding);
+  border: 1px dashed var(--yi-file-drop-border);
+  border-radius: var(--yi-file-drop-radius);
+  background: var(--yi-file-drop-bg);
+  color: var(--yi-file-drop-fg);
+  font-family: var(--yi-font-body);
+  text-align: center;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  // Drag events then come from the zone alone, so moving across the icon or
+  // the text does not read as leaving it.
+  > * {
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: var(--yi-file-drop-border-hover);
+  }
+
+  &:has(.yi-file-drop__input:focus-visible) {
+    @include focus-ring;
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  & &__icon {
+    inline-size: var(--yi-file-drop-icon-size);
+    block-size: var(--yi-file-drop-icon-size);
+    color: var(--yi-file-drop-icon-color);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yi-space-2xs);
+    min-inline-size: 0;
+  }
+
+  &__label {
+    font-size: var(--yi-text-sm);
+    font-weight: 500;
+    line-height: var(--yi-leading-tight);
+  }
+
+  &__hint {
+    color: var(--yi-file-drop-hint-color);
+    font-size: var(--yi-text-xs);
+    line-height: var(--yi-leading);
+  }
+
+  &--over {
+    --yi-file-drop-border: var(--yi-file-drop-accent);
+    --yi-file-drop-border-hover: var(--yi-file-drop-accent);
+    --yi-file-drop-bg: var(--yi-file-drop-accent-bg);
+    --yi-file-drop-icon-color: var(--yi-file-drop-accent);
+  }
+
+  &--invalid {
+    --yi-file-drop-border: var(--yi-danger);
+    --yi-file-drop-border-hover: var(--yi-danger);
+  }
+
+  &--busy {
+    --yi-file-drop-border-hover: var(--yi-file-drop-border);
+
+    cursor: progress;
+  }
+
+  &--disabled {
+    --yi-file-drop-fg: var(--yi-fg-muted);
+    --yi-file-drop-border-hover: var(--yi-file-drop-border);
+
+    cursor: not-allowed;
+  }
+
+  // One row: icon, label, then the hint pushed to the end.
+  &--sm {
+    --yi-file-drop-padding: var(--yi-space-xs) var(--yi-space-md);
+    --yi-file-drop-icon-size: 1rem;
+
+    flex-direction: row;
+    min-block-size: var(--yi-control-height-lg);
+    text-align: start;
+
+    .yi-file-drop__text {
+      flex: 1;
+      flex-flow: row wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      column-gap: var(--yi-space-md);
+    }
+  }
+
+  &--lg {
+    --yi-file-drop-padding: var(--yi-space-3xl) var(--yi-space-xl);
+    --yi-file-drop-icon-size: 2rem;
+    --yi-file-drop-gap: var(--yi-space-md);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-file-drop {
+    border-color: FieldText;
+
+    &--over {
+      border-style: solid;
+      border-color: Highlight;
+    }
+  }
+}
