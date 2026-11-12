@@ -1,0 +1,38 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<span class="yi-user-menu yi-user-menu--named">
+<span class="yi-popover">
+<button type="button" aria-haspopup="menu" aria-expanded="false" class="yi-user-menu__trigger">
+<span style="--yi-avatar-hue:94" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AT</span>
+</span>
+<span class="yi-user-menu__identity">
+<span class="yi-user-menu__name">Alan Turing</span>
+<span class="yi-user-menu__detail">admin</span>
+</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-user-menu__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+<span class="yi-user-menu yi-user-menu--named">
+<span class="yi-popover">
+<button type="button" aria-haspopup="menu" aria-expanded="false" class="yi-user-menu__trigger">
+<span style="--yi-avatar-hue:277" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">BL</span>
+</span>
+<span class="yi-user-menu__identity">
+<span class="yi-user-menu__name">Barbara Liskov</span>
+</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-user-menu__caret">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</button>
+</span>
+</span>
+</div>

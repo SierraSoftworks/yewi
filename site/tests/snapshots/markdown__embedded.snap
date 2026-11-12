@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 32rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">EU gateway outage</h2>
+<p class="yi-card__subtitle">Resolved, updated 12 minutes ago</p>
+</div>
+</header>
+<div class="yi-card__body">
+<div class="yi-markdown">
+<h4 class="yi-heading yi-heading--xl">What happened</h4>
+<p>Requests to the EU gateway failed for <strong class="yi-text">14 minutes</strong> after a certificate was
+renewed with the wrong chain.</p>
+<h4 class="yi-heading yi-heading--xl">What we are doing</h4>
+<ul>
+<li>The certificate has been reissued and <code class="yi-inline-code">eu-gateway</code> is healthy again.</li>
+<li>Renewals now verify the full chain before they are installed.</li>
+</ul>
+<h5 class="yi-heading yi-heading--md">Still to do</h5>
+<p>Review the other regions for the same renewal path.</p>
+</div>
+</div>
+</section>

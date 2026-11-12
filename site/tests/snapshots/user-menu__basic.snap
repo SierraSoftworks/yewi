@@ -1,0 +1,19 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack yi-stack--align-start">
+<span class="yi-user-menu">
+<span class="yi-popover">
+<button type="button" aria-haspopup="menu" aria-expanded="false" title="Ada Lovelace" class="yi-user-menu__trigger">
+<span style="--yi-avatar-hue:273" aria-hidden="true" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+<span class="yi-user-menu__identity">
+<span class="yi-user-menu__name">Ada Lovelace</span>
+<span class="yi-user-menu__detail">admin</span>
+</span>
+</button>
+</span>
+</span>
+<span role="status">Signed in as Ada Lovelace</span>
+</div>

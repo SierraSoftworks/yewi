@@ -1,0 +1,15 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div class="yi-markdown">
+<p>Paste the address into the webhook settings of
+<a href="https://miniflux.app/docs/" target="_blank" rel="noopener noreferrer" class="yi-link yi-link--default yi-link--underline-auto">your Miniflux instance<svg viewBox="0 0 24 24" role="img" aria-label="(opens in a new tab)" focusable="false" class="yi-icon yi-link__external">
+<path d="M7 7h10v10M7 17 17 7">
+</path>
+</svg>
+</a>, then check the
+<a href="/workflows/deliveries" class="yi-link yi-link--default yi-link--underline-auto">delivery log</a> for the first event.</p>
+</div>
+<span role="status">No link followed yet</span>
+</div>
