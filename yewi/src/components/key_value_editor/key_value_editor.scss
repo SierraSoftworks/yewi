@@ -1,0 +1,57 @@
+// KeyValueEditor: rows of two text inputs on one grid, so the keys and the
+// values each line up down the list.
+@use "api" as *;
+
+:where(.yi-key-value-editor) {
+  // Component tokens
+  --yi-key-value-editor-gap: var(--yi-space-sm); // between rows, and within one
+  --yi-key-value-editor-key-width: 1fr; // share of the row given to the key
+  --yi-key-value-editor-value-width: 1fr;
+  --yi-key-value-editor-separator: var(--yi-fg-muted);
+  --yi-key-value-editor-error: var(--yi-danger);
+}
+
+.yi-key-value-editor {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--yi-key-value-editor-key-width)) auto
+    minmax(0, var(--yi-key-value-editor-value-width)) auto;
+  gap: var(--yi-key-value-editor-gap);
+  align-items: center;
+  inline-size: 100%;
+  min-inline-size: 0;
+
+  &--bare {
+    grid-template-columns:
+      minmax(0, var(--yi-key-value-editor-key-width))
+      minmax(0, var(--yi-key-value-editor-value-width)) auto;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: center;
+    row-gap: var(--yi-space-xs);
+  }
+
+  &__separator {
+    color: var(--yi-key-value-editor-separator);
+    font-family: var(--yi-font-mono);
+    font-size: var(--yi-text-sm);
+  }
+
+  &__error {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--yi-key-value-editor-error);
+    font-family: var(--yi-font-body);
+    font-size: var(--yi-text-sm);
+    line-height: var(--yi-leading);
+  }
+
+  &__add {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

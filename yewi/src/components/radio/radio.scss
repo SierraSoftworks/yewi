@@ -75,6 +75,7 @@
   // Component tokens
   --yi-radio-group-gap: var(--yi-space-sm); // between options
   --yi-radio-group-gap-inline: var(--yi-space-lg); // between options in a row
+  --yi-radio-group-card-min-width: 12rem; // narrower than this, a row of cards wraps
 }
 
 .yi-radio-group {

@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-labelledby="yi-0-label" aria-describedby="yi-0-message" class="yi-field yi-field--stacked">
+<span id="yi-0-label" class="yi-field__label">Connect</span>
+<div class="yi-field__body">
+<div role="radiogroup" aria-labelledby="yi-0-label" aria-describedby="yi-0-message" class="yi-radio-group yi-radio-group--vertical">
+<label class="yi-choice yi-choice--md yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="tailscale" checked type="radio" name="yi-1" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Over Tailscale</span>
+<span class="yi-choice__description">Joins the tailnet with a single-use, tagged key.</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="token" type="radio" name="yi-1" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">With a join token</span>
+<span class="yi-choice__description">For a host that reaches the server directly.</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-choice--disabled yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="ssh" type="radio" name="yi-1" disabled="disabled" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Over SSH</span>
+<span class="yi-choice__description">Needs the SSH gateway, which is not set up.</span>
+</span>
+</label>
+</div>
+<p id="yi-0-message" class="yi-field__message">You can change this later by joining the host again.</p>
+</div>
+</div>
+<span role="status">Method: tailscale</span>
+</div>

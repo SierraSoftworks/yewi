@@ -1,0 +1,40 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-labelledby="yi-0-label" class="yi-field yi-field--stacked">
+<span id="yi-0-label" class="yi-field__label">Platform</span>
+<div class="yi-field__body">
+<div role="radiogroup" aria-labelledby="yi-0-label" class="yi-radio-group yi-radio-group--horizontal">
+<label class="yi-choice yi-choice--md yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="linux" type="radio" name="yi-1" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Linux</span>
+<span class="yi-choice__description">A systemd service, installed by one command.</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="docker" type="radio" name="yi-1" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Docker</span>
+<span class="yi-choice__description">A container beside your other workloads.</span>
+</span>
+</label>
+<label class="yi-choice yi-choice--md yi-radio yi-radio-card">
+<span class="yi-choice__control">
+<input value="nomad" type="radio" name="yi-1" class="yi-radio__input">
+</span>
+<span class="yi-choice__text">
+<span class="yi-choice__label">Nomad</span>
+<span class="yi-choice__description">A system job on every client in the cluster.</span>
+</span>
+</label>
+</div>
+</div>
+</div>
+<span role="status">Nothing chosen yet</span>
+</div>

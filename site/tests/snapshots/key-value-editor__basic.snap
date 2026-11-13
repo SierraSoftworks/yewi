@@ -1,0 +1,41 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-labelledby="yi-0-label" aria-describedby="yi-0-message" class="yi-field yi-field--stacked">
+<span id="yi-0-label" class="yi-field__label">Labels</span>
+<div class="yi-field__body">
+<div role="group" aria-labelledby="yi-0-label" class="yi-key-value-editor">
+<div class="yi-key-value-editor__row">
+<input value="env" type="text" placeholder="key" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__key" aria-label="Key, label 1">
+<span aria-hidden="true" class="yi-key-value-editor__separator">=</span>
+<input value="production" type="text" placeholder="value" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__value" aria-label="Value, label 1">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-key-value-editor__remove" aria-label="Remove label 1" title="Remove label 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<div class="yi-key-value-editor__row">
+<input value="tier" type="text" placeholder="key" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__key" aria-label="Key, label 2">
+<span aria-hidden="true" class="yi-key-value-editor__separator">=</span>
+<input value="web" type="text" placeholder="value" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__value" aria-label="Value, label 2">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-key-value-editor__remove" aria-label="Remove label 2" title="Remove label 2">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-key-value-editor__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add label</button>
+</div>
+<p id="yi-0-message" class="yi-field__message">The agent's own labels decide its groups and rollout phase.</p>
+</div>
+</div>
+<span role="status">env=production, tier=web</span>
+</div>

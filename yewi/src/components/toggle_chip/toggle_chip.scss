@@ -1,0 +1,102 @@
+// ToggleChip: a small squared toggle button. Off, it is an outline; on, it
+// takes the accent tint and a check mark.
+@use "api" as *;
+
+:where(.yi-toggle-chip) {
+  // Component tokens
+  --yi-toggle-chip-height: var(--yi-control-height-sm);
+  --yi-toggle-chip-padding: var(--yi-space-sm);
+  --yi-toggle-chip-radius: var(--yi-radius-control);
+  --yi-toggle-chip-bg: var(--yi-surface);
+  --yi-toggle-chip-bg-hover: var(--yi-tone-2);
+  --yi-toggle-chip-fg: var(--yi-fg);
+  --yi-toggle-chip-border: var(--yi-line-strong);
+  --yi-toggle-chip-pressed-bg: var(--yi-accent-soft);
+  --yi-toggle-chip-pressed-bg-hover: color-mix(in srgb, var(--yi-accent) 18%, transparent);
+  --yi-toggle-chip-pressed-fg: var(--yi-accent-text);
+  --yi-toggle-chip-pressed-border: color-mix(in srgb, var(--yi-accent) 45%, var(--yi-surface));
+}
+
+.yi-toggle-chip {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--yi-space-xs);
+  max-inline-size: 100%;
+  block-size: var(--yi-toggle-chip-height);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--yi-toggle-chip-padding);
+  border: 1px solid var(--yi-toggle-chip-border);
+  border-radius: var(--yi-toggle-chip-radius);
+  background: var(--yi-toggle-chip-bg);
+  color: var(--yi-toggle-chip-fg);
+  font-family: var(--yi-font-body);
+  font-size: var(--yi-text-sm);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+
+  @include motion {
+    transition:
+      background-color var(--yi-duration-fast) var(--yi-ease),
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  &__label {
+    @include truncate;
+  }
+
+  > .yi-icon {
+    --yi-icon-size: 1.1em;
+
+    flex: none;
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--yi-toggle-chip-bg-hover);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &[aria-pressed="true"] {
+    --yi-toggle-chip-bg: var(--yi-toggle-chip-pressed-bg);
+    --yi-toggle-chip-bg-hover: var(--yi-toggle-chip-pressed-bg-hover);
+    --yi-toggle-chip-fg: var(--yi-toggle-chip-pressed-fg);
+    --yi-toggle-chip-border: var(--yi-toggle-chip-pressed-border);
+  }
+
+  &:disabled {
+    opacity: var(--yi-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &--md {
+    --yi-toggle-chip-height: var(--yi-control-height);
+
+    font-size: var(--yi-text-md);
+  }
+}
+
+:where(.yi-toggle-chip-group) {
+  // Component tokens
+  --yi-toggle-chip-group-gap: var(--yi-space-xs);
+}
+
+.yi-toggle-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--yi-toggle-chip-group-gap);
+  min-inline-size: 0;
+}
+
+@media (forced-colors: active) {
+  .yi-toggle-chip[aria-pressed="true"] {
+    border-color: Highlight;
+    color: Highlight;
+  }
+}
