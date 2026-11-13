@@ -275,6 +275,28 @@
     setTimeout(() => item.closest("[popover]:popover-open")?.hidePopover());
   });
 
+  // Tabs: `data-yi-tabs` on the root, `manual` when the arrow keys only move
+  // focus. Every panel is in the page, and all but one are `hidden`.
+  const pick = (tab) => {
+    for (const other of tab.parentElement.querySelectorAll(":scope > [role=tab]")) {
+      const chosen = other === tab;
+      other.setAttribute("aria-selected", String(chosen));
+      other.tabIndex = chosen ? 0 : -1;
+      const panel = doc.getElementById(other.getAttribute("aria-controls"));
+      if (panel) panel.hidden = !chosen;
+    }
+  };
+  on("click", "[data-yi-tabs] [role=tab]", pick);
+  on("keydown", "[data-yi-tabs] [role=tab]", (tab, event) => {
+    const reachable = [...tab.parentElement.querySelectorAll(":scope > [role=tab]:not(:disabled)")];
+    const at = reachable.indexOf(tab);
+    const to = { ArrowRight: reachable[(at + 1) % reachable.length], ArrowLeft: reachable.at(at - 1), Home: reachable[0], End: reachable.at(-1) }[event.key];
+    if (!to) return;
+    event.preventDefault();
+    to.focus();
+    if (tab.closest("[data-yi-tabs]").dataset.yiTabs !== "manual") pick(to);
+  });
+
   // File drop: `data-yi-file-drop` on the zone. Dropped files go into its
   // input, and the label names what was chosen.
   const picker = (zone) => zone.querySelector("input[type=file]");

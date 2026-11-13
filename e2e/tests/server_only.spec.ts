@@ -323,4 +323,23 @@ test.describe("Server-only pages", () => {
     );
     expect(sends).toEqual(["bundle=a.zip", "bundle=b.zip", "single=c.zip"]);
   });
+
+  test("tabs switch panels by press and by arrow key", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("tabs/basic");
+    const tab = (name: string) => stage.getByRole("tab", { name });
+    const panel = stage.getByRole("tabpanel");
+
+    await expect(panel).toContainText("Name, callsign");
+    await tab("Devices").click();
+    await expect(panel).toHaveCount(1);
+    await expect(panel).toContainText("Phones and radios");
+    await expect(tab("Devices")).toHaveAttribute("aria-selected", "true");
+    await expect(tab("Profile")).toHaveAttribute("aria-selected", "false");
+
+    await page.keyboard.press("ArrowRight");
+    await expect(tab("Credentials")).toBeFocused();
+    await expect(panel).toContainText("Client certificates");
+    await page.keyboard.press("Home");
+    await expect(panel).toContainText("Name, callsign");
+  });
 });
