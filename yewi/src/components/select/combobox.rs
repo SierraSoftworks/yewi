@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use super::{
-    PAGE, SelectOptions, dom,
+    PAGE, SelectOptions, dom, more_label,
     listbox::{Listbox, option_id},
     options::{edge, filter, step},
 };
@@ -41,6 +41,14 @@ pub struct ComboboxProps {
     /// Shows a spinner while options are on their way.
     #[prop_or_default]
     pub loading: bool,
+    /// Shown in place of the list while `loading` with no options yet.
+    #[prop_or(AttrValue::Static("Loading"))]
+    pub loading_label: AttrValue,
+    /// The line under a list cut off at `max_results`, from the number shown
+    /// and the number that match. Defaults to "Showing the first 50 of 2,000.
+    /// Type to narrow the list." in English.
+    #[prop_or_default]
+    pub more_label: Option<Callback<(usize, usize), AttrValue>>,
     /// Shown in place of the list when nothing matches.
     #[prop_or(AttrValue::Static("No matches"))]
     pub empty: AttrValue,
@@ -294,13 +302,13 @@ pub fn Combobox(props: &ComboboxProps) -> Html {
         .render()
     } else if is_open {
         let style = format!("--yi-select-anchor-width:{}px", *width);
-        let message = if props.loading { AttrValue::Static("Loading") } else { props.empty.clone() };
+        let message = if props.loading { props.loading_label.clone() } else { props.empty.clone() };
         html! { <div class="yi-select__status" role="status" {style}>{ message }</div> }
     } else {
         Html::default()
     };
     let foot = if has_list && total > order.len() {
-        html! { { format!("Showing the first {} of {total}. Type to narrow the list.", order.len()) } }
+        html! { { more_label(props.more_label.as_ref(), order.len(), total) } }
     } else {
         Html::default()
     };

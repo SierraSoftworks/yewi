@@ -105,8 +105,9 @@
 }
 
 .yi-pipeline-stage__title {
+  @include heading("md");
+
   min-inline-size: 0;
-  font-weight: 600;
   overflow-wrap: anywhere;
 }
 

@@ -26,9 +26,9 @@ fn a_panel_without_a_heading_is_only_its_body() {
 }
 
 #[test]
-fn every_tone_is_distinguishable() {
+fn every_fill_is_distinguishable() {
     let rendered: Vec<String> =
-        PanelTone::ALL.into_iter().map(|tone| render(move || html! { <Panel {tone}>{ "Body" }</Panel> })).collect();
+        PanelFill::ALL.into_iter().map(|fill| render(move || html! { <Panel {fill}>{ "Body" }</Panel> })).collect();
     for (i, a) in rendered.iter().enumerate() {
         for b in &rendered[i + 1..] {
             assert_ne!(a, b);

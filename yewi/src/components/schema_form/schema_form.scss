@@ -43,10 +43,9 @@
 
   &__title {
     flex: 1;
+    @include heading("md");
+
     color: var(--yi-schema-form-title-color);
-    font-size: var(--yi-text-md);
-    font-weight: 500;
-    line-height: var(--yi-leading-tight);
   }
 
   // A list item that is a single control: the control, then its remove button.

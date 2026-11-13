@@ -13,6 +13,7 @@ use crate::{
         input::{input_classes, target_value},
         select::{
             dom as select_dom,
+            more_label,
             listbox::{Listbox, option_id},
             options::{edge, filter, step},
         },
@@ -47,6 +48,11 @@ pub struct TagPickerProps {
     /// list, so a list of thousands stays cheap to open and to type in.
     #[prop_or(50)]
     pub max_results: usize,
+    /// The line under a list cut off at `max_results`, from the number shown
+    /// and the number that match. Defaults to "Showing the first 50 of 2,000.
+    /// Type to narrow the list." in English.
+    #[prop_or_default]
+    pub more_label: Option<Callback<(usize, usize), AttrValue>>,
     /// Shown in place of the list when nothing matches.
     #[prop_or(AttrValue::Static("No matches"))]
     pub empty: AttrValue,
@@ -323,7 +329,7 @@ pub fn TagPicker(props: &TagPickerProps) -> Html {
     let foot = if is_open && addable && active_shown.is_none() {
         html! { <span class="yi-tag-picker__hint">{ "Press Enter to add " }<strong>{ typed.to_owned() }</strong></span> }
     } else if has_list && total > order.len() {
-        html! { { format!("Showing the first {} of {total}. Type to narrow the list.", order.len()) } }
+        html! { { more_label(props.more_label.as_ref(), order.len(), total) } }
     } else {
         Html::default()
     };

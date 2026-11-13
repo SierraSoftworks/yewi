@@ -55,7 +55,7 @@
   justify-content: space-between;
   gap: var(--yi-space-md);
   padding-inline: var(--yi-bar-list-row-padding);
-  color: var(--yi-fg-subtle);
+  color: var(--yi-fg-muted);
   font-size: var(--yi-text-xs);
   font-weight: 500;
 }
@@ -176,7 +176,7 @@
 
 .yi-bar-list__share {
   min-inline-size: 4ch;
-  color: var(--yi-fg-subtle);
+  color: var(--yi-fg-muted);
   font-size: var(--yi-text-xs);
 }
 
