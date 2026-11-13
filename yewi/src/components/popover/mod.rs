@@ -294,19 +294,13 @@ pub fn Popover(props: &PopoverProps) -> Html {
         let (anchor, surface, surface_id) = (anchor.clone(), surface.clone(), surface_id.clone());
         let dismiss = handlers.dismiss.clone();
         use_effect_with((open, props.trigger), move |&(open, trigger)| {
+            // A surface that outlives its showing is put away by hand.
+            if !open {
+                dom::put_away(&surface);
+            }
             let session = open.then(|| dom::Session::start(&anchor, &surface, &surface_id, trigger, dismiss));
             move || {
                 let _end = session;
-            }
-        });
-    }
-
-    // A surface that outlives its showing is put away by hand.
-    {
-        let surface = surface.clone();
-        use_effect_with(open, move |&open| {
-            if !open {
-                dom::put_away(&surface);
             }
         });
     }
