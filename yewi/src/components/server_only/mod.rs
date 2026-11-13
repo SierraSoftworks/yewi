@@ -18,6 +18,7 @@
 //! no `on_*` callback runs: state lives in the browser, and data leaves
 //! through forms and links. An app that hydrates, or renders in the browser,
 //! does not use this: its components already do everything themselves.
+//! It needs the `ssr` feature: a build for the browser leaves all of it out.
 
 use yew::prelude::*;
 
@@ -36,7 +37,9 @@ struct Mode;
 /// without its own event handlers.
 #[hook]
 pub(crate) fn use_server_only() -> bool {
-    use_context::<Mode>().is_some()
+    // Only a server render is ever inside one, so a build for the browser
+    // drops everything that depends on this.
+    cfg!(feature = "ssr") && use_context::<Mode>().is_some()
 }
 
 #[derive(Properties, PartialEq)]

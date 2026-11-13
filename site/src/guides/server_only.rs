@@ -233,7 +233,7 @@ async fn behaviours() -> impl Responder {
 <MenuButton label="Host">
     <MenuItem href="/hosts/pi-1/logs">{ "Logs" }</MenuItem>
     <MenuItem form="host" name="action" value="restart">{ "Restart" }</MenuItem>
-    <MenuItem tone={Tone::Danger} command={Command::show_modal("confirm-forget")}>{ "Forget" }</MenuItem>
+    <MenuItem command={Command::show_modal("confirm-forget")}>{ "Forget" }</MenuItem>
 </MenuButton>
 "#) }
 
