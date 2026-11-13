@@ -17,7 +17,7 @@ source: site/tests/snapshots.rs
 <button type="button" class="yi-button yi-button--subtle yi-button--sm">Discard changes</button>
 </div>
 </div>
-<button type="button" aria-label="Dismiss" class="yi-alert__dismiss">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only yi-alert__dismiss" aria-label="Dismiss" title="Dismiss">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>

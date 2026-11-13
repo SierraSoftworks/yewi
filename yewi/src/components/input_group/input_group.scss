@@ -272,35 +272,9 @@
     margin-inline-end: calc(var(--_inset) - var(--yi-input-group-padding));
   }
 
+  // Holds the clear button, a small subtle IconButton sized by the group.
   &__clear {
-    display: grid;
-    flex: none;
-    place-items: center;
-    inline-size: var(--yi-input-group-chip-height);
-    block-size: var(--yi-input-group-chip-height);
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: var(--yi-input-group-chip-radius);
-    background: none;
-    color: var(--yi-input-group-affix-fg);
-    font-size: var(--yi-text-sm);
-    cursor: pointer;
-
-    @include motion {
-      transition:
-        background-color var(--yi-duration-fast) var(--yi-ease),
-        color var(--yi-duration-fast) var(--yi-ease);
-    }
-
-    &:hover {
-      background: var(--yi-input-group-chip-bg);
-      color: var(--yi-fg);
-    }
-
-    &:focus-visible {
-      @include focus-ring;
-    }
+    display: contents;
   }
 
   // Nothing to clear, or nothing the user may change.

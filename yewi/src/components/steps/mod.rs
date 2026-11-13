@@ -4,7 +4,8 @@
 use yew::prelude::*;
 
 use crate::{
-    Attrs, Icon, IconData, NavTarget, Orientation, Size, VisuallyHidden, icons, is_empty, nav_target::use_nav_link,
+    Attrs, Icon, IconData, NavTarget, Orientation, Size, Spinner, VisuallyHidden, icons, is_empty,
+    nav_target::use_nav_link,
 };
 
 /// Where a step stands.
@@ -183,6 +184,9 @@ pub fn Step(props: &StepProps) -> Html {
             <span class="yi-step__marker" aria-hidden="true">
                 if let Some(icon) = props.icon.or(status.icon()) {
                     <Icon {icon} />
+                }
+                if status == StepStatus::Running {
+                    <Spinner class="yi-step__spinner" />
                 }
             </span>
             <span class="yi-step__rail" aria-hidden="true" />

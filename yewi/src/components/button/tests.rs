@@ -144,3 +144,18 @@ fn vertical_group_differs_from_horizontal() {
     };
     assert_ne!(render_group(Orientation::Vertical), render_group(Orientation::Horizontal));
 }
+
+#[test]
+fn loading_replaces_the_icon_with_the_shared_spinner() {
+    let html = render(|| html! { <Button loading=true icon={icons::CHECK}>{ "Save" }</Button> });
+    assert!(html.contains("yi-spinner"), "{html}");
+    assert_eq!(html.matches("<svg").count(), 1, "{html}");
+}
+
+#[test]
+fn icon_button_keeps_a_native_hint_for_pages_without_a_runtime() {
+    let html = render(|| html! { <IconButton icon={icons::TRASH_2} label="Delete" /> });
+    assert!(html.contains(r#"title="Delete""#), "{html}");
+    // The tooltip itself only exists while shown.
+    assert!(!html.contains("yi-tooltip__bubble"), "{html}");
+}

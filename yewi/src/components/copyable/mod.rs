@@ -14,7 +14,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Size, icons, use_id, is_empty};
+use crate::{Attrs, Button, ButtonVariant, Size, components::tooltip::use_hint, icons, is_empty, use_id};
 
 mod dom;
 
@@ -86,7 +86,7 @@ pub struct CopyButtonProps {
     /// holding only the icon, named by `label`.
     #[prop_or_default]
     pub children: Html,
-    /// The accessible name and tooltip of an icon-only button.
+    /// The accessible name and hint of an icon-only button.
     #[prop_or(AttrValue::Static("Copy"))]
     pub label: AttrValue,
     /// Shown and announced once the value is on the clipboard.
@@ -155,12 +155,17 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
     };
     let icon_only = is_empty(&props.children);
 
+    // The name stays put while the hint reports the outcome: renaming a
+    // focused button is announced inconsistently, the live region is not.
+    let node_ref = use_node_ref();
+    let hint_text = if icon_only { feedback.unwrap_or(&props.label).clone() } else { AttrValue::Static("") };
+    let hint = use_hint(&node_ref, &hint_text);
+
     let mut attrs = Vec::new();
     if icon_only {
-        // The name stays put while the tooltip reports the outcome: renaming
-        // a focused button is announced inconsistently, the live region is not.
         attrs.push(("aria-label", props.label.clone()));
-        attrs.push(("title", feedback.unwrap_or(&props.label).clone()));
+        // The hint where there is no runtime to show the tooltip.
+        attrs.push(("title", hint_text));
     }
     if let Some(state) = state.as_attr() {
         attrs.push(("data-yi-state", AttrValue::Static(state)));
@@ -177,6 +182,7 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
             {icon}
             attrs={Attrs::new(attrs)}
             {on_click}
+            {node_ref}
         >
             if !icon_only {
                 if let Some(feedback) = feedback {
@@ -185,6 +191,7 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
                     { props.children.clone() }
                 }
             }
+            { hint }
         </Button>
     }
 }

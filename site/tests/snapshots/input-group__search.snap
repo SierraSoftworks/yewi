@@ -11,12 +11,14 @@ source: site/tests/snapshots.rs
 </span>
 <input value="" type="search" placeholder="Search services" autocomplete="off" class="yi-input yi-input--md" aria-label="Search services">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
-<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<span class="yi-search-input__clear">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Clear search" title="Clear search" tabindex="-1">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
 </svg>
 </button>
+</span>
 </span>
 </div>
 <span role="status">6 of 6 services</span>

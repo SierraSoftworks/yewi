@@ -7,7 +7,10 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, NavTarget, Tone, VisuallyHidden, icons, nav_target::use_nav_link};
+use crate::{
+    Attrs, Icon, IconData, NavTarget, Tone, VisuallyHidden, components::tooltip::use_hint, icons,
+    nav_target::use_nav_link,
+};
 
 #[derive(Properties, PartialEq)]
 pub struct PipelineProps {
@@ -271,7 +274,8 @@ impl UnitFill {
 #[derive(Properties, PartialEq)]
 pub struct PipelineUnitProps {
     /// The unit's name and state, e.g. "web-03: healthy". It is the
-    /// accessible name and the hover text, since the block shows no text.
+    /// accessible name and the hint shown on hover and keyboard focus,
+    /// since the block shows no text.
     pub label: AttrValue,
     #[prop_or_default]
     pub tone: Tone,
@@ -311,11 +315,15 @@ pub fn PipelineUnit(props: &PipelineUnitProps) -> Html {
     );
     let id = props.id.clone();
     let label = props.label.clone();
+    let node = use_node_ref();
+    let hint = use_hint(&node, &props.label);
 
+    // The `title` is the hint where there is no runtime to show the tooltip.
     let link = use_nav_link(&props.href, Callback::noop());
     props.attrs.apply(if let Some(href) = link.href {
         html! {
             <a
+                ref={node}
                 {id}
                 {class}
                 {href}
@@ -324,14 +332,26 @@ pub fn PipelineUnit(props: &PipelineUnitProps) -> Html {
                 aria-label={label.clone()}
                 title={label}
                 onclick={link.onclick}
-            />
+            >
+                { hint }
+            </a>
         }
     } else if let Some(on_click) = &props.on_click {
         html! {
-            <button {id} {class} type="button" aria-label={label.clone()} title={label} onclick={on_click.clone()} />
+            <button
+                ref={node}
+                {id}
+                {class}
+                type="button"
+                aria-label={label.clone()}
+                title={label}
+                onclick={on_click.clone()}
+            >
+                { hint }
+            </button>
         }
     } else {
-        html! { <span {id} {class} role="img" aria-label={label.clone()} title={label} /> }
+        html! { <span ref={node} {id} {class} role="img" aria-label={label.clone()} title={label}>{ hint }</span> }
     })
 }
 

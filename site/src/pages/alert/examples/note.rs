@@ -13,9 +13,10 @@ pub fn Example() -> Html {
                 </Stack>
             </div>
             <Stack gap={Space::Xs}>
-                <Note tone={Tone::Ok} with_icon=true>{ "Saved. The service picks the change up on its next poll." }</Note>
-                <Note tone={Tone::Warn} with_icon=true>{ "This certificate expires in 6 days." }</Note>
-                <Note tone={Tone::Danger} with_icon=true>{ "The package could not be read." }</Note>
+                <Note tone={Tone::Ok}>{ "Saved. The service picks the change up on its next poll." }</Note>
+                <Note tone={Tone::Warn}>{ "This certificate expires in 6 days." }</Note>
+                <Note tone={Tone::Danger}>{ "The package could not be read." }</Note>
+                <Note tone={Tone::Info} hide_icon=true>{ "Changes apply to new sessions only." }</Note>
                 <Note icon={icons::LOCK}>{ "Only administrators can change this setting." }</Note>
             </Stack>
         </Stack>
