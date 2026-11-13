@@ -297,6 +297,35 @@
     if (tab.closest("[data-yi-tabs]").dataset.yiTabs !== "manual") pick(to);
   });
 
+  // Reveal: a button in a `data-yi-reveal` band shows the element after the
+  // band, and the band goes.
+  on("click", "[data-yi-reveal] button", (button) => {
+    const band = button.closest("[data-yi-reveal]");
+    band.nextElementSibling.hidden = false;
+    band.closest("[tabindex]")?.focus();
+    band.remove();
+  });
+
+  // Tables: a `data-yi-row-toggle` button shows the detail row under its
+  // own, and the box in the `data-yi-select-all` header ticks every row.
+  on("click", "[data-yi-row-toggle]", (button) => {
+    const row = button.closest("tr");
+    const shown = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(shown));
+    row.classList.toggle("yi-table__row--expanded", shown);
+    row.nextElementSibling.hidden = !shown;
+  });
+  on("change", "table:has(th[data-yi-select-all]) .yi-table__control input[type=checkbox]", (box) => {
+    const table = box.closest("table");
+    const all = table.querySelector("th[data-yi-select-all] input");
+    const rows = [...table.querySelectorAll("td.yi-table__control input[type=checkbox]")];
+    if (box === all) for (const row of rows) row.checked = all.checked;
+    const ticked = rows.filter((row) => row.checked).length;
+    all.checked = ticked > 0 && ticked === rows.length;
+    all.indeterminate = ticked > 0 && ticked < rows.length;
+    for (const row of rows) row.closest("tr").classList.toggle("yi-table__row--selected", row.checked);
+  });
+
   // File drop: `data-yi-file-drop` on the zone. Dropped files go into its
   // input, and the label names what was chosen.
   const picker = (zone) => zone.querySelector("input[type=file]");

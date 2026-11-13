@@ -342,4 +342,43 @@ test.describe("Server-only pages", () => {
     await page.keyboard.press("Home");
     await expect(panel).toContainText("Name, callsign");
   });
+
+  test("a table row shows its details, and the header box selects every row", async ({ serverOnly }) => {
+    let stage = await serverOnly("table/expandable");
+    const toggle = stage.getByRole("button", { name: /^Details for/ }).first();
+    const details = stage.locator("tr.yi-table__detail").first();
+
+    await expect(details).toBeHidden();
+    await toggle.click();
+    await expect(details).toBeVisible();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await toggle.click();
+    await expect(details).toBeHidden();
+
+    stage = await serverOnly("table/selection");
+    const all = stage.getByRole("checkbox", { name: "Select all rows" });
+    const rows = stage.getByRole("checkbox", { name: /^Select (?!all)/ });
+    await all.check();
+    for (const row of await rows.all()) await expect(row).toBeChecked();
+    await rows.first().uncheck();
+    await expect(all).not.toBeChecked();
+    expect(await all.evaluate((box: HTMLInputElement) => box.indeterminate)).toBe(true);
+  });
+
+  test("a JSON tree folds and unfolds, and a diff reveals its folded lines", async ({ serverOnly }) => {
+    let stage = await serverOnly("json-view/basic");
+    const open = stage.locator("details[open]");
+    const before_open = await open.count();
+    await stage.locator("details:not([open]) > summary").first().click();
+    await expect(open).toHaveCount(before_open + 1);
+    await expect(open.last().locator(".yi-json-view__children").first()).toBeVisible();
+
+    stage = await serverOnly("diff/long");
+    const reveal = stage.getByRole("button", { name: /unchanged lines/ });
+    const before = await reveal.count();
+    const lines = await stage.locator(".yi-diff__text:visible").count();
+    await reveal.first().click();
+    await expect(reveal).toHaveCount(before - 1);
+    expect(await stage.locator(".yi-diff__text:visible").count()).toBeGreaterThan(lines);
+  });
 });

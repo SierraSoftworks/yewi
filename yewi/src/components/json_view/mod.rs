@@ -14,7 +14,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, CopyButton, Icon, Size, icons};
+use crate::{Attrs, Button, ButtonVariant, CopyButton, Icon, Size, components::server_only::use_server_only, icons};
 
 mod value;
 
@@ -309,6 +309,9 @@ struct BranchProps {
 fn Branch(props: &BranchProps) -> Html {
     let expanded = use_state_eq(|| props.depth < props.open);
     let shown = use_state_eq(|| props.page_size);
+    // Without a client the whole tree is in the page and the browser folds
+    // it: nothing could add the children, or the next page of them, later.
+    let server_only = use_server_only();
 
     // The summary toggles the state and the state the element. Left to the
     // browser, the element would open a frame before it has any children.
@@ -325,9 +328,9 @@ fn Branch(props: &BranchProps) -> Html {
         Json::Array(items) => (items.len(), format!("[{}]", items.len())),
         _ => return Html::default(),
     };
-    let visible = if props.page_size == 0 { len } else { len.min(*shown) };
+    let visible = if props.page_size == 0 || server_only { len } else { len.min(*shown) };
 
-    let children = (*expanded).then(|| {
+    let children = (*expanded || server_only).then(|| {
         let (depth, open, page_size) = (props.depth + 1, props.open, props.page_size);
         let rows: Html = match &props.value {
             Json::Object(entries) => entries
@@ -378,7 +381,7 @@ fn Branch(props: &BranchProps) -> Html {
                 }
                 <span class="yi-json-view__count">{ count }</span>
                 <span class="yi-json-view__preview">
-                    if !*expanded {
+                    if !*expanded || server_only {
                         { preview(&props.value) }
                     }
                 </span>

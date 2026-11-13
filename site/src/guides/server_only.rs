@@ -16,10 +16,10 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 }
 
 /// Components with nothing to run, or whose behaviour is the browser's own.
-const COMPLETE: &str = "AppBar, AppShell, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
+const COMPLETE: &str = "AppBar, AppShell, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Diff, Divider, Duration, EmptyState, \
                         Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Dialog, ConfirmDialog, Drawer, Spinner, Loading, \
                         Markdown, NotificationPanel, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
-                        SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
+                        SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Tabs, Terminal, Text, \
                         TextInput, TextArea, ThemeScript, ThemeToggle, Timeline, ToggleSwitch, Tooltip, TopMenu, VisuallyHidden";
 
 const PARTIAL: &[Row] = &[
@@ -35,24 +35,17 @@ const PARTIAL: &[Row] = &[
         "on_select, and checked items that change",
         "Give each item an href, a form or a command",
     ),
-    row("Tabs", "The selected panel", "Switching panels", "TabNav, with one page per tab"),
     row(
         "Table, SimpleTable",
-        "Rows and links",
-        "Sorting, selection and expandable rows",
+        "Rows, links, row details, and selection submitted through select_name",
+        "Sorting, on_select and on_row_click",
         "Sort on the server, using a link for each order",
     ),
     row(
         "JsonView",
-        "The source, and nodes that start open",
-        "Opening a folded node",
-        "Use JsonViewVariant::Source, or open more levels up front",
-    ),
-    row(
-        "Diff",
-        "The diff",
-        "Revealing folded lines and switching views",
-        "Set the context large enough that nothing folds",
+        "Folding and copying; the whole document is sent, however large",
+        "Paging through long branches",
+        "Use JsonViewVariant::Source for a large document",
     ),
     row("CodeBlock", "The code, its highlighting and copying", "The wrap toggle", "Set wrap on the server"),
     row(
@@ -89,8 +82,8 @@ const PARTIAL: &[Row] = &[
     row("BarList", "Bars and links", "Expanding, paging, filtering", "Pass every row you want to show"),
     row(
         "Timestamp, Countdown",
-        "The text as rendered, in the server's time zone",
-        "Ticking, local time and the tooltip",
+        "The text as rendered and the exact time on hover, both in UTC",
+        "Ticking and the viewer's local time",
         "Use TimestampDisplay::DateTime",
     ),
     row("HistoryStrip", "Cells and links", "Detail on hover", "Link each cell to its own page"),
@@ -161,7 +154,7 @@ pub fn render() -> Html {
                 { "Wrap the page in " }<code>{ "ServerOnly" }</code>
                 { ". Components inside it render markup that works on its own, and one small script, " }
                 <code>{ "yewi::BEHAVIOURS" }</code>
-                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, dropped files, and opening menus, popovers and tooltips. Serve the script \
+                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, dropped files, tabs, table rows, and opening menus, popovers and tooltips. Serve the script \
                    from a cached route, or leave " }<code>{ "script" }</code>
                 { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
                    page inside " }<code>{ "ServerOnly" }</code>{ "." }

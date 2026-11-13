@@ -3,8 +3,8 @@
 //! Wrap the page in [`ServerOnly`]. Inside it components render markup the
 //! browser can operate alone, and declare the rest in `data-yi-*` attributes
 //! that one small script, [`BEHAVIOURS`], acts on: copying, the number
-//! stepper, the theme toggle, hiding the sidebar, menus, popovers, tooltips
-//! and dropped files.
+//! stepper, the theme toggle, hiding the sidebar, menus, popovers, tooltips,
+//! tabs, table rows and dropped files.
 //!
 //! ```ignore
 //! html! {

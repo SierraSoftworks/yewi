@@ -5,7 +5,7 @@ use std::{ops::Range, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, icons};
+use crate::{Attrs, Icon, components::server_only::use_server_only, icons};
 
 mod engine;
 
@@ -185,6 +185,7 @@ pub fn Diff(props: &DiffProps) -> Html {
         use_effect_with(inputs, move |_| expanded.set(Vec::new()));
     }
 
+    let server_only = use_server_only();
     let scroller = use_node_ref();
     let expand = {
         let (expanded, scroller) = (expanded.clone(), scroller.clone());
@@ -209,7 +210,11 @@ pub fn Diff(props: &DiffProps) -> Html {
         let hidden = fold.len();
         let onclick = expand.reform(move |_: MouseEvent| fold.start);
         rows.push(html! {
-            <div key={format!("f{}", fold.start)} class="yi-diff__band yi-diff__band--fold">
+            <div
+                key={format!("f{}", fold.start)}
+                class="yi-diff__band yi-diff__band--fold"
+                data-yi-reveal={server_only.then_some("")}
+            >
                 <button type="button" class="yi-diff__fold" {onclick}>
                     <Icon icon={icons::CHEVRONS_UP_DOWN} />
                     { match &props.expand_label {
@@ -219,6 +224,15 @@ pub fn Diff(props: &DiffProps) -> Html {
                 </button>
             </div>
         });
+        // Without a client the folded lines are in the page, for
+        // `BEHAVIOURS` to reveal.
+        if server_only {
+            let mut folded = Vec::new();
+            view.rows(fold.clone(), &mut folded);
+            rows.push(html! {
+                <div key={format!("r{}", fold.start)} class="yi-diff__folded" hidden=true>{ for folded }</div>
+            });
+        }
         i = fold.end;
     }
     view.rows(i..model.lines.len(), &mut rows);

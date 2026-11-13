@@ -146,6 +146,7 @@ pub fn VirtualTable<T: Clone + PartialEq + 'static>(props: &VirtualTableProps<T>
         rows: props.rows.clone(),
         row_key: props.row_key.clone(),
         row_label: props.row_label.clone(),
+        select_name: None,
         variant: props.variant,
         compact: props.compact,
         sticky_header: true,
