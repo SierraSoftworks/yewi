@@ -37,16 +37,6 @@ source: site/tests/snapshots.rs
 </g>
 </svg>
 </div>
-<div aria-hidden="true" class="yi-chart__x">
-<span style="inset-inline-start:2.08%" class="yi-chart__tick yi-chart__tick--start">00:00</span>
-<span style="inset-inline-start:14.58%" class="yi-chart__tick">03:00</span>
-<span style="inset-inline-start:27.08%" class="yi-chart__tick">06:00</span>
-<span style="inset-inline-start:39.58%" class="yi-chart__tick">09:00</span>
-<span style="inset-inline-start:52.08%" class="yi-chart__tick">12:00</span>
-<span style="inset-inline-start:64.58%" class="yi-chart__tick">15:00</span>
-<span style="inset-inline-start:77.08%" class="yi-chart__tick">18:00</span>
-<span style="inset-inline-start:89.58%" class="yi-chart__tick">21:00</span>
-</div>
 </div>
 </div>
 <div class="yi-chart" style="--yi-chart-height: 6rem">

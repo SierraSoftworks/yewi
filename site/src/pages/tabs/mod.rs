@@ -9,6 +9,7 @@ crate::page! {
         icons_and_counts => "Icons, counts and disabled tabs": "An icon goes before the label and a count goes after it. A disabled tab can't be selected, and the arrow keys skip over it.",
         sizes => "Sizes": "`Small` suits tabs inside a card or next to compact controls.",
         controlled => "Controlled": "Set `selected` when you want to own the selection yourself, for example to open a tab from a link elsewhere. `manual` waits for Enter or Space before switching tabs, and `keep_mounted` keeps the state of panels that aren't showing.",
+        shared_panel => "One panel for every tab": "When the tabs change what one view shows, not the view itself, pass that view as `panel` and leave the tabs without children. Keep `selected` yourself and draw the panel from it.",
         navigation => "As navigation": "When each view is a page of its own, `TabNav` renders real links. Mark the page that's being shown with `current`.",
         router => "With a router": "With the `router` feature, `NavTarget::route` follows a `yew-router` route without reloading the page, and the current tab is worked out from the location.",
     ],

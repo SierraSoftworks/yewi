@@ -140,3 +140,22 @@ fn without_a_client_every_panel_is_in_the_page_and_all_but_one_hidden() {
     assert_eq!(html.matches(" hidden").count(), 1);
     assert_eq!(html.matches("aria-controls").count(), 2);
 }
+
+#[test]
+fn a_shared_panel_stands_in_for_every_tab() {
+    let html = render(|| {
+        html! {
+            <Tabs label="Breakdown" selected="browsers" panel={html! { "Rows for the selected breakdown" }}>
+                <Tab value="pages" label="Pages" />
+                <Tab value="browsers" label="Browsers" />
+            </Tabs>
+        }
+    });
+    let panels = with_role(&html, "tabpanel");
+    assert_eq!(panels.len(), 1, "{html}");
+    assert!(html.contains("Rows for the selected breakdown"));
+    // The panel belongs to the selected tab.
+    let selected = with_role(&html, "tab").into_iter().find(|tab| tab.contains(r#"aria-selected="true""#)).unwrap();
+    let id = selected.split(r#" id=""#).nth(1).unwrap().split('"').next().unwrap();
+    assert!(panels[0].contains(&format!(r#"aria-labelledby="{id}""#)), "{html}");
+}

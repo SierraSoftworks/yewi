@@ -37,6 +37,7 @@ router = 150000
 # About 175 KB of this is the form controls it draws with (Select, TagPicker,
 # SecretInput, NumberInput and the popover under them), which an app with any
 # form already ships; the schema reader and the form itself are about 95 KB.
-schema-form = 285000
+# Raised from 285000 by Ben on 2026-11-13.
+schema-form = 300000
 serde_json = 101000
 terminal = 40000

@@ -30,6 +30,11 @@ pub struct BarItem {
     /// Marks a row that stands for missing values ("Unknown", "Direct").
     /// It is drawn quieter and gets no row action.
     pub muted: bool,
+    /// A longer description, shown by the browser when the row is hovered:
+    /// the full text of a label that may be cut short.
+    pub title: Option<AttrValue>,
+    /// Leaves the list's row action off this row, where it does not apply.
+    pub no_action: bool,
 }
 
 impl BarItem {
@@ -44,6 +49,8 @@ impl BarItem {
             href: None,
             tone: None,
             muted: false,
+            title: None,
+            no_action: false,
         }
     }
 
@@ -75,6 +82,16 @@ impl BarItem {
 
     pub fn tone(mut self, tone: Tone) -> Self {
         self.tone = Some(tone);
+        self
+    }
+
+    pub fn title(mut self, title: impl Into<AttrValue>) -> Self {
+        self.title = Some(title.into());
+        self
+    }
+
+    pub fn without_action(mut self) -> Self {
+        self.no_action = true;
         self
     }
 
@@ -322,7 +339,7 @@ pub fn BarList(props: &BarListProps) -> Html {
             </>
         };
         let row = if let Some(href) = &item.href {
-            html! { <a class="yi-bar-list__row" href={href.clone()}>{ content }</a> }
+            html! { <a class="yi-bar-list__row" href={href.clone()} title={item.title.clone()}>{ content }</a> }
         } else if props.on_select.is_some() {
             let pressed = selected == Some(&item.value);
             html! {
@@ -331,14 +348,15 @@ pub fn BarList(props: &BarListProps) -> Html {
                     class="yi-bar-list__row"
                     aria-pressed={if pressed { "true" } else { "false" }}
                     data-yi-row={index.to_string()}
+                    title={item.title.clone()}
                 >
                     { content }
                 </button>
             }
         } else {
-            html! { <div class="yi-bar-list__row">{ content }</div> }
+            html! { <div class="yi-bar-list__row" title={item.title.clone()}>{ content }</div> }
         };
-        let action = props.action.as_ref().filter(|_| !item.muted).map(|action| {
+        let action = props.action.as_ref().filter(|_| !item.muted && !item.no_action).map(|action| {
             html! {
                 <RowAction
                     icon={action.icon}

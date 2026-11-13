@@ -10,10 +10,13 @@ pub fn Example() -> Html {
     let series = use_memo((), |_| vec![Series::new("Revenue", REVENUE)]);
     let x_label = use_callback((), |month: usize, _| AttrValue::from(MONTHS[month % 12]));
     let y_label = use_callback((), |value: f64, _| AttrValue::from(format!("€{}k", value / 1000.0)));
+    // The tooltip has room for what the axis abbreviates.
+    let x_tooltip = use_callback((), |month: usize, _| AttrValue::from(format!("{} 2026", MONTHS[month % 12])));
+    let y_tooltip = use_callback((), |value: f64, _| AttrValue::from(format!("€{value:.0}")));
 
     html! {
         <Stack gap={Space::Xl}>
-            <Chart label="Revenue per month" series={(*series).clone()} {x_label} {y_label} x_ticks=12 />
+            <Chart label="Revenue per month" series={(*series).clone()} {x_label} {y_label} {x_tooltip} {y_tooltip} x_ticks=12 />
             <Chart label="Refunds per month" series={Vec::new()} empty="No refunds in this period" />
         </Stack>
     }

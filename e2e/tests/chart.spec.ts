@@ -29,6 +29,35 @@ test.describe("Chart", () => {
     await expect(tooltip).toHaveCount(0);
   });
 
+  test("stacked charts share a cursor, and only the last labels the positions", async ({ page, example }) => {
+    const stage = await example("chart/bars");
+    const requests = stage.getByRole("slider", { name: "Requests per hour" });
+    const tooltips = stage.locator(".yi-chart__tooltip");
+
+    await pointAt(page, requests, 0.4);
+    await expect(tooltips).toHaveCount(2);
+    await expect(tooltips.first()).toContainText("Requests");
+    await expect(tooltips.last()).toContainText("Errors");
+    // Both read the same hour.
+    const title = await tooltips.first().locator(".yi-chart__tooltip-title").textContent();
+    await expect(tooltips.last().locator(".yi-chart__tooltip-title")).toHaveText(title!);
+
+    await page.mouse.move(0, 0);
+    await expect(tooltips).toHaveCount(0);
+    await expect(stage.locator(".yi-chart__x")).toHaveCount(1);
+  });
+
+  test("the tooltip can say more than the axis", async ({ page, example }) => {
+    const stage = await example("chart/formatting");
+    const plot = stage.getByRole("slider", { name: "Revenue per month" });
+
+    await pointAt(page, plot, 0);
+    const tooltip = stage.locator(".yi-chart__tooltip");
+    await expect(tooltip).toContainText("Jan 2026");
+    await expect(tooltip).toContainText("€18400");
+    await expect(stage.locator(".yi-chart__y").first()).toContainText("€20k");
+  });
+
   test("is read with the keyboard", async ({ page, example }) => {
     const stage = await example("chart/compare");
     const plot = stage.getByRole("slider", { name: "Visitors per day" });
