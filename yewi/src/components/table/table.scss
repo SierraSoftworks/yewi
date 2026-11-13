@@ -10,6 +10,10 @@
   // Component tokens
   --yi-table-cell-padding-block: calc(var(--yi-space-sm) + var(--yi-space-2xs));
   --yi-table-cell-padding-inline: var(--yi-space-md);
+  // The outer padding of the first and last cell of a row. A flush Card or
+  // Panel body sets it to its own padding, so the first column starts under
+  // the title.
+  --yi-table-edge-padding: var(--yi-table-cell-padding-inline);
   --yi-table-header-fg: var(--yi-fg-muted);
   --yi-table-header-bg: transparent;
   --yi-table-header-line: var(--yi-line);
@@ -194,6 +198,10 @@
   inline-size: calc(var(--yi-control-height-sm) + var(--yi-table-cell-padding-inline));
 }
 
+.yi-table__control-col:first-child {
+  inline-size: calc(var(--yi-control-height-sm) + var(--yi-table-edge-padding));
+}
+
 // One line tall, so the button centres on the first line of its row and,
 // being taller than the line, leaves the row height alone.
 .yi-table__toggle-box {
@@ -233,7 +241,7 @@
   }
 
   &:focus-visible {
-    @include focus-ring(3px);
+    @include focus-ring;
   }
 
   // Right-aligned columns keep their text against the edge.
@@ -256,6 +264,25 @@
     color: var(--yi-accent-text);
     opacity: 1;
   }
+}
+
+// Edge cells, whatever kind of row they are in.
+.yi-table__grid > * > tr > :is(td, th) {
+  &:first-child {
+    padding-inline-start: var(--yi-table-edge-padding);
+  }
+
+  &:last-child {
+    padding-inline-end: var(--yi-table-edge-padding);
+  }
+}
+
+.yi-card__body--flush > .yi-table {
+  --yi-table-edge-padding: var(--yi-card-padding);
+}
+
+.yi-panel__body--flush > .yi-table {
+  --yi-table-edge-padding: var(--yi-panel-padding-inline);
 }
 
 .yi-table__sort-priority {
@@ -298,9 +325,9 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--yi-space-sm) var(--yi-space-lg);
-  padding: var(--yi-space-sm) var(--yi-table-cell-padding-inline);
+  padding: var(--yi-space-sm) var(--yi-table-edge-padding);
   border-block-start: 1px solid var(--yi-line);
-  color: var(--yi-fg-subtle);
+  color: var(--yi-fg-muted);
   font-size: var(--yi-text-sm);
 }
 

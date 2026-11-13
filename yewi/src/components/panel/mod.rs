@@ -7,7 +7,7 @@ use crate::{Attrs, Icon, icons};
 
 /// The fill behind a panel.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum PanelTone {
+pub enum PanelFill {
     /// Alternates with sibling panels: the first is `Strong`, the next
     /// `Soft`, and so on.
     #[default]
@@ -20,15 +20,15 @@ pub enum PanelTone {
     Strong,
 }
 
-impl PanelTone {
-    pub const ALL: [PanelTone; 4] = [PanelTone::Auto, PanelTone::Plain, PanelTone::Soft, PanelTone::Strong];
+impl PanelFill {
+    pub const ALL: [PanelFill; 4] = [PanelFill::Auto, PanelFill::Plain, PanelFill::Soft, PanelFill::Strong];
 
     const fn as_str(self) -> &'static str {
         match self {
-            PanelTone::Auto => "auto",
-            PanelTone::Plain => "plain",
-            PanelTone::Soft => "soft",
-            PanelTone::Strong => "strong",
+            PanelFill::Auto => "auto",
+            PanelFill::Plain => "plain",
+            PanelFill::Soft => "soft",
+            PanelFill::Strong => "strong",
         }
     }
 }
@@ -49,7 +49,7 @@ pub struct PanelProps {
     #[prop_or_default]
     pub actions: Html,
     #[prop_or_default]
-    pub tone: PanelTone,
+    pub fill: PanelFill,
     /// Lets the reader fold the body away. Uses a native `<details>`, so it
     /// works before, and without, the wasm loading.
     #[prop_or_default]
@@ -80,7 +80,7 @@ pub struct PanelProps {
 pub fn Panel(props: &PanelProps) -> Html {
     let class = classes!(
         "yi-panel",
-        format!("yi-panel--{}", props.tone.as_str()),
+        format!("yi-panel--{}", props.fill.as_str()),
         props.collapsible.then_some("yi-panel--collapsible"),
         props.class.clone(),
     );
