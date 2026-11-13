@@ -8,7 +8,7 @@ use std::{
 
 use yew::prelude::*;
 
-use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id};
+use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id, is_empty};
 
 /// What opens and closes a popover.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -328,11 +328,11 @@ pub fn Popover(props: &PopoverProps) -> Html {
                     aria-label={props.label.clone()}
                     popover="manual"
                 >
-                    if props.head != Html::default() {
+                    if !is_empty(&props.head) {
                         <span class="yi-popover__head">{ props.head.clone() }</span>
                     }
                     <span class="yi-popover__body">{ props.content.clone() }</span>
-                    if props.foot != Html::default() {
+                    if !is_empty(&props.foot) {
                         <span class="yi-popover__foot">{ props.foot.clone() }</span>
                     }
                 </span>

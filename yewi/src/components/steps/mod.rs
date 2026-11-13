@@ -3,7 +3,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Size, VisuallyHidden, icons};
+use crate::{Attrs, Icon, IconData, Orientation, Size, VisuallyHidden, icons, is_empty};
 
 /// Where a step stands.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -73,33 +73,13 @@ impl StepStatus {
     }
 }
 
-/// The direction the steps run in.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum StepsOrientation {
-    /// Left to right, for a short wizard. Falls back to vertical when the
-    /// container is too narrow.
-    #[default]
-    Horizontal,
-    /// Top to bottom, for long sequences and steps with detail.
-    Vertical,
-}
-
-impl StepsOrientation {
-    const fn as_str(self) -> &'static str {
-        match self {
-            StepsOrientation::Horizontal => "horizontal",
-            StepsOrientation::Vertical => "vertical",
-        }
-    }
-}
-
 #[derive(Properties, PartialEq)]
 pub struct StepsProps {
     /// The [`Step`]s, in order.
     #[prop_or_default]
     pub children: Html,
-    #[prop_or_default]
-    pub orientation: StepsOrientation,
+    #[prop_or(Orientation::Horizontal)]
+    pub orientation: Orientation,
     /// Marker and text size. `Small` suits dense reports.
     #[prop_or_default]
     pub size: Size,
@@ -187,8 +167,8 @@ pub fn Step(props: &StepProps) -> Html {
     };
 
     let announcement = props.status_label.clone().or_else(|| status.announcement().map(AttrValue::from));
-    let has_meta = props.meta != Html::default();
-    let has_detail = props.children != Html::default();
+    let has_meta = !is_empty(&props.meta);
+    let has_detail = !is_empty(&props.children);
 
     props.attrs.apply(html! {
         <li id={props.id.clone()} {class} aria-current={(status == StepStatus::Current).then_some("step")}>

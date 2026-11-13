@@ -4,11 +4,13 @@
 // the chevron are styled here.
 @use "api" as *;
 
-.yi-menu-button {
+:where(.yi-menu-button) {
   // Component tokens
   --yi-menu-button-max-height: min(70vh, 32rem);
   --yi-menu-button-max-width: 22rem;
+}
 
+.yi-menu-button {
   display: inline-flex;
   max-inline-size: 100%;
   vertical-align: middle;
@@ -18,7 +20,10 @@
   --yi-popover-radius: var(--yi-radius-control);
   --yi-popover-max-height: var(--yi-menu-button-max-height);
   --yi-popover-max-width: var(--yi-menu-button-max-width);
+}
 
+// Two classes, so this wins over the Popover's own `user-select`.
+.yi-popover__surface.yi-menu-button__surface {
   user-select: none;
 }
 

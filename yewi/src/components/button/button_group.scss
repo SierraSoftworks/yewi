@@ -4,10 +4,12 @@
 // border so a single line separates them, and only the outer corners round.
 @use "api" as *;
 
-.yi-button-group {
+:where(.yi-button-group) {
   // Component tokens
   --yi-button-group-radius: var(--yi-radius-control);
+}
 
+.yi-button-group {
   display: inline-flex;
   vertical-align: middle;
   // Keeps the stacking below from leaking into the page.

@@ -1,20 +1,11 @@
 //! Notifications: a bell with a count that opens the list of what needs
 //! attention, and the list itself for use in a page.
 
-use yew::{prelude::*, virtual_dom::VNode};
+use yew::prelude::*;
 
 use crate::{
     Attrs, Badge, ButtonVariant, IconButton, IconData, NavTarget, Placement, Popover, StatusDot, Tone, icons,
-    nav_target::use_nav_link,
-};
-
-/// Whether `html` renders nothing: an empty fragment, however deeply nested.
-fn is_empty(html: &Html) -> bool {
-    match html {
-        VNode::VList(list) => list.iter().all(is_empty),
-        _ => false,
-    }
-}
+    nav_target::use_nav_link, is_empty};
 
 #[derive(Properties, PartialEq)]
 pub struct NotificationPanelProps {

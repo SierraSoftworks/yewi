@@ -24,6 +24,26 @@ test.describe("MenuButton", () => {
     await expect(button).toHaveAttribute("aria-expanded", "false");
   });
 
+  // The surface is the Popover's; its limits are MenuButton's. This held only
+  // for components sorted after `popover` until tokens moved into `:where()`.
+  test("the menu takes its corner and its limits from MenuButton, and scrolls when it is too long", async ({ page, example }) => {
+    await page.setViewportSize({ width: 800, height: 150 });
+    const stage = await example("menu-button/basic");
+    await stage.getByRole("button", { name: "Actions" }).click();
+
+    const menu = page.getByRole("menu", { name: "Actions" });
+    await expect(menu).toBeVisible();
+    const surface = await menu.evaluate((element) => {
+      const surface = element.closest(".yi-menu-button__surface")!;
+      const body = [surface, ...surface.querySelectorAll("*")].find((part) => part.scrollHeight > part.clientHeight + 1);
+      const style = getComputedStyle(surface);
+      const control = getComputedStyle(document.documentElement).getPropertyValue("--yi-radius-control").trim();
+      return { radius: style.borderTopLeftRadius, control, scrolls: body !== undefined };
+    });
+    expect(surface.radius).toBe(surface.control);
+    expect(surface.scrolls).toBe(true);
+  });
+
   test("a second press, a press outside and Escape all close it", async ({ page, example }) => {
     const stage = await example("menu-button/basic");
     const button = stage.getByRole("button", { name: "Actions" });

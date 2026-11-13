@@ -2,17 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::Attrs;
-
-/// The direction a divider runs in.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum DividerOrientation {
-    /// A rule across the container, between stacked content.
-    #[default]
-    Horizontal,
-    /// A rule down the container, between items in a row.
-    Vertical,
-}
+use crate::{Attrs, Orientation, is_empty};
 
 /// Where a divider's label sits along the rule.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -38,8 +28,8 @@ pub struct DividerProps {
     /// An optional label set into a horizontal rule, such as "or" or a date.
     #[prop_or_default]
     pub children: Html,
-    #[prop_or_default]
-    pub orientation: DividerOrientation,
+    #[prop_or(Orientation::Horizontal)]
+    pub orientation: Orientation,
     /// Where the label sits. Only used with a label.
     #[prop_or_default]
     pub align: DividerAlign,
@@ -55,11 +45,11 @@ pub struct DividerProps {
 /// primitive around it owns the spacing.
 #[function_component]
 pub fn Divider(props: &DividerProps) -> Html {
-    let labelled = props.children != Html::default();
+    let labelled = !is_empty(&props.children);
     let id = props.id.clone();
 
     props.attrs.apply(match props.orientation {
-        DividerOrientation::Vertical => html! {
+        Orientation::Vertical => html! {
             <div
                 {id}
                 class={classes!("yi-divider", "yi-divider--vertical", props.class.clone())}
@@ -69,7 +59,7 @@ pub fn Divider(props: &DividerProps) -> Html {
         },
         // The label is content, so a labelled rule is not a bare separator:
         // the separator role would hide its text from assistive technology.
-        DividerOrientation::Horizontal if labelled => html! {
+        Orientation::Horizontal if labelled => html! {
             <div
                 {id}
                 class={classes!(
@@ -82,7 +72,7 @@ pub fn Divider(props: &DividerProps) -> Html {
                 <span class="yi-divider__label">{ props.children.clone() }</span>
             </div>
         },
-        DividerOrientation::Horizontal => html! {
+        Orientation::Horizontal => html! {
             <hr {id} class={classes!("yi-divider", props.class.clone())} />
         },
     })

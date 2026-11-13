@@ -6,7 +6,7 @@
 // is asked for and the screen has room for it.
 @use "api" as *;
 
-.yi-user-menu {
+:where(.yi-user-menu) {
   // Component tokens
   --yi-user-menu-height: var(--yi-control-height);
   --yi-user-menu-gap: var(--yi-space-sm);
@@ -16,7 +16,9 @@
   --yi-user-menu-name-max-width: 12rem;
   --yi-user-menu-max-height: min(70vh, 32rem);
   --yi-user-menu-max-width: 20rem;
+}
 
+.yi-user-menu {
   display: inline-flex;
   max-inline-size: 100%;
   vertical-align: middle;

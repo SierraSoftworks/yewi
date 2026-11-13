@@ -3,11 +3,13 @@
 // The root is a Tooltip wrapper around a <time role="timer"> element.
 @use "api" as *;
 
-.yi-countdown {
+:where(.yi-countdown) {
   // Component tokens
   --yi-countdown-color: inherit;
   --yi-countdown-done-color: var(--yi-countdown-color);
+}
 
+.yi-countdown {
   color: var(--yi-countdown-color);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;

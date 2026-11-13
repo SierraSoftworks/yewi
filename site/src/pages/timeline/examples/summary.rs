@@ -12,7 +12,7 @@ const UPDATES: [(Tone, &str, (u32, u32), &str); 4] = [
 #[function_component]
 pub fn Example() -> Html {
     html! {
-        <Timeline orientation={TimelineOrientation::Horizontal} label="API incident, oldest first">
+        <Timeline orientation={Orientation::Horizontal} label="API incident, oldest first">
             { for UPDATES.into_iter().map(|(tone, status, (hour, minute), message)| {
                 let at = Utc.with_ymd_and_hms(2026, 1, 15, hour, minute, 0).unwrap();
                 html! {

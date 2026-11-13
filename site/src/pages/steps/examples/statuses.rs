@@ -4,7 +4,7 @@ use yewi::prelude::*;
 #[function_component]
 pub fn Example() -> Html {
     html! {
-        <Steps orientation={StepsOrientation::Vertical} label="Release checklist">
+        <Steps orientation={Orientation::Vertical} label="Release checklist">
             <Step title="Build" status={StepStatus::Done} description="Finished successfully." />
             <Step title="Unit tests" status={StepStatus::Failed} description="Finished with an error." />
             <Step title="Lint" status={StepStatus::Skipped} description="Deliberately not run." />

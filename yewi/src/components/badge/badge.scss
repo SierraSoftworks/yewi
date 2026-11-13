@@ -4,9 +4,7 @@
 // Pill. A dot is always solid, since a tint that small cannot be seen.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-badge {
+:where(.yi-badge) {
   // Component tokens
   --yi-badge-tone: var(--yi-neutral);
   --yi-badge-soft: var(--yi-neutral-soft);
@@ -16,7 +14,9 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-badge-dot-size: 0.5rem;
   // The gap cut around a badge attached to its children.
   --yi-badge-ring: var(--yi-surface);
+}
 
+.yi-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;

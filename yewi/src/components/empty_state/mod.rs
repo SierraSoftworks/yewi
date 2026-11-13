@@ -6,7 +6,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, Icon, IconData, Size, Tone, icons};
+use crate::{Attrs, Button, Icon, IconData, Size, Tone, icons, is_empty};
 
 /// Where the content of an [`EmptyState`] or [`ErrorState`] sits.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -40,10 +40,6 @@ struct Parts<'a> {
     class: &'a Classes,
     id: &'a Option<AttrValue>,
     attrs: &'a Attrs,
-}
-
-fn is_empty(html: &Html) -> bool {
-    *html == Html::default()
 }
 
 fn view(parts: Parts) -> Html {

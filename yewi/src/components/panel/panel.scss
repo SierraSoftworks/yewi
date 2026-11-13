@@ -4,13 +4,15 @@
 // alternates between the two tonal neutrals so each reads as its own band.
 @use "api" as *;
 
-.yi-panel {
+:where(.yi-panel) {
   // Component tokens
   --yi-panel-bg: var(--yi-tone-1);
   --yi-panel-padding-block: var(--yi-space-md);
   --yi-panel-padding-inline: var(--yi-card-padding, var(--yi-space-lg));
   --yi-panel-gap: var(--yi-space-sm);
+}
 
+.yi-panel {
   display: block;
   min-inline-size: 0;
   background: var(--yi-panel-bg);

@@ -2,8 +2,7 @@
 
 // Tokens sit on the outermost element, so setting one on a shortcut reaches
 // every cap inside it.
-.yi-kbd-combo,
-.yi-kbd:not(.yi-kbd-combo > .yi-kbd) {
+:where(.yi-kbd-combo, .yi-kbd:not(.yi-kbd-combo > .yi-kbd)) {
   // Component tokens
   --yi-kbd-bg: var(--yi-neutral-soft);
   --yi-kbd-fg: var(--yi-fg-muted);

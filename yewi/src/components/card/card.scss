@@ -5,13 +5,15 @@
 // touches its edge instead of clipping its content.
 @use "api" as *;
 
-.yi-card {
+:where(.yi-card) {
   // Component tokens
   --yi-card-padding: var(--yi-space-lg);
   --yi-card-gap: var(--yi-space-md);
   --yi-card-header-bg: transparent;
   --yi-card-footer-bg: var(--yi-tone-2);
+}
 
+.yi-card {
   @include card-surface;
 
   // The radius of anything flush against the inside of the border.

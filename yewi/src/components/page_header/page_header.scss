@@ -4,12 +4,14 @@
 // The row wraps, so on a narrow page the actions drop under the title.
 @use "api" as *;
 
-.yi-page-header {
+:where(.yi-page-header) {
   // Component tokens
   --yi-page-header-gap: var(--yi-space-sm);
   --yi-page-header-title-size: var(--yi-text-4xl);
   --yi-page-header-title-weight: var(--yi-heading-weight-4xl);
+}
 
+.yi-page-header {
   display: flex;
   flex-direction: column;
   gap: var(--yi-page-header-gap);

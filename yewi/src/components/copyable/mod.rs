@@ -14,7 +14,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Size, icons, use_id};
+use crate::{Attrs, Button, ButtonVariant, Size, icons, use_id, is_empty};
 
 mod dom;
 
@@ -153,7 +153,7 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
         CopyState::Copied => Some(&props.copied_label),
         CopyState::Failed => Some(&props.failed_label),
     };
-    let icon_only = props.children == Html::default();
+    let icon_only = is_empty(&props.children);
 
     let mut attrs = Vec::new();
     if icon_only {
@@ -281,7 +281,7 @@ pub fn Copyable(props: &CopyableProps) -> Html {
         props.class.clone(),
     );
 
-    let shown = if props.children == Html::default() { html! { { props.value.clone() } } } else { props.children.clone() };
+    let shown = if is_empty(&props.children) { html! { { props.value.clone() } } } else { props.children.clone() };
     // A cut-off value is still readable on hover.
     let title = props.truncate.then(|| props.value.clone());
 

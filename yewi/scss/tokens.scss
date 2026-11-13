@@ -24,6 +24,9 @@
   --yi-line: light-dark(#{tinted(7%, #e6e6e6)}, #{tinted(8%, #353536)});
   --yi-line-strong: light-dark(#{tinted(8%, #cdcdcd)}, #{tinted(8%, #4a4a4d)});
   --yi-fg: light-dark(#{tinted(14%, #15171a)}, #{tinted(6%, #d0d0d1)});
+  // Muted is secondary text: descriptions, labels, column heads, metadata.
+  // Subtle is one step quieter, for what is not read as text: placeholders,
+  // icons, line numbers and disabled content.
   --yi-fg-muted: light-dark(#{tinted(12%, #5e5e5e)}, #{tinted(9%, #a0a0a2)});
   --yi-fg-subtle: light-dark(#{tinted(12%, #6b6b6b)}, #{tinted(10%, #949497)});
 
@@ -61,6 +64,15 @@
 
   // ---- Code --------------------------------------------------------------
   --yi-code-bg: light-dark(#{tinted(5%, #f6f6f6)}, #{tinted(6%, #1a1b1e)});
+  // Syntax colours: six hues and a grey, each at least 4.5:1 against
+  // `--yi-code-bg` in both themes.
+  --yi-syntax-comment: var(--yi-fg-subtle);
+  --yi-syntax-keyword: light-dark(#8f3a80, #d58bd0);
+  --yi-syntax-string: light-dark(#146f43, #4cbf7f);
+  --yi-syntax-number: light-dark(#855900, #e0a93a);
+  --yi-syntax-type: light-dark(#0b6a75, #5cc4cf);
+  --yi-syntax-function: light-dark(#2a63b5, #7aaef0);
+  --yi-syntax-property: light-dark(#a8382c, #f0907f);
 
   // ---- Type --------------------------------------------------------------
   // Set `--yi-font-heading`, `-body` or `-mono` to `var(--yi-font-system)` /
@@ -115,6 +127,8 @@
   --yi-control-height-lg: 2.25rem; // 36
   --yi-control-padding: 0.875rem;
   --yi-icon-stroke: 1.5;
+  // A control that cannot be used. Fields step back with a tonal fill instead.
+  --yi-disabled-opacity: 0.5;
 
   // ---- Elevation ---------------------------------------------------------
   --yi-card-line: color-mix(in srgb, var(--yi-line) 70%, transparent);
@@ -122,11 +136,19 @@
     0 4px 14px light-dark(rgb(20 26 34 / 0.07), rgb(0 0 0 / 0.22));
   --yi-shadow-overlay: 0 1px 2px light-dark(rgb(20 26 34 / 0.08), rgb(0 0 0 / 0.4)),
     0 8px 24px light-dark(rgb(20 26 34 / 0.12), rgb(0 0 0 / 0.38));
+  // Dims the page behind a modal surface.
+  --yi-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.45));
+  // For surfaces that float without the top layer, such as toasts. Popovers,
+  // tooltips and dialogs are in the top layer and need no `z-index`.
+  --yi-z-overlay: 60;
 
   // ---- Motion ------------------------------------------------------------
   --yi-duration-fast: 120ms;
   --yi-duration: 180ms;
   --yi-ease: cubic-bezier(0.2, 0, 0, 1);
+  // One turn of anything that spins, and one beat of anything that pulses.
+  --yi-duration-spin: 810ms;
+  --yi-duration-pulse: 1.6s;
 }
 
 :where(:root) {

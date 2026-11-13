@@ -5,7 +5,7 @@
 // the sidebar can sit exactly beneath it.
 @use "api" as *;
 
-.yi-app-bar {
+:where(.yi-app-bar) {
   // Component tokens
   --yi-app-bar-height: var(--yi-app-shell-bar-height, var(--yi-space-3xl));
   --yi-app-bar-padding: var(--yi-space-lg);
@@ -14,7 +14,9 @@
   --yi-app-bar-line: var(--yi-line);
   --yi-app-bar-logo-size: 1.5rem;
   --yi-app-bar-logo-color: var(--yi-accent-text);
+}
 
+.yi-app-bar {
   position: sticky;
   inset-block-start: 0;
   z-index: 2;

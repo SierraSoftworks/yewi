@@ -23,7 +23,7 @@
   }
 }
 
-.yi-popover__surface {
+:where(.yi-popover__surface) {
   // Component tokens
   --yi-popover-bg: var(--yi-surface-raised);
   --yi-popover-fg: var(--yi-fg);
@@ -35,7 +35,9 @@
   --yi-popover-max-width: 20rem;
   --yi-popover-max-height: none;
   --yi-popover-arrow-size: 0.5rem;
+}
 
+.yi-popover__surface {
   display: flex;
   flex-direction: column;
   gap: var(--yi-popover-gap);

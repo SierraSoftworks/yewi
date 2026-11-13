@@ -2,7 +2,7 @@
 // showing through a thick border, so there is nothing to position.
 @use "api" as *;
 
-.yi-radio {
+:where(.yi-radio) {
   // Component tokens
   --yi-radio-size: 1rem;
   --yi-radio-bg: var(--yi-surface);
@@ -11,7 +11,9 @@
   --yi-radio-accent: var(--yi-accent-solid); // ring when selected
   --yi-radio-accent-hover: var(--yi-accent-solid-hover);
   --yi-radio-dot: var(--yi-on-solid);
+}
 
+.yi-radio {
   &__input {
     appearance: none;
     box-sizing: border-box;
@@ -69,11 +71,13 @@
   }
 }
 
-.yi-radio-group {
+:where(.yi-radio-group) {
   // Component tokens
   --yi-radio-group-gap: var(--yi-space-sm); // between options
   --yi-radio-group-gap-inline: var(--yi-space-lg); // between options in a row
+}
 
+.yi-radio-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;

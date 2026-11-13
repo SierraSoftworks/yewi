@@ -28,6 +28,13 @@
   @return if($s <= 0.04045, math.div($s, 12.92), math.pow(math.div($s + 0.055, 1.055), 2.4));
 }
 
+/// The status tones, as the suffix of `--yi-<tone>` and of a `--<tone>`
+/// modifier: `@each $tone in $tones { &--#{$tone} { ... } }`.
+$tones: neutral, ok, warn, danger, info, active;
+
+/// The tones that carry a colour of their own: all but `neutral`.
+$tones-coloured: ok, warn, danger, info, active;
+
 /// The standard keyboard focus indicator.
 @mixin focus-ring($offset: 2px) {
   outline: 2px solid var(--yi-focus);
@@ -78,6 +85,15 @@
   border: 1px solid var(--yi-card-line);
   border-radius: var(--yi-radius-card);
   box-shadow: var(--yi-shadow-card);
+}
+
+/// The frame around code, diffs and structured data: the code surface with a
+/// hairline border and the card corner.
+@mixin code-frame {
+  border: 1px solid var(--yi-line);
+  border-radius: var(--yi-radius-card);
+  background: var(--yi-code-bg);
+  color: var(--yi-fg);
 }
 
 /// Wraps rules that animate, so reduced-motion users get none.

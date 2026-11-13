@@ -6,7 +6,7 @@
 @use "sass:list";
 @use "api" as *;
 
-.yi-terminal {
+:where(.yi-terminal) {
   // Component tokens
   --yi-terminal-bg: color-mix(in oklch, var(--yi-bg), black 22%);
   --yi-terminal-fg: var(--yi-fg);
@@ -28,7 +28,9 @@
   --yi-terminal-white: var(--yi-fg); // ANSI 7
   --yi-terminal-bright-black: var(--yi-fg-subtle); // ANSI 8
   --yi-terminal-bright-mix: 28%; // how far ANSI 9 to 15 are lifted towards white
+}
 
+.yi-terminal {
   color-scheme: dark;
   display: flex;
   flex-direction: column;
@@ -143,7 +145,7 @@
 }
 
 .yi-terminal__output {
-  @each $tone in (ok, warn, danger, info, active) {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       color: var(--yi-#{$tone});
     }

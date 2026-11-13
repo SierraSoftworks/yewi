@@ -2,7 +2,7 @@
 // thumb.
 @use "api" as *;
 
-.yi-switch {
+:where(.yi-switch) {
   // Component tokens
   --yi-switch-width: 2rem;
   --yi-switch-height: 1.125rem;
@@ -12,7 +12,9 @@
   --yi-switch-accent: var(--yi-accent-solid); // track when on
   --yi-switch-accent-hover: var(--yi-accent-solid-hover);
   --yi-switch-thumb: var(--yi-on-solid);
+}
 
+.yi-switch {
   &__input {
     appearance: none;
     box-sizing: border-box;
@@ -68,7 +70,7 @@
   }
 
   &.yi-choice--disabled &__input {
-    opacity: 0.5;
+    opacity: var(--yi-disabled-opacity);
   }
 
   &.yi-choice--sm {

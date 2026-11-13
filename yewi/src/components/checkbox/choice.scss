@@ -2,13 +2,15 @@
 // an optional description. The whole row is the click target.
 @use "api" as *;
 
-.yi-choice {
+:where(.yi-choice) {
   // Component tokens
   --yi-choice-gap: var(--yi-space-sm); // between the control and its text
   --yi-choice-fg: var(--yi-fg);
   --yi-choice-description: var(--yi-fg-muted);
   --yi-choice-font-size: var(--yi-text-md);
+}
 
+.yi-choice {
   display: inline-flex;
   align-items: flex-start;
   gap: var(--yi-choice-gap);

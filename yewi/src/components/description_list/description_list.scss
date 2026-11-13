@@ -5,7 +5,7 @@
 // container: give it room (`flex: 1`) when it sits in a row of other things.
 @use "api" as *;
 
-.yi-description-list {
+:where(.yi-description-list) {
   // Component tokens
   --yi-description-list-term-size: fit-content(40%);
   --yi-description-list-term-fg: var(--yi-fg-muted);
@@ -13,7 +13,9 @@
   --yi-description-list-gap-inline: var(--yi-space-lg);
   --yi-description-list-line: var(--yi-line);
   --yi-description-list-min: 9rem;
+}
 
+.yi-description-list {
   display: grid;
   grid-template-columns: var(--yi-description-list-term-size) minmax(0, 1fr);
   gap: var(--yi-description-list-gap-block) var(--yi-description-list-gap-inline);

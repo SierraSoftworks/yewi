@@ -4,8 +4,6 @@
 // pair and nothing else, so a new look only has to read the two.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
 @mixin tones($block) {
   @each $tone in $tones {
     &--#{$tone} {
@@ -53,7 +51,7 @@ $tones: neutral, ok, warn, danger, info, active;
 
 // ---- Alert -----------------------------------------------------------------
 
-.yi-alert {
+:where(.yi-alert) {
   // Component tokens
   --yi-alert-tone: var(--yi-info); // Icon, title and rule colour; set by `tone`.
   --yi-alert-bg: var(--yi-surface);
@@ -62,7 +60,9 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-alert-radius: var(--yi-radius-control);
   --yi-alert-padding: var(--yi-space-md) var(--yi-space-lg);
   --yi-alert-edge: 3px; // Width of the rule along the leading edge.
+}
 
+.yi-alert {
   @include tones("alert");
 
   display: flex;
@@ -148,7 +148,7 @@ $tones: neutral, ok, warn, danger, info, active;
 
 // ---- Banner ----------------------------------------------------------------
 
-.yi-banner {
+:where(.yi-banner) {
   // Component tokens
   --yi-banner-tone: var(--yi-info); // Icon and solid fill colour; set by `tone`.
   --yi-banner-soft: var(--yi-info-soft); // Tinted fill; set by `tone`.
@@ -158,7 +158,9 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-banner-border: color-mix(in srgb, var(--yi-banner-tone) 28%, transparent);
   --yi-banner-padding: var(--yi-space-sm) var(--yi-space-lg);
   --yi-banner-justify: flex-start; // `center` centres the message.
+}
 
+.yi-banner {
   @include tones("banner");
 
   display: flex;
@@ -239,11 +241,13 @@ $tones: neutral, ok, warn, danger, info, active;
 
 // ---- Note ------------------------------------------------------------------
 
-.yi-note {
+:where(.yi-note) {
   // Component tokens
   --yi-note-tone: var(--yi-fg-muted); // Text and icon colour; set by `tone`.
   --yi-note-size: var(--yi-text-sm);
+}
 
+.yi-note {
   @include tones("note");
 
   // Neutral is plain muted text rather than the neutral status colour.

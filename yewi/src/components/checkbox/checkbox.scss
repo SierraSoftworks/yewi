@@ -2,7 +2,7 @@
 // over it by an icon.
 @use "api" as *;
 
-.yi-checkbox {
+:where(.yi-checkbox) {
   // Component tokens
   --yi-checkbox-size: 1rem;
   --yi-checkbox-radius: var(--yi-radius-sm);
@@ -12,7 +12,9 @@
   --yi-checkbox-accent: var(--yi-accent-solid); // fill when ticked or mixed
   --yi-checkbox-accent-hover: var(--yi-accent-solid-hover);
   --yi-checkbox-mark: var(--yi-on-solid);
+}
 
+.yi-checkbox {
   &__input {
     appearance: none;
     box-sizing: border-box;

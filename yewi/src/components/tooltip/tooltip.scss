@@ -18,7 +18,7 @@
   }
 }
 
-.yi-tooltip__bubble {
+:where(.yi-tooltip__bubble) {
   // Component tokens
   --yi-tooltip-bg: var(--yi-surface-raised);
   --yi-tooltip-fg: var(--yi-fg);
@@ -28,7 +28,9 @@
   --yi-tooltip-padding: var(--yi-space-xs) var(--yi-space-sm);
   --yi-tooltip-max-width: 22rem;
   --yi-tooltip-arrow-size: 0.5rem;
+}
 
+.yi-tooltip__bubble {
   inline-size: max-content;
   max-inline-size: min(var(--yi-tooltip-max-width), calc(100vw - var(--yi-space-lg)));
   padding: var(--yi-tooltip-padding);

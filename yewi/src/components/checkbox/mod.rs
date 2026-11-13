@@ -5,7 +5,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, Size, icons, use_field_control};
+use crate::{Attrs, Icon, Size, icons, use_field_control, is_empty};
 
 /// Whether the checkbox or radio an event came from is now checked.
 ///
@@ -37,7 +37,7 @@ pub(crate) fn choice_classes(size: Size, disabled: bool) -> Classes {
 /// Both sit inside the `<label>`, so the description is read with the option
 /// without needing an id of its own.
 pub(crate) fn choice_text(label: &Html, description: Option<&Html>) -> Html {
-    let has_label = *label != Html::default();
+    let has_label = !is_empty(label);
     if !has_label && description.is_none() {
         return Html::default();
     }

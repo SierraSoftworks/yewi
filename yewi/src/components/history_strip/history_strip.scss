@@ -5,9 +5,7 @@
 // The active cell holds a Popover whose wrapper covers the cell as the anchor.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-history-strip {
+:where(.yi-history-strip) {
   // Component tokens
   --yi-history-strip-height: 0.625rem;
   --yi-history-strip-gap: 1px;
@@ -16,7 +14,9 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-history-strip-cell-min: 4px;
   --yi-history-strip-cell-max: none;
   --yi-history-strip-dim: 0.45;
+}
 
+.yi-history-strip {
   display: flex;
   justify-content: flex-end;
   gap: var(--yi-history-strip-gap);
