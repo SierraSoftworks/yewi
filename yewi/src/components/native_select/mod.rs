@@ -28,21 +28,33 @@ pub struct NativeSelectProps {
     /// The choices, as `(value, label)` pairs.
     pub options: Rc<[(AttrValue, AttrValue)]>,
     /// The `value` of the selected option. Without a client runtime this is
-    /// the initial choice, and the browser keeps it from there.
+    /// the initial choice, and the browser keeps it from there. A value that
+    /// is not among `options`, such as a stored choice that has since been
+    /// withdrawn, is kept and shown as a choice of its own.
     #[prop_or_default]
     pub value: AttrValue,
-    /// Fired with the chosen option's `value`. Needs a client runtime; a
-    /// native form submits the choice without it.
+    /// Fired with the chosen option's `value`, which is empty when a
+    /// `clearable` select is cleared. Needs a client runtime; a native form
+    /// submits the choice without it.
     #[prop_or_default]
     pub on_change: Callback<String>,
     /// The accessible name, where no `Field` labels the control: in a
     /// toolbar, or in an `InputGroup` affix.
     #[prop_or_default]
     pub label: Option<AttrValue>,
-    /// Shown while `value` matches no option, and not itself a choice. With
-    /// `required`, the browser blocks submission until an option is chosen.
+    /// Shown while `value` is empty, and not itself a choice unless the
+    /// select is `clearable`. With `required`, the browser blocks submission
+    /// until an option is chosen.
     #[prop_or_default]
     pub placeholder: Option<AttrValue>,
+    /// Keeps the empty choice available, labelled by `placeholder`, so that
+    /// an optional value can be unset again.
+    #[prop_or_default]
+    pub clearable: bool,
+    /// Labels a `value` that is not among `options`, given that value:
+    /// "eu-west-3 (retired)". Without it the value is its own label.
+    #[prop_or_default]
+    pub unknown_label: Option<Callback<AttrValue, AttrValue>>,
     /// The name the value is submitted under in a native form.
     #[prop_or_default]
     pub name: Option<AttrValue>,
@@ -74,6 +86,8 @@ pub struct NativeSelectProps {
 ///
 /// - It works without a client runtime: the browser opens its own picker and
 ///   submits the choice under `name`, so it suits server-rendered pages.
+/// - `clearable` keeps an empty choice, and a `value` the options no longer
+///   offer is shown as it is, not replaced by the first option.
 /// - It suits plain text options. For icons, descriptions, groups or
 ///   filtering, use `Select` or `Combobox`.
 /// - In an [`InputGroup`](crate::InputGroup) `prefix` or `suffix` it is drawn
@@ -91,7 +105,11 @@ pub fn NativeSelect(props: &NativeSelectProps) -> Html {
     }
 
     let onchange = props.on_change.reform(|event: Event| crate::components::input::target_value(&event));
+    // A value the options do not offer stays what is selected and submitted,
+    // rather than giving way to whichever option comes first.
     let chosen = props.options.iter().any(|(value, _)| *value == props.value);
+    let unknown = !chosen && !props.value.is_empty();
+    let empty = props.placeholder.is_some() || props.clearable;
 
     let element = props.attrs.apply(html! {
         <select
@@ -109,8 +127,23 @@ pub fn NativeSelect(props: &NativeSelectProps) -> Html {
             aria-describedby={control.described_by.clone()}
             {onchange}
         >
-            if let Some(placeholder) = &props.placeholder {
-                <option value="" disabled=true hidden=true selected={!chosen}>{ placeholder.clone() }</option>
+            if empty {
+                <option
+                    value=""
+                    disabled={!props.clearable}
+                    hidden={!props.clearable}
+                    selected={!chosen && !unknown}
+                >
+                    { props.placeholder.clone() }
+                </option>
+            }
+            if unknown {
+                <option value={props.value.clone()} selected=true>
+                    { match &props.unknown_label {
+                        Some(label) => label.emit(props.value.clone()),
+                        None => props.value.clone(),
+                    } }
+                </option>
             }
             { for props.options.iter().map(|(value, label)| html! {
                 <option key={value.to_string()} value={value.clone()} selected={*value == props.value}>

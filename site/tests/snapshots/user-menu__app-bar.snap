@@ -35,10 +35,7 @@ source: site/tests/snapshots.rs
 <span style="--yi-avatar-hue:227" aria-hidden="true" class="yi-avatar yi-avatar--sm">
 <span aria-hidden="true" class="yi-avatar__initials">GH</span>
 </span>
-<span class="yi-user-menu__identity">
-<span class="yi-user-menu__name">Grace Hopper</span>
-<span class="yi-user-menu__detail">read only</span>
-</span>
+<span class="yi-user-menu__label">Grace Hopper, read only</span>
 </button>
 </span>
 </span>

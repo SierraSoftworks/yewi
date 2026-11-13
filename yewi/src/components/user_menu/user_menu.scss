@@ -99,8 +99,9 @@
   user-select: none;
 }
 
-// The name stays in the button for assistive technology even when only the
-// avatar shows, and the menu still says who is signed in.
+// While only the avatar shows, the name stays in the button for assistive
+// technology and the menu says who is signed in.
+.yi-user-menu__label,
 .yi-user-menu__trigger > .yi-user-menu__identity {
   @include visually-hidden;
 }
@@ -111,6 +112,16 @@
 
 // With the name, where the bar has room for it.
 @media (width >= 36rem) {
+  .yi-user-menu--named {
+    // Read by the component, which then leaves the name out of the menu.
+    --yi-user-menu-shows-name: 1;
+
+    // A menu that is always in the page (`ServerOnly`) hides it instead.
+    .yi-user-menu__surface > .yi-popover__header {
+      display: none;
+    }
+  }
+
   .yi-user-menu--named > .yi-popover > .yi-user-menu__trigger {
     // Name and detail fill the control height between them.
     padding: 0 var(--yi-space-sm) 0 var(--yi-space-xs);

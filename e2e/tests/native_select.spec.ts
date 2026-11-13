@@ -12,6 +12,25 @@ test.describe("NativeSelect", () => {
     await expect(stage.getByRole("status")).toHaveText("Region eu-central-1");
   });
 
+  test("keeps a value the options no longer offer, and can be cleared", async ({ example }) => {
+    const stage = await example("native-select/optional");
+    const region = stage.getByRole("combobox", { name: "Backup region" });
+    const status = stage.getByRole("status");
+
+    await expect(region).toHaveValue("eu-west-3");
+    await expect(region.locator("option:checked")).toHaveText("eu-west-3 (no longer offered)");
+    await expect(status).toHaveText("Backup region eu-west-3");
+
+    await region.selectOption("Frankfurt");
+    await expect(status).toHaveText("Backup region eu-central-1");
+    // Once left, the withdrawn value is no longer a choice.
+    await expect(region.locator("option")).toHaveText(["No backup", "Ireland", "Frankfurt", "Virginia"]);
+
+    await region.selectOption("No backup");
+    await expect(region).toHaveValue("");
+    await expect(status).toHaveText("No backup region");
+  });
+
   test("submits a form without a client runtime", async ({ browser, baseURL }) => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();

@@ -52,6 +52,16 @@ impl TextInputKind {
     }
 }
 
+/// The `onblur` handler of a text control: the event to `on_blur`, the text
+/// left behind to `on_blur_value`.
+pub(crate) fn blur(on_blur: &Callback<FocusEvent>, on_blur_value: &Callback<String>) -> Callback<FocusEvent> {
+    let (on_blur, on_blur_value) = (on_blur.clone(), on_blur_value.clone());
+    Callback::from(move |event: FocusEvent| {
+        on_blur_value.emit(target_value(&event));
+        on_blur.emit(event);
+    })
+}
+
 /// The current value of the `<input>` or `<textarea>` an event came from.
 ///
 /// Read through reflection so the crate needs no extra `web-sys` features.
@@ -99,6 +109,10 @@ pub struct TextInputProps {
     pub on_focus: Callback<FocusEvent>,
     #[prop_or_default]
     pub on_blur: Callback<FocusEvent>,
+    /// Fired with the text when focus leaves, whether or not it changed: the
+    /// moment to trim or validate what was typed.
+    #[prop_or_default]
+    pub on_blur_value: Callback<String>,
     /// For shortcuts such as Enter to submit or Escape to cancel.
     #[prop_or_default]
     pub on_keydown: Callback<KeyboardEvent>,
@@ -174,7 +188,7 @@ pub fn TextInput(props: &TextInputProps) -> Html {
             {oninput}
             {onchange}
             onfocus={props.on_focus.clone()}
-            onblur={props.on_blur.clone()}
+            onblur={crate::components::input::blur(&props.on_blur, &props.on_blur_value)}
             onkeydown={props.on_keydown.clone()}
         />
     })

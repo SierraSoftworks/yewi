@@ -26,6 +26,7 @@
 //! The stylesheet for the enabled features is compiled into the crate. Render
 //! [`Styles`], call [`install_styles`], or serve [`STYLESHEET`] from a server.
 //! All rules live in `@layer yewi.*`, so any unlayered app rule overrides them.
+//! [`SCSS`] holds the Sass mixins behind them, for app stylesheets.
 //!
 //! # Opt-in components
 //!
@@ -47,7 +48,7 @@ pub use common::*;
 pub use components::*;
 pub use hooks::{Now, NowProvider, Tick, use_id, use_now};
 pub use icons::IconData;
-pub use styles::{STYLESHEET, Styles, install_styles};
+pub use styles::{SCSS, STYLESHEET, Styles, install_styles};
 
 /// The font files, `@font-face` rules and helpers to serve or export them.
 #[cfg(feature = "fonts")]
@@ -60,5 +61,5 @@ pub mod prelude {
     pub use crate::components::*;
     pub use crate::hooks::{Now, NowProvider, Tick, use_id, use_now};
     pub use crate::icons::{self, IconData};
-    pub use crate::styles::{STYLESHEET, Styles, install_styles};
+    pub use crate::styles::{SCSS, STYLESHEET, Styles, install_styles};
 }

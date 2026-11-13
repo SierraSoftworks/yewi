@@ -43,6 +43,10 @@ pub struct TextAreaProps {
     pub on_focus: Callback<FocusEvent>,
     #[prop_or_default]
     pub on_blur: Callback<FocusEvent>,
+    /// Fired with the text when focus leaves, whether or not it changed: the
+    /// moment to trim or validate what was typed.
+    #[prop_or_default]
+    pub on_blur_value: Callback<String>,
     #[prop_or_default]
     pub on_keydown: Callback<KeyboardEvent>,
     /// The height in lines of text.
@@ -118,7 +122,7 @@ pub fn TextArea(props: &TextAreaProps) -> Html {
             {oninput}
             {onchange}
             onfocus={props.on_focus.clone()}
-            onblur={props.on_blur.clone()}
+            onblur={crate::components::input::blur(&props.on_blur, &props.on_blur_value)}
             onkeydown={props.on_keydown.clone()}
         />
     })

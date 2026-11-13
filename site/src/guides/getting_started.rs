@@ -50,15 +50,28 @@ async fn stylesheet() -> impl Responder {
                    The font files live in the " }<code>{ "yewi-fonts" }</code>{ " crate, which has no dependencies." }
             </p>
             <h3>{ "Trunk apps" }</h3>
-            <p>{ "Write the font files out from a build script and let Trunk copy them into your build." }</p>
+            <p>
+                { "Write the font files out from a build script, and stage them with a Trunk hook once the build \
+                   has finished. Trunk resolves the assets in " }<code>{ "index.html" }</code>
+                { " before cargo runs the build script, so a " }<code>{ "copy-dir" }</code>
+                { " link to the generated directory fails on a clean checkout. Keep the directory out of version control." }
+            </p>
             { rust(r#"
 // build.rs, with `yewi-fonts` as a build dependency
 fn main() {
+    // Also re-run when the generated directory goes missing.
+    println!("cargo:rerun-if-changed=fonts");
     yewi_fonts::write_to("fonts").unwrap();
 }
 "#) }
             { plain(r#"
-<link data-trunk rel="copy-dir" href="fonts" />
+# Trunk.toml
+[[hooks]]
+stage = "post_build"
+command = "sh"
+command_arguments = ["-c", "cp -R fonts \"$TRUNK_STAGING_DIR/fonts\""]
+"#) }
+            { plain(r#"
 <link rel="stylesheet" href="fonts/fonts.css" />
 "#) }
             <h3>{ "Servers" }</h3>

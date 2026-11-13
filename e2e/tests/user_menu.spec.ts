@@ -76,7 +76,8 @@ test.describe("UserMenu", () => {
     expect((await button.boundingBox())!.width).toBeLessThan(48);
     await button.click();
     await expect(page.getByRole("menu")).toBeVisible();
-    await expect(page.getByText("read only").last()).toBeVisible();
+    await expect(page.getByText("Grace Hopper", { exact: true })).toHaveCount(1);
+    await expect(page.getByText("read only", { exact: true })).toBeVisible();
   });
 
   test("show_name puts the name beside the avatar, except on a narrow screen", async ({ page, example }) => {
@@ -86,6 +87,12 @@ test.describe("UserMenu", () => {
 
     await expect(button.getByText("Alan Turing")).toBeInViewport();
     expect(await width()).toBeGreaterThan(100);
+
+    // The button already says who is signed in, so the menu does not repeat it.
+    await button.click();
+    await expect(page.getByRole("menu")).toBeVisible();
+    await expect(page.getByText("Alan Turing")).toHaveCount(1);
+    await page.keyboard.press("Escape");
 
     await page.setViewportSize({ width: 390, height: 700 });
     await expect.poll(width).toBeLessThan(48);

@@ -75,6 +75,11 @@ $narrow-embedded: 36rem;
   grid-template-columns: var(--yi-app-shell-sidebar-width) minmax(0, 1fr);
   align-items: start;
   min-block-size: 0;
+
+  // A shell without navigation gives the page the whole width.
+  &:not(:has(> .yi-app-shell__sidebar)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .yi-app-shell__sidebar {

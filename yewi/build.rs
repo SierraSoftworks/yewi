@@ -7,6 +7,8 @@
 //!   skipped, Rust and SCSS alike, unless that feature is enabled.
 //! - The stylesheet is `scss/*.scss` (foundations, one cascade layer each)
 //!   followed by every enabled component's `*.scss`, compiled with `grass`.
+//! - `scss/_api.scss`, the mixins, is handed to the build scripts of crates
+//!   that depend on this one as the file named by `DEP_YEWI_SCSS`.
 
 use std::{
     env,
@@ -86,6 +88,11 @@ fn main() {
     let behaviours: Vec<&str> =
         behaviours.lines().map(str::trim).filter(|line| !line.is_empty() && !line.starts_with("//")).collect();
     fs::write(out.join("behaviours.js"), behaviours.join("\n")).unwrap();
+
+    // Under the name an app stylesheet uses it by: `@use "yewi"`.
+    let api = out.join("_yewi.scss");
+    fs::copy(scss.join("_api.scss"), &api).unwrap();
+    println!("cargo::metadata=scss={}", api.display());
 
     fs::write(out.join("components.rs"), modules).unwrap();
     fs::write(out.join("yewi.css"), css).unwrap();

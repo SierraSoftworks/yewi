@@ -8,10 +8,7 @@ source: site/tests/snapshots.rs
 <span style="--yi-avatar-hue:317" aria-hidden="true" class="yi-avatar yi-avatar--sm">
 <span aria-hidden="true" class="yi-avatar__initials">ED</span>
 </span>
-<span class="yi-user-menu__identity">
-<span class="yi-user-menu__name">Edsger Dijkstra</span>
-<span class="yi-user-menu__detail">edsger@example.com</span>
-</span>
+<span class="yi-user-menu__label">Edsger Dijkstra, edsger@example.com</span>
 </button>
 </span>
 </span>

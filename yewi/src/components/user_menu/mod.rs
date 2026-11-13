@@ -15,7 +15,9 @@ pub struct UserMenuProps {
     /// `MenuSeparator`. Sign out follows them.
     #[prop_or_default]
     pub children: Html,
-    /// The person's name. It is shown on the button and at the top of the menu.
+    /// The person's name. It names the button and is shown once: on the
+    /// button where `show_name` puts it there, at the top of the menu otherwise.
+    /// `.yi-user-menu__name` is the element showing it.
     pub name: AttrValue,
     /// A second, quieter line: a role or an email address.
     #[prop_or_default]
@@ -31,7 +33,7 @@ pub struct UserMenuProps {
     pub seed: Option<AttrValue>,
     /// Shows the name, the detail and a chevron beside the avatar, where the
     /// bar has room for them. Without it, and on narrow screens, the button
-    /// is the avatar alone: the name and detail stay at the top of the menu
+    /// is the avatar alone: the name and detail move to the top of the menu
     /// and remain the button's accessible name.
     #[prop_or_default]
     pub show_name: bool,
@@ -68,8 +70,9 @@ pub struct UserMenuProps {
 ///
 /// - The button is the person's avatar. `show_name` adds their name, the
 ///   optional `detail` and a chevron, except on a narrow screen.
-/// - The menu opens with who is signed in, then the children, then sign out
-///   when `on_sign_out` or `sign_out_href` is set.
+/// - The menu opens with who is signed in, unless the button already says
+///   so, then the children, then sign out when `on_sign_out` or
+///   `sign_out_href` is set.
 /// - It behaves as a [`MenuButton`](crate::MenuButton): a press,
 ///   <kbd>Enter</kbd>, <kbd>Space</kbd> or <kbd>↓</kbd> opens it on its first
 ///   item, and choosing an item, <kbd>Esc</kbd> or a press outside closes it.
@@ -79,12 +82,18 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
     let root = use_node_ref();
     let open = use_state(|| false);
     let entry = use_state(|| MenuFocus::First);
+    // Whether the button was showing the name when the menu opened, which
+    // only the stylesheet knows. The menu then leaves it out.
+    let on_button = use_state_eq(|| false);
     let shown = *open;
 
     let set_open = {
         let (open, entry, on_open_change) = (open.clone(), entry.clone(), props.on_open_change.clone());
+        let (root, on_button) = (root.clone(), on_button.clone());
         Callback::from(move |next: bool| {
-            if !next {
+            if next {
+                on_button.set(dom::shows_name(&root));
+            } else {
                 entry.set(MenuFocus::First);
             }
             open.set(next);
@@ -124,6 +133,12 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
     let signs_out = props.on_sign_out.is_some() || !props.sign_out_href.is_empty();
     let on_sign_out = props.on_sign_out.clone().unwrap_or_default().reform(|_: MouseEvent| ());
 
+    // What names a button that shows only the avatar. It is kept apart from
+    // the identity, so that is in the page once.
+    let label = match &props.detail {
+        Some(detail) => format!("{}, {detail}", props.name),
+        None => props.name.to_string(),
+    };
     let identity = html! {
         <span class="yi-user-menu__identity">
             <span class="yi-user-menu__name">{ props.name.clone() }</span>
@@ -161,7 +176,7 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
                 flush=true
                 role="none"
                 surface_class="yi-user-menu__surface"
-                header={identity.clone()}
+                header={if *on_button { Html::default() } else { identity.clone() }}
                 {content}
             >
                 <button
@@ -179,7 +194,11 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
                         size={Size::Small}
                         decorative=true
                     />
-                    { identity }
+                    if props.show_name {
+                        { identity }
+                    } else {
+                        <span class="yi-user-menu__label">{ label }</span>
+                    }
                     if props.show_name {
                         <Icon icon={icons::CHEVRON_DOWN} class="yi-user-menu__caret" />
                     }
@@ -187,6 +206,30 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
             </Popover>
         </span>
     })
+}
+
+#[cfg(target_arch = "wasm32")]
+mod dom {
+    use yew::NodeRef;
+
+    /// Whether the stylesheet is showing the name on the button. It says so
+    /// with a custom property, so the breakpoint lives in one place.
+    pub fn shows_name(root: &NodeRef) -> bool {
+        let Some(element) = root.cast::<web_sys::Element>() else { return false };
+        web_sys::window()
+            .and_then(|window| window.get_computed_style(&element).ok().flatten())
+            .and_then(|style| style.get_property_value("--yi-user-menu-shows-name").ok())
+            .is_some_and(|value| value.trim() == "1")
+    }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+mod dom {
+    use yew::NodeRef;
+
+    pub fn shows_name(_: &NodeRef) -> bool {
+        false
+    }
 }
 
 #[cfg(test)]

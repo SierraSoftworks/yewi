@@ -1,5 +1,9 @@
 // Shared Sass helpers for foundations and component partials.
 // Usage: `@use "api" as *;`. This file must not emit CSS on its own.
+//
+// It is also handed to applications as it stands (`yewi::SCSS`, and the file
+// named by `DEP_YEWI_SCSS` in a build script), so it must stay one file that
+// uses nothing but Sass's built-in modules.
 @use "sass:color";
 @use "sass:math";
 

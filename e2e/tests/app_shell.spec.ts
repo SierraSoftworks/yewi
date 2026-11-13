@@ -22,6 +22,17 @@ test.describe("AppShell", () => {
     await expect(menu).toHaveAttribute("aria-expanded", "true");
   });
 
+  test("without a sidebar the page takes the full width", async ({ example }) => {
+    const stage = await example("app-shell/bar-only");
+    const bar = (await stage.locator(".yi-app-bar").boundingBox())!;
+    const page = (await stage.locator(".yi-app-shell__main").boundingBox())!;
+
+    await expect(stage.getByRole("button", { name: "Navigation" })).toHaveCount(0);
+    // No empty column where the sidebar would have been.
+    expect(page.x).toBe(bar.x);
+    expect(page.width).toBe(bar.width);
+  });
+
   test("picking a destination marks it current and shows its page", async ({ example }) => {
     const stage = await example("app-shell/basic");
     const nav = stage.getByRole("navigation", { name: "Sections" });

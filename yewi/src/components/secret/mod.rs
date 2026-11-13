@@ -53,6 +53,10 @@ pub struct SecretInputProps {
     pub on_focus: Callback<FocusEvent>,
     #[prop_or_default]
     pub on_blur: Callback<FocusEvent>,
+    /// Fired with the text when focus leaves, whether or not it changed: the
+    /// moment to trim or validate what was typed.
+    #[prop_or_default]
+    pub on_blur_value: Callback<String>,
     /// For shortcuts such as Enter to submit or Escape to cancel.
     #[prop_or_default]
     pub on_keydown: Callback<KeyboardEvent>,
@@ -194,7 +198,7 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
             oninput={props.on_input.reform(|event: InputEvent| crate::components::input::target_value(&event))}
             onchange={props.on_change.reform(|event: Event| crate::components::input::target_value(&event))}
             onfocus={props.on_focus.clone()}
-            onblur={props.on_blur.clone()}
+            onblur={crate::components::input::blur(&props.on_blur, &props.on_blur_value)}
             onkeydown={props.on_keydown.clone()}
         />
     });

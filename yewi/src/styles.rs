@@ -5,6 +5,29 @@ use yew::prelude::*;
 /// Servers can expose this at a cached URL instead of rendering [`Styles`].
 pub const STYLESHEET: &str = include_str!(concat!(env!("OUT_DIR"), "/yewi.css"));
 
+/// The Sass mixins the components are styled with (`card-surface`,
+/// `focus-ring`, `heading`, `eyebrow`, `chip`, `truncate`, `motion`, ...), for
+/// an app stylesheet whose own pieces should match. It is a Sass module that
+/// emits no CSS by itself and needs the stylesheet's `--yi-*` tokens on the
+/// page.
+///
+/// A build script of a crate that depends on `yewi` finds the same text in
+/// the file named by the `DEP_YEWI_SCSS` environment variable, without
+/// building this crate for the host:
+///
+/// ```no_run
+/// // build.rs
+/// let mixins = std::env::var("DEP_YEWI_SCSS").expect("yewi is a direct dependency");
+/// std::fs::copy(mixins, "_yewi.scss").expect("the mixins should be writable");
+/// ```
+///
+/// ```scss
+/// @use "yewi" as yi;
+///
+/// .result-row { @include yi.card-surface; }
+/// ```
+pub const SCSS: &str = include_str!("../scss/_api.scss");
+
 /// The `id` of the `<style>` element [`Styles`] and [`install_styles`] create.
 pub const STYLES_ID: &str = "yewi-styles";
 
@@ -36,7 +59,22 @@ pub fn install_styles() {
 
 #[cfg(test)]
 mod tests {
-    use super::STYLESHEET;
+    use super::{SCSS, STYLESHEET};
+
+    fn compile(app: &str) -> String {
+        let options = grass::Options::default().style(grass::OutputStyle::Compressed);
+        grass::from_string(format!("{SCSS}\n{app}"), &options).expect("the mixins compile outside the crate")
+    }
+
+    #[test]
+    fn the_mixins_are_usable_from_an_app_stylesheet() {
+        assert_eq!(compile("").trim(), "", "the module emits CSS of its own");
+
+        let css = compile(".row{@include card-surface}.name{@include truncate}a:focus-visible{@include focus-ring}");
+        for expected in ["--yi-card-line", "text-overflow", "--yi-focus"] {
+            assert!(css.contains(expected), "{expected} missing from {css}");
+        }
+    }
 
     #[test]
     fn stylesheet_has_no_encoding_markers() {
