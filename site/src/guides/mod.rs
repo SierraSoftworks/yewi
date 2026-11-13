@@ -6,6 +6,7 @@ use yewi::Highlight;
 
 mod contributing;
 mod getting_started;
+mod server_only;
 mod theming;
 
 pub struct Guide {
@@ -27,6 +28,12 @@ pub static GUIDES: &[Guide] = &[
         title: "Theming",
         summary: "Tokens, the per-app accent, light and dark themes, and how to override anything.",
         render: theming::render,
+    },
+    Guide {
+        slug: "server-only",
+        title: "Server-only apps",
+        summary: "What each component does on a page that ships no wasm, and what to use where it does nothing.",
+        render: server_only::render,
     },
     Guide {
         slug: "contributing",
