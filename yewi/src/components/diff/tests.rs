@@ -94,6 +94,14 @@ fn unchanged_runs_fold_to_the_requested_context() {
 }
 
 #[test]
+fn the_fold_button_takes_its_text_from_expand_label() {
+    let expand_label = Callback::from(|hidden: usize| AttrValue::from(format!("{hidden} Zeilen anzeigen")));
+    let html = render(move || html! { <Diff before={BEFORE} after={AFTER} context={1} expand_label={expand_label.clone()} /> });
+    assert!(html.contains("4 Zeilen anzeigen"));
+    assert!(!html.contains("unchanged lines"));
+}
+
+#[test]
 fn identical_texts_say_so() {
     let html = render(|| html! { <Diff before={BEFORE} after={BEFORE} /> });
     assert!(html.contains("No changes"));

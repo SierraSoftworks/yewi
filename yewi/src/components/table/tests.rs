@@ -178,6 +178,12 @@ fn loading_and_empty_states() {
     assert!(nothing.contains("Nothing to show"));
     assert!(!nothing.contains("aria-busy"));
 
+    let labelled = {
+        let rows = empty.clone();
+        render(move || html! { <Table<Host> columns={columns()} rows={rows.clone()} empty_label="Keine Hosts" /> })
+    };
+    assert!(labelled.contains("Keine Hosts") && !labelled.contains("Nothing to show"));
+
     let custom = render(move || {
         html! { <Table<Host> columns={columns()} rows={empty.clone()} empty={html! { "No hosts enrolled" }} /> }
     });
