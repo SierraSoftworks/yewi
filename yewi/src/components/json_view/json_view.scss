@@ -8,20 +8,23 @@
   // Component tokens
   --yi-json-view-bg: var(--yi-code-bg);
   --yi-json-view-padding: var(--yi-space-md);
-  --yi-json-view-radius: var(--yi-radius-control);
+  --yi-json-view-radius: var(--yi-radius-card);
   --yi-json-view-font-size: var(--yi-text-sm);
   --yi-json-view-indent: var(--yi-space-lg);
   --yi-json-view-guide: var(--yi-line);
   --yi-json-view-key: var(--yi-fg);
-  --yi-json-view-string: var(--yi-ok);
-  --yi-json-view-number: var(--yi-warn);
-  --yi-json-view-literal: var(--yi-info);
+  --yi-json-view-string: var(--yi-syntax-string);
+  --yi-json-view-number: var(--yi-syntax-number);
+  --yi-json-view-literal: var(--yi-json-view-number); // true, false, null
   --yi-json-view-punctuation: var(--yi-fg-muted);
 }
 
 .yi-json-view {
   position: relative;
   min-inline-size: 0;
+
+  @include code-frame;
+
   border-radius: var(--yi-json-view-radius);
   background: var(--yi-json-view-bg);
   color: var(--yi-json-view-punctuation);
@@ -33,6 +36,8 @@
   &--plain {
     --yi-json-view-bg: transparent;
     --yi-json-view-padding: 0;
+
+    border: 0;
   }
 }
 
@@ -119,7 +124,7 @@
   }
 
   &:focus-visible {
-    @include focus-ring(0);
+    @include focus-ring(-2px);
   }
 }
 

@@ -102,6 +102,9 @@ pub struct VirtualTableProps<T: Clone + PartialEq + 'static> {
     /// Shown instead of rows when there are none.
     #[prop_or_default]
     pub empty: Option<Html>,
+    /// The title of the default empty state, when `empty` is not set.
+    #[prop_or(AttrValue::Static("Nothing to show"))]
+    pub empty_label: AttrValue,
     /// Names the table for assistive technology.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -160,6 +163,7 @@ pub fn VirtualTable<T: Clone + PartialEq + 'static>(props: &VirtualTableProps<T>
         loading: props.loading,
         skeleton_rows: props.skeleton_rows,
         empty: props.empty.clone(),
+        empty_label: props.empty_label.clone(),
         label: props.label.clone(),
         footer: props.footer.clone(),
         class: classes!("yi-table--virtual", props.class.clone()),

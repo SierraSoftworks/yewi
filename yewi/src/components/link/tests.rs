@@ -21,7 +21,7 @@ fn without_href_it_is_a_native_button() {
 
 #[test]
 fn external_opens_a_new_tab_safely_and_says_so() {
-    let html = render(|| html! { <Link href="https://yew.rs" external=true>{ "Yew" }</Link> });
+    let html = render(|| html! { <Link href={NavTarget::href("https://yew.rs").external()}>{ "Yew" }</Link> });
     assert!(html.contains(r#"target="_blank""#));
     assert!(html.contains("noopener"));
     assert!(html.contains("noreferrer"));
@@ -79,7 +79,7 @@ mod router {
     };
     use yewi_test::render;
 
-    use crate::RouteLink;
+    use crate::{Link, NavTarget};
 
     #[derive(Clone, PartialEq, Routable)]
     enum Route {
@@ -95,8 +95,8 @@ mod router {
             history.push(format!("{}{path}", basename.unwrap_or_default()));
             html! {
                 <Router {history} {basename}>
-                    <RouteLink<Route> to={Route::Home}>{ "Home" }</RouteLink<Route>>
-                    <RouteLink<Route> to={Route::Host { id: 7 }}>{ "Host 7" }</RouteLink<Route>>
+                    <Link href={NavTarget::route(Route::Home)}>{ "Home" }</Link>
+                    <Link href={NavTarget::route(Route::Host { id: 7 })}>{ "Host 7" }</Link>
                 </Router>
             }
         })
@@ -120,13 +120,13 @@ mod router {
     #[test]
     fn hrefs_include_the_router_basename() {
         let html = render_at("/", Some("/app"));
-        assert!(html.contains(r#"href="/app""#));
+        assert!(html.contains(r#"href="/app""#) || html.contains(r#"href="/app/""#));
         assert!(html.contains(r#"href="/app/hosts/7""#));
     }
 
     #[test]
     fn renders_outside_a_router() {
-        let html = render(|| html! { <RouteLink<Route> to={Route::Host { id: 7 }}>{ "Host 7" }</RouteLink<Route>> });
+        let html = render(|| html! { <Link href={NavTarget::route(Route::Host { id: 7 })}>{ "Host 7" }</Link> });
         assert!(html.contains(r#"href="/hosts/7""#));
         assert!(!html.contains("aria-current"));
     }

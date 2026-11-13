@@ -5,7 +5,7 @@ use yewi::prelude::*;
 #[function_component]
 pub fn Example() -> Html {
     let footer = html! {
-        <SidebarItem href="https://example.com/docs" icon={icons::BOOK_OPEN} external=true>
+        <SidebarItem href={NavTarget::href("https://example.com/docs").external()} icon={icons::BOOK_OPEN}>
             { "Documentation" }
         </SidebarItem>
     };

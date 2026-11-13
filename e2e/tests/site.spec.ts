@@ -61,4 +61,55 @@ test.describe("Reference site", () => {
     expect(response?.status()).toBe(404);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Page not found");
   });
+
+  test("pages only preload the scripts every page runs", async ({ page }) => {
+    await page.goto("/components/button");
+    const preloads = await page.locator('link[rel="modulepreload"]').evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+    expect(preloads.length).toBeGreaterThan(0);
+    expect(preloads.filter((href) => href?.includes("/vendor/"))).toEqual([]);
+  });
+
+  test("API tables cover generic components", async ({ page }) => {
+    await page.goto("/components/table");
+    await expect(page.locator("#api").getByRole("row", { name: /^rows/ }).first()).toBeVisible();
+  });
+});
+
+test.describe("Review gallery", () => {
+  test("a link inside an example leaves the gallery in place", async ({ page, context }) => {
+    await page.goto("/_gallery");
+    await hydrated(page);
+    await page.locator('[data-gallery-link="link"]').click();
+    const heading = page.getByRole("heading", { level: 1 });
+    await expect(heading).toHaveText("Link");
+
+    const opened: unknown[] = [];
+    context.on("page", (popup) => opened.push(popup));
+    const address = page.url();
+    await page.locator('[data-example="link/basic"]').getByRole("link", { name: "Documentation" }).click();
+    await page.locator('[data-example="link/external"]').getByRole("link").first().click();
+
+    // A router link still navigates its own router.
+    const router = page.locator('[data-example="link/router"]');
+    await router.getByRole("link", { name: "Hosts" }).click();
+    await expect(router.getByRole("status")).toHaveText("Showing: Hosts");
+
+    await expect(heading).toHaveText("Link");
+    expect(page.url()).toBe(address);
+    expect(opened).toEqual([]);
+  });
+
+  test("offers each app's accent", async ({ page }) => {
+    await page.goto("/_gallery");
+    await hydrated(page);
+    const accent = () => page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--yi-accent"));
+    const before = await accent();
+
+    await page.getByRole("combobox", { name: "Accent" }).click();
+    for (const app of ["Symbols", "Automate", "Grey", "Analytics", "Buckle", "Rustak"]) {
+      await expect(page.getByRole("option", { name: app, exact: true })).toBeVisible();
+    }
+    await page.getByRole("option", { name: "Buckle", exact: true }).click();
+    await expect.poll(accent).not.toBe(before);
+  });
 });

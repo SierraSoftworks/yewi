@@ -1,7 +1,7 @@
 use yewi_test::render;
 
 use super::*;
-use crate::{attrs, icons};
+use crate::{NavTarget, attrs, icons};
 
 #[test]
 fn is_a_named_navigation_landmark() {
@@ -45,7 +45,9 @@ fn an_item_is_a_link_with_an_href_and_a_button_without() {
 
 #[test]
 fn an_external_item_opens_a_new_tab_and_says_so() {
-    let html = render(|| html! { <SidebarItem href="https://example.com" external=true>{ "Documentation" }</SidebarItem> });
+    let html = render(|| {
+        html! { <SidebarItem href={NavTarget::href("https://example.com").external()}>{ "Documentation" }</SidebarItem> }
+    });
     assert!(html.contains(r#"target="_blank""#));
     assert!(html.contains("noopener"));
     assert!(html.contains("new tab"));
@@ -74,5 +76,53 @@ fn id_class_and_attrs_reach_each_root_element() {
     for html in rendered {
         let root = &html[..html.find('>').unwrap()];
         assert!(root.contains(r#"id="x""#) && root.contains("mine") && root.contains(r#"data-k="v""#), "{root}");
+    }
+}
+
+#[cfg(feature = "router")]
+mod router {
+    use yew::prelude::*;
+    use yew_router::{
+        history::{AnyHistory, History, MemoryHistory},
+        prelude::*,
+    };
+    use yewi_test::render;
+
+    use crate::{NavTarget, SidebarItem};
+
+    #[derive(Clone, PartialEq, Routable)]
+    enum Route {
+        #[at("/")]
+        Home,
+        #[at("/hosts")]
+        Hosts,
+    }
+
+    fn render_at(path: &'static str, hosts_current: Option<bool>) -> String {
+        render(move || {
+            let history = AnyHistory::from(MemoryHistory::new());
+            history.push(path);
+            html! {
+                <Router {history}>
+                    <SidebarItem href={NavTarget::route(Route::Home)}>{ "Home" }</SidebarItem>
+                    <SidebarItem href={NavTarget::route(Route::Hosts)} current={hosts_current}>{ "Hosts" }</SidebarItem>
+                </Router>
+            }
+        })
+    }
+
+    #[test]
+    fn a_route_item_is_a_real_link_marked_current_on_its_route() {
+        let html = render_at("/hosts", None);
+        assert!(html.contains(r#"href="/hosts""#));
+        assert_eq!(html.matches(r#"aria-current="page""#).count(), 1);
+        let hosts = &html[html.find(r#"href="/hosts""#).unwrap()..];
+        assert!(hosts[..hosts.find('>').unwrap()].contains("aria-current"));
+    }
+
+    #[test]
+    fn current_overrides_the_router() {
+        assert_eq!(render_at("/", Some(true)).matches(r#"aria-current="page""#).count(), 2);
+        assert!(!render_at("/hosts", Some(false)).contains("aria-current"));
     }
 }

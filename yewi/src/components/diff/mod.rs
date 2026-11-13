@@ -55,6 +55,10 @@ pub struct DiffProps {
     /// `after`; longer unchanged runs fold behind a button.
     #[prop_or(3)]
     pub context: usize,
+    /// The text of the button that reveals a folded run, from the number of
+    /// lines it hides. Defaults to "Show 12 unchanged lines" in English.
+    #[prop_or_default]
+    pub expand_label: Option<Callback<usize, AttrValue>>,
     /// Shows old and new line numbers.
     #[prop_or(true)]
     pub line_numbers: bool,
@@ -208,7 +212,10 @@ pub fn Diff(props: &DiffProps) -> Html {
             <div key={format!("f{}", fold.start)} class="yi-diff__band yi-diff__band--fold">
                 <button type="button" class="yi-diff__fold" {onclick}>
                     <Icon icon={icons::CHEVRONS_UP_DOWN} />
-                    { format!("Show {hidden} unchanged lines") }
+                    { match &props.expand_label {
+                        Some(label) => label.emit(hidden),
+                        None => format!("Show {hidden} unchanged lines").into(),
+                    } }
                 </button>
             </div>
         });

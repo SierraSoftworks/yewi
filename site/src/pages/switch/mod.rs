@@ -1,5 +1,5 @@
 crate::page! {
-    title: "Switch",
+    title: "ToggleSwitch",
     category: Form,
     summary: "ToggleSwitch: an on/off control for a setting that takes effect as soon as it is flipped.",
     examples: [

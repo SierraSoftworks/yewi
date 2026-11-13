@@ -55,7 +55,7 @@
   }
 
   &:focus-visible {
-    @include focus-ring(4px);
+    @include focus-ring;
   }
 }
 
@@ -92,6 +92,12 @@
 .yi-app-bar__actions {
   flex: none;
   gap: var(--yi-space-sm);
+}
+
+// A TopMenu in the bar shows the actions itself, so that they can fold into
+// its dropdown.
+.yi-app-bar:has(.yi-top-menu--bar-actions) > .yi-app-bar__actions {
+  display: none;
 }
 
 @media (forced-colors: active) {

@@ -1,0 +1,37 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<nav aria-label="Navigation" class="yi-sidebar" style="max-inline-size: 15rem">
+<div class="yi-sidebar__items">
+<a href="/" aria-current="page" class="yi-sidebar__item yi-sidebar__item--current">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 3h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM15 3h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1zM15 12h5a1 1 0 0 1 1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1zM4 16h5a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1z">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Overview</span>
+</a>
+<a href="/hosts" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M4 2h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM4 14h16a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2zM6 6L6.01 6M6 18L6.01 18">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Hosts</span>
+</a>
+<a href="/rollouts" class="yi-sidebar__item">
+<span class="yi-sidebar__icon">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05">
+</path>
+</svg>
+</span>
+<span class="yi-sidebar__label">Rollouts</span>
+</a>
+</div>
+</nav>
+<span role="status">Showing: Overview</span>
+</div>

@@ -22,6 +22,7 @@ async fn main() {
 
     let template = fs::read_to_string(dist.join("index.html")).expect("run `trunk build` first: no index.html in dist");
     assert!(template.contains(MOUNT), "index.html has no {MOUNT} mount point");
+    let template = without_vendor_preloads(&template);
 
     fs::write(dist.join("yewi.css"), yewi::STYLESHEET).unwrap();
 
@@ -63,6 +64,10 @@ async fn main() {
         fs::write(target, html).unwrap();
     }
 
+    // The live review gallery: not prerendered, the wasm starts it (`main.rs`).
+    fs::write(dist.join("_gallery.html"), template.replace(MOUNT, r#"<div id="app" data-gallery="button"></div>"#))
+        .unwrap();
+
     fs::write(dist.join("examples.json"), format!("[\n  {}\n]\n", examples.join(",\n  "))).unwrap();
     fs::write(dist.join("pages.json"), format!("[{}]\n", pages.join(", "))).unwrap();
     println!("prerendered {} routes ({} examples) into {}", routes.len(), examples.len(), dist.display());
@@ -70,10 +75,29 @@ async fn main() {
 
 const MOUNT: &str = r#"<div id="app"></div>"#;
 
+/// Trunk preloads every wasm-bindgen snippet, which would have each page fetch
+/// the scripts a component only imports on demand (the map engine, more than
+/// 1 MB). Those live in a `vendor` directory beside the component's glue.
+fn without_vendor_preloads(template: &str) -> String {
+    let mut out = String::with_capacity(template.len());
+    let mut rest = template;
+    while let Some(start) = rest.find("<link ") {
+        let end = start + rest[start..].find('>').expect("unclosed <link>") + 1;
+        let link = &rest[start..end];
+        out.push_str(&rest[..start]);
+        if !(link.contains(r#"rel="modulepreload""#) && link.contains("/vendor/")) {
+            out.push_str(link);
+        }
+        rest = &rest[end..];
+    }
+    out + rest
+}
+
 async fn render(path: &str) -> String {
     yewi::hooks::reset_ids();
     let url = format!("{}{path}", yewi_site::basename().unwrap_or_default());
     LocalServerRenderer::<App>::with_props(AppProps {
+        gallery: false,
         history: {
             let history = MemoryHistory::new();
             history.push(url);

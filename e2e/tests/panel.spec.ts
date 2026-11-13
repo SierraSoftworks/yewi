@@ -34,8 +34,8 @@ test.describe("Panel", () => {
     await expect(schedule).toBeVisible();
   });
 
-  test("a fixed tone opts out of the alternation", async ({ example }) => {
-    const stage = await example("panel/tones");
+  test("a fixed fill opts out of the alternation", async ({ example }) => {
+    const stage = await example("panel/fills");
     const fill = (name: string) =>
       stage.locator("section", { has: stage.page().getByRole("heading", { name }) }).last().evaluate((el) => getComputedStyle(el).backgroundColor);
     expect(await fill("Strong")).not.toBe(await fill("Soft"));
