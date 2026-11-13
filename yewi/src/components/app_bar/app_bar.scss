@@ -94,6 +94,41 @@
   gap: var(--yi-space-sm);
 }
 
+// On a narrow bar the children take a second row. The bar grows by a row;
+// by then an AppShell has moved its sidebar into the drawer.
+.yi-app-bar--wrap {
+  container: yi-app-bar / inline-size;
+}
+
+@container yi-app-bar (inline-size < 36rem) {
+  .yi-app-bar--wrap {
+    // A container cannot restyle itself, so the bar always allows the wrap
+    // and its children ask for it here.
+    > .yi-app-bar__actions {
+      margin-inline-start: auto;
+    }
+
+    > .yi-app-bar__start {
+      flex: none;
+      order: 1;
+      inline-size: 100%;
+      min-block-size: var(--yi-app-bar-height);
+      // The first row already brought the space above.
+      margin-block-start: calc(var(--yi-space-sm) * -1);
+    }
+  }
+}
+
+.yi-app-bar--wrap {
+  flex-wrap: wrap;
+  block-size: auto;
+  min-block-size: var(--yi-app-bar-height);
+
+  > :not(.yi-app-bar__start) {
+    min-block-size: var(--yi-app-bar-height);
+  }
+}
+
 // A TopMenu in the bar shows the actions itself, so that they can fold into
 // its dropdown.
 .yi-app-bar:has(.yi-top-menu--bar-actions) > .yi-app-bar__actions {

@@ -93,6 +93,12 @@ pub struct PopoverProps {
     /// Never shows the popover.
     #[prop_or_default]
     pub disabled: bool,
+    /// Keeps the content in the page while the popover is closed, hidden.
+    /// It is then part of the server render, where a test or a crawler can
+    /// read it, and keeps its state between openings. By default the
+    /// content exists only while open, which costs nothing until then.
+    #[prop_or_default]
+    pub keep_mounted: bool,
     /// Extra classes for the floating surface, for example to set its width
     /// through `--yi-popover-max-width`.
     #[prop_or_default]
@@ -288,6 +294,10 @@ pub fn Popover(props: &PopoverProps) -> Html {
         let (anchor, surface, surface_id) = (anchor.clone(), surface.clone(), surface_id.clone());
         let dismiss = handlers.dismiss.clone();
         use_effect_with((open, props.trigger), move |&(open, trigger)| {
+            // A surface that outlives its showing is put away by hand.
+            if !open {
+                dom::put_away(&surface);
+            }
             let session = open.then(|| dom::Session::start(&anchor, &surface, &surface_id, trigger, dismiss));
             move || {
                 let _end = session;
@@ -373,7 +383,7 @@ pub fn Popover(props: &PopoverProps) -> Html {
             onfocusout={handlers.focus_out.clone()}
         >
             { props.children.clone() }
-            if open {
+            if open || (props.keep_mounted && !props.disabled) {
                 <span
                     ref={surface}
                     id={surface_id}
@@ -487,6 +497,16 @@ mod dom {
         Describes(Element, Option<String>),
         /// `aria-expanded` and `aria-controls`.
         Expands(Element),
+    }
+
+    /// Hides a surface that stays in the page, as it was before it was shown:
+    /// out of the top layer and not yet placed.
+    pub fn put_away(surface: &NodeRef) {
+        let Some(surface) = surface.cast::<HtmlElement>() else { return };
+        if surface.matches(":popover-open").unwrap_or(false) {
+            let _ = surface.hide_popover();
+        }
+        let _ = surface.remove_attribute("data-yi-side");
     }
 
     /// One showing of a popover: wires up ARIA, Escape and presses outside,
@@ -644,6 +664,8 @@ mod dom {
             None
         }
     }
+
+    pub fn put_away(_: &NodeRef) {}
 
     pub struct Session;
 

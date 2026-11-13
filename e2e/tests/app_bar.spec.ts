@@ -1,6 +1,25 @@
 import { expect, test } from "../fixtures";
 
 test.describe("AppBar", () => {
+  test("wrap gives a filter its own row on a narrow screen only", async ({ page, example }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    const stage = await example("app-bar/filter");
+    const filter = stage.getByRole("searchbox", { name: "Filter" });
+    const brand = stage.getByText("Grey", { exact: true });
+    const box = async (locator: typeof filter) => (await locator.boundingBox())!;
+
+    // Wide: one row, the filter after the brand.
+    expect((await box(filter)).x).toBeGreaterThan((await box(brand)).x);
+    expect(Math.abs((await box(filter)).y - (await box(brand)).y)).toBeLessThan(16);
+
+    await page.setViewportSize({ width: 390, height: 720 });
+    await expect.poll(async () => (await box(filter)).y).toBeGreaterThan((await box(brand)).y + 16);
+    expect((await box(filter)).width).toBeGreaterThan(240);
+
+    await filter.fill("api");
+    await expect(stage.getByRole("status")).toHaveText("Filtering by api");
+  });
+
   test("lays out brand, content and actions from start to end", async ({ page, example }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
     const stage = await example("app-bar/slots");

@@ -6,6 +6,7 @@ crate::page! {
         basic => "Text input": "The input is controlled, so it shows `value` and reports each edit through `on_input`. `on_change` fires once the user commits the text, on blur or Enter.",
         on_blur => "Tidying on blur": "`on_blur_value` fires with the text whenever focus leaves the input, whether or not it changed, which is the moment to trim or validate it. `on_blur` gives the event itself.",
         kinds => "Kinds": "`kind` sets the native input type, which picks the on-screen keyboard and how autofill behaves. `mono` suits identifiers, tokens and paths.",
+        dates => "Dates and times": "The `Date`, `Time` and `DateTime` kinds use the browser's own pickers and work without a client runtime. Whatever the browser shows, the value is ISO text such as `2026-01-15T13:30`, with no time zone.",
         sizes => "Sizes": "Sizes match `Button`, so inputs and buttons line up in a row. `Medium` is the default, at 32px.",
         states => "States": "Disabled inputs can't be focused and aren't submitted. Read-only inputs can be focused and copied from. `invalid` marks a problem, and inside a `Field` its `error` does this for you.",
         text_area => "Text area": "`rows` sets the height. `mono` also stops lines from wrapping, for values whose alignment matters.",

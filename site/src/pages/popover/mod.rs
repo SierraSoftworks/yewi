@@ -8,6 +8,7 @@ crate::page! {
         placement => "Placement": "Use `placement` to choose which side the popover prefers and how it lines up. If there isn't room near the edge of the window, it flips to the other side and slides along it, and the arrow keeps pointing at the trigger.",
         actions => "Content to act on": "Controls inside the popover come after the trigger in the tab order. To close the popover from inside it, for example when an action completes, take control with `open` and `on_open_change`.",
         focus => "Under an input": "`PopoverTrigger::Focus` keeps the popover open while focus is inside the trigger or the popover. `arrow={false}` and `flush` suit a list that runs edge to edge. The list itself and its ARIA roles are up to the caller.",
+        kept => "Content that stays in the page": "A popover's content normally exists only while it is open. `keep_mounted` renders it up front and hides it, so it is in the server-rendered HTML and keeps its state between openings. Use it for short content worth indexing, not for long lists.",
         nested => "Nested": "A popover can open another popover. `Esc` closes the innermost one first, and pressing inside the inner popover doesn't close the outer one.",
     ],
 }
