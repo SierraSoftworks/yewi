@@ -214,7 +214,7 @@ struct Marks {
 }
 
 impl Geometry {
-    fn new(series: &[Series], resolution: usize, banded: Option<bool>) -> Self {
+    fn new(series: &[Series], resolution: usize, banded: Option<bool>, whole: bool) -> Self {
         let kinds: Vec<SeriesKind> = series
             .iter()
             .enumerate()
@@ -224,7 +224,7 @@ impl Geometry {
             n: series.iter().map(|s| s.data.len()).max().unwrap_or(0),
             banded: banded.unwrap_or_else(|| kinds.contains(&SeriesKind::Bars)),
         };
-        let scale = Scale::covering(series.iter().map(|s| &*s.data));
+        let scale = Scale::covering(series.iter().map(|s| &*s.data), whole);
 
         let mut auto_slot = 0;
         let marks = series
@@ -332,18 +332,36 @@ pub struct ChartProps {
     pub series: Vec<Series>,
     /// What the chart shows, as its accessible name: "Visitors per day".
     pub label: AttrValue,
-    /// The text for position `i`, used for the axis and the tooltip.
-    /// Defaults to the position number, counting from 1.
+    /// The text for position `i`, used for the axis and, unless `x_tooltip`
+    /// is set, the tooltip. Defaults to the position number, counting from 1.
     #[prop_or_default]
     pub x_label: Option<Callback<usize, AttrValue>>,
-    /// Formats a value for the axis and the tooltip. By default the axis is
-    /// compact (`12.5k`) and the tooltip shows the number in full.
+    /// Formats a value for the axis and, unless `y_tooltip` is set, the
+    /// tooltip. By default the axis is compact (`12.5k`) and the tooltip
+    /// shows the number in full.
     #[prop_or_default]
     pub y_label: Option<Callback<f64, AttrValue>>,
+    /// The text for position `i` in the tooltip, where there is room to say
+    /// more than the axis does: "6 Nov 2026, 10:00" over a tick of "6 Nov".
+    #[prop_or_default]
+    pub x_tooltip: Option<Callback<usize, AttrValue>>,
+    /// Formats a value for the tooltip only.
+    #[prop_or_default]
+    pub y_tooltip: Option<Callback<f64, AttrValue>>,
     /// The most labels to show along the horizontal axis. Narrow containers
-    /// show every other one.
+    /// show every other one. Zero removes the axis, for a chart stacked on
+    /// another that labels the same positions.
     #[prop_or(8)]
     pub x_ticks: usize,
+    /// Keeps the value axis to whole numbers, for counts: a small maximum
+    /// otherwise gets ticks such as 0.5.
+    #[prop_or_default]
+    pub integer_ticks: bool,
+    /// Shows the crosshair and tooltip at this position while the chart is
+    /// not being hovered itself. Feed it the position another chart reports
+    /// through `on_hover` to keep stacked charts in step.
+    #[prop_or_default]
+    pub cursor: Option<usize>,
     /// Whether to list the series above the plot. Defaults to showing the
     /// legend when there are two or more series.
     #[prop_or_default]
@@ -394,9 +412,10 @@ pub fn Chart(props: &ChartProps) -> Html {
     let cursor = use_state_eq(|| None::<usize>);
     // `(anchor, current)` of a selection in progress.
     let drag = use_state_eq(|| None::<(usize, usize)>);
-    let geometry = use_memo((props.series.clone(), props.resolution, props.banded), |(series, resolution, banded)| {
-        Geometry::new(series, *resolution, *banded)
-    });
+    let geometry = use_memo(
+        (props.series.clone(), props.resolution, props.banded, props.integer_ticks),
+        |(series, resolution, banded, whole)| Geometry::new(series, *resolution, *banded, *whole),
+    );
 
     let class = classes!("yi-chart", props.class.clone());
     let Geometry { axis, scale, .. } = &*geometry;
@@ -412,7 +431,7 @@ pub fn Chart(props: &ChartProps) -> Html {
 
     let last = n - 1;
     // State can outlive the data it was set for, so clamp rather than trust it.
-    let hovered = (*cursor).map(|i| i.min(last));
+    let hovered = (*cursor).or(props.cursor).map(|i| i.min(last));
     let selection = (*drag).map(|(a, b)| (a.min(b).min(last), a.max(b).min(last)));
 
     let x_text = |i: usize| match &props.x_label {
@@ -425,9 +444,13 @@ pub fn Chart(props: &ChartProps) -> Html {
         None if compact => format_compact(value).into(),
         None => format_number(value).into(),
     };
-    let value_text = |value: f64| match &props.y_label {
+    let value_text = |value: f64| match props.y_tooltip.as_ref().or(props.y_label.as_ref()) {
         Some(label) if value.is_finite() => label.emit(value),
         _ => AttrValue::from(format_number(value)),
+    };
+    let title_text = |i: usize| match &props.x_tooltip {
+        Some(label) => label.emit(i),
+        None => x_text(i),
     };
 
     // ---- Axes and legend ---------------------------------------------------
@@ -441,7 +464,7 @@ pub fn Chart(props: &ChartProps) -> Html {
 
     let step = n.div_ceil(props.x_ticks.max(1));
     let mut previous_label = None;
-    let x_ticks = (0..n)
+    let x_ticks = (0..if props.x_ticks == 0 { 0 } else { n })
         .step_by(step)
         .filter_map(|i| {
             let text = x_text(i);
@@ -487,7 +510,7 @@ pub fn Chart(props: &ChartProps) -> Html {
             .iter()
             .filter_map(|s| s.data.get(i).map(|value| format!("{} {}", s.name, value_text(*value))))
             .collect();
-        format!("{}: {}", x_text(i), values.join(", "))
+        format!("{}: {}", title_text(i), values.join(", "))
     };
 
     let overlay = hovered.filter(|_| props.interactive).map(|i| {
@@ -523,7 +546,7 @@ pub fn Chart(props: &ChartProps) -> Html {
                 <span class="yi-chart__crosshair" style={format!("inset-inline-start:{}", percent(at))} />
                 { for dots }
                 <div class={classes!("yi-chart__tooltip", side)} style={place}>
-                    <div class="yi-chart__tooltip-title">{ x_text(i) }</div>
+                    <div class="yi-chart__tooltip-title">{ title_text(i) }</div>
                     { for rows }
                 </div>
             </>
@@ -682,7 +705,9 @@ pub fn Chart(props: &ChartProps) -> Html {
             <div class="yi-chart__body">
                 <div class="yi-chart__y" aria-hidden="true">{ for y_ticks }</div>
                 { plot }
-                <div class="yi-chart__x" aria-hidden="true">{ x_ticks }</div>
+                if props.x_ticks > 0 {
+                    <div class="yi-chart__x" aria-hidden="true">{ x_ticks }</div>
+                }
             </div>
         </div>
     })

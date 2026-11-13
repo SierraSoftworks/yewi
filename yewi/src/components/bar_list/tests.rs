@@ -186,3 +186,18 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"data-panel="pages""#));
 }
+
+#[test]
+fn a_row_can_carry_a_title_and_decline_the_action() {
+    let html = render(|| {
+        let items: Rc<[BarItem]> = Rc::from(vec![
+            BarItem::new("/docs", "Docs", 2.0).title("Documentation, all versions"),
+            BarItem::new("/", "Home", 1.0).without_action(),
+        ]);
+        let action = BarListAction { icon: icons::FILTER, label: "Filter by".into(), on_click: Callback::noop() };
+        html! { <BarList label="Pages" {items} {action} /> }
+    });
+    assert!(html.contains(r#"title="Documentation, all versions""#), "{html}");
+    assert!(html.contains("Filter by: Docs"), "{html}");
+    assert!(!html.contains("Filter by: Home"), "{html}");
+}

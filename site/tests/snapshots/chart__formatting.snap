@@ -10,7 +10,7 @@ source: site/tests/snapshots.rs
 <span style="inset-block-start:33.33%" class="yi-chart__tick">€40k</span>
 <span style="inset-block-start:0.00%" class="yi-chart__tick">€60k</span>
 </div>
-<div role="slider" tabindex="0" aria-label="Revenue per month" aria-valuemin="0" aria-valuemax="11" aria-valuenow="11" aria-valuetext="Dec: Revenue €41.9k" class="yi-chart__plot">
+<div role="slider" tabindex="0" aria-label="Revenue per month" aria-valuemin="0" aria-valuemax="11" aria-valuenow="11" aria-valuetext="Dec 2026: Revenue €41900" class="yi-chart__plot">
 <svg viewBox="0 0 10000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="yi-chart__marks">
 <path d="M0 667H10000M0 333H10000M0 0H10000" class="yi-chart__grid">
 </path>

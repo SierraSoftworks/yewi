@@ -35,6 +35,10 @@ pub struct PillProps {
 }
 
 /// A status pill: a soft tinted label with a leading dot.
+///
+/// The dot is part of what says "this is a state". For a label that is not
+/// one, such as a category or a kind, use [`Tag`](crate::Tag), or turn the
+/// dot off with `dot=false`. `Badge` is a count on another element.
 #[function_component]
 pub fn Pill(props: &PillProps) -> Html {
     let class = classes!(

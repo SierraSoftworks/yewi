@@ -111,6 +111,12 @@ pub struct TabsProps {
     /// rendered.
     #[prop_or_default]
     pub keep_mounted: bool,
+    /// One panel for every tab, in place of each tab's children: for tabs
+    /// that change what the same view shows, not the view. Draw it from
+    /// `selected`, kept up to date through `on_change`. It needs a client
+    /// runtime to change.
+    #[prop_or_default]
+    pub panel: Html,
     /// Fired with the `value` of the tab the user selects.
     #[prop_or_default]
     pub on_change: Callback<AttrValue>,
@@ -131,7 +137,8 @@ pub fn Tabs(props: &TabsProps) -> Html {
     let base = use_id();
     // Without a client every panel is in the page, for `BEHAVIOURS` to show.
     let server_only = use_server_only();
-    let keep_mounted = props.keep_mounted || server_only;
+    let shared = !crate::is_empty(&props.panel);
+    let keep_mounted = (props.keep_mounted || server_only) && !shared;
     let own = use_state(|| props.default_selected.clone());
 
     let tabs: Vec<Rc<TabProps>> = props.children.iter().map(|tab| tab.props).collect();
@@ -149,7 +156,8 @@ pub fn Tabs(props: &TabsProps) -> Html {
     };
 
     let tab_id = |index: usize| format!("{base}-tab-{index}");
-    let panel_id = |index: usize| format!("{base}-panel-{index}");
+    let panel_id =
+        |index: usize| if shared { format!("{base}-panel") } else { format!("{base}-panel-{index}") };
     // (element id, value) of each tab the arrow keys can reach.
     let reachable: Rc<[(String, AttrValue)]> =
         tabs.iter().enumerate().filter(|(_, tab)| !tab.disabled).map(|(i, tab)| (tab_id(i), tab.value.clone())).collect();
@@ -228,7 +236,19 @@ pub fn Tabs(props: &TabsProps) -> Html {
             <div class="yi-tabs__list" role="tablist" aria-label={props.label.clone()}>
                 { for buttons }
             </div>
-            { for panels }
+            if let Some(index) = selected.filter(|_| shared) {
+                <div
+                    role="tabpanel"
+                    id={panel_id(index)}
+                    class="yi-tabs__panel"
+                    aria-labelledby={tab_id(index)}
+                    tabindex="0"
+                >
+                    { props.panel.clone() }
+                </div>
+            } else {
+                { for panels }
+            }
         </div>
     })
 }

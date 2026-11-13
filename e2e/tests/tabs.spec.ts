@@ -39,6 +39,20 @@ test.describe("Tabs", () => {
     await expect(stage.getByRole("tabpanel", { name: "Profile" })).toBeFocused();
   });
 
+  test("a shared panel follows the selected tab", async ({ page, example }) => {
+    const stage = await example("tabs/shared-panel");
+    const panel = stage.getByRole("tabpanel");
+
+    await expect(panel).toHaveAccessibleName("Pages");
+    await expect(panel).toContainText("/pricing");
+
+    await stage.getByRole("tab", { name: "Pages" }).focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(stage.getByRole("tabpanel")).toHaveAccessibleName("Browsers");
+    await expect(stage.getByRole("tabpanel")).toContainText("Firefox");
+    await expect(stage.getByRole("tabpanel")).toHaveCount(1);
+  });
+
   test("skips disabled tabs", async ({ page, example }) => {
     const stage = await example("tabs/icons-and-counts");
     const disabled = stage.getByRole("tab", { name: "Config package" });

@@ -15,16 +15,34 @@ pub fn Example() -> Html {
         vec![Series::new("Errors", ERRORS).kind(SeriesKind::Bars).color(SeriesColor::Tone(Tone::Danger))]
     });
     let x_label = use_callback((), |hour: usize, _| AttrValue::from(format!("{hour:02}:00")));
+    // Each chart shows its crosshair at the hour the other is pointing at.
+    let hour = use_state(|| None::<usize>);
+    let on_hover = {
+        let hour = hour.clone();
+        Callback::from(move |at: Option<usize>| hour.set(at))
+    };
 
     // Two measures on different scales: two charts over the same hours, with
-    // the same axis width and banding so the hours line up.
+    // the same axis width and banding so the hours line up. Only the lower
+    // one labels them.
     html! {
         <Stack attrs={attrs! { "style" => "--yi-chart-axis-width: 2.5rem" }}>
-            <Chart label="Requests per hour" series={(*requests).clone()} x_label={x_label.clone()} banded=true />
+            <Chart
+                label="Requests per hour"
+                series={(*requests).clone()}
+                x_label={x_label.clone()}
+                x_ticks=0
+                banded=true
+                cursor={*hour}
+                on_hover={on_hover.clone()}
+            />
             <Chart
                 label="Errors per hour"
                 series={(*errors).clone()}
                 {x_label}
+                integer_ticks=true
+                cursor={*hour}
+                {on_hover}
                 attrs={attrs! { "style" => "--yi-chart-height: 6rem" }}
             />
         </Stack>

@@ -18,7 +18,7 @@ fn commands(html: &str) -> usize {
 #[test]
 fn scales_round_outwards_and_include_zero() {
     for (min, max) in [(0.0, 87.0), (3.0, 1_204.0), (-40.0, 12.0), (0.0, 0.0), (0.2, 0.7), (5e6, 9.1e6)] {
-        let scale = Scale::nice(f64::min(min, 0.0), f64::max(max, 0.0));
+        let scale = Scale::nice(f64::min(min, 0.0), f64::max(max, 0.0), false);
         assert!(scale.lo <= min.min(0.0) && scale.hi >= max, "{min}..{max} gave {scale:?}");
         assert!(scale.hi > scale.lo);
         assert!((2..=7).contains(&scale.ticks.len()), "{min}..{max} gave {} ticks", scale.ticks.len());
@@ -58,7 +58,7 @@ fn short_series_are_not_reduced() {
 
 #[test]
 fn non_finite_values_split_a_line() {
-    let scale = Scale::nice(0.0, 10.0);
+    let scale = Scale::nice(0.0, 10.0, false);
     let axis = Axis { n: 5, banded: false };
     let whole = line_paths(&[1.0, 2.0, 3.0, 4.0, 5.0], axis, &scale, 1000);
     let split = line_paths(&[1.0, 2.0, f64::NAN, 4.0, 5.0], axis, &scale, 1000);
@@ -205,4 +205,45 @@ fn a_sparkline_renders_any_data_without_panicking() {
         let html = render(move || html! { <Sparkline data={SeriesData::from(data.clone())} area=false /> });
         assert!(html.starts_with("<svg"));
     }
+}
+
+#[test]
+fn whole_scales_have_whole_ticks() {
+    for max in [1.0, 2.0, 3.0, 7.0, 9.0, 14.0, 250.0] {
+        let scale = Scale::nice(0.0, max, true);
+        assert!(scale.hi >= max, "{max} gave {scale:?}");
+        assert!(scale.ticks.iter().all(|tick| tick.fract() == 0.0), "{max} gave {scale:?}");
+    }
+}
+
+#[test]
+fn the_tooltip_can_say_more_than_the_axis() {
+    let html = render(|| {
+        html! {
+            <Chart
+                label="Visitors"
+                series={vec![Series::new("Visitors", [3.0, 5.0])]}
+                x_label={Callback::from(|i: usize| AttrValue::from(format!("d{i}")))}
+                x_tooltip={Callback::from(|i: usize| AttrValue::from(format!("Day {i} of the week")))}
+                y_tooltip={Callback::from(|v: f64| AttrValue::from(format!("{v} people")))}
+                cursor={Some(1)}
+            />
+        }
+    });
+    for expected in ["d1", "Day 1 of the week", "5 people"] {
+        assert!(html.contains(expected), "{expected} missing from {html}");
+    }
+}
+
+#[test]
+fn zero_x_ticks_removes_the_axis() {
+    let chart = |x_ticks: usize| {
+        render(move || {
+            let x_label = Callback::from(|i: usize| AttrValue::from(format!("pos-{i}")));
+            html! { <Chart label="Visitors" series={vec![Series::new("Visitors", [3.0, 5.0])]} {x_label} {x_ticks} /> }
+        })
+    };
+    assert!(chart(2).contains(">pos-0<"));
+    // The label still describes the position to assistive technology.
+    assert!(!chart(0).contains(">pos-0<"));
 }

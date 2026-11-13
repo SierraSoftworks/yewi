@@ -19,18 +19,19 @@ pub(super) struct Scale {
 }
 
 impl Scale {
-    /// A scale covering every finite value in `series`.
-    pub fn covering<'a>(series: impl Iterator<Item = &'a [f64]>) -> Self {
+    /// A scale covering every finite value in `series`. With `whole`, its
+    /// ticks are whole numbers, for counts.
+    pub fn covering<'a>(series: impl Iterator<Item = &'a [f64]>, whole: bool) -> Self {
         let (mut min, mut max) = (0.0_f64, 0.0_f64);
         for value in series.flatten().copied().filter(|v| v.is_finite()) {
             min = min.min(value);
             max = max.max(value);
         }
-        Self::nice(min, max)
+        Self::nice(min, max, whole)
     }
 
     /// Rounds `min..max` outwards to a 1-2-2.5-5 ladder with about four steps.
-    pub fn nice(min: f64, max: f64) -> Self {
+    pub fn nice(min: f64, max: f64, whole: bool) -> Self {
         let span = if max > min { max - min } else { 1.0 };
         let raw = span / 4.0;
         // The power of ten at or below `raw`, by repeated scaling: `powf` and
@@ -42,7 +43,14 @@ impl Scale {
         while magnitude * 10.0 <= raw && magnitude < 1e300 {
             magnitude *= 10.0;
         }
-        let step = [1.0, 2.0, 2.5, 5.0, 10.0].into_iter().map(|m| m * magnitude).find(|s| *s >= raw).unwrap_or(raw);
+        if whole {
+            magnitude = magnitude.max(1.0);
+        }
+        let step = [1.0, 2.0, 2.5, 5.0, 10.0]
+            .into_iter()
+            .map(|m| m * magnitude)
+            .find(|s| *s >= raw && !(whole && s.fract() != 0.0))
+            .unwrap_or(raw);
         let lo = (min / step).floor() * step;
         let hi = ((max / step).ceil() * step).max(lo + step);
         let count = ((hi - lo) / step).round() as usize;
