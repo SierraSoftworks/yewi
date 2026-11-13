@@ -25,13 +25,12 @@ test.describe("AppShell", () => {
   test("without a sidebar the page takes the full width", async ({ example }) => {
     const stage = await example("app-shell/bar-only");
     const bar = (await stage.locator(".yi-app-bar").boundingBox())!;
-    const heading = (await stage.getByRole("heading", { name: "Welcome" }).boundingBox())!;
+    const page = (await stage.locator(".yi-app-shell__main").boundingBox())!;
 
     await expect(stage.getByRole("button", { name: "Navigation" })).toHaveCount(0);
-    // The heading starts at the page's edge, not after an empty column, and
-    // has the width to stay on one line.
-    expect(heading.x - bar.x).toBeLessThan(64);
-    expect(heading.width).toBeGreaterThan(bar.width / 2);
+    // No empty column where the sidebar would have been.
+    expect(page.x).toBe(bar.x);
+    expect(page.width).toBe(bar.width);
   });
 
   test("picking a destination marks it current and shows its page", async ({ example }) => {
