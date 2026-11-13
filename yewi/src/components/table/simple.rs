@@ -4,6 +4,7 @@
 use yew::prelude::*;
 
 use super::{CellAlign, SortClick, SortDirection};
+use crate::is_empty;
 use crate::{Attrs, Icon, icons};
 
 /// How rows are told apart.
@@ -69,7 +70,7 @@ pub struct SimpleTableProps {
     /// Content under the table, outside its scrolling area: a row count,
     /// pagination.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     /// How many rows the table has in all, header included, when only some
     /// of them are in the document (`aria-rowcount`). Give each row that is
     /// present its `aria-rowindex`.
@@ -120,8 +121,8 @@ pub fn SimpleTable(props: &SimpleTableProps) -> Html {
                     { props.children.clone() }
                 </table>
             </div>
-            if let Some(footer) = &props.footer {
-                <div class="yi-table__footer">{ footer.clone() }</div>
+            if !is_empty(&props.footer) {
+                <div class="yi-table__footer">{ props.footer.clone() }</div>
             }
         </div>
     })

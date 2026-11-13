@@ -3,7 +3,7 @@ use yewi::prelude::*;
 
 #[function_component]
 pub fn Example() -> Html {
-    let head = html! {
+    let header = html! {
         <>
             <Icon icon={icons::CIRCLE_CHECK} attrs={attrs! { "style" => "color: var(--yi-ok)" }} />
             { "Deployed" }
@@ -20,7 +20,7 @@ pub fn Example() -> Html {
 
     html! {
         <Cluster>
-            <Popover {head} {content} foot="Thursday 15 January 2026, 11:42 UTC">
+            <Popover {header} {content} footer="Thursday 15 January 2026, 11:42 UTC">
                 <Button icon={icons::ROCKET}>{ "Deployment" }</Button>
             </Popover>
             <Popover content="Only members of the release team can change this." placement={Placement::Right}>

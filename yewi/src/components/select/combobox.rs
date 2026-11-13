@@ -307,7 +307,7 @@ pub fn Combobox(props: &ComboboxProps) -> Html {
     } else {
         Html::default()
     };
-    let foot = if has_list && total > order.len() {
+    let footer = if has_list && total > order.len() {
         html! { { more_label(props.more_label.as_ref(), order.len(), total) } }
     } else {
         Html::default()
@@ -332,7 +332,7 @@ pub fn Combobox(props: &ComboboxProps) -> Html {
                 open={is_open}
                 {on_open_change}
                 {content}
-                {foot}
+                {footer}
                 surface_class="yi-select__surface"
             >
                 <span ref={anchor} {class} {onmousedown}>

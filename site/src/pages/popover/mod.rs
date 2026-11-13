@@ -3,7 +3,7 @@ crate::page! {
     category: Overlay,
     summary: "A popover is a floating surface attached to the element that opens it. Use it for detail that's too rich for a tooltip but too small for a dialog.",
     examples: [
-        basic => "Basic": "Wrap the trigger and pass the `content`. Pressing the trigger toggles the popover, and `Esc`, a press outside or moving focus away closes it. `head` and `foot` are optional rows around the content, for a short status above or a muted note below.",
+        basic => "Basic": "Wrap the trigger and pass the `content`. Pressing the trigger toggles the popover, and `Esc`, a press outside or moving focus away closes it. `header` and `footer` are optional rows around the content, for a short status above or a muted note below.",
         hover => "Detail on hover": "`PopoverTrigger::Hover` shows the popover while the trigger or the popover itself is hovered, and when the trigger has keyboard focus. Use it for detail that people only read. If a trigger can't take focus, give it `focusable`. The popover doesn't add any layout of its own, so the two-column rows here are the caller's content.",
         placement => "Placement": "Use `placement` to choose which side the popover prefers and how it lines up. If there isn't room near the edge of the window, it flips to the other side and slides along it, and the arrow keeps pointing at the trigger.",
         actions => "Content to act on": "Controls inside the popover come after the trigger in the tab order. To close the popover from inside it, for example when an action completes, take control with `open` and `on_open_change`.",

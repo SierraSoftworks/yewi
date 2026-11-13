@@ -225,8 +225,8 @@ pub fn TimelineItem(props: &TimelineItemProps) -> Html {
 
     if orientation == Orientation::Horizontal {
         // The marker is all that shows; the event's text is its popover.
-        let head = html! { <>{ title }{ tone_label.clone() }{ props.aside.clone() }</> };
-        let (content, foot) =
+        let header = html! { <>{ title }{ tone_label.clone() }{ props.aside.clone() }</> };
+        let (content, footer) =
             if has_detail { (props.children.clone(), props.meta.clone()) } else { (props.meta.clone(), Html::default()) };
         return props.attrs.apply(html! {
             <li id={props.id.clone()} {class}>
@@ -236,9 +236,9 @@ pub fn TimelineItem(props: &TimelineItemProps) -> Html {
                     placement={props.placement}
                     focusable=true
                     arrow=true
-                    {head}
+                    {header}
                     {content}
-                    {foot}
+                    {footer}
                 >
                     { marker }
                     <VisuallyHidden>{ props.title.clone() }{ tone_label }</VisuallyHidden>

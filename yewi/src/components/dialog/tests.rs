@@ -1,5 +1,7 @@
 use yewi_test::render;
 
+use yew::html::IntoPropValue;
+
 use super::*;
 use crate::attrs;
 
@@ -31,6 +33,16 @@ fn an_open_dialog_is_named_by_its_title() {
     assert!(html.contains("Body text"));
     assert!(html.contains("Save"));
     assert!(html.contains(r#"aria-label="Close""#));
+}
+
+#[test]
+fn an_empty_footer_draws_no_footer_row() {
+    let empty: [(&str, Html); 3] =
+        [("default", Html::default()), ("fragment", html! { <></> }), ("none", None::<Html>.into_prop_value())];
+    for (case, footer) in empty {
+        let html = render(move || html! { <Dialog open=true title="Edit project" footer={footer.clone()} /> });
+        assert!(!html.contains("yi-dialog__foot"), "{case}");
+    }
 }
 
 #[test]
@@ -107,7 +119,9 @@ fn confirm_shows_its_steps_and_error() {
                 type_to_confirm="prod-db" error="The server refused." />
         }
     });
-    assert!(html.contains(r#"type="checkbox""#));
+    // The steps are the shared controls, so they follow the theme.
+    assert!(html.contains("yi-checkbox"));
+    assert!(html.contains("yi-input"));
     assert!(html.contains("I have a backup"));
     assert!(html.contains("prod-db"));
     assert!(html.contains(r#"role="alert""#));

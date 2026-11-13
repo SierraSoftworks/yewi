@@ -211,7 +211,7 @@ struct CompactProps {
 fn Compact(props: &CompactProps) -> Html {
     let menu = use_menu_trigger(Callback::noop());
 
-    let head = if is_empty(&props.actions) {
+    let header = if is_empty(&props.actions) {
         Html::default()
     } else {
         html! { <span class="yi-top-menu__menu-actions">{ props.actions.clone() }</span> }
@@ -233,7 +233,7 @@ fn Compact(props: &CompactProps) -> Html {
                 flush=true
                 label={props.menu_label.clone()}
                 surface_class="yi-top-menu__surface"
-                {head}
+                {header}
                 {content}
             >
                 <IconButton

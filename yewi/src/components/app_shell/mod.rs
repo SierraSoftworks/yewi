@@ -9,6 +9,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, Drawer, DrawerSide, Size, hooks::use_id};
 
 /// What an [`AppShell`] shares with the components inside it. [`AppBar`]
@@ -46,12 +47,12 @@ pub struct AppShellProps {
     pub children: Html,
     /// The bar across the top, normally an [`AppBar`](crate::AppBar).
     #[prop_or_default]
-    pub bar: Option<Html>,
+    pub bar: Html,
     /// The navigation, normally a [`Sidebar`](crate::Sidebar). It is rendered
     /// beside the page and again inside the drawer while that is open, so
     /// avoid fixed `id`s within it.
     #[prop_or_default]
-    pub sidebar: Option<Html>,
+    pub sidebar: Html,
     /// Whether the sidebar starts hidden on a wide screen.
     #[prop_or_default]
     pub collapsed: bool,
@@ -143,7 +144,7 @@ pub fn AppShell(props: &AppShellProps) -> Html {
 
     let drawer_open = *open && *narrow;
     let context = AppShellContext {
-        has_sidebar: props.sidebar.is_some(),
+        has_sidebar: !is_empty(&props.sidebar),
         sidebar_id: sidebar_id.clone(),
         sidebar_shown: if *narrow { drawer_open } else { !*collapsed },
         toggle_sidebar,
@@ -171,18 +172,18 @@ pub fn AppShell(props: &AppShellProps) -> Html {
                     if !props.embedded {
                         <a class="yi-app-shell__skip" href={format!("#{main_id}")}>{ props.skip_label.clone() }</a>
                     }
-                    if let Some(bar) = &props.bar {
-                        { bar.clone() }
+                    if !is_empty(&props.bar) {
+                        { props.bar.clone() }
                     }
                     <div class="yi-app-shell__body" ref={body}>
-                        if let Some(sidebar) = &props.sidebar {
-                            <div class="yi-app-shell__sidebar" id={sidebar_id}>{ sidebar.clone() }</div>
+                        if !is_empty(&props.sidebar) {
+                            <div class="yi-app-shell__sidebar" id={sidebar_id}>{ props.sidebar.clone() }</div>
                         }
                         <@{main} class="yi-app-shell__main" id={main_id} {tabindex}>
                             { props.children.clone() }
                         </@>
                     </div>
-                    if let Some(sidebar) = &props.sidebar {
+                    if !is_empty(&props.sidebar) {
                         <Drawer
                             class="yi-app-shell__drawer"
                             open={drawer_open}
@@ -191,7 +192,7 @@ pub fn AppShell(props: &AppShellProps) -> Html {
                             size={Size::Small}
                             on_close={close_drawer}
                         >
-                            { sidebar.clone() }
+                            { props.sidebar.clone() }
                         </Drawer>
                     }
                 </div>

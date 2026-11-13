@@ -11,6 +11,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, FieldContext, Icon, IconData, Size, Spinner, icons, use_field_control, use_id};
 
 /// A file the user chose or dropped.
@@ -199,10 +200,10 @@ pub struct FileDropProps {
     /// What to drop, in the imperative. Defaults to "Drop a file here, or
     /// choose one" (or its plural with `multiple`).
     #[prop_or_default]
-    pub label: Option<Html>,
+    pub label: Html,
     /// What the zone accepts and what happens to it afterwards.
     #[prop_or_default]
-    pub hint: Option<Html>,
+    pub hint: Html,
     /// Shown above the label. `None` removes it.
     #[prop_or(Some(icons::UPLOAD))]
     pub icon: Option<IconData>,
@@ -263,7 +264,7 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
     let blocked = control.disabled || props.busy;
 
     let label_id = format!("{base}-label");
-    let hint_id = props.hint.as_ref().map(|_| format!("{base}-hint"));
+    let hint_id = (!is_empty(&props.hint)).then(|| format!("{base}-hint"));
     // Inside a field the zone is named by the field's label and its own.
     let labelled_by = match &field {
         Some(field) => format!("{} {label_id}", field.label_id),
@@ -324,11 +325,11 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
         props.busy.then_some("yi-file-drop--busy"),
         props.class.clone(),
     );
-    let label = match (&props.label, props.multiple) {
+    let label = match props.multiple {
         _ if props.busy => html! { props.busy_label.clone() },
-        (Some(label), _) => label.clone(),
-        (None, false) => html! { "Drop a file here, or choose one" },
-        (None, true) => html! { "Drop files here, or choose them" },
+        _ if !is_empty(&props.label) => props.label.clone(),
+        false => html! { "Drop a file here, or choose one" },
+        true => html! { "Drop files here, or choose them" },
     };
 
     props.attrs.apply(html! {
@@ -362,8 +363,8 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
             }
             <span class="yi-file-drop__text">
                 <span id={label_id} class="yi-file-drop__label">{ label }</span>
-                if let Some(hint) = &props.hint {
-                    <span id={hint_id} class="yi-file-drop__hint">{ hint.clone() }</span>
+                if !is_empty(&props.hint) {
+                    <span id={hint_id} class="yi-file-drop__hint">{ props.hint.clone() }</span>
                 }
             </span>
         </label>

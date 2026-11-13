@@ -36,9 +36,10 @@ pub(crate) fn choice_classes(size: Size, disabled: bool) -> Classes {
 ///
 /// Both sit inside the `<label>`, so the description is read with the option
 /// without needing an id of its own.
-pub(crate) fn choice_text(label: &Html, description: Option<&Html>) -> Html {
+pub(crate) fn choice_text(label: &Html, description: &Html) -> Html {
     let has_label = !is_empty(label);
-    if !has_label && description.is_none() {
+    let has_description = !is_empty(description);
+    if !has_label && !has_description {
         return Html::default();
     }
     html! {
@@ -46,7 +47,7 @@ pub(crate) fn choice_text(label: &Html, description: Option<&Html>) -> Html {
             if has_label {
                 <span class="yi-choice__label">{ label.clone() }</span>
             }
-            if let Some(description) = description {
+            if has_description {
                 <span class="yi-choice__description">{ description.clone() }</span>
             }
         </span>
@@ -72,7 +73,7 @@ pub struct CheckboxProps {
     pub on_change: Callback<bool>,
     /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
-    pub description: Option<Html>,
+    pub description: Html,
     /// The accessible name for a checkbox with no visible label.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -93,6 +94,10 @@ pub struct CheckboxProps {
     /// `error` sets this for you.
     #[prop_or_default]
     pub invalid: bool,
+    /// Takes focus when the page loads or the dialog it is in opens. `attrs`
+    /// land on the label, so this is how the attribute reaches the `<input>`.
+    #[prop_or_default]
+    pub autofocus: bool,
     /// A reference to the `<input>`, for moving focus.
     #[prop_or_default]
     pub input_ref: NodeRef,
@@ -151,6 +156,7 @@ pub fn Checkbox(props: &CheckboxProps) -> Html {
                     value={props.value.clone()}
                     disabled={control.disabled}
                     required={control.required}
+                    autofocus={props.autofocus}
                     aria-label={props.label.clone()}
                     aria-invalid={control.aria_invalid()}
                     aria-describedby={control.described_by.clone()}
@@ -158,7 +164,7 @@ pub fn Checkbox(props: &CheckboxProps) -> Html {
                 />
                 <Icon icon={if mixed { icons::MINUS } else { icons::CHECK }} class="yi-checkbox__mark" />
             </span>
-            { choice_text(&props.children, props.description.as_ref()) }
+            { choice_text(&props.children, &props.description) }
         </label>
     })
 }

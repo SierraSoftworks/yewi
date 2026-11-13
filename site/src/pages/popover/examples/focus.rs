@@ -34,7 +34,7 @@ pub fn Example() -> Html {
                 placement={Placement::BottomStart}
                 arrow=false
                 flush=true
-                head="Filter by"
+                header="Filter by"
                 {content}
                 label="Filters"
             >
