@@ -109,7 +109,7 @@
   line-height: 1;
 
   // A step without an icon shows its position in the list.
-  &:empty::before {
+  &:not(:has(> .yi-icon))::before {
     content: counter(yi-step);
   }
 
@@ -117,19 +117,21 @@
     border-style: dashed;
   }
 
-  // Work in flight: a ring turning around the number.
-  .yi-step--running &::after {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border: var(--yi-steps-rail-width) solid color-mix(in srgb, var(--yi-active) 25%, transparent);
-    border-block-start-color: var(--yi-active);
-    border-radius: inherit;
+}
 
-    @include motion {
-      animation: yi-step-turn var(--yi-duration-spin) linear infinite;
-    }
-  }
+// Work in flight: a spinner turning around the number. Its ring is drawn at
+// three quarters of its box, so the box is a third larger than the marker
+// to put the ring on the marker's edge.
+.yi-step__spinner {
+  --yi-spinner-size: calc(var(--yi-steps-marker-size) * 4 / 3);
+  --yi-spinner-color: var(--yi-active);
+  --yi-spinner-track: color-mix(in srgb, var(--yi-active) 25%, transparent);
+  --yi-spinner-stroke: 1.5;
+
+  position: absolute;
+  inset: calc(var(--yi-steps-marker-size) / -6);
+  // Larger than the marker that contains it.
+  max-inline-size: none;
 }
 
 .yi-step__rail {
@@ -264,12 +266,6 @@
     .yi-step__meta {
       margin-inline-start: 0;
     }
-  }
-}
-
-@keyframes yi-step-turn {
-  to {
-    transform: rotate(1turn);
   }
 }
 

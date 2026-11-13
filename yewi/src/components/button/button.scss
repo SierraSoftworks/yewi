@@ -125,25 +125,6 @@
   }
 }
 
-.yi-button__spinner {
-  flex: none;
-  inline-size: 1em;
-  block-size: 1em;
-  border: 1.5px solid color-mix(in srgb, currentColor 30%, transparent);
-  border-block-start-color: currentColor;
-  border-radius: 50%;
-
-  @include motion {
-    animation: yi-button-spin var(--yi-duration-spin) linear infinite;
-  }
-}
-
-@keyframes yi-button-spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
 @media (forced-colors: active) {
   .yi-button {
     border-color: ButtonText;

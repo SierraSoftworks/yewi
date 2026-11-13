@@ -13,42 +13,6 @@
   }
 }
 
-// The dismiss button of an alert or banner: a small square that takes the
-// colour of the text around it.
-@mixin dismiss {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: var(--yi-space-xl);
-  block-size: var(--yi-space-xl);
-  margin-inline-end: calc(var(--yi-space-xs) * -1);
-  padding: 0;
-  border: 0;
-  border-radius: var(--yi-radius-sm);
-  background: transparent;
-  color: inherit;
-  opacity: 0.7;
-  cursor: pointer;
-
-  @include motion {
-    transition:
-      background-color var(--yi-duration-fast) var(--yi-ease),
-      opacity var(--yi-duration-fast) var(--yi-ease);
-  }
-
-  &:hover {
-    background: color-mix(in srgb, currentColor 10%, transparent);
-    opacity: 1;
-  }
-
-  &:focus-visible {
-    @include focus-ring;
-
-    opacity: 1;
-  }
-}
-
 // ---- Alert -----------------------------------------------------------------
 
 :where(.yi-alert) {
@@ -57,7 +21,7 @@
   --yi-alert-bg: var(--yi-surface);
   --yi-alert-border: var(--yi-card-line);
   --yi-alert-fg: var(--yi-fg);
-  --yi-alert-radius: var(--yi-radius-control);
+  --yi-alert-radius: var(--yi-radius-card);
   --yi-alert-padding: var(--yi-space-md) var(--yi-space-lg);
   --yi-alert-edge: 3px; // Width of the rule along the leading edge.
 }
@@ -138,12 +102,12 @@
   margin-block-start: var(--yi-space-md);
 }
 
+// A small subtle icon button, level with the first line of text and pulled
+// towards the corner so its icon lines up with the padding.
 .yi-alert__dismiss {
-  @include dismiss;
-
-  // Sits level with the first line of text.
-  margin-block: calc((var(--yi-text-md) * var(--yi-leading) - var(--yi-space-xl)) / 2);
-  color: var(--yi-fg-muted);
+  flex: none;
+  margin-block: calc((var(--yi-text-md) * var(--yi-leading) - var(--yi-button-height)) / 2);
+  margin-inline-end: calc(var(--yi-space-sm) * -1);
 }
 
 // ---- Banner ----------------------------------------------------------------
@@ -174,13 +138,20 @@
   font-size: var(--yi-text-md);
   line-height: var(--yi-leading);
 
-  &--solid {
+  &--bold {
     --yi-banner-bg: var(--yi-banner-tone);
     --yi-banner-fg: var(--yi-on-solid);
     --yi-banner-icon: currentColor;
     --yi-banner-border: transparent;
 
     font-weight: 500;
+
+    // The dismiss button takes the colour of the text on the fill.
+    .yi-banner__dismiss,
+    .yi-banner__dismiss:hover {
+      --yi-button-fg: currentColor;
+      --yi-button-bg-hover: color-mix(in srgb, currentColor 16%, transparent);
+    }
 
     .yi-banner__dismiss:focus-visible {
       outline-color: currentColor;
@@ -196,6 +167,11 @@
     --yi-banner-padding: var(--yi-space-xs) var(--yi-space-md);
 
     font-size: var(--yi-text-sm);
+
+    // The strip is slimmer than a small control.
+    .yi-banner__dismiss {
+      --yi-button-height: var(--yi-space-xl);
+    }
   }
 
   &--lg {
@@ -230,9 +206,9 @@
 }
 
 .yi-banner__dismiss {
-  @include dismiss;
-
-  margin-block: calc((1em * var(--yi-leading) - var(--yi-space-xl)) / 2);
+  flex: none;
+  margin-block: calc((1em * var(--yi-leading) - var(--yi-button-height)) / 2);
+  margin-inline-end: calc(var(--yi-space-sm) * -1);
 
   .yi-banner__message + & {
     margin-inline-start: auto;

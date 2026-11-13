@@ -136,3 +136,12 @@ fn failures_and_work_in_flight_stay_until_dismissed() {
         assert_eq!(duration.resolve(tone, 5_000), expected, "{duration:?} {tone:?}");
     }
 }
+
+#[test]
+fn a_plain_toast_has_no_icon_and_work_in_flight_spins() {
+    let plain = render(|| html! { <Toast>{ "Copied" }</Toast> });
+    assert!(!plain.contains("<svg"), "{plain}");
+
+    let active = render(|| html! { <Toast tone={Tone::Active}>{ "Rolling out" }</Toast> });
+    assert!(active.contains("yi-spinner"), "{active}");
+}

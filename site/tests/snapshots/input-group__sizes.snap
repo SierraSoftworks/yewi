@@ -12,12 +12,14 @@ source: site/tests/snapshots.rs
 </span>
 <input value="api" type="search" placeholder="Search" autocomplete="off" class="yi-input yi-input--md" aria-label="Small search">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
-<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<span class="yi-search-input__clear">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Clear search" title="Clear search" tabindex="-1">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
 </svg>
 </button>
+</span>
 </span>
 </div>
 <button type="button" class="yi-button yi-button--default yi-button--sm">Apply</button>
@@ -39,12 +41,14 @@ source: site/tests/snapshots.rs
 </span>
 <input value="api" type="search" placeholder="Search" autocomplete="off" class="yi-input yi-input--md" aria-label="Medium search">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
-<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<span class="yi-search-input__clear">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Clear search" title="Clear search" tabindex="-1">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
 </svg>
 </button>
+</span>
 </span>
 </div>
 <button type="button" class="yi-button yi-button--default yi-button--md">Apply</button>
@@ -66,12 +70,14 @@ source: site/tests/snapshots.rs
 </span>
 <input value="api" type="search" placeholder="Search" autocomplete="off" class="yi-input yi-input--md" aria-label="Large search">
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
-<button type="button" tabindex="-1" aria-label="Clear search" class="yi-search-input__clear">
+<span class="yi-search-input__clear">
+<button type="button" class="yi-button yi-button--subtle yi-button--sm yi-button--icon-only" aria-label="Clear search" title="Clear search" tabindex="-1">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
 <path d="M18 6 6 18M6 6l12 12">
 </path>
 </svg>
 </button>
+</span>
 </span>
 </div>
 <button type="button" class="yi-button yi-button--default yi-button--lg">Apply</button>

@@ -12,7 +12,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, Size, icons, use_field_control};
+use crate::{Attrs, Icon, Size, components::tooltip::use_hint, icons, use_field_control};
 
 mod dom;
 mod reveal;
@@ -199,6 +199,10 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
         />
     });
 
+    let (reveal_ref, generate_ref) = (use_node_ref(), use_node_ref());
+    let reveal_hint = use_hint(&reveal_ref, &props.reveal_label);
+    let generate_hint = use_hint(&generate_ref, &props.generate_label);
+
     html! {
         <div
             class={classes!(
@@ -217,6 +221,7 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
                 <span class="yi-secret-input__actions">
                     if props.revealable {
                         <button
+                            ref={reveal_ref}
                             type="button"
                             class="yi-secret-input__action"
                             aria-label={props.reveal_label.clone()}
@@ -227,10 +232,12 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
                             onclick={on_toggle}
                         >
                             <Icon icon={if revealed { icons::EYE_OFF } else { icons::EYE }} />
+                            { reveal_hint }
                         </button>
                     }
                     if props.generator {
                         <button
+                            ref={generate_ref}
                             type="button"
                             class="yi-secret-input__action"
                             aria-label={props.generate_label.clone()}
@@ -240,6 +247,7 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
                             onclick={on_generate}
                         >
                             <Icon icon={icons::REFRESH_CW} />
+                            { generate_hint }
                         </button>
                     }
                 </span>

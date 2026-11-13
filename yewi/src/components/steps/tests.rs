@@ -100,3 +100,12 @@ fn id_class_and_attrs_reach_the_root_elements() {
     let item = &item[..item.find('>').unwrap()];
     assert!(item.contains(r#"id="first""#) && item.contains("yours") && item.contains(r#"data-step="cart""#));
 }
+
+#[test]
+fn only_a_running_step_shows_the_spinner() {
+    let running = render(|| html! { <Steps><Step title="Deploy" status={StepStatus::Running} /></Steps> });
+    assert!(running.contains("yi-spinner"), "{running}");
+
+    let done = render(|| html! { <Steps><Step title="Deploy" status={StepStatus::Done} /></Steps> });
+    assert!(!done.contains("yi-spinner"), "{done}");
+}

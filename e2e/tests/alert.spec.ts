@@ -54,7 +54,7 @@ test.describe("Banner", () => {
   });
 
   test("spans the full width of its container", async ({ example }) => {
-    const stage = await example("alert/banner-solid");
+    const stage = await example("alert/banner-bold");
     const banner = stage.getByText("All services are operating normally").locator("xpath=ancestor::*[@role='status']");
     const [box, parent] = await Promise.all([banner.boundingBox(), banner.locator("xpath=..").boundingBox()]);
     expect(box!.width).toBeCloseTo(parent!.width, 0);
