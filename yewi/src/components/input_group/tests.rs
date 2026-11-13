@@ -1,5 +1,3 @@
-use std::rc::Rc;
-
 use yewi_test::render;
 
 use super::*;
@@ -9,10 +7,6 @@ use crate::{Button, Field, MenuButton, MenuItem, Select, SelectOption, SelectOpt
 fn tag<'a>(html: &'a str, tag: &str) -> &'a str {
     let start = html.find(&format!("<{tag} ")).unwrap_or_else(|| panic!("no <{tag}> in {html}"));
     &html[start..start + html[start..].find('>').unwrap()]
-}
-
-fn protocols() -> Rc<[(AttrValue, AttrValue)]> {
-    Rc::from([("https".into(), "https://".into()), ("http".into(), "http://".into())])
 }
 
 #[test]
@@ -63,27 +57,6 @@ fn the_control_keeps_its_field_wiring_inside_a_group() {
     let id = &input[input.find(" id=\"").expect("input has an id") + 5..];
     assert!(label.contains(&format!(r#"for="{}""#, &id[..id.find('"').unwrap()])));
     assert!(input.contains(r#"aria-invalid="true""#));
-}
-
-#[test]
-fn select_marks_the_current_option_and_is_named() {
-    let html = render(|| html! { <InputGroupSelect label="Protocol" options={protocols()} value="http" /> });
-    assert!(tag(&html, "select").contains(r#"aria-label="Protocol""#));
-    assert_eq!(html.matches("<option").count(), 2);
-    assert_eq!(html.matches(" selected").count(), 1);
-    let selected = &html[..html.find(" selected").unwrap()];
-    assert!(selected.rfind("<option").is_some_and(|start| selected[start..].contains(r#"value="http""#)));
-}
-
-#[test]
-fn select_states_use_native_attributes() {
-    let html = render(|| {
-        html! { <InputGroupSelect label="Unit" options={protocols()} name="unit" disabled=true id="u" /> }
-    });
-    let select = tag(&html, "select");
-    for expected in [" disabled", r#"name="unit""#, r#"id="u""#] {
-        assert!(select.contains(expected), "{expected} missing from {select}");
-    }
 }
 
 #[test]

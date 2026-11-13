@@ -10,8 +10,8 @@ source: site/tests/snapshots.rs
 <input value="5" id="yi-0-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" aria-valuenow="5" aria-valuemin="1" class="yi-number-input__input">
 </div>
 <span class="yi-input-group__affix yi-input-group__affix--suffix">
-<span class="yi-input-group__select">
-<select aria-label="Unit" class="yi-input-group__select-control">
+<span class="yi-native-select yi-native-select--md">
+<select aria-label="Unit" class="yi-input yi-input--md yi-native-select__control">
 <option value="sec">seconds</option>
 <option value="min" selected="selected">minutes</option>
 <option value="hr">hours</option>

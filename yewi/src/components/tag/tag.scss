@@ -111,7 +111,7 @@ a.yi-tag__text {
   }
 
   &:focus-visible {
-    @include focus-ring(0);
+    @include focus-ring;
   }
 
   &:disabled {

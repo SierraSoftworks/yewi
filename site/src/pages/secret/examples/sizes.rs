@@ -10,7 +10,7 @@ pub fn Example() -> Html {
             <SecretInput size={Size::Small} value={KEY} attrs={attrs! { "aria-label" => "Small" }} />
             <SecretInput value={KEY} generator=true attrs={attrs! { "aria-label" => "Medium" }} />
             <SecretInput size={Size::Large} value={KEY} attrs={attrs! { "aria-label" => "Large" }} />
-            <SecretInput value={KEY} revealed=true monospace=true attrs={attrs! { "aria-label" => "Monospace" }} />
+            <SecretInput value={KEY} revealed=true mono=true attrs={attrs! { "aria-label" => "Monospace" }} />
         </Stack>
     }
 }

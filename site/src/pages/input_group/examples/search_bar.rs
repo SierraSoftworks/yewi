@@ -35,7 +35,7 @@ pub fn Example() -> Html {
 
     let suffix = html! {
         <>
-            <InputGroupSelect label="Scope" options={scopes} value={(*scope).clone()} on_change={set_scope} />
+            <NativeSelect label="Scope" options={scopes} value={(*scope).clone()} on_change={set_scope} />
             <Button variant={ButtonVariant::Primary} {on_click}>{ "Search" }</Button>
         </>
     };

@@ -66,6 +66,7 @@
   @include truncate;
 
   font-weight: 500;
+  line-height: 1.0625rem;
 }
 
 .yi-user-menu__detail {
@@ -74,6 +75,7 @@
   color: var(--yi-fg-muted);
   font-size: var(--yi-text-xs);
   font-weight: 400;
+  line-height: 0.9375rem;
 }
 
 .yi-user-menu__caret {
@@ -110,7 +112,8 @@
 // With the name, where the bar has room for it.
 @media (width >= 36rem) {
   .yi-user-menu--named > .yi-popover > .yi-user-menu__trigger {
-    padding: var(--yi-space-2xs) var(--yi-space-sm) var(--yi-space-2xs) var(--yi-space-xs);
+    // Name and detail fill the control height between them.
+    padding: 0 var(--yi-space-sm) 0 var(--yi-space-xs);
     border-radius: var(--yi-user-menu-radius);
 
     > .yi-user-menu__identity {

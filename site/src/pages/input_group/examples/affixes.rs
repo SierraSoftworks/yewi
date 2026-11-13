@@ -19,7 +19,7 @@ pub fn Example() -> Html {
         <Stack attrs={attrs! { "style" => "max-inline-size: 22rem" }}>
             <Field label="Address" hint="A subdomain of example.com.">
                 <InputGroup prefix="https://" suffix=".example.com">
-                    <TextInput value={(*subdomain).clone()} on_input={set_subdomain} monospace=true />
+                    <TextInput value={(*subdomain).clone()} on_input={set_subdomain} mono=true />
                 </InputGroup>
             </Field>
             <Field label="Timeout" hint="In milliseconds.">

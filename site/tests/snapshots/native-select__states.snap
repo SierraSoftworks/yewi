@@ -1,0 +1,125 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div style="--yi-grid-min:14rem" class="yi-grid">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Small</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--sm">
+<select id="yi-0-control" class="yi-input yi-input--sm yi-native-select__control">
+<option value="eu-west-1" selected="selected">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Medium</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-1-control" class="yi-input yi-input--md yi-native-select__control">
+<option value="eu-west-1" selected="selected">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-2-label" for="yi-2-control" class="yi-field__label">Large</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--lg">
+<select id="yi-2-control" class="yi-input yi-input--lg yi-native-select__control">
+<option value="eu-west-1" selected="selected">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-3-label" for="yi-3-control" class="yi-field__label">Empty</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-3-control" class="yi-input yi-input--md yi-native-select__control">
+<option value="" disabled="disabled" hidden="hidden" selected="selected">Choose a region</option>
+<option value="eu-west-1">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-4-label" for="yi-4-control" class="yi-field__label">Disabled</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-4-control" disabled="disabled" class="yi-input yi-input--md yi-native-select__control">
+<option value="eu-west-1" selected="selected">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked yi-field--invalid">
+<label id="yi-5-label" for="yi-5-control" class="yi-field__label">Invalid</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-5-control" aria-invalid="true" aria-describedby="yi-5-message" class="yi-input yi-input--md yi-input--invalid yi-native-select__control">
+<option value="eu-west-1">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1" selected="selected">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+<p id="yi-5-message" role="alert" class="yi-field__message yi-field__message--error">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0M12 8L12 12M12 16L12.01 16">
+</path>
+</svg>
+<span>This region is being retired.</span>
+</p>
+</div>
+</div>
+</div>
+<div class="yi-cluster">
+<span class="yi-native-select yi-native-select--md yi-native-select--fit">
+<select aria-label="Region" class="yi-input yi-input--md yi-native-select__control">
+<option value="eu-west-1">Ireland</option>
+<option value="eu-central-1" selected="selected">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+<button type="button" class="yi-button yi-button--default yi-button--md">Refresh</button>
+</div>
+</div>

@@ -1,4 +1,4 @@
-// InputGroup, InputGroupSelect and SearchInput.
+// InputGroup and SearchInput.
 //
 // The group draws the outlined box, with the same measurements as
 // `.yi-input`, and the control inside gives up its own. Affixes are inset:
@@ -123,11 +123,11 @@
     white-space: nowrap;
 
     // A chip at the edge sits as far from the side as from the top.
-    &--prefix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-input-group__select):first-child) {
+    &--prefix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-native-select):first-child) {
       margin-inline-start: calc(var(--_inset) - var(--yi-input-group-padding));
     }
 
-    &--suffix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-input-group__select):last-child) {
+    &--suffix:has(> :is(.yi-button, .yi-menu-button, .yi-select, .yi-native-select):last-child) {
       margin-inline-end: calc(var(--_inset) - var(--yi-input-group-padding));
     }
   }
@@ -165,28 +165,17 @@
   }
 
   &__affix .yi-select .yi-select__control {
+    @include chip(
+      $bg: var(--yi-input-group-chip-bg),
+      $bg-hover: var(--yi-input-group-chip-bg-hover),
+      $fg: var(--yi-input-group-chip-fg),
+      $radius: var(--yi-input-group-chip-radius)
+    );
+
     flex: none;
     block-size: var(--yi-input-group-chip-height);
     padding-inline: var(--yi-space-sm) var(--yi-space-xs);
-    border-radius: var(--yi-input-group-chip-radius);
-    background: var(--yi-input-group-chip-bg);
-    color: var(--yi-input-group-chip-fg);
-    font-size: var(--yi-text-sm);
     font-weight: 500;
-
-    &:hover:not(:disabled),
-    &[aria-expanded="true"] {
-      background: var(--yi-input-group-chip-bg-hover);
-      color: var(--yi-fg);
-    }
-
-    &:focus-visible {
-      @include focus-ring;
-    }
-
-    &:disabled {
-      opacity: var(--yi-disabled-opacity);
-    }
   }
 
   // Menus and lists opened from a chip are ordinary surfaces again.
@@ -195,68 +184,36 @@
     cursor: auto;
   }
 
-  // InputGroupSelect: a native select drawn as a chip, with its own chevron.
-  &__select {
-    position: relative;
+  // A NativeSelect in an affix: the same chip around the platform's picker.
+  &__affix .yi-native-select {
     display: inline-flex;
     flex: none;
-    align-items: center;
-    min-inline-size: 0;
+    inline-size: auto;
     color: var(--yi-input-group-chip-fg);
 
-    > .yi-icon {
-      position: absolute;
-      inset-inline-end: var(--yi-space-xs);
-      pointer-events: none;
-    }
+    --_end: var(--yi-space-xs);
 
     &:hover:not(:has(:disabled)) {
       color: var(--yi-fg);
     }
   }
 
-  &__select-control {
-    appearance: none;
-    box-sizing: border-box;
+  &__affix .yi-native-select .yi-native-select__control {
+    @include chip(
+      $bg: var(--yi-input-group-chip-bg),
+      $bg-hover: var(--yi-input-group-chip-bg-hover),
+      $fg: inherit,
+      $radius: var(--yi-input-group-chip-radius)
+    );
+
+    flex: none;
+    inline-size: auto;
     max-inline-size: 100%;
     block-size: var(--yi-input-group-chip-height);
-    margin: 0;
-    padding-block: 0;
     padding-inline: var(--yi-space-sm) calc(var(--yi-space-xs) + 1.15em + var(--yi-space-2xs));
-    border: 0;
-    border-radius: var(--yi-input-group-chip-radius);
-    background: var(--yi-input-group-chip-bg);
-    color: inherit;
-    font-family: inherit;
     font-size: var(--yi-text-sm);
     font-weight: 500;
     line-height: 1;
-    text-overflow: ellipsis;
-    cursor: pointer;
-
-    @include motion {
-      transition: background-color var(--yi-duration-fast) var(--yi-ease);
-    }
-
-    &:hover:not(:disabled) {
-      background: var(--yi-input-group-chip-bg-hover);
-    }
-
-    &:focus-visible {
-      @include focus-ring;
-    }
-
-    &:disabled {
-      opacity: var(--yi-disabled-opacity);
-      cursor: not-allowed;
-    }
-
-    // The popup list is drawn by the browser on its own surface.
-    option {
-      background: var(--yi-surface-raised);
-      color: var(--yi-fg);
-      font-weight: 400;
-    }
   }
 }
 
@@ -321,7 +278,7 @@
     }
   }
 
-  .yi-input-group__select-control {
+  .yi-input-group__affix .yi-native-select .yi-native-select__control {
     border: 1px solid ButtonText;
   }
 }

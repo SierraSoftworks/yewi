@@ -35,7 +35,7 @@ pub fn Example() -> Html {
         <Select label="Protocol" options={protocols} value={(*protocol).clone()} on_change={set_protocol} />
     };
     let unit_select = html! {
-        <InputGroupSelect label="Unit" options={units} value={(*unit).clone()} on_change={set_unit} />
+        <NativeSelect label="Unit" options={units} value={(*unit).clone()} on_change={set_unit} />
     };
 
     html! {
@@ -47,7 +47,7 @@ pub fn Example() -> Html {
             </Field>
             <Field label="Webhook URL">
                 <InputGroup prefix={protocol_select}>
-                    <TextInput value={(*host).clone()} on_input={set_host} monospace=true />
+                    <TextInput value={(*host).clone()} on_input={set_host} mono=true />
                 </InputGroup>
             </Field>
             <span role="status">{ format!("{}://{} · retry in {}", *protocol, *host, *unit) }</span>

@@ -13,7 +13,7 @@ pub fn Example() -> Html {
                 label="As code"
                 syntax={QuerySyntax::Expression}
                 icon={icons::TERMINAL}
-                monospace=true
+                mono=true
                 value={r#"country == "DE""#}
             />
             <QueryInput label="Invalid" syntax={QuerySyntax::Expression} value="country ==" invalid=true />

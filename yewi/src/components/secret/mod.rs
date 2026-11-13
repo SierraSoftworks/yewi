@@ -92,7 +92,7 @@ pub struct SecretInputProps {
     pub autocomplete: AttrValue,
     /// Renders in the monospaced face, for tokens and keys.
     #[prop_or_default]
-    pub monospace: bool,
+    pub mono: bool,
     /// The most characters the browser will accept.
     #[prop_or_default]
     pub max_length: Option<u32>,
@@ -205,7 +205,7 @@ pub fn SecretInput(props: &SecretInputProps) -> Html {
                 "yi-input",
                 "yi-secret-input",
                 format!("yi-input--{}", props.size.as_str()),
-                props.monospace.then_some("yi-input--mono"),
+                props.mono.then_some("yi-input--mono"),
                 control.invalid.then_some("yi-input--invalid"),
                 control.disabled.then_some("yi-input--disabled"),
                 props.readonly.then_some("yi-input--readonly"),

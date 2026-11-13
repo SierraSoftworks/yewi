@@ -9,7 +9,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Placement, Popover, PopoverTrigger, Size, icons, use_field_control, use_id};
+use crate::{Attrs, Icon, IconData, InputGroup, Placement, Popover, PopoverTrigger, Size, icons, use_field_control, use_id};
 
 mod complete;
 
@@ -55,7 +55,7 @@ pub struct QueryInputProps {
     /// Sets the query in the monospaced face, for expressions that read
     /// better as code.
     #[prop_or_default]
-    pub monospace: bool,
+    pub mono: bool,
     /// The most suggestions offered at once.
     #[prop_or(8)]
     pub max_suggestions: usize,
@@ -301,17 +301,22 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
     };
 
     let invalid = control.invalid || props.error.is_some();
-    let box_class = classes!(
-        "yi-query-input__box",
-        format!("yi-query-input__box--{}", props.size.as_str()),
-        props.monospace.then_some("yi-query-input__box--mono"),
-        invalid.then_some("yi-query-input__box--invalid"),
-    );
     let described_by = match (&control.described_by, error.is_some()) {
         (Some(ids), true) => Some(AttrValue::from(format!("{ids} {error_id}"))),
         (None, true) => Some(error_id),
         (ids, false) => ids.clone(),
     };
+
+    let prefix = html! { <Icon icon={props.icon} class="yi-query-input__icon" /> };
+    let suffix = (dirty && active).then(|| {
+        html! {
+            <span class="yi-query-input__hint">
+                <kbd>{ "Enter" }</kbd>{ " to apply" }
+                <span aria-hidden="true">{ " · " }</span>
+                <kbd>{ "Esc" }</kbd>{ " to revert" }
+            </span>
+        }
+    });
 
     html! {
         <Popover
@@ -327,12 +332,14 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
             {on_open_change}
             {content}
         >
-            <span class={box_class}>
-                <Icon icon={props.icon} class="yi-query-input__icon" />
+            <InputGroup class="yi-query-input__box" size={props.size} {prefix} {suffix}>
                 <input
                     ref={input_ref}
                     id={control.id.clone()}
-                    class="yi-query-input__control"
+                    class={classes!(
+                        crate::components::input::input_classes(props.size, props.mono, invalid),
+                        "yi-query-input__control",
+                    )}
                     type="text"
                     role="combobox"
                     value={props.value.clone()}
@@ -357,14 +364,7 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
                     {onfocus}
                     {onblur}
                 />
-                if dirty && active {
-                    <span class="yi-query-input__hint">
-                        <kbd>{ "Enter" }</kbd>{ " to apply" }
-                        <span aria-hidden="true">{ " · " }</span>
-                        <kbd>{ "Esc" }</kbd>{ " to revert" }
-                    </span>
-                }
-            </span>
+            </InputGroup>
         </Popover>
     }
 }

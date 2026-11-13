@@ -117,7 +117,7 @@ pub struct TextInputProps {
     pub autocomplete: Option<AttrValue>,
     /// Renders in the monospaced face, for identifiers, tokens and paths.
     #[prop_or_default]
-    pub monospace: bool,
+    pub mono: bool,
     /// The most characters the browser will accept.
     #[prop_or_default]
     pub max_length: Option<u32>,
@@ -158,14 +158,14 @@ pub fn TextInput(props: &TextInputProps) -> Html {
         <input
             ref={props.input_ref.clone()}
             id={control.id.clone()}
-            class={classes!(input_classes(props.size, props.monospace, control.invalid), props.class.clone())}
+            class={classes!(input_classes(props.size, props.mono, control.invalid), props.class.clone())}
             type={props.kind.as_str()}
             value={props.value.clone()}
             name={props.name.clone()}
             placeholder={props.placeholder.clone()}
             autocomplete={props.autocomplete.clone()}
             maxlength={props.max_length.map(|n| n.to_string())}
-            spellcheck={(secret || props.monospace).then_some("false")}
+            spellcheck={(secret || props.mono).then_some("false")}
             disabled={control.disabled}
             readonly={props.readonly}
             required={control.required}
