@@ -15,16 +15,18 @@ use crate::{
     shell::{Stage, inline},
 };
 
-/// Accents a reviewer can preview: `(value, label)`. The colours live in
-/// `site.scss` under `[data-gallery-accent]`.
-const ACCENTS: [(&str, &str); 7] = [
+/// Accents a reviewer can preview: `(value, label)`. The default, the accent
+/// of each app built on yewi, and none. The colours live in `site.scss` under
+/// `[data-gallery-accent]`.
+const ACCENTS: [(&str, &str); 8] = [
     ("default", "Default blue"),
-    ("violet", "Violet"),
-    ("teal", "Teal"),
-    ("green", "Green"),
-    ("amber", "Amber"),
-    ("rose", "Rose"),
-    ("grey", "Pure grey"),
+    ("symbols", "Symbols"),
+    ("automate", "Automate"),
+    ("grey", "Grey"),
+    ("analytics", "Analytics"),
+    ("buckle", "Buckle"),
+    ("rustak", "Rustak"),
+    ("pure-grey", "Pure grey (no accent)"),
 ];
 
 /// Stage widths: `(value, label)`.
@@ -55,6 +57,8 @@ pub fn Gallery(props: &GalleryProps) -> Html {
             let _ = accent;
         });
     }
+
+    use_effect_with((), |()| keep_links_here());
 
     let page = props
         .slug
@@ -163,6 +167,43 @@ pub fn Gallery(props: &GalleryProps) -> Html {
             </div>
         </div>
     }
+}
+
+/// Stops links from leaving the gallery while it is mounted. The packed file
+/// has no address to come back to, and file viewers open a followed link in a
+/// new window. A link's own `on_click` still runs, and a router link moves the
+/// memory history, which `App` keeps on the gallery.
+fn keep_links_here() -> impl FnOnce() {
+    #[cfg(target_arch = "wasm32")]
+    {
+        use wasm_bindgen::{JsCast, closure::Closure};
+
+        let listener = Closure::<dyn Fn(web_sys::Event)>::new(|event: web_sys::Event| {
+            let link = event
+                .target()
+                .and_then(|target| target.dyn_into::<web_sys::Element>().ok())
+                .and_then(|element| element.closest("a[href]").ok().flatten());
+            if link.is_some_and(|link| link.closest(".gallery").ok().flatten().is_some()) {
+                event.prevent_default();
+            }
+        });
+        // On the window, capturing: ahead of anything that could stop the event.
+        let window = web_sys::window();
+        if let Some(window) = &window {
+            let _ = window.add_event_listener_with_callback_and_bool("click", listener.as_ref().unchecked_ref(), true);
+        }
+        move || {
+            if let Some(window) = &window {
+                let _ = window.remove_event_listener_with_callback_and_bool(
+                    "click",
+                    listener.as_ref().unchecked_ref(),
+                    true,
+                );
+            }
+        }
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    || {}
 }
 
 #[derive(Properties)]

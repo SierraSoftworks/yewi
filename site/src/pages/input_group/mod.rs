@@ -1,5 +1,5 @@
 crate::page! {
-    title: "Input group",
+    title: "InputGroup",
     category: Form,
     summary: "InputGroup puts affixes, buttons and a dropdown inside one outlined field. SearchInput is the ready-made search box built from it.",
     examples: [
