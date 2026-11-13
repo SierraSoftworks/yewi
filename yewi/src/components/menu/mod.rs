@@ -207,6 +207,8 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
             }
             <span class="yi-menu__label">{ props.children.clone() }</span>
             if !is_empty(&props.aside) {
+                // Keeps the two apart in the item's text and accessible name.
+                { " " }
                 <span class="yi-menu__aside">{ props.aside.clone() }</span>
             } else if link.external {
                 <span class="yi-menu__aside">

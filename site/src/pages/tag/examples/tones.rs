@@ -12,6 +12,7 @@ pub fn Example() -> Html {
             <Tag tone={Tone::Ok}>{ "verified" }</Tag>
             <Tag tone={Tone::Active}>{ "syncing" }</Tag>
             <Tag icon={icons::GIT_BRANCH} mono=true>{ "main" }</Tag>
+            <Tag><StatusDot tone={Tone::Ok} />{ "online" }</Tag>
         </Cluster>
     }
 }

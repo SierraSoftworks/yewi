@@ -211,3 +211,17 @@ fn the_word_pattern_matches_only_the_word() {
         assert_eq!(pattern(word), expected, "{word:?}");
     }
 }
+
+#[test]
+fn confirm_places_extra_fields_after_its_own_steps() {
+    let html = render(|| {
+        html! {
+            <ConfirmDialog open=true title="Forget pi-1?" confirm_label="Forget" acknowledge="I understand"
+                type_to_confirm="pi-1" fields={html! { <label>{ "Reason" }<input /></label> }} error="Refused." />
+        }
+    });
+    let at = |text: &str| html.find(text).unwrap_or_else(|| panic!("{text} missing from {html}"));
+    assert!(at("I understand") < at("Reason"));
+    assert!(at("to confirm") < at("Reason"));
+    assert!(at("Reason") < at("Refused."));
+}

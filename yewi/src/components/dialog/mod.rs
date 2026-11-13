@@ -285,6 +285,10 @@ pub struct ConfirmDialogProps {
     /// name of the thing being destroyed.
     #[prop_or_default]
     pub type_to_confirm: Option<AttrValue>,
+    /// Fields that belong after the ticked statement and the typed word: a
+    /// reason, a ticket number. Gate the action on them with `disabled`.
+    #[prop_or_default]
+    pub fields: Html,
     /// Why the last attempt failed, shown as an alert above the actions.
     #[prop_or_default]
     pub error: Option<AttrValue>,
@@ -316,6 +320,8 @@ pub struct ConfirmDialogProps {
 pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
     let acknowledged = use_state_eq(|| false);
     let typed = use_state_eq(String::new);
+    // A press on the word copies it, for names nobody should have to retype.
+    let clipboard = crate::use_clipboard();
 
     // Each opening starts from scratch.
     {
@@ -430,7 +436,20 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
                 </Checkbox>
             }
             if let Some(word) = &props.type_to_confirm {
-                <Field label={html! { <>{ "Type " }<code class="yi-confirm__word">{ word.clone() }</code>{ " to confirm" }</> }}>
+                <Field
+                    label={html! {
+                        <>
+                            { "Type " }
+                            <code class="yi-confirm__word" onclick={clipboard.copy.reform({
+                                let word = word.clone();
+                                move |_: MouseEvent| word.clone()
+                            })}>
+                                { word.clone() }
+                            </code>
+                            { " to confirm" }
+                        </>
+                    }}
+                >
                     <TextInput
                         value={(*typed).clone()}
                         mono=true
@@ -442,6 +461,7 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
                     />
                 </Field>
             }
+            { props.fields.clone() }
             if let Some(error) = &props.error {
                 <p class="yi-confirm__error" role="alert">{ error.clone() }</p>
             }

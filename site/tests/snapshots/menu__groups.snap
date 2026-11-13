@@ -14,16 +14,13 @@ source: site/tests/snapshots.rs
 <span role="group" aria-label="Actions" class="yi-menu__group">
 <span aria-hidden="true" class="yi-menu__heading">Actions</span>
 <button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
-<span class="yi-menu__label">Restart</span>
-<span class="yi-menu__aside">systemd</span>
+<span class="yi-menu__label">Restart</span> <span class="yi-menu__aside">systemd</span>
 </button>
 <button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
-<span class="yi-menu__label">Reboot</span>
-<span class="yi-menu__aside">systemd</span>
+<span class="yi-menu__label">Reboot</span> <span class="yi-menu__aside">systemd</span>
 </button>
 <button role="menuitem" type="button" tabindex="-1" class="yi-menu__item">
-<span class="yi-menu__label">Drain</span>
-<span class="yi-menu__aside">nomad</span>
+<span class="yi-menu__label">Drain</span> <span class="yi-menu__aside">nomad</span>
 </button>
 </span>
 <button role="menuitem" type="button" tabindex="-1" class="yi-menu__item yi-menu__item--danger">
