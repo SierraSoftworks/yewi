@@ -59,6 +59,28 @@ pub fn render() -> Html {
 }
 "#) }
 
+            <h2>{ "Matching styles of your own" }</h2>
+            <p>
+                { "The parts of a page that are yours alone can be built from the same Sass mixins as the                    components: " }<code>{ "card-surface" }</code>{ ", " }<code>{ "focus-ring" }</code>{ ", " }
+                <code>{ "heading" }</code>{ ", " }<code>{ "eyebrow" }</code>{ ", " }<code>{ "chip" }</code>{ ", " }
+                <code>{ "truncate" }</code>{ " and " }<code>{ "motion" }</code>
+                { ". Cargo gives the build script of a crate that depends on yewi the path of the module as " }
+                <code>{ "DEP_YEWI_SCSS" }</code>{ ". Copy it beside your stylesheet (and keep the copy out of version                    control), then use it by name. Servers that compile Sass themselves can read the same text from " }
+                <code>{ "yewi::SCSS" }</code>{ "." }
+            </p>
+            { plain(r#"
+// build.rs
+let mixins = std::env::var("DEP_YEWI_SCSS").expect("yewi is a direct dependency");
+std::fs::copy(mixins, "_yewi.scss").expect("the mixins should be writable");
+"#) }
+            { plain(r#"
+@use "yewi" as yi;
+
+.result-row {
+  @include yi.card-surface;
+}
+"#) }
+
             <h2>{ "Density" }</h2>
             <p>
                 { "Controls are 32px tall by default. To fit more into a busy area, such as a table toolbar, \

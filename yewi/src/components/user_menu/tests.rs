@@ -47,6 +47,14 @@ fn the_trigger_is_named_by_the_person_in_every_form() {
 }
 
 #[test]
+fn the_name_is_written_out_at_most_once() {
+    for (show_name, expected) in [(false, 0), (true, 1)] {
+        let html = user_menu(show_name);
+        assert_eq!(html.matches(">Ada Lovelace<").count(), expected, "{html}");
+    }
+}
+
+#[test]
 fn class_id_and_attrs_reach_the_root() {
     let html = render(|| html! { <UserMenu name="x" class="mine" id="m" attrs={attrs! { "data-test" => "x" }} /> });
     let root = &html[..html.find('>').unwrap()];

@@ -10,6 +10,8 @@ repository.workspace = true
 readme = "../README.md"
 keywords = ["yew", "ui", "components", "design-system", "wasm"]
 categories = ["gui", "wasm", "web-programming"]
+# Lets the build script of an app read `DEP_YEWI_SCSS`: see `yewi::SCSS`.
+links = "yewi"
 
 [features]
 default = []
@@ -97,6 +99,7 @@ grass = { workspace = true }
 [dev-dependencies]
 yew = { workspace = true, features = ["ssr"] }
 yewi-test = { workspace = true }
+grass = { workspace = true }
 rqrr = { version = "0.11", default-features = false }
 
 [package.metadata.docs.rs]

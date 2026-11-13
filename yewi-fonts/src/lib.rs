@@ -5,8 +5,7 @@
 //! The crate has no dependencies, so it works as a build dependency.
 //!
 //! - **Trunk apps**: call [`write_to`] from `build.rs` into a directory that
-//!   `index.html` copies (`<link data-trunk rel="copy-dir" href="fonts">`),
-//!   and link the `fonts.css` it writes.
+//!   a `post_build` hook stages, and link the `fonts.css` it writes.
 //! - **Servers**: serve each of [`FILES`] under one URL prefix and the output
 //!   of [`css`] for that prefix.
 //!
@@ -66,6 +65,11 @@ pub fn css(base_url: &str) -> String {
 /// Writes every font file and a `fonts.css` that references them relatively
 /// into `dir`, creating it if needed. Files that are already up to date are
 /// left untouched, so this is safe to call from a build script.
+///
+/// In a Trunk app, stage the directory with a `post_build` hook
+/// (`cp -R fonts "$TRUNK_STAGING_DIR/fonts"`), not a `copy-dir` link: Trunk
+/// resolves its assets before cargo runs the build script, so the link fails
+/// on a clean checkout.
 pub fn write_to(dir: impl AsRef<Path>) -> io::Result<()> {
     let dir = dir.as_ref();
     fs::create_dir_all(dir)?;

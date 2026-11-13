@@ -1,0 +1,13 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 22rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Display name</label>
+<div class="yi-field__body">
+<input value="  checkout api " id="yi-0-control" type="text" aria-describedby="yi-0-message" class="yi-input yi-input--md">
+<p id="yi-0-message" class="yi-field__message">Extra spaces are removed when you leave the field.</p>
+</div>
+</div>
+<span role="status">Name: [  checkout api ]</span>
+</div>

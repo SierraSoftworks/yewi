@@ -8,10 +8,7 @@ source: site/tests/snapshots.rs
 <span style="--yi-avatar-hue:273" aria-hidden="true" class="yi-avatar yi-avatar--sm">
 <span aria-hidden="true" class="yi-avatar__initials">AL</span>
 </span>
-<span class="yi-user-menu__identity">
-<span class="yi-user-menu__name">Ada Lovelace</span>
-<span class="yi-user-menu__detail">admin</span>
-</span>
+<span class="yi-user-menu__label">Ada Lovelace, admin</span>
 </button>
 </span>
 </span>

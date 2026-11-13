@@ -17,6 +17,22 @@ test.describe("TextInput", () => {
     await expect(status).toHaveText("Typing: billing-api · Saved: billing-api");
   });
 
+  test("reports the text left behind on blur, changed or not", async ({ page, example }) => {
+    const stage = await example("input/on-blur");
+    const input = stage.getByRole("textbox", { name: "Display name" });
+    const status = stage.getByRole("status");
+
+    // Nothing is typed, so no change is committed, yet the text is tidied.
+    await input.focus();
+    await page.keyboard.press("Tab");
+    await expect(input).toHaveValue("checkout api");
+
+    await input.fill(" billing   api");
+    await expect(status).toHaveText("Name: [ billing   api]");
+    await page.keyboard.press("Tab");
+    await expect(status).toHaveText("Name: [billing api]");
+  });
+
   test("shows a focus indicator and takes focus from the keyboard", async ({ page, example }) => {
     const stage = await example("input/basic");
     await page.keyboard.press("Tab");

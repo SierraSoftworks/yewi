@@ -52,6 +52,35 @@ fn a_placeholder_stands_in_until_a_value_matches() {
 }
 
 #[test]
+fn a_clearable_placeholder_is_a_choice() {
+    for (clearable, value) in [(true, ""), (true, "https"), (false, "https")] {
+        let html = render(move || {
+            html! { <NativeSelect options={protocols()} placeholder="Any" {clearable} {value} /> }
+        });
+        let placeholder = tag(&html, "option");
+        assert!(placeholder.contains(r#"value="""#), "{placeholder}");
+        assert_eq!(placeholder.contains(" disabled"), !clearable, "{placeholder}");
+        assert!(selected_option(&html).contains(&format!(r#"value="{value}""#)), "{html}");
+    }
+}
+
+#[test]
+fn a_value_outside_the_options_is_kept_as_the_choice() {
+    let select = |unknown_label: Option<Callback<AttrValue, AttrValue>>| {
+        render(move || {
+            let unknown_label = unknown_label.clone();
+            html! { <NativeSelect options={protocols()} placeholder="Choose" value="ftp" {unknown_label} /> }
+        })
+    };
+    let plain = select(None);
+    assert!(selected_option(&plain).contains(r#"value="ftp""#), "{plain}");
+    assert_eq!(plain.matches("<option").count(), 4);
+
+    let labelled = select(Some(Callback::from(|value: AttrValue| format!("{value} (retired)").into())));
+    assert!(labelled.contains("ftp (retired)"), "{labelled}");
+}
+
+#[test]
 fn a_field_labels_and_describes_it() {
     reset_ids();
     let html = render(|| {
