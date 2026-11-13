@@ -120,11 +120,9 @@
 }
 
 .yi-menu__heading {
+  @include group-label;
+
   padding: var(--yi-space-xs) var(--yi-menu-item-padding) var(--yi-space-2xs);
-  color: var(--yi-fg-muted);
-  font-size: var(--yi-text-xs);
-  font-weight: 600;
-  line-height: var(--yi-leading);
 }
 
 .yi-menu__separator {

@@ -316,7 +316,7 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
                 <kbd>{ "Esc" }</kbd>{ " to revert" }
             </span>
         }
-    });
+    }).unwrap_or_default();
 
     html! {
         <Popover

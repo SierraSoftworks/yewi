@@ -142,58 +142,12 @@
 
 // ---- ConfirmDialog ---------------------------------------------------------
 
-.yi-confirm__acknowledge {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--yi-space-sm);
-  cursor: pointer;
-
-  input {
-    flex: none;
-    inline-size: 1rem;
-    block-size: 1rem;
-    // Centres the box on the first line of the statement.
-    margin: calc((var(--yi-leading) * 1em - 1rem) / 2) 0 0;
-    accent-color: var(--yi-accent-solid);
-  }
-}
-
-.yi-confirm__type {
-  display: flex;
-  flex-direction: column;
-  gap: var(--yi-space-xs);
-
-  label {
-    color: var(--yi-fg-muted);
-    font-size: var(--yi-text-sm);
-  }
-}
-
 .yi-confirm__word {
   padding: var(--yi-space-2xs) var(--yi-space-xs);
   border-radius: var(--yi-radius-sm);
   background: var(--yi-neutral-soft);
   color: var(--yi-fg);
   user-select: all;
-}
-
-.yi-confirm__input {
-  inline-size: 100%;
-  block-size: var(--yi-control-height);
-  padding-inline: var(--yi-space-md);
-  border: 1px solid var(--yi-line-strong);
-  border-radius: var(--yi-radius-control);
-  background: var(--yi-surface);
-  color: var(--yi-fg);
-  font-family: var(--yi-font-mono);
-  font-variant-ligatures: var(--yi-font-mono-ligatures);
-  font-size: var(--yi-text-sm);
-
-  &:focus-visible {
-    @include focus-ring(0);
-
-    border-color: var(--yi-focus);
-  }
 }
 
 .yi-confirm__error {

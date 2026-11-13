@@ -8,6 +8,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{
     Attrs, Size,
     components::dialog::{close_button, use_modal},
@@ -54,7 +55,7 @@ pub struct DrawerProps {
     pub children: Html,
     /// Actions, pinned to the bottom and aligned to the end.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     #[prop_or_default]
     pub side: DrawerSide,
     /// The width: `Small` for navigation, `Large` for a wide form or a table.
@@ -115,8 +116,8 @@ pub fn Drawer(props: &DrawerProps) -> Html {
                         </header>
                     }
                     <div class="yi-drawer__body">{ props.children.clone() }</div>
-                    if let Some(footer) = &props.footer {
-                        <footer class="yi-drawer__foot">{ footer.clone() }</footer>
+                    if !is_empty(&props.footer) {
+                        <footer class="yi-drawer__foot">{ props.footer.clone() }</footer>
                     }
                 </div>
             }

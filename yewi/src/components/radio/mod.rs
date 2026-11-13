@@ -113,7 +113,7 @@ pub struct RadioProps {
     pub value: AttrValue,
     /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
-    pub description: Option<Html>,
+    pub description: Html,
     /// The accessible name for a radio with no visible label.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -199,7 +199,7 @@ pub fn Radio(props: &RadioProps) -> Html {
                     {onchange}
                 />
             </span>
-            { choice_text(&props.children, props.description.as_ref()) }
+            { choice_text(&props.children, &props.description) }
         </label>
     })
 }

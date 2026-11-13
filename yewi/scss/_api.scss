@@ -79,6 +79,15 @@ $tones-coloured: ok, warn, danger, info, active;
   color: var(--yi-fg-subtle);
 }
 
+/// The label of a group of options in a floating list (Menu, Select).
+/// Sentence case; the uppercase `eyebrow` is for page-level navigation.
+@mixin group-label {
+  color: var(--yi-fg-muted);
+  font-size: var(--yi-text-xs);
+  font-weight: 600;
+  line-height: var(--yi-leading);
+}
+
 /// The lifted card surface: soft border plus a faint two-layer shadow.
 @mixin card-surface {
   background: var(--yi-surface);

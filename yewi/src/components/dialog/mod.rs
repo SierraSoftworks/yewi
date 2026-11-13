@@ -10,7 +10,9 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, IconButton, Size, hooks::use_id, icons};
+use crate::{
+    Attrs, Button, ButtonVariant, Checkbox, Field, IconButton, Size, TextInput, hooks::use_id, icons, is_empty,
+};
 
 /// What [`use_modal`] hands a component that renders a modal `<dialog>`.
 pub(crate) struct Modal {
@@ -140,7 +142,7 @@ pub struct DialogProps {
     pub children: Html,
     /// Actions, pinned below the body and aligned to the end.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     /// The maximum width: `Small` for a short question, `Large` for a form
     /// with columns or a table.
     #[prop_or_default]
@@ -201,8 +203,8 @@ pub fn Dialog(props: &DialogProps) -> Html {
                         }
                     </header>
                     <div class="yi-dialog__body" id={body_id}>{ props.children.clone() }</div>
-                    if let Some(footer) = &props.footer {
-                        <footer class="yi-dialog__foot">{ footer.clone() }</footer>
+                    if !is_empty(&props.footer) {
+                        <footer class="yi-dialog__foot">{ props.footer.clone() }</footer>
                     }
                 </div>
             }
@@ -269,7 +271,6 @@ pub struct ConfirmDialogProps {
 pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
     let acknowledged = use_state_eq(|| false);
     let typed = use_state_eq(String::new);
-    let input_id = use_id();
 
     // Each opening starts from scratch.
     {
@@ -292,15 +293,11 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
 
     let on_acknowledge = {
         let acknowledged = acknowledged.clone();
-        Callback::from(move |event: Event| {
-            acknowledged.set(dom::checked(&event));
-        })
+        Callback::from(move |checked: bool| acknowledged.set(checked))
     };
     let on_type = {
         let typed = typed.clone();
-        Callback::from(move |event: InputEvent| {
-            typed.set(dom::value(&event));
-        })
+        Callback::from(move |value: String| typed.set(value))
     };
     let on_confirm = {
         let (on_confirm, busy) = (props.on_confirm.clone(), props.busy);
@@ -360,42 +357,37 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
         >
             { props.children.clone() }
             if let Some(statement) = &props.acknowledge {
-                <label class="yi-confirm__acknowledge">
-                    <input
-                        type="checkbox"
-                        checked={*acknowledged}
-                        autofocus=true
-                        onchange={on_acknowledge}
-                    />
-                    <span>{ statement.clone() }</span>
-                </label>
+                <Checkbox checked={*acknowledged} autofocus=true on_change={on_acknowledge}>
+                    { statement.clone() }
+                </Checkbox>
             }
             if let Some(word) = &props.type_to_confirm {
-                <div class="yi-confirm__type">
-                    <label for={input_id.clone()}>
-                        { "Type " }
-                        <code class="yi-confirm__word">{ word.clone() }</code>
-                        { " to confirm" }
-                    </label>
-                    <input
-                        id={input_id}
-                        class="yi-confirm__input"
-                        type="text"
+                <Field label={html! { <>{ "Type " }<code class="yi-confirm__word">{ word.clone() }</code>{ " to confirm" }</> }}>
+                    <TextInput
                         value={(*typed).clone()}
+                        mono=true
                         autocomplete="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                        autofocus={props.acknowledge.is_none()}
-                        oninput={on_type}
-                        onkeydown={on_keydown}
+                        attrs={type_attrs(props.acknowledge.is_none())}
+                        on_input={on_type}
+                        on_keydown={on_keydown}
                     />
-                </div>
+                </Field>
             }
             if let Some(error) = &props.error {
                 <p class="yi-confirm__error" role="alert">{ error.clone() }</p>
             }
         </Dialog>
     }
+}
+
+/// What the word box needs beyond `TextInput`'s props: no capitalising on a
+/// touch keyboard, and focus when it is the first step.
+fn type_attrs(autofocus: bool) -> Attrs {
+    Attrs::new(
+        [("autocapitalize", AttrValue::Static("off"))]
+            .into_iter()
+            .chain(autofocus.then_some(("autofocus", AttrValue::Static("")))),
+    )
 }
 
 /// Whether every condition on the confirm button is met.
@@ -423,20 +415,6 @@ mod dom {
         }
     }
 
-    fn target_property(event: &web_sys::Event, name: &str) -> Option<JsValue> {
-        js_sys::Reflect::get(event.target()?.as_ref(), &JsValue::from_str(name)).ok()
-    }
-
-    /// The `checked` state of the input an event came from.
-    pub fn checked(event: &web_sys::Event) -> bool {
-        target_property(event, "checked").and_then(|value| value.as_bool()).unwrap_or_default()
-    }
-
-    /// The `value` of the input an event came from.
-    pub fn value(event: &web_sys::Event) -> String {
-        target_property(event, "value").and_then(|value| value.as_string()).unwrap_or_default()
-    }
-
     pub fn show(node: &NodeRef) {
         if let Some(element) = node.cast::<web_sys::Element>()
             && !is_open(&element)
@@ -456,15 +434,7 @@ mod dom {
 
 #[cfg(not(target_arch = "wasm32"))]
 mod dom {
-    use yew::{Event, NodeRef};
-
-    pub fn checked(_event: &Event) -> bool {
-        false
-    }
-
-    pub fn value(_event: &Event) -> String {
-        String::new()
-    }
+    use yew::NodeRef;
 
     pub fn show(_node: &NodeRef) {}
 

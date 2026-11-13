@@ -43,6 +43,7 @@
 }
 
 .yi-query-input__surface {
+  --yi-popover-radius: var(--yi-radius-control);
   --yi-popover-max-width: max(100cqi, 20rem);
 
   min-inline-size: min(100cqi, calc(100vw - var(--yi-space-lg)));

@@ -101,7 +101,7 @@ pub struct VirtualTableProps<T: Clone + PartialEq + 'static> {
     pub skeleton_rows: usize,
     /// Shown instead of rows when there are none.
     #[prop_or_default]
-    pub empty: Option<Html>,
+    pub empty: Html,
     /// The title of the default empty state, when `empty` is not set.
     #[prop_or(AttrValue::Static("Nothing to show"))]
     pub empty_label: AttrValue,
@@ -110,7 +110,7 @@ pub struct VirtualTableProps<T: Clone + PartialEq + 'static> {
     pub label: Option<AttrValue>,
     /// Content under the table, outside its scrolling area: a row count.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]

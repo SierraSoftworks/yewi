@@ -20,7 +20,7 @@ pub struct AppBarProps {
     pub children: Html,
     /// The brand, normally an [`AppBarBrand`].
     #[prop_or_default]
-    pub brand: Option<Html>,
+    pub brand: Html,
     /// Controls at the end: status, notifications, the theme toggle, the
     /// user menu. A [`TopMenu`](crate::TopMenu) among the children takes
     /// them over, so that they fold into its dropdown when it collapses.
@@ -66,8 +66,8 @@ pub fn AppBar(props: &AppBarProps) -> Html {
                     on_click={shell.toggle_sidebar.reform(|_| ())}
                 />
             }
-            if let Some(brand) = &props.brand {
-                { brand.clone() }
+            if !is_empty(&props.brand) {
+                { props.brand.clone() }
             }
             <div class="yi-app-bar__start">
                 <ContextProvider<AppBarContext> {context}>{ props.children.clone() }</ContextProvider<AppBarContext>>
@@ -89,7 +89,7 @@ pub struct AppBarBrandProps {
     /// The logo, shown before the name: an [`Icon`](crate::Icon), an `<img>`
     /// or an inline SVG. It is sized to the bar.
     #[prop_or_default]
-    pub logo: Option<Html>,
+    pub logo: Html,
     /// Where the brand leads, normally the app's home: a URL or, with the
     /// `router` feature, `NavTarget::route(..)`. Without it the brand is
     /// plain text.
@@ -116,8 +116,8 @@ pub fn AppBarBrand(props: &AppBarBrandProps) -> Html {
     let class = classes!("yi-app-bar__brand", props.class.clone());
     let content = html! {
         <>
-            if let Some(logo) = &props.logo {
-                <span class="yi-app-bar__logo">{ logo.clone() }</span>
+            if !is_empty(&props.logo) {
+                <span class="yi-app-bar__logo">{ props.logo.clone() }</span>
             }
             <span class="yi-app-bar__name">{ props.children.clone() }</span>
         </>
