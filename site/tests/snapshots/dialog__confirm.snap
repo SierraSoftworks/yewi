@@ -6,6 +6,6 @@ source: site/tests/snapshots.rs
 <button type="button" class="yi-button yi-button--danger yi-button--md">Forget host</button>
 </div>
 <span role="status">pi-1 is registered</span>
-<dialog role="alertdialog" aria-labelledby="yi-0" aria-describedby="yi-0-body" class="yi-dialog yi-dialog--sm yi-confirm">
+<dialog role="alertdialog" aria-labelledby="yi-2" aria-describedby="yi-2-body" class="yi-dialog yi-dialog--sm yi-confirm">
 </dialog>
 </div>

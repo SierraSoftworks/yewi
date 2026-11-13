@@ -118,4 +118,62 @@ test.describe("Server-only pages", () => {
     await expect(root).not.toHaveAttribute("data-theme", /.+/);
     expect(await page.evaluate(() => localStorage.getItem("yewi-theme"))).toBeNull();
   });
+
+  test("a button opens a dialog and a drawer, which close natively", async ({ page, serverOnly, problems }) => {
+    const stage = await serverOnly("server-only/dialogs");
+
+    // The dialog the server rendered open is showing, as a modal.
+    const notice = page.getByRole("dialog", { name: "Session expired" });
+    await expect(notice).toBeVisible();
+    expect(await notice.evaluate((dialog) => dialog.matches(":modal"))).toBe(true);
+    await notice.getByRole("button", { name: "Close" }).click();
+    await expect(notice).toBeHidden();
+
+    const trigger = stage.getByRole("button", { name: "Details" });
+    await trigger.click();
+    const details = page.getByRole("dialog", { name: "Host details" });
+    await expect(details).toContainText("pi-1 has been up for 12 days.");
+    expect(await details.evaluate((dialog) => dialog.matches(":modal"))).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect(details).toBeHidden();
+    await expect(trigger).toBeFocused();
+
+    await stage.getByRole("button", { name: "Filters" }).click();
+    const filters = page.getByRole("dialog", { name: "Filters" });
+    await expect(filters).toBeVisible();
+    await filters.getByRole("button", { name: "Close" }).click();
+    await expect(filters).toBeHidden();
+    expect(problems).toEqual([]);
+  });
+
+  test("a confirmation submits its form only once its steps are done", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("server-only/confirm");
+    await stage.getByRole("button", { name: "Forget pi-1" }).click();
+    const dialog = page.getByRole("alertdialog", { name: "Forget pi-1?" });
+    await expect(dialog).toBeVisible();
+    const confirm = dialog.getByRole("button", { name: "Forget pi-1" });
+
+    // Neither step is done: the browser refuses the submit.
+    await confirm.click();
+    await expect(dialog).toBeVisible();
+    expect(new URL(page.url()).search).toBe("");
+
+    await dialog.getByRole("checkbox", { name: "I have drained this host" }).check();
+    await dialog.getByRole("textbox").fill("pi-2");
+    await confirm.click();
+    expect(new URL(page.url()).search).toBe("");
+
+    await dialog.getByRole("textbox").fill("pi-1");
+    await confirm.click();
+    await expect(page).toHaveURL(/\?forget=pi-1$/);
+  });
+
+  test("cancelling a confirmation closes it and submits nothing", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("server-only/confirm");
+    await stage.getByRole("button", { name: "Forget pi-1" }).click();
+    const dialog = page.getByRole("alertdialog", { name: "Forget pi-1?" });
+    await dialog.getByRole("button", { name: "Cancel" }).click();
+    await expect(dialog).toBeHidden();
+    expect(new URL(page.url()).search).toBe("");
+  });
 });

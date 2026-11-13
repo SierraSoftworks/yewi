@@ -41,6 +41,51 @@ impl ButtonVariant {
     }
 }
 
+/// What a button does to another element by itself, with no event handler:
+/// the native `command` and `commandfor` attributes. This is how a page
+/// without a client runtime opens and closes dialogs, drawers and popovers.
+///
+/// ```ignore
+/// <Button command={Command::show_modal("confirm-delete")}>{ "Delete" }</Button>
+/// <ConfirmDialog id="confirm-delete" form="delete" title="Delete project?" confirm_label="Delete" />
+/// ```
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Command {
+    action: &'static str,
+    target: AttrValue,
+}
+
+impl Command {
+    fn new(action: &'static str, target: impl Into<AttrValue>) -> Self {
+        Self { action, target: target.into() }
+    }
+
+    /// Opens the `<dialog>` with this id (a `Dialog`, `ConfirmDialog` or `Drawer`) as a modal.
+    pub fn show_modal(id: impl Into<AttrValue>) -> Self {
+        Self::new("show-modal", id)
+    }
+
+    /// Closes the `<dialog>` with this id.
+    pub fn close(id: impl Into<AttrValue>) -> Self {
+        Self::new("close", id)
+    }
+
+    /// Shows the popover with this id if it is hidden, and hides it if it is showing.
+    pub fn toggle_popover(id: impl Into<AttrValue>) -> Self {
+        Self::new("toggle-popover", id)
+    }
+
+    /// Shows the popover with this id.
+    pub fn show_popover(id: impl Into<AttrValue>) -> Self {
+        Self::new("show-popover", id)
+    }
+
+    /// Hides the popover with this id.
+    pub fn hide_popover(id: impl Into<AttrValue>) -> Self {
+        Self::new("hide-popover", id)
+    }
+}
+
 /// The native `type` of a `<button>`.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
 pub enum ButtonKind {
@@ -97,6 +142,9 @@ pub struct ButtonProps {
     /// Fired on activation. Not fired while `disabled` or `loading`.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
+    /// Opens or closes another element natively. Ignored on a link.
+    #[prop_or_default]
+    pub command: Option<Command>,
     /// A reference to the `<button>` or `<a>`, for moving focus or anchoring
     /// something to it.
     #[prop_or_default]
@@ -175,6 +223,8 @@ pub fn Button(props: &ButtonProps) -> Html {
                 aria-disabled={(props.loading && !props.disabled).then_some("true")}
                 aria-busy={aria_busy}
                 aria-pressed={props.pressed.map(|pressed| if pressed { "true" } else { "false" })}
+                command={props.command.as_ref().map(|command| command.action)}
+                commandfor={props.command.as_ref().map(|command| command.target.clone())}
                 {onclick}
             >
                 { content }

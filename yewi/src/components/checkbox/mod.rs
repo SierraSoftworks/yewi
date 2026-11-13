@@ -94,6 +94,10 @@ pub struct CheckboxProps {
     /// `error` sets this for you.
     #[prop_or_default]
     pub invalid: bool,
+    /// The id of the `<form>` the checkbox belongs to, when it is rendered
+    /// outside that form.
+    #[prop_or_default]
+    pub form: Option<AttrValue>,
     /// Takes focus when the page loads or the dialog it is in opens. `attrs`
     /// land on the label, so this is how the attribute reaches the `<input>`.
     #[prop_or_default]
@@ -154,6 +158,7 @@ pub fn Checkbox(props: &CheckboxProps) -> Html {
                     checked={props.checked}
                     name={props.name.clone()}
                     value={props.value.clone()}
+                    form={props.form.clone()}
                     disabled={control.disabled}
                     required={control.required}
                     autofocus={props.autofocus}

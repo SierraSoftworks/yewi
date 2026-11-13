@@ -17,7 +17,7 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 
 /// Components with nothing to run, or whose behaviour is the browser's own.
 const COMPLETE: &str = "AppBar, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
-                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Spinner, Loading, \
+                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Dialog, ConfirmDialog, Drawer, Spinner, Loading, \
                         Markdown, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
                         SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
                         TextInput, TextArea, ThemeScript, ThemeToggle, ToggleSwitch, VisuallyHidden";
@@ -107,7 +107,6 @@ const PARTIAL: &[Row] = &[
 
 const INERT: &[Row] = &[
     row("SecretValue, SecretReveal", "", "Revealing a concealed value", "Show the value; its copy button works"),
-    row("Dialog, ConfirmDialog, Drawer", "", "Opening and closing", "Use a separate confirmation page"),
     row(
         "MenuButton, SplitButton, UserMenu, NotificationPanel, Popover",
         "",
@@ -203,6 +202,30 @@ async fn behaviours() -> impl Responder {
     <Checkbox name="private" label="Private" />
     <Button variant={ButtonVariant::Primary} kind={ButtonKind::Submit}>{ "Create" }</Button>
 </form>
+"#) }
+
+            <h2>{ "Dialogs and confirmations" }</h2>
+            <p>
+                { "A Dialog, ConfirmDialog or Drawer keeps its content in the page, and a button opens it by \
+                   naming its id. Escape, the backdrop and the close button close it. Give a ConfirmDialog the id \
+                   of a " }<code>{ "form" }</code>
+                { " and its confirm button submits that form; a statement to tick or a word to type become \
+                   required fields, so the browser holds the submit back until they are done. " }
+                <code>{ "open" }</code>{ " shows the dialog when the page loads." }
+            </p>
+            { rust(r#"
+<form id="forget" method="post" action="/hosts/pi-1/forget" />
+<Button variant={ButtonVariant::Danger} command={Command::show_modal("confirm-forget")}>
+    { "Forget pi-1" }
+</Button>
+<ConfirmDialog
+    id="confirm-forget"
+    form="forget"
+    title="Forget pi-1?"
+    confirm_label="Forget pi-1"
+    danger=true
+    type_to_confirm="pi-1"
+/>
 "#) }
 
             <h2>{ "Components that work fully" }</h2>

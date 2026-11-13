@@ -51,6 +51,10 @@ async fn main() {
     }
     let client_routes = routes.len();
     routes.extend(statics);
+    routes.extend(yewi_site::server_only::FIXTURES.iter().map(|fixture| Route::Static {
+        page: yewi_site::server_only::PAGE.to_owned(),
+        example: fixture.name.to_owned(),
+    }));
     let server_only = without_client(&template);
 
     let local = tokio::task::LocalSet::new();

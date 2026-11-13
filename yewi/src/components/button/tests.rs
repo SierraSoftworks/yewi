@@ -159,3 +159,12 @@ fn icon_button_keeps_a_native_hint_for_pages_without_a_runtime() {
     // The tooltip itself only exists while shown.
     assert!(!html.contains("yi-tooltip__bubble"), "{html}");
 }
+
+#[test]
+fn a_command_names_its_action_and_target_on_a_button_only() {
+    let button = render(|| html! { <Button command={Command::show_modal("confirm")}>{ "Delete" }</Button> });
+    assert!(button.contains(r#"command="show-modal""#) && button.contains(r#"commandfor="confirm""#));
+
+    let link = render(|| html! { <Button href="/x" command={Command::close("confirm")}>{ "Go" }</Button> });
+    assert!(!link.contains("command"));
+}

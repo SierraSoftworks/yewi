@@ -144,7 +144,15 @@ fn switch(route: Route) -> Html {
         Route::Gallery { slug } => html! { <Gallery {slug} /> },
         Route::Example { page, example } => html! { <shell::IsolatedExample {page} {example} /> },
         Route::Static { page, example } => html! {
-            <yewi::ServerOnly><shell::IsolatedExample {page} {example} /></yewi::ServerOnly>
+            <yewi::ServerOnly>
+                if let Some(fixture) = crate::server_only::find(&page, &example) {
+                    <main class="docs-isolated">
+                        <div class="docs-isolated__stage" data-example={format!("{page}/{example}")}>{ fixture }</div>
+                    </main>
+                } else {
+                    <shell::IsolatedExample {page} {example} />
+                }
+            </yewi::ServerOnly>
         },
         Route::NotFound => html! { <shell::NotFound /> },
     }

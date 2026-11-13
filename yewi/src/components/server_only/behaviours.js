@@ -134,6 +134,11 @@
     if (value !== undefined) show(input, clamp(input, value));
   });
 
+  // Dialogs the server rendered as open: `data-yi-open` on a `<dialog>`.
+  const open = () => {
+    for (const dialog of doc.querySelectorAll("dialog[data-yi-open]:not([open])")) dialog.showModal();
+  };
+
   // Theme toggle: system, light, dark, stored where `THEME_SCRIPT` reads it.
   const themes = ["system", "light", "dark"];
   const names = { system: "System", light: "Light", dark: "Dark" };
@@ -164,6 +169,10 @@
     label();
     window.dispatchEvent(new Event("yewi:theme"));
   });
-  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", label);
-  else label();
+  const start = () => {
+    label();
+    open();
+  };
+  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", start);
+  else start();
 })();

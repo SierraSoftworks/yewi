@@ -7,11 +7,18 @@
 //!
 //! [`Dialog`] is the general frame; [`ConfirmDialog`] is the confirmation an
 //! irreversible action goes through.
+//!
+//! Inside [`ServerOnly`](crate::ServerOnly) there is no owner to hold `open`,
+//! so the browser does: the content is always in the page, a
+//! [`Button`] with `command={Command::show_modal(id)}` opens the dialog, and
+//! `Escape`, the backdrop and the close button close it. `open` then means
+//! "showing when the page loads".
 
 use yew::prelude::*;
 
 use crate::{
-    Attrs, Button, ButtonVariant, Checkbox, Field, IconButton, Size, TextInput, hooks::use_id, icons, is_empty,
+    Attrs, Button, ButtonKind, ButtonVariant, Checkbox, Command, Field, IconButton, Size, TextInput,
+    components::server_only::use_server_only, hooks::use_id, icons, is_empty,
 };
 
 /// What [`use_modal`] hands a component that renders a modal `<dialog>`.
@@ -20,6 +27,16 @@ pub(crate) struct Modal {
     pub node: NodeRef,
     /// The `closedby` attribute: `none` when it cannot be dismissed.
     pub closedby: Option<&'static str>,
+    /// The element's id. Set only inside `ServerOnly`, where buttons open
+    /// and close the dialog by naming it.
+    pub id: Option<AttrValue>,
+    /// Whether the content is rendered: while open, or always inside
+    /// `ServerOnly`, where the browser opens the dialog with no render.
+    pub rendered: bool,
+    /// `data-yi-open`: asks `BEHAVIOURS` to show the dialog on load.
+    pub open_on_load: Option<&'static str>,
+    /// What the close button does inside `ServerOnly`.
+    pub close_command: Option<Command>,
     pub onkeydown: Callback<KeyboardEvent>,
     pub oncancel: Callback<Event>,
     pub onclose: Callback<Event>,
@@ -36,8 +53,15 @@ pub(crate) struct Modal {
 /// - `Escape` and a click on the backdrop emit `on_close` when `dismissible`;
 ///   the dialog only closes once the owner sets `open` to false.
 #[hook]
-pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) -> Modal {
+pub(crate) fn use_modal(open: bool, dismissible: bool, id: &Option<AttrValue>, on_close: &Callback<()>) -> Modal {
     let node = use_node_ref();
+    let generated = use_id();
+    let server_only = use_server_only();
+    let id = match (id, server_only) {
+        (Some(id), _) => Some(id.clone()),
+        (None, true) => Some(AttrValue::from(format!("{generated}-dialog"))),
+        (None, false) => None,
+    };
     // What the owner last asked for, readable from event handlers.
     let wanted = use_mut_ref(|| open);
     *wanted.borrow_mut() = open;
@@ -60,7 +84,18 @@ pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) 
     }
 
     Modal {
-        closedby: (!dismissible).then_some("none"),
+        // Without a client the browser also has to handle the backdrop.
+        closedby: if !dismissible {
+            Some("none")
+        } else if server_only {
+            Some("any")
+        } else {
+            None
+        },
+        rendered: open || server_only,
+        open_on_load: (open && server_only).then_some(""),
+        close_command: id.clone().filter(|_| server_only).map(Command::close),
+        id,
         // A dialog that may not be dismissed swallows `Escape` before the
         // browser acts on it.
         onkeydown: Callback::from(move |event: KeyboardEvent| {
@@ -115,7 +150,7 @@ pub(crate) fn use_modal(open: bool, dismissible: bool, on_close: &Callback<()>) 
 }
 
 /// The close button shared by dialog and drawer headers.
-pub(crate) fn close_button(label: &AttrValue, on_click: Callback<MouseEvent>) -> Html {
+pub(crate) fn close_button(label: &AttrValue, modal: &Modal) -> Html {
     html! {
         <IconButton
             class="yi-dialog__close"
@@ -123,7 +158,8 @@ pub(crate) fn close_button(label: &AttrValue, on_click: Callback<MouseEvent>) ->
             label={label.clone()}
             variant={ButtonVariant::Subtle}
             size={Size::Small}
-            {on_click}
+            command={modal.close_command.clone()}
+            on_click={modal.close.clone()}
         />
     }
 }
@@ -173,7 +209,7 @@ pub struct DialogProps {
 /// it is closed.
 #[function_component]
 pub fn Dialog(props: &DialogProps) -> Html {
-    let modal = use_modal(props.open, props.dismissible, &props.on_close);
+    let modal = use_modal(props.open, props.dismissible, &props.id, &props.on_close);
     let title_id = use_id();
     let body_id = format!("{title_id}-body");
 
@@ -181,25 +217,26 @@ pub fn Dialog(props: &DialogProps) -> Html {
 
     props.attrs.apply(html! {
         <dialog
-            ref={modal.node}
-            id={props.id.clone()}
+            ref={modal.node.clone()}
+            id={modal.id.clone()}
             {class}
             role={props.alert.then_some("alertdialog")}
             aria-labelledby={title_id.clone()}
             aria-describedby={props.alert.then(|| body_id.clone())}
             closedby={modal.closedby}
-            onkeydown={modal.onkeydown}
-            oncancel={modal.oncancel}
-            onclose={modal.onclose}
-            onmousedown={modal.onmousedown}
-            onclick={modal.onclick}
+            data-yi-open={modal.open_on_load}
+            onkeydown={modal.onkeydown.clone()}
+            oncancel={modal.oncancel.clone()}
+            onclose={modal.onclose.clone()}
+            onmousedown={modal.onmousedown.clone()}
+            onclick={modal.onclick.clone()}
         >
-            if props.open {
+            if modal.rendered {
                 <div class="yi-dialog__surface">
                     <header class="yi-dialog__head">
                         <h2 class="yi-dialog__title" id={title_id}>{ props.title.clone() }</h2>
                         if props.dismissible {
-                            { close_button(&props.close_label, modal.close) }
+                            { close_button(&props.close_label, &modal) }
                         }
                     </header>
                     <div class="yi-dialog__body" id={body_id}>{ props.children.clone() }</div>
@@ -251,6 +288,14 @@ pub struct ConfirmDialogProps {
     /// Why the last attempt failed, shown as an alert above the actions.
     #[prop_or_default]
     pub error: Option<AttrValue>,
+    /// The id of a `<form>` the confirm button submits. With it the dialog
+    /// confirms a native form submit: the ticked statement and the typed
+    /// word become required fields of that form, so the browser refuses to
+    /// submit until they are satisfied. This is how a confirmation works
+    /// inside [`ServerOnly`](crate::ServerOnly), together with `id` and a
+    /// button whose `command` is `Command::show_modal(id)`.
+    #[prop_or_default]
+    pub form: Option<AttrValue>,
     /// The user confirmed. Not fired while `busy`, `disabled` or incomplete.
     #[prop_or_default]
     pub on_confirm: Callback<()>,
@@ -283,13 +328,27 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
         });
     }
 
-    let ready = confirm_ready(
-        props.acknowledge.is_some(),
-        *acknowledged,
-        props.type_to_confirm.as_deref(),
-        &typed,
-        props.disabled,
-    );
+    // Without a client nothing here re-renders as the user ticks and types:
+    // the button stays enabled and the form's own validation holds it back.
+    let server_only = use_server_only();
+    let generated = use_id();
+    let id = match (&props.id, server_only) {
+        (Some(id), _) => Some(id.clone()),
+        (None, true) => Some(AttrValue::from(format!("{generated}-confirm"))),
+        (None, false) => None,
+    };
+    let ready = if server_only {
+        !props.disabled
+    } else {
+        confirm_ready(
+            props.acknowledge.is_some(),
+            *acknowledged,
+            props.type_to_confirm.as_deref(),
+            &typed,
+            props.disabled,
+        )
+    };
+    let form_attr = || props.form.clone().map(|form| ("form", form));
 
     let on_acknowledge = {
         let acknowledged = acknowledged.clone();
@@ -327,14 +386,17 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
             <Button
                 disabled={props.busy}
                 attrs={Attrs::new((!has_steps).then_some(("autofocus", AttrValue::Static(""))))}
+                command={id.clone().filter(|_| server_only).map(Command::close)}
                 on_click={props.on_cancel.reform(|_| ())}
             >
                 { props.cancel_label.clone() }
             </Button>
             <Button
                 variant={if props.danger { ButtonVariant::Danger } else { ButtonVariant::Primary }}
+                kind={if props.form.is_some() { ButtonKind::Submit } else { ButtonKind::Button }}
                 disabled={!ready}
                 loading={props.busy}
+                attrs={Attrs::new(form_attr())}
                 on_click={on_confirm.reform(|_| ())}
             >
                 { props.confirm_label.clone() }
@@ -351,13 +413,19 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
             dismissible={!props.busy}
             on_close={props.on_cancel.clone()}
             class={classes!("yi-confirm", props.class.clone())}
-            id={props.id.clone()}
+            {id}
             attrs={props.attrs.clone()}
             {footer}
         >
             { props.children.clone() }
             if let Some(statement) = &props.acknowledge {
-                <Checkbox checked={*acknowledged} autofocus=true on_change={on_acknowledge}>
+                <Checkbox
+                    checked={*acknowledged}
+                    autofocus=true
+                    required={props.form.is_some()}
+                    form={props.form.clone()}
+                    on_change={on_acknowledge}
+                >
                     { statement.clone() }
                 </Checkbox>
             }
@@ -367,7 +435,8 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
                         value={(*typed).clone()}
                         mono=true
                         autocomplete="off"
-                        attrs={type_attrs(props.acknowledge.is_none())}
+                        required={props.form.is_some()}
+                        attrs={type_attrs(props.acknowledge.is_none(), props.form.as_ref().map(|form| (form, word)))}
                         on_input={on_type}
                         on_keydown={on_keydown}
                     />
@@ -382,12 +451,35 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
 
 /// What the word box needs beyond `TextInput`'s props: no capitalising on a
 /// touch keyboard, and focus when it is the first step.
-fn type_attrs(autofocus: bool) -> Attrs {
+///
+/// For a native form (`form` and the word), the box joins that form and
+/// accepts only the word, so the browser's validation does the checking.
+fn type_attrs(autofocus: bool, form: Option<(&AttrValue, &AttrValue)>) -> Attrs {
+    let native = form.into_iter().flat_map(|(form, word)| {
+        [("form", form.clone()), ("pattern", AttrValue::from(pattern(word))), ("title", word.clone())]
+    });
     Attrs::new(
         [("autocapitalize", AttrValue::Static("off"))]
             .into_iter()
-            .chain(autofocus.then_some(("autofocus", AttrValue::Static("")))),
+            .chain(autofocus.then_some(("autofocus", AttrValue::Static(""))))
+            .chain(native),
     )
+}
+
+/// `word` as an HTML `pattern` that matches only itself, give or take the
+/// spaces around it.
+fn pattern(word: &str) -> String {
+    let mut pattern = String::from(r"\s*");
+    for character in word.trim().chars() {
+        // Only syntax characters may be escaped: the browser compiles the
+        // pattern in a mode where any other escape makes it invalid, and an
+        // invalid pattern is ignored.
+        if r"^$\.*+?()[]{}|/".contains(character) {
+            pattern.push('\\');
+        }
+        pattern.push(character);
+    }
+    pattern + r"\s*"
 }
 
 /// Whether every condition on the confirm button is met.

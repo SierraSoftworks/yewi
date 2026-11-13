@@ -1,4 +1,5 @@
-// Icon: a stroked 24-unit SVG that inherits colour and scales with text.
+// Icon: a 24-unit SVG that inherits colour and scales with text, stroked
+// unless its data says it is a solid glyph.
 
 :where(.yi-icon) {
   // Component tokens
@@ -16,4 +17,10 @@
   stroke-width: var(--yi-icon-stroke);
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.yi-icon--filled {
+  fill: currentColor;
+  fill-rule: evenodd;
+  stroke: none;
 }
