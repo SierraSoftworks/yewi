@@ -1,0 +1,30 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-labelledby="yi-0-label" aria-describedby="yi-0-message" class="yi-field yi-field--stacked">
+<span id="yi-0-label" class="yi-field__label">Tailscale tags</span>
+<div class="yi-field__body">
+<div role="group" aria-labelledby="yi-0-label" class="yi-toggle-chip-group">
+<button type="button" aria-pressed="true" class="yi-toggle-chip">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+<span class="yi-toggle-chip__label">tag:server</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-toggle-chip">
+<span class="yi-toggle-chip__label">tag:edge</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-toggle-chip">
+<span class="yi-toggle-chip__label">tag:build</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-toggle-chip">
+<span class="yi-toggle-chip__label">tag:staging</span>
+</button>
+</div>
+<p id="yi-0-message" class="yi-field__message">The node advertises these, so the server admits it.</p>
+</div>
+</div>
+<span role="status">1 of 4 tags</span>
+</div>

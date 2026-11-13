@@ -1,0 +1,48 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-label="Environment variables" class="yi-key-value-editor">
+<div class="yi-key-value-editor__row">
+<input value="LOG_LEVEL" type="text" placeholder="NAME" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__key" aria-label="Key, variable 1">
+<span aria-hidden="true" class="yi-key-value-editor__separator">=</span>
+<input value="info" type="text" placeholder="value" autocomplete="off" spellcheck="false" class="yi-input yi-input--md yi-input--mono yi-key-value-editor__value" aria-label="Value, variable 1">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-key-value-editor__remove" aria-label="Remove variable 1" title="Remove variable 1">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+</div>
+<div class="yi-key-value-editor__row">
+<input value="region" type="text" placeholder="NAME" autocomplete="off" spellcheck="false" aria-invalid="true" aria-describedby="yi-0-error-1" class="yi-input yi-input--md yi-input--mono yi-input--invalid yi-key-value-editor__key" aria-label="Key, variable 2">
+<span aria-hidden="true" class="yi-key-value-editor__separator">=</span>
+<input value="eu-west-1" type="text" placeholder="value" autocomplete="off" spellcheck="false" aria-invalid="true" aria-describedby="yi-0-error-1" class="yi-input yi-input--md yi-input--mono yi-input--invalid yi-key-value-editor__value" aria-label="Value, variable 2">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-key-value-editor__remove" aria-label="Remove variable 2" title="Remove variable 2">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+<p id="yi-0-error-1" class="yi-key-value-editor__error">'region' can only use capital letters, digits and '_'.</p>
+</div>
+<div class="yi-key-value-editor__row">
+<input value="LOG_LEVEL" type="text" placeholder="NAME" autocomplete="off" spellcheck="false" aria-invalid="true" aria-describedby="yi-0-error-2" class="yi-input yi-input--md yi-input--mono yi-input--invalid yi-key-value-editor__key" aria-label="Key, variable 3">
+<span aria-hidden="true" class="yi-key-value-editor__separator">=</span>
+<input value="debug" type="text" placeholder="value" autocomplete="off" spellcheck="false" aria-invalid="true" aria-describedby="yi-0-error-2" class="yi-input yi-input--md yi-input--mono yi-input--invalid yi-key-value-editor__value" aria-label="Value, variable 3">
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-button--icon-only yi-key-value-editor__remove" aria-label="Remove variable 3" title="Remove variable 3">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M18 6 6 18M6 6l12 12">
+</path>
+</svg>
+</button>
+<p id="yi-0-error-2" class="yi-key-value-editor__error">'LOG_LEVEL' is set twice.</p>
+</div>
+<button type="button" class="yi-button yi-button--default yi-button--sm yi-key-value-editor__add">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M5 12h14M12 5v14">
+</path>
+</svg>Add variable</button>
+</div>
+<span role="status">2 problems</span>
+</div>

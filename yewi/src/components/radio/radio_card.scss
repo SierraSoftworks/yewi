@@ -1,0 +1,86 @@
+// RadioCard: a Radio row given an outline and padding, so the whole card is
+// the target. The selected card is found with `:has(:checked)`; no state
+// reaches the markup.
+@use "api" as *;
+
+:where(.yi-radio-card) {
+  // Component tokens
+  --yi-radio-card-padding: var(--yi-space-md);
+  --yi-radio-card-radius: var(--yi-radius-control);
+  --yi-radio-card-bg: var(--yi-surface);
+  --yi-radio-card-border: var(--yi-line);
+  --yi-radio-card-border-hover: var(--yi-line-strong);
+  --yi-radio-card-selected-bg: var(--yi-accent-soft);
+  --yi-radio-card-selected-border: var(--yi-accent-solid);
+}
+
+.yi-radio-card {
+  display: flex;
+  box-sizing: border-box;
+  padding: var(--yi-radio-card-padding);
+  border: 1px solid var(--yi-radio-card-border);
+  border-radius: var(--yi-radio-card-radius);
+  background: var(--yi-radio-card-bg);
+
+  @include motion {
+    transition:
+      border-color var(--yi-duration-fast) var(--yi-ease),
+      background-color var(--yi-duration-fast) var(--yi-ease);
+  }
+
+  .yi-choice__label {
+    font-weight: 500;
+  }
+
+  &:hover:not(.yi-choice--disabled) {
+    border-color: var(--yi-radio-card-border-hover);
+  }
+
+  // The second ring of the outline is a shadow, so selecting does not move
+  // the content.
+  &:has(.yi-radio__input:checked) {
+    border-color: var(--yi-radio-card-selected-border);
+    background: var(--yi-radio-card-selected-bg);
+    box-shadow: inset 0 0 0 1px var(--yi-radio-card-selected-border);
+  }
+
+  // The card takes the focus ring from the radio inside it.
+  &:has(.yi-radio__input:focus-visible) {
+    @include focus-ring;
+
+    .yi-radio__input {
+      outline: none;
+    }
+  }
+
+  &.yi-choice--disabled {
+    --yi-radio-card-bg: var(--yi-tone-1);
+    --yi-radio-card-selected-bg: var(--yi-tone-1);
+    --yi-radio-card-selected-border: var(--yi-line-strong);
+  }
+
+  &.yi-radio--invalid:not(:has(.yi-radio__input:checked)) {
+    --yi-radio-card-border: var(--yi-danger);
+    --yi-radio-card-border-hover: var(--yi-danger);
+  }
+}
+
+// A group of cards: one column, or equal columns that wrap.
+.yi-radio-group:has(> .yi-radio-card) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  inline-size: 100%;
+
+  &.yi-radio-group--horizontal {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--yi-radio-group-card-min-width), 100%), 1fr));
+    gap: var(--yi-radio-group-gap);
+  }
+}
+
+@media (forced-colors: active) {
+  .yi-radio-card:has(.yi-radio__input:checked) {
+    border-color: Highlight;
+    box-shadow: inset 0 0 0 1px Highlight;
+  }
+}

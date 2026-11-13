@@ -100,3 +100,23 @@ fn a_radio_works_without_a_group() {
     assert_eq!(attr(input, "name"), Some("row"));
     assert_eq!(attr(input, "aria-label"), Some("Select row 2"));
 }
+
+#[test]
+fn a_card_is_a_radio_of_its_group_with_its_description_in_the_label() {
+    reset_ids();
+    let html = render(|| {
+        html! {
+            <RadioGroup label="Platform" value="linux">
+                <RadioCard value="linux" description="A systemd unit.">{ "Linux" }</RadioCard>
+                <RadioCard value="docker" description="A container." disabled=true>{ "Docker" }</RadioCard>
+            </RadioGroup>
+        }
+    });
+    let inputs = inputs(&html);
+    assert_eq!(inputs.len(), 2);
+    assert!(inputs.iter().all(|input| input.contains(r#"type="radio""#)));
+    assert_eq!(attr(inputs[0], "name"), attr(inputs[1], "name"));
+    assert!(inputs[0].contains(" checked") && !inputs[1].contains(" checked"));
+    assert!(inputs[1].contains(" disabled"));
+    assert!(html.contains("A systemd unit.") && html.contains("Docker"));
+}

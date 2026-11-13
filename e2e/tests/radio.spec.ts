@@ -65,4 +65,39 @@ test.describe("RadioGroup", () => {
     await expect(stage.getByRole("alert")).toHaveCount(0);
     await expect(stage.getByRole("status")).toHaveText("Created in ap-southeast-2");
   });
+
+  test("a card is selected by clicking anywhere on it", async ({ example }) => {
+    const stage = await example("radio/cards");
+    const group = stage.getByRole("radiogroup", { name: "Platform" });
+    await expect(group.getByRole("radio", { checked: true })).toHaveCount(0);
+
+    await stage.getByText("A container beside your other workloads.").click();
+    await expect(group.getByRole("radio", { name: /Docker/ })).toBeChecked();
+    await expect(stage.getByRole("status")).toHaveText("Platform: docker");
+  });
+
+  test("cards follow the arrow keys, skip a disabled one and show focus on the card", async ({ page, example }) => {
+    const stage = await example("radio/card-list");
+    await page.keyboard.press("Tab");
+    const tailscale = stage.getByRole("radio", { name: /Over Tailscale/ });
+    await expect(tailscale).toBeFocused();
+    await expect(stage.locator(".yi-radio-card").first()).toHaveCSS("outline-style", "solid");
+
+    await page.keyboard.press("ArrowDown");
+    await expect(stage.getByRole("status")).toHaveText("Method: token");
+    await page.keyboard.press("ArrowDown");
+    await expect(stage.getByRole("status")).toHaveText("Method: tailscale");
+    await expect(stage.getByRole("radio", { name: /Over SSH/ })).toBeDisabled();
+  });
+
+  test("cards in a row share it equally", async ({ example }) => {
+    const stage = await example("radio/cards");
+    const boxes = await stage
+      .locator(".yi-radio-card")
+      .evaluateAll((cards) => cards.map((card) => card.getBoundingClientRect()).map(({ top, width }) => ({ top, width })));
+    expect(boxes).toHaveLength(3);
+    const widths = boxes.map((box) => box.width);
+    expect(Math.max(...widths) - Math.min(...widths)).toBeLessThan(1);
+    expect(new Set(boxes.map((box) => Math.round(box.top))).size).toBe(1);
+  });
 });

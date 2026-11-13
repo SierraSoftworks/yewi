@@ -1,0 +1,25 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<div role="group" aria-label="Filter runs" class="yi-toggle-chip-group">
+<button type="button" aria-pressed="true" class="yi-toggle-chip">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M20 6 9 17l-5-5">
+</path>
+</svg>
+<span class="yi-toggle-chip__label">Failed</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-toggle-chip">
+<span class="yi-toggle-chip__label">Started by me</span>
+</button>
+<button type="button" aria-pressed="false" class="yi-toggle-chip">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M12 17v5M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z">
+</path>
+</svg>
+<span class="yi-toggle-chip__label">Pinned</span>
+</button>
+</div>
+<span role="status">Showing: failed</span>
+</div>

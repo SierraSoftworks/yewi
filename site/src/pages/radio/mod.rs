@@ -8,5 +8,7 @@ crate::page! {
         horizontal => "Horizontal": "`Orientation::Horizontal` suits two or three short labels. The options wrap when the row runs out of room.",
         states => "States and sizes": "Setting `disabled` on the group disables every option. `invalid` marks every ring, and inside a `Field` the field's `error` does this for you.",
         form => "Required in a form": "When no option is a safe default, start the group with nothing selected. The field's error is announced and describes the group.",
+        cards => "Cards": "`RadioCard` draws each option as a card with a title and a line of explanation. Use it for a few weighty choices, such as the first step of a wizard. In a horizontal group the cards share the row equally and wrap when it gets narrow.",
+        card_list => "Stacked cards": "In a vertical group the cards stack at full width, which suits longer descriptions. A disabled card stays visible so people can see the option exists.",
     ],
 }

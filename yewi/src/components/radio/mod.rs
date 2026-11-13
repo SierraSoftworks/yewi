@@ -204,5 +204,54 @@ pub fn Radio(props: &RadioProps) -> Html {
     })
 }
 
+#[derive(Properties, PartialEq)]
+pub struct RadioCardProps {
+    /// The title of the choice.
+    #[prop_or_default]
+    pub children: Html,
+    /// What the group reports when this card is selected.
+    pub value: AttrValue,
+    /// What choosing this means, under the title and read out with it.
+    #[prop_or_default]
+    pub description: Html,
+    /// Makes this one choice unavailable.
+    #[prop_or_default]
+    pub disabled: bool,
+    /// A reference to the `<input>`, for moving focus.
+    #[prop_or_default]
+    pub input_ref: NodeRef,
+    #[prop_or_default]
+    pub class: Classes,
+    /// The id of the `<input>`.
+    #[prop_or_default]
+    pub id: Option<AttrValue>,
+    #[prop_or_default]
+    pub attrs: Attrs,
+}
+
+/// An option of a [`RadioGroup`] drawn as a card: the whole card is the
+/// target, and the selected one is outlined. For a few weighty choices that
+/// each need a line of explanation, such as the first step of a wizard.
+///
+/// It is a [`Radio`] underneath, so the keyboard, forms and `Field` treat it
+/// the same. A vertical group stacks its cards; a horizontal one gives them
+/// equal columns that wrap when they run out of room.
+#[function_component]
+pub fn RadioCard(props: &RadioCardProps) -> Html {
+    html! {
+        <Radio
+            value={props.value.clone()}
+            description={props.description.clone()}
+            disabled={props.disabled}
+            input_ref={props.input_ref.clone()}
+            class={classes!("yi-radio-card", props.class.clone())}
+            id={props.id.clone()}
+            attrs={props.attrs.clone()}
+        >
+            { props.children.clone() }
+        </Radio>
+    }
+}
+
 #[cfg(test)]
 mod tests;
