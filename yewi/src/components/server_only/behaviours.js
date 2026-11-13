@@ -2,6 +2,9 @@
 // Everything is wired from `data-yi-*` attributes that components render
 // inside `<ServerOnly>`, through listeners on the document, so the script can
 // load at any point and content added later works too.
+//
+// `build.rs` strips comment lines and indentation: keep comments on their own
+// lines, and do not write a string that spans lines.
 (() => {
   if (window.yewiBehaviours) return;
   window.yewiBehaviours = true;

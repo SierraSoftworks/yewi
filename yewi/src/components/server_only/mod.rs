@@ -26,7 +26,7 @@ use yew::prelude::*;
 ///
 /// Serve it from a cached route and name that route in `ServerOnly::script`,
 /// or leave `script` unset to have it inlined.
-pub const BEHAVIOURS: &str = include_str!("behaviours.js");
+pub const BEHAVIOURS: &str = include_str!(concat!(env!("OUT_DIR"), "/behaviours.js"));
 
 #[derive(Clone, PartialEq)]
 struct Mode;

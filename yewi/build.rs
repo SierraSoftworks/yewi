@@ -79,6 +79,14 @@ fn main() {
     let utilities = compile(&scss.join("utilities.scss"));
     write!(css, "@layer yewi.utilities{{{utilities}}}").unwrap();
 
+    // The script for server-only pages, without its comments and indentation.
+    // It is written one statement to a line, with no multi-line strings, so
+    // that this is all the minifying it needs.
+    let behaviours = fs::read_to_string(components_dir.join("server_only/behaviours.js")).unwrap();
+    let behaviours: Vec<&str> =
+        behaviours.lines().map(str::trim).filter(|line| !line.is_empty() && !line.starts_with("//")).collect();
+    fs::write(out.join("behaviours.js"), behaviours.join("\n")).unwrap();
+
     fs::write(out.join("components.rs"), modules).unwrap();
     fs::write(out.join("yewi.css"), css).unwrap();
 }

@@ -37,6 +37,12 @@ fn the_script_is_inlined_intact_or_linked() {
 }
 
 #[test]
+fn the_script_is_shipped_without_comments() {
+    assert!(BEHAVIOURS.starts_with("(() => {"));
+    assert!(BEHAVIOURS.lines().all(|line| !line.starts_with("//") && line == line.trim()));
+}
+
+#[test]
 fn the_script_cannot_end_its_own_element() {
     assert!(!BEHAVIOURS.to_lowercase().contains("</script"));
 }
