@@ -20,6 +20,7 @@ e2e/tests/<name>.spec.ts         behaviour specs
 ### Rust (`mod.rs`)
 - A function component with a `#[derive(Properties, PartialEq)]` props struct. Doc comments on the component, each prop and each enum variant become the API tables.
 - Every component takes `class: Classes`, `id: Option<AttrValue>` and `attrs: Attrs`, and wraps its root element in `props.attrs.apply(...)`. Events are `Callback` props named `on_*`.
+- An optional slot is an `Html` prop with `#[prop_or_default]`, never `Option<Html>`; render its wrapper only when `!crate::is_empty(&props.slot)`. The rows above and below a body are `header` and `footer`.
 - Reuse the shared vocabulary in `yewi/src/common.rs` (`Size`, `Tone`, `Space`) before defining a new enum. Large collections are `Rc<[T]>` or `IArray`, text is `AttrValue`.
 
 ### Server-safe rendering

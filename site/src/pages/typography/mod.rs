@@ -1,11 +1,11 @@
 crate::page! {
     title: "Typography",
     category: Foundations,
-    summary: "Montserrat for headings, Inter for text and controls, Fira Code for code. Size, weight and spacing carry the hierarchy before colour does.",
+    summary: "The type uses Montserrat for headings, Inter for text and controls, and Fira Code for code. Size, weight and spacing set the hierarchy before colour comes into it.",
     api: [],
     examples: [
-        headings => "Headings": "Weight falls as size rises, so a large title reads as calm rather than loud. Only headings at body size reach semibold.",
-        scale => "Type scale": "Eight sizes. `--yi-text-md` (14px) is the default for controls and dense UI, `--yi-text-lg` for longer reading text.",
-        code => "Code and numbers": "Fira Code with ligatures off by default; set `--yi-font-mono-ligatures: normal` to turn them on. Use `yi-tabular` wherever numbers line up in columns.",
+        headings => "Headings": "Weight goes down as size goes up, so a large title reads as calm rather than loud. Only headings at body size go as heavy as semibold.",
+        scale => "Type scale": "The type scale has eight sizes. `--yi-text-md` (14px) is the default for controls and dense UI, and `--yi-text-lg` is for longer reading text.",
+        code => "Code and numbers": "Code is set in Fira Code, with ligatures turned off by default. Set `--yi-font-mono-ligatures: normal` to turn them on. Use `yi-tabular` wherever numbers need to line up in columns.",
     ],
 }

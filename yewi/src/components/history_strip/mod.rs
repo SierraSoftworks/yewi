@@ -50,11 +50,11 @@ impl HistoryCell {
 #[derive(Debug, Clone, PartialEq, Default)]
 pub struct HistoryDetail {
     /// A heading row: a status dot and a short label.
-    pub head: Html,
+    pub header: Html,
     /// The body.
     pub content: Html,
     /// A muted row under the body: the cell's time.
-    pub foot: Html,
+    pub footer: Html,
 }
 
 impl HistoryDetail {
@@ -62,13 +62,13 @@ impl HistoryDetail {
         Self { content: content.into(), ..Self::default() }
     }
 
-    pub fn head(mut self, head: impl Into<Html>) -> Self {
-        self.head = head.into();
+    pub fn header(mut self, header: impl Into<Html>) -> Self {
+        self.header = header.into();
         self
     }
 
-    pub fn foot(mut self, foot: impl Into<Html>) -> Self {
-        self.foot = foot.into();
+    pub fn footer(mut self, footer: impl Into<Html>) -> Self {
+        self.footer = footer.into();
         self
     }
 }
@@ -253,9 +253,9 @@ fn popover(detail: HistoryDetail, placement: Placement, on_open_change: Callback
             open=true
             role="status"
             {placement}
-            head={detail.head}
+            header={detail.header}
             content={detail.content}
-            foot={detail.foot}
+            footer={detail.footer}
             {on_open_change}
         />
     }

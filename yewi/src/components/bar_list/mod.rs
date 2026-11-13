@@ -5,6 +5,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, Icon, IconData, Pagination, Size, Tone, components::tooltip::use_hint};
 
 /// One row of a [`BarList`].
@@ -258,7 +259,7 @@ pub struct BarListProps {
     pub action: Option<BarListAction>,
     /// Shown instead of the list when there are no rows.
     #[prop_or_default]
-    pub empty: Option<Html>,
+    pub empty: Html,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -440,7 +441,11 @@ pub fn BarList(props: &BarListProps) -> Html {
             }
             if count == 0 {
                 <div class="yi-bar-list__empty">
-                    { props.empty.clone().unwrap_or_else(|| "No data".into()) }
+                    if is_empty(&props.empty) {
+                        { "No data" }
+                    } else {
+                        { props.empty.clone() }
+                    }
                 </div>
             } else {
                 <ol class="yi-bar-list__rows" role="list" aria-label={props.label.clone()} {onclick}>

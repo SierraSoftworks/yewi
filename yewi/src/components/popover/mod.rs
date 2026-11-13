@@ -44,10 +44,10 @@ pub struct PopoverProps {
     /// An optional heading row above the body, such as a status dot and a
     /// short label.
     #[prop_or_default]
-    pub head: Html,
+    pub header: Html,
     /// An optional muted row below the body, such as a timestamp or a link.
     #[prop_or_default]
-    pub foot: Html,
+    pub footer: Html,
     #[prop_or_default]
     pub trigger: PopoverTrigger,
     /// The preferred side. The popover flips to the opposite side and slides
@@ -58,7 +58,7 @@ pub struct PopoverProps {
     #[prop_or(true)]
     pub arrow: bool,
     /// Removes the padding around the body, for content that runs edge to
-    /// edge such as a list of options. The head and foot keep theirs.
+    /// edge such as a list of options. The header and footer keep theirs.
     #[prop_or_default]
     pub flush: bool,
     /// Names the popover for assistive technology when its content does not.
@@ -248,7 +248,7 @@ impl Handlers {
 }
 
 /// A floating surface attached to its child, the trigger, with an arrow
-/// pointing at it and optional `head` and `foot` rows around the content.
+/// pointing at it and optional `header` and `footer` rows around the content.
 ///
 /// - `trigger` picks what opens it: a click, hover and keyboard focus, focus
 ///   alone, or nothing but the `open` prop. <kbd>Esc</kbd> and a press
@@ -328,12 +328,12 @@ pub fn Popover(props: &PopoverProps) -> Html {
                     aria-label={props.label.clone()}
                     popover="manual"
                 >
-                    if !is_empty(&props.head) {
-                        <span class="yi-popover__head">{ props.head.clone() }</span>
+                    if !is_empty(&props.header) {
+                        <span class="yi-popover__header">{ props.header.clone() }</span>
                     }
                     <span class="yi-popover__body">{ props.content.clone() }</span>
-                    if !is_empty(&props.foot) {
-                        <span class="yi-popover__foot">{ props.foot.clone() }</span>
+                    if !is_empty(&props.footer) {
+                        <span class="yi-popover__footer">{ props.footer.clone() }</span>
                     }
                 </span>
             }

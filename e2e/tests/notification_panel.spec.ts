@@ -86,7 +86,7 @@ test.describe("NotificationPanel", () => {
     await expect(panel.getByRole("list")).toHaveCount(0);
   });
 
-  test("an action in the foot clears the list and closes the panel", async ({ page, example }) => {
+  test("an action in the footer clears the list and closes the panel", async ({ page, example }) => {
     const stage = await example("notification-panel/actions");
     const status = stage.getByRole("status");
     await expect(status).toHaveText("3 unread notifications");
