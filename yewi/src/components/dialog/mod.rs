@@ -254,7 +254,9 @@ pub struct ConfirmDialogProps {
     /// Whether the confirmation is showing.
     #[prop_or_default]
     pub open: bool,
-    /// The question: "Forget pi-1?".
+    /// The question, in a few words: "Forget pi-1?". It is the dialog's
+    /// heading, so anything longer (what is lost, who is affected) belongs
+    /// in the body.
     pub title: AttrValue,
     /// What will happen, to what. Extra fields the action needs (a reason, a
     /// note) go here too; gate the action on them with `disabled`.

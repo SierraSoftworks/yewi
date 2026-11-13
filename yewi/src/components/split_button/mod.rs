@@ -23,6 +23,10 @@ pub struct SplitButtonProps {
     /// Unavailable: neither the action nor the menu can be used.
     #[prop_or_default]
     pub disabled: bool,
+    /// Only the action on the face is unavailable; the menu still opens. For
+    /// a row where the usual action does not apply but the others do.
+    #[prop_or_default]
+    pub face_disabled: bool,
     /// The action is in progress: the face shows a spinner and ignores
     /// clicks. The menu stays available.
     #[prop_or_default]
@@ -67,7 +71,7 @@ pub fn SplitButton(props: &SplitButtonProps) -> Html {
                 icon={props.icon}
                 variant={props.variant}
                 size={props.size}
-                disabled={props.disabled}
+                disabled={props.disabled || props.face_disabled}
                 loading={props.loading}
                 kind={props.kind}
                 on_click={props.on_click.clone()}

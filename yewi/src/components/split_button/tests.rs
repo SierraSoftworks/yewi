@@ -32,6 +32,20 @@ fn without_other_actions_it_is_only_a_button() {
 }
 
 #[test]
+fn face_disabled_leaves_the_menu_usable() {
+    let html = render(|| {
+        html! {
+            <SplitButton label="Demote" face_disabled=true>
+                <MenuItem>{ "Remove" }</MenuItem>
+            </SplitButton>
+        }
+    });
+    assert_eq!(html.matches(" disabled").count(), 1);
+    let face = &html[html.find("<button").unwrap()..];
+    assert!(face[..face.find('>').unwrap()].contains(" disabled"));
+}
+
+#[test]
 fn disabled_turns_off_both_halves() {
     assert_eq!(split(true, false).matches(" disabled").count(), 2);
 }

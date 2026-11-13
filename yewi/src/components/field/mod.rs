@@ -143,6 +143,9 @@ pub struct FieldProps {
 /// A labelled row around one control. It owns the label, the required
 /// marker, the hint and the error, and connects them to the control for
 /// assistive technology.
+///
+/// A field has no margin of its own. Put the fields of a form in a `Stack`
+/// (or a `Grid`), which sets the space between them.
 #[function_component]
 pub fn Field(props: &FieldProps) -> Html {
     let base = use_id();

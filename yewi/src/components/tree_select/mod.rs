@@ -70,6 +70,14 @@ pub struct TreeSelectProps {
     /// The name of the top of the hierarchy, in the trail above the list.
     #[prop_or(AttrValue::Static("All"))]
     pub root_label: AttrValue,
+    /// The accessible name of the trail above the list, which shows the
+    /// branch being browsed.
+    #[prop_or(AttrValue::Static("Level"))]
+    pub trail_label: AttrValue,
+    /// The text before the typed value in the row `custom` offers: "Use" in
+    /// "Use eu-west-9".
+    #[prop_or(AttrValue::Static("Use"))]
+    pub custom_label: AttrValue,
     #[prop_or_default]
     pub size: Size,
     /// Sizes the control to its content instead of filling its container, for
@@ -347,7 +355,7 @@ pub fn TreeSelect(props: &TreeSelectProps) -> Html {
         });
         let last = steps.len().saturating_sub(1);
         let trail = html! {
-            <nav class="yi-tree-select__trail" aria-label="Level" hidden={steps.is_empty()}>
+            <nav class="yi-tree-select__trail" aria-label={props.trail_label.clone()} hidden={steps.is_empty()}>
                 <button type="button" tabindex="-1" onclick={enter.reform(|_: MouseEvent| None)}>
                     { props.root_label.clone() }
                 </button>
@@ -392,7 +400,7 @@ pub fn TreeSelect(props: &TreeSelectProps) -> Html {
                     html! {
                         <span class="yi-select__option-text">
                             <span class="yi-select__option-label">
-                                { "Use " }<span class="yi-tree-select__detail">{ value.clone() }</span>
+                                { props.custom_label.clone() }{ " " }<span class="yi-tree-select__detail">{ value.clone() }</span>
                             </span>
                         </span>
                     },

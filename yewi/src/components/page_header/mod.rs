@@ -17,8 +17,9 @@ pub struct PageHeaderProps {
     /// Short status beside the title: a pill, a version, a timestamp.
     #[prop_or_default]
     pub meta: Html,
-    /// The page's actions, at the end of the title row. They wrap under the
-    /// title when the row runs out of room.
+    /// The page's actions, at the end of the title row. On a narrow page
+    /// they move under the subtitle. Give a `NativeSelect` or other
+    /// input here `fit`, or it takes a whole line for itself.
     #[prop_or_default]
     pub actions: Html,
     /// Full-width content under the header, such as tabs or a filter bar.
