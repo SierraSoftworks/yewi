@@ -366,8 +366,10 @@ mod dom {
     /// own to carry them, so they are attached to the element directly.
     pub struct Wiring {
         target: EventTarget,
-        listeners: Vec<(&'static str, Closure<dyn FnMut(Event)>)>,
+        listeners: Vec<(&'static str, Listener)>,
     }
+
+    type Listener = Closure<dyn FnMut(Event)>;
 
     impl Wiring {
         /// Attaches the handlers to the element `anchor` points at, unless
@@ -390,7 +392,7 @@ mod dom {
                     let _ = element.remove_attribute("title");
                 }
             }
-            fn listener<E: JsCast + 'static>(callback: &Callback<E>, untitles: bool) -> Closure<dyn FnMut(Event)> {
+            fn listener<E: JsCast + 'static>(callback: &Callback<E>, untitles: bool) -> Listener {
                 let callback = callback.clone();
                 Closure::new(move |event: Event| {
                     if untitles {
