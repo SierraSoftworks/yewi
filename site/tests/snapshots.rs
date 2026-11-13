@@ -48,3 +48,11 @@ fn pages_only_document_components_that_exist() {
         }
     }
 }
+
+#[test]
+fn generic_components_document_their_props() {
+    for name in ["Table", "VirtualList", "VirtualTable"] {
+        let component = yewi_site::api::API.iter().flat_map(|api| api.components).find(|c| c.name == name);
+        assert!(component.is_some_and(|c| !c.props.is_empty()), "{name} has no documented props");
+    }
+}

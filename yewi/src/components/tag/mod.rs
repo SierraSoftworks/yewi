@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Tone, icons, use_id};
+use crate::{Attrs, Icon, IconData, NavTarget, Tone, icons, nav_target::use_nav_link, use_id};
 
 #[derive(Properties, PartialEq)]
 pub struct TagProps {
@@ -23,9 +23,10 @@ pub struct TagProps {
     /// Sets the label in the monospace face, for identifiers and versions.
     #[prop_or_default]
     pub mono: bool,
-    /// Renders the label as a link.
+    /// Renders the label as a link: a URL or, with the `router` feature,
+    /// `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Makes the tag removable: adds a remove button that fires this.
     #[prop_or_default]
     pub on_remove: Option<Callback<MouseEvent>>,
@@ -51,6 +52,8 @@ pub fn Tag(props: &TagProps) -> Html {
     let text_id = format!("{uid}-text");
     let remove_id = format!("{uid}-remove");
 
+    let link = use_nav_link(&props.href, Callback::noop());
+
     let class = classes!(
         "yi-tag",
         format!("yi-tag--{}", props.tone.as_str()),
@@ -72,8 +75,17 @@ pub fn Tag(props: &TagProps) -> Html {
             if let Some(icon) = props.icon {
                 <Icon {icon} />
             }
-            if let Some(href) = &props.href {
-                <a id={text_id.clone()} class="yi-tag__text" {href}>{ text }</a>
+            if let Some(href) = link.href {
+                <a
+                    id={text_id.clone()}
+                    class="yi-tag__text"
+                    {href}
+                    target={link.target}
+                    rel={link.rel}
+                    onclick={link.onclick}
+                >
+                    { text }
+                </a>
             } else {
                 <span id={text_id.clone()} class="yi-tag__text">{ text }</span>
             }

@@ -9,10 +9,11 @@
 
 use yew::prelude::*;
 
-use crate::is_empty;
 use crate::{
     Attrs, ButtonVariant, Icon, IconButton, IconData, Menu, MenuFocus, MenuGroup, MenuItem, NavTarget, Placement,
-    Popover, PopoverTrigger, attrs, icons,
+    Popover, PopoverTrigger,
+    app_bar::AppBarContext,
+    attrs, icons, is_empty,
     menu::{focus_menu_within, focus_trigger_within},
     nav_target::use_nav_link,
 };
@@ -62,8 +63,9 @@ pub struct TopMenuProps {
     #[prop_or_default]
     pub children: Html,
     /// Controls at the end of the row: the theme toggle, the user menu, a
-    /// status. Give them here rather than to the `AppBar` and they fold into
-    /// the dropdown with the destinations, as a row above them.
+    /// status. They fold into the dropdown with the destinations, as a row
+    /// above them. Inside an [`AppBar`](crate::AppBar) leave this empty: the
+    /// menu takes the bar's `actions`.
     #[prop_or_default]
     pub actions: Html,
     /// Accessible name of the navigation landmark.
@@ -92,14 +94,23 @@ pub struct TopMenuProps {
 /// - The current destination is underlined; inside an `AppBar` the underline
 ///   sits on the bar's lower edge.
 /// - Without room for the row it becomes one menu button at the end. Its
-///   dropdown holds the `actions` in a row, then each destination as a row
+///   dropdown holds the actions in a row, then each destination as a row
 ///   of its own. The switch is made by the stylesheet, so it is right on the
 ///   first paint of a server-rendered page.
+/// - The actions are its own `actions` or, when it has none, those of the
+///   `AppBar` it is in.
 #[function_component]
 pub fn TopMenu(props: &TopMenuProps) -> Html {
+    // Without actions of its own the menu shows the bar's, and says so with
+    // a class, so that the bar hides its own copy.
+    let bar = use_context::<AppBarContext>().filter(|bar| is_empty(&props.actions) && !is_empty(&bar.actions));
+    let actions = bar.as_ref().map_or_else(|| props.actions.clone(), |bar| bar.actions.clone());
+    let has_actions = !is_empty(&actions);
+
     let class = classes!(
         "yi-top-menu",
         format!("yi-top-menu--collapse-{}", props.collapse.as_str()),
+        bar.is_some().then_some("yi-top-menu--bar-actions"),
         props.class.clone()
     );
 
@@ -109,12 +120,12 @@ pub fn TopMenu(props: &TopMenuProps) -> Html {
                 <ul class="yi-top-menu__list" role="list">
                     <ContextProvider<Mode> context={Mode::Row}>{ props.children.clone() }</ContextProvider<Mode>>
                 </ul>
-                if !is_empty(&props.actions) {
-                    <div class="yi-top-menu__actions">{ props.actions.clone() }</div>
+                if has_actions {
+                    <div class="yi-top-menu__actions">{ actions.clone() }</div>
                 }
             }
             if props.collapse != TopMenuCollapse::Never {
-                <Compact label={props.label.clone()} menu_label={props.menu_label.clone()} actions={props.actions.clone()}>
+                <Compact label={props.label.clone()} menu_label={props.menu_label.clone()} {actions}>
                     { props.children.clone() }
                 </Compact>
             }
@@ -242,7 +253,8 @@ pub struct TopMenuItemProps {
     #[prop_or_default]
     pub children: Html,
     /// Where the item leads: a URL or, with the `router` feature,
-    /// `NavTarget::route(..)`. Without it the item is a button.
+    /// `NavTarget::route(..)`. A `NavTarget::external` link opens in a new
+    /// tab and says so. Without `href` the item is a button.
     #[prop_or_default]
     pub href: NavTarget,
     /// An icon shown before the label.
@@ -253,9 +265,6 @@ pub struct TopMenuItemProps {
     /// the item on the pages beneath it.
     #[prop_or_default]
     pub current: Option<bool>,
-    /// The link leaves the application: it opens in a new tab and says so.
-    #[prop_or_default]
-    pub external: bool,
     /// Fired on click, before any navigation.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
@@ -273,8 +282,6 @@ pub fn TopMenuItem(props: &TopMenuItemProps) -> Html {
     let mode = use_context::<Mode>().unwrap_or_default();
     let link = use_nav_link(&props.href, props.on_click.clone());
     let current = props.current.unwrap_or(link.current);
-    let external = props.external;
-    let hint = html! { <Icon icon={icons::EXTERNAL_LINK} label="opens in a new tab" class="yi-top-menu__external" /> };
 
     if mode == Mode::Menu {
         let state = if current { attrs! { "aria-current" => "page" } } else { Attrs::default() };
@@ -283,9 +290,7 @@ pub fn TopMenuItem(props: &TopMenuItemProps) -> Html {
                 id={props.id.clone()}
                 class={classes!("yi-top-menu__menu-item", props.class.clone())}
                 href={props.href.clone()}
-                target={external.then_some("_blank")}
                 icon={props.icon}
-                aside={if external { hint } else { Html::default() }}
                 on_select={props.on_click.clone()}
                 attrs={state}
             >
@@ -301,8 +306,8 @@ pub fn TopMenuItem(props: &TopMenuItemProps) -> Html {
                 <Icon {icon} />
             }
             <span class="yi-top-menu__label">{ props.children.clone() }</span>
-            if external {
-                { hint }
+            if link.external {
+                <Icon icon={icons::EXTERNAL_LINK} label="opens in a new tab" class="yi-top-menu__external" />
             }
         </>
     };
@@ -312,8 +317,8 @@ pub fn TopMenuItem(props: &TopMenuItemProps) -> Html {
                 id={props.id.clone()}
                 {class}
                 {href}
-                target={external.then_some("_blank")}
-                rel={external.then_some("noopener")}
+                target={link.target}
+                rel={link.rel}
                 aria-current={current.then_some("page")}
                 onclick={link.onclick}
             >

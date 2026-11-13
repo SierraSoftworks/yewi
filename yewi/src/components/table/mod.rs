@@ -106,6 +106,9 @@ pub struct TableProps<T: Clone + PartialEq + 'static> {
     /// [`EmptyState`].
     #[prop_or_default]
     pub empty: Html,
+    /// The title of the default empty state, when `empty` is not set.
+    #[prop_or(AttrValue::Static("Nothing to show"))]
+    pub empty_label: AttrValue,
     /// Names the table for assistive technology.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -340,7 +343,7 @@ pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, w
                     if !is_empty(&props.empty) {
                         { props.empty.clone() }
                     } else {
-                        <EmptyState title="Nothing to show" size={Size::Small} />
+                        <EmptyState title={props.empty_label.clone()} size={Size::Small} />
                     }
                 </td>
             </tr>

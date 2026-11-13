@@ -172,7 +172,7 @@
   }
 
   &:focus-visible {
-    @include focus-ring(4px);
+    @include focus-ring;
   }
 
   // The plot alone receives pointer events, so offsets are relative to it.
@@ -318,7 +318,7 @@
 
 .yi-chart__tooltip-title {
   font-size: var(--yi-text-xs);
-  color: var(--yi-fg-subtle);
+  color: var(--yi-fg-muted);
 }
 
 .yi-chart__tooltip-row {

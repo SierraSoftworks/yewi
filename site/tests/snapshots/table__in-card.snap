@@ -1,0 +1,44 @@
+---
+source: site/tests/snapshots.rs
+---
+<section class="yi-card yi-card--header-plain" style="max-inline-size: 32rem">
+<header class="yi-card__header">
+<div class="yi-card__heading">
+<h2 class="yi-card__title">Releases</h2>
+<p class="yi-card__subtitle">What each channel is running</p>
+</div>
+</header>
+<div class="yi-card__body yi-card__body--flush">
+<div class="yi-table yi-table--open">
+<div tabindex="0" class="yi-table__scroll">
+<table aria-label="Releases" class="yi-table__grid">
+<thead>
+<tr>
+<th scope="col" class="yi-table__header">Version</th>
+<th scope="col" class="yi-table__header">Channel</th>
+<th scope="col" class="yi-table__header yi-table__cell--end">Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2026.1.3</th>
+<td class="yi-table__cell">stable</td>
+<td class="yi-table__cell yi-table__cell--end">212</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2026.1.4</th>
+<td class="yi-table__cell">candidate</td>
+<td class="yi-table__cell yi-table__cell--end">18</td>
+</tr>
+<tr class="yi-table__row">
+<th scope="row" class="yi-table__cell">2026.2.0</th>
+<td class="yi-table__cell">nightly</td>
+<td class="yi-table__cell yi-table__cell--end">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="yi-table__footer">3 releases</div>
+</div>
+</div>
+</section>

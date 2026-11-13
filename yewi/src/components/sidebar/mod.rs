@@ -7,7 +7,7 @@
 use yew::prelude::*;
 
 use crate::is_empty;
-use crate::{Attrs, Icon, IconData, components::app_shell::use_app_shell, icons};
+use crate::{Attrs, Icon, IconData, NavTarget, components::app_shell::use_app_shell, icons, nav_target::use_nav_link};
 
 #[derive(Properties, PartialEq)]
 pub struct SidebarProps {
@@ -80,20 +80,20 @@ pub struct SidebarItemProps {
     /// The destination's name.
     #[prop_or_default]
     pub children: Html,
-    /// Where it goes. Without one the item is a button and `on_click` does
-    /// the work.
+    /// Where it goes: a URL or, with the `router` feature,
+    /// `NavTarget::route(..)`. A `NavTarget::external` link opens in a new
+    /// tab and says so. Without `href` the item is a button and `on_click`
+    /// does the work.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// An icon before the name. Give every item in a list one, or none.
     #[prop_or_default]
     pub icon: Option<IconData>,
-    /// This is where the user is now. Set it on the section's item for the
-    /// pages beneath it too.
+    /// Whether this is where the user is now. A route target works this out
+    /// from the router's location; set it for plain links, or to also mark
+    /// the section's item on the pages beneath it.
     #[prop_or_default]
-    pub current: bool,
-    /// The link leaves the application: it opens in a new tab and says so.
-    #[prop_or_default]
-    pub external: bool,
+    pub current: Option<bool>,
     /// One of a set beneath the item above it, such as the projects under a
     /// dashboard: indented, with a dot in place of an icon.
     #[prop_or_default]
@@ -101,8 +101,7 @@ pub struct SidebarItemProps {
     /// Something at the end of the row: a count, a status dot.
     #[prop_or_default]
     pub trailing: Html,
-    /// Fired on activation. For client-side routing, call `prevent_default`
-    /// and navigate.
+    /// Fired on activation, before any navigation.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
     #[prop_or_default]
@@ -118,13 +117,6 @@ pub struct SidebarItemProps {
 pub fn SidebarItem(props: &SidebarItemProps) -> Html {
     let shell = use_app_shell();
 
-    let class = classes!(
-        "yi-sidebar__item",
-        props.nested.then_some("yi-sidebar__item--nested"),
-        props.current.then_some("yi-sidebar__item--current"),
-        props.class.clone(),
-    );
-
     // Picking a destination closes the drawer it was picked from, so the
     // page it leads to can be seen.
     let onclick = {
@@ -136,6 +128,15 @@ pub fn SidebarItem(props: &SidebarItemProps) -> Html {
             }
         })
     };
+    let link = use_nav_link(&props.href, onclick.clone());
+    let current = props.current.unwrap_or(link.current);
+
+    let class = classes!(
+        "yi-sidebar__item",
+        props.nested.then_some("yi-sidebar__item--nested"),
+        current.then_some("yi-sidebar__item--current"),
+        props.class.clone(),
+    );
 
     let content = html! {
         <>
@@ -148,28 +149,28 @@ pub fn SidebarItem(props: &SidebarItemProps) -> Html {
             if !is_empty(&props.trailing) {
                 <span class="yi-sidebar__trailing">{ props.trailing.clone() }</span>
             }
-            if props.external {
+            if link.external {
                 <span class="yi-sidebar__hint"><Icon icon={icons::EXTERNAL_LINK} label="opens in a new tab" /></span>
             }
         </>
     };
 
-    props.attrs.apply(match &props.href {
+    props.attrs.apply(match link.href {
         Some(href) => html! {
             <a
                 id={props.id.clone()}
                 {class}
-                href={href.clone()}
-                target={props.external.then_some("_blank")}
-                rel={props.external.then_some("noopener")}
-                aria-current={props.current.then_some("page")}
-                {onclick}
+                {href}
+                target={link.target}
+                rel={link.rel}
+                aria-current={current.then_some("page")}
+                onclick={link.onclick}
             >
                 { content }
             </a>
         },
         None => html! {
-            <button id={props.id.clone()} {class} type="button" aria-current={props.current.then_some("true")} {onclick}>
+            <button id={props.id.clone()} {class} type="button" aria-current={current.then_some("true")} {onclick}>
                 { content }
             </button>
         },

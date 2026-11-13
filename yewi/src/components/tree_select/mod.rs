@@ -13,7 +13,7 @@ use crate::{
     Attrs, FieldContext, Icon, Placement, Popover, PopoverTrigger, Size,
     components::{
         input::{input_classes, target_value},
-        select::dom as select_dom,
+        select::{dom as select_dom, more_label},
     },
     icons, use_field_control, use_id,
 };
@@ -56,6 +56,11 @@ pub struct TreeSelectProps {
     /// letter is quicker than scrolling.
     #[prop_or(40)]
     pub max_results: usize,
+    /// The line under a list cut off at `max_results`, from the number shown
+    /// and the number that match. Defaults to "Showing the first 50 of 2,000.
+    /// Type to narrow the list." in English.
+    #[prop_or_default]
+    pub more_label: Option<Callback<(usize, usize), AttrValue>>,
     /// Shown in place of the list when a search finds nothing.
     #[prop_or(AttrValue::Static("No matches"))]
     pub empty: AttrValue,
@@ -486,7 +491,7 @@ pub fn TreeSelect(props: &TreeSelectProps) -> Html {
         Html::default()
     };
     let footer = if is_open && searching && total > limit {
-        html! { { format!("Showing the first {limit} of {total}. Type to narrow the list.") } }
+        html! { { more_label(props.more_label.as_ref(), limit, total) } }
     } else {
         Html::default()
     };

@@ -4,7 +4,10 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Orientation, Placement, Popover, PopoverTrigger, Size, Tone, VisuallyHidden, is_empty};
+use crate::{
+    Attrs, Icon, IconData, NavTarget, Orientation, Placement, Popover, PopoverTrigger, Size, Tone, VisuallyHidden,
+    is_empty, nav_target::use_nav_link,
+};
 
 /// What a [`Timeline`] tells the events inside it.
 #[derive(Clone, Copy, PartialEq)]
@@ -148,10 +151,11 @@ pub struct TimelineItemProps {
     /// Detail under the event: a message, progress, a card.
     #[prop_or_default]
     pub children: Html,
-    /// Makes the title a link, and the whole event its target. Controls in
-    /// the other slots stay usable.
+    /// Makes the title a link, and the whole event its target: a URL or,
+    /// with the `router` feature, `NavTarget::route(..)`. Controls in the
+    /// other slots stay usable.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Makes the title a button, and the whole event its target. Ignored
     /// with `href`.
     #[prop_or_default]
@@ -171,7 +175,7 @@ pub struct TimelineItemProps {
 #[function_component]
 pub fn TimelineItem(props: &TimelineItemProps) -> Html {
     let orientation = use_context::<TimelineContext>().map_or(Orientation::Vertical, |context| context.orientation);
-    let interactive = props.href.is_some() || props.on_click.is_some();
+    let interactive = !props.href.is_empty() || props.on_click.is_some();
     let class = classes!(
         "yi-timeline__item",
         props.tone.map(|tone| format!("yi-timeline__item--toned yi-timeline__item--{}", tone.as_str())),
@@ -192,8 +196,19 @@ pub fn TimelineItem(props: &TimelineItemProps) -> Html {
         </span>
     };
 
-    let title = if let Some(href) = &props.href {
-        html! { <a class="yi-timeline__title yi-timeline__action" href={href.clone()}>{ props.title.clone() }</a> }
+    let link = use_nav_link(&props.href, Callback::noop());
+    let title = if let Some(href) = link.href {
+        html! {
+            <a
+                class="yi-timeline__title yi-timeline__action"
+                {href}
+                target={link.target}
+                rel={link.rel}
+                onclick={link.onclick}
+            >
+                { props.title.clone() }
+            </a>
+        }
     } else if let Some(on_click) = &props.on_click {
         html! {
             <button type="button" class="yi-timeline__title yi-timeline__action" onclick={on_click.clone()}>

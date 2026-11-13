@@ -1,7 +1,7 @@
 use yewi_test::render;
 
 use super::*;
-use crate::attrs;
+use crate::{AppBar, attrs};
 
 /// The opening tag of each `<tag ...>` in `html`.
 fn tags<'a>(html: &'a str, tag: &str) -> Vec<&'a str> {
@@ -15,7 +15,7 @@ fn menu(collapse: TopMenuCollapse) -> String {
             <TopMenu label="Sections" {collapse}>
                 <TopMenuItem href="/workflows" current=true>{ "Workflows" }</TopMenuItem>
                 <TopMenuItem href="/activity">{ "Activity" }</TopMenuItem>
-                <TopMenuItem href="https://example.com" external=true>{ "Docs" }</TopMenuItem>
+                <TopMenuItem href={NavTarget::href("https://example.com").external()}>{ "Docs" }</TopMenuItem>
                 <TopMenuGroup label="Admin">
                     <MenuItem href="/accounts">{ "Accounts" }</MenuItem>
                 </TopMenuGroup>
@@ -83,6 +83,38 @@ fn actions_follow_the_row_and_wait_in_the_dropdown_until_it_opens() {
     });
     assert_eq!(html.matches("Signed in").count(), 1);
     assert!(html.find("Signed in") > html.find(r#"href="/a""#));
+}
+
+/// A menu in a bar, where either may have been given actions.
+fn in_a_bar(bar: Option<&'static str>, own: Option<&'static str>) -> String {
+    render(move || {
+        let slot = |text: Option<&'static str>| text.map(|text| html! { <span>{ text }</span> }).unwrap_or_default();
+        html! {
+            <AppBar actions={slot(bar)}>
+                <TopMenu actions={slot(own)}>
+                    <TopMenuItem href="/a">{ "A" }</TopMenuItem>
+                </TopMenu>
+            </AppBar>
+        }
+    })
+}
+
+#[test]
+fn a_menu_without_actions_takes_over_those_of_its_bar() {
+    let html = in_a_bar(Some("Bar actions"), None);
+    let nav = &html[html.find("<nav").unwrap()..html.find("</nav>").unwrap()];
+    assert!(nav.contains("Bar actions"));
+    assert!(nav.contains("yi-top-menu--bar-actions"), "the bar is not told to hide its own copy");
+}
+
+#[test]
+fn a_menu_keeps_its_own_actions_and_leaves_the_bar_its_own() {
+    let html = in_a_bar(Some("Bar actions"), Some("Menu actions"));
+    let (start, end) = (html.find("<nav").unwrap(), html.find("</nav>").unwrap());
+    assert!(html[start..end].contains("Menu actions") && !html[start..end].contains("Bar actions"));
+    assert!(html[end..].contains("Bar actions"));
+    assert!(!html.contains("yi-top-menu--bar-actions"));
+    assert!(!in_a_bar(None, None).contains("yi-top-menu--bar-actions"));
 }
 
 #[test]

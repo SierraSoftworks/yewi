@@ -159,3 +159,10 @@ fn filtering_matches_every_term_and_caps_what_is_shown() {
         assert_eq!(filter(&options, query, limit), (shown, total), "query {query:?}");
     }
 }
+
+#[test]
+fn the_cut_off_line_is_english_unless_more_label_is_given() {
+    assert!(more_label(None, 50, 2000).contains("first 50 of 2000"));
+    let custom = Callback::from(|(shown, total): (usize, usize)| AttrValue::from(format!("{shown} von {total}")));
+    assert_eq!(more_label(Some(&custom), 50, 2000), "50 von 2000");
+}

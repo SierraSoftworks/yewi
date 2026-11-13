@@ -2,12 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, icons};
-
-#[cfg(feature = "router")]
-mod router;
-#[cfg(feature = "router")]
-pub use router::*;
+use crate::{Attrs, Icon, IconData, NavTarget, icons, nav_target::use_nav_link};
 
 /// How much a link stands out from the text around it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -56,37 +51,27 @@ impl LinkUnderline {
     }
 }
 
-/// The classes shared by [`Link`] and the router-aware link.
-pub(crate) fn link_classes(variant: LinkVariant, underline: LinkUnderline, class: &Classes) -> Classes {
-    classes!(
-        "yi-link",
-        format!("yi-link--{}", variant.as_str()),
-        format!("yi-link--underline-{}", underline.as_str()),
-        class.clone(),
-    )
-}
-
 #[derive(Properties, PartialEq)]
 pub struct LinkProps {
     /// The link text.
     #[prop_or_default]
     pub children: Html,
-    /// Where the link goes. Without it the link renders a `<button>` that
-    /// looks the same, for an action that does not navigate.
+    /// Where the link goes: a URL or, with the `router` feature,
+    /// `NavTarget::route(..)`, which a plain click follows without a page
+    /// load. `NavTarget::external` opens a new tab, marks the link with an
+    /// arrow and tells assistive technology so. Without `href` the link
+    /// renders a `<button>` that looks the same, for an action that does
+    /// not navigate.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     #[prop_or_default]
     pub variant: LinkVariant,
     #[prop_or_default]
     pub underline: LinkUnderline,
-    /// Opens in a new tab, marks the link with an arrow and tells assistive
-    /// technology so. For links that leave the app.
-    #[prop_or_default]
-    pub external: bool,
     /// An icon shown before the text.
     #[prop_or_default]
     pub icon: Option<IconData>,
-    /// The link `target`. `external` sets `_blank`.
+    /// The link `target`. An external `href` sets `_blank`.
     #[prop_or_default]
     pub target: Option<AttrValue>,
     /// The link `rel`. Opening a new tab adds `noopener noreferrer`.
@@ -108,10 +93,17 @@ pub struct LinkProps {
 }
 
 /// A text link, or without `href` a button that reads as one.
+///
+/// A link to the route being shown carries `aria-current="page"`.
 #[function_component]
 pub fn Link(props: &LinkProps) -> Html {
     let disabled = props.disabled;
-    let class = link_classes(props.variant, props.underline, &props.class);
+    let class = classes!(
+        "yi-link",
+        format!("yi-link--{}", props.variant.as_str()),
+        format!("yi-link--underline-{}", props.underline.as_str()),
+        props.class.clone(),
+    );
 
     let onclick = {
         let on_click = props.on_click.clone();
@@ -124,13 +116,8 @@ pub fn Link(props: &LinkProps) -> Html {
         })
     };
 
-    let target = props.target.clone().or_else(|| props.external.then(|| "_blank".into()));
-    let new_tab = target.as_ref().is_some_and(|target| target == "_blank");
-    let rel = match (&props.rel, new_tab) {
-        (Some(rel), true) => Some(AttrValue::from(format!("{rel} noopener noreferrer"))),
-        (None, true) => Some("noopener noreferrer".into()),
-        (rel, false) => rel.clone(),
-    };
+    let link = use_nav_link(&props.href, onclick.clone());
+    let (target, rel) = link.target_and_rel(props.target.as_ref(), props.rel.as_ref());
 
     let content = html! {
         <>
@@ -138,23 +125,24 @@ pub fn Link(props: &LinkProps) -> Html {
                 <Icon {icon} class="yi-link__icon" />
             }
             { props.children.clone() }
-            if props.external {
+            if link.external {
                 <Icon icon={icons::ARROW_UP_RIGHT} class="yi-link__external" label="(opens in a new tab)" />
             }
         </>
     };
 
-    props.attrs.apply(match &props.href {
+    props.attrs.apply(match link.href {
         Some(href) => html! {
             <a
                 id={props.id.clone()}
                 {class}
-                href={(!disabled).then(|| href.clone())}
+                href={(!disabled).then_some(href)}
                 {target}
                 {rel}
                 role={disabled.then_some("link")}
+                aria-current={link.current.then_some("page")}
                 aria-disabled={disabled.then_some("true")}
-                {onclick}
+                onclick={link.onclick}
             >
                 { content }
             </a>
