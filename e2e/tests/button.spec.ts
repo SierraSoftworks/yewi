@@ -125,4 +125,47 @@ test.describe("Button", () => {
       expect(boxes[i].y).toBe(boxes[0].y);
     }
   });
+
+  test("an icon button shows its label as a tooltip on hover, in place of the native title", async ({ page, example }) => {
+    const stage = await example("button/icon-only");
+    const refresh = stage.getByRole("button", { name: "Refresh" });
+    const hint = page.locator(".yi-tooltip__bubble");
+
+    await expect(refresh).toHaveAttribute("title", "Refresh");
+    await refresh.hover();
+    await expect(hint).toHaveText("Refresh");
+    await expect(refresh).not.toHaveAttribute("title");
+    // The hint repeats the name, so it must not be read as well.
+    await expect(refresh).toHaveAccessibleName("Refresh");
+    await expect(refresh).not.toHaveAttribute("aria-describedby");
+
+    await page.mouse.move(600, 500);
+    await expect(hint).toHaveCount(0);
+  });
+
+  test("an icon button shows its hint on keyboard focus and Escape dismisses it", async ({ page, example }) => {
+    const stage = await example("button/icon-only");
+    const hint = page.locator(".yi-tooltip__bubble");
+
+    await page.keyboard.press("Tab");
+    await expect(stage.getByRole("button", { name: "Add host" })).toBeFocused();
+    await expect(hint).toHaveText("Add host");
+
+    await page.keyboard.press("Tab");
+    await expect(hint).toHaveText("Refresh");
+    await page.keyboard.press("Escape");
+    await expect(hint).toHaveCount(0);
+  });
+
+  test("the hint does not take the button's clicks or its place in a group", async ({ page, example }) => {
+    const stage = await example("button/group-toolbar");
+    const buttons = stage.getByRole("button");
+    const first = buttons.first();
+    const before = (await first.boundingBox())!;
+
+    await first.hover();
+    await expect(page.locator(".yi-tooltip__bubble")).toBeVisible();
+    expect(await first.boundingBox()).toEqual(before);
+    await expect(first.locator("xpath=..")).toHaveClass(/yi-button-group/);
+  });
 });

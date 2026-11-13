@@ -11,7 +11,7 @@ mod icon_button;
 pub use group::*;
 pub use icon_button::*;
 
-use crate::{Attrs, Icon, IconData, Size};
+use crate::{Attrs, Icon, IconData, Size, Spinner};
 
 /// How much visual weight a button carries.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -95,6 +95,10 @@ pub struct ButtonProps {
     /// Fired on activation. Not fired while `disabled` or `loading`.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
+    /// A reference to the `<button>` or `<a>`, for moving focus or anchoring
+    /// something to it.
+    #[prop_or_default]
+    pub node_ref: NodeRef,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -130,7 +134,7 @@ pub fn Button(props: &ButtonProps) -> Html {
     let content = html! {
         <>
             if props.loading {
-                <span class="yi-button__spinner" aria-hidden="true" />
+                <Spinner />
             } else if let Some(icon) = props.icon {
                 <Icon {icon} />
             }
@@ -143,6 +147,7 @@ pub fn Button(props: &ButtonProps) -> Html {
     props.attrs.apply(match &props.href {
         Some(href) => html! {
             <a
+                ref={props.node_ref.clone()}
                 id={props.id.clone()}
                 {class}
                 href={(!inert).then(|| href.clone())}
@@ -158,6 +163,7 @@ pub fn Button(props: &ButtonProps) -> Html {
         },
         None => html! {
             <button
+                ref={props.node_ref.clone()}
                 id={props.id.clone()}
                 {class}
                 type={props.kind.as_str()}

@@ -3,7 +3,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Orientation, Size, VisuallyHidden, icons, is_empty};
+use crate::{Attrs, Icon, IconData, Orientation, Size, Spinner, VisuallyHidden, icons, is_empty};
 
 /// Where a step stands.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -175,6 +175,9 @@ pub fn Step(props: &StepProps) -> Html {
             <span class="yi-step__marker" aria-hidden="true">
                 if let Some(icon) = props.icon.or(status.icon()) {
                     <Icon {icon} />
+                }
+                if status == StepStatus::Running {
+                    <Spinner class="yi-step__spinner" />
                 }
             </span>
             <span class="yi-step__rail" aria-hidden="true" />

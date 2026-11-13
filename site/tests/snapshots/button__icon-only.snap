@@ -34,8 +34,12 @@ source: site/tests/snapshots.rs
 </svg>
 </button>
 <button type="button" aria-disabled="true" aria-busy="true" class="yi-button yi-button--default yi-button--md yi-button--loading yi-button--icon-only" aria-label="Download archive" title="Download archive">
-<span aria-hidden="true" class="yi-button__spinner">
-</span>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
 </button>
 </div>
 <div class="yi-cluster">

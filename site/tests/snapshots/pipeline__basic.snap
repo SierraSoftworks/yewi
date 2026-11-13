@@ -113,6 +113,12 @@ source: site/tests/snapshots.rs
 </li>
 <li class="yi-step yi-step--running">
 <span aria-hidden="true" class="yi-step__marker">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-spinner yi-step__spinner">
+<circle cx="12" cy="12" r="9" class="yi-spinner__track">
+</circle>
+<path d="M12 3a9 9 0 0 1 9 9" class="yi-spinner__arc">
+</path>
+</svg>
 </span>
 <span aria-hidden="true" class="yi-step__rail">
 </span>

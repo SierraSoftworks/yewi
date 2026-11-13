@@ -6,9 +6,8 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Size, Tone, icons, is_empty};
+use crate::{Attrs, ButtonVariant, Icon, IconButton, IconData, Size, Tone, icons, is_empty};
 
-/// The icon that stands for a tone when the caller does not choose one.
 /// Problems interrupt assistive technology; everything else waits its turn.
 const fn live_role(tone: Tone) -> &'static str {
     match tone {
@@ -19,12 +18,10 @@ const fn live_role(tone: Tone) -> &'static str {
 
 fn dismiss_button(class: &'static str, label: &AttrValue, on_dismiss: &Option<Callback<()>>) -> Html {
     let Some(on_dismiss) = on_dismiss else { return Html::default() };
-    let onclick = on_dismiss.reform(|_: MouseEvent| ());
+    let on_click = on_dismiss.reform(|_: MouseEvent| ());
 
     html! {
-        <button type="button" {class} aria-label={label.clone()} {onclick}>
-            <Icon icon={icons::X} />
-        </button>
+        <IconButton {class} icon={icons::X} label={label.clone()} variant={ButtonVariant::Subtle} size={Size::Small} {on_click} />
     }
 }
 
@@ -101,28 +98,6 @@ pub fn Alert(props: &AlertProps) -> Html {
     })
 }
 
-/// How a banner is drawn.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum BannerVariant {
-    /// A fill tinted with the tone, for notices that sit above a page.
-    #[default]
-    Soft,
-    /// Filled with the tone itself, for the one status a page exists to
-    /// report.
-    Solid,
-}
-
-impl BannerVariant {
-    pub const ALL: [BannerVariant; 2] = [BannerVariant::Soft, BannerVariant::Solid];
-
-    const fn as_str(self) -> &'static str {
-        match self {
-            BannerVariant::Soft => "soft",
-            BannerVariant::Solid => "solid",
-        }
-    }
-}
-
 #[derive(Properties, PartialEq)]
 pub struct BannerProps {
     /// The message: a sentence, not a paragraph.
@@ -132,8 +107,10 @@ pub struct BannerProps {
     /// urgently it is announced.
     #[prop_or(Tone::Info)]
     pub tone: Tone,
+    /// Fills the banner with the tone itself instead of a tint, for the one
+    /// status a page exists to report.
     #[prop_or_default]
-    pub variant: BannerVariant,
+    pub bold: bool,
     /// `Small` is a slim strip, `Large` a headline with room around it.
     #[prop_or_default]
     pub size: Size,
@@ -169,7 +146,7 @@ pub fn Banner(props: &BannerProps) -> Html {
     let class = classes!(
         "yi-banner",
         format!("yi-banner--{}", props.tone.as_str()),
-        format!("yi-banner--{}", props.variant.as_str()),
+        props.bold.then_some("yi-banner--bold"),
         format!("yi-banner--{}", props.size.as_str()),
         props.class.clone(),
     );
@@ -195,15 +172,16 @@ pub struct NoteProps {
     /// The text. Inline content only: the note is a paragraph.
     #[prop_or_default]
     pub children: Html,
-    /// `Neutral` is muted text; any other tone colours the note.
+    /// `Neutral` is muted text without an icon; any other tone colours the
+    /// note and shows the tone's icon before the text.
     #[prop_or_default]
     pub tone: Tone,
-    /// Shows the tone's icon before the text.
-    #[prop_or_default]
-    pub with_icon: bool,
-    /// Shows this icon before the text instead.
+    /// Replaces the tone's icon, or gives a `Neutral` note one.
     #[prop_or_default]
     pub icon: Option<IconData>,
+    /// Leaves the icon out.
+    #[prop_or_default]
+    pub hide_icon: bool,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -219,7 +197,7 @@ pub struct NoteProps {
 #[function_component]
 pub fn Note(props: &NoteProps) -> Html {
     let class = classes!("yi-note", format!("yi-note--{}", props.tone.as_str()), props.class.clone());
-    let icon = props.icon.or(props.with_icon.then_some(props.tone.icon()));
+    let icon = props.icon.or((props.tone != Tone::Neutral).then_some(props.tone.icon())).filter(|_| !props.hide_icon);
 
     props.attrs.apply(html! {
         <p id={props.id.clone()} {class}>

@@ -1,6 +1,6 @@
 // Toast
 //
-// A raised surface whose tone shows as a coloured icon. Tones set
+// A raised surface whose tone shows in its icon and title. Tones set
 // `--yi-toast-tone`; everything else is shared.
 @use "api" as *;
 
@@ -113,10 +113,9 @@
   color: var(--yi-toast-tone);
 }
 
-.yi-toast--active .yi-toast__icon {
-  @include motion {
-    animation: yi-toast-spin var(--yi-duration-spin) linear infinite;
-  }
+// The spinner is sized like the icons it stands among.
+.yi-toast__icon.yi-spinner {
+  --yi-spinner-size: 1.15em;
 }
 
 .yi-toast__body {
@@ -127,6 +126,7 @@
 }
 
 .yi-toast__title {
+  color: var(--yi-toast-tone);
   font-weight: 600;
 }
 
@@ -137,12 +137,6 @@
 .yi-toast__action,
 .yi-toast__dismiss {
   flex: none;
-}
-
-@keyframes yi-toast-spin {
-  to {
-    transform: rotate(1turn);
-  }
 }
 
 @media (forced-colors: active) {

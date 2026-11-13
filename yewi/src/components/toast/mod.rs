@@ -9,7 +9,7 @@ use std::{cell::Cell, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Icon, IconButton, IconData, Size, Tone, icons};
+use crate::{Attrs, Button, ButtonVariant, Icon, IconButton, Size, Spinner, Tone, icons};
 
 /// How long a toast stays when neither it nor its host says otherwise.
 pub const DEFAULT_TOAST_DURATION_MS: u32 = 5_000;
@@ -139,17 +139,6 @@ impl ToastMessage {
     }
 }
 
-const fn tone_icon(tone: Tone) -> Option<IconData> {
-    match tone {
-        Tone::Neutral => None,
-        Tone::Ok => Some(icons::CIRCLE_CHECK),
-        Tone::Warn => Some(icons::TRIANGLE_ALERT),
-        Tone::Danger => Some(icons::CIRCLE_ALERT),
-        Tone::Info => Some(icons::INFO),
-        Tone::Active => Some(icons::LOADER_CIRCLE),
-    }
-}
-
 #[derive(Properties, PartialEq)]
 pub struct ToastProps {
     /// The message.
@@ -186,8 +175,6 @@ pub fn Toast(props: &ToastProps) -> Html {
         format!("yi-toast--{}", props.tone.as_str()),
         props.class.clone(),
     );
-    let icon = tone_icon(props.tone);
-
     let dismiss = props.on_dismiss.clone().unwrap_or_default();
     let onkeydown = props.on_dismiss.clone().map(|on_dismiss| {
         Callback::from(move |event: KeyboardEvent| {
@@ -215,8 +202,11 @@ pub fn Toast(props: &ToastProps) -> Html {
             role={if props.tone == Tone::Danger { "alert" } else { "status" }}
             {onkeydown}
         >
-            if let Some(icon) = icon {
-                <Icon {icon} class="yi-toast__icon" />
+            // A plain remark carries no icon, and work in flight shows as a spinner.
+            if props.tone == Tone::Active {
+                <Spinner class="yi-toast__icon" />
+            } else if props.tone != Tone::Neutral {
+                <Icon icon={props.tone.icon()} class="yi-toast__icon" />
             }
             <div class="yi-toast__body">
                 if let Some(title) = &props.title {
@@ -473,7 +463,7 @@ fn HostedToast(props: &HostedToastProps) -> Html {
 }
 
 #[cfg(target_arch = "wasm32")]
-mod timer {
+pub(crate) mod timer {
     use wasm_bindgen::{JsValue, closure::Closure, prelude::wasm_bindgen};
 
     // Bound directly so the handle stays an opaque value: not every
@@ -513,7 +503,7 @@ mod timer {
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-mod timer {
+pub(crate) mod timer {
     /// Effects never run on the server, so there is nothing to time.
     pub struct Timeout;
 

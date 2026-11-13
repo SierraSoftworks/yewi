@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use super::{InputGroup, set_value};
-use crate::{Attrs, FieldContext, Icon, Size, Spinner, TextInput, TextInputKind, icons};
+use crate::{Attrs, ButtonVariant, FieldContext, Icon, IconButton, Size, Spinner, TextInput, TextInputKind, icons};
 
 /// The current `value` of the element behind `node`.
 fn current_value(node: &NodeRef) -> String {
@@ -154,18 +154,21 @@ pub fn SearchInput(props: &SearchInputProps) -> Html {
     };
     let suffix = html! {
         <>
-            <button
-                type="button"
+            <span
                 class="yi-search-input__clear"
-                // Escape does the same from the keyboard.
-                tabindex="-1"
-                aria-label={props.clear_label.clone()}
                 // Keeps focus (and the caret) in the input.
                 onmousedown={Callback::from(|event: MouseEvent| event.prevent_default())}
-                onclick={Callback::from(move |_| clear())}
             >
-                <Icon icon={icons::X} />
-            </button>
+                <IconButton
+                    icon={icons::X}
+                    label={props.clear_label.clone()}
+                    variant={ButtonVariant::Subtle}
+                    size={Size::Small}
+                    on_click={Callback::from(move |_| clear())}
+                    // Escape does the same from the keyboard.
+                    attrs={crate::attrs! { "tabindex" => "-1" }}
+                />
+            </span>
             { props.suffix.clone() }
         </>
     };

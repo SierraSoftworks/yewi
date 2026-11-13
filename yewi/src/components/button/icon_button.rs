@@ -1,14 +1,15 @@
 use yew::prelude::*;
 
 use super::{Button, ButtonKind, ButtonVariant};
-use crate::{Attrs, IconData, Size};
+use crate::{Attrs, IconData, Size, components::tooltip::use_hint};
 
 #[derive(Properties, PartialEq)]
 pub struct IconButtonProps {
     /// The icon on the button's face.
     pub icon: IconData,
-    /// What the button does. It is the accessible name and the hover hint, so
-    /// it is required: an icon alone says nothing to a screen reader.
+    /// What the button does. It is the accessible name and the hint shown on
+    /// hover and keyboard focus, so it is required: an icon alone says
+    /// nothing to a screen reader. A `title` in `attrs` replaces the hint.
     pub label: AttrValue,
     #[prop_or_default]
     pub variant: ButtonVariant,
@@ -36,6 +37,9 @@ pub struct IconButtonProps {
     /// Fired on activation. Not fired while `disabled` or `loading`.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
+    /// A reference to the `<button>` or `<a>`.
+    #[prop_or_default]
+    pub node_ref: NodeRef,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -48,7 +52,11 @@ pub struct IconButtonProps {
 /// actions where the meaning is familiar. Prefer a labelled button elsewhere.
 #[function_component]
 pub fn IconButton(props: &IconButtonProps) -> Html {
+    let title = props.attrs.iter().find(|(key, _)| *key == "title").map_or(&props.label, |(_, value)| value);
+    let hint = use_hint(&props.node_ref, title);
+
     // The label comes first so that `attrs` can still override either name.
+    // The `title` is the hint where there is no runtime to show the tooltip.
     let named = [("aria-label", props.label.clone()), ("title", props.label.clone())];
     let attrs = Attrs::new(named.into_iter().chain(props.attrs.iter().map(|(key, value)| (key, value.clone()))));
 
@@ -64,9 +72,12 @@ pub fn IconButton(props: &IconButtonProps) -> Html {
             target={props.target.clone()}
             kind={props.kind}
             on_click={props.on_click.clone()}
+            node_ref={props.node_ref.clone()}
             class={classes!("yi-button--icon-only", props.class.clone())}
             id={props.id.clone()}
             {attrs}
-        />
+        >
+            { hint }
+        </Button>
     }
 }

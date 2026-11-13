@@ -38,11 +38,11 @@ fn every_tone_and_variant_is_distinguishable() {
     let mut rendered = Vec::new();
     for tone in Tone::ALL {
         rendered.push(render(move || html! { <Alert {tone} hide_icon=true>{ "Message" }</Alert> }));
-        for variant in BannerVariant::ALL {
-            rendered.push(render(move || html! { <Banner {tone} {variant}>{ "Message" }</Banner> }));
+        for bold in [false, true] {
+            rendered.push(render(move || html! { <Banner {tone} {bold}>{ "Message" }</Banner> }));
         }
         // Neutral and Info share an icon, so alerts and notes are compared without one.
-        rendered.push(render(move || html! { <Note {tone}>{ "Message" }</Note> }));
+        rendered.push(render(move || html! { <Note {tone} hide_icon=true>{ "Message" }</Note> }));
     }
     for (i, a) in rendered.iter().enumerate() {
         for b in &rendered[i + 1..] {
@@ -59,18 +59,22 @@ fn icons_are_decorative_and_can_be_left_out() {
 
     let alert = render(|| html! { <Alert hide_icon=true>{ "Message" }</Alert> });
     let banner = render(|| html! { <Banner hide_icon=true>{ "Message" }</Banner> });
-    let note = render(|| html! { <Note>{ "Message" }</Note> });
-    for html in [alert, banner, note] {
+    let note = render(|| html! { <Note tone={Tone::Warn} hide_icon=true>{ "Message" }</Note> });
+    let plain_note = render(|| html! { <Note>{ "Message" }</Note> });
+    for html in [alert, banner, note, plain_note] {
         assert!(!html.contains("<svg"), "{html}");
     }
 }
 
 #[test]
-fn note_icon_is_opt_in() {
-    let html = render(|| html! { <Note tone={Tone::Warn} with_icon=true>{ "Expires soon" }</Note> });
-    assert!(html.starts_with("<p"));
-    assert!(html.contains("<svg"));
-    assert!(!root(&html).contains("role="));
+fn a_toned_note_shows_its_icon_and_a_plain_one_can_be_given_one() {
+    let toned = render(|| html! { <Note tone={Tone::Warn}>{ "Expires soon" }</Note> });
+    let given = render(|| html! { <Note icon={crate::icons::LOCK}>{ "Administrators only" }</Note> });
+    for html in [toned, given] {
+        assert!(html.starts_with("<p"));
+        assert!(html.contains("<svg"));
+        assert!(!root(&html).contains("role="));
+    }
 }
 
 #[test]

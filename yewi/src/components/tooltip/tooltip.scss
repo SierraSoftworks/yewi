@@ -69,6 +69,13 @@
     z-index: -1;
   }
 
+  // A hint sits inside the control it names: it must not take the control's
+  // clicks, and there is nothing in it to select or follow.
+  &--hint {
+    pointer-events: none;
+    user-select: none;
+  }
+
   // Near-black in both themes; tokens inside resolve to their dark values.
   &--dark {
     --yi-tooltip-bg: var(--yi-bg);

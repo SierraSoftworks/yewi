@@ -5,7 +5,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Pagination, Size, Tone};
+use crate::{Attrs, Icon, IconData, Pagination, Size, Tone, components::tooltip::use_hint};
 
 /// One row of a [`BarList`].
 #[derive(Debug, Clone, PartialEq)]
@@ -125,6 +125,38 @@ pub enum BarListOverflow {
     Expand(usize),
     /// Rows are shown this many at a time, with [`Pagination`] underneath.
     Pages(usize),
+}
+
+#[derive(Properties, PartialEq)]
+struct RowActionProps {
+    icon: IconData,
+    /// What the action does, shown as the hint.
+    hint: AttrValue,
+    /// The accessible name: the hint and the row it acts on.
+    label: AttrValue,
+    index: usize,
+}
+
+/// The action button of one row. Clicks are handled by the list.
+#[function_component]
+fn RowAction(props: &RowActionProps) -> Html {
+    let node = use_node_ref();
+    let hint = use_hint(&node, &props.hint);
+
+    html! {
+        <button
+            ref={node}
+            type="button"
+            class="yi-bar-list__action"
+            // The hint where there is no runtime to show the tooltip.
+            title={props.hint.clone()}
+            aria-label={props.label.clone()}
+            data-yi-action={props.index.to_string()}
+        >
+            <Icon icon={props.icon} />
+            { hint }
+        </button>
+    }
 }
 
 /// A control at the end of every row, such as "Open" or "Manage".
@@ -307,15 +339,12 @@ pub fn BarList(props: &BarListProps) -> Html {
         };
         let action = props.action.as_ref().filter(|_| !item.muted).map(|action| {
             html! {
-                <button
-                    type="button"
-                    class="yi-bar-list__action"
-                    title={action.label.clone()}
-                    aria-label={format!("{}: {}", action.label, item.label)}
-                    data-yi-action={index.to_string()}
-                >
-                    <Icon icon={action.icon} />
-                </button>
+                <RowAction
+                    icon={action.icon}
+                    hint={action.label.clone()}
+                    label={format!("{}: {}", action.label, item.label)}
+                    {index}
+                />
             }
         });
 

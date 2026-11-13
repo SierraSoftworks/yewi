@@ -5,7 +5,11 @@ use std::{cell::RefCell, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id, is_empty};
+use crate::{AnchorOptions, Attrs, Placement, is_empty, use_anchored, use_id};
+
+mod hint;
+
+pub(crate) use hint::use_hint;
 
 /// How a tooltip is drawn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -215,7 +219,7 @@ pub fn Tooltip(props: &TooltipProps) -> Html {
     {
         let (anchor, tip_id, dismiss) = (anchor.clone(), tip_id.clone(), handlers.dismiss.clone());
         use_effect_with(open, move |&open| {
-            let session = open.then(|| dom::Session::start(&anchor, &tip_id, dismiss));
+            let session = open.then(|| dom::Session::start(&anchor, Some(&tip_id), dismiss));
             move || {
                 let _end = session;
             }
@@ -306,33 +310,14 @@ mod dom {
             .is_some_and(|target| target.matches(":focus-visible").unwrap_or(true))
     }
 
-    pub struct Timeout {
-        handle: i32,
-        _closure: Closure<dyn FnMut()>,
-    }
+    /// A `setTimeout` that is cancelled when dropped. Shared with Toast: its
+    /// handle is an opaque value, since not every environment hands out
+    /// timer ids that fit an `i32`.
+    pub struct Timeout(#[allow(dead_code)] Option<crate::components::toast::timer::Timeout>);
 
     impl Timeout {
         pub fn new(millis: u32, run: impl FnOnce() + 'static) -> Self {
-            let closure = Closure::once(run);
-            let handle = web_sys::window()
-                .and_then(|window| {
-                    window
-                        .set_timeout_with_callback_and_timeout_and_arguments_0(
-                            closure.as_ref().unchecked_ref(),
-                            i32::try_from(millis).unwrap_or(i32::MAX),
-                        )
-                        .ok()
-                })
-                .unwrap_or_default();
-            Self { handle, _closure: closure }
-        }
-    }
-
-    impl Drop for Timeout {
-        fn drop(&mut self) {
-            if let Some(window) = web_sys::window() {
-                window.clear_timeout_with_handle(self.handle);
-            }
+            Self(crate::components::toast::timer::Timeout::start(millis, run))
         }
     }
 
@@ -345,12 +330,14 @@ mod dom {
     }
 
     impl Session {
-        pub fn start(anchor: &NodeRef, tip_id: &AttrValue, dismiss: Callback<()>) -> Self {
+        /// With `tip_id` the tooltip becomes the description of the element;
+        /// a hint repeats the element's name, so it passes none.
+        pub fn start(anchor: &NodeRef, tip_id: Option<&AttrValue>, dismiss: Callback<()>) -> Self {
             if let Some(previous) = CURRENT.replace(Some(dismiss.clone())) {
                 previous.emit(());
             }
 
-            let described = anchor.cast::<Element>().map(|anchor| {
+            let described = anchor.cast::<Element>().zip(tip_id).map(|(anchor, tip_id)| {
                 let target = anchor.query_selector(FOCUSABLE).ok().flatten().unwrap_or(anchor);
                 let before = target.get_attribute("aria-describedby");
                 let value = before.as_ref().map_or_else(|| tip_id.to_string(), |ids| format!("{ids} {tip_id}"));
@@ -372,6 +359,68 @@ mod dom {
             }
 
             Self { described, keydown, dismiss }
+        }
+    }
+
+    /// The listeners a hint puts on its anchor. A hint has no wrapper of its
+    /// own to carry them, so they are attached to the element directly.
+    pub struct Wiring {
+        target: EventTarget,
+        listeners: Vec<(&'static str, Closure<dyn FnMut(Event)>)>,
+    }
+
+    impl Wiring {
+        /// Attaches the handlers to the element `anchor` points at, unless
+        /// they already are. Called after every render, since the element
+        /// can come, go or be replaced.
+        pub fn sync(slot: &RefCell<Option<Wiring>>, anchor: &NodeRef, handlers: &super::Handlers) {
+            let target = anchor.cast::<Element>().map(EventTarget::from);
+            let mut slot = slot.borrow_mut();
+            if slot.as_ref().map(|wiring| &wiring.target) == target.as_ref() {
+                return;
+            }
+            *slot = target.map(|target| Self::attach(target, handlers));
+        }
+
+        fn attach(target: EventTarget, handlers: &super::Handlers) -> Self {
+            // The native `title` is the hint where there is no runtime. Here
+            // it would show a second tooltip, so it goes as soon as ours can.
+            fn untitle(event: &Event) {
+                if let Some(element) = event.current_target().and_then(|t| t.dyn_into::<Element>().ok()) {
+                    let _ = element.remove_attribute("title");
+                }
+            }
+            fn listener<E: JsCast + 'static>(callback: &Callback<E>, untitles: bool) -> Closure<dyn FnMut(Event)> {
+                let callback = callback.clone();
+                Closure::new(move |event: Event| {
+                    if untitles {
+                        untitle(&event);
+                    }
+                    callback.emit(event.unchecked_into());
+                })
+            }
+
+            let listeners = vec![
+                ("mouseenter", listener(&handlers.enter, true)),
+                ("mouseleave", listener(&handlers.leave, false)),
+                ("pointerdown", listener(&handlers.press, false)),
+                ("focusin", listener(&handlers.focus_in, true)),
+                ("focusout", listener(&handlers.focus_out, false)),
+                // Activating the control, from the keyboard too, ends the hint.
+                ("click", listener(&handlers.dismiss.reform(|_: Event| ()), false)),
+            ];
+            for (kind, closure) in &listeners {
+                let _ = target.add_event_listener_with_callback(kind, closure.as_ref().unchecked_ref());
+            }
+            Self { target, listeners }
+        }
+    }
+
+    impl Drop for Wiring {
+        fn drop(&mut self) {
+            for (kind, closure) in &self.listeners {
+                let _ = self.target.remove_event_listener_with_callback(kind, closure.as_ref().unchecked_ref());
+            }
         }
     }
 
@@ -438,10 +487,12 @@ mod dom {
     pub struct Session;
 
     impl Session {
-        pub fn start(_: &NodeRef, _: &AttrValue, _: Callback<()>) -> Self {
+        pub fn start(_: &NodeRef, _: Option<&AttrValue>, _: Callback<()>) -> Self {
             Self
         }
     }
+
+    pub struct Wiring;
 }
 
 #[cfg(test)]
