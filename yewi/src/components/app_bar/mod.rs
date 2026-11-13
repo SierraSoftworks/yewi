@@ -7,7 +7,10 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, ButtonVariant, IconButton, attrs, components::app_shell::use_app_shell, icons};
+use crate::{
+    Attrs, ButtonVariant, IconButton, NavTarget, attrs, components::app_shell::use_app_shell, icons, is_empty,
+    nav_target::use_nav_link,
+};
 
 #[derive(Properties, PartialEq)]
 pub struct AppBarProps {
@@ -19,9 +22,10 @@ pub struct AppBarProps {
     #[prop_or_default]
     pub brand: Option<Html>,
     /// Controls at the end: status, notifications, the theme toggle, the
-    /// user menu.
+    /// user menu. A [`TopMenu`](crate::TopMenu) among the children takes
+    /// them over, so that they fold into its dropdown when it collapses.
     #[prop_or_default]
-    pub actions: Option<Html>,
+    pub actions: Html,
     /// The accessible name of the menu button. The button only appears
     /// inside an [`AppShell`](crate::AppShell) that has a sidebar.
     #[prop_or(AttrValue::Static("Navigation"))]
@@ -34,10 +38,18 @@ pub struct AppBarProps {
     pub attrs: Attrs,
 }
 
+/// What an [`AppBar`] shares with the navigation in its start slot.
+#[derive(Clone, PartialEq)]
+pub(crate) struct AppBarContext {
+    /// The bar's `actions`.
+    pub actions: Html,
+}
+
 /// The bar across the top of an application.
 #[function_component]
 pub fn AppBar(props: &AppBarProps) -> Html {
     let shell = use_app_shell().filter(|shell| shell.has_sidebar);
+    let context = AppBarContext { actions: props.actions.clone() };
 
     props.attrs.apply(html! {
         <header id={props.id.clone()} class={classes!("yi-app-bar", props.class.clone())}>
@@ -57,9 +69,13 @@ pub fn AppBar(props: &AppBarProps) -> Html {
             if let Some(brand) = &props.brand {
                 { brand.clone() }
             }
-            <div class="yi-app-bar__start">{ props.children.clone() }</div>
-            if let Some(actions) = &props.actions {
-                <div class="yi-app-bar__actions">{ actions.clone() }</div>
+            <div class="yi-app-bar__start">
+                <ContextProvider<AppBarContext> {context}>{ props.children.clone() }</ContextProvider<AppBarContext>>
+            </div>
+            // A menu that shows the actions marks itself, and the stylesheet
+            // then hides this copy: the bar cannot know while it renders.
+            if !is_empty(&props.actions) {
+                <div class="yi-app-bar__actions">{ props.actions.clone() }</div>
             }
         </header>
     })
@@ -74,16 +90,16 @@ pub struct AppBarBrandProps {
     /// or an inline SVG. It is sized to the bar.
     #[prop_or_default]
     pub logo: Option<Html>,
-    /// Where the brand leads, normally the app's home. Without it the brand
-    /// is plain text.
+    /// Where the brand leads, normally the app's home: a URL or, with the
+    /// `router` feature, `NavTarget::route(..)`. Without it the brand is
+    /// plain text.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// The accessible name of the link, when the name alone does not say
     /// where it goes.
     #[prop_or_default]
     pub label: Option<AttrValue>,
-    /// Fired when the link is followed, for client-side routing: call
-    /// `prevent_default` and navigate.
+    /// Fired when the link is followed, before any navigation.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
     #[prop_or_default]
@@ -107,14 +123,17 @@ pub fn AppBarBrand(props: &AppBarBrandProps) -> Html {
         </>
     };
 
-    props.attrs.apply(match &props.href {
+    let link = use_nav_link(&props.href, props.on_click.clone());
+    props.attrs.apply(match link.href {
         Some(href) => html! {
             <a
                 id={props.id.clone()}
                 {class}
-                href={href.clone()}
+                {href}
+                target={link.target}
+                rel={link.rel}
                 aria-label={props.label.clone()}
-                onclick={props.on_click.clone()}
+                onclick={link.onclick}
             >
                 { content }
             </a>

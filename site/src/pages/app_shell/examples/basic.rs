@@ -23,7 +23,7 @@ pub fn Example() -> Html {
     };
 
     let footer = html! {
-        <SidebarItem href="https://buckle.sierrasoftworks.com" icon={icons::BOOK_OPEN} external=true>
+        <SidebarItem href={NavTarget::href("https://buckle.sierrasoftworks.com").external()} icon={icons::BOOK_OPEN}>
             { "Documentation" }
         </SidebarItem>
     };

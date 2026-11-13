@@ -92,6 +92,19 @@ test.describe("TopMenu", () => {
     await expect(button).toBeFocused();
   });
 
+  test("the bar's actions are shown once, by the menu", async ({ page, example }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    const stage = await example("top-menu/basic");
+    const bar = stage.locator("header");
+
+    await expect(bar.getByRole("img", { name: "Ada Lovelace" })).toHaveCount(1);
+    await expect(bar.getByRole("navigation").getByRole("img", { name: "Ada Lovelace" })).toBeVisible();
+    // The actions still end the bar.
+    const avatar = (await bar.getByRole("img", { name: "Ada Lovelace" }).boundingBox())!;
+    const box = (await bar.boundingBox())!;
+    expect(box.x + box.width - (avatar.x + avatar.width)).toBeLessThan(32);
+  });
+
   test("the row gives way to the menu button when there is no room for it", async ({ page, example }) => {
     await page.setViewportSize({ width: 1280, height: 720 });
     const stage = await example("top-menu/basic");

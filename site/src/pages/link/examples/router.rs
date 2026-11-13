@@ -3,7 +3,8 @@ use yew_router::{
     history::{AnyHistory, MemoryHistory},
     prelude::*,
 };
-use yewi::prelude::*;
+// `yew_router` has a `Link` of its own, so name the one that is meant.
+use yewi::{Link, prelude::*};
 
 #[derive(Clone, Copy, PartialEq, Routable)]
 enum Route {
@@ -35,9 +36,9 @@ pub fn Example() -> Html {
         <Router history={(*history).clone()}>
             <Stack>
                 <Cluster gap={Space::Lg}>
-                    <RouteLink<Route> to={Route::Overview}>{ "Overview" }</RouteLink<Route>>
-                    <RouteLink<Route> to={Route::Hosts}>{ "Hosts" }</RouteLink<Route>>
-                    <RouteLink<Route> to={Route::Settings} icon={icons::SETTINGS}>{ "Settings" }</RouteLink<Route>>
+                    <Link href={NavTarget::route(Route::Overview)}>{ "Overview" }</Link>
+                    <Link href={NavTarget::route(Route::Hosts)}>{ "Hosts" }</Link>
+                    <Link href={NavTarget::route(Route::Settings)} icon={icons::SETTINGS}>{ "Settings" }</Link>
                 </Cluster>
                 <CurrentPage />
             </Stack>

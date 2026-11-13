@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use super::{Button, ButtonKind, ButtonVariant};
-use crate::{Attrs, IconData, Size};
+use crate::{Attrs, IconData, NavTarget, Size};
 
 #[derive(Properties, PartialEq)]
 pub struct IconButtonProps {
@@ -24,9 +24,10 @@ pub struct IconButtonProps {
     /// `href`. Keep `label` the same in both states.
     #[prop_or_default]
     pub pressed: Option<bool>,
-    /// Renders a link that looks like a button.
+    /// Renders a link that looks like a button: a URL or, with the `router`
+    /// feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// The link `target`. Only used with `href`.
     #[prop_or_default]
     pub target: Option<AttrValue>,

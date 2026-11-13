@@ -129,10 +129,12 @@ pub struct MenuItemProps {
     #[prop_or_default]
     pub disabled: bool,
     /// Makes the item a link: a URL or, with the `router` feature,
-    /// `NavTarget::route(..)`.
+    /// `NavTarget::route(..)`. A `NavTarget::external` link opens in a new
+    /// tab and, unless `aside` is given, says so there.
     #[prop_or_default]
     pub href: NavTarget,
-    /// The link `target`. Only used with `href`.
+    /// The link `target`. Only used with `href`; an external `href` sets
+    /// `_blank`.
     #[prop_or_default]
     pub target: Option<AttrValue>,
     /// Fired when the item is chosen. Not fired while `disabled`.
@@ -161,6 +163,7 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
         })
     };
     let link = use_nav_link(&props.href, on_select.clone());
+    let (target, rel) = link.target_and_rel(props.target.as_ref(), None);
 
     let class = classes!(
         "yi-menu__item",
@@ -183,6 +186,10 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
             <span class="yi-menu__label">{ props.children.clone() }</span>
             if !is_empty(&props.aside) {
                 <span class="yi-menu__aside">{ props.aside.clone() }</span>
+            } else if link.external {
+                <span class="yi-menu__aside">
+                    <Icon icon={icons::EXTERNAL_LINK} label="opens in a new tab" />
+                </span>
             }
             if props.checked.is_some() {
                 <Icon icon={icons::CHECK} class="yi-menu__check" />
@@ -198,8 +205,8 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
                 {role}
                 tabindex="-1"
                 href={(!disabled).then_some(href)}
-                target={props.target.clone()}
-                rel={props.target.as_ref().filter(|t| *t == "_blank").map(|_| "noopener")}
+                {target}
+                {rel}
                 aria-current={link.current.then_some("page")}
                 aria-checked={aria_checked}
                 aria-disabled={aria_disabled}
