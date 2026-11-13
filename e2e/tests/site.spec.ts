@@ -60,6 +60,13 @@ test.describe("Reference site", () => {
     await expect(page.locator("[data-example]")).toBeVisible();
   });
 
+  test("code in a block keeps its padding on a documentation page", async ({ page }) => {
+    await page.goto("/components/code-block");
+    const code = page.locator(".yi-code-block__body > code").first();
+    const padding = await code.evaluate((el) => parseFloat(getComputedStyle(el).paddingInlineStart));
+    expect(padding).toBeGreaterThan(8);
+  });
+
   test("documents props from the library's doc comments", async ({ page }) => {
     await page.goto("/components/button");
     const api = page.locator("#api");
