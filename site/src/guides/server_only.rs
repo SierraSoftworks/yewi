@@ -70,9 +70,9 @@ const PARTIAL: &[Row] = &[
     row("SecretInput", "Typing and submitting", "The show toggle and the generator", "No alternative"),
     row(
         "FileDrop",
-        "Opening the picker",
-        "Reporting files, since it has no form name",
-        "Use a native file input inside a Field",
+        "Choosing and dropping files, naming them, and submitting them with a name",
+        "on_files, on_reject, and checking a dropped file against accept and max_size",
+        "Check the files on the server",
     ),
     row(
         "Alert, Banner, Note, Tag",
@@ -161,7 +161,7 @@ pub fn render() -> Html {
                 { "Wrap the page in " }<code>{ "ServerOnly" }</code>
                 { ". Components inside it render markup that works on its own, and one small script, " }
                 <code>{ "yewi::BEHAVIOURS" }</code>
-                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, and opening menus, popovers and tooltips. Serve the script \
+                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, dropped files, and opening menus, popovers and tooltips. Serve the script \
                    from a cached route, or leave " }<code>{ "script" }</code>
                 { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
                    page inside " }<code>{ "ServerOnly" }</code>{ "." }

@@ -275,6 +275,31 @@
     setTimeout(() => item.closest("[popover]:popover-open")?.hidePopover());
   });
 
+  // File drop: `data-yi-file-drop` on the zone. Dropped files go into its
+  // input, and the label names what was chosen.
+  const picker = (zone) => zone.querySelector("input[type=file]");
+  on("dragover", "[data-yi-file-drop]", (zone, event) => {
+    if (!event.dataTransfer.types.includes("Files")) return;
+    event.preventDefault();
+    zone.classList.toggle("yi-file-drop--over", !picker(zone).disabled);
+  });
+  on("dragleave", "[data-yi-file-drop]", (zone) => zone.classList.remove("yi-file-drop--over"));
+  on("drop", "[data-yi-file-drop]", (zone, event) => {
+    event.preventDefault();
+    zone.classList.remove("yi-file-drop--over");
+    const input = picker(zone);
+    if (input.disabled) return;
+    const kept = new DataTransfer();
+    for (const file of event.dataTransfer.files) if (input.multiple || !kept.items.length) kept.items.add(file);
+    input.files = kept.files;
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  on("change", "[data-yi-file-drop] input[type=file]", (input) => {
+    const label = input.closest("[data-yi-file-drop]").querySelector(".yi-file-drop__label");
+    label.dataset.yiLabel ??= label.textContent;
+    label.textContent = [...input.files].map((file) => file.name).join(", ") || label.dataset.yiLabel;
+  });
+
   // What the server rendered as open: `data-yi-open` on a `<dialog>` or a
   // popover.
   const open = () => {

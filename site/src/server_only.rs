@@ -19,6 +19,7 @@ pub const FIXTURES: &[Fixture] = &[
     Fixture { name: "confirm", render: confirm },
     Fixture { name: "dialogs", render: dialogs },
     Fixture { name: "menu", render: menu },
+    Fixture { name: "upload", render: upload },
 ];
 
 pub fn find(page: &str, name: &str) -> Option<Html> {
@@ -72,5 +73,17 @@ fn menu() -> Html {
             </MenuButton>
             <ConfirmDialog id="confirm-remove" title="Remove pi-1?" confirm_label="Remove" danger=true />
         </Stack>
+    }
+}
+
+fn upload() -> Html {
+    html! {
+        <form method="post" enctype="multipart/form-data">
+            <Stack>
+                <FileDrop name="bundle" multiple=true hint="Zip archives" />
+                <FileDrop name="single" />
+                <Button kind={ButtonKind::Submit}>{ "Upload" }</Button>
+            </Stack>
+        </form>
     }
 }

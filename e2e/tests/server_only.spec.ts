@@ -299,4 +299,28 @@ test.describe("Server-only pages", () => {
     await choose("Logs");
     await expect(page).toHaveURL(/\?opened=logs$/);
   });
+
+  test("a file drop names the files chosen or dropped, and its form sends them", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("server-only/upload");
+    const [many, single] = [stage.locator("label").nth(0), stage.locator("label").nth(1)];
+    const file = (name: string) => ({ name, mimeType: "application/zip", buffer: Buffer.from(name) });
+
+    await many.locator("input").setInputFiles([file("a.zip"), file("b.zip")]);
+    await expect(many).toContainText("a.zip, b.zip");
+
+    const dropped = await page.evaluateHandle(() => {
+      const data = new DataTransfer();
+      for (const name of ["c.zip", "d.zip"]) data.items.add(new File([name], name, { type: "application/zip" }));
+      return data;
+    });
+    await single.dispatchEvent("dragover", { dataTransfer: dropped });
+    await single.dispatchEvent("drop", { dataTransfer: dropped });
+    await expect(single).toContainText("c.zip");
+    await expect(single).not.toContainText("d.zip");
+
+    const sends = await stage.locator("form").evaluate((form: HTMLFormElement) =>
+      [...new FormData(form).entries()].map(([name, value]) => `${name}=${(value as File).name}`),
+    );
+    expect(sends).toEqual(["bundle=a.zip", "bundle=b.zip", "single=c.zip"]);
+  });
 });
