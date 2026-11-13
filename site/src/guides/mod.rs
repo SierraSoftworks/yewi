@@ -20,25 +20,25 @@ pub static GUIDES: &[Guide] = &[
     Guide {
         slug: "getting-started",
         title: "Getting started",
-        summary: "Add yewi to an app, deliver its stylesheet and fonts, and pick a rendering mode.",
+        summary: "Adding yewi to an app, serving its stylesheet and fonts, and choosing how your app renders.",
         render: getting_started::render,
     },
     Guide {
         slug: "theming",
         title: "Theming",
-        summary: "Tokens, the per-app accent, light and dark themes, and how to override anything.",
+        summary: "How design tokens work, how to give your app its own accent colour, how light and dark themes are chosen, and how to override any style.",
         render: theming::render,
     },
     Guide {
         slug: "server-only",
         title: "Server-only apps",
-        summary: "What each component does on a page that ships no wasm, and what to use where it does nothing.",
+        summary: "Using components on pages which don't ship wasm, the limitations this brings, and how to work around them.",
         render: server_only::render,
     },
     Guide {
         slug: "contributing",
         title: "Adding a component",
-        summary: "Where a component's code, styles, documentation and tests live, and what done means.",
+        summary: "Where a component's code, styles, documentation and tests live, and what needs to be in place before it's finished.",
         render: contributing::render,
     },
 ];
