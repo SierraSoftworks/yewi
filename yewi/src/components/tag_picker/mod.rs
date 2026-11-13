@@ -320,7 +320,7 @@ pub fn TagPicker(props: &TagPickerProps) -> Html {
         Html::default()
     };
     // Enter means the highlighted option while there is one.
-    let foot = if is_open && addable && active_shown.is_none() {
+    let footer = if is_open && addable && active_shown.is_none() {
         html! { <span class="yi-tag-picker__hint">{ "Press Enter to add " }<strong>{ typed.to_owned() }</strong></span> }
     } else if has_list && total > order.len() {
         html! { { format!("Showing the first {} of {total}. Type to narrow the list.", order.len()) } }
@@ -370,7 +370,7 @@ pub fn TagPicker(props: &TagPickerProps) -> Html {
                 open={is_open}
                 {on_open_change}
                 {content}
-                {foot}
+                {footer}
                 surface_class="yi-select__surface"
             >
                 <span ref={anchor} {class} {onmousedown}>

@@ -75,7 +75,7 @@ pub struct SearchInputProps {
     /// Shown after the clear button: a `Button` to run the search or an
     /// `InputGroupSelect` for its scope.
     #[prop_or_default]
-    pub suffix: Option<Html>,
+    pub suffix: Html,
     /// The name the query is submitted under in a native form.
     #[prop_or_default]
     pub name: Option<AttrValue>,

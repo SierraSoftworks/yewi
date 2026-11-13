@@ -30,7 +30,7 @@ fn open_and_default_open_show_the_content_for_every_trigger() {
 #[test]
 fn head_and_foot_are_rendered_around_the_body_in_order() {
     let html = render(|| {
-        html! { <Popover open=true head="Passing" content="Latency 42 ms" foot="12:00 UTC">{ "Probe" }</Popover> }
+        html! { <Popover open=true header="Passing" content="Latency 42 ms" footer="12:00 UTC">{ "Probe" }</Popover> }
     });
     let at = |text: &str| html.find(text).unwrap_or_else(|| panic!("{text} missing: {html}"));
     assert!(at("Passing") < at("Latency 42 ms"));

@@ -9,6 +9,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{
     Attrs, ButtonVariant, Icon, IconButton, IconData, Menu, MenuFocus, MenuGroup, MenuItem, NavTarget, Placement,
     Popover, PopoverTrigger, attrs, icons,
@@ -64,7 +65,7 @@ pub struct TopMenuProps {
     /// status. Give them here rather than to the `AppBar` and they fold into
     /// the dropdown with the destinations, as a row above them.
     #[prop_or_default]
-    pub actions: Option<Html>,
+    pub actions: Html,
     /// Accessible name of the navigation landmark.
     #[prop_or(AttrValue::Static("Main"))]
     pub label: AttrValue,
@@ -108,8 +109,8 @@ pub fn TopMenu(props: &TopMenuProps) -> Html {
                 <ul class="yi-top-menu__list" role="list">
                     <ContextProvider<Mode> context={Mode::Row}>{ props.children.clone() }</ContextProvider<Mode>>
                 </ul>
-                if let Some(actions) = &props.actions {
-                    <div class="yi-top-menu__actions">{ actions.clone() }</div>
+                if !is_empty(&props.actions) {
+                    <div class="yi-top-menu__actions">{ props.actions.clone() }</div>
                 }
             }
             if props.collapse != TopMenuCollapse::Never {
@@ -188,7 +189,7 @@ fn use_menu_trigger(on_open_change: Callback<bool>) -> MenuTrigger {
 #[derive(Properties, PartialEq)]
 struct CompactProps {
     children: Html,
-    actions: Option<Html>,
+    actions: Html,
     label: AttrValue,
     menu_label: AttrValue,
 }
@@ -199,9 +200,10 @@ struct CompactProps {
 fn Compact(props: &CompactProps) -> Html {
     let menu = use_menu_trigger(Callback::noop());
 
-    let head = match &props.actions {
-        Some(actions) => html! { <span class="yi-top-menu__menu-actions">{ actions.clone() }</span> },
-        None => Html::default(),
+    let header = if is_empty(&props.actions) {
+        Html::default()
+    } else {
+        html! { <span class="yi-top-menu__menu-actions">{ props.actions.clone() }</span> }
     };
     let content = html! {
         <Menu label={props.label.clone()} focus={menu.entry} on_close={menu.on_close}>
@@ -220,7 +222,7 @@ fn Compact(props: &CompactProps) -> Html {
                 flush=true
                 label={props.menu_label.clone()}
                 surface_class="yi-top-menu__surface"
-                {head}
+                {header}
                 {content}
             >
                 <IconButton

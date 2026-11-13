@@ -485,7 +485,7 @@ pub fn TreeSelect(props: &TreeSelectProps) -> Html {
     } else {
         Html::default()
     };
-    let foot = if is_open && searching && total > limit {
+    let footer = if is_open && searching && total > limit {
         html! { { format!("Showing the first {limit} of {total}. Type to narrow the list.") } }
     } else {
         Html::default()
@@ -507,7 +507,7 @@ pub fn TreeSelect(props: &TreeSelectProps) -> Html {
                 open={is_open}
                 {on_open_change}
                 {content}
-                {foot}
+                {footer}
                 surface_class="yi-select__surface"
             >
                 <button

@@ -7,6 +7,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, ButtonVariant, IconButton, attrs, components::app_shell::use_app_shell, icons};
 
 #[derive(Properties, PartialEq)]
@@ -17,11 +18,11 @@ pub struct AppBarProps {
     pub children: Html,
     /// The brand, normally an [`AppBarBrand`].
     #[prop_or_default]
-    pub brand: Option<Html>,
+    pub brand: Html,
     /// Controls at the end: status, notifications, the theme toggle, the
     /// user menu.
     #[prop_or_default]
-    pub actions: Option<Html>,
+    pub actions: Html,
     /// The accessible name of the menu button. The button only appears
     /// inside an [`AppShell`](crate::AppShell) that has a sidebar.
     #[prop_or(AttrValue::Static("Navigation"))]
@@ -54,12 +55,12 @@ pub fn AppBar(props: &AppBarProps) -> Html {
                     on_click={shell.toggle_sidebar.reform(|_| ())}
                 />
             }
-            if let Some(brand) = &props.brand {
-                { brand.clone() }
+            if !is_empty(&props.brand) {
+                { props.brand.clone() }
             }
             <div class="yi-app-bar__start">{ props.children.clone() }</div>
-            if let Some(actions) = &props.actions {
-                <div class="yi-app-bar__actions">{ actions.clone() }</div>
+            if !is_empty(&props.actions) {
+                <div class="yi-app-bar__actions">{ props.actions.clone() }</div>
             }
         </header>
     })
@@ -73,7 +74,7 @@ pub struct AppBarBrandProps {
     /// The logo, shown before the name: an [`Icon`](crate::Icon), an `<img>`
     /// or an inline SVG. It is sized to the bar.
     #[prop_or_default]
-    pub logo: Option<Html>,
+    pub logo: Html,
     /// Where the brand leads, normally the app's home. Without it the brand
     /// is plain text.
     #[prop_or_default]
@@ -100,8 +101,8 @@ pub fn AppBarBrand(props: &AppBarBrandProps) -> Html {
     let class = classes!("yi-app-bar__brand", props.class.clone());
     let content = html! {
         <>
-            if let Some(logo) = &props.logo {
-                <span class="yi-app-bar__logo">{ logo.clone() }</span>
+            if !is_empty(&props.logo) {
+                <span class="yi-app-bar__logo">{ props.logo.clone() }</span>
             }
             <span class="yi-app-bar__name">{ props.children.clone() }</span>
         </>

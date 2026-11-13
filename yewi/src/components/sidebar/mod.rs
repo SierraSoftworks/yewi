@@ -6,6 +6,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, Icon, IconData, components::app_shell::use_app_shell, icons};
 
 #[derive(Properties, PartialEq)]
@@ -16,7 +17,7 @@ pub struct SidebarProps {
     /// Content pinned to the bottom, set apart from the destinations: a
     /// documentation link, a version.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     /// The accessible name of the navigation landmark.
     #[prop_or(AttrValue::Static("Navigation"))]
     pub label: AttrValue,
@@ -34,8 +35,8 @@ pub fn Sidebar(props: &SidebarProps) -> Html {
     props.attrs.apply(html! {
         <nav id={props.id.clone()} class={classes!("yi-sidebar", props.class.clone())} aria-label={props.label.clone()}>
             <div class="yi-sidebar__items">{ props.children.clone() }</div>
-            if let Some(footer) = &props.footer {
-                <div class="yi-sidebar__footer">{ footer.clone() }</div>
+            if !is_empty(&props.footer) {
+                <div class="yi-sidebar__footer">{ props.footer.clone() }</div>
             }
         </nav>
     })
@@ -99,7 +100,7 @@ pub struct SidebarItemProps {
     pub nested: bool,
     /// Something at the end of the row: a count, a status dot.
     #[prop_or_default]
-    pub trailing: Option<Html>,
+    pub trailing: Html,
     /// Fired on activation. For client-side routing, call `prevent_default`
     /// and navigate.
     #[prop_or_default]
@@ -144,8 +145,8 @@ pub fn SidebarItem(props: &SidebarItemProps) -> Html {
                 <span class="yi-sidebar__dot" aria-hidden="true" />
             }
             <span class="yi-sidebar__label">{ props.children.clone() }</span>
-            if let Some(trailing) = &props.trailing {
-                <span class="yi-sidebar__trailing">{ trailing.clone() }</span>
+            if !is_empty(&props.trailing) {
+                <span class="yi-sidebar__trailing">{ props.trailing.clone() }</span>
             }
             if props.external {
                 <span class="yi-sidebar__hint"><Icon icon={icons::EXTERNAL_LINK} label="opens in a new tab" /></span>

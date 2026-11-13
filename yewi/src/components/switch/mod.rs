@@ -23,7 +23,7 @@ pub struct ToggleSwitchProps {
     pub on_change: Callback<bool>,
     /// A second, quieter line under the label, read out with it.
     #[prop_or_default]
-    pub description: Option<Html>,
+    pub description: Html,
     /// The accessible name for a switch with no visible label.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -84,7 +84,7 @@ pub fn ToggleSwitch(props: &ToggleSwitchProps) -> Html {
                     {onchange}
                 />
             </span>
-            { choice_text(&props.children, props.description.as_ref()) }
+            { choice_text(&props.children, &props.description) }
         </label>
     })
 }
