@@ -28,7 +28,17 @@ yew = { workspace = true }
 yew-router = { workspace = true }
 yewi = { workspace = true, features = ["full"] }
 tokio = { workspace = true, features = ["rt", "macros"], optional = true }
-web-sys = { workspace = true, features = ["Clipboard", "Document", "Element", "HtmlInputElement", "Navigator", "Window"] }
+wasm-bindgen = { workspace = true }
+web-sys = { workspace = true, features = [
+    "Clipboard",
+    "Document",
+    "Element",
+    "Event",
+    "EventTarget",
+    "HtmlInputElement",
+    "Navigator",
+    "Window",
+] }
 
 [build-dependencies]
 syn = { version = "2", features = ["full", "extra-traits"] }
