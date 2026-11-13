@@ -1,5 +1,5 @@
 crate::page! {
-    title: "Segmented control",
+    title: "SegmentedControl",
     category: Form,
     summary: "SegmentedControl and Segment: a compact row for switching between two to five views or modes of the same content.",
     examples: [

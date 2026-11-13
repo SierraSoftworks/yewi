@@ -1550,6 +1550,7 @@ dependencies = [
  "quote",
  "syn 2.0.119",
  "tokio",
+ "wasm-bindgen",
  "web-sys",
  "yew",
  "yew-router",

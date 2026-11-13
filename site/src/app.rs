@@ -41,6 +41,10 @@ pub struct AppProps {
     /// Browser history on the client, a memory history at the requested path
     /// on the server. Both go through `Router`, so the trees match.
     pub history: AnyHistory,
+    /// The packed review gallery: every address shows the gallery, so a link
+    /// followed inside an example cannot replace it.
+    #[prop_or_default]
+    pub gallery: bool,
 }
 
 #[function_component]
@@ -53,9 +57,21 @@ pub fn App(props: &AppProps) -> Html {
         }
     });
 
+    let shown = use_mut_ref(|| None::<String>);
+    let render = if props.gallery {
+        Callback::from(move |route| {
+            if let Route::Gallery { slug } = route {
+                *shown.borrow_mut() = Some(slug);
+            }
+            html! { <Gallery slug={shown.borrow().clone()} /> }
+        })
+    } else {
+        Callback::from(switch)
+    };
+
     html! {
         <Router history={props.history.clone()} basename={crate::basename()}>
-            <Switch<Route> render={switch} />
+            <Switch<Route> {render} />
         </Router>
     }
 }
