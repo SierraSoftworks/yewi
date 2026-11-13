@@ -7,7 +7,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Tone, VisuallyHidden, icons};
+use crate::{Attrs, Icon, IconData, NavTarget, Tone, VisuallyHidden, icons, nav_target::use_nav_link};
 
 #[derive(Properties, PartialEq)]
 pub struct PipelineProps {
@@ -283,9 +283,10 @@ pub struct PipelineUnitProps {
     /// Pulses to show the unit is being watched or worked on.
     #[prop_or_default]
     pub pulse: bool,
-    /// Makes the block a link to the unit.
+    /// Makes the block a link to the unit: a URL or, with the `router`
+    /// feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Makes the block a button. Ignored with `href`.
     #[prop_or_default]
     pub on_click: Option<Callback<MouseEvent>>,
@@ -311,8 +312,20 @@ pub fn PipelineUnit(props: &PipelineUnitProps) -> Html {
     let id = props.id.clone();
     let label = props.label.clone();
 
-    props.attrs.apply(if let Some(href) = &props.href {
-        html! { <a {id} {class} href={href.clone()} aria-label={label.clone()} title={label} /> }
+    let link = use_nav_link(&props.href, Callback::noop());
+    props.attrs.apply(if let Some(href) = link.href {
+        html! {
+            <a
+                {id}
+                {class}
+                {href}
+                target={link.target}
+                rel={link.rel}
+                aria-label={label.clone()}
+                title={label}
+                onclick={link.onclick}
+            />
+        }
     } else if let Some(on_click) = &props.on_click {
         html! {
             <button {id} {class} type="button" aria-label={label.clone()} title={label} onclick={on_click.clone()} />

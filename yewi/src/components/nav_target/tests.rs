@@ -26,6 +26,20 @@ fn a_router_basename_only_applies_to_routes() {
     assert_eq!(NavTarget::href("/docs").url(Some("/app/"), false), "/docs");
 }
 
+#[test]
+fn an_optional_url_converts_and_none_is_empty() {
+    assert!(NavTarget::from(None::<&'static str>).is_empty());
+    assert_eq!(NavTarget::from(Some("/docs")), NavTarget::href("/docs"));
+}
+
+#[test]
+fn external_is_opt_in_and_part_of_equality() {
+    let plain = NavTarget::href("https://example.com");
+    assert!(!plain.is_external());
+    assert!(plain.clone().external().is_external());
+    assert_ne!(plain.clone().external(), plain);
+}
+
 #[cfg(feature = "router")]
 mod router {
     use yew_router::Routable;

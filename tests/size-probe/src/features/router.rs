@@ -3,7 +3,7 @@
 
 use yew::prelude::*;
 use yew_router::prelude::*;
-use yewi::prelude::*;
+use yewi::{Link, prelude::*};
 
 #[derive(Clone, PartialEq, Routable)]
 enum Route {
@@ -27,8 +27,8 @@ pub fn view() -> Html {
             </TabNav>
             <Pagination page=1 pages=9 {href} />
             <BrowserRouter>
-                <RouteLink<Route> to={Route::Home}>{ "Home" }</RouteLink<Route>>
-                <RouteLink<Route> to={Route::Items}>{ "Items" }</RouteLink<Route>>
+                <Link href={NavTarget::route(Route::Home)}>{ "Home" }</Link>
+                <SidebarItem href={NavTarget::route(Route::Items)}>{ "Items" }</SidebarItem>
             </BrowserRouter>
         </>
     }

@@ -27,4 +27,22 @@ test.describe("Sidebar", () => {
     await expect(docs).toHaveAttribute("target", "_blank");
     await expect(stage.getByRole("link", { name: "Website" })).toHaveAttribute("aria-current", "page");
   });
+
+  test("route targets navigate client-side and mark themselves current", async ({ page, example }) => {
+    const stage = await example("sidebar/routes");
+    const url = page.url();
+    const link = (name: string) => stage.getByRole("link", { name });
+
+    await expect(link("Hosts")).toHaveAttribute("href", "/hosts");
+    await expect(link("Overview")).toHaveAttribute("aria-current", "page");
+    await link("Hosts").click();
+    await expect(stage.getByRole("status")).toHaveText("Showing: Hosts");
+    await expect(link("Hosts")).toHaveAttribute("aria-current", "page");
+    await expect(link("Overview")).not.toHaveAttribute("aria-current");
+
+    // A modified click is the browser's, so "open in a new tab" keeps working.
+    await link("Rollouts").click({ modifiers: ["ControlOrMeta"] });
+    await expect(stage.getByRole("status")).toHaveText("Showing: Hosts");
+    expect(page.url()).toBe(url);
+  });
 });

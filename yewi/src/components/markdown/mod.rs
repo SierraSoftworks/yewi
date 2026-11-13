@@ -11,7 +11,7 @@
 use pulldown_cmark::{Alignment, CodeBlockKind, Event, Options, Parser, Tag};
 use yew::prelude::*;
 
-use crate::{Attrs, CodeBlock, Heading, HeadingLevel, InlineCode, Kbd, Link, SimpleTable};
+use crate::{Attrs, CodeBlock, Heading, HeadingLevel, InlineCode, Kbd, Link, NavTarget, SimpleTable};
 
 /// What happens to raw HTML in the source. Neither choice renders it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -409,7 +409,9 @@ impl Renderer<'_> {
                         Callback::from(move |event| on_link_click.emit(MarkdownLinkClick { href: href.clone(), event }))
                     };
                     let attrs = if title.is_empty() { Attrs::default() } else { crate::attrs! { "title" => title } };
-                    html! { <Link {href} {external} {on_click} {attrs}>{ children }</Link> }
+                    let href = NavTarget::href(href);
+                    let href = if external { href.external() } else { href };
+                    html! { <Link {href} {on_click} {attrs}>{ children }</Link> }
                 }
                 // A link that cannot be followed safely keeps its text.
                 None => children,

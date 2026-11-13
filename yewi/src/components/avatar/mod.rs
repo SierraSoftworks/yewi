@@ -5,7 +5,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, Size, icons};
+use crate::{Attrs, Icon, NavTarget, Size, icons, nav_target::use_nav_link};
 
 #[cfg(feature = "avatar-hash")]
 mod hash;
@@ -288,9 +288,10 @@ pub struct UserChipProps {
     /// A solid avatar fill instead of the default soft tint.
     #[prop_or_default]
     pub bold: bool,
-    /// Renders the chip as a link, to a profile for example.
+    /// Renders the chip as a link, to a profile for example: a URL or, with
+    /// the `router` feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Renders the chip as a button and fires on activation. Ignored with `href`.
     #[prop_or_default]
     pub on_click: Option<Callback<MouseEvent>>,
@@ -337,8 +338,11 @@ pub fn UserChip(props: &UserChipProps) -> Html {
     };
 
     let id = props.id.clone();
-    props.attrs.apply(match (&props.href, &props.on_click) {
-        (Some(href), _) => html! { <a {id} {class} href={href.clone()}>{ content }</a> },
+    let link = use_nav_link(&props.href, Callback::noop());
+    props.attrs.apply(match (link.href, &props.on_click) {
+        (Some(href), _) => html! {
+            <a {id} {class} {href} target={link.target} rel={link.rel} onclick={link.onclick}>{ content }</a>
+        },
         (None, Some(on_click)) => html! {
             <button {id} {class} type="button" onclick={on_click.clone()}>{ content }</button>
         },
