@@ -51,7 +51,7 @@ const PARTIAL: &[Row] = &[
         "Stepper, arrow keys, clamping",
         "stepper=false; validate on the server",
     ),
-    row("InputGroup, SearchInput", "Typing and submitting", "Clear button; attached dropdown", "InputGroupSelect"),
+    row("InputGroup, SearchInput", "Typing and submitting", "Clear button; attached dropdown", "NativeSelect"),
     row("SecretInput", "Typing and submitting", "Show toggle; generator", "None"),
     row("FileDrop", "Opening the picker", "Reporting files; it has no form name", "A native file input in a Field"),
     row("Alert, Banner, Note, Tag", "Display and links", "Dismiss and remove buttons", "Omit on_dismiss and on_remove"),
@@ -81,7 +81,7 @@ const INERT: &[Row] = &[
     row("MenuButton, SplitButton, UserMenu, NotificationPanel, Popover", "", "Opening", "Links in the page"),
     row("Tooltip", "", "Showing", "Visible text, or a native title"),
     row("ThemeToggle", "", "Changing the theme", "ThemeScript alone follows the system"),
-    row("Select", "", "Opening", "InputGroupSelect, or a RadioGroup with name"),
+    row("Select", "", "Opening", "NativeSelect, or a RadioGroup with name"),
     row(
         "Combobox, TagPicker, TreeSelect, QueryInput",
         "",
