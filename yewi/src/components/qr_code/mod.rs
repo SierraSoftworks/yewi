@@ -62,7 +62,7 @@ pub struct QrCodeProps {
     /// Shown instead of the code when `value` is too long to encode.
     /// Defaults to a short message.
     #[prop_or_default]
-    pub fallback: Option<Html>,
+    pub fallback: Html,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -96,8 +96,8 @@ pub fn QrCode(props: &QrCodeProps) -> Html {
         },
         None => html! {
             <div class="yi-qr-code__error" role="alert">
-                if let Some(fallback) = &props.fallback {
-                    { fallback.clone() }
+                if !is_empty(&props.fallback) {
+                    { props.fallback.clone() }
                 } else {
                     { "This value is too long to show as a QR code." }
                 }

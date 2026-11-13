@@ -109,7 +109,7 @@ pub struct SecretRevealProps {
     /// Replaces the standard warning under the title. Say what the user must
     /// do and why it cannot be done later.
     #[prop_or_default]
-    pub warning: Option<Html>,
+    pub warning: Html,
     /// Content set beside the values, such as a QR code of an enrolment
     /// link. It moves below them when the panel is narrow.
     #[prop_or_default]
@@ -148,8 +148,8 @@ pub fn SecretReveal(props: &SecretRevealProps) -> Html {
                         { props.title.clone() }
                     </@>
                     <p class="yi-secret-reveal__warning">
-                        if let Some(warning) = &props.warning {
-                            { warning.clone() }
+                        if !is_empty(&props.warning) {
+                            { props.warning.clone() }
                         } else {
                             { "This is the only time this is shown. Copy it now and keep it somewhere safe." }
                         }

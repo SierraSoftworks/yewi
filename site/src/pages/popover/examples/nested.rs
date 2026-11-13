@@ -13,7 +13,7 @@ pub fn Example() -> Html {
     };
 
     html! {
-        <Popover head="api.example.com" {content} label="Probe" placement={Placement::BottomStart}>
+        <Popover header="api.example.com" {content} label="Probe" placement={Placement::BottomStart}>
             <Button icon={icons::ACTIVITY}>{ "Probe" }</Button>
         </Popover>
     }

@@ -40,7 +40,7 @@ pub fn Example() -> Html {
             <Popover
                 open={*open}
                 {on_open_change}
-                head={format!("{verb} monitoring?")}
+                header={format!("{verb} monitoring?")}
                 {content}
                 label="Confirm"
                 placement={Placement::BottomStart}

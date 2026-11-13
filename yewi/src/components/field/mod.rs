@@ -3,6 +3,7 @@
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, Icon, icons, use_id};
 
 /// Where a field's label sits relative to its control.
@@ -106,11 +107,11 @@ pub struct FieldProps {
     /// Guidance shown under the control. Replaced by `error` while there is
     /// one, so the field does not grow as the user types.
     #[prop_or_default]
-    pub hint: Option<Html>,
+    pub hint: Html,
     /// A problem with the current value. Marks the control invalid and is
     /// announced to assistive technology.
     #[prop_or_default]
-    pub error: Option<Html>,
+    pub error: Html,
     /// Marks the label and the control as required.
     #[prop_or_default]
     pub required: bool,
@@ -148,8 +149,8 @@ pub fn Field(props: &FieldProps) -> Html {
     let label_id = AttrValue::from(format!("{base}-label"));
     let control_id =
         (!props.group).then(|| props.control_id.clone().unwrap_or_else(|| format!("{base}-control").into()));
-    let invalid = props.error.is_some();
-    let message_id = (invalid || props.hint.is_some()).then(|| AttrValue::from(format!("{base}-message")));
+    let invalid = !is_empty(&props.error);
+    let message_id = (invalid || !is_empty(&props.hint)).then(|| AttrValue::from(format!("{base}-message")));
 
     let context = FieldContext {
         control_id: control_id.clone(),
@@ -194,13 +195,13 @@ pub fn Field(props: &FieldProps) -> Html {
                 <ContextProvider<FieldContext> {context}>
                     { props.children.clone() }
                 </ContextProvider<FieldContext>>
-                if let Some(error) = &props.error {
+                if !is_empty(&props.error) {
                     <p id={message_id} class="yi-field__message yi-field__message--error" role="alert">
                         <Icon icon={icons::CIRCLE_ALERT} />
-                        <span>{ error.clone() }</span>
+                        <span>{ props.error.clone() }</span>
                     </p>
-                } else if let Some(hint) = &props.hint {
-                    <p id={message_id} class="yi-field__message">{ hint.clone() }</p>
+                } else if !is_empty(&props.hint) {
+                    <p id={message_id} class="yi-field__message">{ props.hint.clone() }</p>
                 }
             </div>
         </div>

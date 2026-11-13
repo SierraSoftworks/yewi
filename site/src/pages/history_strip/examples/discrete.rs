@@ -38,8 +38,8 @@ pub fn Example() -> Html {
     let detail = Callback::from(|index: usize| {
         let (day, tone, duration) = RUNS[index];
         HistoryDetail::new(format!("Duration {duration}"))
-            .head(html! { <><StatusDot {tone} />{ outcome(tone) }</> })
-            .foot(format!("{day} January 2026, 02:00 UTC"))
+            .header(html! { <><StatusDot {tone} />{ outcome(tone) }</> })
+            .footer(format!("{day} January 2026, 02:00 UTC"))
     });
     let on_select = {
         let selected = selected.clone();

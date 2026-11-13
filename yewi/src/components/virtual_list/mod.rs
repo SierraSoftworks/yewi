@@ -14,6 +14,7 @@ mod window;
 pub use table::*;
 pub use window::*;
 
+use crate::is_empty;
 use crate::{Attrs, EmptyState, RowFn, Size};
 
 #[derive(Properties, PartialEq)]
@@ -53,7 +54,7 @@ pub struct VirtualListProps<T: PartialEq + 'static> {
     /// Shown instead of rows when there are none. Defaults to a small
     /// [`EmptyState`].
     #[prop_or_default]
-    pub empty: Option<Html>,
+    pub empty: Html,
     /// The title of the default empty state, when `empty` is not set.
     #[prop_or(AttrValue::Static("Nothing to show"))]
     pub empty_label: AttrValue,
@@ -106,8 +107,8 @@ pub fn VirtualList<T: PartialEq + 'static>(props: &VirtualListProps<T>) -> Html 
         >
             if count == 0 {
                 <div class="yi-virtual-list__empty">
-                    if let Some(empty) = &props.empty {
-                        { empty.clone() }
+                    if !is_empty(&props.empty) {
+                        { props.empty.clone() }
                     } else {
                         <EmptyState title={props.empty_label.clone()} size={Size::Small} />
                     }

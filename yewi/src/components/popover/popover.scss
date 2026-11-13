@@ -3,7 +3,9 @@
 // The wrapper is the anchor; the surface is rendered inside it only while
 // open and lifted into the top layer. Position, side and arrow offset come
 // from the anchor helper (`.yi-anchored`). The surface matches Tooltip's
-// `Surface` variant, one step up in elevation.
+// `Surface` variant, one step up in elevation. Its edge is the soft card
+// line that Toast and Dialog draw; a surface that holds a list (a menu, the
+// options of a select) sets `--yi-popover-radius` to the control radius.
 @use "api" as *;
 
 .yi-popover {
@@ -27,7 +29,7 @@
   // Component tokens
   --yi-popover-bg: var(--yi-surface-raised);
   --yi-popover-fg: var(--yi-fg);
-  --yi-popover-border: var(--yi-line-strong);
+  --yi-popover-border: var(--yi-card-line);
   --yi-popover-shadow: var(--yi-shadow-overlay);
   --yi-popover-radius: var(--yi-radius-card);
   --yi-popover-padding: var(--yi-space-md);
@@ -125,22 +127,22 @@
     gap: 0;
     padding: 0;
 
-    > .yi-popover__head,
-    > .yi-popover__foot {
+    > .yi-popover__header,
+    > .yi-popover__footer {
       padding: var(--yi-space-sm) var(--yi-popover-padding);
     }
 
-    > .yi-popover__head {
+    > .yi-popover__header {
       border-block-end: 1px solid var(--yi-line);
     }
 
-    > .yi-popover__foot {
+    > .yi-popover__footer {
       border-block-start: 1px solid var(--yi-line);
     }
   }
 }
 
-.yi-popover__head {
+.yi-popover__header {
   display: flex;
   align-items: center;
   gap: var(--yi-space-sm);
@@ -156,7 +158,7 @@
   overflow-wrap: anywhere;
 }
 
-.yi-popover__foot {
+.yi-popover__footer {
   display: block;
   color: var(--yi-fg-muted);
   font-size: var(--yi-text-xs);
