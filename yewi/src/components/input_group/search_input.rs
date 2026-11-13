@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
-use super::{InputGroup, set_value};
+use super::InputGroup;
+use crate::components::native_select::set_value;
 use crate::{Attrs, ButtonVariant, FieldContext, Icon, IconButton, Size, Spinner, TextInput, TextInputKind, icons};
 
 /// The current `value` of the element behind `node`.
@@ -73,7 +74,7 @@ pub struct SearchInputProps {
     #[prop_or_default]
     pub loading: bool,
     /// Shown after the clear button: a `Button` to run the search or an
-    /// `InputGroupSelect` for its scope.
+    /// `NativeSelect` for its scope.
     #[prop_or_default]
     pub suffix: Html,
     /// The name the query is submitted under in a native form.

@@ -1,0 +1,23 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack" style="max-inline-size: 18rem">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Region</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-0-control" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-native-select__control">
+<option value="eu-west-1" selected="selected">Ireland</option>
+<option value="eu-central-1">Frankfurt</option>
+<option value="us-east-1">Virginia</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+<p id="yi-0-message" class="yi-field__message">Where new projects are created.</p>
+</div>
+</div>
+<span role="status">Region eu-west-1</span>
+</div>

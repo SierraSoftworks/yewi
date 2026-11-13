@@ -3,13 +3,15 @@ source: site/tests/snapshots.rs
 ---
 <div class="yi-stack">
 <span class="yi-popover yi-query-input">
-<span class="yi-query-input__box yi-query-input__box--md">
+<div class="yi-input-group yi-input-group--md yi-query-input__box">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
 <path d="M21 21l-4.34-4.34M3 11a8 8 0 1 0 16 0a8 8 0 1 0 -16 0">
 </path>
 </svg>
-<input value="" type="text" role="combobox" placeholder="Search activity, e.g. status:failed budget" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Search activity" aria-autocomplete="list" aria-expanded="false" class="yi-query-input__control">
 </span>
+<input value="" type="text" role="combobox" placeholder="Search activity, e.g. status:failed budget" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Search activity" aria-autocomplete="list" aria-expanded="false" class="yi-input yi-input--md yi-query-input__control">
+</div>
 </span>
 <span role="status">Press Enter to search</span>
 </div>

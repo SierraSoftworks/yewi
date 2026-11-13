@@ -16,7 +16,7 @@ pub fn Example() -> Html {
             </Field>
             <Field label="Filter expression">
                 <TextArea
-                    monospace=true
+                    mono=true
                     rows=4
                     resize={TextAreaResize::None}
                     value={"service == \"checkout-api\"\n  and status >= 500\n  and region in [\"eu-west-1\", \"us-east-1\"]"}

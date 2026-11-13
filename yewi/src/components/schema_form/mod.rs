@@ -699,7 +699,7 @@ fn SchemaJsonBox(props: &SchemaJsonBoxProps) -> Html {
     let text = draft.borrow().clone();
     let invalid = !text.trim().is_empty() && Json::parse(&text).is_err();
 
-    html! { <TextArea value={text} rows={4} monospace=true {invalid} {on_input} /> }
+    html! { <TextArea value={text} rows={4} mono=true {invalid} {on_input} /> }
 }
 
 #[cfg(test)]

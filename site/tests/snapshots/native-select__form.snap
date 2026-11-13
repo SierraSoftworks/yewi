@@ -1,0 +1,43 @@
+---
+source: site/tests/snapshots.rs
+---
+<form method="get" style="max-inline-size: 18rem">
+<div class="yi-stack">
+<div class="yi-field yi-field--stacked">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Plan</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-0-control" name="plan" class="yi-input yi-input--md yi-native-select__control">
+<option value="free">Free</option>
+<option value="team" selected="selected">Team</option>
+<option value="enterprise">Enterprise</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-field yi-field--stacked">
+<label id="yi-1-label" for="yi-1-control" class="yi-field__label">Billing<span aria-hidden="true" class="yi-field__required">*</span>
+</label>
+<div class="yi-field__body">
+<span class="yi-native-select yi-native-select--md">
+<select id="yi-1-control" name="billing" required="required" class="yi-input yi-input--md yi-native-select__control">
+<option value="" disabled="disabled" hidden="hidden" selected="selected">Choose a cycle</option>
+<option value="monthly">Monthly</option>
+<option value="yearly">Yearly</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</div>
+</div>
+<div class="yi-cluster">
+<button type="submit" class="yi-button yi-button--primary yi-button--md">Save</button>
+</div>
+</div>
+</form>

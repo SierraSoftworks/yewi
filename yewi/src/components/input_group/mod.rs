@@ -6,12 +6,10 @@
 //! dropdowns as small chips. The group draws the outline and the focus ring,
 //! so the whole thing reads as one field.
 
-use std::rc::Rc;
-
 use yew::prelude::*;
 
 use crate::is_empty;
-use crate::{Attrs, FieldContext, Icon, Size, icons};
+use crate::{Attrs, FieldContext, Size};
 
 mod search_input;
 
@@ -56,12 +54,12 @@ pub struct InputGroupProps {
     #[prop_or_default]
     pub children: Html,
     /// Shown before the control: text such as `https://`, an icon, or a
-    /// `Button`, `MenuButton`, `Select` or `InputGroupSelect`, which are
+    /// `Button`, `MenuButton`, `Select` or `NativeSelect`, which are
     /// drawn as chips.
     #[prop_or_default]
     pub prefix: Html,
     /// Shown after the control: a unit such as `ms`, or a `Button`,
-    /// `MenuButton`, `Select` or `InputGroupSelect`, which are drawn as
+    /// `MenuButton`, `Select` or `NativeSelect`, which are drawn as
     /// chips.
     #[prop_or_default]
     pub suffix: Html,
@@ -128,87 +126,6 @@ pub fn InputGroup(props: &InputGroupProps) -> Html {
             }
         </div>
     })
-}
-
-/// Sets the `value` of the element behind `node`.
-pub(crate) fn set_value(node: &NodeRef, value: &str) {
-    #[cfg(target_arch = "wasm32")]
-    if let Some(element) = node.get() {
-        let _ = js_sys::Reflect::set(&element, &"value".into(), &value.into());
-    }
-    #[cfg(not(target_arch = "wasm32"))]
-    {
-        let _ = (node, value);
-    }
-}
-
-#[derive(Properties, PartialEq)]
-pub struct InputGroupSelectProps {
-    /// The choices, as `(value, label)` pairs.
-    pub options: Rc<[(AttrValue, AttrValue)]>,
-    /// The `value` of the selected option.
-    #[prop_or_default]
-    pub value: AttrValue,
-    /// Fired with the chosen option's `value`.
-    #[prop_or_default]
-    pub on_change: Callback<String>,
-    /// The accessible name: what is being chosen, e.g. "Protocol".
-    pub label: AttrValue,
-    /// The name the value is submitted under in a native form.
-    #[prop_or_default]
-    pub name: Option<AttrValue>,
-    #[prop_or_default]
-    pub disabled: bool,
-    #[prop_or_default]
-    pub class: Classes,
-    #[prop_or_default]
-    pub id: Option<AttrValue>,
-    /// Extra attributes for the `<select>`.
-    #[prop_or_default]
-    pub attrs: Attrs,
-}
-
-/// A compact dropdown for an [`InputGroup`] `prefix` or `suffix`: a protocol,
-/// a unit, a search scope. It is a native `<select>` drawn as a chip, so it
-/// suits a handful of short options and opens the platform's own picker.
-/// For icons, descriptions or groups, put a `Select` in the affix instead.
-#[function_component]
-pub fn InputGroupSelect(props: &InputGroupSelectProps) -> Html {
-    let select = use_node_ref();
-
-    // The `selected` attribute only sets the initial choice, so later values
-    // from the caller are written to the element.
-    {
-        let select = select.clone();
-        use_effect_with(props.value.clone(), move |value| set_value(&select, value));
-    }
-
-    let onchange = props.on_change.reform(|event: Event| crate::components::input::target_value(&event));
-
-    let control = props.attrs.apply(html! {
-        <select
-            ref={select}
-            id={props.id.clone()}
-            class="yi-input-group__select-control"
-            name={props.name.clone()}
-            disabled={props.disabled}
-            aria-label={props.label.clone()}
-            {onchange}
-        >
-            { for props.options.iter().map(|(value, label)| html! {
-                <option key={value.to_string()} value={value.clone()} selected={*value == props.value}>
-                    { label.clone() }
-                </option>
-            }) }
-        </select>
-    });
-
-    html! {
-        <span class={classes!("yi-input-group__select", props.class.clone())}>
-            { control }
-            <Icon icon={icons::CHEVRON_DOWN} />
-        </span>
-    }
 }
 
 #[cfg(test)]

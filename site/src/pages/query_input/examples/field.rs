@@ -34,7 +34,7 @@ pub fn Example() -> Html {
             <QueryInput
                 syntax={QuerySyntax::Expression}
                 icon={icons::LIST_FILTER}
-                monospace=true
+                mono=true
                 value={(*filter).clone()}
                 {on_input}
                 fields={(*fields).clone()}

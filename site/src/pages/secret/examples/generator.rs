@@ -23,7 +23,7 @@ pub fn Example() -> Html {
                     {on_input}
                     {on_change}
                     generator=true
-                    monospace=true
+                    mono=true
                     placeholder="A long random string"
                 />
             </Field>

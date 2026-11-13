@@ -5,13 +5,15 @@ source: site/tests/snapshots.rs
 <label id="yi-0-label" for="yi-0-control" class="yi-field__label">Only run for</label>
 <div class="yi-field__body">
 <span class="yi-popover yi-query-input">
-<span class="yi-query-input__box yi-query-input__box--md yi-query-input__box--mono yi-query-input__box--invalid">
+<div class="yi-input-group yi-input-group--md yi-query-input__box">
+<span class="yi-input-group__affix yi-input-group__affix--prefix">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-query-input__icon">
 <path d="M2 5h20M6 12h12M9 19h6">
 </path>
 </svg>
-<input value="draft == false &amp;&amp; owner == &quot;ada&quot;" id="yi-0-control" type="text" role="combobox" placeholder="title contains &quot;release&quot;" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-invalid="true" aria-describedby="yi-0-message" class="yi-query-input__control">
 </span>
+<input value="draft == false &amp;&amp; owner == &quot;ada&quot;" id="yi-0-control" type="text" role="combobox" placeholder="title contains &quot;release&quot;" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-invalid="true" aria-describedby="yi-0-message" class="yi-input yi-input--md yi-input--mono yi-input--invalid yi-query-input__control">
+</div>
 </span>
 <p id="yi-0-message" role="alert" class="yi-field__message yi-field__message--error">
 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">

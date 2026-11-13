@@ -365,7 +365,7 @@ pub fn ConfirmDialog(props: &ConfirmDialogProps) -> Html {
                 <Field label={html! { <>{ "Type " }<code class="yi-confirm__word">{ word.clone() }</code>{ " to confirm" }</> }}>
                     <TextInput
                         value={(*typed).clone()}
-                        monospace=true
+                        mono=true
                         autocomplete="off"
                         attrs={type_attrs(props.acknowledge.is_none())}
                         on_input={on_type}

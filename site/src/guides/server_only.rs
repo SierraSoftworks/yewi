@@ -60,7 +60,7 @@ const PARTIAL: &[Row] = &[
         "InputGroup, SearchInput",
         "Typing and submitting",
         "The clear button and attached dropdowns",
-        "Use InputGroupSelect",
+        "Use NativeSelect",
     ),
     row("SecretInput", "Typing and submitting", "The show toggle and the generator", "No alternative"),
     row(
@@ -121,7 +121,7 @@ const INERT: &[Row] = &[
     ),
     row("Tooltip", "", "Showing", "Use visible text, or a native title"),
     row("ThemeToggle", "", "Changing the theme", "ThemeScript on its own follows the system setting"),
-    row("Select", "", "Opening", "Use InputGroupSelect, or a RadioGroup with a name"),
+    row("Select", "", "Opening", "Use NativeSelect, or a RadioGroup with a name"),
     row(
         "Combobox, TagPicker, TreeSelect, QueryInput",
         "",

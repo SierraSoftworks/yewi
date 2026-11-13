@@ -18,7 +18,7 @@ pub fn Example() -> Html {
                 <TextInput kind={TextInputKind::Search} placeholder="Search deployments" />
             </Field>
             <Field label="Image digest">
-                <TextInput monospace=true value="sha256:9f86d081884c7d65" />
+                <TextInput mono=true value="sha256:9f86d081884c7d65" />
             </Field>
         </Grid>
     }

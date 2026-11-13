@@ -58,7 +58,7 @@ pub struct TextAreaProps {
     /// Renders in the monospaced face and stops lines wrapping, for values
     /// whose alignment carries meaning (a filter expression, a config file).
     #[prop_or_default]
-    pub monospace: bool,
+    pub mono: bool,
     /// The most characters the browser will accept.
     #[prop_or_default]
     pub max_length: Option<u32>,
@@ -99,7 +99,7 @@ pub fn TextArea(props: &TextAreaProps) -> Html {
             ref={props.input_ref.clone()}
             id={control.id.clone()}
             class={classes!(
-                input_classes(Size::Medium, props.monospace, control.invalid),
+                input_classes(Size::Medium, props.mono, control.invalid),
                 "yi-input--multiline",
                 format!("yi-input--resize-{}", props.resize.as_str()),
                 props.class.clone(),
@@ -109,7 +109,7 @@ pub fn TextArea(props: &TextAreaProps) -> Html {
             name={props.name.clone()}
             placeholder={props.placeholder.clone()}
             maxlength={props.max_length.map(|n| n.to_string())}
-            spellcheck={props.monospace.then_some("false")}
+            spellcheck={props.mono.then_some("false")}
             disabled={control.disabled}
             readonly={props.readonly}
             required={control.required}

@@ -7,6 +7,9 @@
   --yi-user-chip-bg: transparent;
   --yi-user-chip-bg-hover: transparent;
   --yi-user-chip-max-width: 18rem;
+
+  // Whole-pixel lines: name and detail together are as tall as the avatar.
+  --_name-leading: 1.125rem;
 }
 
 .yi-user-chip {
@@ -29,12 +32,14 @@
 
   &--sm {
     --yi-user-chip-gap: var(--yi-space-xs);
+    --_name-leading: 1rem;
 
     font-size: var(--yi-text-sm);
   }
 
   &--lg {
     --yi-user-chip-gap: var(--yi-space-md);
+    --_name-leading: 1.25rem;
 
     font-size: var(--yi-text-lg);
   }
@@ -81,6 +86,7 @@
   @include truncate;
 
   font-weight: 500;
+  line-height: var(--_name-leading);
 }
 
 .yi-user-chip__detail {
@@ -88,6 +94,7 @@
 
   color: var(--yi-fg-muted);
   font-size: var(--yi-text-xs);
+  line-height: 0.875rem;
 }
 
 @media (forced-colors: active) {

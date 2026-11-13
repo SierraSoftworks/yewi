@@ -30,7 +30,7 @@
   border-radius: var(--yi-segmented-radius);
   background: var(--yi-segmented-bg);
   font-family: var(--yi-font-body);
-  font-size: var(--yi-text-sm);
+  font-size: var(--yi-text-md);
   font-weight: 500;
   line-height: var(--yi-leading-tight);
   vertical-align: middle;
@@ -98,14 +98,12 @@
     --yi-segmented-height: var(--yi-control-height-sm);
     --yi-segmented-padding: var(--yi-space-sm);
 
-    font-size: var(--yi-text-xs);
+    font-size: var(--yi-text-sm);
   }
 
   &--lg {
     --yi-segmented-height: var(--yi-control-height-lg);
     --yi-segmented-padding: var(--yi-space-lg);
-
-    font-size: var(--yi-text-md);
   }
 
   &--block {

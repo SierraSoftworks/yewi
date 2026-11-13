@@ -1,0 +1,26 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-field yi-field--stacked" style="max-inline-size: 18rem">
+<label id="yi-0-label" for="yi-0-control" class="yi-field__label">Retry after</label>
+<div class="yi-field__body">
+<div class="yi-input-group yi-input-group--md">
+<div class="yi-input yi-number-input yi-input--md">
+<input value="5" id="yi-0-control" type="text" role="spinbutton" inputmode="numeric" autocomplete="off" name="retry" aria-valuenow="5" aria-valuemin="1" class="yi-number-input__input">
+</div>
+<span class="yi-input-group__affix yi-input-group__affix--suffix">
+<span class="yi-native-select yi-native-select--md">
+<select name="unit" aria-label="Unit" class="yi-input yi-input--md yi-native-select__control">
+<option value="sec">seconds</option>
+<option value="min" selected="selected">minutes</option>
+<option value="hr">hours</option>
+</select>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M6 9l6 6 6-6">
+</path>
+</svg>
+</span>
+</span>
+</div>
+</div>
+</div>

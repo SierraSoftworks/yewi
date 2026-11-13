@@ -47,7 +47,7 @@ pub fn Example() -> Html {
             </form>
             <Field label="Deploy token">
                 <InputGroup suffix={rotate}>
-                    <TextInput value={format!("yi_live_{:04}", *token * 4217 % 10000)} readonly=true monospace=true />
+                    <TextInput value={format!("yi_live_{:04}", *token * 4217 % 10000)} readonly=true mono=true />
                 </InputGroup>
             </Field>
             <span role="status">
