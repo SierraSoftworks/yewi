@@ -7,18 +7,18 @@ pub fn render() -> Html {
         <>
             <h2>{ "Tokens" }</h2>
             <p>
-                { "Every colour, size, radius, shadow and duration a component uses is a CSS custom \
+                { "Every colour, size, radius, shadow and duration that a component uses is a CSS custom \
                    property named " }<code>{ "--yi-*" }</code>
-                { ". Components never contain literal values, so changing a token changes the whole \
-                   system. The Foundations pages list them." }
+                { ". Components never hard-code these values, so when you change a token the whole \
+                   system follows. You'll find them all listed on the Foundations pages." }
             </p>
 
             <h2>{ "One accent per app" }</h2>
             <p>
                 { "Set " }<code>{ "--yi-accent" }</code>
-                { " and everything follows: the primary button fill, links, focus rings and selection. \
-                   The neutral greys lean towards the accent's hue, so a blue accent gives slate greys \
-                   and a green one graphite." }
+                { " and the rest of the system follows, including primary buttons, links, focus rings and \
+                   selections. The neutral greys lean slightly towards the accent's hue, so a blue accent \
+                   gives you slate greys and a green one gives you graphite." }
             </p>
             { plain(r#"
 :root {
@@ -28,16 +28,18 @@ pub fn render() -> Html {
 }
 "#) }
             <p>
-                { "Fills and text derived from the accent have their lightness clamped, so any accent \
-                   keeps readable contrast in both themes." }
+                { "Fills and text derived from the accent have their lightness kept within a safe range, \
+                   so whichever accent you pick stays readable in both themes." }
             </p>
 
             <h2>{ "Light and dark" }</h2>
             <p>
                 { "Colour tokens use " }<code>{ "light-dark()" }</code>
-                { ", so the theme is decided by " }<code>{ "color-scheme" }</code>
-                { " alone. With no attribute the page follows the system. " }<code>{ "ThemeToggle" }</code>
-                { " sets " }<code>{ "data-theme" }</code>{ " on the root element and remembers the choice." }
+                { ", so " }<code>{ "color-scheme" }</code>
+                { " is all that decides the theme. If you don't set an attribute, the page follows the \
+                   system setting. " }<code>{ "ThemeToggle" }</code>
+                { " sets " }<code>{ "data-theme" }</code>{ " on the root element and remembers the reader's choice. \
+                   You can also set it on a single region." }
             </p>
             { plain(r#"
 <html data-theme="dark">           <!-- the whole page -->
@@ -46,10 +48,10 @@ pub fn render() -> Html {
 
             <h2>{ "Overriding styles" }</h2>
             <p>
-                { "All yewi rules live in cascade layers (" }<code>{ "@layer yewi.*" }</code>
-                { "). Any rule an app writes outside a layer wins, whatever its specificity, so overrides \
-                   never need " }<code>{ "!important" }</code>{ ". Prefer a component's own tokens, listed under \
-                   CSS variables on its page:" }
+                { "All of yewi's rules live in cascade layers (" }<code>{ "@layer yewi.*" }</code>
+                { "). Any rule your app writes outside a layer wins regardless of its specificity, so you \
+                   never need " }<code>{ "!important" }</code>{ " to override a style. Where you can, change a \
+                   component's own tokens, which are listed under CSS variables on its page." }
             </p>
             { plain(r#"
 .danger-zone .yi-button {
@@ -59,8 +61,8 @@ pub fn render() -> Html {
 
             <h2>{ "Density" }</h2>
             <p>
-                { "Controls are 32px tall by default. Mark a dense region, such as a table toolbar, \
-                   with " }<code>{ "data-yi-density=\"compact\"" }</code>{ " to drop them to 28px." }
+                { "Controls are 32px tall by default. To fit more into a busy area, such as a table toolbar, \
+                   mark it with " }<code>{ "data-yi-density=\"compact\"" }</code>{ " and its controls shrink to 28px." }
             </p>
         </>
     }

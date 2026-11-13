@@ -208,8 +208,9 @@ pub fn Home() -> Html {
             <header class="docs-page-header">
                 <h1><Wordmark /></h1>
                 <p class="docs-lede">
-                    { "A design system for Yew applications: calm by default, decisive where it matters. \
-                       One component library, light and dark themes, an accent per app." }
+                    { "A design system for Yew applications that stays calm by default and draws attention \
+                       only where it matters. It gives you one component library with light and dark \
+                       themes, and lets each app choose its own accent colour." }
                 </p>
                 <Cluster>
                     <Button variant={ButtonVariant::Primary} href={href(&Route::guide("getting-started"))}>
@@ -289,7 +290,7 @@ pub fn ComponentPage(props: &SlugProps) -> Html {
                 <p class="docs-lede">{ inline(page.def.summary) }</p>
                 if let Some(feature) = page.def.feature {
                     <p class="docs-feature">
-                        { "Opt-in: enable the " }<code>{ feature }</code>{ " feature." }
+                        { "This component is opt-in. Enable the " }<code>{ feature }</code>{ " feature to use it." }
                     </p>
                 }
             </header>
