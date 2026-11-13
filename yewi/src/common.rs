@@ -5,6 +5,8 @@ use std::rc::Rc;
 
 use yew::{AttrValue, Html, virtual_dom::VNode};
 
+use crate::icons::{self, IconData};
+
 /// Control size. `Medium` is the 32px default.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
 pub enum Size {
@@ -51,6 +53,46 @@ impl Tone {
             Tone::Info => "info",
             Tone::Active => "active",
         }
+    }
+
+    /// The icon that stands for the tone wherever a message shows one.
+    pub const fn icon(self) -> IconData {
+        match self {
+            Tone::Neutral | Tone::Info => icons::INFO,
+            Tone::Ok => icons::CIRCLE_CHECK,
+            Tone::Warn => icons::TRIANGLE_ALERT,
+            Tone::Danger => icons::CIRCLE_ALERT,
+            Tone::Active => icons::REFRESH_CW,
+        }
+    }
+}
+
+/// The direction a component lays its parts out in. Each component documents
+/// its own default.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Orientation {
+    /// Side by side, along the inline axis.
+    Horizontal,
+    /// Stacked, along the block axis.
+    Vertical,
+}
+
+impl Orientation {
+    /// The BEM modifier suffix: `horizontal` or `vertical`.
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Orientation::Horizontal => "horizontal",
+            Orientation::Vertical => "vertical",
+        }
+    }
+}
+
+/// Whether an optional slot was left empty: `html` renders nothing, however
+/// deeply the empty fragments are nested.
+pub(crate) fn is_empty(html: &Html) -> bool {
+    match html {
+        VNode::VList(list) => list.iter().all(is_empty),
+        _ => false,
     }
 }
 

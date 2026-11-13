@@ -5,7 +5,7 @@ use std::{cell::RefCell, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id};
+use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id, is_empty};
 
 /// How a tooltip is drawn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -206,7 +206,7 @@ pub fn Tooltip(props: &TooltipProps) -> Html {
         use_memo(props.delay_ms, move |&delay_ms| Handlers::new(anchor, bubble, shown, delay_ms))
     };
 
-    let available = !props.disabled && props.tip != Html::default();
+    let available = !props.disabled && !is_empty(&props.tip);
     let open = available && props.open.unwrap_or(*shown);
 
     let gap = if props.arrow { 9.0 } else { 6.0 };

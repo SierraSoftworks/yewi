@@ -4,17 +4,17 @@
 // segment's colour is a token, so the bar and the legend swatch use one rule.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-segment-bar {
+:where(.yi-segment-bar) {
   // Component tokens
   --yi-segment-bar-height: 0.375rem;
   --yi-segment-bar-gap: 1px;
   --yi-segment-bar-radius: var(--yi-radius-full);
   --yi-segment-bar-track: var(--yi-neutral-soft);
   --yi-segment-bar-min-segment: 3px;
-  --yi-segment-bar-sweep: 1.6s;
+  --yi-segment-bar-sweep: var(--yi-duration-pulse);
+}
 
+.yi-segment-bar {
   display: flex;
   flex-direction: column;
   gap: var(--yi-space-xs);

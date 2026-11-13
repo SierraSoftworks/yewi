@@ -5,7 +5,7 @@
 // and tones set the component tokens below.
 @use "api" as *;
 
-.yi-bar-list {
+:where(.yi-bar-list) {
   // Component tokens
   --yi-bar-list-tone: var(--yi-accent); // colour the bars are mixed from
   --yi-bar-list-strength: 14%; // how much of the tone a bar carries
@@ -20,7 +20,9 @@
   --yi-bar-list-radius: var(--yi-radius-sm);
   --yi-bar-list-fg: var(--yi-fg);
   --yi-bar-list-value-weight: 500;
+}
 
+.yi-bar-list {
   display: flex;
   flex-direction: column;
   gap: var(--yi-space-xs);
@@ -39,7 +41,7 @@
     --yi-bar-list-row-height: var(--yi-control-height-lg);
   }
 
-  @each $tone in ok, warn, danger, info, active, neutral {
+  @each $tone in $tones {
     &--#{$tone},
     .yi-bar-list__item--#{$tone} {
       --yi-bar-list-tone: var(--yi-#{$tone});

@@ -4,13 +4,15 @@
 // `--yi-toast-tone`; everything else is shared.
 @use "api" as *;
 
-.yi-toast-region {
+:where(.yi-toast-region) {
   // Component tokens
   --yi-toast-width: 24rem;
   --yi-toast-offset: var(--yi-space-lg);
   --yi-toast-gap: var(--yi-space-sm);
-  --yi-toast-z: 60;
+  --yi-toast-z: var(--yi-z-overlay);
+}
 
+.yi-toast-region {
   position: fixed;
   z-index: var(--yi-toast-z);
   inset-block-end: var(--yi-toast-offset);
@@ -47,7 +49,7 @@
   }
 }
 
-.yi-toast {
+:where(.yi-toast) {
   // Component tokens
   --yi-toast-bg: var(--yi-surface-raised);
   --yi-toast-fg: var(--yi-fg);
@@ -55,7 +57,9 @@
   --yi-toast-border: var(--yi-card-line);
   --yi-toast-radius: var(--yi-radius-card);
   --yi-toast-shadow: var(--yi-shadow-overlay);
+}
 
+.yi-toast {
   display: flex;
   align-items: flex-start;
   gap: var(--yi-space-sm);
@@ -111,7 +115,7 @@
 
 .yi-toast--active .yi-toast__icon {
   @include motion {
-    animation: yi-toast-spin 0.9s linear infinite;
+    animation: yi-toast-spin var(--yi-duration-spin) linear infinite;
   }
 }
 

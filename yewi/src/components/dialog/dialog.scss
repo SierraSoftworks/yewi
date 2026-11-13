@@ -5,7 +5,7 @@
 // element itself is therefore a click on the backdrop.
 @use "api" as *;
 
-.yi-dialog {
+:where(.yi-dialog) {
   // Component tokens
   --yi-dialog-width: 35rem; // Maximum width; `size` sets it.
   --yi-dialog-padding: var(--yi-space-xl);
@@ -13,8 +13,10 @@
   --yi-dialog-radius: var(--yi-radius-card);
   --yi-dialog-bg: var(--yi-surface-raised);
   --yi-dialog-foot-bg: var(--yi-tone-1);
-  --yi-dialog-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.45));
+  --yi-dialog-scrim: var(--yi-scrim);
+}
 
+.yi-dialog {
   inline-size: min(var(--yi-dialog-width), 100% - 2 * var(--yi-dialog-margin));
   max-inline-size: none;
   max-block-size: calc(100dvb - 2 * var(--yi-dialog-margin));

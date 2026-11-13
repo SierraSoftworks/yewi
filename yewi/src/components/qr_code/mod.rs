@@ -8,7 +8,7 @@
 use qrcodegen::{QrCode as Encoded, QrCodeEcc};
 use yew::prelude::*;
 
-use crate::Attrs;
+use crate::{Attrs, is_empty};
 
 /// How much damage a code survives, traded against how dense it is.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -112,7 +112,7 @@ pub fn QrCode(props: &QrCodeProps) -> Html {
             style={props.size.map(|size| format!("--yi-qr-code-size:{size}px"))}
         >
             { body }
-            if props.children != Html::default() {
+            if !is_empty(&props.children) {
                 <figcaption class="yi-qr-code__caption">{ props.children.clone() }</figcaption>
             }
         </figure>

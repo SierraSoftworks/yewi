@@ -5,15 +5,15 @@
 // items can sit in a page or a card.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-notification-panel {
+:where(.yi-notification-panel) {
   // Component tokens
   --yi-notification-panel-width: 26rem;
   --yi-notification-panel-max-height: min(70vh, 32rem);
   // The gap cut around the count: the colour of the bar the bell sits on.
   --yi-notification-panel-ring: var(--yi-surface);
+}
 
+.yi-notification-panel {
   // The bell stays lit while its panel is open.
   .yi-button[aria-expanded="true"] {
     --yi-button-bg: var(--yi-button-bg-hover);
@@ -40,11 +40,13 @@ $tones: neutral, ok, warn, danger, info, active;
   }
 }
 
-// Two classes, so these win over the Popover's own defaults.
-.yi-popover__surface.yi-notification-panel__surface {
+.yi-notification-panel__surface {
   --yi-popover-max-width: var(--yi-notification-panel-width);
   --yi-popover-max-height: var(--yi-notification-panel-max-height);
+}
 
+// Two classes, so this wins over the Popover's own width.
+.yi-popover__surface.yi-notification-panel__surface {
   inline-size: var(--yi-notification-panel-width);
 }
 
@@ -73,12 +75,14 @@ $tones: neutral, ok, warn, danger, info, active;
   font-size: var(--yi-text-sm);
 }
 
-.yi-notification-list {
+:where(.yi-notification-list) {
   // Component tokens
   --yi-notification-padding: var(--yi-space-sm);
   --yi-notification-rule: var(--yi-line);
   --yi-notification-edge: 3px; // Width of the tone rule on each item.
+}
 
+.yi-notification-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -87,10 +91,12 @@ $tones: neutral, ok, warn, danger, info, active;
   text-align: start;
 }
 
-.yi-notification {
+:where(.yi-notification) {
   // Component tokens
   --yi-notification-tone: var(--yi-neutral); // Set by `tone`.
+}
 
+.yi-notification {
   position: relative;
   display: flex;
   flex-direction: column;

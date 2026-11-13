@@ -6,19 +6,9 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Size, Tone, icons};
+use crate::{Attrs, Icon, IconData, Size, Tone, icons, is_empty};
 
 /// The icon that stands for a tone when the caller does not choose one.
-const fn tone_icon(tone: Tone) -> IconData {
-    match tone {
-        Tone::Neutral | Tone::Info => icons::INFO,
-        Tone::Ok => icons::CIRCLE_CHECK,
-        Tone::Warn => icons::TRIANGLE_ALERT,
-        Tone::Danger => icons::CIRCLE_ALERT,
-        Tone::Active => icons::REFRESH_CW,
-    }
-}
-
 /// Problems interrupt assistive technology; everything else waits its turn.
 const fn live_role(tone: Tone) -> &'static str {
     match tone {
@@ -92,17 +82,17 @@ pub fn Alert(props: &AlertProps) -> Html {
         <div id={props.id.clone()} {class} role={live_role(props.tone)}>
             if !props.hide_icon {
                 <span class="yi-alert__icon">
-                    <Icon icon={props.icon.unwrap_or(tone_icon(props.tone))} />
+                    <Icon icon={props.icon.unwrap_or(props.tone.icon())} />
                 </span>
             }
             <div class="yi-alert__body">
                 if let Some(title) = &props.title {
                     <div class="yi-alert__title">{ title.clone() }</div>
                 }
-                if props.children != Html::default() {
+                if !is_empty(&props.children) {
                     <div class="yi-alert__message">{ props.children.clone() }</div>
                 }
-                if props.actions != Html::default() {
+                if !is_empty(&props.actions) {
                     <div class="yi-alert__actions">{ props.actions.clone() }</div>
                 }
             </div>
@@ -188,11 +178,11 @@ pub fn Banner(props: &BannerProps) -> Html {
         <div id={props.id.clone()} {class} role={live_role(props.tone)}>
             if !props.hide_icon {
                 <span class="yi-banner__icon">
-                    <Icon icon={props.icon.unwrap_or(tone_icon(props.tone))} />
+                    <Icon icon={props.icon.unwrap_or(props.tone.icon())} />
                 </span>
             }
             <div class="yi-banner__message">{ props.children.clone() }</div>
-            if props.actions != Html::default() {
+            if !is_empty(&props.actions) {
                 <div class="yi-banner__actions">{ props.actions.clone() }</div>
             }
             { dismiss_button("yi-banner__dismiss", &props.dismiss_label, &props.on_dismiss) }
@@ -229,7 +219,7 @@ pub struct NoteProps {
 #[function_component]
 pub fn Note(props: &NoteProps) -> Html {
     let class = classes!("yi-note", format!("yi-note--{}", props.tone.as_str()), props.class.clone());
-    let icon = props.icon.or(props.with_icon.then_some(tone_icon(props.tone)));
+    let icon = props.icon.or(props.with_icon.then_some(props.tone.icon()));
 
     props.attrs.apply(html! {
         <p id={props.id.clone()} {class}>

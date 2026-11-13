@@ -6,7 +6,7 @@
 // separate borders, so a sticky header keeps its rule while rows pass under.
 @use "api" as *;
 
-.yi-table {
+:where(.yi-table) {
   // Component tokens
   --yi-table-cell-padding-block: calc(var(--yi-space-sm) + var(--yi-space-2xs));
   --yi-table-cell-padding-inline: var(--yi-space-md);
@@ -22,7 +22,9 @@
   --yi-table-sticky-top: 0px; // the height of anything fixed above a page-sticky header
   --yi-table-max-height: none;
   --yi-table-cell-wrap: nowrap; // cells stay on one line and the table scrolls sideways
+}
 
+.yi-table {
   min-inline-size: 0;
   color: var(--yi-fg);
   font-family: var(--yi-font-body);
@@ -55,6 +57,9 @@
 }
 
 .yi-table__scroll {
+  // Contains visually hidden text in the cells, which is positioned: left to
+  // the page it would widen the document by however far the table scrolls.
+  position: relative;
   max-block-size: var(--yi-table-max-height);
   overflow: auto;
 

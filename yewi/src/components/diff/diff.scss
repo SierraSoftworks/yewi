@@ -5,7 +5,7 @@
 // not selectable: selecting and copying yields the text alone.
 @use "api" as *;
 
-.yi-diff {
+:where(.yi-diff) {
   // Component tokens
   --yi-diff-bg: var(--yi-code-bg);
   --yi-diff-header-bg: var(--yi-tone-1);
@@ -16,7 +16,9 @@
   --yi-diff-font-size: var(--yi-text-sm);
   // Set a length to scroll long diffs inside the component.
   --yi-diff-max-height: none;
+}
 
+.yi-diff {
   container-type: inline-size;
   margin: 0;
   overflow: hidden;

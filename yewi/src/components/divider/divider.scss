@@ -4,12 +4,14 @@
 // parent's gap decides the space around it.
 @use "api" as *;
 
-.yi-divider {
+:where(.yi-divider) {
   // Component tokens
   --yi-divider-color: var(--yi-line);
   --yi-divider-size: 1px;
   --yi-divider-gap: var(--yi-space-md);
+}
 
+.yi-divider {
   flex: none;
   align-self: stretch;
   margin: 0;

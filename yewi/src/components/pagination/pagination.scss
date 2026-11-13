@@ -4,7 +4,7 @@
 // state and marked with a soft accent fill.
 @use "api" as *;
 
-.yi-pagination {
+:where(.yi-pagination) {
   // Component tokens
   --yi-pagination-fg: var(--yi-fg-muted);
   --yi-pagination-fg-hover: var(--yi-fg);
@@ -13,7 +13,9 @@
   --yi-pagination-bg-current: var(--yi-accent-soft);
   --yi-pagination-size: var(--yi-control-height); // height and least width of a control
   --yi-pagination-gap: var(--yi-space-2xs);
+}
 
+.yi-pagination {
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-md);
 
@@ -93,7 +95,7 @@
   &[aria-disabled="true"] {
     background: none;
     color: var(--yi-pagination-fg);
-    opacity: 0.5;
+    opacity: var(--yi-disabled-opacity);
     cursor: not-allowed;
   }
 }

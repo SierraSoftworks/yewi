@@ -5,11 +5,13 @@
 // is narrower than a square icon button, so it reads as part of the face.
 @use "api" as *;
 
-.yi-split-button {
+:where(.yi-split-button) {
   // Component tokens
   --yi-split-button-radius: var(--yi-radius-control);
   --yi-split-button-toggle-trim: var(--yi-space-xs);
+}
 
+.yi-split-button {
   display: inline-flex;
   max-inline-size: 100%;
   vertical-align: middle;

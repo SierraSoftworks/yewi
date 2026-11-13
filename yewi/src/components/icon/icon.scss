@@ -1,9 +1,11 @@
 // Icon: a stroked 24-unit SVG that inherits colour and scales with text.
 
-.yi-icon {
+:where(.yi-icon) {
   // Component tokens
   --yi-icon-size: 1.15em;
+}
 
+.yi-icon {
   display: inline-block;
   flex: none;
   vertical-align: -0.18em;

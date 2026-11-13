@@ -4,9 +4,7 @@
 // dot is a StatusDot that follows the pill's text colour.
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-pill {
+:where(.yi-pill) {
   // Component tokens
   --yi-pill-tone: var(--yi-neutral);
   --yi-pill-soft: var(--yi-neutral-soft);
@@ -14,7 +12,9 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-pill-fg: var(--yi-pill-tone);
   --yi-pill-height: 1.375rem;
   --yi-pill-radius: var(--yi-radius-full);
+}
 
+.yi-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.45em;

@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::Attrs;
+use crate::{Attrs, is_empty};
 
 /// Where a term sits relative to its value.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -110,7 +110,7 @@ pub struct DescriptionItemProps {
 /// One term and its value inside a [`DescriptionList`].
 #[function_component]
 pub fn DescriptionItem(props: &DescriptionItemProps) -> Html {
-    let empty = props.children == Html::default();
+    let empty = is_empty(&props.children);
 
     props.attrs.apply(html! {
         <div

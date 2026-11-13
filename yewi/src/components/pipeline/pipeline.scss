@@ -5,7 +5,7 @@
 // gates lie flat. Tones set the gate and unit tokens.
 @use "api" as *;
 
-.yi-pipeline {
+:where(.yi-pipeline) {
   // Component tokens
   --yi-pipeline-stage-bg: var(--yi-tone-1);
   --yi-pipeline-stage-min: 9.5rem; // narrowest a stage gets
@@ -15,7 +15,9 @@
   --yi-pipeline-unit-size: 1.125rem;
   --yi-pipeline-unit-gap: var(--yi-space-xs);
   --yi-pipeline-unit-radius: var(--yi-radius-sm);
+}
 
+.yi-pipeline {
   container-type: inline-size;
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-md);
@@ -139,7 +141,7 @@
   padding-block: var(--yi-space-xs);
   color: var(--yi-pipeline-gate-fg);
 
-  @each $tone in ok, warn, danger, info, active {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       --yi-pipeline-gate-fg: var(--yi-#{$tone});
       --yi-pipeline-gate-line: var(--yi-#{$tone});
@@ -218,7 +220,7 @@
   background: var(--yi-pipeline-unit-tone);
   font: inherit;
 
-  @each $tone in ok, warn, danger, info, active {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       --yi-pipeline-unit-tone: var(--yi-#{$tone});
     }
@@ -246,7 +248,7 @@
   // The fill pulses, not the opacity, so outlines and focus rings stay put.
   &--pulse {
     @include motion {
-      animation: yi-pipeline-unit-pulse 1.8s ease-in-out infinite;
+      animation: yi-pipeline-unit-pulse var(--yi-duration-pulse) ease-in-out infinite;
     }
   }
 

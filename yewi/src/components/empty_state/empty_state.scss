@@ -3,7 +3,7 @@
 // Neither draws a surface. Sizes and tones set the component tokens below.
 @use "api" as *;
 
-.yi-empty-state {
+:where(.yi-empty-state) {
   // Component tokens
   --yi-empty-state-padding: var(--yi-space-2xl) var(--yi-space-xl);
   --yi-empty-state-gap: var(--yi-space-sm);
@@ -13,7 +13,9 @@
   --yi-empty-state-icon-bg: var(--yi-neutral-soft);
   --yi-empty-state-fg: var(--yi-fg-muted);
   --yi-empty-state-title-fg: var(--yi-fg);
+}
 
+.yi-empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +48,7 @@
     font-size: var(--yi-text-lg);
   }
 
-  @each $tone in ok, warn, danger, info, active {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       --yi-empty-state-icon-fg: var(--yi-#{$tone});
       --yi-empty-state-icon-bg: var(--yi-#{$tone}-soft);

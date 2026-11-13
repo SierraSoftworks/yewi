@@ -4,7 +4,7 @@
 // page, or carries its own `data-theme` to stay dark on a light page.
 @use "api" as *;
 
-.yi-code-block {
+:where(.yi-code-block) {
   // Component tokens
   --yi-code-block-bg: var(--yi-code-bg);
   --yi-code-block-header-bg: color-mix(in srgb, var(--yi-fg) 5%, var(--yi-code-bg));
@@ -17,7 +17,9 @@
   --yi-code-block-number-color: var(--yi-fg-subtle);
   --yi-code-block-marked-bg: color-mix(in srgb, var(--yi-accent) 12%, var(--yi-code-bg));
   --yi-code-block-marked-line: var(--yi-accent-text);
+}
 
+.yi-code-block {
   display: flex;
   flex-direction: column;
   min-inline-size: 0;

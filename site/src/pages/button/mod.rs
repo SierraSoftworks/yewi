@@ -11,6 +11,6 @@ crate::page! {
         icon_only => "Icon buttons": "`IconButton` is a square button showing only an icon, for toolbars and repeated row actions where the icon is familiar. `label` is required: it names the button for screen readers and appears on hover.",
         toggle => "Toggle buttons": "`pressed` turns a `Button` or `IconButton` into a toggle that reports its state. Keep the label the same in both states and let the pressed state carry the change.",
         group => "Button group": "`ButtonGroup` joins several actions on one thing into a single control. Give it a `label` saying what the actions apply to. Each button remains its own tab stop.",
-        group_toolbar => "Icon and vertical groups": "Groups take icon buttons and mixed sizes, and `vertical` stacks them for controls docked to an edge such as map zoom.",
+        group_toolbar => "Icon and vertical groups": "Groups take icon buttons and mixed sizes, and `Orientation::Vertical` stacks them for controls docked to an edge such as map zoom.",
     ],
 }

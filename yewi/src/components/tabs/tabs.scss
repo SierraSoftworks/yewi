@@ -5,7 +5,7 @@
 // assistive technology is told.
 @use "api" as *;
 
-.yi-tabs {
+:where(.yi-tabs) {
   // Component tokens
   --yi-tabs-fg: var(--yi-fg-muted);
   --yi-tabs-fg-hover: var(--yi-fg);
@@ -16,7 +16,9 @@
   --yi-tabs-height: calc(var(--yi-control-height) + var(--yi-space-xs));
   --yi-tabs-gap: var(--yi-space-xs);
   --yi-tabs-panel-gap: var(--yi-space-lg); // space between the tabs and the panel
+}
 
+.yi-tabs {
   min-inline-size: 0;
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-md);
@@ -92,7 +94,7 @@
 
   &:disabled {
     color: var(--yi-tabs-fg);
-    opacity: 0.5;
+    opacity: var(--yi-disabled-opacity);
     cursor: not-allowed;
   }
 }

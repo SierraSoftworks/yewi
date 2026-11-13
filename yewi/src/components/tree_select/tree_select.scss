@@ -6,7 +6,7 @@
 // lead to it.
 @use "api" as *;
 
-.yi-tree-select {
+:where(.yi-tree-select) {
   // Component tokens
   --yi-tree-select-panel-min-width: 18rem; // unless the control is wider
   --yi-tree-select-panel-max-width: 28rem;

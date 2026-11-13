@@ -4,7 +4,7 @@
 // placeholders animates on the compositor without repainting.
 @use "api" as *;
 
-.yi-skeleton {
+:where(.yi-skeleton) {
   // Component tokens
   --yi-skeleton-bg: var(--yi-neutral-soft);
   --yi-skeleton-highlight: color-mix(in srgb, var(--yi-fg) 9%, transparent);
@@ -13,7 +13,9 @@
   --yi-skeleton-height: var(--yi-control-height);
   --yi-skeleton-text-height: 0.7em;
   --yi-skeleton-duration: calc(var(--yi-duration) * 9);
+}
 
+.yi-skeleton {
   display: flex;
   flex-direction: column;
   inline-size: var(--yi-skeleton-width);

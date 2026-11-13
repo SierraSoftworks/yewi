@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Tone, VisuallyHidden};
+use crate::{Attrs, Tone, VisuallyHidden, is_empty};
 
 #[derive(Properties, PartialEq)]
 pub struct BadgeProps {
@@ -52,7 +52,7 @@ impl BadgeProps {
 /// A count badge or attention dot, inline or attached to its children.
 #[function_component]
 pub fn Badge(props: &BadgeProps) -> Html {
-    let anchored = props.children != Html::default();
+    let anchored = !is_empty(&props.children);
     let text = props.text();
 
     let badge = |root: bool| {

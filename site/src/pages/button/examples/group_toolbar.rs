@@ -18,7 +18,7 @@ pub fn Example() -> Html {
     html! {
         <Stack>
             <Cluster gap={Space::Xl} align={Align::Start}>
-                <ButtonGroup label="Map zoom" vertical=true>
+                <ButtonGroup label="Map zoom" orientation={Orientation::Vertical}>
                     <IconButton icon={icons::PLUS} label="Zoom in" disabled={*zoom >= 10} on_click={step(1)} />
                     <IconButton icon={icons::MINUS} label="Zoom out" disabled={*zoom <= 6} on_click={step(-1)} />
                 </ButtonGroup>

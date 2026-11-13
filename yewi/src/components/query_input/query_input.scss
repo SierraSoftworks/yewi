@@ -12,7 +12,7 @@
   container-type: inline-size;
 }
 
-.yi-query-input__box {
+:where(.yi-query-input__box) {
   // Component tokens
   --yi-query-input-bg: var(--yi-surface);
   --yi-query-input-fg: var(--yi-fg);
@@ -27,7 +27,9 @@
   --yi-query-input-icon: var(--yi-fg-subtle);
   --yi-query-input-placeholder: var(--yi-fg-subtle);
   --yi-query-input-hint: var(--yi-fg-muted);
+}
 
+.yi-query-input__box {
   display: flex;
   flex: 1;
   align-items: center;
@@ -145,11 +147,13 @@
   min-inline-size: min(100cqi, calc(100vw - var(--yi-space-lg)));
 }
 
-.yi-query-input__list {
+:where(.yi-query-input__list) {
   // Component tokens
   --yi-query-input-option-active-bg: var(--yi-neutral-soft);
   --yi-query-input-description: var(--yi-fg-muted);
+}
 
+.yi-query-input__list {
   display: grid;
   padding: var(--yi-space-xs);
 }

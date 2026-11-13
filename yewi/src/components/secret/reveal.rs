@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, CopyButton, Icon, IconButton, Size, VisuallyHidden, icons, use_id};
+use crate::{Attrs, Button, ButtonVariant, CopyButton, Icon, IconButton, Size, VisuallyHidden, icons, use_id, is_empty};
 
 /// What a concealed value shows in place of its text. A fixed length, so the
 /// mask gives away nothing about the secret.
@@ -163,7 +163,7 @@ pub fn SecretReveal(props: &SecretRevealProps) -> Html {
             </header>
             <div class="yi-secret-reveal__body">
                 <div class="yi-secret-reveal__values">{ props.children.clone() }</div>
-                if props.aside != Html::default() {
+                if !is_empty(&props.aside) {
                     <div class="yi-secret-reveal__aside">{ props.aside.clone() }</div>
                 }
             </div>

@@ -4,16 +4,16 @@
 // the colour tokens for the few tags that do carry a status.
 @use "api" as *;
 
-$tones: ok, warn, danger, info, active;
-
-.yi-tag {
+:where(.yi-tag) {
   // Component tokens
   --yi-tag-bg: var(--yi-tone-2);
   --yi-tag-fg: var(--yi-fg);
   --yi-tag-border: var(--yi-line);
   --yi-tag-height: 1.375rem;
   --yi-tag-radius: var(--yi-radius-sm);
+}
 
+.yi-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
@@ -30,7 +30,7 @@ $tones: ok, warn, danger, info, active;
   white-space: nowrap;
   vertical-align: middle;
 
-  @each $tone in $tones {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       --yi-tag-bg: transparent;
       --yi-tag-fg: var(--yi-#{$tone});
@@ -115,7 +115,7 @@ a.yi-tag__text {
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--yi-disabled-opacity);
     cursor: not-allowed;
 
     &:hover {

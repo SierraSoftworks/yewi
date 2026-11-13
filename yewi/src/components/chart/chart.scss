@@ -6,8 +6,7 @@
 // placed by percentage, so nothing is measured and nothing distorts.
 @use "api" as *;
 
-.yi-chart,
-.yi-sparkline {
+:where(.yi-chart, .yi-sparkline) {
   // Component tokens
   --yi-chart-height: 15rem; // Height of the plot area.
   --yi-chart-axis-width: auto; // Width of the value axis. Set the same length on stacked charts to align their plots.
@@ -38,7 +37,7 @@
   --yi-chart-color: var(--yi-chart-muted);
 }
 
-@each $tone in ok, warn, danger, info, active, neutral {
+@each $tone in $tones {
   .yi-chart__c--#{$tone} {
     --yi-chart-color: var(--yi-#{$tone});
   }

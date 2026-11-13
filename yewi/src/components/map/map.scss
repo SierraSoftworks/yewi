@@ -7,7 +7,7 @@
 // window's: the navigation beside it can fold away at any size.
 @use "api" as *;
 
-.yi-map {
+:where(.yi-map) {
   // Component tokens
   --yi-map-height: 28rem; // Block size of the map
   --yi-map-inset: var(--yi-space-md); // Gap between the chrome and the edge
@@ -22,7 +22,9 @@
   --yi-map-label-halo: var(--yi-surface);
   --yi-map-selected: var(--yi-accent); // The halo around the selection
   --yi-map-chrome-bg: color-mix(in srgb, var(--yi-surface-raised) 95%, transparent); // Toolbar, panels and notes
+}
 
+.yi-map {
   position: relative;
   display: grid;
   block-size: var(--yi-map-height);
@@ -353,10 +355,12 @@
   }
 }
 
-.yi-map-note {
+:where(.yi-map-note) {
   // Component tokens
   --yi-map-note-fg: var(--yi-fg-muted);
+}
 
+.yi-map-note {
   margin: 0;
   padding: var(--yi-space-xs) var(--yi-space-md);
   border: 1px solid var(--yi-card-line);
@@ -367,7 +371,7 @@
   font-size: var(--yi-text-sm);
   text-align: center;
 
-  @each $tone in ok, warn, danger, info, active {
+  @each $tone in $tones-coloured {
     &--#{$tone} {
       --yi-map-note-fg: var(--yi-#{$tone});
     }
@@ -417,7 +421,7 @@
     border-radius: var(--yi-radius-full);
     background: var(--yi-map-marker);
 
-    @each $tone in neutral, ok, warn, danger, info, active {
+    @each $tone in $tones {
       &--#{$tone} {
         background: var(--yi-#{$tone});
       }

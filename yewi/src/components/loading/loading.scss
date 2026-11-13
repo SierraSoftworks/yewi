@@ -4,14 +4,16 @@
 // its arc colour from `--yi-spinner-color`.
 @use "api" as *;
 
-.yi-spinner {
+:where(.yi-spinner) {
   // Component tokens
   --yi-spinner-size: 1em;
   --yi-spinner-color: currentColor;
   --yi-spinner-track: color-mix(in srgb, currentColor 22%, transparent);
   --yi-spinner-stroke: 2.5;
-  --yi-spinner-duration: calc(var(--yi-duration) * 4.5);
+  --yi-spinner-duration: var(--yi-duration-spin);
+}
 
+.yi-spinner {
   display: inline-block;
   flex: none;
   vertical-align: -0.125em;
@@ -40,7 +42,7 @@
   }
 }
 
-.yi-loading {
+:where(.yi-loading) {
   // Component tokens
   --yi-loading-fg: var(--yi-fg-muted);
   --yi-loading-accent: var(--yi-accent-text);
@@ -51,7 +53,9 @@
   --yi-spinner-color: var(--yi-loading-accent);
   --yi-spinner-track: var(--yi-line-strong);
   --yi-spinner-size: 1.125rem;
+}
 
+.yi-loading {
   display: inline-flex;
   align-items: center;
   gap: var(--yi-loading-gap);
@@ -95,12 +99,14 @@
   }
 }
 
-.yi-loading-overlay {
+:where(.yi-loading-overlay) {
   // Component tokens
   --yi-loading-overlay-scrim: color-mix(in srgb, var(--yi-surface) 65%, transparent);
   --yi-loading-overlay-radius: var(--yi-radius-card);
   --yi-loading-overlay-delay: calc(var(--yi-duration) * 2);
+}
 
+.yi-loading-overlay {
   position: relative;
 }
 
