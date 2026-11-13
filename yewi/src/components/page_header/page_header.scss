@@ -1,7 +1,8 @@
 // PageHeader
 //
 // A light, large title with its actions anchored at the end of the same row.
-// The row wraps, so on a narrow page the actions drop under the title.
+// On a narrow page the header reads top to bottom instead: title, subtitle,
+// then the actions at the end of a row of their own.
 @use "api" as *;
 
 :where(.yi-page-header) {
@@ -87,8 +88,26 @@
   margin-block-start: var(--yi-space-sm);
 }
 
-// On a narrow page the title steps down one size.
+// On a narrow page the title steps down one size, and the title row is
+// taken apart so the subtitle can sit between the title and the actions.
 @container (inline-size < 30rem) {
+  .yi-page-header__row {
+    display: contents;
+  }
+
+  .yi-page-header__heading {
+    flex: none;
+  }
+
+  .yi-page-header__actions {
+    order: 1;
+    align-self: flex-end;
+  }
+
+  .yi-page-header__content {
+    order: 2;
+  }
+
   .yi-page-header__title {
     font-size: var(--yi-text-3xl);
     font-weight: var(--yi-heading-weight-3xl);

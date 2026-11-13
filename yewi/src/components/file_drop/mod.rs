@@ -46,6 +46,10 @@ impl SelectedFile {
 
     /// The browser's `File` object, to upload or read. With the `File`
     /// feature of `web-sys`: `file.js().clone().unchecked_into::<web_sys::File>()`.
+    ///
+    /// Only exists when compiled for the browser, because there is no `File`
+    /// anywhere else. In a crate whose unit tests run on the host, put the
+    /// code that calls it behind `#[cfg(target_arch = "wasm32")]` too.
     #[cfg(target_arch = "wasm32")]
     pub fn js(&self) -> &wasm_bindgen::JsValue {
         &self.raw

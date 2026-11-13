@@ -23,6 +23,10 @@ pub fn Example() -> Html {
                 <SplitButton label="Disabled" disabled=true>
                     <MenuItem>{ "Never shown" }</MenuItem>
                 </SplitButton>
+                <SplitButton label="Demote" face_disabled=true menu_label="More actions for this user">
+                    <MenuItem>{ "Reset password" }</MenuItem>
+                    <MenuItem>{ "Remove" }</MenuItem>
+                </SplitButton>
                 <SplitButton label="Only one action" />
             </Cluster>
             <span role="status">{ if *syncing { "Syncing" } else { "Idle" } }</span>

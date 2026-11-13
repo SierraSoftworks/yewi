@@ -71,9 +71,17 @@ test.describe("SplitButton", () => {
     const stage = await example("split-button/states");
 
     await expect(stage.getByRole("button", { name: "Disabled" })).toBeDisabled();
-    await expect(stage.getByRole("button", { name: "More actions" })).toHaveCount(2);
-    await expect(stage.getByRole("button", { name: "More actions" }).nth(1)).toBeDisabled();
+    await expect(stage.getByRole("button", { name: "More actions", exact: true })).toHaveCount(2);
+    await expect(stage.getByRole("button", { name: "More actions", exact: true }).nth(1)).toBeDisabled();
     await expect(stage.getByRole("button", { name: "Only one action" })).toBeEnabled();
+  });
+
+  test("a disabled face leaves the menu usable", async ({ page, example }) => {
+    const stage = await example("split-button/states");
+
+    await expect(stage.getByRole("button", { name: "Demote" })).toBeDisabled();
+    await stage.getByRole("button", { name: "More actions for this user" }).click();
+    await expect(page.getByRole("menuitem", { name: "Remove" })).toBeVisible();
   });
 });
 
