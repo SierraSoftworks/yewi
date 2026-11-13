@@ -11,7 +11,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Icon, Size, icons};
+use crate::{Attrs, Button, ButtonVariant, Icon, Size, components::server_only::use_server_only, icons};
 
 /// The `localStorage` key the user's choice is stored under.
 pub const THEME_STORAGE_KEY: &str = "yewi-theme";
@@ -148,6 +148,9 @@ pub fn ThemeToggle(props: &ThemeToggleProps) -> Html {
     let label = format!("Theme: {}. Switch to {}.", theme.label(), theme.next().label());
 
     let mut attrs = vec![("aria-label", AttrValue::from(label.clone())), ("title", AttrValue::from(label))];
+    if use_server_only() {
+        attrs.push(("data-yi-theme-toggle", AttrValue::Static("")));
+    }
     attrs.extend(props.attrs.iter().map(|(k, v)| (k, v.clone())));
 
     html! {

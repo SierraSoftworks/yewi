@@ -3,7 +3,7 @@ use std::rc::Rc;
 use yew::prelude::*;
 
 use super::target_value;
-use crate::{Attrs, Icon, Size, icons, use_field_control};
+use crate::{Attrs, Icon, Size, components::server_only::use_server_only, icons, use_field_control};
 
 /// Reads what the user has typed. `None` means "not a number yet" (`-`,
 /// `1e`), which is left alone so the field does not fight the user
@@ -160,6 +160,7 @@ pub fn NumberInput(props: &NumberInputProps) -> Html {
     }
 
     let (min, max, step) = (props.min, props.max, props.step);
+    let server_only = use_server_only();
     let editable = !control.disabled && !props.readonly;
 
     // Replaces the text with `value`, reporting it if it is new.
@@ -268,6 +269,7 @@ pub fn NumberInput(props: &NumberInputProps) -> Html {
                 tabindex="-1"
                 aria-label={label.clone()}
                 disabled={!editable || at_limit}
+                data-yi-step-by={server_only.then(|| format(steps))}
                 // Keeps focus (and the caret) in the input.
                 onmousedown={Callback::from(|event: MouseEvent| event.prevent_default())}
                 onclick={Callback::from(move |_| step_by(steps))}
@@ -299,6 +301,7 @@ pub fn NumberInput(props: &NumberInputProps) -> Html {
             aria-valuenow={value.map(format)}
             aria-valuemin={min.map(format)}
             aria-valuemax={max.map(format)}
+            data-yi-step={server_only.then(|| format(step))}
             aria-invalid={control.aria_invalid()}
             aria-describedby={control.described_by.clone()}
             {oninput}

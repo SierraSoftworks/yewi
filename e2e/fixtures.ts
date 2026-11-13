@@ -48,6 +48,11 @@ export interface Fixtures {
    * interactive and returns its stage: `await example("button/states")`.
    */
   example: (id: string, options?: { theme?: Theme }) => Promise<Locator>;
+  /**
+   * Opens one example as a server-only page (rendered inside `ServerOnly`, in
+   * a document that loads no wasm) and returns its stage.
+   */
+  serverOnly: (id: string, options?: { theme?: Theme }) => Promise<Locator>;
   /** Console errors, warnings and uncaught exceptions seen so far. */
   problems: string[];
   /** Records what a behaviour spec does to each example, for the review gallery to replay. */
@@ -91,6 +96,19 @@ export const test = base.extend<Fixtures>({
     },
     { auto: true },
   ],
+
+  serverOnly: async ({ page }, use) => {
+    let wasm = 0;
+    page.on("request", (request) => {
+      if (request.url().endsWith(".wasm")) wasm += 1;
+    });
+    await use(async (id, { theme } = {}) => {
+      await page.goto(`/_static/${id}${theme ? `?theme=${theme}` : ""}`);
+      await page.evaluate(() => document.fonts.ready);
+      return page.locator("[data-example]");
+    });
+    expect(wasm, "a server-only page loaded wasm").toBe(0);
+  },
 
   example: async ({ page }, use) => {
     await use(async (id, { theme } = {}) => {

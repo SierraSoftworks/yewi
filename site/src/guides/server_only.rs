@@ -17,10 +17,10 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 
 /// Components with nothing to run, or whose behaviour is the browser's own.
 const COMPLETE: &str = "AppBar, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
-                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, Spinner, Loading, \
+                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Spinner, Loading, \
                         Markdown, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
                         SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
-                        TextInput, TextArea, ThemeScript, ToggleSwitch, VisuallyHidden";
+                        TextInput, TextArea, ThemeScript, ThemeToggle, ToggleSwitch, VisuallyHidden";
 
 const PARTIAL: &[Row] = &[
     row(
@@ -49,12 +49,12 @@ const PARTIAL: &[Row] = &[
         "Revealing folded lines and switching views",
         "Set the context large enough that nothing folds",
     ),
-    row("CodeBlock", "The code and its highlighting", "Copying and the wrap toggle", "Set copy=false"),
+    row("CodeBlock", "The code, its highlighting and copying", "The wrap toggle", "Set wrap on the server"),
     row(
         "NumberInput",
-        "Typing and submitting",
-        "The stepper, arrow keys and clamping",
-        "Set stepper=false and validate on the server",
+        "Typing, stepping, clamping and submitting",
+        "Reporting each edit",
+        "Read the value from the submitted form",
     ),
     row(
         "InputGroup, SearchInput",
@@ -106,12 +106,7 @@ const PARTIAL: &[Row] = &[
 ];
 
 const INERT: &[Row] = &[
-    row(
-        "CopyButton, Copyable, SecretValue, SecretReveal",
-        "",
-        "Copying, revealing",
-        "Show the value so the reader can select it",
-    ),
+    row("SecretValue, SecretReveal", "", "Revealing a concealed value", "Show the value; its copy button works"),
     row("Dialog, ConfirmDialog, Drawer", "", "Opening and closing", "Use a separate confirmation page"),
     row(
         "MenuButton, SplitButton, UserMenu, NotificationPanel, Popover",
@@ -120,7 +115,6 @@ const INERT: &[Row] = &[
         "Put links directly in the page",
     ),
     row("Tooltip", "", "Showing", "Use visible text, or a native title"),
-    row("ThemeToggle", "", "Changing the theme", "ThemeScript on its own follows the system setting"),
     row("Select", "", "Opening", "Use NativeSelect, or a RadioGroup with a name"),
     row(
         "Combobox, TagPicker, TreeSelect, QueryInput",
@@ -170,6 +164,28 @@ pub fn render() -> Html {
                    but anything interactive that relies on wasm won't work. This page goes through each \
                    component, explains what still works, and suggests what to use instead." }
             </p>
+
+            <h2>{ "Opting in" }</h2>
+            <p>
+                { "Wrap the page in " }<code>{ "ServerOnly" }</code>
+                { ". Components inside it render markup that works on its own, and one small script, " }
+                <code>{ "yewi::BEHAVIOURS" }</code>
+                { ", does what HTML cannot: copying, the number stepper and the theme toggle. Serve the script \
+                   from a cached route, or leave " }<code>{ "script" }</code>
+                { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
+                   page inside " }<code>{ "ServerOnly" }</code>{ "." }
+            </p>
+            { rust(r#"
+html! {
+    <ServerOnly script="/static/yewi.js">
+        <Page />
+    </ServerOnly>
+}
+
+async fn behaviours() -> impl Responder {
+    HttpResponse::Ok().content_type("text/javascript").body(yewi::BEHAVIOURS)
+}
+"#) }
 
             <h2>{ "How server-only pages behave" }</h2>
             <ul>
