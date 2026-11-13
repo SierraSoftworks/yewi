@@ -13,6 +13,25 @@ test.describe("Reference site", () => {
     expect(await page.evaluate(() => (window as any).stillHere)).toBe(true);
   });
 
+  test("a page opened from the menu starts at its top", async ({ page }) => {
+    await page.goto("/components/button");
+    await hydrated(page);
+    await page.locator("#api").scrollIntoViewIfNeeded();
+    expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+    await page.getByRole("navigation", { name: "Pages" }).getByRole("link", { name: "Icon", exact: true }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Icon");
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  });
+
+  test("a link under On this page moves within the page", async ({ page }) => {
+    await page.goto("/components/button");
+    await hydrated(page);
+    await page.getByRole("complementary", { name: "On this page" }).getByRole("link", { name: "Sizes" }).click();
+    await expect(page).toHaveURL(/\/components\/button#sizes$/);
+    await expect(page.locator("#sizes")).toBeInViewport();
+  });
+
   test("search finds a page by what it is for", async ({ page }) => {
     await page.goto("/");
     await hydrated(page);
@@ -29,6 +48,12 @@ test.describe("Reference site", () => {
     await expect(example.locator("pre")).toBeHidden();
     await example.getByRole("button", { name: "Show source" }).click();
     await expect(example.locator("pre")).toContainText("ButtonVariant::Primary");
+
+    // Only the lines the description is about stand out, not the scaffolding.
+    const marked = example.locator(".yi-code-block__line--marked");
+    await expect(marked.first()).toContainText("ButtonVariant::Primary");
+    await expect(marked.filter({ hasText: "use yew" })).toHaveCount(0);
+    expect(await marked.count()).toBeLessThan(await example.locator(".yi-code-block__line").count() / 2);
 
     await example.getByRole("link", { name: "Open isolated" }).click();
     await expect(page).toHaveURL(/\/_examples\/button\/variants$/);

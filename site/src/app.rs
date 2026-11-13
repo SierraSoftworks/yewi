@@ -71,9 +71,64 @@ pub fn App(props: &AppProps) -> Html {
 
     html! {
         <Router history={props.history.clone()} basename={crate::basename()}>
+            if !props.gallery {
+                <ScrollToTop />
+            }
             <Switch<Route> {render} />
         </Router>
     }
+}
+
+/// Starts each page at its top. A link followed within the site keeps the
+/// document, so without this the new page opens wherever the last one was
+/// scrolled to. Back and forward are left to the browser, which restores
+/// the position the reader left, and so is a link to a place on the same page.
+#[function_component]
+fn ScrollToTop() -> Html {
+    let path = use_location().map(|location| location.path().to_owned());
+    let shown = use_mut_ref(|| None::<String>);
+    let going_back = use_mut_ref(|| false);
+
+    #[cfg(target_arch = "wasm32")]
+    {
+        use wasm_bindgen::{JsCast, closure::Closure};
+
+        let going_back = going_back.clone();
+        use_effect_with((), move |()| {
+            let noted = Closure::<dyn Fn()>::new(move || *going_back.borrow_mut() = true);
+            let window = web_sys::window();
+            if let Some(window) = &window {
+                // Capturing, so this runs before the router hears the same event and renders.
+                let _ =
+                    window.add_event_listener_with_callback_and_bool("popstate", noted.as_ref().unchecked_ref(), true);
+            }
+            move || {
+                if let Some(window) = window {
+                    let _ = window.remove_event_listener_with_callback_and_bool(
+                        "popstate",
+                        noted.as_ref().unchecked_ref(),
+                        true,
+                    );
+                }
+            }
+        });
+    }
+
+    // After every render: the router also renders this for a move within a
+    // page, and that must use up the note that the browser moved.
+    use_effect(move || {
+        let back = going_back.replace(false);
+        let moved = shown.borrow().is_some() && *shown.borrow() != path;
+        if moved && !back {
+            #[cfg(target_arch = "wasm32")]
+            if let Some(window) = web_sys::window() {
+                window.scroll_to_with_x_and_y(0.0, 0.0);
+            }
+        }
+        shown.replace(path);
+    });
+
+    html! {}
 }
 
 fn switch(route: Route) -> Html {
