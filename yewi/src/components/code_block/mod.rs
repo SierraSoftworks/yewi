@@ -9,7 +9,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, CopyButton, Size, Theme, is_empty};
+use crate::{Attrs, CopyButton, Size, Theme, components::server_only::use_server_only, is_empty, use_id};
 
 /// A run of text and the class it is coloured with, if any.
 type Piece<'a> = (&'a str, Option<&'static str>);
@@ -127,6 +127,9 @@ pub struct CodeBlockProps {
 #[function_component]
 pub fn CodeBlock(props: &CodeBlockProps) -> Html {
     let by_line = props.line_numbers || !props.marked.trim().is_empty();
+    // Without a client the copy button reads the code from the page.
+    let code_id = use_id();
+    let code_id = use_server_only().then(|| AttrValue::from(format!("{code_id}-code")));
 
     let rendered = use_memo(
         (props.code.clone(), props.language.clone(), props.marked.clone(), by_line),
@@ -184,6 +187,7 @@ pub fn CodeBlock(props: &CodeBlockProps) -> Html {
                             if props.copy {
                                 <CopyButton
                                     value={props.code.clone()}
+                                    source={code_id.clone()}
                                     label={props.copy_label.clone()}
                                     size={Size::Small}
                                     on_copy={props.on_copy.clone()}
@@ -195,7 +199,7 @@ pub fn CodeBlock(props: &CodeBlockProps) -> Html {
             }
             // Focusable, so that the keyboard can scroll code wider than the block.
             <pre class="yi-code-block__body" tabindex="0" data-yi-digits={digits}>
-                <code class="yi-highlight">{ body.clone() }</code>
+                <code id={code_id} class="yi-highlight">{ body.clone() }</code>
             </pre>
         </div>
     })

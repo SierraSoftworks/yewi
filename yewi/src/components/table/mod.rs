@@ -22,7 +22,8 @@ pub use sort::*;
 
 use crate::is_empty;
 use crate::{
-    Attrs, ButtonVariant, Checkbox, EmptyState, IconButton, Size, Skeleton, VirtualWindow, VisuallyHidden, attrs, icons,
+    Attrs, ButtonVariant, Checkbox, EmptyState, IconButton, Size, Skeleton, VirtualWindow, VisuallyHidden, attrs,
+    components::server_only::use_server_only, icons,
 };
 
 /// The keys of the selected rows of a [`Table`].
@@ -82,6 +83,10 @@ pub struct TableProps<T: Clone + PartialEq + 'static> {
     /// Fired with the new selection when a row or the header box is ticked.
     #[prop_or_default]
     pub on_select: Callback<Selection>,
+    /// The name the ticked rows' keys are submitted under in a native form,
+    /// which is how a selection reaches the server on a page without wasm.
+    #[prop_or_default]
+    pub select_name: Option<AttrValue>,
     /// Renders a row's details. Setting it adds a column of disclosure
     /// buttons; the details appear in a full-width row underneath.
     #[prop_or_default]
@@ -237,6 +242,7 @@ pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, w
     };
 
     let selectable = props.selected.is_some();
+    let server_only = use_server_only();
     let expandable = props.detail.is_some();
     let keyed = selectable || expandable;
     let span = props.columns.len() + usize::from(selectable) + usize::from(expandable);
@@ -278,7 +284,11 @@ pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, w
             })
         };
         html! {
-            <th class="yi-table__header yi-table__control" scope="col">
+            <th
+                class="yi-table__header yi-table__control"
+                scope="col"
+                data-yi-select-all={server_only.then_some("")}
+            >
                 <Checkbox
                     label="Select all rows"
                     checked={all}
@@ -382,6 +392,7 @@ pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, w
                         columns={props.columns.clone()}
                         selected={props.selected.as_ref().zip(id.as_ref()).map(|(set, id)| set.contains(id))}
                         expanded={id.as_ref().filter(|_| expandable).map(|id| expanded.contains(id))}
+                        select={props.select_name.clone().zip(id.clone())}
                         detail={props.detail.clone()}
                         row_label={props.row_label.clone()}
                         clickable={props.on_row_click.is_some()}
@@ -457,6 +468,8 @@ struct RowProps<T: Clone + PartialEq + 'static> {
     columns: Rc<[Column<T>]>,
     selected: Option<bool>,
     expanded: Option<bool>,
+    /// The name and value the row's checkbox submits.
+    select: Option<(AttrValue, AttrValue)>,
     detail: Option<RowFn<T, Html>>,
     row_label: Option<RowFn<T, AttrValue>>,
     clickable: bool,
@@ -472,6 +485,7 @@ impl<T: Clone + PartialEq + 'static> PartialEq for RowProps<T> {
             && self.position == other.position
             && self.selected == other.selected
             && self.expanded == other.expanded
+            && self.select == other.select
             && self.clickable == other.clickable
             && self.span == other.span
             && (Rc::ptr_eq(&self.columns, &other.columns) || self.columns == other.columns)
@@ -494,6 +508,13 @@ fn Row<T: Clone + PartialEq + 'static>(props: &RowProps<T>) -> Html {
         props.row_label.as_ref().map_or_else(|| AttrValue::from(format!("row {}", index + 1)), |label| label.call(row))
     };
     let expanded = props.expanded.unwrap_or_default();
+    // Without a client the details are in the page, for `BEHAVIOURS` to show.
+    let server_only = use_server_only();
+    let toggle = if server_only {
+        attrs! { "aria-expanded" => if expanded { "true" } else { "false" }, "data-yi-row-toggle" => "" }
+    } else {
+        attrs! { "aria-expanded" => if expanded { "true" } else { "false" } }
+    };
 
     let onclick = props.clickable.then(|| {
         let on_click = props.on_click.clone();
@@ -523,7 +544,7 @@ fn Row<T: Clone + PartialEq + 'static>(props: &RowProps<T>) -> Html {
                                 label={format!("Details for {}", name())}
                                 variant={ButtonVariant::Subtle}
                                 size={Size::Small}
-                                attrs={attrs! { "aria-expanded" => if expanded { "true" } else { "false" } }}
+                                attrs={toggle}
                                 on_click={props.on_expand.reform(move |_| index)}
                             />
                         </span>
@@ -534,6 +555,8 @@ fn Row<T: Clone + PartialEq + 'static>(props: &RowProps<T>) -> Html {
                         <Checkbox
                             label={format!("Select {}", name())}
                             checked={selected}
+                            name={props.select.as_ref().map(|(name, _)| name.clone())}
+                            value={props.select.as_ref().map(|(_, value)| value.clone())}
                             on_change={props.on_select.reform(move |checked| (index, checked))}
                         />
                     </td>
@@ -553,8 +576,8 @@ fn Row<T: Clone + PartialEq + 'static>(props: &RowProps<T>) -> Html {
                     }
                 }) }
             </tr>
-            if let (true, Some(detail)) = (expanded, &props.detail) {
-                <tr key="detail" class="yi-table__detail">
+            if let (true, Some(detail)) = (expanded || (server_only && props.expanded.is_some()), &props.detail) {
+                <tr key="detail" class="yi-table__detail" hidden={!expanded}>
                     <td colspan={props.span.to_string()}>{ detail.call(row) }</td>
                 </tr>
             }

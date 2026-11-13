@@ -126,3 +126,16 @@ fn id_class_and_attrs_reach_the_root() {
     assert_eq!(attr(&html, "label", "id"), Some("upload"));
     assert!(html.contains("mine") && html.contains(r#"data-kind="pkg""#));
 }
+
+#[test]
+fn a_name_makes_it_a_form_control_and_only_a_page_without_a_client_is_marked_for_the_script() {
+    let plain = render(|| html! { <FileDrop name="bundle" required=true /> });
+    assert!(plain.contains(r#"name="bundle""#));
+    assert!(!plain.contains("data-yi-file-drop"));
+
+    let server_only = render(|| {
+        html! { <crate::ServerOnly script="/yewi.js"><FileDrop name="bundle" required=true /></crate::ServerOnly> }
+    });
+    assert!(server_only.contains("data-yi-file-drop"));
+    assert!(server_only.contains(" required"));
+}

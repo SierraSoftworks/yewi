@@ -121,3 +121,22 @@ fn id_class_and_attrs_reach_the_root_element() {
     let root = &html[..html.find('>').unwrap()];
     assert!(root.contains(r#"id="views""#) && root.contains("mine") && root.contains(r#"data-test="x""#));
 }
+
+#[test]
+fn without_a_client_every_panel_is_in_the_page_and_all_but_one_hidden() {
+    let html = render(|| {
+        html! {
+            <crate::ServerOnly script="/yewi.js">
+                <Tabs label="Account">
+                    <Tab value="a" label="A">{ "First panel" }</Tab>
+                    <Tab value="b" label="B">{ "Second panel" }</Tab>
+                </Tabs>
+            </crate::ServerOnly>
+        }
+    });
+    assert!(html.contains("data-yi-tabs"));
+    assert!(html.contains("First panel") && html.contains("Second panel"));
+    assert_eq!(html.matches(r#"role="tabpanel""#).count(), 2);
+    assert_eq!(html.matches(" hidden").count(), 1);
+    assert_eq!(html.matches("aria-controls").count(), 2);
+}

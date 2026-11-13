@@ -176,6 +176,11 @@
   }
 }
 
+// Lines a page without wasm keeps ready behind a fold.
+.yi-diff__folded:not([hidden]) {
+  display: contents;
+}
+
 .yi-diff__fold {
   display: flex;
   align-items: center;

@@ -80,6 +80,13 @@
   &[data-yi-state="failed"] > .yi-icon {
     color: var(--yi-danger);
   }
+
+  // Inside `ServerOnly` all three icons are rendered and the state picks one.
+  &[data-yi-state] > .yi-copy-button__icon--idle,
+  &:not([data-yi-state="copied"]) > .yi-copy-button__icon--copied,
+  &:not([data-yi-state="failed"]) > .yi-copy-button__icon--failed {
+    display: none;
+  }
 }
 
 // Holds the text for the `execCommand` fallback for the length of one call.

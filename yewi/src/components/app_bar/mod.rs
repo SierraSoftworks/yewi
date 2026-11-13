@@ -59,10 +59,17 @@ pub fn AppBar(props: &AppBarProps) -> Html {
                     icon={icons::MENU}
                     label={props.menu_label.clone()}
                     variant={ButtonVariant::Subtle}
-                    attrs={attrs! {
-                        "aria-expanded" => if shell.sidebar_shown { "true" } else { "false" },
-                        "aria-controls" => shell.sidebar_id.clone(),
+                    attrs={if shell.drawer_command.is_some() {
+                        // `BEHAVIOURS` reads the marker, and reports the column
+                        // as hidden or shown once the button has done that.
+                        attrs! { "aria-controls" => shell.sidebar_id.clone(), "data-yi-shell-toggle" => "" }
+                    } else {
+                        attrs! {
+                            "aria-expanded" => if shell.sidebar_shown { "true" } else { "false" },
+                            "aria-controls" => shell.sidebar_id.clone(),
+                        }
                     }}
+                    command={shell.drawer_command.clone()}
                     on_click={shell.toggle_sidebar.reform(|_| ())}
                 />
             }

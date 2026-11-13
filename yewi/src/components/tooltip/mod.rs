@@ -5,7 +5,9 @@ use std::{cell::RefCell, rc::Rc};
 
 use yew::prelude::*;
 
-use crate::{AnchorOptions, Attrs, Placement, is_empty, use_anchored, use_id};
+use crate::{
+    AnchorOptions, Attrs, Placement, components::server_only::use_server_only, is_empty, use_anchored, use_id,
+};
 
 mod hint;
 
@@ -210,8 +212,9 @@ pub fn Tooltip(props: &TooltipProps) -> Html {
         use_memo(props.delay_ms, move |&delay_ms| Handlers::new(anchor, bubble, shown, delay_ms))
     };
 
+    let native = use_server_only();
     let available = !props.disabled && !is_empty(&props.tip);
-    let open = available && props.open.unwrap_or(*shown);
+    let open = !native && available && props.open.unwrap_or(*shown);
 
     let gap = if props.arrow { 9.0 } else { 6.0 };
     use_anchored(&anchor, &bubble, open, AnchorOptions::new(props.placement).offset(gap));
@@ -233,6 +236,41 @@ pub fn Tooltip(props: &TooltipProps) -> Html {
         format!("yi-tooltip__bubble--{}", props.variant.as_str()),
         props.arrow.then_some("yi-tooltip__bubble--arrow"),
     );
+
+    // Without a client the bubble is always in the page as a native popover
+    // the stylesheet places, and `BEHAVIOURS` shows it on hover and focus.
+    if native {
+        let bubble_class = classes!(
+            "yi-anchored",
+            "yi-anchored--native",
+            "yi-tooltip__bubble",
+            format!("yi-tooltip__bubble--{}", props.variant.as_str()),
+        );
+        return props.attrs.apply(html! {
+            <span
+                id={props.id.clone()}
+                {class}
+                tabindex={props.focusable.then_some("0")}
+                data-yi-popover="hover"
+                data-yi-delay={props.delay_ms.to_string()}
+            >
+                { props.children.clone() }
+                if available && props.open != Some(false) {
+                    <span
+                        id={tip_id}
+                        class={bubble_class}
+                        role="tooltip"
+                        popover="manual"
+                        data-yi-side={props.placement.side()}
+                        data-yi-align={props.placement.align()}
+                        data-yi-open={(props.open == Some(true)).then_some("")}
+                    >
+                        { props.tip.clone() }
+                    </span>
+                }
+            </span>
+        });
+    }
 
     props.attrs.apply(html! {
         <span

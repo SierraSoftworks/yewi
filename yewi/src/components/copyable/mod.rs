@@ -14,7 +14,11 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonVariant, Size, components::tooltip::use_hint, icons, is_empty, use_id};
+use crate::{
+    Attrs, Button, ButtonVariant, Icon, Size,
+    components::{server_only::use_server_only, tooltip::use_hint},
+    icons, is_empty, use_id,
+};
 
 mod dom;
 
@@ -82,6 +86,11 @@ pub fn use_clipboard() -> Clipboard {
 pub struct CopyButtonProps {
     /// The text put on the clipboard.
     pub value: AttrValue,
+    /// The id of an element that already shows the text. Inside
+    /// [`ServerOnly`](crate::ServerOnly) the button then copies that
+    /// element's text, so a long `value` is not sent a second time.
+    #[prop_or_default]
+    pub source: Option<AttrValue>,
     /// A visible label beside the icon. Without one the button is a square
     /// holding only the icon, named by `label`.
     #[prop_or_default]
@@ -121,6 +130,7 @@ pub struct CopyButtonProps {
 pub fn CopyButton(props: &CopyButtonProps) -> Html {
     let clipboard = use_clipboard();
     let state = clipboard.state;
+    let server_only = use_server_only();
 
     {
         let (value, on_copy, on_error) = (props.value.clone(), props.on_copy.clone(), props.on_error.clone());
@@ -170,6 +180,15 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
     if let Some(state) = state.as_attr() {
         attrs.push(("data-yi-state", AttrValue::Static(state)));
     }
+    if server_only {
+        // Read by `BEHAVIOURS`, which also sets `data-yi-state`.
+        match &props.source {
+            Some(source) => attrs.push(("data-yi-copy-from", source.clone())),
+            None => attrs.push(("data-yi-copy", props.value.clone())),
+        }
+        attrs.push(("data-yi-copied", props.copied_label.clone()));
+        attrs.push(("data-yi-failed", props.failed_label.clone()));
+    }
     attrs.extend(props.attrs.iter().map(|(key, value)| (key, value.clone())));
 
     html! {
@@ -179,11 +198,17 @@ pub fn CopyButton(props: &CopyButtonProps) -> Html {
             variant={props.variant}
             size={props.size}
             disabled={props.disabled}
-            {icon}
+            icon={(!server_only).then_some(icon)}
             attrs={Attrs::new(attrs)}
             {on_click}
             {node_ref}
         >
+            if server_only {
+                // Every outcome is in the page, and the state picks one.
+                <Icon icon={icons::COPY} class="yi-copy-button__icon yi-copy-button__icon--idle" />
+                <Icon icon={icons::CHECK} class="yi-copy-button__icon yi-copy-button__icon--copied" />
+                <Icon icon={icons::X} class="yi-copy-button__icon yi-copy-button__icon--failed" />
+            }
             if !icon_only {
                 if let Some(feedback) = feedback {
                     { feedback.clone() }

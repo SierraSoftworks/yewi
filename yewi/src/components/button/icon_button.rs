@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use super::{Button, ButtonKind, ButtonVariant};
+use super::{Button, ButtonKind, ButtonVariant, Command};
 use crate::{Attrs, IconData, NavTarget, Size, components::tooltip::use_hint};
 
 #[derive(Properties, PartialEq)]
@@ -38,6 +38,9 @@ pub struct IconButtonProps {
     /// Fired on activation. Not fired while `disabled` or `loading`.
     #[prop_or_default]
     pub on_click: Callback<MouseEvent>,
+    /// Opens or closes another element natively. Ignored on a link.
+    #[prop_or_default]
+    pub command: Option<Command>,
     /// A reference to the `<button>` or `<a>`.
     #[prop_or_default]
     pub node_ref: NodeRef,
@@ -72,6 +75,7 @@ pub fn IconButton(props: &IconButtonProps) -> Html {
             href={props.href.clone()}
             target={props.target.clone()}
             kind={props.kind}
+            command={props.command.clone()}
             on_click={props.on_click.clone()}
             node_ref={props.node_ref.clone()}
             class={classes!("yi-button--icon-only", props.class.clone())}

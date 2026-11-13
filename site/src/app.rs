@@ -21,6 +21,10 @@ pub enum Route {
     /// One example on a bare page: the fixture the browser tests drive.
     #[at("/_examples/:page/:example")]
     Example { page: String, example: String },
+    /// The same example as a server-only page: prerendered inside
+    /// `ServerOnly` into a document that loads no wasm.
+    #[at("/_static/:page/:example")]
+    Static { page: String, example: String },
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -139,6 +143,17 @@ fn switch(route: Route) -> Html {
         Route::GalleryHome => html! { <Gallery /> },
         Route::Gallery { slug } => html! { <Gallery {slug} /> },
         Route::Example { page, example } => html! { <shell::IsolatedExample {page} {example} /> },
+        Route::Static { page, example } => html! {
+            <yewi::ServerOnly>
+                if let Some(fixture) = crate::server_only::find(&page, &example) {
+                    <main class="docs-isolated">
+                        <div class="docs-isolated__stage" data-example={format!("{page}/{example}")}>{ fixture }</div>
+                    </main>
+                } else {
+                    <shell::IsolatedExample {page} {example} />
+                }
+            </yewi::ServerOnly>
+        },
         Route::NotFound => html! { <shell::NotFound /> },
     }
 }

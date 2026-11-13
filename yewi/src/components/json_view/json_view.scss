@@ -158,6 +158,11 @@
   color: var(--yi-fg-subtle);
 }
 
+// Inside `ServerOnly` the hint is always rendered, and not wanted while open.
+.yi-json-view__node[open] > .yi-json-view__summary > .yi-json-view__preview {
+  visibility: hidden;
+}
+
 // The rule sits under the centre of the chevron.
 .yi-json-view__children {
   margin-inline-start: calc(var(--yi-json-view-indent) / 2);

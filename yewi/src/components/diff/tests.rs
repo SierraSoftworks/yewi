@@ -160,3 +160,20 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"data-step="3""#));
 }
+
+#[test]
+fn without_a_client_folded_lines_are_in_the_page_but_hidden() {
+    let before: String = (0..40).map(|i| format!("line {i}\n")).collect();
+    let after = before.replace("line 20\n", "line twenty\n");
+    let diff = |server_only: bool| {
+        let (before, after) = (before.clone(), after.clone());
+        render(move || {
+            let diff = html! { <Diff before={before.clone()} after={after.clone()} context={2} /> };
+            if server_only { html! { <crate::ServerOnly script="/yewi.js">{ diff }</crate::ServerOnly> } } else { diff }
+        })
+    };
+    assert!(!diff(false).contains("line 5"));
+    let html = diff(true);
+    assert!(html.contains("line 5") && html.contains("data-yi-reveal"));
+    assert_eq!(html.matches(" hidden").count(), html.matches("data-yi-reveal").count());
+}

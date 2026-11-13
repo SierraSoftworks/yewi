@@ -81,7 +81,7 @@ pub struct DrawerProps {
 /// A modal panel attached to one edge of the viewport.
 #[function_component]
 pub fn Drawer(props: &DrawerProps) -> Html {
-    let modal = use_modal(props.open, props.dismissible, &props.on_close);
+    let modal = use_modal(props.open, props.dismissible, &props.id, &props.on_close);
     let title_id = use_id();
 
     let class = classes!(
@@ -93,25 +93,26 @@ pub fn Drawer(props: &DrawerProps) -> Html {
 
     props.attrs.apply(html! {
         <dialog
-            ref={modal.node}
-            id={props.id.clone()}
+            ref={modal.node.clone()}
+            id={modal.id.clone()}
             {class}
             aria-labelledby={props.title.is_some().then(|| title_id.clone())}
             aria-label={if props.title.is_none() { props.label.clone() } else { None }}
             closedby={modal.closedby}
-            onkeydown={modal.onkeydown}
-            oncancel={modal.oncancel}
-            onclose={modal.onclose}
-            onmousedown={modal.onmousedown}
-            onclick={modal.onclick}
+            data-yi-open={modal.open_on_load}
+            onkeydown={modal.onkeydown.clone()}
+            oncancel={modal.oncancel.clone()}
+            onclose={modal.onclose.clone()}
+            onmousedown={modal.onmousedown.clone()}
+            onclick={modal.onclick.clone()}
         >
-            if props.open {
+            if modal.rendered {
                 <div class="yi-drawer__surface">
                     if let Some(title) = &props.title {
                         <header class="yi-drawer__head">
                             <h2 class="yi-drawer__title" id={title_id}>{ title.clone() }</h2>
                             if props.dismissible {
-                                { close_button(&props.close_label, modal.close) }
+                                { close_button(&props.close_label, &modal) }
                             }
                         </header>
                     }

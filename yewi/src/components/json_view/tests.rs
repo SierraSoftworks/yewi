@@ -217,3 +217,18 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"data-host="fra-01""#));
 }
+
+#[test]
+fn without_a_client_folded_branches_are_in_the_page_for_the_browser_to_open() {
+    let value = Json::parse(r#"{"outer": {"inner": {"leaf": 1}}}"#).unwrap();
+    let folded = {
+        let value = value.clone();
+        render(move || html! { <JsonView value={value.clone()} open={0} /> })
+    };
+    let server_only = render(move || {
+        html! { <crate::ServerOnly script="/yewi.js"><JsonView value={value.clone()} open={0} /></crate::ServerOnly> }
+    });
+    assert!(!folded.contains("leaf"));
+    assert!(server_only.contains("leaf"));
+    assert!(!server_only.contains("<details open"));
+}

@@ -4,7 +4,9 @@
 //!   prerender <dist>
 //!
 //! Besides the pages it writes `yewi.css`, plus `examples.json` and
-//! `pages.json`: the routes the browser tests iterate over.
+//! `pages.json`: the routes the browser tests iterate over. Every example is
+//! also written under `_static/` as a server-only page: rendered inside
+//! `ServerOnly`, in a document that never loads the wasm.
 
 use std::{env, fs, path::Path};
 
@@ -32,6 +34,7 @@ async fn main() {
     let pages: Vec<String> = routes.iter().map(|route| format!("{:?}", route.to_path())).collect();
 
     let mut examples = Vec::new();
+    let mut statics = Vec::new();
     for page in PAGES {
         for example in page.def.examples {
             let route = Route::Example { page: page.slug.to_owned(), example: example.slug() };
@@ -43,13 +46,22 @@ async fn main() {
                 route.to_path(),
             ));
             routes.push(route);
+            statics.push(Route::Static { page: page.slug.to_owned(), example: example.slug() });
         }
     }
+    let client_routes = routes.len();
+    routes.extend(statics);
+    routes.extend(yewi_site::server_only::FIXTURES.iter().map(|fixture| Route::Static {
+        page: yewi_site::server_only::PAGE.to_owned(),
+        example: fixture.name.to_owned(),
+    }));
+    let server_only = without_client(&template);
 
     let local = tokio::task::LocalSet::new();
-    for route in &routes {
+    for (index, route) in routes.iter().enumerate() {
         let path = route.to_path();
         let body = local.run_until(render(&path)).await;
+        let template = if index < client_routes { &template } else { &server_only };
         let html = template
             .replace(MOUNT, &format!(r#"<div id="app" data-prerendered>{body}</div>"#))
             .replace("</head>", &format!(r#"<link rel="stylesheet" href="{BASE}yewi.css" id="yewi-styles"></head>"#));
@@ -90,6 +102,28 @@ fn without_vendor_preloads(template: &str) -> String {
         }
         rest = &rest[end..];
     }
+    out + rest
+}
+
+/// The document without the scripts and preloads that start the wasm.
+fn without_client(template: &str) -> String {
+    let mut out = String::with_capacity(template.len());
+    let mut rest = template;
+    while let Some(start) = rest.find('<') {
+        let tag = &rest[start..];
+        let end = if tag.starts_with("<script type=\"module\"") {
+            tag.find("</script>").expect("unclosed <script>") + "</script>".len()
+        } else if tag.starts_with("<link rel=\"modulepreload\"") || tag.starts_with("<link rel=\"preload\"") {
+            tag.find('>').expect("unclosed <link>") + 1
+        } else {
+            out.push_str(&rest[..=start]);
+            rest = &rest[start + 1..];
+            continue;
+        };
+        out.push_str(&rest[..start]);
+        rest = &rest[start + end..];
+    }
+    assert!(!(out.clone() + rest).contains(".wasm"), "the server-only document still names the wasm");
     out + rest
 }
 

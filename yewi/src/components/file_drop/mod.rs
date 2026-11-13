@@ -12,7 +12,10 @@ use std::rc::Rc;
 use yew::prelude::*;
 
 use crate::is_empty;
-use crate::{Attrs, FieldContext, Icon, IconData, Size, Spinner, icons, use_field_control, use_id};
+use crate::{
+    Attrs, FieldContext, Icon, IconData, Size, Spinner, components::server_only::use_server_only, icons,
+    use_field_control, use_id,
+};
 
 /// A file the user chose or dropped.
 #[derive(Debug, Clone, PartialEq)]
@@ -145,15 +148,17 @@ mod dom {
             .collect()
     }
 
-    /// The files picked in the `<input>` a `change` event came from. The
-    /// input is then emptied: choosing the same file twice in a row would
-    /// otherwise raise no second event.
-    pub fn chosen(event: &Event) -> Vec<SelectedFile> {
+    /// The files picked in the `<input>` a `change` event came from. Unless
+    /// it is to `keep` them for a form, the input is then emptied: choosing
+    /// the same file twice in a row would otherwise raise no second event.
+    pub fn chosen(event: &Event, keep: bool) -> Vec<SelectedFile> {
         let Some(input) = event.target() else {
             return Vec::new();
         };
         let found = files(&get(&input, "files"));
-        let _ = Reflect::set(&input, &"value".into(), &"".into());
+        if !keep {
+            let _ = Reflect::set(&input, &"value".into(), &"".into());
+        }
         found
     }
 
@@ -174,7 +179,7 @@ mod dom {
 
     use super::SelectedFile;
 
-    pub fn chosen(_: &Event) -> Vec<SelectedFile> {
+    pub fn chosen(_: &Event, _: bool) -> Vec<SelectedFile> {
         Vec::new()
     }
 
@@ -197,6 +202,10 @@ pub struct FileDropProps {
     /// say so. Rejected files never reach `on_files`.
     #[prop_or_default]
     pub on_reject: Callback<Vec<RejectedFile>>,
+    /// The name the files are submitted under in a native form. The input
+    /// then keeps what was chosen, which is what the form sends.
+    #[prop_or_default]
+    pub name: Option<AttrValue>,
     /// What to drop, in the imperative. Defaults to "Drop a file here, or
     /// choose one" (or its plural with `multiple`).
     #[prop_or_default]
@@ -254,12 +263,14 @@ pub struct FileDropProps {
 
 /// A zone that takes files by drag and drop, by click or from the keyboard.
 /// It reports the files and keeps none: the caller lists, uploads or
-/// discards them.
+/// discards them. With a `name` it is a form control instead, and inside
+/// `ServerOnly` it then shows the names of the files chosen.
 #[function_component]
 pub fn FileDrop(props: &FileDropProps) -> Html {
     let control = use_field_control(props.input_id.clone(), props.invalid, props.required, props.disabled);
     let field = use_context::<FieldContext>();
     let base = use_id();
+    let server_only = use_server_only();
     let over = use_state_eq(|| false);
     let blocked = control.disabled || props.busy;
 
@@ -289,7 +300,8 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
         })
     };
 
-    let onchange = deliver.reform(|event: Event| dom::chosen(&event));
+    let named = props.name.is_some();
+    let onchange = deliver.reform(move |event: Event| dom::chosen(&event, named));
     let ondragover = {
         let over = over.clone();
         Callback::from(move |event: DragEvent| {
@@ -337,6 +349,7 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
             id={props.id.clone()}
             {class}
             aria-busy={props.busy.then_some("true")}
+            data-yi-file-drop={server_only.then_some("")}
             ondragenter={ondragover.clone()}
             {ondragover}
             {ondragleave}
@@ -347,6 +360,8 @@ pub fn FileDrop(props: &FileDropProps) -> Html {
                 class="yi-file-drop__input"
                 type="file"
                 id={control.id.clone()}
+                name={props.name.clone()}
+                required={server_only && control.required}
                 accept={props.accept.clone()}
                 multiple={props.multiple}
                 disabled={blocked}

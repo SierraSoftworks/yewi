@@ -25,6 +25,7 @@ e2e/tests/<name>.spec.ts         behaviour specs
 
 ### Server-safe rendering
 - The first render must not depend on the browser. Touch `web_sys` only in effects and event handlers, behind `#[cfg(target_arch = "wasm32")]`.
+- Behaviour that should survive on a page without wasm is declared, not only coded: inside `ServerOnly` (`use_server_only()`), render `data-yi-*` attributes that `components/server_only/behaviours.js` acts on, and cover it in `e2e/tests/server_only.spec.ts` through the `serverOnly` fixture. Prefer markup the browser operates by itself.
 - Use `use_id()` for element ids and `use_now()` for the time.
 - Prefer state the browser already keeps (native elements, `:has()`, `popover`, `<dialog>`) over state in Rust.
 

@@ -158,3 +158,56 @@ fn confirm_is_ready_only_when_every_condition_is_met() {
         );
     }
 }
+
+fn confirm_for_a_form() -> Html {
+    html! {
+        <crate::ServerOnly>
+            <ConfirmDialog
+                id="confirm"
+                form="forget"
+                title="Forget pi-1?"
+                confirm_label="Forget"
+                acknowledge="I have drained it"
+                type_to_confirm="pi-1.lan"
+            />
+        </crate::ServerOnly>
+    }
+}
+
+#[test]
+fn inside_server_only_a_closed_dialog_has_its_content_and_closes_natively() {
+    let html = render(|| html! { <crate::ServerOnly><Dialog id="details" title="Details">{ "Body text" }</Dialog></crate::ServerOnly> });
+    assert!(html.contains("Body text"));
+    assert!(html.contains(r#"commandfor="details""#) && html.contains(r#"command="close""#));
+    assert!(html.contains(r#"closedby="any""#));
+    assert!(!html.contains("data-yi-open="));
+
+    let outside = render(|| html! { <Dialog id="details" title="Details">{ "Body text" }</Dialog> });
+    assert!(!outside.contains("Body text") && !outside.contains("commandfor"));
+}
+
+#[test]
+fn inside_server_only_an_open_dialog_asks_to_be_shown_on_load() {
+    let html = render(|| html! { <crate::ServerOnly><Dialog title="Notice" open=true /></crate::ServerOnly> });
+    assert!(html.contains("data-yi-open="));
+    assert!(html.contains(r#"commandfor="yi-"#), "a dialog without an id gets one to close by");
+}
+
+#[test]
+fn a_confirmation_for_a_form_submits_it_and_leaves_the_checks_to_the_browser() {
+    let html = render(confirm_for_a_form);
+    assert!(html.contains(r#"type="submit""#));
+    // The confirm button, the statement and the word box all join the form.
+    assert_eq!(html.matches(r#"form="forget""#).count(), 3);
+    assert_eq!(html.matches(" required").count(), 2);
+    assert!(html.contains(r#"commandfor="confirm""#));
+}
+
+#[test]
+fn the_word_pattern_matches_only_the_word() {
+    let cases =
+        [("pi-1", r"\s*pi-1\s*"), ("pi-1.lan", r"\s*pi-1\.lan\s*"), ("a+b (c)", r"\s*a\+b \(c\)\s*")];
+    for (word, expected) in cases {
+        assert_eq!(pattern(word), expected, "{word:?}");
+    }
+}

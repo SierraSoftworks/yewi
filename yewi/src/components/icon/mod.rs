@@ -1,4 +1,4 @@
-//! A stroked SVG icon.
+//! An SVG icon: stroked, or filled for solid glyphs.
 
 use yew::prelude::*;
 
@@ -33,7 +33,7 @@ pub fn Icon(props: &IconProps) -> Html {
     props.attrs.apply(html! {
         <svg
             id={props.id.clone()}
-            class={classes!("yi-icon", props.class.clone())}
+            class={classes!("yi-icon", props.icon.is_filled().then_some("yi-icon--filled"), props.class.clone())}
             {style}
             viewBox="0 0 24 24"
             role={(!decorative).then_some("img")}
@@ -64,5 +64,13 @@ mod tests {
         assert!(html.contains(r#"role="img""#));
         assert!(html.contains(r#"aria-label="Passed""#));
         assert!(!html.contains("aria-hidden"));
+    }
+
+    #[test]
+    fn only_filled_data_is_drawn_filled() {
+        let filled = yewi_test::render(|| html! { <Icon icon={IconData::filled("M0 0h24v24H0z")} /> });
+        let stroked = yewi_test::render(|| html! { <Icon icon={icons::CHECK} /> });
+        assert!(filled.contains("yi-icon--filled"));
+        assert!(!stroked.contains("yi-icon--filled"));
     }
 }

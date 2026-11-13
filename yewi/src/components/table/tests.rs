@@ -243,3 +243,38 @@ fn simple_table_frames_hand_written_markup() {
     assert!(html.contains(r#"data-yi-density="compact""#));
     assert!(html.contains("10rem"));
 }
+
+#[test]
+fn a_selection_name_makes_each_row_box_submit_its_key() {
+    let html = render(|| {
+        let name = RowFn::new(|host: &Host| AttrValue::from(host.name));
+        html! {
+            <Table<Host>
+                columns={columns()}
+                rows={hosts()}
+                row_key={name}
+                selected={Selection::default()}
+                select_name="host"
+            />
+        }
+    });
+    assert_eq!(html.matches(r#"name="host""#).count(), hosts().len());
+    for host in hosts().iter() {
+        assert!(html.contains(&format!(r#"value="{}""#, host.name)));
+    }
+}
+
+#[test]
+fn without_a_client_details_are_in_the_page_but_hidden() {
+    let html = render(|| {
+        let detail = RowFn::new(|host: &Host| html! { <p>{ format!("Details of {}", host.name) }</p> });
+        html! {
+            <crate::ServerOnly script="/yewi.js">
+                <Table<Host> columns={columns()} rows={hosts()} {detail} />
+            </crate::ServerOnly>
+        }
+    });
+    assert_eq!(html.matches("Details of").count(), hosts().len());
+    assert_eq!(html.matches(" hidden").count(), hosts().len());
+    assert_eq!(html.matches("data-yi-row-toggle").count(), hosts().len());
+}

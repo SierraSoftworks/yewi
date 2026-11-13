@@ -17,3 +17,83 @@
     visibility: hidden;
   }
 }
+
+// Inside `ServerOnly` the browser places the element: its wrapper is a CSS
+// anchor, scoped so that every popover finds its own, and the side asked for
+// flips when there is no room. There is no arrow, which would need to know
+// where the element ended up.
+[data-yi-popover] {
+  anchor-name: --yi-popover;
+  anchor-scope: --yi-popover;
+}
+
+.yi-anchored--native {
+  --yi-anchor-offset: 6px;
+
+  position-anchor: --yi-popover;
+  position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  inset: auto;
+  margin: var(--yi-anchor-offset);
+
+  // A component's own `display` would show it closed.
+  &:not(:popover-open) {
+    display: none;
+  }
+
+  &[data-yi-side="top"] {
+    position-area: top;
+  }
+
+  &[data-yi-side="bottom"] {
+    position-area: bottom;
+  }
+
+  &[data-yi-side="left"] {
+    position-area: left;
+  }
+
+  &[data-yi-side="right"] {
+    position-area: right;
+  }
+
+  // Lined up with an edge of the trigger, the margin would push it inwards.
+  &:is([data-yi-side="top"], [data-yi-side="bottom"]):not([data-yi-align="center"]) {
+    margin-inline: 0;
+  }
+
+  &:is([data-yi-side="left"], [data-yi-side="right"]):not([data-yi-align="center"]) {
+    margin-block: 0;
+  }
+
+  &[data-yi-side="top"][data-yi-align="start"] {
+    position-area: top span-right;
+  }
+
+  &[data-yi-side="top"][data-yi-align="end"] {
+    position-area: top span-left;
+  }
+
+  &[data-yi-side="bottom"][data-yi-align="start"] {
+    position-area: bottom span-right;
+  }
+
+  &[data-yi-side="bottom"][data-yi-align="end"] {
+    position-area: bottom span-left;
+  }
+
+  &[data-yi-side="left"][data-yi-align="start"] {
+    position-area: left span-bottom;
+  }
+
+  &[data-yi-side="left"][data-yi-align="end"] {
+    position-area: left span-top;
+  }
+
+  &[data-yi-side="right"][data-yi-align="start"] {
+    position-area: right span-bottom;
+  }
+
+  &[data-yi-side="right"][data-yi-align="end"] {
+    position-area: right span-top;
+  }
+}

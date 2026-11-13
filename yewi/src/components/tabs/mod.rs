@@ -5,7 +5,9 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, NavTarget, Size, nav_target::use_nav_link, use_id};
+use crate::{
+    Attrs, Icon, IconData, NavTarget, Size, components::server_only::use_server_only, nav_target::use_nav_link, use_id,
+};
 
 /// How a row of tabs is drawn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -127,6 +129,9 @@ pub struct TabsProps {
 #[function_component]
 pub fn Tabs(props: &TabsProps) -> Html {
     let base = use_id();
+    // Without a client every panel is in the page, for `BEHAVIOURS` to show.
+    let server_only = use_server_only();
+    let keep_mounted = props.keep_mounted || server_only;
     let own = use_state(|| props.default_selected.clone());
 
     let tabs: Vec<Rc<TabProps>> = props.children.iter().map(|tab| tab.props).collect();
@@ -175,7 +180,7 @@ pub fn Tabs(props: &TabsProps) -> Html {
                 }
             })
         };
-        let rendered = is_selected || props.keep_mounted;
+        let rendered = is_selected || keep_mounted;
 
         html! {
             <button
@@ -196,7 +201,7 @@ pub fn Tabs(props: &TabsProps) -> Html {
         }
     });
 
-    let panels = tabs.iter().enumerate().filter(|(index, _)| props.keep_mounted || selected == Some(*index)).map(
+    let panels = tabs.iter().enumerate().filter(|(index, _)| keep_mounted || selected == Some(*index)).map(
         |(index, tab)| {
             html! {
                 <div
@@ -215,7 +220,11 @@ pub fn Tabs(props: &TabsProps) -> Html {
     );
 
     props.attrs.apply(html! {
-        <div id={props.id.clone()} class={root_class(props.variant, props.size, &props.class)}>
+        <div
+            id={props.id.clone()}
+            class={root_class(props.variant, props.size, &props.class)}
+            data-yi-tabs={server_only.then_some(if props.manual { "manual" } else { "" })}
+        >
             <div class="yi-tabs__list" role="tablist" aria-label={props.label.clone()}>
                 { for buttons }
             </div>

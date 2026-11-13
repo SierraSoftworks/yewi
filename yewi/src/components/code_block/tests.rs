@@ -96,3 +96,10 @@ fn id_class_and_attrs_reach_the_root_element() {
     let root = &html[..html.find('>').unwrap()];
     assert!(root.contains(r#"id="sample""#) && root.contains("mine") && root.contains(r#"aria-label="Sample""#));
 }
+
+#[test]
+fn a_code_block_points_its_copy_button_at_the_code() {
+    let html = render(|| html! { <crate::ServerOnly><CodeBlock code="let a = 1;" /></crate::ServerOnly> });
+    let id = html.split(r#"data-yi-copy-from=""#).nth(1).and_then(|rest| rest.split('"').next()).expect("no source");
+    assert!(html.contains(&format!(r#"<code id="{id}""#)));
+}

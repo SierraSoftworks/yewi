@@ -1,0 +1,18 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-cluster">
+<svg style="--yi-icon-size:32px" viewBox="0 0 24 24" role="img" aria-label="Frame" focusable="false" class="yi-icon yi-icon--filled">
+<path d="M3 3h18v18H3zM8 8v8h8V8z">
+</path>
+</svg>
+<svg style="--yi-icon-size:32px" viewBox="0 0 24 24" role="img" aria-label="Diamond" focusable="false" class="yi-icon yi-icon--filled">
+<path d="M12 2l10 10-10 10L2 12z">
+</path>
+</svg>
+<button type="button" class="yi-button yi-button--default yi-button--md">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-icon--filled">
+<path d="M12 2l10 10-10 10L2 12z">
+</path>
+</svg>With a solid icon</button>
+</div>

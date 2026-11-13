@@ -16,45 +16,43 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 }
 
 /// Components with nothing to run, or whose behaviour is the browser's own.
-const COMPLETE: &str = "AppBar, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
-                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, Spinner, Loading, \
-                        Markdown, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
-                        SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
-                        TextInput, TextArea, ThemeScript, ToggleSwitch, VisuallyHidden";
+const COMPLETE: &str = "AppBar, AppShell, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Diff, Divider, Duration, EmptyState, \
+                        Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Dialog, ConfirmDialog, Drawer, Spinner, Loading, \
+                        Markdown, NotificationPanel, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
+                        SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Tabs, Terminal, Text, \
+                        TextInput, TextArea, ThemeScript, ThemeToggle, Timeline, ToggleSwitch, Tooltip, TopMenu, VisuallyHidden";
 
 const PARTIAL: &[Row] = &[
     row(
-        "AppShell",
-        "The layout on a wide screen",
-        "Hiding the sidebar, and all navigation on a narrow screen",
-        "Repeat the destinations in a TopMenu with TopMenuCollapse::Never",
+        "Popover",
+        "Opening on a press or on hover, and closing",
+        "The Focus and Manual triggers, and the arrow",
+        "Use PopoverTrigger::Click or Hover",
     ),
-    row("TopMenu", "The row of links", "Groups and the collapsed dropdown", "Use TopMenuCollapse::Never and no groups"),
-    row("Tabs", "The selected panel", "Switching panels", "TabNav, with one page per tab"),
+    row(
+        "Menu, MenuButton, SplitButton, UserMenu",
+        "Opening, the keyboard, links, and items with a form or a command",
+        "on_select, and checked items that change",
+        "Give each item an href, a form or a command",
+    ),
     row(
         "Table, SimpleTable",
-        "Rows and links",
-        "Sorting, selection and expandable rows",
+        "Rows, links, row details, and selection submitted through select_name",
+        "Sorting, on_select and on_row_click",
         "Sort on the server, using a link for each order",
     ),
     row(
         "JsonView",
-        "The source, and nodes that start open",
-        "Opening a folded node",
-        "Use JsonViewVariant::Source, or open more levels up front",
+        "Folding and copying; the whole document is sent, however large",
+        "Paging through long branches",
+        "Use JsonViewVariant::Source for a large document",
     ),
-    row(
-        "Diff",
-        "The diff",
-        "Revealing folded lines and switching views",
-        "Set the context large enough that nothing folds",
-    ),
-    row("CodeBlock", "The code and its highlighting", "Copying and the wrap toggle", "Set copy=false"),
+    row("CodeBlock", "The code, its highlighting and copying", "The wrap toggle", "Set wrap on the server"),
     row(
         "NumberInput",
-        "Typing and submitting",
-        "The stepper, arrow keys and clamping",
-        "Set stepper=false and validate on the server",
+        "Typing, stepping, clamping and submitting",
+        "Reporting each edit",
+        "Read the value from the submitted form",
     ),
     row(
         "InputGroup, SearchInput",
@@ -65,9 +63,9 @@ const PARTIAL: &[Row] = &[
     row("SecretInput", "Typing and submitting", "The show toggle and the generator", "No alternative"),
     row(
         "FileDrop",
-        "Opening the picker",
-        "Reporting files, since it has no form name",
-        "Use a native file input inside a Field",
+        "Choosing and dropping files, naming them, and submitting them with a name",
+        "on_files, on_reject, and checking a dropped file against accept and max_size",
+        "Check the files on the server",
     ),
     row(
         "Alert, Banner, Note, Tag",
@@ -84,17 +82,11 @@ const PARTIAL: &[Row] = &[
     row("BarList", "Bars and links", "Expanding, paging, filtering", "Pass every row you want to show"),
     row(
         "Timestamp, Countdown",
-        "The text as rendered, in the server's time zone",
-        "Ticking, local time and the tooltip",
+        "The text as rendered and the exact time on hover, both in UTC",
+        "Ticking and the viewer's local time",
         "Use TimestampDisplay::DateTime",
     ),
-    row(
-        "HistoryStrip, Timeline",
-        "Cells, events and links",
-        "Detail on hover",
-        "Link each cell or event to its own page",
-    ),
-    row("Menu", "Items and links shown in the page", "Arrow keys and type-ahead", "No alternative"),
+    row("HistoryStrip", "Cells and links", "Detail on hover", "Link each cell to its own page"),
     row(
         "Chart, Sparkline",
         "The whole drawing",
@@ -106,21 +98,7 @@ const PARTIAL: &[Row] = &[
 ];
 
 const INERT: &[Row] = &[
-    row(
-        "CopyButton, Copyable, SecretValue, SecretReveal",
-        "",
-        "Copying, revealing",
-        "Show the value so the reader can select it",
-    ),
-    row("Dialog, ConfirmDialog, Drawer", "", "Opening and closing", "Use a separate confirmation page"),
-    row(
-        "MenuButton, SplitButton, UserMenu, NotificationPanel, Popover",
-        "",
-        "Opening",
-        "Put links directly in the page",
-    ),
-    row("Tooltip", "", "Showing", "Use visible text, or a native title"),
-    row("ThemeToggle", "", "Changing the theme", "ThemeScript on its own follows the system setting"),
+    row("SecretValue, SecretReveal", "", "Revealing a concealed value", "Show the value; its copy button works"),
     row("Select", "", "Opening", "Use NativeSelect, or a RadioGroup with a name"),
     row(
         "Combobox, TagPicker, TreeSelect, QueryInput",
@@ -171,6 +149,28 @@ pub fn render() -> Html {
                    component, explains what still works, and suggests what to use instead." }
             </p>
 
+            <h2>{ "Opting in" }</h2>
+            <p>
+                { "Wrap the page in " }<code>{ "ServerOnly" }</code>
+                { ". Components inside it render markup that works on its own, and one small script, " }
+                <code>{ "yewi::BEHAVIOURS" }</code>
+                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, dropped files, tabs, table rows, and opening menus, popovers and tooltips. Serve the script \
+                   from a cached route, or leave " }<code>{ "script" }</code>
+                { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
+                   page inside " }<code>{ "ServerOnly" }</code>{ "." }
+            </p>
+            { rust(r#"
+html! {
+    <ServerOnly script="/static/yewi.js">
+        <Page />
+    </ServerOnly>
+}
+
+async fn behaviours() -> impl Responder {
+    HttpResponse::Ok().content_type("text/javascript").body(yewi::BEHAVIOURS)
+}
+"#) }
+
             <h2>{ "How server-only pages behave" }</h2>
             <ul>
                 <li>{ "The browser holds the state. A prop such as " }<code>{ "checked" }</code>{ " or " }
@@ -187,6 +187,47 @@ pub fn render() -> Html {
     <Checkbox name="private" label="Private" />
     <Button variant={ButtonVariant::Primary} kind={ButtonKind::Submit}>{ "Create" }</Button>
 </form>
+"#) }
+
+            <h2>{ "Dialogs and confirmations" }</h2>
+            <p>
+                { "A Dialog, ConfirmDialog or Drawer keeps its content in the page, and a button opens it by \
+                   naming its id. Escape, the backdrop and the close button close it. Give a ConfirmDialog the id \
+                   of a " }<code>{ "form" }</code>
+                { " and its confirm button submits that form; a statement to tick or a word to type become \
+                   required fields, so the browser holds the submit back until they are done. " }
+                <code>{ "open" }</code>{ " shows the dialog when the page loads." }
+            </p>
+            { rust(r#"
+<form id="forget" method="post" action="/hosts/pi-1/forget" />
+<Button variant={ButtonVariant::Danger} command={Command::show_modal("confirm-forget")}>
+    { "Forget pi-1" }
+</Button>
+<ConfirmDialog
+    id="confirm-forget"
+    form="forget"
+    title="Forget pi-1?"
+    confirm_label="Forget pi-1"
+    danger=true
+    type_to_confirm="pi-1"
+/>
+"#) }
+
+            <h2>{ "Menus, popovers and tooltips" }</h2>
+            <p>
+                { "A Popover, Tooltip or menu keeps its content in the page as a native popover. The script \
+                   opens it and handles the keyboard, and the browser places it beside its trigger with CSS \
+                   anchor positioning, which needs Chrome 131, Firefox 147 or Safari 26. A menu item acts \
+                   through an " }<code>{ "href" }</code>{ ", a " }<code>{ "form" }</code>
+                { " it submits, or a " }<code>{ "command" }</code>{ " such as opening a ConfirmDialog." }
+            </p>
+            { rust(r#"
+<form id="host" method="post" action="/hosts/pi-1" />
+<MenuButton label="Host">
+    <MenuItem href="/hosts/pi-1/logs">{ "Logs" }</MenuItem>
+    <MenuItem form="host" name="action" value="restart">{ "Restart" }</MenuItem>
+    <MenuItem command={Command::show_modal("confirm-forget")}>{ "Forget" }</MenuItem>
+</MenuButton>
 "#) }
 
             <h2>{ "Components that work fully" }</h2>
