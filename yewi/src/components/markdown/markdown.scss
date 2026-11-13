@@ -5,14 +5,16 @@
 // components.
 @use "api" as *;
 
-.yi-markdown {
+:where(.yi-markdown) {
   // Component tokens
   --yi-markdown-gap: var(--yi-space-md); // Space between blocks.
   --yi-markdown-heading-gap: var(--yi-space-xl); // Space above a heading.
   --yi-markdown-indent: var(--yi-space-xl); // Indent of lists.
   --yi-markdown-quote-line: var(--yi-line-strong); // Rule beside a quote.
   --yi-markdown-quote-fg: var(--yi-fg-muted);
+}
 
+.yi-markdown {
   line-height: var(--yi-leading-relaxed);
   overflow-wrap: break-word;
 

@@ -5,7 +5,7 @@
 // options are Select's (`.yi-select__*`), so the two never drift apart.
 @use "api" as *;
 
-.yi-tag-picker {
+:where(.yi-tag-picker) {
   // Component tokens
   --yi-tag-picker-gap: var(--yi-space-xs); // between tags, and between lines
   --yi-tag-picker-tag-height: 1.375rem;

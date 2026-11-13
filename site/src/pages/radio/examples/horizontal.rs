@@ -15,7 +15,7 @@ pub fn Example() -> Html {
                 <RadioGroup
                     value={(*format).clone()}
                     {on_change}
-                    orientation={RadioOrientation::Horizontal}
+                    orientation={Orientation::Horizontal}
                 >
                     <Radio value="json">{ "JSON" }</Radio>
                     <Radio value="csv">{ "CSV" }</Radio>

@@ -1,10 +1,12 @@
 // Duration
 @use "api" as *;
 
-.yi-duration {
+:where(.yi-duration) {
   // Component tokens
   --yi-duration-color: inherit;
+}
 
+.yi-duration {
   color: var(--yi-duration-color);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;

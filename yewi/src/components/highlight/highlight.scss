@@ -1,21 +1,20 @@
 // Highlight
 //
-// One colour per token kind. The palette is six hues and a grey, each at
-// least 4.5:1 against `--yi-code-bg` in both themes. An app restyles code by
+// One colour per token kind, from the `--yi-syntax-*` palette. An app restyles code by
 // setting the tokens below, on `:root` or on any ancestor of the code. They
 // are declared on the root so that such an override is inherited.
 @use "api" as *;
 
-:root {
+:where(:root) {
   // Component tokens
-  --yi-highlight-comment: var(--yi-fg-subtle);
-  --yi-highlight-keyword: light-dark(#8f3a80, #d58bd0);
-  --yi-highlight-string: light-dark(#146f43, #4cbf7f);
-  --yi-highlight-number: light-dark(#855900, #e0a93a);
+  --yi-highlight-comment: var(--yi-syntax-comment);
+  --yi-highlight-keyword: var(--yi-syntax-keyword);
+  --yi-highlight-string: var(--yi-syntax-string);
+  --yi-highlight-number: var(--yi-syntax-number);
   --yi-highlight-literal: var(--yi-highlight-number);
-  --yi-highlight-type: light-dark(#0b6a75, #5cc4cf);
-  --yi-highlight-function: light-dark(#2a63b5, #7aaef0);
-  --yi-highlight-property: light-dark(#a8382c, #f0907f);
+  --yi-highlight-type: var(--yi-syntax-type);
+  --yi-highlight-function: var(--yi-syntax-function);
+  --yi-highlight-property: var(--yi-syntax-property);
   --yi-highlight-tag: var(--yi-highlight-property);
   --yi-highlight-variable: var(--yi-highlight-property);
   --yi-highlight-meta: var(--yi-highlight-number);

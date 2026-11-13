@@ -5,12 +5,14 @@
 // table is `.yi-table` with rows of one height between two spacer rows.
 @use "api" as *;
 
-.yi-virtual-list {
+:where(.yi-virtual-list) {
   // Component tokens
   --yi-virtual-list-max-height: 24rem;
   --yi-virtual-list-line: var(--yi-line); // the rule between rows of a ruled list
   --yi-virtual-list-padding-inline: 0px;
+}
 
+.yi-virtual-list {
   max-block-size: var(--yi-virtual-list-max-height);
   overflow: auto;
   // The window moves under the reader on purpose; anchoring would fight it.

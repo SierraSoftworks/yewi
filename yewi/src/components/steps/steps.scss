@@ -5,14 +5,16 @@
 // Each status sets the marker tokens; nothing else varies by status.
 @use "api" as *;
 
-.yi-steps {
+:where(.yi-steps) {
   // Component tokens
   --yi-steps-marker-size: 1.75rem;
   --yi-steps-rail: var(--yi-line-strong); // the line between two steps
   --yi-steps-rail-done: var(--yi-ok); // the line after a finished step
   --yi-steps-rail-width: 2px;
   --yi-steps-gap: var(--yi-space-lg); // space under a vertical step
+}
 
+.yi-steps {
   container-type: inline-size;
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-md);
@@ -125,7 +127,7 @@
     border-radius: inherit;
 
     @include motion {
-      animation: yi-step-turn 1.1s linear infinite;
+      animation: yi-step-turn var(--yi-duration-spin) linear infinite;
     }
   }
 }

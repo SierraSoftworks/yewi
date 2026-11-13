@@ -4,10 +4,12 @@
 // `.yi-text` is indistinguishable from the text around it.
 @use "api" as *;
 
-.yi-text {
+:where(.yi-text) {
   // Component tokens
   --yi-text-lines: 2; // Lines kept by the `lines` clamp.
+}
 
+.yi-text {
   // Element defaults carry no extra specificity, so any modifier below wins.
   &:where(strong) {
     font-weight: 600;
@@ -50,7 +52,7 @@
     color: var(--yi-accent-text);
   }
 
-  @each $tone in ("neutral", "ok", "warn", "danger", "info", "active") {
+  @each $tone in $tones {
     &--#{$tone} {
       color: var(--yi-#{$tone});
     }

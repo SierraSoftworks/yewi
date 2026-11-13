@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::Attrs;
+use crate::{Attrs, Orientation};
 
 #[derive(Properties, PartialEq)]
 pub struct ButtonGroupProps {
@@ -11,9 +11,10 @@ pub struct ButtonGroupProps {
     /// announce "group".
     #[prop_or_default]
     pub label: Option<AttrValue>,
-    /// Stacks the buttons in a column, for controls docked to an edge.
-    #[prop_or_default]
-    pub vertical: bool,
+    /// `Vertical` stacks the buttons in a column, for controls docked to an
+    /// edge. Horizontal by default.
+    #[prop_or(Orientation::Horizontal)]
+    pub orientation: Orientation,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -30,7 +31,7 @@ pub struct ButtonGroupProps {
 #[function_component]
 pub fn ButtonGroup(props: &ButtonGroupProps) -> Html {
     let class =
-        classes!("yi-button-group", props.vertical.then_some("yi-button-group--vertical"), props.class.clone());
+        classes!("yi-button-group", (props.orientation == Orientation::Vertical).then_some("yi-button-group--vertical"), props.class.clone());
 
     props.attrs.apply(html! {
         <div id={props.id.clone()} {class} role="group" aria-label={props.label.clone()}>

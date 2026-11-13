@@ -4,17 +4,19 @@
 // `__surface` covers, so a click on the element itself is on the backdrop.
 @use "api" as *;
 
-.yi-drawer {
+:where(.yi-drawer) {
   // Component tokens
   --yi-drawer-width: 28.75rem; // `size` sets it.
   --yi-drawer-padding: var(--yi-space-xl);
   --yi-drawer-gutter: var(--yi-space-3xl); // Page left visible beside it on a narrow screen.
   --yi-drawer-bg: var(--yi-surface-raised);
   --yi-drawer-foot-bg: var(--yi-tone-1);
-  --yi-drawer-scrim: light-dark(rgb(20 26 34 / 0.38), rgb(0 0 0 / 0.45));
+  --yi-drawer-scrim: var(--yi-scrim);
   // Where it slides in from, as a share of its own width.
   --yi-drawer-from: 100%;
+}
 
+.yi-drawer {
   inset-block: 0;
   inset-inline: auto 0;
   inline-size: min(var(--yi-drawer-width), 100% - var(--yi-drawer-gutter));

@@ -7,9 +7,7 @@
 // piece is either hidden or masked into a fade (the run-off).
 @use "api" as *;
 
-$tones: neutral, ok, warn, danger, info, active;
-
-.yi-timeline {
+:where(.yi-timeline) {
   // Component tokens
   --yi-timeline-track: 1.5rem; // width of the column the rail runs in
   --yi-timeline-marker-size: 0.75rem;
@@ -23,9 +21,11 @@ $tones: neutral, ok, warn, danger, info, active;
   --yi-timeline-run-off: var(--yi-space-xl); // length of a fading end
   --yi-timeline-divider: var(--yi-line);
   --yi-timeline-hover: var(--yi-neutral-soft); // behind an event that is a link
-  --yi-timeline-pulse: 1.6s;
+  --yi-timeline-pulse: var(--yi-duration-pulse);
   --yi-timeline-title-min: 12rem; // narrower than this, the aside wraps under the title
+}
 
+.yi-timeline {
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-md);
   line-height: var(--yi-leading);

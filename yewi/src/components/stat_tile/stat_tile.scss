@@ -4,7 +4,7 @@
 // tile from an app, set these tokens rather than the properties.
 @use "api" as *;
 
-.yi-stat-tile {
+:where(.yi-stat-tile) {
   // Component tokens
   --yi-stat-tile-padding: var(--yi-space-lg);
   --yi-stat-tile-gap: var(--yi-space-xs);
@@ -17,7 +17,9 @@
   --yi-stat-tile-value-size: var(--yi-text-3xl);
   --yi-stat-tile-value-weight: 500;
   --yi-stat-tile-border: var(--yi-card-line);
+}
 
+.yi-stat-tile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -52,7 +54,7 @@
     --yi-stat-tile-value-weight: 400;
   }
 
-  @each $tone in ok, warn, danger, info, active, neutral {
+  @each $tone in $tones {
     &--#{$tone} {
       --yi-stat-tile-value-color: var(--yi-#{$tone});
     }

@@ -5,7 +5,7 @@
 // rule without the caller asking.
 @use "api" as *;
 
-.yi-menu {
+:where(.yi-menu) {
   // Component tokens
   --yi-menu-padding: var(--yi-space-xs);
   --yi-menu-min-width: 11rem;
@@ -14,7 +14,9 @@
   --yi-menu-item-radius: var(--yi-radius-sm);
   --yi-menu-item-bg-active: var(--yi-neutral-soft);
   --yi-menu-line: var(--yi-line);
+}
 
+.yi-menu {
   display: flex;
   flex-direction: column;
   min-inline-size: var(--yi-menu-min-width);
@@ -32,10 +34,12 @@
   }
 }
 
-.yi-menu__item {
+:where(.yi-menu__item) {
   // Component tokens
   --yi-menu-item-fg: inherit;
+}
 
+.yi-menu__item {
   display: flex;
   align-items: center;
   gap: var(--yi-space-sm);
@@ -79,7 +83,7 @@
 
   &[aria-disabled="true"] {
     background: none;
-    opacity: 0.5;
+    opacity: var(--yi-disabled-opacity);
     cursor: not-allowed;
   }
 

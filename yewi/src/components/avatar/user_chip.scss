@@ -1,13 +1,15 @@
 // UserChip
 @use "api" as *;
 
-.yi-user-chip {
+:where(.yi-user-chip) {
   // Component tokens
   --yi-user-chip-gap: var(--yi-space-sm);
   --yi-user-chip-bg: transparent;
   --yi-user-chip-bg-hover: transparent;
   --yi-user-chip-max-width: 18rem;
+}
 
+.yi-user-chip {
   display: inline-flex;
   align-items: center;
   gap: var(--yi-user-chip-gap);

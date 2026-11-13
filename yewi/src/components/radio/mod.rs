@@ -3,30 +3,10 @@
 use yew::prelude::*;
 
 use crate::{
-    Attrs, FieldContext, Size,
+    Attrs, FieldContext, Orientation, Size,
     checkbox::{choice_classes, choice_text, target_checked},
     use_field_control, use_id,
 };
-
-/// The direction a [`RadioGroup`] lays its options out in.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum RadioOrientation {
-    /// One option per line. The default: easiest to scan, and the only
-    /// layout that suits options with descriptions.
-    #[default]
-    Vertical,
-    /// Options in a row that wraps, for two or three short labels.
-    Horizontal,
-}
-
-impl RadioOrientation {
-    const fn as_str(self) -> &'static str {
-        match self {
-            RadioOrientation::Vertical => "vertical",
-            RadioOrientation::Horizontal => "horizontal",
-        }
-    }
-}
 
 /// What a [`RadioGroup`] tells the [`Radio`]s inside it.
 #[derive(Clone, PartialEq)]
@@ -55,8 +35,8 @@ pub struct RadioGroupProps {
     /// label names it.
     #[prop_or_default]
     pub label: Option<AttrValue>,
-    #[prop_or_default]
-    pub orientation: RadioOrientation,
+    #[prop_or(Orientation::Vertical)]
+    pub orientation: Orientation,
     #[prop_or_default]
     pub size: Size,
     /// The name the selected value is submitted under in a native form.

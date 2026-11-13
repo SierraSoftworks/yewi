@@ -3,7 +3,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Button, ButtonKind, ButtonVariant, IconData, MenuButton, Placement, Size, icons};
+use crate::{Attrs, Button, ButtonKind, ButtonVariant, IconData, MenuButton, Placement, Size, icons, is_empty};
 
 #[derive(Properties, PartialEq)]
 pub struct SplitButtonProps {
@@ -59,7 +59,7 @@ pub struct SplitButtonProps {
 /// `MenuButton`'s does.
 #[function_component]
 pub fn SplitButton(props: &SplitButtonProps) -> Html {
-    let has_menu = props.children != Html::default();
+    let has_menu = !is_empty(&props.children);
 
     props.attrs.apply(html! {
         <span id={props.id.clone()} class={classes!("yi-split-button", props.class.clone())} role="group">

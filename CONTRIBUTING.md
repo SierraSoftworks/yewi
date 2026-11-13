@@ -37,10 +37,11 @@ e2e/tests/<name>.spec.ts         behaviour specs
 ### Rules
 - Tokens only: no literal colours, sizes, fonts, radii, shadows or durations. If a token is missing, add it to `yewi/scss/tokens.scss` and show it on a Foundations page.
 - BEM classes prefixed `yi-`: `.yi-button`, `.yi-button--primary`, `.yi-button__spinner`. The build wraps the file in `@layer yewi.components`.
-- `@use "api" as *;` for the shared mixins (`focus-ring`, `heading`, `card-surface`, `truncate`, `motion`, `eyebrow`).
+- `@use "api" as *;` for the shared mixins (`focus-ring`, `heading`, `card-surface`, `code-frame`, `truncate`, `motion`, `eyebrow`) and the tone lists (`$tones`, `$tones-coloured`).
 
 ### Component tokens
-- Expose what an app may reasonably restyle as `--yi-<name>-*` custom properties, declared first under a `// Component tokens` comment. That block becomes the "CSS variables" table.
+- Expose what an app may reasonably restyle as `--yi-<name>-*` custom properties, declared under a `// Component tokens` comment in a `:where(.yi-<name>) { ... }` rule ahead of the component's own rule. That block becomes the "CSS variables" table.
+- `:where()` gives the defaults no specificity, so any single class sets them whatever order the files compile in: `.yi-menu-button__surface { --yi-popover-radius: ...; }`. Ordinary properties on another component's element still follow file order, so those need both classes (`.yi-popover__surface.yi-menu-button__surface`).
 - Variants set those tokens rather than repeating properties.
 
 ### Both themes, all inputs

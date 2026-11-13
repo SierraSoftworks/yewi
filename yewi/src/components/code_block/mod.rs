@@ -9,7 +9,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, CopyButton, Size, Theme};
+use crate::{Attrs, CopyButton, Size, Theme, is_empty};
 
 /// A run of text and the class it is coloured with, if any.
 type Piece<'a> = (&'a str, Option<&'static str>);
@@ -157,7 +157,7 @@ pub fn CodeBlock(props: &CodeBlockProps) -> Html {
     let digits = props.line_numbers.then(|| line_count.max(1).to_string().len().to_string());
 
     let label = language_label(&props.language);
-    let has_actions = props.actions != Html::default();
+    let has_actions = !is_empty(&props.actions);
     let has_header = props.filename.is_some() || label.is_some() || has_actions || props.copy;
 
     let class = classes!(

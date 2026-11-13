@@ -91,7 +91,7 @@ fn an_event_is_plain_text_unless_it_is_given_somewhere_to_go() {
 fn a_horizontal_timeline_keeps_each_event_reachable_and_named() {
     let html = render(|| {
         html! {
-            <Timeline orientation={TimelineOrientation::Horizontal} label="Incident">
+            <Timeline orientation={Orientation::Horizontal} label="Incident">
                 <TimelineItem title="Investigating" tone={Tone::Danger} tone_label="outage">
                     { "Probe detail" }
                 </TimelineItem>

@@ -27,6 +27,11 @@
 //! anchor's centre is) and `--yi-anchor-offset` (the gap). Style an arrow or
 //! a side-dependent animation from those. Do not set `style` on the floating
 //! element from Yew, which would overwrite them.
+//!
+//! The floating element is hidden, and cannot take focus, until the hook has
+//! placed it, which can be later than its content's own effects. Content that
+//! moves focus into itself as it appears waits with [`when_placed`]; the hook
+//! announces the first placement with a `yi-placed` event on the element.
 
 use yew::prelude::*;
 
@@ -328,6 +333,9 @@ pub fn place_anchored(anchor: AnchorRect, size: (f64, f64), viewport: AnchorRect
 ///
 /// Render the floating element only while open, with the `yi-anchored` class.
 /// Nothing happens during a server render.
+///
+/// The first placement after opening fires a `yi-placed` event on the
+/// floating element; see [`when_placed`].
 #[hook]
 pub fn use_anchored(anchor: &NodeRef, floating: &NodeRef, open: bool, options: AnchorOptions) {
     {
@@ -348,13 +356,44 @@ pub fn use_anchored(anchor: &NodeRef, floating: &NodeRef, open: bool, options: A
     });
 }
 
+/// Runs `ready` once the element in `within` can be seen and take focus.
+///
+/// - Inside an anchored element that [`use_anchored`] has not placed yet,
+///   that is its first placement.
+/// - Anywhere else, including an anchored element already placed, it is now.
+///
+/// Call it from the effect that would otherwise focus straight away, and
+/// return the handle from that effect: dropping it cancels a wait that is
+/// still pending.
+///
+/// ```ignore
+/// use_effect_with((), move |_| {
+///     let pending = when_placed(&node, move || focus_first_item(&node));
+///     move || {
+///         let _cancel = pending;
+///     }
+/// });
+/// ```
+#[must_use = "dropping the handle cancels the wait"]
+pub fn when_placed(within: &NodeRef, ready: impl FnOnce() + 'static) -> WhenPlaced {
+    WhenPlaced(dom::when_placed(within, ready))
+}
+
+/// A wait started by [`when_placed`], cancelled when dropped.
+pub struct WhenPlaced(#[allow(dead_code)] Option<dom::Waiting>);
+
 #[cfg(target_arch = "wasm32")]
 mod dom {
     use wasm_bindgen::{JsCast, closure::Closure};
-    use web_sys::{AddEventListenerOptions, Element, HtmlElement};
+    use web_sys::{AddEventListenerOptions, Element, Event, HtmlElement};
     use yew::NodeRef;
 
     use super::{AnchorOptions, AnchorRect, place_anchored};
+
+    /// Fired on the floating element the first time it is placed.
+    const PLACED: &str = "yi-placed";
+    /// Set by every placement, so its absence means "not placed yet".
+    const SIDE: &str = "data-yi-side";
 
     pub fn update(anchor: &NodeRef, floating: &NodeRef, options: &AnchorOptions) {
         let (Some(anchor), Some(floating)) = (anchor.cast::<Element>(), floating.cast::<HtmlElement>()) else {
@@ -381,9 +420,42 @@ mod dom {
         let _ = style.set_property("translate", &format!("{}px {}px", placed.x.round(), placed.y.round()));
         let _ = style.set_property("--yi-anchor-arrow", &format!("{}px", placed.arrow.round()));
         let _ = style.set_property("--yi-anchor-offset", &format!("{}px", options.offset));
-        let _ = floating.set_attribute("data-yi-side", placed.placement.side());
+        let first = !floating.has_attribute(SIDE);
+        let _ = floating.set_attribute(SIDE, placed.placement.side());
         let _ = floating.set_attribute("data-yi-align", placed.placement.align());
         let _ = floating.toggle_attribute_with_force("data-yi-anchor-hidden", !placed.anchor_visible);
+        if first && let Ok(event) = Event::new(PLACED) {
+            let _ = floating.dispatch_event(&event);
+        }
+    }
+
+    /// A listener for the first placement, removed when dropped.
+    pub struct Waiting {
+        host: Element,
+        listener: Closure<dyn FnMut()>,
+    }
+
+    pub fn when_placed(within: &NodeRef, ready: impl FnOnce() + 'static) -> Option<Waiting> {
+        let host = within.cast::<Element>().and_then(|element| element.closest(".yi-anchored").ok().flatten());
+        let Some(host) = host.filter(|host| !host.has_attribute(SIDE)) else {
+            ready();
+            return None;
+        };
+        let listener = Closure::once(ready);
+        let once = AddEventListenerOptions::new();
+        once.set_once(true);
+        let _ = host.add_event_listener_with_callback_and_add_event_listener_options(
+            PLACED,
+            listener.as_ref().unchecked_ref(),
+            &once,
+        );
+        Some(Waiting { host, listener })
+    }
+
+    impl Drop for Waiting {
+        fn drop(&mut self) {
+            let _ = self.host.remove_event_listener_with_callback(PLACED, self.listener.as_ref().unchecked_ref());
+        }
     }
 
     /// Repositions on scroll (of any ancestor) and resize until dropped.
@@ -422,6 +494,12 @@ mod dom {
     use super::AnchorOptions;
 
     pub struct Following;
+
+    pub struct Waiting;
+
+    pub fn when_placed(_: &NodeRef, _: impl FnOnce() + 'static) -> Option<Waiting> {
+        None
+    }
 
     pub fn update(_: &NodeRef, _: &NodeRef, _: &AnchorOptions) {}
 

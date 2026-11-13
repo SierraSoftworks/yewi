@@ -2,7 +2,7 @@
 // is a raised chip; state comes from `:checked`, so it needs no script.
 @use "api" as *;
 
-.yi-segmented {
+:where(.yi-segmented) {
   // Component tokens
   --yi-segmented-height: var(--yi-control-height);
   --yi-segmented-inset: 2px; // gap between the track's edge and the segments
@@ -15,7 +15,9 @@
   --yi-segmented-selected-bg: var(--yi-surface-raised);
   --yi-segmented-selected-fg: var(--yi-fg);
   --yi-segmented-selected-shadow: var(--yi-shadow-card);
+}
 
+.yi-segmented {
   display: inline-flex;
   box-sizing: border-box;
   gap: var(--yi-segmented-inset);
@@ -65,7 +67,7 @@
 
     &:has(:disabled) {
       color: var(--yi-segmented-fg);
-      opacity: 0.55;
+      opacity: var(--yi-disabled-opacity);
       cursor: not-allowed;
     }
   }

@@ -4,12 +4,14 @@
 // not navigate can still read as a link.
 @use "api" as *;
 
-.yi-link {
+:where(.yi-link) {
   // Component tokens
   --yi-link-fg: var(--yi-accent-text);
   --yi-link-fg-hover: var(--yi-accent-text);
   --yi-link-line: var(--yi-accent-line); // Underline colour at rest.
+}
 
+.yi-link {
   // Button reset; no effect on an anchor.
   display: inline;
   padding: 0;

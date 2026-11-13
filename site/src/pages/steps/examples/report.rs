@@ -4,7 +4,7 @@ use yewi::prelude::*;
 #[function_component]
 pub fn Example() -> Html {
     html! {
-        <Steps orientation={StepsOrientation::Vertical} size={Size::Small} label="Steps of nginx">
+        <Steps orientation={Orientation::Vertical} size={Size::Small} label="Steps of nginx">
             <Step
                 title="package nginx"
                 status={StepStatus::Done}

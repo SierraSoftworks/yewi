@@ -2,7 +2,7 @@
 // rule or a title alone. The controls are the library's own.
 @use "api" as *;
 
-.yi-schema-form {
+:where(.yi-schema-form) {
   // Component tokens
   --yi-schema-form-gap: var(--yi-space-md); // between fields
   --yi-schema-form-indent: var(--yi-space-md); // inset of a group's fields
@@ -14,7 +14,9 @@
   // A group's own hint and error reuse the field's message styles, outside a field.
   --yi-field-hint-color: var(--yi-fg-muted);
   --yi-field-error-color: var(--yi-danger);
+}
 
+.yi-schema-form {
   &,
   &__group,
   &__body {

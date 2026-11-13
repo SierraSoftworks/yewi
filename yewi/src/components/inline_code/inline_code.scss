@@ -1,12 +1,14 @@
 // Inline code: a tinted chip that sits on the text baseline.
 
-.yi-inline-code {
+:where(.yi-inline-code) {
   // Component tokens
   --yi-inline-code-bg: var(--yi-neutral-soft);
   --yi-inline-code-fg: inherit;
   --yi-inline-code-border: transparent;
   --yi-inline-code-radius: var(--yi-radius-sm);
+}
 
+.yi-inline-code {
   padding: 0.1em 0.35em;
   border: 1px solid var(--yi-inline-code-border);
   border-radius: var(--yi-inline-code-radius);

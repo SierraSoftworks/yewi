@@ -4,7 +4,7 @@
 // per level; the source view is one wrapped `pre`.
 @use "api" as *;
 
-.yi-json-view {
+:where(.yi-json-view) {
   // Component tokens
   --yi-json-view-bg: var(--yi-code-bg);
   --yi-json-view-padding: var(--yi-space-md);
@@ -17,7 +17,9 @@
   --yi-json-view-number: var(--yi-warn);
   --yi-json-view-literal: var(--yi-info);
   --yi-json-view-punctuation: var(--yi-fg-muted);
+}
 
+.yi-json-view {
   position: relative;
   min-inline-size: 0;
   border-radius: var(--yi-json-view-radius);

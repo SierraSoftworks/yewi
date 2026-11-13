@@ -4,28 +4,12 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Placement, Popover, PopoverTrigger, Size, Tone, VisuallyHidden};
+use crate::{Attrs, Icon, IconData, Orientation, Placement, Popover, PopoverTrigger, Size, Tone, VisuallyHidden, is_empty};
 
-/// The direction the events run in.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
-pub enum TimelineOrientation {
-    /// Top to bottom, each event with its text beside the rail.
-    #[default]
-    Vertical,
-    /// A single line of markers that fills the width, for a summary. Each
-    /// event's text is shown in a popover on hover or focus.
-    Horizontal,
-}
-
-impl TimelineOrientation {
-    pub const ALL: [TimelineOrientation; 2] = [TimelineOrientation::Vertical, TimelineOrientation::Horizontal];
-
-    const fn as_str(self) -> &'static str {
-        match self {
-            TimelineOrientation::Vertical => "vertical",
-            TimelineOrientation::Horizontal => "horizontal",
-        }
-    }
+/// What a [`Timeline`] tells the events inside it.
+#[derive(Clone, Copy, PartialEq)]
+struct TimelineContext {
+    orientation: Orientation,
 }
 
 /// Which ends of the rail fade out, saying that time ran on before the first
@@ -87,8 +71,8 @@ pub struct TimelineProps {
     /// The [`TimelineItem`]s, in the order they should read.
     #[prop_or_default]
     pub children: Html,
-    #[prop_or_default]
-    pub orientation: TimelineOrientation,
+    #[prop_or(Orientation::Vertical)]
+    pub orientation: Orientation,
     /// Which ends of the rail fade out.
     #[prop_or_default]
     pub run_off: TimelineRunOff,
@@ -122,15 +106,15 @@ pub fn Timeline(props: &TimelineProps) -> Html {
         format!("yi-timeline--{}", props.orientation.as_str()),
         format!("yi-timeline--{}", props.size.as_str()),
         format!("yi-timeline--run-off-{}", props.run_off.as_str()),
-        (props.divided && props.orientation == TimelineOrientation::Vertical).then_some("yi-timeline--divided"),
+        (props.divided && props.orientation == Orientation::Vertical).then_some("yi-timeline--divided"),
         props.class.clone(),
     );
     props.attrs.apply(html! {
         <div id={props.id.clone()} {class}>
             <ol class="yi-timeline__list" aria-label={props.label.clone()}>
-                <ContextProvider<TimelineOrientation> context={props.orientation}>
+                <ContextProvider<TimelineContext> context={TimelineContext { orientation: props.orientation }}>
                     { props.children.clone() }
-                </ContextProvider<TimelineOrientation>>
+                </ContextProvider<TimelineContext>>
             </ol>
         </div>
     })
@@ -186,7 +170,7 @@ pub struct TimelineItemProps {
 /// One event of a [`Timeline`].
 #[function_component]
 pub fn TimelineItem(props: &TimelineItemProps) -> Html {
-    let orientation = use_context::<TimelineOrientation>().unwrap_or_default();
+    let orientation = use_context::<TimelineContext>().map_or(Orientation::Vertical, |context| context.orientation);
     let interactive = props.href.is_some() || props.on_click.is_some();
     let class = classes!(
         "yi-timeline__item",
@@ -220,11 +204,11 @@ pub fn TimelineItem(props: &TimelineItemProps) -> Html {
         html! { <span class="yi-timeline__title">{ props.title.clone() }</span> }
     };
     let tone_label = props.tone_label.as_ref().map(|label| html! { <VisuallyHidden>{ ", " }{ label.clone() }</VisuallyHidden> });
-    let has_meta = props.meta != Html::default();
-    let has_aside = props.aside != Html::default();
-    let has_detail = props.children != Html::default();
+    let has_meta = !is_empty(&props.meta);
+    let has_aside = !is_empty(&props.aside);
+    let has_detail = !is_empty(&props.children);
 
-    if orientation == TimelineOrientation::Horizontal {
+    if orientation == Orientation::Horizontal {
         // The marker is all that shows; the event's text is its popover.
         let head = html! { <>{ title }{ tone_label.clone() }{ props.aside.clone() }</> };
         let (content, foot) =

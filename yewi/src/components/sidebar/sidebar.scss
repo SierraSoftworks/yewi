@@ -4,7 +4,7 @@
 // draws the eye. Group labels are small uppercase eyebrows.
 @use "api" as *;
 
-.yi-sidebar {
+:where(.yi-sidebar) {
   // Component tokens
   --yi-sidebar-padding: var(--yi-space-md);
   --yi-sidebar-gap: var(--yi-space-2xs); // Between items.
@@ -20,7 +20,9 @@
   --yi-sidebar-heading-weight: 600;
   --yi-sidebar-heading-transform: uppercase;
   --yi-sidebar-heading-tracking: 0.08em;
+}
 
+.yi-sidebar {
   display: flex;
   flex: 1;
   flex-direction: column;

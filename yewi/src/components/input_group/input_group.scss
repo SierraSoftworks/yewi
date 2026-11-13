@@ -5,7 +5,7 @@
 // plain text inside the field, with buttons and dropdowns as small chips.
 @use "api" as *;
 
-.yi-input-group {
+:where(.yi-input-group) {
   // Component tokens
   --yi-input-group-bg: var(--yi-surface);
   --yi-input-group-border: var(--yi-line-strong);
@@ -25,7 +25,9 @@
 
   // The space between a chip and the border, equal on all three sides.
   --_inset: calc((var(--yi-input-group-height) - 2px - var(--yi-input-group-chip-height)) / 2);
+}
 
+.yi-input-group {
   display: flex;
   align-items: center;
   gap: var(--yi-input-group-gap);
@@ -68,7 +70,6 @@
     --yi-input-group-accent: var(--yi-danger);
   }
 
-  // Only text controls: `:read-only` also matches buttons and wrappers.
   &:has(:is(input, textarea).yi-input:read-only, .yi-input--readonly) {
     --yi-input-group-bg: var(--yi-tone-2);
     --yi-input-group-border-hover: var(--yi-input-group-border);
@@ -184,7 +185,7 @@
     }
 
     &:disabled {
-      opacity: 0.5;
+      opacity: var(--yi-disabled-opacity);
     }
   }
 
@@ -246,7 +247,7 @@
     }
 
     &:disabled {
-      opacity: 0.5;
+      opacity: var(--yi-disabled-opacity);
       cursor: not-allowed;
     }
 

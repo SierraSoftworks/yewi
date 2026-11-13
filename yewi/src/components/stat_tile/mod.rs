@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Size, Tone, VisuallyHidden, icons};
+use crate::{Attrs, Icon, IconData, Size, Tone, VisuallyHidden, icons, is_empty};
 
 /// How a stat tile sits on the page.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -185,7 +185,7 @@ pub fn StatTile(props: &StatTileProps) -> Html {
                     }
                 </span>
             }
-            if props.children != Html::default() {
+            if !is_empty(&props.children) {
                 <span class="yi-stat-tile__extra">{ props.children.clone() }</span>
             }
         </>

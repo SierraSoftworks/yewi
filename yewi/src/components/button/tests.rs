@@ -1,7 +1,7 @@
 use yewi_test::render;
 
 use super::*;
-use crate::{attrs, icons};
+use crate::{attrs, icons, Orientation};
 
 #[test]
 fn renders_a_native_button_with_its_label() {
@@ -139,6 +139,8 @@ fn group_is_a_labelled_group_containing_its_buttons() {
 
 #[test]
 fn vertical_group_differs_from_horizontal() {
-    let render_group = |vertical: bool| render(move || html! { <ButtonGroup {vertical}><Button>{ "A" }</Button></ButtonGroup> });
-    assert_ne!(render_group(true), render_group(false));
+    let render_group = |orientation: Orientation| {
+        render(move || html! { <ButtonGroup {orientation}><Button>{ "A" }</Button></ButtonGroup> })
+    };
+    assert_ne!(render_group(Orientation::Vertical), render_group(Orientation::Horizontal));
 }

@@ -5,14 +5,16 @@
 // the fallback message follow the page.
 @use "api" as *;
 
-.yi-qr-code {
+:where(.yi-qr-code) {
   // Component tokens
   --yi-qr-code-size: 12.5rem;
   --yi-qr-code-fg: var(--yi-fg);
   --yi-qr-code-bg: var(--yi-surface);
   --yi-qr-code-border: var(--yi-line-strong);
   --yi-qr-code-radius: var(--yi-radius-control);
+}
 
+.yi-qr-code {
   display: inline-flex;
   flex-direction: column;
   align-items: center;

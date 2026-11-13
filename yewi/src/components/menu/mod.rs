@@ -6,7 +6,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, NavTarget, Tone, icons, nav_target::use_nav_link};
+use crate::{Attrs, Icon, IconData, NavTarget, Tone, icons, nav_target::use_nav_link, is_empty};
 
 /// Which item a menu moves keyboard focus to when it appears.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -60,7 +60,12 @@ pub fn Menu(props: &MenuProps) -> Html {
 
     {
         let node = node.clone();
-        use_effect_with(props.focus, move |focus| dom::enter(&node, *focus));
+        use_effect_with(props.focus, move |focus| {
+            let pending = dom::enter(&node, *focus);
+            move || {
+                let _cancel = pending;
+            }
+        });
     }
 
     let onkeydown = {
@@ -176,7 +181,7 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
                 <Icon {icon} class="yi-menu__icon" />
             }
             <span class="yi-menu__label">{ props.children.clone() }</span>
-            if props.aside != Html::default() {
+            if !is_empty(&props.aside) {
                 <span class="yi-menu__aside">{ props.aside.clone() }</span>
             }
             if props.checked.is_some() {
@@ -289,11 +294,12 @@ pub(crate) fn focus_trigger_within(root: &NodeRef) {
 
 #[cfg(target_arch = "wasm32")]
 mod dom {
-    use wasm_bindgen::{JsCast, JsValue, closure::Closure};
+    use wasm_bindgen::JsCast;
     use web_sys::{Element, Event, HtmlElement, KeyboardEvent, MouseEvent, Node};
     use yew::NodeRef;
 
     use super::MenuFocus;
+    use crate::{WhenPlaced, when_placed};
 
     const MENU: &str = "[role=\"menu\"]";
     const ITEM: &str = "[role^=\"menuitem\"]";
@@ -331,42 +337,16 @@ mod dom {
         active().is_some_and(|active| active == **item)
     }
 
-    /// How many frames to keep trying to focus an item of a menu that cannot
-    /// take focus yet.
-    const FOCUS_FRAMES: u32 = 30;
-
     /// Focuses an item as the menu appears. Inside a popover that has not
-    /// been placed yet the menu is still hidden and cannot take focus. When
-    /// the popover is placed is its own business, and can be a later task
-    /// than this effect, so try again once this round of effects is over and
-    /// then once a frame until it works.
-    pub fn enter(node: &NodeRef, focus: MenuFocus) {
-        let Some(menu) = node.cast::<Element>() else { return };
-        if focus_edge(&menu, focus) {
-            return;
-        }
-        let retry = Closure::once_into_js(move |_: JsValue| {
-            if !focus_edge(&menu, focus) {
-                focus_on_frame(menu, focus, FOCUS_FRAMES);
+    /// been placed yet the menu is still hidden and cannot take focus, so
+    /// this waits for the placement.
+    pub fn enter(node: &NodeRef, focus: MenuFocus) -> WhenPlaced {
+        let menu = node.cast::<Element>();
+        when_placed(node, move || {
+            if let Some(menu) = menu {
+                focus_edge(&menu, focus);
             }
-        });
-        let settled = js_sys::Promise::resolve(&JsValue::NULL);
-        let then = js_sys::Reflect::get(&settled, &"then".into()).ok().and_then(|f| f.dyn_into::<js_sys::Function>().ok());
-        if let Some(then) = then {
-            let _ = then.call1(&settled, &retry);
-        }
-    }
-
-    /// Tries again on the next frame, for as long as the menu is on the page
-    /// and `frames` remain.
-    fn focus_on_frame(menu: Element, focus: MenuFocus, frames: u32) {
-        let Some(window) = web_sys::window().filter(|_| frames > 0 && menu.is_connected()) else { return };
-        let retry = Closure::once_into_js(move |_: JsValue| {
-            if !focus_edge(&menu, focus) {
-                focus_on_frame(menu, focus, frames - 1);
-            }
-        });
-        let _ = window.request_animation_frame(retry.unchecked_ref());
+        })
     }
 
     pub fn focus_within(root: &NodeRef, focus: MenuFocus) {
@@ -457,8 +437,11 @@ mod dom {
     use yew::NodeRef;
 
     use super::MenuFocus;
+    use crate::{WhenPlaced, when_placed};
 
-    pub fn enter(_: &NodeRef, _: MenuFocus) {}
+    pub fn enter(_: &NodeRef, _: MenuFocus) -> WhenPlaced {
+        when_placed(&NodeRef::default(), || {})
+    }
 
     pub fn focus_within(_: &NodeRef, _: MenuFocus) {}
 

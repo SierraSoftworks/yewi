@@ -6,7 +6,7 @@
 // below on a bare input inside its own wrapper.
 @use "api" as *;
 
-.yi-input {
+:where(.yi-input) {
   // Component tokens
   --yi-input-bg: var(--yi-surface);
   --yi-input-fg: var(--yi-fg);
@@ -19,7 +19,9 @@
   --yi-input-padding: calc(var(--yi-control-padding) - 0.25rem);
   --yi-input-radius: var(--yi-radius-control);
   --yi-input-max-height: none; // cap for an auto-growing TextArea
+}
 
+.yi-input {
   display: block;
   box-sizing: border-box;
   inline-size: 100%;
@@ -68,7 +70,9 @@
     --yi-input-accent: var(--yi-danger);
   }
 
-  &:read-only:not(.yi-number-input),
+  // Only editable text controls: `:read-only` also matches buttons, wrappers
+  // and disabled inputs. Wrappers use the modifier instead.
+  &:is(input, textarea):read-only:not(:disabled),
   &--readonly {
     --yi-input-bg: var(--yi-tone-2);
     --yi-input-border-hover: var(--yi-input-border);
@@ -193,7 +197,7 @@
     }
 
     &:disabled {
-      opacity: 0.45;
+      opacity: var(--yi-disabled-opacity);
       cursor: not-allowed;
     }
   }

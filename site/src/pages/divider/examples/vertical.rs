@@ -7,9 +7,9 @@ pub fn Example() -> Html {
         <Cluster attrs={attrs! { "role" => "toolbar", "aria-label" => "Rollout" }}>
             <Button variant={ButtonVariant::Subtle}>{ "Approve" }</Button>
             <Button variant={ButtonVariant::Subtle}>{ "Pause" }</Button>
-            <Divider orientation={DividerOrientation::Vertical} />
+            <Divider orientation={Orientation::Vertical} />
             <Button variant={ButtonVariant::Subtle} icon={icons::REFRESH_CW}>{ "Refresh" }</Button>
-            <Divider orientation={DividerOrientation::Vertical} />
+            <Divider orientation={Orientation::Vertical} />
             <span>{ "2 of 31 hosts done" }</span>
         </Cluster>
     }

@@ -6,7 +6,7 @@
 // the control (`--yi-select-anchor-width`, measured when it opens).
 @use "api" as *;
 
-.yi-select {
+:where(.yi-select) {
   // Component tokens
   --yi-select-min-width: 9rem; // of a `fit` control
   --yi-select-chevron-color: var(--yi-fg-subtle);
@@ -17,7 +17,9 @@
   --yi-select-option-radius: var(--yi-radius-sm);
   --yi-select-option-active-bg: var(--yi-neutral-soft);
   --yi-select-option-selected-fg: var(--yi-accent-text);
+}
 
+.yi-select {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
@@ -32,17 +34,6 @@
   > .yi-popover {
     display: flex;
     inline-size: 100%;
-  }
-}
-
-// The box is a button or a wrapper, which `:read-only` also matches: put
-// back what the input's read-only state changes.
-.yi-select .yi-input.yi-select__control:not(:disabled, .yi-input--disabled) {
-  --yi-input-bg: var(--yi-surface);
-  --yi-input-border-hover: color-mix(in oklch, var(--yi-line-strong), var(--yi-fg) 30%);
-
-  &.yi-input--invalid {
-    --yi-input-border-hover: var(--yi-danger);
   }
 }
 
@@ -113,9 +104,11 @@
   color: var(--yi-select-chevron-color);
 }
 
-.yi-popover__surface.yi-select__surface {
+.yi-select__surface {
   --yi-popover-max-width: 100vw;
+}
 
+.yi-popover__surface.yi-select__surface {
   cursor: default;
   user-select: none;
 }

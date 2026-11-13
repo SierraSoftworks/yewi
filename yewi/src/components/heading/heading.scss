@@ -4,11 +4,13 @@
 // size without changing the document outline.
 @use "api" as *;
 
-.yi-heading {
+:where(.yi-heading) {
   // Component tokens
   --yi-heading-color: var(--yi-fg);
   --yi-heading-tracking: -0.01em; // Letter spacing at display sizes (20px and up).
+}
 
+.yi-heading {
   margin: 0;
   color: var(--yi-heading-color);
 

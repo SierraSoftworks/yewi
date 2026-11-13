@@ -10,7 +10,7 @@
 $narrow: 30rem;
 $wide: 48rem;
 
-.yi-top-menu {
+:where(.yi-top-menu) {
   // Component tokens
   --yi-top-menu-height: var(--yi-app-bar-height, var(--yi-space-3xl));
   --yi-top-menu-gap: var(--yi-space-xs);
@@ -23,7 +23,9 @@ $wide: 48rem;
   --yi-top-menu-overlap: 0px; // how far the row reaches over the edge below it
   --yi-top-menu-max-height: min(70vh, 32rem); // of an open menu
   --yi-top-menu-max-width: 22rem;
+}
 
+.yi-top-menu {
   display: flex;
   align-items: center;
   box-sizing: border-box;

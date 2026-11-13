@@ -4,7 +4,7 @@
 // belongs to the surrounding `Stack` or `Grid`.
 @use "api" as *;
 
-.yi-field {
+:where(.yi-field) {
   // Component tokens
   --yi-field-gap: var(--yi-space-xs); // between label, control and message
   --yi-field-label-color: var(--yi-fg);
@@ -12,7 +12,9 @@
   --yi-field-control-min: 12rem; // inline layout stacks below this control width
   --yi-field-hint-color: var(--yi-fg-muted);
   --yi-field-error-color: var(--yi-danger);
+}
 
+.yi-field {
   display: flex;
   flex-direction: column;
   gap: var(--yi-field-gap);

@@ -4,7 +4,7 @@
 // never read out and never part of a crumb's link.
 @use "api" as *;
 
-.yi-breadcrumbs {
+:where(.yi-breadcrumbs) {
   // Component tokens
   --yi-breadcrumbs-fg: var(--yi-fg-muted);
   --yi-breadcrumbs-fg-hover: var(--yi-fg);
@@ -12,7 +12,9 @@
   --yi-breadcrumbs-separator-fg: var(--yi-fg-subtle);
   --yi-breadcrumbs-gap: var(--yi-space-sm); // space either side of a separator
   --yi-breadcrumbs-crumb-max: 16rem; // longer labels are truncated
+}
 
+.yi-breadcrumbs {
   min-inline-size: 0;
   font-family: var(--yi-font-body);
   font-size: var(--yi-text-sm);

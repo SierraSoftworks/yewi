@@ -5,14 +5,16 @@
 // every hue reads with the same weight and the initials always have contrast.
 @use "api" as *;
 
-.yi-avatar {
+:where(.yi-avatar) {
   // Component tokens
   --yi-avatar-size: var(--yi-space-2xl);
   --yi-avatar-hue: 250; // set per person by the component
   --yi-avatar-bg: light-dark(oklch(0.92 0.045 var(--yi-avatar-hue)), oklch(0.37 0.05 var(--yi-avatar-hue)));
   --yi-avatar-fg: light-dark(oklch(0.38 0.09 var(--yi-avatar-hue)), oklch(0.89 0.06 var(--yi-avatar-hue)));
   --yi-avatar-ring: var(--yi-surface); // the gap between overlapping avatars; match the background behind a group
+}
 
+.yi-avatar {
   position: relative;
   display: inline-grid;
   flex: none;
