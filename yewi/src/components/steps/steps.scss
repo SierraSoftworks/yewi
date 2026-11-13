@@ -168,17 +168,12 @@
 
 .yi-step__title {
   min-inline-size: 0;
-  font-weight: 500;
+  font-weight: 600;
   overflow-wrap: anywhere;
 
   .yi-step--pending &,
   .yi-step--skipped & {
     color: var(--yi-fg-muted);
-    font-weight: 400;
-  }
-
-  .yi-step--current & {
-    font-weight: 600;
   }
 }
 
@@ -188,7 +183,6 @@
   border-radius: var(--yi-radius-sm);
   background: none;
   font: inherit;
-  font-weight: 500;
   color: inherit;
   text-align: start;
   text-decoration: none;

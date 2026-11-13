@@ -597,28 +597,25 @@ html {
 // ---- Review gallery ------------------------------------------------------------
 // The packed single-file gallery (`e2e/viewer.mjs`, `src/gallery.rs`).
 
-// Accents a reviewer can preview. Apps set the same two inputs on `:root`.
-[data-gallery-accent="violet"] {
-  --yi-accent: light-dark(#6d4aff, #8b6dff);
+// Accents a reviewer can preview: each app's own, as the app sets it on `:root`.
+// One colour serves both themes (the derived fills and text are clamped);
+// Buckle is the one app that names a second for dark.
+$gallery-accents: (
+  "symbols": #6d4aff,
+  "automate": #0f5a80,
+  "grey": #3498db,
+  "analytics": #3da4dc,
+  "buckle": light-dark(#9a6a1f, #d9a24a),
+  "rustak": #14664f,
+);
+
+@each $name, $accent in $gallery-accents {
+  [data-gallery-accent="#{$name}"] {
+    --yi-accent: #{$accent};
+  }
 }
 
-[data-gallery-accent="teal"] {
-  --yi-accent: light-dark(#0f9d94, #3cc6bb);
-}
-
-[data-gallery-accent="green"] {
-  --yi-accent: light-dark(#2a9d5c, #55c184);
-}
-
-[data-gallery-accent="amber"] {
-  --yi-accent: light-dark(#c77700, #f0a93a);
-}
-
-[data-gallery-accent="rose"] {
-  --yi-accent: light-dark(#d6336c, #f06a97);
-}
-
-[data-gallery-accent="grey"] {
+[data-gallery-accent="pure-grey"] {
   --yi-accent: light-dark(#5c6470, #a3abb8);
   --yi-neutral-tint: 0;
 }

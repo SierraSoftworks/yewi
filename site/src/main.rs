@@ -10,15 +10,18 @@ fn main() {
 
     // The packed review gallery (`e2e/viewer.mjs`) is one file with no address
     // of its own, so it keeps its location in memory and starts at the gallery.
-    let history = match root.get_attribute("data-gallery") {
-        Some(slug) => {
-            let history = MemoryHistory::new();
-            history.push(format!("{}/_gallery/{slug}", yewi_site::basename().unwrap_or_default()));
-            AnyHistory::from(history)
-        }
-        None => AnyHistory::from(BrowserHistory::new()),
+    let gallery = root.get_attribute("data-gallery");
+    let props = AppProps {
+        gallery: gallery.is_some(),
+        history: match gallery {
+            Some(slug) => {
+                let history = MemoryHistory::new();
+                history.push(format!("{}/_gallery/{slug}", yewi_site::basename().unwrap_or_default()));
+                AnyHistory::from(history)
+            }
+            None => AnyHistory::from(BrowserHistory::new()),
+        },
     };
-    let props = AppProps { history };
 
     // A prerendered page carries its markup and a stylesheet link; `trunk serve`
     // hands over an empty shell.

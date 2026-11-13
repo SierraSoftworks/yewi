@@ -103,8 +103,8 @@ impl Module {
                 Item::Fn(f) if is_pub(&f.vis) && has_attr(&f.attrs, "function_component") => {
                     let props = f.sig.inputs.first().and_then(|arg| match arg {
                         FnArg::Typed(arg) => match &*arg.ty {
-                            Type::Reference(r) => Some(type_string(&r.elem)),
-                            other => Some(type_string(other)),
+                            Type::Reference(r) => Some(struct_name(&r.elem)),
+                            other => Some(struct_name(other)),
                         },
                         FnArg::Receiver(_) => None,
                     });
@@ -231,6 +231,15 @@ fn default_of(attrs: &[Attribute]) -> String {
         }
     }
     String::new()
+}
+
+/// The struct a props type names, without its path or generic arguments:
+/// `TableProps` for `&TableProps<T>`, so generic components find their props.
+fn struct_name(ty: &Type) -> String {
+    match ty {
+        Type::Path(path) => path.path.segments.last().map_or_else(|| type_string(ty), |s| s.ident.to_string()),
+        other => type_string(other),
+    }
 }
 
 fn type_string(ty: &Type) -> String {

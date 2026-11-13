@@ -1,5 +1,5 @@
 crate::page! {
-    title: "Inline code",
+    title: "InlineCode",
     category: Basic,
     summary: "A command, identifier, path or value quoted inside a sentence.",
     examples: [

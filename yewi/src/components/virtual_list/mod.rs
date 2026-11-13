@@ -54,6 +54,9 @@ pub struct VirtualListProps<T: PartialEq + 'static> {
     /// [`EmptyState`].
     #[prop_or_default]
     pub empty: Option<Html>,
+    /// The title of the default empty state, when `empty` is not set.
+    #[prop_or(AttrValue::Static("Nothing to show"))]
+    pub empty_label: AttrValue,
     /// Names the list for assistive technology.
     #[prop_or_default]
     pub label: Option<AttrValue>,
@@ -106,7 +109,7 @@ pub fn VirtualList<T: PartialEq + 'static>(props: &VirtualListProps<T>) -> Html 
                     if let Some(empty) = &props.empty {
                         { empty.clone() }
                     } else {
-                        <EmptyState title="Nothing to show" size={Size::Small} />
+                        <EmptyState title={props.empty_label.clone()} size={Size::Small} />
                     }
                 </div>
             } else {

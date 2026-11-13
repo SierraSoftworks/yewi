@@ -20,14 +20,17 @@ stylesheet = 250000
 avatar-hash = 20000
 charts = 70000
 chrono = 105000
-code = 45000
+# `code`, `map`, `markdown` and `serde_json` each draw an icon-only button
+# (copy, zoom), whose hint is a tooltip: about 33 KB of anchoring and tooltip
+# code that an app with any Tooltip, Popover, Menu or Select already ships.
+code = 82000
 diff = 52000
 highlight = 35000
 highlight-syntect = 1600000
-map = 80000
+map = 116000
 # Includes `code` (which it enables) and the pulldown-cmark parser, about
 # 210 KB on its own.
-markdown = 265000
+markdown = 300000
 qr = 30000
 # Mostly yew-router itself; an app that already routes pays almost none of it.
 router = 150000
@@ -35,5 +38,5 @@ router = 150000
 # SecretInput, NumberInput and the popover under them), which an app with any
 # form already ships; the schema reader and the form itself are about 95 KB.
 schema-form = 285000
-serde_json = 60000
+serde_json = 101000
 terminal = 40000
