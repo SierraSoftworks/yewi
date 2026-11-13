@@ -9,6 +9,7 @@
   --yi-page-header-gap: var(--yi-space-sm);
   --yi-page-header-title-size: var(--yi-text-4xl);
   --yi-page-header-title-weight: var(--yi-heading-weight-4xl);
+  --yi-page-header-subtitle-max-width: 70ch; // A reading width. Set `none` for a subtitle that is a layout of its own.
 }
 
 .yi-page-header {
@@ -76,7 +77,7 @@
 }
 
 .yi-page-header__subtitle {
-  max-inline-size: 70ch;
+  max-inline-size: var(--yi-page-header-subtitle-max-width);
   color: var(--yi-fg-muted);
   font-size: var(--yi-text-lg);
   line-height: var(--yi-leading);

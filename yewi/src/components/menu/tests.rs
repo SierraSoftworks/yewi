@@ -68,6 +68,9 @@ fn tones_that_carry_a_warning_are_distinguishable() {
 fn aside_follows_the_label() {
     let html = render(|| html! { <MenuItem aside="systemd">{ "Restart" }</MenuItem> });
     assert!(html.find("Restart").unwrap() < html.find("systemd").unwrap());
+    // Read as text, the two are separate words.
+    let text: String = html.split('<').filter_map(|part| part.split_once('>')).map(|(_, text)| text).collect();
+    assert!(text.contains("Restart systemd"), "{text}");
 }
 
 #[test]

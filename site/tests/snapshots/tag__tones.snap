@@ -53,4 +53,11 @@ source: site/tests/snapshots.rs
 <span class="yi-tag__value">main</span>
 </span>
 </span>
+<span class="yi-tag yi-tag--neutral">
+<span id="yi-7-text" class="yi-tag__text">
+<span class="yi-tag__value">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--ok">
+</span>online</span>
+</span>
+</span>
 </div>

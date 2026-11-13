@@ -48,6 +48,17 @@
   }
 }
 
+// A dot placed as content sits a gap away from the words beside it.
+.yi-tag__value > .yi-status-dot {
+  &:first-child {
+    margin-inline-end: 0.35em;
+  }
+
+  &:last-child:not(:first-child) {
+    margin-inline-start: 0.35em;
+  }
+}
+
 .yi-tag__text {
   @include truncate;
 
