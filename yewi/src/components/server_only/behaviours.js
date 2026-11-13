@@ -166,9 +166,120 @@
     }
   };
 
-  // Dialogs the server rendered as open: `data-yi-open` on a `<dialog>`.
+  // Popovers: `data-yi-popover` on the wrapper of a trigger is `click` or
+  // `hover`, and its surface is a native popover among its children.
+  const surfaceOf = (wrapper) => wrapper.querySelector(":scope > [popover]");
+  const isOpen = (surface) => surface.matches(":popover-open");
+  const controlOf = (wrapper) => {
+    const inner = [...wrapper.querySelectorAll("a[href],button,input,select,textarea,summary,[tabindex]")].find((element) => !surfaceOf(wrapper)?.contains(element));
+    return inner ?? (wrapper.hasAttribute("tabindex") ? wrapper : undefined);
+  };
+  const items = (menu) => [...menu.querySelectorAll("[role^=menuitem]:not([aria-disabled=true])")];
+  // A press outside an open popover closes it before the click arrives, so
+  // the click on its own trigger must not open it again.
+  let pressed;
+  doc.addEventListener("pointerdown", (event) => {
+    const wrapper = event.target instanceof Element && event.target.closest("[data-yi-popover=click]");
+    const surface = wrapper && surfaceOf(wrapper);
+    pressed = surface && isOpen(surface) && !surface.contains(event.target) ? surface : undefined;
+  }, true);
+  const toggle = (wrapper, event, focus) => {
+    const surface = surfaceOf(wrapper);
+    if (!surface || surface.contains(event.target)) return;
+    const was = event.detail !== 0 && pressed === surface;
+    pressed = undefined;
+    if (was || isOpen(surface)) return surface.hidePopover();
+    surface.showPopover();
+    const menu = surface.querySelector("[data-yi-menu]");
+    if (menu) (focus === "last" ? items(menu).at(-1) : items(menu)[0])?.focus();
+  };
+  on("click", "[data-yi-popover=click]", (wrapper, event) => toggle(wrapper, event));
+  on("keydown", "[data-yi-popover=click]", (wrapper, event) => {
+    const surface = surfaceOf(wrapper);
+    if (!surface || surface.contains(event.target)) return;
+    const opens = { ArrowDown: "first", ArrowUp: "last" }[event.key];
+    const menu = surface.querySelector("[data-yi-menu]");
+    if (opens && menu) {
+      event.preventDefault();
+      if (!isOpen(surface)) surface.showPopover();
+      (opens === "last" ? items(menu).at(-1) : items(menu)[0])?.focus();
+    } else if ((event.key === "Enter" || event.key === " ") && event.target === wrapper) {
+      event.preventDefault();
+      toggle(wrapper, event);
+    }
+  });
+  // `toggle` does not bubble.
+  doc.addEventListener("toggle", (event) => {
+    const wrapper = event.target instanceof Element && event.target.parentElement?.closest("[data-yi-popover]");
+    if (!wrapper || surfaceOf(wrapper) !== event.target) return;
+    const control = controlOf(wrapper);
+    const shown = event.newState === "open";
+    if (wrapper.dataset.yiPopover === "click") control?.setAttribute("aria-expanded", String(shown));
+    else if (shown) control?.setAttribute("aria-describedby", event.target.id);
+    else control?.removeAttribute("aria-describedby");
+  }, true);
+  // Hover: shown while the pointer rests on the trigger or the surface, or
+  // the trigger has keyboard focus.
+  const intents = new WeakMap();
+  const intent = (wrapper, change) => {
+    const state = intents.get(wrapper) ?? {};
+    intents.set(wrapper, Object.assign(state, change));
+    clearTimeout(state.timer);
+    const surface = surfaceOf(wrapper);
+    if (!surface) return;
+    const apply = () => {
+      const want = Boolean(state.hover || state.focus);
+      if (want !== isOpen(surface)) surface.togglePopover(want);
+    };
+    if (change.hover) state.timer = setTimeout(apply, Number(wrapper.dataset.yiDelay ?? 0));
+    else apply();
+  };
+  const crossing = (wrapper, event) => !(event.relatedTarget instanceof Node && wrapper.contains(event.relatedTarget));
+  on("mouseover", "[data-yi-popover=hover]", (wrapper, event) => {
+    if (crossing(wrapper, event)) intent(wrapper, { hover: true });
+  });
+  on("mouseout", "[data-yi-popover=hover]", (wrapper, event) => {
+    if (crossing(wrapper, event)) intent(wrapper, { hover: false });
+  });
+  on("focusin", "[data-yi-popover=hover]", (wrapper, event) => {
+    if (event.target.matches(":focus-visible")) intent(wrapper, { focus: true });
+  });
+  on("focusout", "[data-yi-popover=hover]", (wrapper, event) => {
+    if (crossing(wrapper, event)) intent(wrapper, { focus: false });
+  });
+  doc.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    for (const surface of doc.querySelectorAll("[data-yi-popover=hover] > :popover-open")) intent(surface.parentElement, { hover: false, focus: false });
+  });
+
+  // Menus: `data-yi-menu`. Arrow keys, Home, End and a letter move between
+  // items, and choosing one closes the popover the menu is in.
+  on("keydown", "[data-yi-menu]", (menu, event) => {
+    const all = items(menu);
+    const at = all.indexOf(doc.activeElement);
+    const letter = event.key.length === 1 && event.key !== " " && !event.ctrlKey && !event.metaKey && !event.altKey;
+    const starts = (item) => item.textContent.trim().toLowerCase().startsWith(event.key.toLowerCase());
+    const next = {
+      ArrowDown: () => all[(at + 1) % all.length],
+      ArrowUp: () => all.at(at < 0 ? -1 : at - 1),
+      Home: () => all[0],
+      End: () => all.at(-1),
+    }[event.key]?.() ?? (letter ? [...all.slice(at + 1), ...all.slice(0, at + 1)].find(starts) : undefined);
+    if (!next) return;
+    event.preventDefault();
+    next.focus();
+  });
+  on("click", "[data-yi-menu] [role^=menuitem]", (item, event) => {
+    if (item.matches("[aria-disabled=true]")) return event.preventDefault();
+    // After the press has done its own work: a hidden button submits nothing.
+    setTimeout(() => item.closest("[popover]:popover-open")?.hidePopover());
+  });
+
+  // What the server rendered as open: `data-yi-open` on a `<dialog>` or a
+  // popover.
   const open = () => {
     for (const dialog of doc.querySelectorAll("dialog[data-yi-open]:not([open])")) dialog.showModal();
+    for (const surface of doc.querySelectorAll("[popover][data-yi-open]:not(:popover-open)")) surface.showPopover();
   };
 
   // Theme toggle: system, light, dark, stored where `THEME_SCRIPT` reads it.

@@ -107,3 +107,37 @@ fn id_class_and_attrs_reach_the_root_and_surface_class_the_surface() {
     assert!(root.contains(r#"data-row="7""#));
     assert!(!root.contains("wide") && rest.contains("wide"));
 }
+
+#[test]
+fn without_a_client_the_surface_is_a_native_popover_already_in_the_page() {
+    let cases = [(PopoverTrigger::Click, "click", r#"popover="auto""#), (PopoverTrigger::Hover, "hover", r#"popover="manual""#)];
+    for (trigger, kind, popover) in cases {
+        let html = render(move || {
+            html! {
+                <crate::ServerOnly script="/yewi.js">
+                    <Popover content="Body" {trigger} placement={Placement::BottomEnd}>{ "Text" }</Popover>
+                </crate::ServerOnly>
+            }
+        });
+        assert!(html.contains(&format!(r#"data-yi-popover="{kind}""#)), "{html}");
+        assert!(html.contains(popover), "{html}");
+        assert!(html.contains("Body"));
+        assert!(html.contains(r#"data-yi-side="bottom""#) && html.contains(r#"data-yi-align="end""#));
+    }
+}
+
+#[test]
+fn without_a_client_a_disabled_popover_has_no_surface_and_one_wasm_drives_is_left_alone() {
+    let disabled = render(|| {
+        html! { <crate::ServerOnly script="/yewi.js"><Popover content="Body" disabled=true>{ "x" }</Popover></crate::ServerOnly> }
+    });
+    assert!(!disabled.contains("Body"));
+    let manual = render(|| {
+        html! {
+            <crate::ServerOnly script="/yewi.js">
+                <Popover content="Body" trigger={PopoverTrigger::Manual}>{ "x" }</Popover>
+            </crate::ServerOnly>
+        }
+    });
+    assert!(!manual.contains("data-yi-popover") && !manual.contains("Body"));
+}

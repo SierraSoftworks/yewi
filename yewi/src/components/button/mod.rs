@@ -51,8 +51,8 @@ impl ButtonVariant {
 /// ```
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Command {
-    action: &'static str,
-    target: AttrValue,
+    pub(crate) action: &'static str,
+    pub(crate) target: AttrValue,
 }
 
 impl Command {

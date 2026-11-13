@@ -15,8 +15,11 @@ pub struct Fixture {
     render: fn() -> Html,
 }
 
-pub const FIXTURES: &[Fixture] =
-    &[Fixture { name: "confirm", render: confirm }, Fixture { name: "dialogs", render: dialogs }];
+pub const FIXTURES: &[Fixture] = &[
+    Fixture { name: "confirm", render: confirm },
+    Fixture { name: "dialogs", render: dialogs },
+    Fixture { name: "menu", render: menu },
+];
 
 pub fn find(page: &str, name: &str) -> Option<Html> {
     FIXTURES.iter().find(|fixture| page == PAGE && fixture.name == name).map(|fixture| (fixture.render)())
@@ -55,5 +58,19 @@ fn dialogs() -> Html {
             <Drawer id="filters" title="Filters">{ "Nothing to filter by yet." }</Drawer>
             <Dialog id="notice" title="Session expired" open=true>{ "Sign in again to continue." }</Dialog>
         </Cluster>
+    }
+}
+
+fn menu() -> Html {
+    html! {
+        <Stack>
+            <form id="act" method="get" />
+            <MenuButton label="Host">
+                <MenuItem href="/_static/server-only/menu?opened=logs">{ "Logs" }</MenuItem>
+                <MenuItem form="act" name="action" value="restart">{ "Restart" }</MenuItem>
+                <MenuItem tone={Tone::Danger} command={Command::show_modal("confirm-remove")}>{ "Remove" }</MenuItem>
+            </MenuButton>
+            <ConfirmDialog id="confirm-remove" title="Remove pi-1?" confirm_label="Remove" danger=true />
+        </Stack>
     }
 }

@@ -18,12 +18,23 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 /// Components with nothing to run, or whose behaviour is the browser's own.
 const COMPLETE: &str = "AppBar, AppShell, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
                         Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Dialog, ConfirmDialog, Drawer, Spinner, Loading, \
-                        Markdown, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
+                        Markdown, NotificationPanel, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
                         SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
-                        TextInput, TextArea, ThemeScript, ThemeToggle, ToggleSwitch, VisuallyHidden";
+                        TextInput, TextArea, ThemeScript, ThemeToggle, Timeline, ToggleSwitch, Tooltip, TopMenu, VisuallyHidden";
 
 const PARTIAL: &[Row] = &[
-    row("TopMenu", "The row of links", "Groups and the collapsed dropdown", "Use TopMenuCollapse::Never and no groups"),
+    row(
+        "Popover",
+        "Opening on a press or on hover, and closing",
+        "The Focus and Manual triggers, and the arrow",
+        "Use PopoverTrigger::Click or Hover",
+    ),
+    row(
+        "Menu, MenuButton, SplitButton, UserMenu",
+        "Opening, the keyboard, links, and items with a form or a command",
+        "on_select, and checked items that change",
+        "Give each item an href, a form or a command",
+    ),
     row("Tabs", "The selected panel", "Switching panels", "TabNav, with one page per tab"),
     row(
         "Table, SimpleTable",
@@ -82,13 +93,7 @@ const PARTIAL: &[Row] = &[
         "Ticking, local time and the tooltip",
         "Use TimestampDisplay::DateTime",
     ),
-    row(
-        "HistoryStrip, Timeline",
-        "Cells, events and links",
-        "Detail on hover",
-        "Link each cell or event to its own page",
-    ),
-    row("Menu", "Items and links shown in the page", "Arrow keys and type-ahead", "No alternative"),
+    row("HistoryStrip", "Cells and links", "Detail on hover", "Link each cell to its own page"),
     row(
         "Chart, Sparkline",
         "The whole drawing",
@@ -101,13 +106,6 @@ const PARTIAL: &[Row] = &[
 
 const INERT: &[Row] = &[
     row("SecretValue, SecretReveal", "", "Revealing a concealed value", "Show the value; its copy button works"),
-    row(
-        "MenuButton, SplitButton, UserMenu, NotificationPanel, Popover",
-        "",
-        "Opening",
-        "Put links directly in the page",
-    ),
-    row("Tooltip", "", "Showing", "Use visible text, or a native title"),
     row("Select", "", "Opening", "Use NativeSelect, or a RadioGroup with a name"),
     row(
         "Combobox, TagPicker, TreeSelect, QueryInput",
@@ -163,7 +161,7 @@ pub fn render() -> Html {
                 { "Wrap the page in " }<code>{ "ServerOnly" }</code>
                 { ". Components inside it render markup that works on its own, and one small script, " }
                 <code>{ "yewi::BEHAVIOURS" }</code>
-                { ", does what HTML cannot: copying, the number stepper, the theme toggle and hiding the sidebar. Serve the script \
+                { ", does what HTML cannot: copying, the number stepper, the theme toggle, hiding the sidebar, and opening menus, popovers and tooltips. Serve the script \
                    from a cached route, or leave " }<code>{ "script" }</code>
                 { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
                    page inside " }<code>{ "ServerOnly" }</code>{ "." }
@@ -220,6 +218,23 @@ async fn behaviours() -> impl Responder {
     danger=true
     type_to_confirm="pi-1"
 />
+"#) }
+
+            <h2>{ "Menus, popovers and tooltips" }</h2>
+            <p>
+                { "A Popover, Tooltip or menu keeps its content in the page as a native popover. The script \
+                   opens it and handles the keyboard, and the browser places it beside its trigger with CSS \
+                   anchor positioning, which needs Chrome 131, Firefox 147 or Safari 26. A menu item acts \
+                   through an " }<code>{ "href" }</code>{ ", a " }<code>{ "form" }</code>
+                { " it submits, or a " }<code>{ "command" }</code>{ " such as opening a ConfirmDialog." }
+            </p>
+            { rust(r#"
+<form id="host" method="post" action="/hosts/pi-1" />
+<MenuButton label="Host">
+    <MenuItem href="/hosts/pi-1/logs">{ "Logs" }</MenuItem>
+    <MenuItem form="host" name="action" value="restart">{ "Restart" }</MenuItem>
+    <MenuItem tone={Tone::Danger} command={Command::show_modal("confirm-forget")}>{ "Forget" }</MenuItem>
+</MenuButton>
 "#) }
 
             <h2>{ "Components that work fully" }</h2>

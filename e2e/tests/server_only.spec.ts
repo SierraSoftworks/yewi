@@ -211,4 +211,92 @@ test.describe("Server-only pages", () => {
     await expect(sidebar).toBeVisible();
     await expect(menu).toHaveAttribute("aria-expanded", "true");
   });
+
+  for (const [id, button, first, second] of [
+    ["menu-button/basic", "Actions", "Rename", "Duplicate"],
+    ["split-button/basic", "More ways to deploy", "Deploy to staging", "Deploy a canary"],
+    ["top-menu/collapsed", "Menu", "Services", "Incidents"],
+  ]) {
+    test(`a menu opens under its button and is worked from the keyboard: ${id}`, async ({ page, serverOnly }) => {
+      const stage = await serverOnly(id);
+      const trigger = stage.getByRole("button", { name: button, exact: true });
+      const item = (name: string) => stage.getByRole("menuitem", { name, exact: true });
+
+      await expect(item(first)).toBeHidden();
+      await trigger.click();
+      await expect(item(first)).toBeFocused();
+      await expect(trigger).toHaveAttribute("aria-expanded", "true");
+      const [from, menu] = [await trigger.boundingBox(), await stage.getByRole("menu").boundingBox()];
+      expect(menu!.y).toBeGreaterThanOrEqual(from!.y + from!.height);
+
+      await page.keyboard.press("ArrowDown");
+      await expect(item(second)).toBeFocused();
+      await page.keyboard.press("Home");
+      await expect(item(first)).toBeFocused();
+      await page.keyboard.press(second[0]);
+      await expect(item(second)).toBeFocused();
+
+      await page.keyboard.press("Escape");
+      await expect(item(first)).toBeHidden();
+      await expect(trigger).toBeFocused();
+      await expect(trigger).toHaveAttribute("aria-expanded", "false");
+
+      await page.keyboard.press("ArrowUp");
+      await expect(stage.getByRole("menuitem").last()).toBeFocused();
+      await trigger.click();
+      await expect(item(first)).toBeHidden();
+    });
+  }
+
+  test("a popover opens from its trigger and closes on a second press or a press outside", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("popover/basic");
+    const trigger = stage.locator("[data-yi-popover=click]").first();
+    const surface = trigger.locator("[popover]");
+
+    await trigger.locator("button, [tabindex]").first().click();
+    await expect(surface).toBeVisible();
+    await trigger.locator("button, [tabindex]").first().click();
+    await expect(surface).toBeHidden();
+
+    await trigger.locator("button, [tabindex]").first().click();
+    await expect(surface).toBeVisible();
+    await page.mouse.click(5, 500);
+    await expect(surface).toBeHidden();
+  });
+
+  test("a tooltip shows on hover and on keyboard focus, and Escape hides it", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("tooltip/basic");
+    const tip = stage.getByRole("tooltip").first();
+    const described = stage.locator("[data-yi-popover=hover]").first();
+
+    await expect(tip).toBeHidden();
+    await described.hover();
+    await expect(tip).toBeVisible();
+    await page.mouse.move(5, 500);
+    await expect(tip).toBeHidden();
+
+    await page.keyboard.press("Tab");
+    await expect(tip).toBeVisible();
+    await expect(page.locator(":focus")).toHaveAttribute("aria-describedby", /.+/);
+    await page.keyboard.press("Escape");
+    await expect(tip).toBeHidden();
+  });
+
+  test("menu items follow links, submit forms and open dialogs", async ({ page, serverOnly }) => {
+    const stage = await serverOnly("server-only/menu");
+    const choose = async (name: string) => {
+      await stage.getByRole("button", { name: "Host" }).click();
+      await stage.getByRole("menuitem", { name }).click();
+    };
+
+    await choose("Remove");
+    await expect(page.getByRole("alertdialog", { name: "Remove pi-1?" })).toBeVisible();
+    await expect(stage.getByRole("menu")).toBeHidden();
+    await page.keyboard.press("Escape");
+
+    await choose("Restart");
+    await expect(page).toHaveURL(/\?action=restart$/);
+    await choose("Logs");
+    await expect(page).toHaveURL(/\?opened=logs$/);
+  });
 });

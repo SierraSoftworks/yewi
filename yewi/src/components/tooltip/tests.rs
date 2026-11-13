@@ -71,3 +71,17 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"data-row="7""#));
 }
+
+#[test]
+fn without_a_client_the_tip_is_in_the_page_for_the_script_to_show() {
+    let html = render(|| {
+        html! { <crate::ServerOnly script="/yewi.js"><Tooltip tip="Tip">{ "Text" }</Tooltip></crate::ServerOnly> }
+    });
+    assert!(html.contains(r#"data-yi-popover="hover""#));
+    assert!(html.contains(r#"role="tooltip""#) && html.contains("Tip"));
+
+    let empty = render(|| {
+        html! { <crate::ServerOnly script="/yewi.js"><Tooltip>{ "Text" }</Tooltip></crate::ServerOnly> }
+    });
+    assert!(!empty.contains(r#"role="tooltip""#));
+}

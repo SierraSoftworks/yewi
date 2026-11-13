@@ -6,7 +6,10 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, NavTarget, Tone, icons, nav_target::use_nav_link, is_empty};
+use crate::{
+    Attrs, Command, Icon, IconData, NavTarget, Tone, components::server_only::use_server_only, icons, is_empty,
+    nav_target::use_nav_link,
+};
 
 /// Which item a menu moves keyboard focus to when it appears.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -57,6 +60,7 @@ pub struct MenuProps {
 #[function_component]
 pub fn Menu(props: &MenuProps) -> Html {
     let node = use_node_ref();
+    let server_only = use_server_only();
 
     {
         let node = node.clone();
@@ -95,6 +99,7 @@ pub fn Menu(props: &MenuProps) -> Html {
             role="menu"
             aria-label={props.label.clone()}
             tabindex={if standalone { "0" } else { "-1" }}
+            data-yi-menu={server_only.then_some("")}
             {onkeydown}
             {onmouseover}
             {onclick}
@@ -140,6 +145,22 @@ pub struct MenuItemProps {
     /// Fired when the item is chosen. Not fired while `disabled`.
     #[prop_or_default]
     pub on_select: Callback<MouseEvent>,
+    /// Has the browser act on another element when the item is chosen, such
+    /// as opening a `ConfirmDialog`: no handler needed, so it works on a page
+    /// that loads no wasm. Not used with `href`.
+    #[prop_or_default]
+    pub command: Option<Command>,
+    /// The `id` of a `<form>` the item submits when chosen, which is how an
+    /// action reaches the server on a page that loads no wasm. Not used with
+    /// `href`.
+    #[prop_or_default]
+    pub form: Option<AttrValue>,
+    /// With `form`: the name the item's `value` is submitted under.
+    #[prop_or_default]
+    pub name: Option<AttrValue>,
+    /// With `form` and `name`: the value submitted.
+    #[prop_or_default]
+    pub value: Option<AttrValue>,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -174,6 +195,7 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
         },
         props.class.clone(),
     );
+    let command = props.command.as_ref().filter(|_| !disabled);
     let role = if props.checked.is_some() { "menuitemcheckbox" } else { "menuitem" };
     let aria_checked = props.checked.map(|checked| if checked { "true" } else { "false" });
     let aria_disabled = disabled.then_some("true");
@@ -220,7 +242,12 @@ pub fn MenuItem(props: &MenuItemProps) -> Html {
                 id={props.id.clone()}
                 {class}
                 {role}
-                type="button"
+                type={if props.form.is_some() { "submit" } else { "button" }}
+                form={props.form.clone()}
+                name={props.name.clone()}
+                value={props.value.clone()}
+                command={command.map(|command| command.action)}
+                commandfor={command.map(|command| command.target.clone())}
                 tabindex="-1"
                 aria-checked={aria_checked}
                 aria-disabled={aria_disabled}

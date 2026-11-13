@@ -8,7 +8,9 @@ use std::{
 
 use yew::prelude::*;
 
-use crate::{AnchorOptions, Attrs, Placement, use_anchored, use_id, is_empty};
+use crate::{
+    AnchorOptions, Attrs, Placement, components::server_only::use_server_only, is_empty, use_anchored, use_id,
+};
 
 /// What opens and closes a popover.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -275,7 +277,8 @@ pub fn Popover(props: &PopoverProps) -> Html {
         })
     };
 
-    let open = !props.disabled && props.open.unwrap_or(*shown);
+    let native = use_server_only() && matches!(props.trigger, PopoverTrigger::Click | PopoverTrigger::Hover);
+    let open = !native && !props.disabled && props.open.unwrap_or(*shown);
     wanted.set(open);
 
     let gap = if props.arrow { 9.0 } else { 6.0 };
@@ -304,6 +307,57 @@ pub fn Popover(props: &PopoverProps) -> Html {
         props.surface_class.clone(),
     );
 
+    let body = html! {
+        <>
+            if !is_empty(&props.header) {
+                <span class="yi-popover__header">{ props.header.clone() }</span>
+            }
+            <span class="yi-popover__body">{ props.content.clone() }</span>
+            if !is_empty(&props.footer) {
+                <span class="yi-popover__footer">{ props.footer.clone() }</span>
+            }
+        </>
+    };
+
+    // Without a client the surface is always in the page, the browser shows
+    // it as a native popover and the stylesheet places it. `BEHAVIOURS` does
+    // the opening, since the trigger is whatever the caller passed.
+    if native {
+        let surface_class = classes!(
+            "yi-anchored",
+            "yi-anchored--native",
+            "yi-popover__surface",
+            props.flush.then_some("yi-popover__surface--flush"),
+            props.surface_class.clone(),
+        );
+        return props.attrs.apply(html! {
+            <span
+                id={props.id.clone()}
+                {class}
+                role={acts_as_button.then_some("button")}
+                tabindex={props.focusable.then_some("0")}
+                data-yi-popover={if hover { "hover" } else { "click" }}
+                data-yi-delay={hover.then(|| props.delay_ms.to_string())}
+            >
+                { props.children.clone() }
+                if !props.disabled {
+                    <span
+                        id={surface_id}
+                        class={surface_class}
+                        {role}
+                        aria-label={props.label.clone()}
+                        popover={if hover { "manual" } else { "auto" }}
+                        data-yi-side={props.placement.side()}
+                        data-yi-align={props.placement.align()}
+                        data-yi-open={props.open.unwrap_or(props.default_open).then_some("")}
+                    >
+                        { body }
+                    </span>
+                }
+            </span>
+        });
+    }
+
     props.attrs.apply(html! {
         <span
             ref={anchor}
@@ -328,13 +382,7 @@ pub fn Popover(props: &PopoverProps) -> Html {
                     aria-label={props.label.clone()}
                     popover="manual"
                 >
-                    if !is_empty(&props.header) {
-                        <span class="yi-popover__header">{ props.header.clone() }</span>
-                    }
-                    <span class="yi-popover__body">{ props.content.clone() }</span>
-                    if !is_empty(&props.footer) {
-                        <span class="yi-popover__footer">{ props.footer.clone() }</span>
-                    }
+                    { body }
                 </span>
             }
         </span>

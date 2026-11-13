@@ -101,3 +101,26 @@ fn class_id_and_attrs_reach_the_root() {
         }
     }
 }
+
+#[test]
+fn an_item_can_submit_a_form_or_command_another_element() {
+    let submit = render(|| html! { <MenuItem form="act" name="action" value="restart">{ "Restart" }</MenuItem> });
+    for expected in [r#"type="submit""#, r#"form="act""#, r#"name="action""#, r#"value="restart""#] {
+        assert!(submit.contains(expected), "{expected} missing from {submit}");
+    }
+    let command = render(|| html! { <MenuItem command={crate::Command::show_modal("confirm")}>{ "Remove" }</MenuItem> });
+    assert!(command.contains(r#"command="show-modal""#) && command.contains(r#"commandfor="confirm""#));
+    assert!(command.contains(r#"type="button""#));
+
+    let disabled = render(|| {
+        html! { <MenuItem disabled=true command={crate::Command::show_modal("confirm")}>{ "Remove" }</MenuItem> }
+    });
+    assert!(!disabled.contains("commandfor"));
+}
+
+#[test]
+fn only_a_menu_without_a_client_is_marked_for_the_script() {
+    let server_only = render(|| html! { <crate::ServerOnly script="/yewi.js"><Menu /></crate::ServerOnly> });
+    assert!(server_only.contains("data-yi-menu"));
+    assert!(!render(|| html! { <Menu /> }).contains("data-yi-menu"));
+}
