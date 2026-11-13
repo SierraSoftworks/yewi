@@ -11,7 +11,8 @@ crate::page! {
         selection => "Selecting rows": "Pass `selected` to add a checkbox column, and update it from `on_select`. Selection is tracked by `row_key`, so it survives sorting and reloading. The header box selects everything and shows a dash when only some rows are selected.",
         expandable => "Expandable rows": "`detail` adds a disclosure button to each row and renders the details in a full-width row underneath. Details are only rendered while open; `on_expand` is the place to load them.",
         row_click => "Clickable rows": "`on_row_click` opens a row from a click anywhere on it, except on a link or control inside it. Keep a real link in the row for the same destination: it is what the keyboard and screen readers use.",
-        states => "Loading and empty": "While `loading` with no rows the table reserves its shape with placeholder rows; with rows it keeps them, dimmed, until the refresh lands. With nothing to show it renders `empty`, by default a small `EmptyState`.",
+        states => "Loading and empty": "While `loading` with no rows the table reserves its shape with placeholder rows; with rows it keeps them, dimmed, until the refresh lands. With nothing to show it renders `empty`, by default a small `EmptyState` titled with `empty_label`.",
+        in_card => "In a card": "Make the card body `flush` and the table runs edge to edge: its first and last columns take the card's padding, so the first column starts under the card title and row fills reach the border. A flush `Panel` body does the same.",
         simple => "Hand-written tables": "`SimpleTable` takes plain table markup for rows that are not uniform, such as group headings, and for rendered documents. `SortHeader` gives its columns the same sort button.",
     ],
 }

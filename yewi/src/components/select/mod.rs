@@ -388,5 +388,13 @@ pub(crate) mod dom {
     }
 }
 
+/// The line under a list that shows only its first `shown` of `total` matches.
+pub(crate) fn more_label(custom: Option<&Callback<(usize, usize), AttrValue>>, shown: usize, total: usize) -> AttrValue {
+    match custom {
+        Some(label) => label.emit((shown, total)),
+        None => format!("Showing the first {shown} of {total}. Type to narrow the list.").into(),
+    }
+}
+
 #[cfg(test)]
 mod tests;

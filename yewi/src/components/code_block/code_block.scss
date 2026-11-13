@@ -24,11 +24,13 @@
   flex-direction: column;
   min-inline-size: 0;
   overflow: hidden;
-  border: 1px solid var(--yi-code-block-border);
+
+  // The frame restates the text colour, so a forced theme recolours it too.
+  @include code-frame;
+
+  border-color: var(--yi-code-block-border);
   border-radius: var(--yi-code-block-radius);
   background: var(--yi-code-block-bg);
-  // Restated so that a forced theme recolours the text as well.
-  color: var(--yi-fg);
 }
 
 .yi-code-block__header {

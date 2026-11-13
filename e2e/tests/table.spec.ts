@@ -173,6 +173,19 @@ test.describe("Table", () => {
     expect((await firstColumn(table)).slice(0, 2)).toEqual(["Canary", "web-02"]);
   });
 
+  test("in a flush card the first column starts under the card title", async ({ example }) => {
+    const stage = await example("table/in-card");
+    const left = (locator: Locator) => locator.evaluate((el) => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return Math.round(range.getBoundingClientRect().left);
+    });
+
+    const title = await left(stage.getByRole("heading", { name: "Releases" }));
+    expect(await left(stage.getByRole("columnheader", { name: "Version" }))).toBe(title);
+    expect(await left(stage.getByRole("rowheader", { name: "2026.1.3" }))).toBe(title);
+  });
+
   test("a table too wide for its container scrolls and is reachable by keyboard", async ({ page, example }) => {
     await page.setViewportSize({ width: 360, height: 640 });
     const stage = await example("table/basic");
