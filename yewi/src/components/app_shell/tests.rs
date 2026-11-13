@@ -88,3 +88,32 @@ fn id_class_and_attrs_reach_the_root_element() {
     assert!(root.contains("mine"));
     assert!(root.contains(r#"data-app="buckle""#));
 }
+
+#[test]
+fn without_a_client_the_menu_button_opens_the_navigation_drawer() {
+    let html = render(|| {
+        html! {
+            <crate::ServerOnly script="/yewi.js">
+                <AppShell
+                    storage_key="shell"
+                    bar={html! { <AppBar /> }}
+                    sidebar={html! { <Sidebar><SidebarItem href="/hosts">{ "Hosts" }</SidebarItem></Sidebar> }}
+                />
+            </crate::ServerOnly>
+        }
+    });
+    let drawer = attr(&html, "<button", "commandfor");
+    assert_eq!(attr(&html, "<button", "command"), "show-modal");
+    assert!(html.contains("data-yi-shell-toggle"));
+    assert_eq!(attr(&html, "<dialog", "id"), drawer);
+    assert!(html.contains(r#"data-yi-collapse-key="shell""#));
+    // The drawer holds the navigation before anything opens it.
+    assert_eq!(html.matches("/hosts").count(), 2);
+}
+
+#[test]
+fn a_hydrating_shell_declares_nothing_for_the_script() {
+    let html = shell(false);
+    assert!(!html.contains("commandfor"));
+    assert!(!html.contains("data-yi-"));
+}

@@ -134,6 +134,38 @@
     if (value !== undefined) show(input, clamp(input, value));
   });
 
+  // App shell: the menu button opens the navigation drawer natively
+  // (`commandfor`). Where the sidebar sits beside the page, that press hides
+  // or shows the column instead, remembered under `data-yi-collapse-key`.
+  const collapse = (shell, hidden) => {
+    shell.classList.toggle("yi-app-shell--collapsed", hidden);
+    for (const button of shell.querySelectorAll("[data-yi-shell-toggle]")) button.setAttribute("aria-expanded", String(!hidden));
+  };
+  on("click", "[data-yi-shell-toggle]", (button, event) => {
+    const shell = button.closest(".yi-app-shell");
+    const body = shell?.querySelector(".yi-app-shell__body");
+    if (!body || getComputedStyle(body).getPropertyValue("--yi-app-shell-narrow").trim() === "1") return;
+    event.preventDefault();
+    const hidden = !shell.classList.contains("yi-app-shell--collapsed");
+    collapse(shell, hidden);
+    const key = shell.dataset.yiCollapseKey;
+    try {
+      if (key && hidden) localStorage.setItem(key, "1");
+      else if (key) localStorage.removeItem(key);
+    } catch {
+      // Not remembered, then.
+    }
+  });
+  const restore = () => {
+    for (const shell of doc.querySelectorAll("[data-yi-collapse-key]")) {
+      try {
+        if (localStorage.getItem(shell.dataset.yiCollapseKey) === "1") collapse(shell, true);
+      } catch {
+        // Storage is refused: the shell stays as rendered.
+      }
+    }
+  };
+
   // Dialogs the server rendered as open: `data-yi-open` on a `<dialog>`.
   const open = () => {
     for (const dialog of doc.querySelectorAll("dialog[data-yi-open]:not([open])")) dialog.showModal();
@@ -171,6 +203,7 @@
   });
   const start = () => {
     label();
+    restore();
     open();
   };
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", start);

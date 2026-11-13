@@ -176,4 +176,39 @@ test.describe("Server-only pages", () => {
     await expect(dialog).toBeHidden();
     expect(new URL(page.url()).search).toBe("");
   });
+
+  test("on a narrow screen the menu button opens the navigation in a drawer", async ({ page, serverOnly }) => {
+    await page.setViewportSize({ width: 390, height: 800 });
+    const stage = await serverOnly("app-shell/grouped");
+    const menu = stage.getByRole("button", { name: "Navigation" }).first();
+
+    await expect(stage.getByText("Devices").filter({ visible: true })).toHaveCount(0);
+    await menu.click();
+    const drawer = page.getByRole("dialog", { name: "Navigation" });
+    await expect(drawer).toBeVisible();
+    await expect(drawer.getByText("Devices")).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(drawer).toBeHidden();
+    await expect(menu).toBeFocused();
+  });
+
+  test("on a wide screen the menu button hides the sidebar, and that is remembered", async ({ page, serverOnly }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    const stage = await serverOnly("app-shell/grouped");
+    const menu = stage.getByRole("button", { name: "Navigation" }).first();
+    const sidebar = stage.locator(".yi-app-shell__sidebar");
+
+    await expect(sidebar).toBeVisible();
+    await menu.click();
+    await expect(sidebar).toBeHidden();
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
+    await expect(page.getByRole("dialog", { name: "Navigation" })).toBeHidden();
+
+    await page.reload();
+    await expect(sidebar).toBeHidden();
+    await menu.click();
+    await expect(sidebar).toBeVisible();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+  });
 });

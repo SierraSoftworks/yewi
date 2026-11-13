@@ -16,19 +16,13 @@ const fn row(component: &'static str, works: &'static str, needs_client: &'stati
 }
 
 /// Components with nothing to run, or whose behaviour is the browser's own.
-const COMPLETE: &str = "AppBar, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
+const COMPLETE: &str = "AppBar, AppShell, Badge, Breadcrumbs, Button, Card, Checkbox, DescriptionList, Divider, Duration, EmptyState, \
                         Field, Heading, Highlight, Icon, InlineCode, Kbd, Stack, Cluster, Grid, Link, CopyButton, Copyable, Dialog, ConfirmDialog, Drawer, Spinner, Loading, \
                         Markdown, PageHeader, Pagination, Panel, Pill, Pipeline, QrCode, Radio, SegmentBar, \
                         SegmentedControl, Sidebar, Skeleton, StatTile, StatusDot, Steps, TabNav, Terminal, Text, \
                         TextInput, TextArea, ThemeScript, ThemeToggle, ToggleSwitch, VisuallyHidden";
 
 const PARTIAL: &[Row] = &[
-    row(
-        "AppShell",
-        "The layout on a wide screen",
-        "Hiding the sidebar, and all navigation on a narrow screen",
-        "Repeat the destinations in a TopMenu with TopMenuCollapse::Never",
-    ),
     row("TopMenu", "The row of links", "Groups and the collapsed dropdown", "Use TopMenuCollapse::Never and no groups"),
     row("Tabs", "The selected panel", "Switching panels", "TabNav, with one page per tab"),
     row(
@@ -169,7 +163,7 @@ pub fn render() -> Html {
                 { "Wrap the page in " }<code>{ "ServerOnly" }</code>
                 { ". Components inside it render markup that works on its own, and one small script, " }
                 <code>{ "yewi::BEHAVIOURS" }</code>
-                { ", does what HTML cannot: copying, the number stepper and the theme toggle. Serve the script \
+                { ", does what HTML cannot: copying, the number stepper, the theme toggle and hiding the sidebar. Serve the script \
                    from a cached route, or leave " }<code>{ "script" }</code>
                 { " unset to have it inlined. An app that hydrates uses neither. The lists below describe a \
                    page inside " }<code>{ "ServerOnly" }</code>{ "." }

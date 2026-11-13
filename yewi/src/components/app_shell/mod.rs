@@ -10,7 +10,7 @@
 use yew::prelude::*;
 
 use crate::is_empty;
-use crate::{Attrs, Drawer, DrawerSide, Size, hooks::use_id};
+use crate::{Attrs, Command, Drawer, DrawerSide, Size, components::server_only::use_server_only, hooks::use_id};
 
 /// What an [`AppShell`] shares with the components inside it. [`AppBar`]
 /// and [`SidebarItem`] use it already; read it with [`use_app_shell`] to
@@ -32,6 +32,8 @@ pub struct AppShellContext {
     pub toggle_sidebar: Callback<()>,
     /// Closes the drawer. Call it when the user picks a destination.
     pub close_drawer: Callback<()>,
+    /// Inside `ServerOnly`: opens the drawer natively, for the menu button.
+    pub drawer_command: Option<Command>,
 }
 
 /// The enclosing [`AppShell`]'s state, or `None` outside one.
@@ -94,6 +96,10 @@ pub struct AppShellProps {
 pub fn AppShell(props: &AppShellProps) -> Html {
     let sidebar_id = use_id();
     let main_id = use_id();
+    // Without a client the menu button opens the drawer by naming it, and
+    // `BEHAVIOURS` turns that into hiding the column on a wide screen.
+    let server_only = use_server_only();
+    let drawer_id = AttrValue::from(format!("{sidebar_id}-drawer"));
     let body = use_node_ref();
     // The drawer, on a narrow screen.
     let open = use_state_eq(|| false);
@@ -149,6 +155,7 @@ pub fn AppShell(props: &AppShellProps) -> Html {
         sidebar_shown: if *narrow { drawer_open } else { !*collapsed },
         toggle_sidebar,
         close_drawer: close_drawer.clone(),
+        drawer_command: server_only.then(|| Command::show_modal(drawer_id.clone())),
     };
 
     let class = classes!(
@@ -168,7 +175,11 @@ pub fn AppShell(props: &AppShellProps) -> Html {
     html! {
         <ContextProvider<AppShellContext> {context}>
             { props.attrs.apply(html! {
-                <div id={props.id.clone()} {class}>
+                <div
+                    id={props.id.clone()}
+                    {class}
+                    data-yi-collapse-key={props.storage_key.clone().filter(|_| server_only)}
+                >
                     if !props.embedded {
                         <a class="yi-app-shell__skip" href={format!("#{main_id}")}>{ props.skip_label.clone() }</a>
                     }
@@ -186,6 +197,7 @@ pub fn AppShell(props: &AppShellProps) -> Html {
                     if !is_empty(&props.sidebar) {
                         <Drawer
                             class="yi-app-shell__drawer"
+                            id={server_only.then_some(drawer_id)}
                             open={drawer_open}
                             label={props.drawer_label.clone()}
                             side={DrawerSide::Start}
