@@ -301,14 +301,15 @@ html {
 }
 
 // `InlineCode` brings its own chip; this dresses bare `<code>` in prose.
-.docs-main code:not(.yi-inline-code) {
+// Highlighted code is left alone: it belongs to `Highlight` or `CodeBlock`,
+// whose own padding these unlayered rules would otherwise replace.
+.docs-main code:not(.yi-inline-code, .yi-highlight) {
   padding: 0.1em 0.35em;
   border-radius: var(--yi-radius-sm);
   background: var(--yi-tone-1);
 }
 
-// Matches the specificity of the rule above, so code in a block has no chip.
-.docs-main pre code:not(.yi-inline-code) {
+.docs-main pre code:not(.yi-inline-code, .yi-highlight) {
   padding: 0;
   background: none;
 }
