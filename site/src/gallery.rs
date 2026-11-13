@@ -187,18 +187,15 @@ fn keep_links_here() -> impl FnOnce() {
                 event.prevent_default();
             }
         });
-        // On the window, capturing: ahead of anything that could stop the event.
+        // On the window as the event bubbles out: after the link's own handlers,
+        // which leave a click alone once its default is prevented.
         let window = web_sys::window();
         if let Some(window) = &window {
-            let _ = window.add_event_listener_with_callback_and_bool("click", listener.as_ref().unchecked_ref(), true);
+            let _ = window.add_event_listener_with_callback("click", listener.as_ref().unchecked_ref());
         }
         move || {
             if let Some(window) = &window {
-                let _ = window.remove_event_listener_with_callback_and_bool(
-                    "click",
-                    listener.as_ref().unchecked_ref(),
-                    true,
-                );
+                let _ = window.remove_event_listener_with_callback("click", listener.as_ref().unchecked_ref());
             }
         }
     }

@@ -89,6 +89,11 @@ test.describe("Review gallery", () => {
     await page.locator('[data-example="link/basic"]').getByRole("link", { name: "Documentation" }).click();
     await page.locator('[data-example="link/external"]').getByRole("link").first().click();
 
+    // A router link still navigates its own router.
+    const router = page.locator('[data-example="link/router"]');
+    await router.getByRole("link", { name: "Hosts" }).click();
+    await expect(router.getByRole("status")).toHaveText("Showing: Hosts");
+
     await expect(heading).toHaveText("Link");
     expect(page.url()).toBe(address);
     expect(opened).toEqual([]);
