@@ -22,8 +22,8 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <AppBar {brand}>
-                <TopMenu collapse={TopMenuCollapse::Always} {actions}>
+            <AppBar {brand} {actions}>
+                <TopMenu collapse={TopMenuCollapse::Always}>
                     <TopMenuItem href="#services" current=true on_click={choose("Services")}>{ "Services" }</TopMenuItem>
                     <TopMenuItem href="#incidents" on_click={choose("Incidents")}>{ "Incidents" }</TopMenuItem>
                     <TopMenuGroup label="Admin">

@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, StatusDot, Tone};
+use crate::{Attrs, NavTarget, StatusDot, Tone, nav_target::use_nav_link};
 
 #[derive(Properties, PartialEq)]
 pub struct PillProps {
@@ -22,9 +22,10 @@ pub struct PillProps {
     /// your own `StatusDot` or icon as content.
     #[prop_or(true)]
     pub dot: bool,
-    /// Renders a link, for a pill that opens what it names.
+    /// Renders a link, for a pill that opens what it names: a URL or, with
+    /// the `router` feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -52,9 +53,12 @@ pub fn Pill(props: &PillProps) -> Html {
         </>
     };
 
-    props.attrs.apply(match &props.href {
+    let link = use_nav_link(&props.href, Callback::noop());
+    props.attrs.apply(match link.href {
         Some(href) => html! {
-            <a id={props.id.clone()} {class} {href}>{ content }</a>
+            <a id={props.id.clone()} {class} {href} target={link.target} rel={link.rel} onclick={link.onclick}>
+                { content }
+            </a>
         },
         None => html! {
             <span id={props.id.clone()} {class}>{ content }</span>

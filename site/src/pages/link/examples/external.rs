@@ -7,14 +7,14 @@ pub fn Example() -> Html {
         <Stack>
             <Text tag={TextTag::P}>
                 { "yewi is built on " }
-                <Link href="https://yew.rs" external=true>{ "Yew" }</Link>
+                <Link href={NavTarget::href("https://yew.rs").external()}>{ "Yew" }</Link>
                 { " and bundled with " }
-                <Link href="https://trunkrs.dev" external=true>{ "Trunk" }</Link>
+                <Link href={NavTarget::href("https://trunkrs.dev").external()}>{ "Trunk" }</Link>
                 { "." }
             </Text>
             <Cluster gap={Space::Lg}>
                 <Link href="#external-and-with-an-icon" icon={icons::BOOK_OPEN}>{ "Read the guide" }</Link>
-                <Link href="https://github.com/SierraSoftworks/yewi" icon={icons::GIT_BRANCH} external=true>
+                <Link href={NavTarget::href("https://github.com/SierraSoftworks/yewi").external()} icon={icons::GIT_BRANCH}>
                     { "Source" }
                 </Link>
             </Cluster>

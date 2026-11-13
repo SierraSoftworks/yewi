@@ -8,7 +8,7 @@ pub fn Example() -> Html {
     let section = use_state(|| MENU[0]);
 
     let brand = html! { <AppBarBrand logo={html! { <Icon icon={icons::ACTIVITY} /> }}>{ "Grey" }</AppBarBrand> };
-    // Given to the menu rather than the bar, so that on a narrow screen they
+    // The menu takes over the bar's actions, so that on a narrow screen they
     // fold into its dropdown with the destinations.
     let actions = html! {
         <>
@@ -20,8 +20,8 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <AppBar {brand}>
-                <TopMenu label="Sections" {actions}>
+            <AppBar {brand} {actions}>
+                <TopMenu label="Sections">
                     { for MENU.into_iter().map(|name| {
                         // An app links to its own pages; the example stays on this one.
                         let on_click = {

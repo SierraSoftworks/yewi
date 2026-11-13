@@ -3,7 +3,10 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Orientation, Size, Spinner, VisuallyHidden, icons, is_empty};
+use crate::{
+    Attrs, Icon, IconData, NavTarget, Orientation, Size, Spinner, VisuallyHidden, icons, is_empty,
+    nav_target::use_nav_link,
+};
 
 /// Where a step stands.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -134,9 +137,10 @@ pub struct StepProps {
     /// title, e.g. for another language.
     #[prop_or_default]
     pub status_label: Option<AttrValue>,
-    /// Makes the title a link to the step.
+    /// Makes the title a link to the step: a URL or, with the `router`
+    /// feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Makes the title a button, for moving between steps. Ignored with `href`.
     #[prop_or_default]
     pub on_click: Option<Callback<MouseEvent>>,
@@ -154,8 +158,13 @@ pub fn Step(props: &StepProps) -> Html {
     let status = props.status;
     let class = classes!("yi-step", format!("yi-step--{}", status.as_str()), props.class.clone());
 
-    let title = if let Some(href) = &props.href {
-        html! { <a class="yi-step__title yi-step__action" href={href.clone()}>{ props.title.clone() }</a> }
+    let link = use_nav_link(&props.href, Callback::noop());
+    let title = if let Some(href) = link.href {
+        html! {
+            <a class="yi-step__title yi-step__action" {href} target={link.target} rel={link.rel} onclick={link.onclick}>
+                { props.title.clone() }
+            </a>
+        }
     } else if let Some(on_click) = &props.on_click {
         html! {
             <button type="button" class="yi-step__title yi-step__action" onclick={on_click.clone()}>

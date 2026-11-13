@@ -11,7 +11,7 @@ mod icon_button;
 pub use group::*;
 pub use icon_button::*;
 
-use crate::{Attrs, Icon, IconData, Size, Spinner};
+use crate::{Attrs, Icon, IconData, NavTarget, Size, Spinner, nav_target::use_nav_link};
 
 /// How much visual weight a button carries.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -83,10 +83,12 @@ pub struct ButtonProps {
     /// `href`. The caller owns the state and flips it in `on_click`.
     #[prop_or_default]
     pub pressed: Option<bool>,
-    /// Renders a link that looks like a button.
+    /// Renders a link that looks like a button: a URL or, with the `router`
+    /// feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
-    /// The link `target`. Only used with `href`.
+    pub href: NavTarget,
+    /// The link `target`. Only used with `href`; an external `href` sets
+    /// `_blank`.
     #[prop_or_default]
     pub target: Option<AttrValue>,
     /// The native button type. Ignored with `href`.
@@ -143,20 +145,22 @@ pub fn Button(props: &ButtonProps) -> Html {
     };
 
     let aria_busy = props.loading.then_some("true");
+    let link = use_nav_link(&props.href, onclick.clone());
+    let (target, rel) = link.target_and_rel(props.target.as_ref(), None);
 
-    props.attrs.apply(match &props.href {
+    props.attrs.apply(match link.href {
         Some(href) => html! {
             <a
                 ref={props.node_ref.clone()}
                 id={props.id.clone()}
                 {class}
-                href={(!inert).then(|| href.clone())}
-                target={props.target.clone()}
-                rel={props.target.as_ref().filter(|t| *t == "_blank").map(|_| "noopener")}
+                href={(!inert).then_some(href)}
+                {target}
+                {rel}
                 role={inert.then_some("link")}
                 aria-disabled={inert.then_some("true")}
                 aria-busy={aria_busy}
-                {onclick}
+                onclick={link.onclick}
             >
                 { content }
             </a>

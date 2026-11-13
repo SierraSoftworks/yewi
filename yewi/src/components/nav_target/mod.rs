@@ -1,9 +1,9 @@
 //! Where a navigation item leads: a plain URL or, with the `router` feature,
 //! a `yew-router` route that is followed without reloading the page.
 //!
-//! `Tabs`, `Breadcrumbs` and `Pagination` all take a [`NavTarget`], so the
-//! same component works in a server-rendered page of plain links and in a
-//! routed single-page app.
+//! Every component that can be a link takes its `href` as a [`NavTarget`], so
+//! the same component works in a server-rendered page of plain links and in
+//! a routed single-page app.
 
 use std::rc::Rc;
 
@@ -20,10 +20,13 @@ type Follow = Rc<dyn Fn(&yew_router::navigator::Navigator, &[(String, String)])>
 ///   link renders a real `href` (including the router's basename) and an
 ///   unmodified click navigates client-side.
 /// - [`NavTarget::query`] adds query parameters to either kind.
+/// - [`NavTarget::external`] marks a link that leaves the application: it
+///   opens in a new tab, and components that show a hint for such links do.
 #[derive(Clone, Default)]
 pub struct NavTarget {
     path: AttrValue,
     query: Rc<[(String, String)]>,
+    external: bool,
     #[cfg(feature = "router")]
     route: Option<Follow>,
 }
@@ -41,6 +44,7 @@ impl NavTarget {
         Self {
             path: route.to_path().into(),
             query: Rc::default(),
+            external: false,
             route: Some(Rc::new(move |navigator, query| {
                 if query.is_empty() {
                     navigator.push(&route);
@@ -56,6 +60,20 @@ impl NavTarget {
     pub fn query<K: Into<String>, V: Into<String>>(mut self, pairs: impl IntoIterator<Item = (K, V)>) -> Self {
         self.query = pairs.into_iter().map(|(k, v)| (k.into(), v.into())).collect();
         self
+    }
+
+    /// Marks the link as leaving the application: it opens in a new tab
+    /// (`target="_blank"`, `rel="noopener noreferrer"`) and is never followed
+    /// client-side.
+    #[must_use]
+    pub fn external(mut self) -> Self {
+        self.external = true;
+        self
+    }
+
+    /// Whether the link leaves the application. See [`NavTarget::external`].
+    pub fn is_external(&self) -> bool {
+        self.external
     }
 
     /// Whether this target leads nowhere (the default).
@@ -98,13 +116,16 @@ impl NavTarget {
 
 impl PartialEq for NavTarget {
     fn eq(&self, other: &Self) -> bool {
-        self.path == other.path && self.query == other.query && self.is_route() == other.is_route()
+        self.path == other.path
+            && self.query == other.query
+            && self.external == other.external
+            && self.is_route() == other.is_route()
     }
 }
 
 impl std::fmt::Debug for NavTarget {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("NavTarget").field("href", &self.url(None, false)).field("route", &self.is_route()).finish()
+        f.debug_struct("NavTarget").field("href", &self.url(None, false)).field("route", &self.is_route()).field("external", &self.external).finish()
     }
 }
 
@@ -144,6 +165,19 @@ impl IntoPropValue<NavTarget> for AttrValue {
     }
 }
 
+/// `None` is the empty target, so an optional URL can be passed as it is.
+impl<T: Into<NavTarget>> From<Option<T>> for NavTarget {
+    fn from(href: Option<T>) -> Self {
+        href.map(Into::into).unwrap_or_default()
+    }
+}
+
+impl<T: Into<NavTarget>> IntoPropValue<NavTarget> for Option<T> {
+    fn into_prop_value(self) -> NavTarget {
+        self.into()
+    }
+}
+
 /// Percent-encodes a query key or value.
 fn encode(text: &str, out: &mut String) {
     use std::fmt::Write as _;
@@ -165,7 +199,48 @@ pub(crate) struct NavLink {
     /// Whether a routed target is the page being shown. Always `false` for a
     /// plain `href`, which the caller marks as current itself.
     pub current: bool,
+    /// Whether the link leaves the application, for showing a hint.
+    pub external: bool,
+    /// `_blank` for an external link.
+    pub target: Option<AttrValue>,
+    /// What goes with `target` for an external link.
+    pub rel: Option<AttrValue>,
 }
+
+impl NavLink {
+    fn new(target: &NavTarget, href: Option<AttrValue>, onclick: Callback<MouseEvent>, current: bool) -> Self {
+        let external = target.external && href.is_some();
+        Self {
+            href,
+            onclick,
+            current,
+            external,
+            target: external.then_some(AttrValue::Static("_blank")),
+            rel: external.then_some(AttrValue::Static(NEW_TAB_REL)),
+        }
+    }
+
+    /// The `target` and `rel` attributes for a component that also takes
+    /// its own: a `target` given by the caller wins, and whatever opens a
+    /// new tab gets the protective `rel` added to the caller's.
+    pub fn target_and_rel(
+        &self,
+        target: Option<&AttrValue>,
+        rel: Option<&AttrValue>,
+    ) -> (Option<AttrValue>, Option<AttrValue>) {
+        let target = target.cloned().or_else(|| self.target.clone());
+        let new_tab = target.as_ref().is_some_and(|target| target == "_blank");
+        let rel = match (rel, new_tab) {
+            (Some(rel), true) => Some(AttrValue::from(format!("{rel} {NEW_TAB_REL}"))),
+            (None, true) => Some(AttrValue::Static(NEW_TAB_REL)),
+            (rel, false) => rel.cloned(),
+        };
+        (target, rel)
+    }
+}
+
+/// Keeps the opened page from reaching back to, or learning of, this one.
+const NEW_TAB_REL: &str = "noopener noreferrer";
 
 /// Resolves `target` for rendering as an `<a>`.
 #[hook]
@@ -189,7 +264,8 @@ pub(crate) fn use_nav_link(target: &NavTarget, on_click: Callback<MouseEvent>) -
         let current =
             target.is_route() && location.is_some_and(|location| location.path().trim_end_matches('/') == own_path);
 
-        let follow = navigator.zip(target.route.clone());
+        // A link that opens a new tab is the browser's to follow.
+        let follow = navigator.zip(target.route.clone()).filter(|_| !target.external);
         let query = target.query.clone();
         let onclick = Callback::from(move |event: MouseEvent| {
             on_click.emit(event.clone());
@@ -201,15 +277,12 @@ pub(crate) fn use_nav_link(target: &NavTarget, on_click: Callback<MouseEvent>) -
             }
         });
 
-        NavLink { href, onclick, current }
+        NavLink::new(target, href, onclick, current)
     }
     #[cfg(not(feature = "router"))]
     {
-        NavLink {
-            href: (!target.is_empty()).then(|| AttrValue::from(target.url(None, false))),
-            onclick: on_click,
-            current: false,
-        }
+        let href = (!target.is_empty()).then(|| AttrValue::from(target.url(None, false)));
+        NavLink::new(target, href, on_click, false)
     }
 }
 

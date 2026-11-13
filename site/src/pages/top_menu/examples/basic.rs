@@ -17,8 +17,8 @@ pub fn Example() -> Html {
 
     html! {
         <Stack>
-            <AppBar {brand}>
-                <TopMenu {actions}>
+            <AppBar {brand} {actions}>
+                <TopMenu>
                     { for PAGES.into_iter().map(|name| {
                         // An app links to its own pages; the example stays on this one.
                         let on_click = {
@@ -34,7 +34,7 @@ pub fn Example() -> Html {
                             </TopMenuItem>
                         }
                     }) }
-                    <TopMenuItem href="https://example.com/docs" external=true>{ "Docs" }</TopMenuItem>
+                    <TopMenuItem href={NavTarget::href("https://example.com/docs").external()}>{ "Docs" }</TopMenuItem>
                 </TopMenu>
             </AppBar>
             <span role="status">{ format!("Showing {}", *page) }</span>

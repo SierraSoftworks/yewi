@@ -57,7 +57,7 @@ test.describe("Link", () => {
   });
 });
 
-test.describe("RouteLink", () => {
+test.describe("Link to a route", () => {
   test("navigates in place and marks the current route", async ({ page, example }) => {
     const stage = await example("link/router");
     const status = stage.getByRole("status");

@@ -2,7 +2,7 @@
 
 use yew::prelude::*;
 
-use crate::{Attrs, Icon, IconData, Size, Tone, VisuallyHidden, icons, is_empty};
+use crate::{Attrs, Icon, IconData, NavTarget, Size, Tone, VisuallyHidden, icons, is_empty, nav_target::use_nav_link};
 
 /// How a stat tile sits on the page.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Hash)]
@@ -119,9 +119,10 @@ pub struct StatTileProps {
     /// Marks the tile as the chosen one. Only used with `on_click`.
     #[prop_or_default]
     pub selected: bool,
-    /// Makes the tile a link to where the figure is explained.
+    /// Makes the tile a link to where the figure is explained: a URL or,
+    /// with the `router` feature, `NavTarget::route(..)`.
     #[prop_or_default]
-    pub href: Option<AttrValue>,
+    pub href: NavTarget,
     /// Extra content under the figure, such as a sparkline. Must be phrasing
     /// content when the tile is a button or link.
     #[prop_or_default]
@@ -138,7 +139,7 @@ pub struct StatTileProps {
 /// comparison period. Lay several out with `Grid` or `Cluster`.
 #[function_component]
 pub fn StatTile(props: &StatTileProps) -> Html {
-    let interactive = props.on_click.is_some() || props.href.is_some();
+    let interactive = props.on_click.is_some() || !props.href.is_empty();
     let selected = props.selected && props.on_click.is_some();
 
     let class = classes!(
@@ -192,13 +193,16 @@ pub fn StatTile(props: &StatTileProps) -> Html {
     };
 
     let id = props.id.clone();
-    props.attrs.apply(match (&props.on_click, &props.href) {
+    let link = use_nav_link(&props.href, Callback::noop());
+    props.attrs.apply(match (&props.on_click, link.href) {
         (Some(on_click), _) => html! {
             <button {id} {class} type="button" aria-pressed={if selected { "true" } else { "false" }} onclick={on_click.clone()}>
                 { content }
             </button>
         },
-        (None, Some(href)) => html! { <a {id} {class} href={href.clone()}>{ content }</a> },
+        (None, Some(href)) => html! {
+            <a {id} {class} {href} target={link.target} rel={link.rel} onclick={link.onclick}>{ content }</a>
+        },
         (None, None) => html! { <div {id} {class}>{ content }</div> },
     })
 }
