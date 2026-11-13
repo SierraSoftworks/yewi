@@ -308,7 +308,7 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
     };
 
     let prefix = html! { <Icon icon={props.icon} class="yi-query-input__icon" /> };
-    let suffix = (dirty && active).then(|| {
+    let suffix = if dirty && active {
         html! {
             <span class="yi-query-input__hint">
                 <kbd>{ "Enter" }</kbd>{ " to apply" }
@@ -316,7 +316,9 @@ pub fn QueryInput(props: &QueryInputProps) -> Html {
                 <kbd>{ "Esc" }</kbd>{ " to revert" }
             </span>
         }
-    }).unwrap_or_default();
+    } else {
+        Html::default()
+    };
 
     html! {
         <Popover
