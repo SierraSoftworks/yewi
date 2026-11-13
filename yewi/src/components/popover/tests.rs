@@ -12,6 +12,14 @@ fn renders_only_its_trigger_until_open() {
 }
 
 #[test]
+fn keep_mounted_renders_the_content_while_closed() {
+    let html = render(|| html! { <Popover keep_mounted=true content="Three members">{ "Trigger" }</Popover> });
+    assert!(html.contains("Three members"), "{html}");
+    // The browser keeps a popover it has not been asked to show hidden.
+    assert!(html.contains("popover="), "{html}");
+}
+
+#[test]
 fn open_and_default_open_show_the_content_for_every_trigger() {
     for trigger in PopoverTrigger::ALL {
         for controlled in [true, false] {

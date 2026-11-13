@@ -28,16 +28,27 @@ pub enum TextInputKind {
     Password,
     /// A search box: Escape clears it in most browsers.
     Search,
+    /// A calendar date, with the browser's own picker. The value is
+    /// `2026-01-15`, however the browser shows it.
+    Date,
+    /// A time of day. The value is `13:30`.
+    Time,
+    /// A date and time with no time zone (the native `datetime-local`). The
+    /// value is `2026-01-15T13:30`.
+    DateTime,
 }
 
 impl TextInputKind {
-    pub const ALL: [TextInputKind; 6] = [
+    pub const ALL: [TextInputKind; 9] = [
         TextInputKind::Text,
         TextInputKind::Email,
         TextInputKind::Url,
         TextInputKind::Tel,
         TextInputKind::Password,
         TextInputKind::Search,
+        TextInputKind::Date,
+        TextInputKind::Time,
+        TextInputKind::DateTime,
     ];
 
     const fn as_str(self) -> &'static str {
@@ -48,6 +59,9 @@ impl TextInputKind {
             TextInputKind::Tel => "tel",
             TextInputKind::Password => "password",
             TextInputKind::Search => "search",
+            TextInputKind::Date => "date",
+            TextInputKind::Time => "time",
+            TextInputKind::DateTime => "datetime-local",
         }
     }
 }

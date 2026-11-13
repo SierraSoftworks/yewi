@@ -1,0 +1,42 @@
+---
+source: site/tests/snapshots.rs
+---
+<div class="yi-stack">
+<header class="yi-app-bar yi-app-bar--wrap">
+<span class="yi-app-bar__brand">
+<span class="yi-app-bar__logo">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon">
+<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+</path>
+</svg>
+</span>
+<span class="yi-app-bar__name">Grey</span>
+</span>
+<div class="yi-app-bar__start">
+<input value="" type="search" placeholder="Filter by name, service or tag" class="yi-input yi-input--md" aria-label="Filter">
+</div>
+<div class="yi-app-bar__actions">
+<span class="yi-pill yi-pill--ok">
+<span aria-hidden="true" class="yi-status-dot yi-status-dot--pulse">
+</span>live</span>
+<button type="button" class="yi-button yi-button--subtle yi-button--md yi-theme-toggle yi-button--icon-only" aria-label="Theme: System. Switch to Light." title="Theme: System. Switch to Light.">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-theme-toggle__icon yi-theme-toggle__icon--system">
+<path d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2zM8 21L16 21M12 17L12 21">
+</path>
+</svg>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-theme-toggle__icon yi-theme-toggle__icon--light">
+<path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41">
+</path>
+</svg>
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="yi-icon yi-theme-toggle__icon yi-theme-toggle__icon--dark">
+<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+</path>
+</svg>
+</button>
+<span style="--yi-avatar-hue:273" role="img" aria-label="Ada Lovelace" title="Ada Lovelace" class="yi-avatar yi-avatar--sm">
+<span aria-hidden="true" class="yi-avatar__initials">AL</span>
+</span>
+</div>
+</header>
+<span role="status">Showing everything</span>
+</div>

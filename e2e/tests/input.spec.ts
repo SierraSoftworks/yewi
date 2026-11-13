@@ -33,6 +33,16 @@ test.describe("TextInput", () => {
     await expect(status).toHaveText("Name: [billing api]");
   });
 
+  test("a date and time is reported as ISO text", async ({ example }) => {
+    const stage = await example("input/dates");
+    const starts = stage.getByLabel("Starts");
+
+    await expect(starts).toHaveAttribute("type", "datetime-local");
+    await starts.fill("2026-02-01T08:15");
+    await starts.blur();
+    await expect(stage.getByRole("status")).toHaveText("Starts 2026-02-01T08:15");
+  });
+
   test("shows a focus indicator and takes focus from the keyboard", async ({ page, example }) => {
     const stage = await example("input/basic");
     await page.keyboard.press("Tab");

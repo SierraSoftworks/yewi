@@ -30,6 +30,11 @@ pub struct AppBarProps {
     /// inside an [`AppShell`](crate::AppShell) that has a sidebar.
     #[prop_or(AttrValue::Static("Navigation"))]
     pub menu_label: AttrValue,
+    /// On a narrow screen, gives the children a row of their own beneath the
+    /// brand and actions. For a control that needs the width to be usable,
+    /// such as a filter or a search box.
+    #[prop_or_default]
+    pub wrap: bool,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -52,7 +57,7 @@ pub fn AppBar(props: &AppBarProps) -> Html {
     let context = AppBarContext { actions: props.actions.clone() };
 
     props.attrs.apply(html! {
-        <header id={props.id.clone()} class={classes!("yi-app-bar", props.class.clone())}>
+        <header id={props.id.clone()} class={classes!("yi-app-bar", props.wrap.then_some("yi-app-bar--wrap"), props.class.clone())}>
             if let Some(shell) = shell {
                 <IconButton
                     class="yi-app-bar__menu"

@@ -9,6 +9,23 @@ async function around(page: Page, stage: Locator) {
 }
 
 test.describe("Popover", () => {
+  test("kept content is in the page while closed, hidden, and opens again after closing", async ({ page, example }) => {
+    const stage = await example("popover/kept");
+    const trigger = stage.getByRole("button", { name: "3 members" });
+    const members = stage.getByText("lhr-1 · unreachable");
+
+    await expect(members).toBeAttached();
+    await expect(members).toBeHidden();
+
+    for (let round = 0; round < 2; round++) {
+      await trigger.click();
+      await expect(members).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(members).toBeHidden();
+      await expect(members).toBeAttached();
+    }
+  });
+
   test("a press on the trigger toggles it, and a press outside closes it", async ({ page, example }) => {
     const stage = await example("popover/basic");
     const trigger = stage.getByRole("button", { name: "Deployment" });
