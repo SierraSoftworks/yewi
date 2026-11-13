@@ -307,7 +307,8 @@ html {
   background: var(--yi-tone-1);
 }
 
-.docs-main pre code {
+// Matches the specificity of the rule above, so code in a block has no chip.
+.docs-main pre code:not(.yi-inline-code) {
   padding: 0;
   background: none;
 }
@@ -337,8 +338,7 @@ html {
   }
 }
 
-.docs-snippet,
-.docs-example__source {
+.docs-snippet {
   margin: 0;
   padding: var(--yi-space-md) var(--yi-space-lg);
   overflow-x: auto;
@@ -346,9 +346,6 @@ html {
   font-size: var(--yi-text-sm);
   line-height: var(--yi-leading-relaxed);
   tab-size: 4;
-}
-
-.docs-snippet {
   border: 1px solid var(--yi-line);
   border-radius: var(--yi-radius-card);
 }
@@ -389,8 +386,19 @@ html {
     border-block-start: 1px solid var(--yi-line);
   }
 
+  // The source is a `CodeBlock` that the frame already borders, and whose
+  // language and copy button the toolbar above already covers.
   &__source {
     border-block-start: 1px solid var(--yi-line);
+
+    > .yi-code-block {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .yi-code-block__header {
+      display: none;
+    }
   }
 }
 

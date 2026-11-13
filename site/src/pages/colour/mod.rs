@@ -1,11 +1,11 @@
 crate::page! {
     title: "Colour",
     category: Foundations,
-    summary: "Neutral surfaces and text, one accent per app, and status tones that are only ever semantic.",
+    summary: "The colour system uses neutral surfaces and text, a single accent for each app, and status tones that only ever carry meaning.",
     api: [],
     examples: [
-        neutrals => "Neutrals": "Pure grey on white in light mode and a cool charcoal in dark mode. Three text steps: `--yi-fg` for content, `--yi-fg-muted` for supporting text and `--yi-fg-subtle` for labels and metadata.",
-        accent => "Accent": "An app sets `--yi-accent`; fills, text, soft tints and the focus ring are derived from it with their lightness clamped for contrast. The neutrals lean towards the accent's hue.",
-        status => "Status tones": "Each tone has a text colour and a soft fill. Use them to report state, never to decorate.",
+        neutrals => "Neutrals": "Light mode uses pure grey on white, and dark mode uses a cool charcoal. There are three steps for text. `--yi-fg` is for content, `--yi-fg-muted` is for supporting text and `--yi-fg-subtle` is for labels and metadata.",
+        accent => "Accent": "Each app sets `--yi-accent`, and the fills, text, soft tints and focus ring are derived from it. Their lightness is clamped so that they keep enough contrast, and the neutrals lean towards the accent's hue.",
+        status => "Status tones": "Each tone has a text colour and a soft fill. Use them to report state, and never just to decorate.",
     ],
 }

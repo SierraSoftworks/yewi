@@ -10,6 +10,7 @@ use crate::{
     EXAMPLE_NOW_MILLIS, Route,
     docs::{ApiModule, ApiProp, Category, Example, Page},
     guides::{self, Guide},
+    marks,
 };
 
 const REPOSITORY: &str = "https://github.com/SierraSoftworks/yewi";
@@ -52,10 +53,13 @@ fn Layout(props: &LayoutProps) -> Html {
         let nav_open = nav_open.clone();
         Callback::from(move |_| nav_open.set(!*nav_open))
     };
+    // The document has a `<base>`, so a bare `#anchor` would lead to the home
+    // page: links to a place on this page name the page too.
+    let here = use_location().map(|location| location.path().to_owned()).unwrap_or_default();
 
     html! {
         <div class="docs">
-            <a class="docs-skip" href="#content">{ "Skip to content" }</a>
+            <a class="docs-skip" href={format!("{here}#content")}>{ "Skip to content" }</a>
             <header class="docs-header">
                 <Button
                     class="docs-header__menu yi-button--icon-only"
@@ -84,7 +88,7 @@ fn Layout(props: &LayoutProps) -> Html {
                     if !props.toc.is_empty() {
                         <span class="docs-toc__title">{ "On this page" }</span>
                         { for props.toc.iter().map(|(anchor, label)| html! {
-                            <a href={format!("#{anchor}")}>{ label }</a>
+                            <a href={format!("{here}#{anchor}")}>{ label }</a>
                         }) }
                     }
                 </aside>
@@ -208,8 +212,9 @@ pub fn Home() -> Html {
             <header class="docs-page-header">
                 <h1><Wordmark /></h1>
                 <p class="docs-lede">
-                    { "A design system for Yew applications: calm by default, decisive where it matters. \
-                       One component library, light and dark themes, an accent per app." }
+                    { "A design system for Yew applications that stays calm by default and draws attention \
+                       only where it matters. It gives you one component library with light and dark \
+                       themes, and lets each app choose its own accent colour." }
                 </p>
                 <Cluster>
                     <Button variant={ButtonVariant::Primary} href={href(&Route::guide("getting-started"))}>
@@ -289,7 +294,7 @@ pub fn ComponentPage(props: &SlugProps) -> Html {
                 <p class="docs-lede">{ inline(page.def.summary) }</p>
                 if let Some(feature) = page.def.feature {
                     <p class="docs-feature">
-                        { "Opt-in: enable the " }<code>{ feature }</code>{ " feature." }
+                        { "This component is opt-in. Enable the " }<code>{ feature }</code>{ " feature to use it." }
                     </p>
                 }
             </header>
@@ -329,6 +334,12 @@ fn ExampleBlock(props: &ExampleBlockProps) -> Html {
         Callback::from(move |_| open.set(!*open))
     };
     let copy = Callback::from(move |_| copy_to_clipboard(example.source));
+    // The lines the description talks about, set apart from the scaffolding.
+    let marked = use_memo((), |()| {
+        let mut names: Vec<&str> = page.api().flat_map(|module| module.components.iter().map(|c| c.name)).collect();
+        names.push(page.module);
+        AttrValue::from(marks::marked(example.source, example.description, &names))
+    });
 
     html! {
         <section class="docs-example" id={slug}>
@@ -358,9 +369,9 @@ fn ExampleBlock(props: &ExampleBlockProps) -> Html {
                         { "Open isolated" }
                     </Button>
                 </div>
-                <pre class="docs-example__source" id={source_id} hidden={!*open}>
-                    <Highlight code={example.source.trim_end()} language="rust" />
-                </pre>
+                <div class="docs-example__source" id={source_id} hidden={!*open}>
+                    <CodeBlock code={example.source} language="rust" marked={(*marked).clone()} copy=false />
+                </div>
             </div>
         </section>
     }
