@@ -127,17 +127,5 @@ pub fn InputGroup(props: &InputGroupProps) -> Html {
     })
 }
 
-/// Sets the `value` of the element behind `node`.
-pub(crate) fn set_value(node: &NodeRef, value: &str) {
-    #[cfg(target_arch = "wasm32")]
-    if let Some(element) = node.get() {
-        let _ = js_sys::Reflect::set(&element, &"value".into(), &value.into());
-    }
-    #[cfg(not(target_arch = "wasm32"))]
-    {
-        let _ = (node, value);
-    }
-}
-
 #[cfg(test)]
 mod tests;
