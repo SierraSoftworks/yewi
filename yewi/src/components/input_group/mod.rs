@@ -10,6 +10,7 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{Attrs, FieldContext, Icon, Size, icons};
 
 mod search_input;
@@ -58,12 +59,12 @@ pub struct InputGroupProps {
     /// `Button`, `MenuButton`, `Select` or `InputGroupSelect`, which are
     /// drawn as chips.
     #[prop_or_default]
-    pub prefix: Option<Html>,
+    pub prefix: Html,
     /// Shown after the control: a unit such as `ms`, or a `Button`,
     /// `MenuButton`, `Select` or `InputGroupSelect`, which are drawn as
     /// chips.
     #[prop_or_default]
-    pub suffix: Option<Html>,
+    pub suffix: Html,
     /// The size of the whole group. The control and any buttons inside
     /// follow it, whatever their own `size`.
     #[prop_or_default]
@@ -118,12 +119,12 @@ pub fn InputGroup(props: &InputGroupProps) -> Html {
             )}
             {onmousedown}
         >
-            if let Some(prefix) = &props.prefix {
-                { affix("yi-input-group__affix--prefix", prefix) }
+            if !is_empty(&props.prefix) {
+                { affix("yi-input-group__affix--prefix", &props.prefix) }
             }
             { props.children.clone() }
-            if let Some(suffix) = &props.suffix {
-                { affix("yi-input-group__affix--suffix", suffix) }
+            if !is_empty(&props.suffix) {
+                { affix("yi-input-group__affix--suffix", &props.suffix) }
             }
         </div>
     })

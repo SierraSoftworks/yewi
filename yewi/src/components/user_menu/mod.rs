@@ -161,7 +161,7 @@ pub fn UserMenu(props: &UserMenuProps) -> Html {
                 flush=true
                 role="none"
                 surface_class="yi-user-menu__surface"
-                head={identity.clone()}
+                header={identity.clone()}
                 {content}
             >
                 <button

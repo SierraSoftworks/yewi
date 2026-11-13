@@ -63,8 +63,8 @@ pub fn Example() -> Html {
                     <span>{ format!("{:.1}%", bucket.availability) }</span>
                 </span>
             })
-            .head(html! { <><StatusDot tone={bucket.tone()} />{ bucket.status() }</> })
-            .foot(format!("{} UTC, 30 minutes", bucket.time))
+            .header(html! { <><StatusDot tone={bucket.tone()} />{ bucket.status() }</> })
+            .footer(format!("{} UTC, 30 minutes", bucket.time))
         })
     };
 

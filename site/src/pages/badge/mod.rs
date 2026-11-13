@@ -1,12 +1,12 @@
 crate::page! {
     title: "Badge",
     category: Basic,
-    summary: "A count, or a bare dot, that marks something as needing attention.",
+    summary: "Badges show a count, or just a dot, to mark something as needing attention.",
     examples: [
-        counts => "Counts": "Inline, a badge follows a label in a tab, menu row or heading. It is soft and neutral by default; add a tone when the count has a meaning, and `bold` when it asks for action.",
-        limits => "Zero and large counts": "Counts above `max` (99 by default) show as `99+`. A count of zero hides the badge unless `show_zero` is set.",
-        attached => "Attached": "Wrap a control and the badge sits on its top corner. Give it a `label` so a screen reader hears what the number means.",
-        dot => "Dot": "Without a `count` the badge is a dot: something is new, without saying how much. A dot needs a `label` to be announced.",
-        live => "Changing counts": "The badge appears, grows, caps and disappears as the count changes. Announce changes that matter with a live region, as the status line here does.",
+        counts => "Counts": "An inline badge follows a label in a tab, a menu row or a heading. It's soft and neutral by default. Add a tone when the count means something, and `bold` when it asks the user to act.",
+        limits => "Zero and large counts": "Counts above `max`, which is 99 by default, show as `99+`. A count of zero hides the badge unless you set `show_zero`.",
+        attached => "Attached": "When you wrap a control in a badge, the badge sits on the control's top corner. Give it a `label` so a screen reader can say what the number means.",
+        dot => "Dot": "Without a `count`, the badge is a dot. It says that something is new without saying how much. A dot needs a `label` so that it gets announced.",
+        live => "Changing counts": "The badge appears, grows, caps and disappears as the count changes. When a change matters, announce it with a live region, as the status line in this example does.",
     ],
 }

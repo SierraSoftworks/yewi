@@ -26,7 +26,7 @@ pub fn Example() -> Html {
 
     let count = if *unread { BUILDS.len() as u32 } else { 0 };
     let label = if *unread { format!("{count} unread notifications") } else { "No unread notifications".to_string() };
-    let foot = html! {
+    let footer = html! {
         <Button size={Size::Small} variant={ButtonVariant::Subtle} icon={icons::CHECK_CHECK} on_click={mark_read}>
             { "Mark all as read" }
         </Button>
@@ -40,7 +40,7 @@ pub fn Example() -> Html {
                 tone={Tone::Danger}
                 open={*open}
                 {on_open_change}
-                foot={if *unread { foot } else { Html::default() }}
+                footer={if *unread { footer } else { Html::default() }}
                 empty="You are all caught up."
             >
                 if *unread {

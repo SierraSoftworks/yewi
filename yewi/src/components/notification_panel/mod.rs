@@ -42,7 +42,7 @@ pub struct NotificationPanelProps {
     /// An optional row under the list, such as a link to every notification
     /// or a "mark all as read" action.
     #[prop_or_default]
-    pub foot: Html,
+    pub footer: Html,
     /// Where the panel opens. It flips and slides to stay on screen.
     #[prop_or(Placement::BottomEnd)]
     pub placement: Placement,
@@ -91,8 +91,8 @@ pub fn NotificationPanel(props: &NotificationPanelProps) -> Html {
         })
     };
 
-    let head = html! {
-        <span class="yi-notification-panel__head">
+    let header = html! {
+        <span class="yi-notification-panel__header">
             <span class="yi-notification-panel__title">{ props.title.clone() }</span>
             if !is_empty(&props.description) {
                 <span class="yi-notification-panel__description">{ props.description.clone() }</span>
@@ -113,9 +113,9 @@ pub fn NotificationPanel(props: &NotificationPanelProps) -> Html {
         <Popover
             open={open}
             {on_open_change}
-            {head}
+            {header}
             {content}
-            foot={props.foot.clone()}
+            footer={props.footer.clone()}
             placement={props.placement}
             arrow=false
             flush=true

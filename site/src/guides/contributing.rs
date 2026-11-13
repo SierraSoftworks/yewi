@@ -6,10 +6,11 @@ pub fn render() -> Html {
     html! {
         <>
             <p>
-                { "A component is three directories and no shared files. Build scripts discover each \
-                   one, so parallel work never collides. " }
+                { "Each component lives in three directories and doesn't touch any shared files. The build \
+                   scripts find each one automatically, so people working on different components in \
+                   parallel never edit the same file. " }
                 <a href="https://github.com/SierraSoftworks/yewi/blob/main/CONTRIBUTING.md">{ "CONTRIBUTING.md" }</a>
-                { " has the full contract; this is the map." }
+                { " describes everything a component needs. This page is a quick map of where things go." }
             </p>
             { plain(r#"
 yewi/src/components/<name>/
@@ -24,11 +25,11 @@ site/src/pages/<name>/
 e2e/tests/<name>.spec.ts
                       behaviour specs for the interactions
 "#) }
-            <h2>{ "What comes for free" }</h2>
+            <h2>{ "What you get for free" }</h2>
             <ul>
-                <li>{ "The page appears in the sidebar and search, with API tables read from the doc comments." }</li>
-                <li>{ "Every example gets a server-render snapshot, a hydration check, an accessibility scan and screenshots in both themes." }</li>
-                <li>{ "The stylesheet includes the component's SCSS whenever its feature is enabled." }</li>
+                <li>{ "The page shows up in the sidebar and in search, and its API tables are built from your doc comments." }</li>
+                <li>{ "Every example is checked with a server-render snapshot, a hydration test, an accessibility scan and screenshots in both themes." }</li>
+                <li>{ "The component's SCSS is added to the stylesheet whenever its feature is enabled." }</li>
             </ul>
             <h2>{ "Checks" }</h2>
             { plain(r#"

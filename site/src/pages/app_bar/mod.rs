@@ -1,10 +1,10 @@
 crate::page! {
     title: "AppBar",
     category: Navigation,
-    summary: "The bar across the top of an application: brand at the start, the app's own controls after it, actions at the end.",
+    summary: "The app bar runs across the top of an application. The brand sits at the start, the app's own controls come after it, and actions go at the end.",
     examples: [
-        basic => "Brand and actions": "`brand` takes an `AppBarBrand` and `actions` sits at the end, where the user and the theme toggle go. Inside an `AppShell` with a sidebar the bar also shows the menu button.",
-        slots => "With a menu and status": "The children follow the brand and are aligned to the start: the place for a `TopMenu`, a breadcrumb or an environment badge. A `TopMenu` here takes over the bar's `actions` and folds them into its dropdown on a narrow screen, so nothing is clipped on a phone.",
-        brand => "Brands": "`AppBarBrand` takes a `logo` (an icon, an image or inline SVG) and the name. With `href` it links home. The logo is drawn in the accent; set `--yi-app-bar-logo-color` to change that.",
+        basic => "Brand and actions": "`brand` takes an `AppBarBrand`, and `actions` sits at the end of the bar, which is where things like the current user and the theme toggle go. Inside an `AppShell` with a sidebar, the bar also shows the menu button.",
+        slots => "With a menu and status": "The children follow the brand and line up at the start, so this is the place for a `TopMenu`, a breadcrumb or an environment badge. A `TopMenu` here takes over the bar's `actions` and folds them into its dropdown on a narrow screen, so nothing gets clipped on a phone.",
+        brand => "Brands": "`AppBarBrand` takes a `logo` and the name. The logo can be an icon, an image or inline SVG, and with `href` the brand links home. The logo is drawn in the accent colour, and you can set `--yi-app-bar-logo-color` to change it.",
     ],
 }

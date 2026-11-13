@@ -4,6 +4,7 @@
 use chrono::{DateTime, Utc};
 use yew::prelude::*;
 
+use crate::is_empty;
 use crate::{
     Attrs, Placement, Tick, TimestampDetail, Tooltip,
     timestamp::format::{self, Units},
@@ -33,7 +34,7 @@ pub struct CountdownProps {
     pub format: CountdownFormat,
     /// What to show once the moment has passed, in place of a zero.
     #[prop_or_default]
-    pub done: Option<Html>,
+    pub done: Html,
     /// Called once when the countdown reaches zero while on screen. Not
     /// called for a moment that had already passed when it was first shown.
     #[prop_or_default]
@@ -86,15 +87,16 @@ pub fn Countdown(props: &CountdownProps) -> Html {
         });
     }
 
-    let text = match (&props.done, done) {
-        (Some(done), true) => done.clone(),
-        _ => match props.format {
+    let text = if done && !is_empty(&props.done) {
+        props.done.clone()
+    } else {
+        match props.format {
             CountdownFormat::Clock => format::countdown_clock(left),
             CountdownFormat::Units => {
                 format::duration(format::whole_seconds_left(left) as i64 * 1_000, Units::Two)
             }
         }
-        .into(),
+        .into()
     };
     let tip = if props.tooltip { html! { <TimestampDetail at={props.until} /> } } else { Html::default() };
 

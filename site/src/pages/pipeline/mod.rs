@@ -1,11 +1,11 @@
 crate::page! {
     title: "Pipeline",
     category: Data,
-    summary: "Ordered stages side by side, with a gate in front of a stage where the work must wait and the stage's own content inside it.",
+    summary: "A pipeline shows ordered stages side by side, each with its own content. A gate in front of a stage shows where the work has to wait.",
     examples: [
-        basic => "Stages": "A stage has a title, a short `status`, quiet `meta` and any content. Mark the stage in flight with `current`. Stages wrap onto further rows, and stack when the container is narrower than 34rem.",
-        gates => "Gates": "Pass a `PipelineGate` to the stage it guards. `Waiting` has not been reached, `Closed` holds the pipeline and `Open` has been passed. Say what the gate waits for in its label, and put the action that opens it in the stage.",
-        rollout => "Units of work": "`PipelineUnit` draws one block per host, job or shard, so a stage shows its progress at a glance. Tone carries the state and `fill` separates states that share a tone; always pair the blocks with a legend. `placeholder` marks a stage outside the run.",
-        compact => "Compact": "`compact` shrinks stages and units and drops the `meta`, for an overview that links to the full pipeline. `fill` shares the width equally.",
+        basic => "Stages": "A stage has a title, a short `status`, some quiet `meta` and any content you like. Mark the stage that's in progress with `current`. Stages wrap onto more rows, and they stack when the container is narrower than 34rem.",
+        gates => "Gates": "Pass a `PipelineGate` to the stage it guards. `Waiting` means it hasn't been reached yet, `Closed` means it's holding the pipeline, and `Open` means it's been passed. Use the gate's label to say what it's waiting for, and put the action that opens it in the stage.",
+        rollout => "Units of work": "`PipelineUnit` draws one block per host, job or shard, so you can see a stage's progress at a glance. The tone carries the state, and `fill` tells apart states that share a tone. Always pair the blocks with a legend. `placeholder` marks a stage that's outside the run.",
+        compact => "Compact": "`compact` shrinks the stages and units and drops the `meta`. It suits an overview that links to the full pipeline. `fill` shares the width equally between stages.",
     ],
 }

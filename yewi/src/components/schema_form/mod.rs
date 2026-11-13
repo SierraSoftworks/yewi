@@ -373,8 +373,8 @@ fn field(props: &SchemaNodeProps, control: Html) -> Html {
     let row = html! {
         <Field
             label={html! { &props.label }}
-            hint={props.hint()}
-            error={props.error()}
+            hint={props.hint().unwrap_or_default()}
+            error={props.error().unwrap_or_default()}
             required={props.required && !props.item}
             disabled={props.disabled()}
             layout={props.shared.layout}

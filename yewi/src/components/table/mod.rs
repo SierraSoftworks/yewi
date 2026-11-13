@@ -20,6 +20,7 @@ pub use column::*;
 pub use simple::*;
 pub use sort::*;
 
+use crate::is_empty;
 use crate::{
     Attrs, ButtonVariant, Checkbox, EmptyState, IconButton, Size, Skeleton, VirtualWindow, VisuallyHidden, attrs, icons,
 };
@@ -104,7 +105,7 @@ pub struct TableProps<T: Clone + PartialEq + 'static> {
     /// Shown instead of rows when there are none. Defaults to a small
     /// [`EmptyState`].
     #[prop_or_default]
-    pub empty: Option<Html>,
+    pub empty: Html,
     /// The title of the default empty state, when `empty` is not set.
     #[prop_or(AttrValue::Static("Nothing to show"))]
     pub empty_label: AttrValue,
@@ -114,7 +115,7 @@ pub struct TableProps<T: Clone + PartialEq + 'static> {
     /// Content under the table, outside its scrolling area: a row count,
     /// pagination.
     #[prop_or_default]
-    pub footer: Option<Html>,
+    pub footer: Html,
     #[prop_or_default]
     pub class: Classes,
     #[prop_or_default]
@@ -339,8 +340,8 @@ pub(crate) fn use_table<T: Clone + PartialEq + 'static>(props: &TableProps<T>, w
         html! {
             <tr class="yi-table__empty">
                 <td colspan={span.to_string()}>
-                    if let Some(empty) = &props.empty {
-                        { empty.clone() }
+                    if !is_empty(&props.empty) {
+                        { props.empty.clone() }
                     } else {
                         <EmptyState title={props.empty_label.clone()} size={Size::Small} />
                     }
