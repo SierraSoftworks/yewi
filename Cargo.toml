@@ -1,7 +1,7 @@
 [workspace]
 resolver = "3"
-members = ["yewi", "yewi-fonts", "yewi-test", "site", "xtask", "tests/size-probe"]
-default-members = ["yewi", "yewi-fonts", "yewi-test", "site"]
+members = ["yewi", "yewi-highlight", "yewi-tokens", "yewi-fonts", "yewi-test", "site", "xtask", "tests/size-probe"]
+default-members = ["yewi", "yewi-highlight", "yewi-tokens", "yewi-fonts", "yewi-test", "site"]
 
 [workspace.package]
 version = "0.1.0"
@@ -13,6 +13,8 @@ repository = "https://github.com/SierraSoftworks/yewi"
 
 [workspace.dependencies]
 yewi = { path = "yewi", version = "0.1.0" }
+yewi-highlight = { path = "yewi-highlight", version = "0.1.0" }
+yewi-tokens = { path = "yewi-tokens", version = "0.1.0" }
 yewi-fonts = { path = "yewi-fonts", version = "0.1.0" }
 yewi-test = { path = "yewi-test", version = "0.1.0" }
 

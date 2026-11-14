@@ -1,0 +1,19 @@
+[package]
+name = "yewi-highlight"
+description = "Small syntax lexers that turn source text into coloured tokens. No UI dependency."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["syntax", "highlighting", "lexer", "wasm"]
+categories = ["text-processing", "wasm"]
+
+[features]
+default = []
+# Lexes with syntect's Sublime Text grammars where it has one. About a megabyte of wasm.
+syntect = ["dep:syntect"]
+
+[dependencies]
+syntect = { version = "5.2", default-features = false, features = ["default-syntaxes", "regex-fancy"], optional = true }

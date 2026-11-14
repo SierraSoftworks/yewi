@@ -4,3 +4,6 @@ description = "Project automation: `cargo xtask <command>`."
 version = "0.0.0"
 edition = "2024"
 publish = false
+
+[dependencies]
+grass = { workspace = true }

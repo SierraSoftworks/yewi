@@ -1,6 +1,6 @@
 name: Release
 
-# Publishes yewi, yewi-fonts and yewi-test to crates.io at one shared version,
+# Publishes yewi and its companion crates (`CRATES` below) to crates.io at one shared version,
 # then tags the commit and creates the GitHub release. Releases are cut by
 # running this workflow: the tag only appears once every crate is uploaded, so
 # a tag always has its crates behind it.
@@ -31,7 +31,7 @@ concurrency: release
 env:
   CARGO_TERM_COLOR: always
   # In dependency order; `PUBLISHED` in xtask/src/main.rs lists the same crates.
-  CRATES: yewi-fonts yewi-test yewi
+  CRATES: yewi-fonts yewi-highlight yewi-tokens yewi-test yewi
 
 jobs:
   publish:
