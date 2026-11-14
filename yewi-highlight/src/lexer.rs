@@ -6,10 +6,10 @@
 //! what gives code its familiar colouring at a few kilobytes of wasm. Input
 //! that confuses them is shown plain or miscoloured, never lost or reordered.
 
-use super::{Language, TokenKind};
+use crate::{Language, TokenKind};
 
 /// `(start, end, kind)` byte ranges into the source, in order and gap-free.
-pub(super) type Spans = Vec<(usize, usize, Option<TokenKind>)>;
+pub(crate) type Spans = Vec<(usize, usize, Option<TokenKind>)>;
 
 // Shapes a language opts into.
 const CASELESS: u32 = 1 << 0; // keywords match in any case (SQL)
@@ -183,7 +183,7 @@ fn syntax(language: Language) -> Syntax {
     }
 }
 
-pub(super) fn lex(source: &str, language: Language) -> Spans {
+pub(crate) fn lex(source: &str, language: Language) -> Spans {
     let mut out = Spans::new();
     match language {
         Language::Html => markup(source, &mut out),
@@ -342,7 +342,9 @@ impl<'a, 's> Scanner<'a, 's> {
             }
             if next.is_ascii_alphanumeric() || next == b'_' {
                 let mut j = i + 1;
-                while self.at(j).is_ascii_alphanumeric() || self.at(j) == b'_' || (self.at(j) == b'-' && !self.has(COMMANDS))
+                while self.at(j).is_ascii_alphanumeric()
+                    || self.at(j) == b'_'
+                    || (self.at(j) == b'-' && !self.has(COMMANDS))
                 {
                     j += 1;
                 }
@@ -490,8 +492,7 @@ impl<'a, 's> Scanner<'a, 's> {
         let colon_key = self.has(KEY_COLON)
             && self.at(after) == b':'
             && (self.at(after + 1).is_ascii_whitespace() || after + 1 >= self.end);
-        let equals_key =
-            self.has(KEY_EQUALS) && self.at(after) == b'=' && !matches!(self.at(after + 1), b'=' | b'>');
+        let equals_key = self.has(KEY_EQUALS) && self.at(after) == b'=' && !matches!(self.at(after + 1), b'=' | b'>');
         let lowered;
         let listed = if self.has(CASELESS) {
             lowered = word.to_ascii_lowercase();

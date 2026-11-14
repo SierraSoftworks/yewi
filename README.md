@@ -35,6 +35,7 @@ fn main() {
 - The stylesheet for the enabled features is compiled into the crate: `install_styles()`, `<Styles />` or `STYLESHEET`.
 - Everything is a `--yi-*` token inside `@layer yewi.*`; set `--yi-accent` and any unlayered app rule wins.
 - Fonts ship in the dependency-free `yewi-fonts` crate, with a system fallback when they are not served.
+- For UIs that do not draw with CSS, `yewi-tokens` has the design tokens as Rust constants and `yewi-highlight` the syntax lexers, neither with a Yew dependency.
 
 ### Opt-in features
 - Heavier components sit behind features (`charts`, `map`, `code`, `markdown`, ...; `full` for all).

@@ -21,6 +21,8 @@ cargo xtask <command>
                    screenshots diffed against a git ref
   size             measure the probe's wasm and the stylesheet per feature
                    and enforce size-budget.toml
+  tokens [--check] regenerate yewi-tokens from yewi/scss/tokens.scss, or
+                   with --check fail when it is out of date
   package          package the published crates and build each from its package,
                    as `cargo publish` would (uploads nothing)
   ci               check, e2e, size and package: everything, in order
@@ -30,6 +32,7 @@ cargo xtask <command>
 ";
 
 mod changed;
+mod tokens;
 
 const WASM: &str = "wasm32-unknown-unknown";
 
@@ -45,6 +48,7 @@ fn main() {
         "e2e" => e2e(&rest),
         "gallery" => gallery(&rest),
         "size" => size(),
+        "tokens" => tokens(rest.iter().any(|arg| arg == "--check")),
         "package" => package(),
         "ci" => ci(&rest),
         _ => {
@@ -146,8 +150,21 @@ fn fmt() {
     run(cargo().args(["fmt", "--all", "--check"]));
 }
 
+/// Writes the constants of `yewi-tokens`, or with `check` fails when they are stale.
+fn tokens(check: bool) {
+    let path = root().join("yewi-tokens/src/generated.rs");
+    let generated = tokens::generate(&root());
+    if !check {
+        fs::write(&path, generated).unwrap_or_else(|e| panic!("{}: {e}", path.display()));
+    } else if fs::read_to_string(&path).ok().as_deref() != Some(generated.as_str()) {
+        eprintln!("yewi-tokens is out of date with yewi/scss/tokens.scss: run `cargo xtask tokens`");
+        exit(1);
+    }
+}
+
 fn check() {
     fmt();
+    tokens(true);
     run(cargo().args([
         "clippy",
         "--workspace",
@@ -178,7 +195,7 @@ fn check() {
 }
 
 /// The crates published to crates.io, in dependency order. The release workflow uploads these.
-const PUBLISHED: [&str; 3] = ["yewi-fonts", "yewi-test", "yewi"];
+const PUBLISHED: [&str; 5] = ["yewi-fonts", "yewi-highlight", "yewi-tokens", "yewi-test", "yewi"];
 
 fn package() {
     // The release workflow sets the version in the manifests before this runs, hence the dirty tree.

@@ -1,0 +1,11 @@
+[package]
+name = "yewi-tokens"
+description = "The yewi design tokens as Rust constants, for UIs that do not draw with CSS."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords = ["design-system", "tokens", "theme", "ui"]
+categories = ["gui", "no-std"]

@@ -1444,6 +1444,9 @@ dependencies = [
 [[package]]
 name = "xtask"
 version = "0.0.0"
+dependencies = [
+ "grass",
+]
 
 [[package]]
 name = "yew"
@@ -1528,18 +1531,25 @@ dependencies = [
  "qrcodegen",
  "rqrr",
  "serde_json",
- "syntect",
  "wasm-bindgen",
  "web-sys",
  "yew",
  "yew-router",
  "yewi-fonts",
+ "yewi-highlight",
  "yewi-test",
 ]
 
 [[package]]
 name = "yewi-fonts"
 version = "0.1.0"
+
+[[package]]
+name = "yewi-highlight"
+version = "0.1.0"
+dependencies = [
+ "syntect",
+]
 
 [[package]]
 name = "yewi-site"
@@ -1565,6 +1575,10 @@ dependencies = [
  "tokio",
  "yew",
 ]
+
+[[package]]
+name = "yewi-tokens"
+version = "0.1.0"
 
 [[package]]
 name = "zerocopy"

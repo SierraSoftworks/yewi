@@ -1,4 +1,4 @@
-//! The `highlight-syntect` engine: syntect's grammars, mapped onto the same
+//! The `syntect` engine: syntect's grammars, mapped onto the same
 //! token kinds, and so the same colours, as the built-in lexers.
 
 use std::sync::LazyLock;
@@ -8,7 +8,7 @@ use syntect::{
     util::LinesWithEndings,
 };
 
-use super::{TokenKind, lexer::Spans};
+use crate::{TokenKind, lexer::Spans};
 
 static SYNTAXES: LazyLock<SyntaxSet> = LazyLock::new(SyntaxSet::load_defaults_newlines);
 
@@ -64,7 +64,11 @@ static KEYS: LazyLock<Vec<Scope>> = LazyLock::new(|| {
 fn in_key(scopes: &[Scope]) -> bool {
     let [mapping_key, dictionary, value] = KEYS.as_slice() else { return false };
     scopes.iter().any(|scope| mapping_key.is_prefix_of(*scope))
-        || scopes.iter().rev().find(|scope| dictionary.is_prefix_of(**scope)).is_some_and(|scope| !value.is_prefix_of(*scope))
+        || scopes
+            .iter()
+            .rev()
+            .find(|scope| dictionary.is_prefix_of(**scope))
+            .is_some_and(|scope| !value.is_prefix_of(*scope))
 }
 
 fn kind(stack: &ScopeStack) -> Option<TokenKind> {
@@ -80,7 +84,7 @@ fn kind(stack: &ScopeStack) -> Option<TokenKind> {
 
 /// Lexes `source` with the grammar named `language`. `None` when syntect has
 /// no such grammar or cannot parse the text, so the caller can fall back.
-pub(super) fn lex(source: &str, language: &str) -> Option<Spans> {
+pub(crate) fn lex(source: &str, language: &str) -> Option<Spans> {
     let syntax = SYNTAXES.find_syntax_by_token(language.trim())?;
     let mut state = ParseState::new(syntax);
     let mut stack = ScopeStack::new();
@@ -106,6 +110,6 @@ pub(super) fn lex(source: &str, language: &str) -> Option<Spans> {
 }
 
 /// The display name of the grammar named `language`.
-pub(super) fn label(language: &str) -> Option<String> {
+pub(crate) fn label(language: &str) -> Option<String> {
     SYNTAXES.find_syntax_by_token(language.trim()).map(|syntax| syntax.name.clone())
 }
