@@ -84,6 +84,20 @@ test.describe("Table", () => {
     await expect(header).toBeInViewport();
   });
 
+  test("every row answers the pointer, striped or not", async ({ page, example }) => {
+    const stage = await example("table/variants");
+    for (const table of await stage.getByRole("table").all()) {
+      const rows = table.locator("tbody tr.yi-table__row");
+      const background = (row: Locator) => row.evaluate((el) => getComputedStyle(el).backgroundColor);
+      for (const row of [rows.nth(0), rows.nth(1)]) {
+        await page.mouse.move(0, 0);
+        const resting = await background(row);
+        await row.hover();
+        await expect.poll(() => background(row)).not.toBe(resting);
+      }
+    }
+  });
+
   test("selection follows rows through sorting, and the header box selects all", async ({ page, example }) => {
     const stage = await example("table/selection");
     const table = stage.getByRole("table", { name: "Hosts" });
