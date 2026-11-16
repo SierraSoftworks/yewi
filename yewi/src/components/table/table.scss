@@ -157,8 +157,9 @@
     transition: background-color var(--yi-duration-fast) var(--yi-ease);
   }
 
-  // Detail and group rows do not count towards the stripes.
-  &:nth-child(even of .yi-table__row) {
+  // Detail and group rows do not count towards the stripes. A stripe weighs
+  // no more than the row, so hover and selection still show on it.
+  &:where(:nth-child(even of .yi-table__row)) {
     background: var(--yi-table-row-stripe);
   }
 
